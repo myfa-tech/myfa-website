@@ -1,13 +1,16 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
+import watchSrc from '../../assets/images/watch.png'
 
-import style from './Home.scss'
+import './Home.scss'
 
 const Home = () => {
   return (
-    <Container>
+    <Container className='section-1'>
       <Row>
-        <Col md={6}>1 of 2</Col>
+        <Col md={6} className='image-container'>
+          <img src={watchSrc} alt='watch' />
+        </Col>
         <Col md={6}>
           <h1>Pour vos proche au loin</h1>
           <p>
