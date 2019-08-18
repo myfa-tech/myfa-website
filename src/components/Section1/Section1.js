@@ -13,16 +13,17 @@ const Section1 = () => {
             <img src={watchSrc} alt='watch' />
           </Col>
           <Col md={6}>
-            <h1>Pour vos proche au loin</h1>
+            <h1>Myfa, pour vos proche au loin</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna.
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptas, modi fugit in veritatis labore perferendis.
-              Minima hic at, nostrum nihil!
+              Dites au revoir à cette frustration de ne pas pouvoir aider concrètement
+              un de vos proches à cause de la distance. Avec Myfa, vous pouvez composer
+              un panier de biens alimentaires, à destination de vos proches en Afrique !
+            </p>
+            <p>
+              Tout ce qu'il vous suffit de faire : télécharger l'application et vous laisser guider.
             </p>
             <a href='#' className='btn-main'>
-              Primary button
+              Télécharger l'application
             </a>
           </Col>
         </Row>
