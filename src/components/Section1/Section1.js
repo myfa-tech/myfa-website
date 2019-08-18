@@ -13,7 +13,7 @@ const Section1 = () => {
             <img src={watchSrc} alt='watch' />
           </Col>
           <Col md={6}>
-            <h1>Myfa, pour vos proche au loin</h1>
+            <h1>Myfa, pour vos proches au loin</h1>
             <p>
               Dites au revoir à cette frustration de ne pas pouvoir aider concrètement
               un de vos proches à cause de la distance. Avec Myfa, vous pouvez composer

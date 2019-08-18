@@ -7,7 +7,7 @@ import './Section4.scss'
 
 const Section4 = () => {
   return (
-    <section className='section section-4'>
+    <section id='#news' className='section section-4'>
       <Container>
         <div className='title-container'>
           <h2>Why Choose Apple Watch</h2>

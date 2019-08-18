@@ -6,10 +6,19 @@
   .feature-box {
     margin-bottom: 40px;
 
+    h4 {
+      color: #315f69;
+    }
+
     .small-icon {
       font-size: 30px;
       margin-bottom: 10px;
       display: inline-block;
+      color: #f1d866;
+    }
+
+    p {
+      color: #315f69;
     }
   }
 
@@ -18,5 +27,9 @@
     color: #777777;
     padding-bottom: 70px;
     width: 100%;
+
+    h2 {
+      color: #311a19;
+    }
   }
 }
