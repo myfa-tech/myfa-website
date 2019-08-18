@@ -12,6 +12,9 @@ const Section2 = () => (
         <div className='heading'>
           <h2>Fonctionnalités</h2>
         </div>
+        <div className='mobile-image-container'>
+          <img src={watchSrc} alt='watch' />
+        </div>
         <Col md={4}>
           <div className='feature-box'>
             <FaHome className='small-icon' />

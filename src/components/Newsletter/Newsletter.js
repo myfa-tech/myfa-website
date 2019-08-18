@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Container, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { FaCheck } from 'react-icons/fa'
 
 import './Newsletter.scss'
 
@@ -27,7 +28,10 @@ const Newsletter = () => {
                 className='input'
               />
               <InputGroup.Append>
-                <Button className='subscribe-btn'>Souscrire</Button>
+                <Button className='subscribe-btn'>
+                  <span className='subscribe-text'>Souscrire</span>
+                  <FaCheck className='subscribe-icon' />
+                </Button>
               </InputGroup.Append>
             </InputGroup>
           </Col>

@@ -2,7 +2,9 @@
   background: #315f69;
 
   .image-container {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .content {
@@ -14,6 +16,43 @@
 
     p {
       color: white;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section-3 {
+    .content {
+      margin-top: 40px;
+    }
+
+    .image-container {
+      img {
+        transform: scale(0.8);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-3 {
+    padding: 50px 0;
+
+    .image-container {
+      img {
+        transform: scale(0.6);
+      }
+    }
+
+    .content {
+      h2 {
+        text-align: center;
+        font-size: 25px;
+      }
+
+      p {
+        text-align: justify;
+      }
     }
   }
 }

@@ -34,3 +34,40 @@
     background-image: linear-gradient(bottom, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
   }
 }
+
+@media (max-width: 768px) {
+  .section-4 {
+    .image-container {
+      img {
+        transform: scale(0.8);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-4 {
+    .image-container {
+      img {
+        transform: scale(0.6);
+      }
+    }
+
+    .content {
+      margin-top: 0;
+      text-align: center;
+
+      p {
+        text-align: justify;
+      }
+    }
+
+    .title-container {
+      padding-bottom: 0;
+
+      h2 {
+        font-size: 25px;
+      }
+    }
+  }
+}

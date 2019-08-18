@@ -23,5 +23,35 @@
     background-color: #f1d866;
     border-color: #f1d866;
     padding: .5rem 2rem !important;
+
+    .subscribe-icon {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    .subscribe-btn {
+      .subscribe-text {
+        display: none;
+      }
+
+      .subscribe-icon {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter {
+    h2 {
+      font-size: 25px;
+    }
+
+    .input-group-lg>.form-control {
+      font-size: 1em;
+    }
   }
 }
