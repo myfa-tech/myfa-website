@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import watchSrc from '../../assets/images/watch.png'
 
 import './Section1.scss'
 
 const Section1 = () => {
   return (
-    <section>
+    <section id='home'>
       <Container className='section-1'>
         <Row>
           <Col md={6} className='image-container'>

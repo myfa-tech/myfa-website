@@ -6,7 +6,7 @@ import watchSrc from '../../assets/images/watch.png'
 import './Section2.scss'
 
 const Section2 = () => (
-  <section className='section'>
+  <section id='features' className='section'>
     <Container>
       <Row>
         <div className='heading'>

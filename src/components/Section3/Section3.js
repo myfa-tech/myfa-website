@@ -6,7 +6,7 @@ import './Section3.scss'
 
 const Section3 = () => {
   return (
-    <section className='section section-3'>
+    <section id='partners' className='section section-3'>
       <Container>
         <Row>
           <Col md={6} className='image-container'>
