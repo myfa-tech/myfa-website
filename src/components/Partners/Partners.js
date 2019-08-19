@@ -2,9 +2,9 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
 import watchSrc from '../../assets/images/watch.png'
-import './Section3.scss'
+import './Partners.scss'
 
-const Section3 = () => {
+const Partners = () => {
   return (
     <section id='partners' className='section section-3'>
       <Container>
@@ -33,4 +33,4 @@ const Section3 = () => {
   )
 }
 
-export default Section3
+export default Partners

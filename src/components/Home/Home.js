@@ -2,9 +2,9 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import watchSrc from '../../assets/images/watch.png'
 
-import './Section1.scss'
+import './Home.scss'
 
-const Section1 = () => {
+const Home = () => {
   return (
     <section id='home'>
       <Container className='section-1'>
@@ -32,4 +32,4 @@ const Section1 = () => {
   )
 }
 
-export default Section1
+export default Home

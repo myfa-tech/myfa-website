@@ -3,9 +3,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { FaBell, FaGlobeAfrica, FaHistory, FaHome, FaShoppingCart, FaUser } from 'react-icons/fa'
 
 import watchSrc from '../../assets/images/watch.png'
-import './Section2.scss'
+import './Features.scss'
 
-const Section2 = () => (
+const Features = () => (
   <section id='features' className='section section-2'>
     <Container>
       <Row>
@@ -66,4 +66,4 @@ const Section2 = () => (
   </section>
 )
 
-export default Section2
+export default Features

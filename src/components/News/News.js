@@ -3,11 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import watchSrc from '../../assets/images/watch.png'
 
-import './Section4.scss'
+import './News.scss'
 
-const Section4 = () => {
+const News = () => {
   return (
-    <section id='#news' className='section section-4'>
+    <section id='news' className='section section-4'>
       <Container>
         <div className='title-container'>
           <h2>Why Choose Apple Watch</h2>
@@ -37,4 +37,4 @@ const Section4 = () => {
   )
 }
 
-export default Section4
+export default News
