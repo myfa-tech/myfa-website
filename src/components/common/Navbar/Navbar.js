@@ -1,13 +1,17 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
+import logoSrc from '../../../assets/images/logo-1.png'
+
 import './Navbar.scss'
 
 const NavbarView = () => {
   return (
     <Container>
       <Navbar expand="lg">
-        <Navbar.Brand href="/">Myfa</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src={logoSrc} alt='logo' className='logo' />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
