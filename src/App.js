@@ -7,7 +7,7 @@ import './App.scss'
 import Navbar from './components/common/Navbar'
 import Home from './components/Home'
 import Features from './components/Features'
-import Partners from './components/Partners'
+import OurEssence from './components/OurEssence'
 import News from './components/News'
 import Newsletter from './components/Newsletter'
 import Footer from './components/common/Footer'
@@ -17,7 +17,7 @@ const Main = () => (
   <>
     <Home />
     <Features />
-    <Partners />
+    <OurEssence />
     <News />
     <Newsletter />
   </>
