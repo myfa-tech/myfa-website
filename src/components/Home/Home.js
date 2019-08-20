@@ -22,9 +22,9 @@ const Home = () => {
             <p>
               Tout ce qu'il vous suffit de faire : télécharger l'application et vous laisser guider.
             </p>
-            <a href='#' className='btn-main'>
-              Télécharger l'application
-            </a>
+            <span className='btn-main'>
+              Bientôt disponible
+            </span>
           </Col>
         </Row>
       </Container>
