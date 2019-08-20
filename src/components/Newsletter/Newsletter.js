@@ -11,9 +11,9 @@ const Newsletter = () => {
         <Row>
           <Col md={12}>
             <div className='content'>
-              <h2>Get Product Updates</h2>
+              <h2>Abonnez-vous à notre newsletter !</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                Soyez les premiers au courant des nouveautés et offres promotionnelles
               </p>
             </div>
           </Col>
