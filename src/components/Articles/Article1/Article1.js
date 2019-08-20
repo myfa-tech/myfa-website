@@ -16,7 +16,7 @@ const Article1 = () => (
           <img src={dorisSrc} />
           <div>
             <span>Doris Somon</span>
-            <span className='date'>{moment().format('D MMM YYYY')}</span>
+            <span className='date'>{moment.utc(1566285169108).format('D MMM YYYY')}</span>
           </div>
         </div>
 
