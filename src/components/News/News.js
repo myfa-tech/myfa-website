@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaQuoteLeft } from 'react-icons/fa'
 
+import dorisSrc from '../../assets/images/doris.png'
 import './News.scss'
 
 const News = () => {
@@ -19,16 +20,17 @@ const News = () => {
           <Col md={4} className='article-block'>
             <FaQuoteLeft size='2em' className='quote-icon' />
             <p>
-              A wonderful serenity has taken possession of my entire soul,
-              like these sweet mornings of spring which I enjoy with my whole heart.
-              I am alone, and feel the charm of existence in this spot, which was created
-              for the bliss of souls like mine. I am so happy, my dear friend, so absorbed
-              in the exquisite sense of mere tranquil existence, that I neglect my...
+              Hein ? Quoi ? Que veut dire “Myfa” ?
+              Cela veut dire “famille” en verlan. Le verlan étant une forme d&#39;argot
+              français qui consiste en l&#39;inversion des syllabes d&#39;un mot. Vous
+              comprendrez donc d’où le chanteur Stromae tient son nom…
+              Le y ? juste pour le style...
             </p>
             <a href='#' className='btn-news'>
               Lire la suite
             </a>
             <div className='author-id'>
+              <img src={dorisSrc} className='profile-pic' />
               <h4>Doris Somon</h4>
               <span>CEO, Myfa</span>
             </div>

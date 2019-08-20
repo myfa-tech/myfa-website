@@ -2,6 +2,15 @@
 .section-4 {
   .article-block {
     text-align: center;
+
+    .author-id {
+      margin-top: 20px;
+
+      .profile-pic {
+        width: 100px;
+        margin-bottom: 20px;
+      }
+    }
   }
 
   .quote-icon {
@@ -16,10 +25,6 @@
     h2 {
       color: #311a19;
     }
-  }
-
-  .author-id {
-    margin-top: 20px;
   }
 
   .btn-news {
