@@ -5,6 +5,8 @@ import moment from 'moment'
 import '../Article.scss'
 
 import dorisSrc from '../../../assets/images/doris.png'
+import doris2Src from '../../../assets/images/doris-2.jpg'
+import logoSrc from '../../../assets/images/logo-1.png'
 
 const Article1 = () => (
   <Container className='article-container'>
@@ -48,8 +50,8 @@ const Article1 = () => (
         </p>
 
         <Row>
-          <Col sm={3}>
-
+          <Col sm={3} className='img-container'>
+            <img src={doris2Src} alt='Doris' className='doris-2' />
           </Col>
           <Col>
             <p>
@@ -80,8 +82,8 @@ const Article1 = () => (
         </p>
 
         <Row>
-          <Col sm={3}>
-
+          <Col sm={3} className='img-container'>
+            <img src={logoSrc} alt='logo Myfa' className='logo-img' />
           </Col>
           <Col>
             <p>
