@@ -10,20 +10,20 @@ const Footer = () => {
         <Row>
           <Col md={12}>
             <div className='brand'>
-              <a href='#home'>Myfa</a>
+              <a href='/'>Myfa</a>
             </div>
             <ul className='menu'>
               <li>
-                <a href='#home'>Accueil</a>
+                <a href='/#home'>Accueil</a>
               </li>
               <li>
-                <a href='#features'>Fonctionnalités</a>
+                <a href='/#features'>Fonctionnalités</a>
               </li>
               <li>
-                <a href='#partners'>Partenaires</a>
+                <a href='/#our-essence'>Notre Essence</a>
               </li>
               <li>
-                <a href='#news'>Actualités</a>
+                <a href='/#news'>Actualités</a>
               </li>
             </ul>
             <p className='copyright-text'>
