@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaBell, FaGlobeAfrica, FaHistory, FaHome, FaShoppingCart, FaUser } from 'react-icons/fa'
 
-import watchSrc from '../../assets/images/watch.png'
+import visuAppSrc from '../../assets/images/visu_app_2.png'
 import './Features.scss'
 
 const Features = () => (
@@ -13,7 +13,7 @@ const Features = () => (
           <h2>Fonctionnalités</h2>
         </div>
         <div className='mobile-image-container'>
-          <img src={watchSrc} alt='watch' />
+          <img src={visuAppSrc} alt='visual app 2' />
         </div>
         <Col md={4}>
           <div className='feature-box'>
@@ -36,7 +36,7 @@ const Features = () => (
           </div>
         </Col>
         <Col md={4} className='image-container'>
-          <img src={watchSrc} alt='watch' />
+          <img src={visuAppSrc} alt='visual app 2' />
         </Col>
         <Col md={4}>
           <div className='feature-box'>
