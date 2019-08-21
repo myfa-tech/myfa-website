@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import watchSrc from '../../assets/images/watch.png'
+import visuAppSrc from '../../assets/images/visu_app_1.png'
 
 import './Home.scss'
 
@@ -10,7 +10,7 @@ const Home = () => {
       <Container className='section-1'>
         <Row>
           <Col md={6} className='image-container'>
-            <img src={watchSrc} alt='watch' />
+            <img src={visuAppSrc} alt='iphone with myfa logo' />
           </Col>
           <Col md={6}>
             <h1>Myfa, pour vos proches au loin</h1>
