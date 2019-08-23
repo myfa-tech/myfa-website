@@ -1,18 +1,13 @@
 import Axios from 'axios'
-// const mailchimp = new Mailchimp('4c8e36828bdf708259a9803abdbdafcb-us3')
 
 const axios = Axios.create({
-  baseURL: 'https://<dc>.api.mailchimp.com/3.0/',
-  auth: {
-    username: 'janedoe',
-    password: 's00pers3cret'
-  },
+  baseURL: 'https://dry-hollows-37141.herokuapp.com',
 })
 
-const getListById = async (listId) => {
-  const response = await axios.get(`/lists/${listId}`)
+const saveMember = async (member) => {
+  const response = await axios.post('/mailchimp', member)
 
   return response
 }
 
-export { getListById }
+export { saveMember }

@@ -1,10 +1,12 @@
 import React from 'react'
-import { Button, Container, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Button, Container, Col, FormControl, InputGroup, Row, Form } from 'react-bootstrap'
 import { FaCheck } from 'react-icons/fa'
 
 import './Newsletter.scss'
 
-const Newsletter = () => {
+const Newsletter = (props) => {
+  const { email, onEmailChange, onSubmit } = props
+
   return (
     <section className='section newsletter'>
       <Container>
@@ -20,20 +22,25 @@ const Newsletter = () => {
         </Row>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <InputGroup className="mb-3" size="lg">
-              <FormControl
-                aria-label="Default"
-                placeholder="Entrez votre adresse email"
-                aria-describedby="inputGroup-sizing-default"
-                className='input'
-              />
-              <InputGroup.Append>
-                <Button className='subscribe-btn'>
-                  <span className='subscribe-text'>Souscrire</span>
-                  <FaCheck className='subscribe-icon' />
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
+            <Form onSubmit={onSubmit}>
+              <InputGroup className="mb-3" size="lg">
+                <FormControl
+                  aria-label="Default"
+                  placeholder="Entrez votre adresse email"
+                  aria-describedby="inputGroup-sizing-default"
+                  className='input'
+                  type='email'
+                  value={email}
+                  onChange={onEmailChange}
+                />
+                <InputGroup.Append>
+                  <Button type='submit' className='subscribe-btn'>
+                    <span className='subscribe-text'>Souscrire</span>
+                    <FaCheck className='subscribe-icon' />
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
+            </Form>
           </Col>
         </Row>
       </Container>
