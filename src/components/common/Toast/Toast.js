@@ -4,6 +4,8 @@ import { Toast as BootstrapToast } from 'react-bootstrap'
 const Toast = (props) => {
   const { show, setShow, type } = props
 
+  console.log({ type })
+
   const title = type === 'success' ? '✅' : '❌'
   const message = type === 'success' ? 'Yay ! Email enregistré !' : 'Problème rencontré. Contactez-nous directement'
 

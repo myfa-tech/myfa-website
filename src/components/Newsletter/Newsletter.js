@@ -8,6 +8,8 @@ import Toast from '../common/Toast'
 const Newsletter = (props) => {
   const { email, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
 
+  console.log({ toastType })
+
   return (
     <section className='section newsletter'>
       <div

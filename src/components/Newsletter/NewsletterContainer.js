@@ -40,6 +40,8 @@ class NewsletterContainer extends Component {
   render() {
     const { email, showToast, toastType } = this.state
 
+    console.log({ toastType })
+
     return (
       <Newsletter
         email={email}
