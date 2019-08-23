@@ -7,11 +7,15 @@ class NewsletterContainer extends Component {
   state = {
     email: '',
     showToast: false,
-    toastType: 'success',
+    toastType: '',
   }
 
-  setShowToast = (showToast, toastType) => {
-    this.setState({ showToast, toastType })
+  setShowToast = (showToast) => {
+    this.setState({ showToast })
+  }
+
+  setToastType = (toastType) => {
+    this.setState({ toastType })
   }
 
   onSubmit = async (event) => {
@@ -20,10 +24,12 @@ class NewsletterContainer extends Component {
 
     try {
       await saveMember({ email })
-      this.setShowToast(true, 'success')
+      this.setToastType('success')
+      this.setShowToast(true)
       this.resetEmail()
     } catch(err) {
-      this.setShowToast(true, 'error')
+      this.setToastType('error')
+      this.setShowToast(true)
     }
   }
 
@@ -39,8 +45,6 @@ class NewsletterContainer extends Component {
 
   render() {
     const { email, showToast, toastType } = this.state
-
-    console.log({ toastType })
 
     return (
       <Newsletter
