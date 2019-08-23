@@ -20,7 +20,7 @@ class NewsletterContainer extends Component {
 
     try {
       await saveMember({ email })
-      this.setShowToast(true)
+      this.setShowToast(true, 'success')
       this.resetEmail()
     } catch(err) {
       this.setShowToast(true, 'error')

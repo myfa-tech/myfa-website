@@ -4,8 +4,8 @@ import { Toast as BootstrapToast } from 'react-bootstrap'
 const Toast = (props) => {
   const { show, setShow, type } = props
 
-  const title = type === 'sucess' ? '✅' : '❌'
-  const message = type === 'sucess' ? 'Yay ! Email enregistré !' : 'Problème rencontré. Contactez-nous directement'
+  const title = type === 'success' ? '✅' : '❌'
+  const message = type === 'success' ? 'Yay ! Email enregistré !' : 'Problème rencontré. Contactez-nous directement'
 
   return (
     <BootstrapToast onClose={() => setShow(false)} show={show} delay={3000} autohide>
@@ -15,10 +15,10 @@ const Toast = (props) => {
           className="rounded mr-2"
           alt=""
         />
-        <strong className="mr-auto">{title}</strong>
-        <small>maintenant</small>
+        <strong className="mr-auto" style={{ color: 'black' }}>{title}</strong>
+        <small style={{ color: 'black' }}>maintenant</small>
       </BootstrapToast.Header>
-      <BootstrapToast.Body>{message}</BootstrapToast.Body>
+      <BootstrapToast.Body style={{ color: 'black' }}>{message}</BootstrapToast.Body>
     </BootstrapToast>
   )
 }
