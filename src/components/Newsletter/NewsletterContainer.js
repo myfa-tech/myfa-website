@@ -6,13 +6,29 @@ import { saveMember } from '../../services/mailchimp'
 class NewsletterContainer extends Component {
   state = {
     email: '',
+    showToast: false,
+    toastType: 'success',
   }
 
-  onSubmit = (event) => {
+  setShowToast = (showToast, toastType) => {
+    this.setState({ showToast, toastType })
+  }
+
+  onSubmit = async (event) => {
     event.preventDefault()
     const { email } = this.state
 
-    saveMember({ email })
+    try {
+      await saveMember({ email })
+      this.setShowToast(true)
+      this.resetEmail()
+    } catch(err) {
+      this.setShowToast(true, 'error')
+    }
+  }
+
+  resetEmail = () => {
+    this.setState({ email: '' })
   }
 
   setEmail = (event) => {
@@ -22,13 +38,16 @@ class NewsletterContainer extends Component {
   }
 
   render() {
-    const { email } = this.state
+    const { email, showToast, toastType } = this.state
 
     return (
       <Newsletter
         email={email}
         onEmailChange={this.setEmail}
         onSubmit={this.onSubmit}
+        showToast={showToast}
+        setShowToast={this.setShowToast}
+        toastType={toastType}
       />
     )
   }

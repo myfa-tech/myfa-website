@@ -3,12 +3,22 @@ import { Button, Container, Col, FormControl, InputGroup, Row, Form } from 'reac
 import { FaCheck } from 'react-icons/fa'
 
 import './Newsletter.scss'
+import Toast from '../common/Toast'
 
 const Newsletter = (props) => {
-  const { email, onEmailChange, onSubmit } = props
+  const { email, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
 
   return (
     <section className='section newsletter'>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          right: 10,
+        }}
+      >
+        <Toast show={showToast} setShow={setShowToast} type={toastType} />
+      </div>
       <Container>
         <Row>
           <Col md={12}>

@@ -5,9 +5,7 @@ const axios = Axios.create({
 })
 
 const saveMember = async (member) => {
-  const response = await axios.post('/mailchimp', member)
-
-  return response
+  await axios.post('/mailchimp', member)
 }
 
 export { saveMember }
