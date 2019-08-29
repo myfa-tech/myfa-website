@@ -10,15 +10,17 @@ const Newsletter = (props) => {
 
   return (
     <section className='section newsletter'>
-      <div
-        style={{
-          position: 'fixed',
-          top: 10,
-          right: 10,
-        }}
-      >
-        <Toast show={showToast} setShow={setShowToast} type={toastType} />
-      </div>
+      {showToast ?
+        <div
+          style={{
+            position: 'fixed',
+            top: 10,
+            right: 10,
+          }}
+        >
+          <Toast show={showToast} setShow={setShowToast} type={toastType} />
+        </div>
+      : null}
       <Container>
         <Row>
           <Col md={12}>
