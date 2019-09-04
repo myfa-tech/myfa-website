@@ -1,12 +1,14 @@
 import React from 'react'
 import { Button, Container, Col, FormControl, InputGroup, Row, Form } from 'react-bootstrap'
 import { FaCheck } from 'react-icons/fa'
+import { ClipLoader } from 'react-spinners'
+import { css } from '@emotion/core'
 
 import './Newsletter.scss'
 import Toast from '../common/Toast'
 
 const Newsletter = (props) => {
-  const { email, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
+  const { email, isLoading, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
 
   return (
     <section className='section newsletter'>
@@ -46,9 +48,20 @@ const Newsletter = (props) => {
                   onChange={onEmailChange}
                 />
                 <InputGroup.Append>
-                  <Button type='submit' className='subscribe-btn'>
-                    <span className='subscribe-text'>Souscrire</span>
-                    <FaCheck className='subscribe-icon' />
+                  <Button type='submit' className='subscribe-btn' disabled={isLoading}>
+                    {isLoading ?
+                      <ClipLoader
+                        css={spinnerStyle}
+                        sizeUnit={"px"}
+                        size={25}
+                        color={'#311a19'}
+                        loading={true}
+                      /> :
+                      <>
+                        <span className='subscribe-text'>Souscrire</span>
+                        <FaCheck className='subscribe-icon' />
+                      </>
+                    }
                   </Button>
                 </InputGroup.Append>
               </InputGroup>
@@ -59,5 +72,10 @@ const Newsletter = (props) => {
     </section>
   )
 }
+
+const spinnerStyle = css`
+  display: block;
+  margin: 0 auto;
+`
 
 export default Newsletter

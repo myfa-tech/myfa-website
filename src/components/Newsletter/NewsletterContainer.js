@@ -8,6 +8,7 @@ class NewsletterContainer extends Component {
     email: '',
     showToast: false,
     toastType: '',
+    isLoading: false,
   }
 
   setShowToast = (showToast) => {
@@ -20,6 +21,8 @@ class NewsletterContainer extends Component {
 
   onSubmit = async (event) => {
     event.preventDefault()
+    this.setState({ isLoading: true })
+
     const { email } = this.state
 
     try {
@@ -30,6 +33,8 @@ class NewsletterContainer extends Component {
     } catch(err) {
       this.setToastType('error')
       this.setShowToast(true)
+    } finally {
+      this.setState({ isLoading: false })
     }
   }
 
@@ -44,11 +49,12 @@ class NewsletterContainer extends Component {
   }
 
   render() {
-    const { email, showToast, toastType } = this.state
+    const { email, isLoading, showToast, toastType } = this.state
 
     return (
       <Newsletter
         email={email}
+        isLoading={isLoading}
         onEmailChange={this.setEmail}
         onSubmit={this.onSubmit}
         showToast={showToast}
