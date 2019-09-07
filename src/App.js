@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import './App.scss'
 
@@ -15,6 +16,13 @@ import Article1 from './components/Articles/Article1'
 
 const Main = () => (
   <>
+    <Helmet>
+      <title>Myfa - Pour vos proches, au loin</title>
+      <meta name="description" content="MyFa est une plateforme permettant à la diaspora africaine d'offrir des paniers de courses à leurs proches sur l'ensemble du continent africain." />
+      <meta name="author" content="Myfa SAS" />
+      <meta name="keywords" content="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech" />
+    </Helmet>
+
     <Home />
     <Features />
     <OurEssence />
@@ -29,8 +37,8 @@ function App() {
       <Navbar />
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Main}/>
-            <Route path="/articles/1" component={Article1}/>
+            <Route exact path='/' component={Main}/>
+            <Route path='/articles/1' component={Article1}/>
           </Switch>
         </BrowserRouter>
       <Footer />

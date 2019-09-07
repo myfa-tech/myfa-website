@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import moment from 'moment'
+import { Helmet } from 'react-helmet'
 
 import '../Article.scss'
 
@@ -10,6 +11,13 @@ import logoSrc from '../../../assets/images/logo-1.png'
 
 const Article1 = () => (
   <Container className='article-container'>
+    <Helmet>
+      <title>Myfa, une application pensée pour la mif</title>
+      <meta name="description" content="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays." />
+      <meta name="author" content="Myfa SAS" />
+      <meta name="keywords" content="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech" />
+    </Helmet>
+
     <Row>
       <Col md={{ span: 8, offset: 2 }}>
         <h1>Myfa, une application pensée pour la mif</h1>
