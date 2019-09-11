@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 
 import '../Article.scss'
 
-import dorisSrc from '../../../assets/images/doris.png'
+import dorisSrc from '../../../assets/images/doris.jpg'
 import doris2Src from '../../../assets/images/doris-2.jpg'
 import logoSrc from '../../../assets/images/logo-1.png'
 
