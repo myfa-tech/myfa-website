@@ -125,14 +125,14 @@ const Article1 = () => (
           <a data-size="large" className="twitter-share-button" href="https://twitter.com/intent/tweet">
             Tweet
           </a>
-          <div>
+          {/* <div>
             <div
               className="fb-share-button"
               data-href="https://www.myfa.fr/articles/appli-pour-la-mif"
               data-layout="button"
               data-size="large"
             />
-          </div>
+          </div> */}
         </div>
       </Col>
     </Row>
