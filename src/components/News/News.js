@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaQuoteLeft } from 'react-icons/fa'
 
-import dorisSrc from '../../assets/images/doris.png'
+import dorisSrc from '../../assets/images/doris.jpg'
 import './News.scss'
 
 const News = () => {
