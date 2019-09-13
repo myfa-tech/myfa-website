@@ -38,7 +38,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Main}/>
-            <Route path='/articles/1' component={Article1}/>
+            <Route path='/articles/appli-pour-la-mif' component={Article1}/>
           </Switch>
         </BrowserRouter>
       <Footer />

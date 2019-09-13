@@ -16,6 +16,11 @@ const Article1 = () => (
       <meta name="description" content="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays." />
       <meta name="author" content="Myfa SAS" />
       <meta name="keywords" content="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech" />
+
+      <meta property="og:url"           content="https://www.myfa.fr/articles/appli-pour-la-mif" />
+      <meta property="og:type"          content="article" />
+      <meta property="og:title"         content="Myfa, une application pensée pour la mif" />
+      <meta property="og:description"   content="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays." />
     </Helmet>
 
     <Row>
@@ -117,9 +122,17 @@ const Article1 = () => (
         </p>
 
         <div>
-          <a data-size="large" class="twitter-share-button" href="https://twitter.com/intent/tweet">
+          <a data-size="large" className="twitter-share-button" href="https://twitter.com/intent/tweet">
             Tweet
           </a>
+          <div>
+            <div
+              className="fb-share-button"
+              data-href="https://www.myfa.fr/articles/appli-pour-la-mif"
+              data-layout="button"
+              data-size="large"
+            />
+          </div>
         </div>
       </Col>
     </Row>

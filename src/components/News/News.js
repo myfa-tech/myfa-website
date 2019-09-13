@@ -26,7 +26,7 @@ const News = () => {
               comprendrez donc d’où le chanteur Stromae tient son nom…
               Le y ? juste pour le style...
             </p>
-            <a href='/articles/1' className='btn-news'>
+            <a href='/articles/appli-pour-la-mif' className='btn-news'>
               Lire la suite
             </a>
             <div className='author-id'>
