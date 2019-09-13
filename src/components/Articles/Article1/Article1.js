@@ -115,6 +115,12 @@ const Article1 = () => (
           Que pouvez-vous faire pour promouvoir la paix dans le monde ? Rentrer chez vous et aimer votre famille !
           Mère Teresa (1910-1997)
         </p>
+
+        <div>
+          <a data-size="large" class="twitter-share-button" href="https://twitter.com/intent/tweet">
+            Tweet
+          </a>
+        </div>
       </Col>
     </Row>
   </Container>
