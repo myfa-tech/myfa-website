@@ -5,8 +5,12 @@
     width: 100%;
   }
 
-  p {
+  p, ul {
     text-align: justify;
+  }
+
+  ul {
+    font-size: 18px;
   }
 
   .author {

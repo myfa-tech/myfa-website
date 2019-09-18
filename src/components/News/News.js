@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaQuoteLeft } from 'react-icons/fa'
 
-import dorisSrc from '../../assets/images/doris.jpg'
+import dorisSrc from '../../images/doris.jpg'
 import './News.scss'
 
 const News = () => {
@@ -28,7 +28,7 @@ const News = () => {
               Lire la suite
             </a>
             <div className='author-id'>
-              <img src={dorisSrc} className='profile-pic' />
+              <img src={dorisSrc} className='profile-pic' alt='doris' />
               <h4>Doris Somon</h4>
               <span>CEO, Myfa</span>
             </div>
