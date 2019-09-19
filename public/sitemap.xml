@@ -8,10 +8,10 @@
 
   <url>
     <loc>https://www.myfa.fr/</loc>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://www.myfa.fr/articles/appli-pour-la-mif</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>daily</changefreq>
   </url>
 </urlset>
