@@ -37,17 +37,16 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <div id="fb-root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="669561290229467"
+      theme_color="#f1d866"
+      logged_in_greeting="Salut ! Vous avez une question ? Nous avons des réponses 😁"
+      logged_out_greeting="Salut ! Vous avez une question ? Nous avons des réponses 😁">
+    </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-    <!-- Hotjar Tracking Code for www.myfa.fr -->
     <script>
       (function(h,o,t,j,a,r){
           h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -76,14 +75,25 @@
         return t;
       }(document, "script", "twitter-wjs"));
     </script>
+
+    <!-- Load Facebook SDK for JavaScript -->
     <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.0";
+        js.src = 'https://connect.facebook.net/fr_FR/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
+      FB.CustomerChat.show(false);
     </script>
   </body>
 </html>
