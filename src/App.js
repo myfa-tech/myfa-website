@@ -13,6 +13,7 @@ import News from './components/News'
 import Newsletter from './components/Newsletter'
 import Footer from './components/common/Footer'
 import Article1 from './components/Articles/Article1'
+import Article2 from './components/Articles/Article2'
 
 const Main = () => (
   <>
@@ -39,6 +40,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Main}/>
             <Route path='/articles/appli-pour-la-mif' component={Article1}/>
+            <Route path='/articles/global-women-startup-weekend-paris' component={Article2}/>
           </Switch>
         </BrowserRouter>
       <Footer />
