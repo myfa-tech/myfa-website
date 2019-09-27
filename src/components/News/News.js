@@ -20,13 +20,11 @@ const News = () => {
           <Col md={4} className='article-block'>
             <FaQuoteLeft size='2em' className='quote-icon' />
             <p>
-              Hein ? Quoi ? Que veut dire “Myfa” ?
-              Cela veut dire “famille” en verlan. Le verlan étant une forme d&#39;argot
-              français qui consiste en l&#39;inversion des syllabes d&#39;un mot. Vous
-              comprendrez donc d’où le chanteur Stromae tient son nom…
-              Le y ? juste pour le style...
+              On est d’accord, le nom de l’évènement est long. Mais le principe est simple !
+              « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement
+              des femmes (Who run the world ? demandez à Beyoncé).
             </p>
-            <a href='/articles/appli-pour-la-mif' className='btn-news'>
+            <a href='/articles/global-women-startup-weekend-paris' className='btn-news'>
               Lire la suite
             </a>
             <div className='author-id'>
