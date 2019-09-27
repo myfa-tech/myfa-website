@@ -144,9 +144,11 @@ const Article2 = () => (
 
         <p>
           <a href='https://twitter.com/search?q=%23toutpourlamyfa&src=typed_query' target='_blank'>#toutpourlamyfa</a>
+          <br />
           <a href='https://twitter.com/search?q=%23globalstartupweekendwomen&src=typed_query' target='_blank'>#globalstartupweekendwomen</a>
-
+          <br />
           <a href='https://twitter.com/search?q=%23pitch&src=typed_query' target='_blank'>#pitch</a>
+          <br />
           <a href='https://twitter.com/search?q=%23entrepreunariat&src=typed_query' target='_blank'>#entrepreunariat</a>
         </p>
 
