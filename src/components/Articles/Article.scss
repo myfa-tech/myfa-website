@@ -1,6 +1,10 @@
 .article-container {
   margin-top: 50px;
 
+  p {
+    text-align: justify;
+  }
+
   .author {
     margin-bottom: 20px;
 
@@ -29,7 +33,7 @@
     font-size: 15px;
   }
 
-  .doris-2 {
+  .doris-2, .florian {
     width: 80%;
   }
 
