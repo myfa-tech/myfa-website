@@ -36,7 +36,7 @@ const Article2 = () => (
         </div>
 
         <p>
-          <img src={coverSrc} />
+          <img className='cover' src={coverSrc} />
         </p>
         <p>
           On est d’accord, le nom de l’évènement est long. Mais le principe est simple !
@@ -145,6 +145,7 @@ const Article2 = () => (
         <p>
           <a href='https://twitter.com/search?q=%23toutpourlamyfa&src=typed_query' target='_blank'>#toutpourlamyfa</a>
           <a href='https://twitter.com/search?q=%23globalstartupweekendwomen&src=typed_query' target='_blank'>#globalstartupweekendwomen</a>
+
           <a href='https://twitter.com/search?q=%23pitch&src=typed_query' target='_blank'>#pitch</a>
           <a href='https://twitter.com/search?q=%23entrepreunariat&src=typed_query' target='_blank'>#entrepreunariat</a>
         </p>
