@@ -52,7 +52,7 @@ export class HomeContainer extends Component {
 
             <Row>
               <p style={{ fontSize: '24', paddingLeft: 20, paddingRight: 20, textAlign: 'justify' }}>
-                Dans le cadre du Global Startup Weekend Paris 2019, nous vous proposons de remplir ce formulaire, qui nous permettra de booster notre projet.
+                Dans le cadre du Global Startup Weekend Women Paris 2019, nous vous proposons de remplir ce formulaire, qui nous permettra de booster notre projet Myfa.
               </p>
             </Row>
           </Modal.Body>
