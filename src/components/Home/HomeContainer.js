@@ -26,7 +26,13 @@ export class HomeContainer extends Component {
       <>
         <Home />
 
-        <Modal show={showModal} onHide={this.handleClose}>
+        <Modal
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          show={showModal}
+          onHide={this.handleClose}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Avez-vous 1 minute ? 😉</Modal.Title>
           </Modal.Header>
