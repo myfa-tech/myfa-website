@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import visuAppSrc from '../../assets/images/visu_app_1.png'
+import visuAppSrc from '../../images/visu_app_1.png'
 
 import './Home.scss'
 

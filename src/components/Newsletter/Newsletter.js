@@ -5,7 +5,7 @@ import { ClipLoader } from 'react-spinners'
 import { css } from '@emotion/core'
 
 import './Newsletter.scss'
-import Toast from '../common/Toast'
+import Toast from '../Toast'
 
 const Newsletter = (props) => {
   const { email, isLoading, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props

@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaBell, FaGlobeAfrica, FaHistory, FaHome, FaShoppingCart, FaUser } from 'react-icons/fa'
 
-import visuAppSrc from '../../assets/images/visu_app_2.png'
+import visuAppSrc from '../../images/visu_app_2.png'
 import './Features.scss'
 
 const Features = () => (
