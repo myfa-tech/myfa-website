@@ -7,7 +7,7 @@ import Layout from '../../components/layout'
 
 import './articles.scss'
 
-import dorisSrc from '../../images/doris.jpg'
+import dorisSrc from '../../images/doris.png'
 import doris2Src from '../../images/doris-2.jpg'
 import logoSrc from '../../images/logo-1.png'
 
