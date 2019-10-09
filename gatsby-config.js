@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Myfa`,
-    description: `Dites au revoir à cette frustration de ne pas pouvoir aider concrètement un de vos proches à cause de la distance. Avec Myfa, vous pouvez composer un panier de biens alimentaires, à destination de vos proches en Afrique !`,
-    author: `Myfa`,
+    description: `Myfa vous permet de composer un panier de biens alimentaires, à destination de vos proches en Afrique !`,
+    author: `Myfa SAS`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -37,6 +37,14 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.myfa.fr',
+        sitemap: 'https://www.myfa.fr/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
     `gatsby-plugin-sass`,
   ],

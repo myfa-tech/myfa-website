@@ -10,7 +10,7 @@ import Newsletter from '../components/Newsletter'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Myfa, pour vos proches au loin" />
 
     <Home />
     <Features />
