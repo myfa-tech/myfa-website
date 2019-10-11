@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import moment from 'moment'
-import { Helmet } from 'react-helmet'
+import SEO from '../../components/seo'
 
 import Layout from '../../components/layout'
 import './articles.scss'
@@ -12,19 +12,14 @@ import coverSrc from '../../images/wsw-cover.jpeg'
 
 const Article = () => (
   <Layout>
+    <SEO
+      title="Global Startup Weekend Women Paris 2019: MYFA y sera"
+      description="On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé)."
+      type="article"
+      url="https://www.myfa.fr/articles/global-women-startup-weekend-paris"
+      keywords="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech, women, startup, weekend"
+    />
     <Container className='article-container'>
-      <Helmet>
-        <title>Global Startup Weekend Women Paris 2019: MYFA y sera</title>
-        <meta name="description" content="On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé)." />
-        <meta name="author" content="Myfa SAS" />
-        <meta name="keywords" content="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech, women, startup, weekend" />
-
-        <meta property="og:url"           content="https://www.myfa.fr/articles/global-women-startup-weekend-paris" />
-        <meta property="og:type"          content="article" />
-        <meta property="og:title"         content="Global Startup Weekend Women Paris 2019: MYFA y sera" />
-        <meta property="og:description"   content="On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé)." />
-      </Helmet>
-
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <h1>Global Startup Weekend Women Paris 2019: MYFA y sera</h1>

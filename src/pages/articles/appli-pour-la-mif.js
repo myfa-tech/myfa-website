@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import moment from 'moment'
-import { Helmet } from 'react-helmet'
 
+import SEO from '../../components/seo'
 import Layout from '../../components/layout'
 
 import './articles.scss'
@@ -13,19 +13,14 @@ import logoSrc from '../../images/logo-1.png'
 
 const Article = () => (
   <Layout>
+    <SEO
+      title="Myfa, une application pensée pour la mif"
+      description="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays."
+      type="article"
+      url="https://www.myfa.fr/articles/appli-pour-la-mif"
+      keywords="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech"
+    />
     <Container className='article-container'>
-      <Helmet>
-        <title>Myfa, une application pensée pour la mif</title>
-        <meta name="description" content="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays." />
-        <meta name="author" content="Myfa SAS" />
-        <meta name="keywords" content="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech" />
-
-        <meta property="og:url"           content="https://www.myfa.fr/articles/appli-pour-la-mif" />
-        <meta property="og:type"          content="article" />
-        <meta property="og:title"         content="Myfa, une application pensée pour la mif" />
-        <meta property="og:description"   content="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays." />
-      </Helmet>
-
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <h1>Myfa, une application pensée pour la mif</h1>
