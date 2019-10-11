@@ -4,6 +4,7 @@ import ChatBot from 'react-simple-chatbot'
 import { ThemeProvider } from 'styled-components'
 
 import './Home.scss'
+import { isEmptyString } from 'is-what'
 
 const steps = [
   {
@@ -14,16 +15,28 @@ const steps = [
   {
     id: '2',
     user: true,
+    validator: (value) => {
+      if (!value || value === '') {
+        return 'prénom invalide';
+      }
+      return true;
+    },
     trigger: '3',
   },
   {
     id: '3',
-    message: 'Enchanté {previousValue}. J\'ai simplement besoin de ton numéro de téléphone. Myfa te contactera très prochainement 😉',
+    message: 'Enchanté {previousValue}. J\'ai simplement besoin de ton email. Myfa te contactera très prochainement 😉',
     trigger: '4',
   },
   {
     id: '4',
     user: true,
+    validator: (value) => {
+      if (!value.includes('@')) {
+        return 'adresse invalide';
+      }
+      return true;
+    },
     trigger: '5',
   },
   {
@@ -45,7 +58,7 @@ const theme = {
   userFontColor: '#4a4a4a',
 }
 
-const Home = () => {
+const Home = ({ handleEndChatBot }) => {
   return (
     <section id='home'>
       <Container className='section-1'>
@@ -67,6 +80,7 @@ const Home = () => {
           <Col md={6} className='image-container'>
             <ThemeProvider theme={theme}>
               <ChatBot
+                handleEnd={handleEndChatBot}
                 headerTitle='Parlez-nous'
                 steps={steps}
                 placeholder='Entrez votre message ...'
