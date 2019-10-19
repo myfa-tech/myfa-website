@@ -6,8 +6,8 @@ import SEO from '../../components/seo'
 import Layout from '../../components/layout'
 import './articles.scss'
 
-import dorisSrc from '../../images/doris.jpg'
-import florianSrc from '../../images/florian.jpeg'
+import dorisSrc from '../../images/doris.png'
+import florianSrc from '../../images/florian-2.jpeg'
 import coverSrc from '../../images/wsw-cover.jpeg'
 
 const Article = () => (

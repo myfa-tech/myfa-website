@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaQuoteLeft } from 'react-icons/fa'
 
-import dorisSrc from '../../images/doris.jpg'
+import florianSrc from '../../images/florian.png'
 import './News.scss'
 
 const News = () => {
@@ -20,17 +20,18 @@ const News = () => {
           <Col md={4} className='article-block'>
             <FaQuoteLeft size='2em' className='quote-icon' />
             <p>
-              On est d’accord, le nom de l’évènement est long. Mais le principe est simple !
-              « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement
-              des femmes (Who run the world ? demandez à Beyoncé).
+            Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions,
+            que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru,
+            et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”,
+            ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.
             </p>
-            <a href='/articles/global-women-startup-weekend-paris' className='btn-news'>
+            <a href='/articles/voyage-abidjan' className='btn-news'>
               Lire la suite
             </a>
             <div className='author-id'>
-              <img src={dorisSrc} className='profile-pic' alt='doris' />
-              <h4>Doris Somon</h4>
-              <span>CEO, Myfa</span>
+              <img src={florianSrc} className='profile-pic' alt='florian' />
+              <h4>Florian Adonis</h4>
+              <span>CTO, Myfa</span>
             </div>
           </Col>
           <Col md={4} className='article-block'>

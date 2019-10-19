@@ -4,7 +4,6 @@ import ChatBot from 'react-simple-chatbot'
 import { ThemeProvider } from 'styled-components'
 
 import './Home.scss'
-import { isEmptyString } from 'is-what'
 
 const steps = [
   {
