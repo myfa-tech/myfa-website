@@ -99,7 +99,8 @@ const Article = () => (
             <a
               href="https://twitter.com/share?ref_src=twsrc%5Etfw"
               class="twitter-share-button"
-              data-text="Encore un article cool de la @myfa_fr "
+              target="_blank"
+              data-text="Encore un article cool de la @myfa_fr 😉🌍"
               data-hashtags="entreprenariat, afrique, toutpourlamyfa"
               data-show-count="false"
             >
