@@ -5,6 +5,18 @@
     width: 100%;
   }
 
+  .sharing-title {
+    font-weight: 500;
+    margin-bottom: 1em;
+    font-size: 20px;
+  }
+
+  .sharing-buttons {
+    display: inline-block;
+    margin-right: 1em;
+    cursor: pointer;
+  }
+
   p, ul {
     text-align: justify;
   }
