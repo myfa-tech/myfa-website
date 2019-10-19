@@ -1,6 +1,12 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import moment from 'moment'
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton
+} from 'react-share'
 
 import SEO from '../../components/seo'
 import Layout from '../../components/layout'
@@ -11,7 +17,7 @@ import dorisSrc from '../../images/doris.png'
 import doris2Src from '../../images/doris-2.jpg'
 import logoSrc from '../../images/logo-1.png'
 
-const Article = () => (
+const Article = (props) => (
   <Layout>
     <SEO
       title="Myfa, une application pensée pour la mif"
@@ -120,25 +126,19 @@ const Article = () => (
           </p>
 
           <div>
-            <a
-              href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-              class="twitter-share-button"
-              target="_blank"
-              data-text="Encore un article cool de la @myfa_fr 😉🌍"
-              data-hashtags="entreprenariat, afrique, toutpourlamyfa"
-              data-show-count="false"
+            <div className='sharing-title'>Partagez</div>
+            <FacebookShareButton url={props.location.href} className='sharing-buttons'>
+              <FacebookIcon size={32} round={false} borderRadius={6} />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={props.location.href}
+              title='Myfa, une application pensée pour la mif 🌍'
+              via='myfa_fr'
+              hashtags={['entreprenariat', 'afrique', 'toutpourlamyfa']}
+              className='sharing-buttons'
             >
-              Tweet
-            </a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <div>
-              <div
-                className="fb-share-button"
-                data-href="https://www.myfa.fr/articles/appli-pour-la-mif"
-                data-layout="button"
-                data-size="large"
-              />
-            </div>
+              <TwitterIcon size={32} round={false} borderRadius={6} />
+            </TwitterShareButton>
           </div>
         </Col>
       </Row>
