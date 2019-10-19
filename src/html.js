@@ -37,7 +37,6 @@ export default function HTML(props) {
               a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
         }} />
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
           (function(d, s, id) {
