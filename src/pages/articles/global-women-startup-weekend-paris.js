@@ -17,7 +17,7 @@ import dorisSrc from '../../images/doris.png'
 import florianSrc from '../../images/florian-2.jpeg'
 import coverSrc from '../../images/wsw-cover.jpeg'
 
-const Article = () => (
+const Article = (props) => (
   <Layout>
     <SEO
       title="Global Startup Weekend Women Paris 2019: MYFA y sera"
@@ -148,11 +148,11 @@ const Article = () => (
 
           <div>
             <div className='sharing-title'>Partagez</div>
-            <FacebookShareButton url={window.location.href} className='sharing-buttons'>
+            <FacebookShareButton url={props.location.href} className='sharing-buttons'>
               <FacebookIcon size={32} round={false} borderRadius={6} />
             </FacebookShareButton>
             <TwitterShareButton
-              url={window.location.href}
+              url={props.location.href}
               title='Global Startup Weekend Women Paris 2019: MYFA y sera 🌍'
               via='myfa_fr'
               hashtags={['entreprenariat', 'afrique', 'toutpourlamyfa']}

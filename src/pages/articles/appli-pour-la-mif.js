@@ -17,7 +17,7 @@ import dorisSrc from '../../images/doris.png'
 import doris2Src from '../../images/doris-2.jpg'
 import logoSrc from '../../images/logo-1.png'
 
-const Article = () => (
+const Article = (props) => (
   <Layout>
     <SEO
       title="Myfa, une application pensée pour la mif"
@@ -127,11 +127,11 @@ const Article = () => (
 
           <div>
             <div className='sharing-title'>Partagez</div>
-            <FacebookShareButton url={window.location.href} className='sharing-buttons'>
+            <FacebookShareButton url={props.location.href} className='sharing-buttons'>
               <FacebookIcon size={32} round={false} borderRadius={6} />
             </FacebookShareButton>
             <TwitterShareButton
-              url={window.location.href}
+              url={props.location.href}
               title='Myfa, une application pensée pour la mif 🌍'
               via='myfa_fr'
               hashtags={['entreprenariat', 'afrique', 'toutpourlamyfa']}

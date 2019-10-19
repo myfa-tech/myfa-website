@@ -15,7 +15,7 @@ import './articles.scss'
 import florianSrc from '../../images/florian.png'
 import coverSrc from '../../images/taxis_abidjan.jpg'
 
-const Article = () => (
+const Article = (props) => (
   <Layout>
     <SEO
       title="Un voyage d’affaires à Abidjan"
@@ -103,11 +103,11 @@ const Article = () => (
 
           <div>
             <div className='sharing-title'>Partagez</div>
-            <FacebookShareButton url={window.location.href} className='sharing-buttons'>
+            <FacebookShareButton url={props.location.href} className='sharing-buttons'>
               <FacebookIcon size={32} round={false} borderRadius={6} />
             </FacebookShareButton>
             <TwitterShareButton
-              url={window.location.href}
+              url={props.location.href}
               title='Un voyage d’affaires à Abidjan 🌍'
               via='myfa_fr'
               hashtags={['entreprenariat', 'afrique', 'toutpourlamyfa']}
