@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Myfa`,
+    siteUrl: `https://www.myfa.fr`,
     description: `Myfa vous permet de composer un panier de biens alimentaires, à destination de vos proches en Afrique !`,
     author: `Myfa SAS`,
   },
@@ -38,6 +39,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
