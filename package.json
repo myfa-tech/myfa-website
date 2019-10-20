@@ -29,7 +29,9 @@
     "react-icons": "^3.7.0",
     "react-share": "^3.0.1",
     "react-simple-chatbot": "^0.6.1",
+    "react-slick": "^0.25.2",
     "react-spinners": "^0.6.1",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {

@@ -1,0 +1,13 @@
+.custom-slider {
+  .slick-prev:before, .slick-next:before {
+    color: #ddd;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-slider {
+    .slick-prev, .slick-next {
+      display: none !important;
+    }
+  }
+}
