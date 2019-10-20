@@ -2,12 +2,18 @@
 .section-4 {
   .article-block {
     text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 
     .author-id {
       margin-top: 20px;
 
       .profile-pic {
         width: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 20px;
       }
     }
@@ -52,6 +58,10 @@
 
 @media (max-width: 480px) {
   .section-4 {
+    .article-block {
+      width: 100%;
+    }
+
     .title-container {
       padding-bottom: 0;
 
