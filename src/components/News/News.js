@@ -21,7 +21,7 @@ const News = () => {
     },
     {
       id:'appli-pour-la-mif',
-      description: 'Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d&#39;argot français qui consiste en l&#39;inversion des syllabes d&#39;un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style...',
+      description: "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style...",
       url: '/articles/appli-pour-la-mif',
       author: 'doris'
     },
