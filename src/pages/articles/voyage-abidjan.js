@@ -21,6 +21,7 @@ const Article = (props) => (
       title="Un voyage d’affaires à Abidjan"
       description="Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire."
       type="article"
+      img={coverSrc}
       url="https://www.myfa.fr/articles/voyage-abidjan"
       keywords="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech"
     />

@@ -23,6 +23,7 @@ const Article = (props) => (
       title="Global Startup Weekend Women Paris 2019: MYFA y sera"
       description="On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé)."
       type="article"
+      img={coverSrc}
       url="https://www.myfa.fr/articles/global-women-startup-weekend-paris"
       keywords="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech, women, startup, weekend"
     />

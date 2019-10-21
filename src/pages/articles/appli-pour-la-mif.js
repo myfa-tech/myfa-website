@@ -23,6 +23,7 @@ const Article = (props) => (
       title="Myfa, une application pensée pour la mif"
       description="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays."
       type="article"
+      img={logoSrc}
       url="https://www.myfa.fr/articles/appli-pour-la-mif"
       keywords="panier, courses, diaspora, click, collect, cote, ivoire, cameroun, blog, article, application, mobile, tech, technologie, telecharger, télécharger, startup, frenchtech"
     />
