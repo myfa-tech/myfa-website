@@ -28,7 +28,7 @@ const Article = (props) => (
     <Container className='article-container'>
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <h1>Vous, le premier membre de la myfa</h1>
+          <h1>Vous, le premier membre de la myfa*</h1>
 
           <div className='author'>
             <img src={dorisSrc} alt='doris' />
@@ -90,6 +90,9 @@ const Article = (props) => (
             À bientôt.
           </p>
 
+          <p>
+            *Myfa = famille
+          </p>
           <p>
             <a href='https://twitter.com/hashtag/toutpourlamyfa' target='_blank' rel="noopener noreferrer">#toutpourlamyfa</a>
             <br />
