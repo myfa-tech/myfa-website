@@ -1,12 +1,17 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { FaQuoteLeft } from 'react-icons/fa'
+import { Container } from 'react-bootstrap'
 
 import Slider from '../Slider'
 import './News.scss'
 
 const News = () => {
   const slides = [
+    {
+      id:'premier-membre-myfa',
+      description: 'La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l\'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.',
+      url: '/articles/premier-membre-myfa',
+      author: 'doris'
+    },
     {
       id:'voyage-abidjan',
       description: 'Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.',
