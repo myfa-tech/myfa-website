@@ -1,33 +1,56 @@
 import React from 'react'
 
 import Baskets from './Baskets'
-import Lydia from '../../services/lydia';
+import { timingSafeEqual } from 'crypto'
 
 class BasketsContainer extends React.Component {
-	lydiaService = new Lydia()
+	basketsInfos = [
+		{
+			amount: 9.99,
+			message: '',
+			orderRef: 'MYFA1',
+		}
+	]
 
-	componentDidMount() {
-		this.lydiaService.init({ env: 'test' })
+	state = {
+		showModal: false,
+		modalInfos: null,
 	}
 
-	payWithLydia = async (basketName) => {
-		await this.lydiaService.sendRequest({
-			amount: 9.99, // amount in €
-      vendor_token: '5def3a68421aa362289007',
-      recipient: '0711223344', // cellphone or email of your client. Leave it like this for your test
-      message : "Facture 004 pour un t-shirt taille M", //object of the payment
-      env: 'test',
-      // The client will be redirect to this URL after the payment
-      browser_success_url : "/order_success?order_ref=123",
-			// This URL will be called by our server after the payment so you can update the order on your database
-      confirm_url : "/confirm_payment?order_ref=123"
+	handleBasketButtonClick = (basketIndex) => {
+		this.setState({
+			showModal: true,
+			modalInfos: this.basketsInfos[basketIndex],
 		})
 	}
 
+	closeModal = () => {
+		this.setState({ showModal: false, modalInfos: null })
+	}
+
+	// payWithLydia = async (basketIndex) => {
+	// 	const basketInfos = this.basketsInfos[basketIndex]
+
+	// 	const response = await this.lydiaService.sendRequest({
+	// 		amount: basketInfos.amount, // amount in €
+  //     vendor_token: '5def3a68421aa362289007',
+  //     recipient: '0711223344', // cellphone or email of your client. Leave it like this for your test
+  //     message : basketInfos.message, //object of the payment
+  //     browser_success_url : "/order_success?order_ref=123",
+  //     confirm_url : "/confirm_payment?order_ref=123"
+	// 	})
+
+	// 	console.log({ response })
+	// }
+
 	render() {
+		const { showModal } = this.state
+
 		return (
 			<Baskets
-				handleButtonClick={this.payWithLydia}
+				handleBasketButtonClick={this.handleBasketButtonClick}
+				showModal={showModal}
+				closeModal={this.closeModal}
 			/>
 		)
 	}

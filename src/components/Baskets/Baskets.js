@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import Modal from 'react-modal'
 
 import './Baskets.scss'
 
@@ -7,7 +8,7 @@ import fruitsLegumesSrc from '../../assets/images/fruits-legumes.jpg'
 import fruitsLegumesPlusSrc from '../../assets/images/fruits-legumes-plus.jpg'
 import saucesSrc from '../../assets/images/sauces.jpg'
 
-const Baskets = ({ handleButtonClick }) => {
+const Baskets = ({ handleBasketButtonClick, showModal, closeModal }) => {
 	return (
 		<section id='baskets' className='section section-2'>
 			<Container>
@@ -20,7 +21,7 @@ const Baskets = ({ handleButtonClick }) => {
 						<h3 className='basket-name'>Le panier Fruits&Légumes</h3>
 						<p><span className='regular-price'>14€</span><span className='reduction'>-25%</span></p>
 						<p className='new-price'>9,99€ jusqu'au 31/12/2019</p>
-						<button onClick={() => handleButtonClick('fruits-legumes')} className='order-button'>Commander</button>
+						<button onClick={() => handleBasketButtonClick(0)} className='order-button'>Commander</button>
 					</Col>
 					<Col md={4} className='basket-container middle-basket'>
 						<h4>Le plus demandé</h4>
@@ -39,6 +40,25 @@ const Baskets = ({ handleButtonClick }) => {
 					</Col>
 				</Row>
 			</Container>
+
+			<Modal
+				isOpen={showModal}
+				onRequestClose={closeModal}
+				style={{}}
+				contentLabel='Commander un panier'
+			>
+
+				<h2>Hello</h2>
+				<button onClick={closeModal}>close</button>
+				<div>I am a modal</div>
+				<form>
+					<input />
+					<button>tab navigation</button>
+					<button>stays</button>
+					<button>inside</button>
+					<button>the modal</button>
+				</form>
+			</Modal>
 		</section>
 	)
 }
