@@ -1,0 +1,83 @@
+.section-2 {
+    .heading {
+      text-align: center;
+      color: #777777;
+      padding-bottom: 70px;
+      width: 100%;
+  
+      h2 {
+        color: #311a19;
+      }
+
+      .reduced-price {
+        color: #315f69;
+      }
+		}
+		
+		.basket-container {
+			text-align: center;
+			padding-top: 56px;
+		
+			.regular-price {
+				text-decoration: line-through;
+			}
+
+			.new-price {
+				color: rgb(211, 64, 64);
+			}
+
+			.order-button {
+				color: #fff;
+				border-radius: 30px;
+				font-size: 18px;
+				border-color: #315f69;
+				padding: 15px 40px;
+				display: inline-block;
+				background-color: #315f69;
+				-moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+				-webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+				box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+				background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+				background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+				background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+				background-image: linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+			}
+
+			.reduction {
+				background-color: rgb(211, 64, 64);
+				color: white;
+				padding: 5px;
+				border-radius: 6px;
+				margin-left: 10px;
+			}
+
+			img {
+				width: 300px;
+			}
+			
+			&.middle-basket {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				background-color: #f1d866;
+				border-radius: 6px;
+			}
+
+			.basket-name {
+				margin-top: 10px;
+			}
+		}
+  }
+  
+  @media (max-width: 768px) {}
+  
+  @media (max-width: 480px) {
+    .section-2 {
+      .heading {
+        padding-bottom: 0;
+  
+        h2 {
+          font-size: 25px;
+        }
+      }
+    }
+  }
