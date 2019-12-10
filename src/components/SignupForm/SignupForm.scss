@@ -1,0 +1,61 @@
+#signup-form {
+	.error {
+		color: #f44336;
+	}
+
+	.full-width {
+		width: 100%;
+	}
+
+	.cgu-cgv {
+		* {
+			font-size: 15px;
+		}
+	}
+
+	.phone-container {
+		display: flex;
+
+		.country-code {
+			width: auto;
+			flex-shrink: 1;
+			margin-right: 10px;
+		}
+
+		.phone-input {
+			width: auto;
+			flex-grow: 2;
+		}
+	}
+
+	.zone-select, .relation-select {
+		width: 100%;
+		height: 43px;
+	}
+
+	.cgu-label {
+		margin-left: 1em;
+	}
+
+  .signup-button {
+		color: #fff;
+		border-radius: 6px;
+		font-size: 18px;
+		width: 100%;
+		border-color: #315f69;
+		padding: 15px 40px;
+		display: inline-block;
+		background-color: #315f69;
+		-moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+		-webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+		box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+		background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+		background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+		background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+		background-image: linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+
+		&.modal-order {
+			padding: 10px 30px;
+		}
+	}
+}

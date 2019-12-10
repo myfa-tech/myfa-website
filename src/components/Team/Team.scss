@@ -1,0 +1,115 @@
+
+#team {
+  .content-container {
+    background-color: rgba(241, 216, 102, 0.1);
+    border-radius: 8px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 100px;
+
+    .article-block {
+      text-align: center;
+      margin-top: 20px;
+
+      .desktop-quote {
+        display: block;
+      }
+
+      .mobile-quote {
+        display: none;
+      }
+
+      .quote-icon {
+        margin-bottom: 20px;
+        color: #f1d866;
+      }
+
+      .author-id {
+        margin-top: 20px;
+        padding-bottom: 10px;
+
+        h4 {
+          margin-bottom: 0;
+        }
+
+        .social-links {
+          a {
+            text-decoration: none;
+            color: #311a19;
+            margin-left: 5px;
+            margin-right: 5px;
+
+            &:hover {
+              color: #315f69;
+            }
+          }
+        }
+
+        .profile-pic {
+          width: 100px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  .title-container {
+    text-align: center;
+    margin-bottom: 70px;
+
+    h2 {
+      color: #311a19;
+      font-weight: 600;
+      font-size: 45px;
+		}
+  }
+}
+
+@media (max-width: 768px) {
+  #team {
+    .content-container {
+      .article-block {
+        .author-id {
+          h4 {
+            font-size: 18px;
+          }
+        }
+
+        .desktop-quote {
+          display: none;
+        }
+
+        .mobile-quote {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #team {
+    .title-container {
+      margin-bottom: 50px;
+
+      h2 {
+        font-size: 27px;
+      }
+    }
+
+    .content-container {
+      border: none;
+      margin-bottom: 0;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  #team {
+    h2 {
+      font-size: 23px;
+    }
+  }
+}

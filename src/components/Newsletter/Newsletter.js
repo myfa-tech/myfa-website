@@ -11,7 +11,7 @@ const Newsletter = (props) => {
   const { email, isLoading, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
 
   return (
-    <section className='section newsletter'>
+    <section id='newsletter'>
       {showToast ?
         <div
           style={{
@@ -23,17 +23,13 @@ const Newsletter = (props) => {
           <Toast show={showToast} setShow={setShowToast} type={toastType} />
         </div>
       : null}
-      <Container>
-        <Row>
-          <Col md={12}>
-            <div className='content'>
-              <h2>Abonnez-vous à notre newsletter !</h2>
-              <p>
-                Soyez les premiers au courant des nouveautés et offres promotionnelles
-              </p>
-            </div>
-          </Col>
-        </Row>
+      <div className='content-container'>
+        <div className='content'>
+          <h2>Abonnez-vous à notre newsletter !</h2>
+          <p>
+            Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)
+          </p>
+        </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             <Form onSubmit={onSubmit}>
@@ -68,7 +64,7 @@ const Newsletter = (props) => {
             </Form>
           </Col>
         </Row>
-      </Container>
+      </div>
     </section>
   )
 }

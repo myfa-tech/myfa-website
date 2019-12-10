@@ -13,14 +13,20 @@ import Footer from "./Footer"
 
 import './layout.scss'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
   return (
-    <div className='layout'>
-      <Header />
+    <div className={`layout ${className}`}>
+      {hideHeader ?
+        null :
+        <Header
+          showLoginSignupModal={showLoginSignupModal}
+          toggleShowLoginSignupModal={toggleShowLoginSignupModal}
+        />
+      }
       <div>
         <main>{children}</main>
       </div>
-      <Footer />
+      <Footer noBackgroundColor={noBackgroundColor} />
     </div>
   )
 }

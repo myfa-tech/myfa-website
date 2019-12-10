@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Myfa`,
+    title: `MYFA`,
     siteUrl: `https://www.myfa.fr`,
-    description: `Myfa vous permet de composer un panier de biens alimentaires, à destination de vos proches en Afrique !`,
-    author: `Myfa SAS`,
+    description: `MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Afrique !`,
+    author: `MYFA SAS`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

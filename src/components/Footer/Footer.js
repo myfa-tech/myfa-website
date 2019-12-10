@@ -1,37 +1,43 @@
-import React from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { SocialIcon } from 'react-social-icons';
+
+import logoSrc from '../../images/logo-1.png';
+import paymentsSrc from '../../images/payments.png';
 
 import './Footer.scss'
 
-const Footer = () => {
+const Footer = ({ noBackgroundColor }) => {
   return (
     <footer className='footer'>
-      <Container>
-        <Row>
-          <Col md={12}>
-            <div className='brand'>
-              <a href='/'>Myfa</a>
+      <div>
+        <Row className={`content-container ${noBackgroundColor ? 'no-background' : ''}`}>
+          <Col sm={5}>
+            <a href='/'>
+              <img src={logoSrc} />
+            </a>
+          </Col>
+          <Col sm={7} className='text-container'>
+            <a href='#'>Mentions légales</a>
+            <div>
+              <SocialIcon className='social-icon' network='facebook' url='https://www.facebook.com/myfa.fr' />
+              <SocialIcon className='social-icon' network='twitter' url='https://www.twitter.com/myfa_fr' />
+              <SocialIcon className='social-icon' network='instagram' url='https://www.instagram.com/myfa.fr' />
+              <SocialIcon className='social-icon' network='linkedin' url='https://www.linkedin.com/company/myfa-sas' />
             </div>
-            <ul className='menu'>
-              <li>
-                <a href='/#home'>Accueil</a>
-              </li>
-              <li>
-                <a href='/#features'>Fonctionnalités</a>
-              </li>
-              <li>
-                <a href='/#our-essence'>Notre Essence</a>
-              </li>
-              <li>
-                <a href='/#news'>Actualités</a>
-              </li>
-            </ul>
+          </Col>
+        </Row>
+        <Row className='footer-footer'>
+          <Col sm={5}>
+            <img src={paymentsSrc} />
+          </Col>
+          <Col sm={7}>
             <p className='copyright-text'>
-              Copyright © Myfa | All right reserved.
+              Copyright © MYFA | All right reserved.
             </p>
           </Col>
         </Row>
-      </Container>
+      </div>
     </footer>
   )
 }

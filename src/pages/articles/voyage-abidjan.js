@@ -83,7 +83,7 @@ const Article = (props) => (
             il est vrai qu’il est toujours plaisant pour Doris et pour moi, de nous rendre en Afrique.
             Discuter avec les gens dans un marché, leur demander s’ils reçoivent de l’argent venant de proches en Europe,
             aller visiter des points de ventes, remarquer les différences entre les magasins urbains et ruraux.
-            Bref, Myfa nous demande un travail considérable au niveau de l’évaluation des besoins réels des populations,
+            Bref, MYFA nous demande un travail considérable au niveau de l’évaluation des besoins réels des populations,
             de leurs modes de fonctionnement, et il n’y a que sur le terrain que nous pourrons déceler les détails des rouages
             de la subvention aux besoins des populations locales par la diaspora.
           </p>

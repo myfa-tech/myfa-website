@@ -1,0 +1,178 @@
+#profile-orders {
+  width: 100%;
+  margin-top: 1em;
+
+  .pending-orders-container, .treated-orders-container {
+    background-color: white;
+    border-radius: 8px;
+
+    .baskets-container {
+      max-height: 400px;
+      overflow-y: scroll;
+      padding: 1em 4em;
+
+      h3 {
+        font-size: 20px;
+      }
+
+      .image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .basket-name-container {
+        padding-right: 0;
+      }
+
+      .info-container {
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+
+        .row {
+          width: 100%;
+        }
+      }
+
+      li {
+        background-color: #eee;
+        list-style-type: none;
+        padding: 1em 3em;
+        margin-bottom: 1em;
+        border-radius: 8px;
+      }
+
+      .title-container {
+        h3 {
+          text-align: right;
+        }
+      }
+
+      img {
+        width: 80%;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  h2 {
+    padding: 1em;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    padding-bottom: 1em;
+  }
+}
+
+@media (min-width: 1024px) {}
+
+@media (max-width: 1024px) {
+  #profile-orders {
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        h3 {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #profile-orders {
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        li {
+          padding: 1em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #profile-orders {
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        padding: 0 1em;
+
+        img {
+          width: 100%;
+        }
+
+        .MuiStepLabel-alternativeLabel {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  #profile-orders {
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        .basket-name-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #profile-orders {
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        max-height: 400px;
+
+        li {
+          padding: 1em;
+        }
+
+        h3 {
+          font-size: 15px;
+        }
+
+        .image-container {
+          padding-right: 0;
+        }
+
+        .info-container {
+          padding-left: 1em;
+        }
+
+        .stepper-container {
+          padding-left: 0;
+        }
+      }
+    }
+
+    h2 {
+      padding: 1em;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  #profile-orders {
+    p {
+      font-size: 16px;
+    }
+
+    .pending-orders-container, .treated-orders-container {
+      .baskets-container {
+        li {
+          padding: 0.5em;
+        }
+      }
+    }
+  }
+}
