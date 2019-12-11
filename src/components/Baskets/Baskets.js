@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import Modal from 'react-modal'
+import Modal from 'react-bootstrap/Modal'
 
 import './Baskets.scss'
 
@@ -8,7 +8,7 @@ import fruitsLegumesSrc from '../../assets/images/fruits-legumes.jpg'
 import fruitsLegumesPlusSrc from '../../assets/images/fruits-legumes-plus.jpg'
 import saucesSrc from '../../assets/images/sauces.jpg'
 
-const Baskets = ({ handleBasketButtonClick, showModal, closeModal }) => {
+const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, handleChangeFormValue, form, payWithLydia }) => {
 	return (
 		<section id='baskets' className='section section-2'>
 			<Container>
@@ -41,24 +41,26 @@ const Baskets = ({ handleBasketButtonClick, showModal, closeModal }) => {
 				</Row>
 			</Container>
 
-			<Modal
-				isOpen={showModal}
-				onRequestClose={closeModal}
-				style={{}}
-				contentLabel='Commander un panier'
-			>
+			{showModal && <Modal show={showModal} onHide={closeModal}>
+				<Modal.Header closeButton>
+					<Modal.Title>Le panier {modalInfos.basketName}</Modal.Title>
+				</Modal.Header>
 
-				<h2>Hello</h2>
-				<button onClick={closeModal}>close</button>
-				<div>I am a modal</div>
-				<form>
-					<input />
-					<button>tab navigation</button>
-					<button>stays</button>
-					<button>inside</button>
-					<button>the modal</button>
-				</form>
-			</Modal>
+				<Modal.Body>
+					<p className='important-text'>Ce panier contient :</p>
+					<ul>
+						{modalInfos.items.map((item, index) => (
+							<li key={index}>{item}</li>
+						))}
+					</ul>
+					<p className='important-text'>Quelques informations</p>
+					<form>
+						<input type='email' className='form-input' name='email' value={form.email} onChange={handleChangeFormValue} placeholder='Votre email' />
+						<input type='tel' className='form-input' name='recipientPhone' value={form.recipientPhone} onChange={handleChangeFormValue} placeholder='Tél. du destinataire' />
+						<button type='button' className='order-button modal-order' onClick={payWithLydia}>Payer</button>
+					</form>
+				</Modal.Body>
+			</Modal>}
 		</section>
 	)
 }

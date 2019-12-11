@@ -1,3 +1,41 @@
+.order-button {
+	color: #fff;
+	border-radius: 30px;
+	font-size: 18px;
+	border-color: #315f69;
+	padding: 15px 40px;
+	display: inline-block;
+	background-color: #315f69;
+	-moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+	-webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+	box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+	background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+	background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+	background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+	background-image: linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+
+	&.modal-order {
+		padding: 10px 30px;
+		display: inline-block;
+		float: right;
+	}
+}
+
+.form-input {
+	border-radius: 30px;
+	border: 1px solid #eee;
+	font-size: 14px;
+	padding: 10px;
+	display: block;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.important-text {
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
 .section-2 {
     .heading {
       text-align: center;
@@ -24,23 +62,6 @@
 
 			.new-price {
 				color: rgb(211, 64, 64);
-			}
-
-			.order-button {
-				color: #fff;
-				border-radius: 30px;
-				font-size: 18px;
-				border-color: #315f69;
-				padding: 15px 40px;
-				display: inline-block;
-				background-color: #315f69;
-				-moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
-				-webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
-				box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
-				background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
-				background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
-				background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
-				background-image: linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
 			}
 
 			.reduction {
