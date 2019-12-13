@@ -14,29 +14,29 @@ const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, h
 			<Container>
 				<Row>
 					<div className='heading'>
-						<h2>Précommandez des paniers à <span className='reduced-price'>prix très très réduits</span></h2>
+						<h2>Choisissez votre panier ! 🧺</h2>
 					</div>
 					<Col md={4} className='basket-container'>
 						<img src={fruitsLegumesSrc} alt='panier fruits et légumes' />
-						<h3 className='basket-name'>Le panier Fruits&Légumes</h3>
+						<h3 className='basket-name'>Fruits & Légumes 🍌🥕</h3>
 						<p><span className='regular-price'>14€</span><span className='reduction'>-25%</span></p>
 						<p className='new-price'>9,99€ jusqu'au 31/12/2019</p>
-						<button onClick={() => handleBasketButtonClick(0)} className='order-button'>Commander</button>
+						<button onClick={() => handleBasketButtonClick(0)} className='order-button'>Je commande</button>
 					</Col>
 					<Col md={4} className='basket-container middle-basket'>
 						<h4>Le plus demandé</h4>
 						<img src={saucesSrc} alt='panier sauces' />
-						<h3 className='basket-name'>Le panier Sauces</h3>
+						<h3 className='basket-name'>Sauces 🍗🍖</h3>
 						<p><span className='regular-price'>20€</span><span className='reduction'>-50%</span></p>
 						<p className='new-price'>9,99€ jusqu'au 31/12/2019</p>
-						<button className='order-button'>Commander</button>
+						<button className='order-button'>Je commande</button>
 					</Col>
 					<Col md={4} className='basket-container'>
-						<img src={fruitsLegumesPlusSrc} alt='panier fruits et légumes plus' />
-						<h3 className='basket-name'>Le panier Plus</h3>
+						<img src={fruitsLegumesPlusSrc} alt='panier myfa' />
+						<h3 className='basket-name'>Panier MYFA 🙌🏾</h3>
 						<p><span className='regular-price'>25€</span><span className='reduction'>-15%</span></p>
 						<p className='new-price'>20€ jusqu'au 31/12/2019</p>
-						<button className='order-button'>Commander</button>
+						<button className='order-button'>Je commande</button>
 					</Col>
 				</Row>
 			</Container>
