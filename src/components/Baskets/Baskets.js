@@ -43,7 +43,7 @@ const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, h
 
 			{showModal && <Modal show={showModal} onHide={closeModal}>
 				<Modal.Header closeButton>
-					<Modal.Title>Le panier {modalInfos.basketName}</Modal.Title>
+					<Modal.Title>Le panier {modalInfos.name}</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>

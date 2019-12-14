@@ -6,10 +6,9 @@ import lydiaService from '../../services/lydia'
 class BasketsContainer extends React.Component {
 	basketsInfos = [
 		{
-			basketName: 'Fruits&Légumes',
-			amount: 9.99,
+			name: 'Fruits&Légumes',
+			price: 0.99,
 			message: '',
-			orderRef: 'MYFA1',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper mattis elit, nec feugiat leo facilisis sit amet. Sed eget nibh ut odio iaculis porta quis ut urna.',
 			items: [
 				'test 1',
@@ -25,10 +24,9 @@ class BasketsContainer extends React.Component {
 			],
 		},
 		{
-			basketName: 'Sauces',
-			amount: 9.99,
+			name: 'Sauces',
+			price: 9.99,
 			message: '',
-			orderRef: 'MYFA2',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper mattis elit, nec feugiat leo facilisis sit amet. Sed eget nibh ut odio iaculis porta quis ut urna.',
 			items: [
 				'test 3',

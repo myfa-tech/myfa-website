@@ -1,24 +1,32 @@
 import axios from 'axios'
+import uuid from 'uuid/v4'
 
 const BACKEND_URL = 'https://myfa-website-backend-js.herokuapp.com/lydia'
 
-const requestPayment = async (modalInfo, form) => {
-  const { orderRef } = modalInfo
-  const browser_success_url = `/order_success?order_ref=${orderRef}`
+const requestPayment = async (basketInfo, form) => {
+  const randomId = uuid()
+  const orderRef = `myfa-${randomId}`
+  const browser_success_url = `https://www.myfa.fr/orders?ref=${orderRef}`
   const confirm_url = `${BACKEND_URL}/confirm_payment?order_ref=${orderRef}`
   const cancel_url = `${BACKEND_URL}/cancel_payment?order_ref=${orderRef}`
 
 	const response = await axios.post(`${BACKEND_URL}/pay`, {
-    amount: modalInfo.amount, // amount in €
-    vendor_token: '5dea5304040f5444474416',
+    amount: basketInfo.price, // amount in €
     type: 'email',
     currency: 'EUR',
     recipient: form.email, // cellphone or email of your client. Leave it like this for your test
-    message : modalInfo.message, //object of the payment
-    // browser_success_url,
+    message : basketInfo.message, //object of the payment
+    browser_success_url,
+    display_confirmation: 'no',
+    payment_mail_description: `Vous avez commandé le panier ${basketInfo.name}. Suivez la livraison ici : https://www.myfa.fr/orders?ref=${orderRef}`,
     confirm_url,
     cancel_url,
-    basketRecipient: form.recipientPhone,
+    basket: {
+      orderRef,
+      userEmail: form.email,
+      ...basketInfo,
+      recipientPhone: form.recipientPhone,
+    }
   })
 
   if (response.data.error == 0) {
