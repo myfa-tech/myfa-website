@@ -29,6 +29,10 @@
 	display: block;
 	margin-bottom: 10px;
 	width: 100%;
+
+	&.error {
+		border-color: red;
+	}
 }
 
 .important-text {

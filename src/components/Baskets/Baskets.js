@@ -8,7 +8,7 @@ import fruitsLegumesSrc from '../../assets/images/fruits-legumes.jpg'
 import fruitsLegumesPlusSrc from '../../assets/images/fruits-legumes-plus.jpg'
 import saucesSrc from '../../assets/images/sauces.jpg'
 
-const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, handleChangeFormValue, form, payWithLydia }) => {
+const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, handleChangeFormValue, form, payWithLydia, errorEmail, errorPhone }) => {
 	return (
 		<section id='baskets' className='section section-2'>
 			<Container>
@@ -55,8 +55,8 @@ const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, h
 					</ul>
 					<p className='important-text'>Quelques informations</p>
 					<form>
-						<input type='email' className='form-input' name='email' value={form.email} onChange={handleChangeFormValue} placeholder='Votre email' />
-						<input type='tel' className='form-input' name='recipientPhone' value={form.recipientPhone} onChange={handleChangeFormValue} placeholder='Tél. du destinataire' />
+						<input type='email' className={`form-input ${errorEmail ? 'error' : ''}`} name='email' value={form.email} onChange={handleChangeFormValue} placeholder='Votre email' />
+						<input type='tel' className={`form-input ${errorPhone ? 'error' : ''}`} name='recipientPhone' value={form.recipientPhone} onChange={handleChangeFormValue} placeholder='Tél. du destinataire' />
 						<button type='button' className='order-button modal-order' onClick={payWithLydia}>Payer</button>
 					</form>
 				</Modal.Body>
