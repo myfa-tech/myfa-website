@@ -15,7 +15,7 @@ const requestPayment = async (basketInfo, form) => {
     type: 'email',
     currency: 'EUR',
     recipient: form.email, // cellphone or email of your client. Leave it like this for your test
-    message : basketInfo.message, //object of the payment
+    message : `Vous avez commandé le panier ${basketInfo.name}. Suivez la livraison ici : https://www.myfa.fr/orders?ref=${orderRef}`, //object of the payment
     browser_success_url,
     display_confirmation: 'no',
     payment_mail_description: `Vous avez commandé le panier ${basketInfo.name}. Suivez la livraison ici : https://www.myfa.fr/orders?ref=${orderRef}`,
