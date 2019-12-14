@@ -29,14 +29,14 @@ const Baskets = ({ handleBasketButtonClick, showModal, modalInfos, closeModal, h
 						<h3 className='basket-name'>Sauces 🍗🍖</h3>
 						<p><span className='regular-price'>20€</span><span className='reduction'>-50%</span></p>
 						<p className='new-price'>9,99€ jusqu'au 31/12/2019</p>
-						<button className='order-button'>Je commande</button>
+						<button onClick={() => handleBasketButtonClick(1)} className='order-button'>Je commande</button>
 					</Col>
 					<Col md={4} className='basket-container'>
 						<img src={fruitsLegumesPlusSrc} alt='panier myfa' />
 						<h3 className='basket-name'>Panier MYFA 🙌🏾</h3>
 						<p><span className='regular-price'>25€</span><span className='reduction'>-15%</span></p>
 						<p className='new-price'>20€ jusqu'au 31/12/2019</p>
-						<button className='order-button'>Je commande</button>
+						<button onClick={() => handleBasketButtonClick(2)} className='order-button'>Je commande</button>
 					</Col>
 				</Row>
 			</Container>
