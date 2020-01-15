@@ -1,0 +1,16 @@
+.login {
+  text-align: center;
+
+  label {
+    display: block;
+  }
+
+  input {
+    margin-left: 10px;
+  }
+
+  input[type="submit"] {
+    width: 220px;
+    margin-top: 20px;
+  }
+}

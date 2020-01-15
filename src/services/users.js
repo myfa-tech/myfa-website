@@ -1,6 +1,7 @@
-import Axios from 'axios'
 
-const saveMember = async (member) => {
+import Axios from 'axios';
+
+const fetchUsers = async () => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
 
   let axios = Axios.create({
@@ -8,7 +9,9 @@ const saveMember = async (member) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.post('/mailchimp', member)
-}
+  const result = await axios.get('/dashboard/users');
 
-export { saveMember }
+  return result.data.users;
+};
+
+export { fetchUsers };
