@@ -1,0 +1,15 @@
+.dashboard-shell {
+  width: 100%;
+  height: calc(100vh - 115px);
+  border-top: 1px solid grey;
+
+  .sidebar {
+    background-color: #315f69;
+    width: 20%;
+    height: 100%;
+  }
+
+  .content {
+    width: 80%;
+  }
+}
