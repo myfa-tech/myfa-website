@@ -1,7 +1,7 @@
 .dashboard-shell {
   width: 100%;
   height: calc(100vh - 115px);
-  border-top: 1px solid grey;
+  border-top: 1px solid rgb(241, 241, 241);
 
   .sidebar {
     background-color: #315f69;
@@ -12,6 +12,8 @@
 
   .content {
     width: 80%;
+    vertical-align: top;
+    height: 100%;
     display: inline-block;
   }
 }
