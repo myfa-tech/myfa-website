@@ -8,6 +8,18 @@
     width: 20%;
     display: inline-block;
     height: 100%;
+
+    ul {
+      margin-top: 3em;
+      margin-left: 2em;
+      list-style: none;
+
+      li a {
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+      }
+    }
   }
 
   .content {

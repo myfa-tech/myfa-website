@@ -9,7 +9,9 @@ const Shell = ({ children }) => {
   return loading ? null : (
     <div className='dashboard-shell'>
       <div className='sidebar'>
-
+        <ul>
+          <li><a href='/dashboard'>🏠 Accueil</a></li>
+        </ul>
       </div>
       <div className='content'>
         {children}
