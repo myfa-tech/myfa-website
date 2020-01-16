@@ -6,7 +6,7 @@ import DashboardShell from '../../../components/dashboard/Shell';
 const DashbboardHome = () => (
   <DashboardLayout>
     <DashboardShell>
-      <div>test</div>
+      <div>content</div>
     </DashboardShell>
   </DashboardLayout>
 );

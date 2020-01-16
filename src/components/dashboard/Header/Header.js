@@ -1,9 +1,9 @@
 import React from "react"
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import { isLoggedIn, logout } from '../../../services/auth';
 
-import { Container, Navbar } from 'react-bootstrap'
-
-import './Header.scss'
-import logoSrc from '../../../images/logo-1.png'
+import './Header.scss';
+import logoSrc from '../../../images/logo-1.png';
 
 const Header = () => (
   <Container>
@@ -11,8 +11,17 @@ const Header = () => (
       <Navbar.Brand href="/dashboard">
         <img src={logoSrc} alt='logo' className='logo' />
       </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse className="justify-content-end">
+        <Nav className='menu'>
+          {isLoggedIn() ?
+            <Nav.Link href="/#" onClick={logout}>Logout</Nav.Link> :
+            <Nav.Link href="/">Accueil</Nav.Link>
+          }
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   </Container>
-)
+);
 
-export default Header
+export default Header;

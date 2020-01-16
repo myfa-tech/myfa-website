@@ -6,10 +6,12 @@
   .sidebar {
     background-color: #315f69;
     width: 20%;
+    display: inline-block;
     height: 100%;
   }
 
   .content {
     width: 80%;
+    display: inline-block;
   }
 }

@@ -1,4 +1,10 @@
 
+import Axios from 'axios'
+
+const axios = Axios.create({
+  baseURL: 'https://myfa-website-backend-js.herokuapp.com',
+});
+
 const isBrowser = () => typeof window !== 'undefined';
 
 const getUser = () => isBrowser() && window.localStorage.getItem('myfaDashboardUser') ?
@@ -6,10 +12,11 @@ const getUser = () => isBrowser() && window.localStorage.getItem('myfaDashboardU
 
 const setUser = (user) => window.localStorage.setItem('myfaDashboardUser', JSON.stringify(user));
 
-const handleLogin = ({ username, password }) => {
-  // @TODO : handle login here
-  if (username === 'john' && password === 'papa') {
-    return setUser({ username, name: 'John', email: 'john@papa.com' });
+const handleLogin = async (creds) => {
+  const response = await axios.post('/dashboard/login', creds);
+
+  if (!!response.data.user) {
+    return setUser(response.data.user);
   }
 
   return false;
@@ -17,7 +24,7 @@ const handleLogin = ({ username, password }) => {
 
 const isLoggedIn = () => {
   const user = getUser();
-  return !!user.username;
+  return !!user.email;
 };
 
 const logout = (callback) => {

@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-  baseURL: 'https://myfa-website-backend.herokuapp.com',
+  baseURL: 'https://myfa-website-backend-js.herokuapp.com',
 })
 
 const saveMember = async (member) => {

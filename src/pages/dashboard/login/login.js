@@ -6,22 +6,23 @@ import { navigate } from 'gatsby';
 import './login.scss';
 
 const Login = () => {
-  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleUpdate = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'username') {
-      setUsername(value);
+    if (name === 'email') {
+      setEmail(value);
     } else {
       setPassword(value);
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    handleLogin({ username, password });
+    await handleLogin({ email, password });
+
     navigate('/dashboard');
   }
 
@@ -32,17 +33,17 @@ const Login = () => {
   return (
     <DashboardLayout>
       <div className='login'>
-        <h1>Log in</h1>
+        <h1>Connexion</h1>
         <form method='post' onSubmit={handleSubmit}>
           <label>
-            Username
-            <input type='text' name='username' onChange={handleUpdate} />
+            Email
+            <input type='text' name='email' onChange={handleUpdate} />
           </label>
           <label>
-            Password
+            Mot de passe
             <input type='password' name='password' onChange={handleUpdate} />
           </label>
-          <input type='submit' value='Log In' />
+          <input type='submit' value='Connexion' />
         </form>
       </div>
     </DashboardLayout>
