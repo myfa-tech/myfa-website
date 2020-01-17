@@ -11,6 +11,7 @@ const Shell = ({ children }) => {
       <div className='sidebar'>
         <ul>
           <li><a href='/dashboard'>🏠 Accueil</a></li>
+          <li><a href='/dashboard/users'>👥 Utilisateurs</a></li>
         </ul>
       </div>
       <div className='content'>
