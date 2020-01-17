@@ -30,7 +30,7 @@ const DashbboardHome = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   return (
     <DashboardLayout>

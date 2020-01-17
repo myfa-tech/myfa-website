@@ -11,7 +11,7 @@ const useAuthentication = () => {
     } else {
       setLoading(false);
     }
-  });
+  }, []);
 
   return { loading };
 };

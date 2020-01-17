@@ -34,7 +34,7 @@ const Table = ({ data, columns }) => {
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   {/* Add a sort direction indicator */}
-                  <span>
+                  <span role='img'>
                     {column.isSorted
                       ? column.isSortedDesc
                         ? ' 🔽'
@@ -63,9 +63,9 @@ const Table = ({ data, columns }) => {
         </tbody>
       </table>
 
-      <div className='scroll-button' onClick={scrollToTop}>
+      <span role='img' aria-label='scroll to top' className='scroll-button' onClick={scrollToTop}>
         🔝
-      </div>
+      </span>
     </>
   )
 }

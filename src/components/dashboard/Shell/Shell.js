@@ -10,9 +10,9 @@ const Shell = ({ children }) => {
     <div className='dashboard-shell'>
       <div className='sidebar'>
         <ul>
-          <li><a href='/dashboard'>🏠 Accueil</a></li>
-          <li><a href='/dashboard/users'>👥 Utilisateurs</a></li>
-          <li><a href='/dashboard/baskets'>🧺 Paniers</a></li>
+          <li><a href='/dashboard'><span aria-label='accueil' role="img">🏠</span> Accueil</a></li>
+          <li><a href='/dashboard/users'><span aria-label='utilisateurs' role="img">👥</span> Utilisateurs</a></li>
+          <li><a href='/dashboard/baskets'><span aria-label='paniers' role="img">🧺</span> Paniers</a></li>
         </ul>
       </div>
       <div className='content'>
