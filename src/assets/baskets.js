@@ -71,32 +71,6 @@ const baskets = [
       '4 gousses d\'ail',
     ],
   },
-  {
-    name: 'MYFA',
-    type: 'myfa',
-    label: 'Panier MYFA 🙌🏾',
-    homeDesc: 'À vous de le composer !',
-    imgAlt: 'panier myfa',
-    img: fruitsLegumesMyfaSrc,
-    realPrice: 27.99,
-    reduction: 7,
-    price: 25.99,
-    description: 'Le panier MYFA a été pensé pour les grandes familles voire les grandes occasions ! Il rassemble un mix des produits de chaque panier, avec des éléments bonus tel que les boules d\'attiéké : le mets traditionnel ivoirien à base de manioc ! 😏',
-    items: [
-      '1 ananas',
-      '1kg de bananes',
-      '1kg de côcôtas',
-      '1kg de mangues',
-      '1kg d\'aubergines africaines',
-      '1kg de poivrons jaunes',
-      '1kg d\'oignons',
-      '1kg de tomates',
-      '1kg de poivrons rouges',
-      '1 bouteille d\'huile de palme 1L',
-      '5 boules d\'attiéké',
-      '1kg de bananes plantain',
-    ],
-  },
 ]
 
 export default baskets

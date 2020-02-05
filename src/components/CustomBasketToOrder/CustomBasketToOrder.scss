@@ -1,0 +1,232 @@
+#custom-basket-to-order {
+	padding-top: 2em;
+
+	.description {
+		font-size: 18px;
+	}
+
+	.error {
+		border-color: red;
+	}
+
+	.regular-price {
+		font-size: 25px;
+		text-decoration: line-through;
+	}
+
+  .ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ingredient-container {
+      padding: 2em 1em;
+      border-radius: 8px;
+      text-align: center;
+
+      img {
+        max-width: 120px;
+
+        &.selected {
+          border: 2px solid #EA1B1B;
+        }
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+	.new-price {
+		font-size: 25px;
+		color: rgb(211, 64, 64);
+		padding-left: 20px;
+	}
+
+	.reduction {
+		border: 1px solid rgb(211, 64, 64);
+		color: rgb(211, 64, 64);
+		padding: 5px;
+		vertical-align: middle;
+		font-size: 15px;
+		border-radius: 6px;
+		margin-left: 10px;
+	}
+
+	.basket-img-container {
+		p {
+			text-align: center;
+		}
+  }
+
+  .qty-container {
+		h4 {
+			margin-top: 1em;
+			text-align: center;
+		}
+
+		.qty-buttons {
+			display: block;
+			text-align: center;
+
+			.qty-button, .qty-display {
+				border: 1px solid #311A19;
+				background-color: #F1D866;
+				color: #311A19;
+			}
+		}
+
+		.max-qty-msg {
+			margin-top: 1em;
+			text-align: center;
+		}
+
+		.order-button {
+			color: black;
+			border-radius: 6px;
+			font-size: 18px;
+			display: block;
+			margin: auto;
+			border: 1px solid #311A19;
+			margin-top: 1em;
+			padding: 15px 40px;
+			background-color: #F1D866;
+
+			&.isDone {
+				width: 40%;
+				text-align: center;
+			}
+		}
+	}
+
+	h3 {
+		margin-top: 1em;
+	}
+
+	input[type="checkbox"].error {
+		outline: 1px solid red;
+	}
+
+  img {
+		border-radius: 8px;
+		width: 100%;
+  }
+
+	li {
+		font-size: 18px;
+  }
+
+  .next-button {
+    color: #311A19;
+    border-radius: 6px;
+    font-weight: bold;
+    margin: auto;
+    display: block;
+    min-width: 215px;
+    border: 1px solid #311A19;
+    font-size: 18px;
+    padding: 15px 40px;
+    background-color: #F1D866;
+  }
+}
+
+@media (max-width: 1366px) {
+  #custom-basket-to-order {}
+}
+
+@media (min-width: 1025px) {
+	#custom-basket-to-order {
+		.basket-img-container {
+			padding: 1em;
+			background-color: rgba(241, 216, 102, 0.1);
+			border-radius: 8px;
+
+			p {
+				font-size: 13px;
+				margin-bottom: 0;
+			}
+		}
+
+		.ingredients-container {
+      .ingredient-container {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+	}
+}
+
+@media (max-width: 1024px) {
+	#custom-basket-to-order {
+		.basket-img-container {
+			p {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+  #custom-basket-to-order {
+
+	}
+}
+
+@media (max-width: 480px) {
+	#custom-basket-to-order {
+		h1 {
+			font-size: 30px;
+		}
+
+		.regular-price, .new-price {
+			font-size: 20px;
+		}
+
+		.reduction {
+			font-size: 18px;
+		}
+
+		h1, h2 {
+			text-align: center
+		}
+
+		h3 {
+			text-align: center;
+    }
+
+    .ingredients-container {
+      justify-content: center;
+      align-items: center;
+
+      .ingredient-container {
+        img {
+          max-width: 80px;
+        }
+
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .basket-img-container {
+      img {
+        width: 50%;
+        display: block;
+        margin: 0 auto 2em auto;
+      }
+    }
+
+		.description {
+			width: 90%;
+			display: block;
+			margin: auto;
+			text-align: justify;
+		}
+	}
+}
+
+@media (max-width: 350px) {
+	#custom-basket-to-order {}
+}
