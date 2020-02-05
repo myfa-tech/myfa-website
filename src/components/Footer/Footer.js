@@ -18,7 +18,7 @@ const Footer = ({ noBackgroundColor }) => {
             </a>
           </Col>
           <Col sm={7} className='text-container'>
-            <a href='#'>Mentions légales</a>
+            <a href='/legal'>Mentions légales</a>
             <div>
               <SocialIcon className='social-icon' network='facebook' url='https://www.facebook.com/myfa.fr' />
               <SocialIcon className='social-icon' network='twitter' url='https://www.twitter.com/myfa_fr' />
