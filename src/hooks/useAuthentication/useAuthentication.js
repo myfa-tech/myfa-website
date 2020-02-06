@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { isLoggedIn } from '../../services/auth';
+import { isAdminLoggedIn, isLoggedIn } from '../../services/auth';
 import { navigate } from 'gatsby';
 
 const useAuthentication = ({ redirect }) => {
@@ -16,4 +16,18 @@ const useAuthentication = ({ redirect }) => {
   return { loading };
 };
 
-export default useAuthentication;
+const useAdminAuthentication = ({ redirect }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isAdminLoggedIn()) {
+      navigate(redirect);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  return { loading };
+};
+
+export { useAuthentication, useAdminAuthentication };

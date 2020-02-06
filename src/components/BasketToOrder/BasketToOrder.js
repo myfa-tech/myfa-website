@@ -10,6 +10,7 @@ import './BasketToOrder.scss';
 import baskets from '../../assets/baskets';
 import { customBasketDetails } from '../../assets/customBasket';
 import getQueryParam from '../../utils/getQueryParam';
+import EventEmitter from '../../services/EventEmitter';
 
 const QTY_MAX = 5;
 
@@ -18,6 +19,7 @@ const BasketToOrder = () => {
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
 
+  const eventEmitter = new EventEmitter();
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
   const basket = baskets.find(b => b.type === type);
   const otherBaskets = basket ? [...baskets, customBasketDetails].filter(b => b.type !== basket.type) : [];
@@ -41,7 +43,8 @@ const BasketToOrder = () => {
       setIsDone(true);
 
       window.localStorage.setItem('cart', JSON.stringify(cart));
-      // @TODO: emit event to update basket icon
+      eventEmitter.emit('editCart');
+
       toggleCartModal();
     }
   };

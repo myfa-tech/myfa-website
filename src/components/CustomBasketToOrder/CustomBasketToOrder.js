@@ -14,6 +14,7 @@ import {
   availableVeggies,
   customBasketDetails,
 } from '../../assets/customBasket';
+import EventEmitter from '../../services/EventEmitter';
 
 import './CustomBasketToOrder.scss';
 
@@ -207,6 +208,7 @@ const Step4 = ({ basketParts }) => {
 
   const addToCart = () => {
     if (typeof window !== 'undefined') {
+      const eventEmitter = new EventEmitter();
       let cart = JSON.parse(window.localStorage.getItem('cart'));
 
       setBasket({ ...customBasketDetails, items: { ...basket, supps }});
@@ -222,7 +224,7 @@ const Step4 = ({ basketParts }) => {
       setIsDone(true);
 
       window.localStorage.setItem('cart', JSON.stringify(cart));
-      // @TODO: emit event to update basket icon
+      eventEmitter.emit('editCart');
 
       toggleCartModal();
     }

@@ -3,9 +3,11 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import { FaShoppingCart } from 'react-icons/fa';
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
+import EventEmitter from '../../services/EventEmitter';
 
 import logoHandsSrc from '../../images/logo-1.png';
 import logoLettersSrc from '../../images/logo-letters.png';
@@ -16,6 +18,24 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
+  const [basketCount, setBasketCount] = useState(0);
+  const eventEmitter = new EventEmitter();
+
+  const updateCartCount = () => {
+    let cart = JSON.parse(window.localStorage.getItem('cart'));
+
+    if (cart) {
+      setBasketCount(cart.length);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      updateCartCount();
+
+      eventEmitter.listen('editCart', updateCartCount);
+    }
+  }, []);
 
   useEffect(() => {
     if (!!window.localStorage.getItem('user')) {
@@ -60,6 +80,10 @@ const Header = () => {
               </NavDropdown> :
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>Mon compte</Nav.Link>
             }
+            <Nav.Link href="/cart" className='basket-link'>
+              <FaShoppingCart />
+              {basketCount ? <div className='baskets-count'>{basketCount}</div> : null}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

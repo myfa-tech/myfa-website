@@ -7,7 +7,7 @@ import ProfileGreeting from '../../components/ProfileGreeting';
 import ProfileMenu from '../../components/ProfileMenu';
 import ProfileOrders from '../../components/ProfileOrders';
 
-import useAuthentication from '../../hooks/useAuthentication';
+import { useAuthentication } from '../../hooks/useAuthentication';
 
 import './index.scss';
 

@@ -14,6 +14,25 @@
     .account {
       border-radius: 8px;
     }
+
+    .basket-link {
+      position: relative;
+
+      .baskets-count {
+        position: absolute;
+        background-color: #E61D0F;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: 3px;
+        left: 22px;
+        color: white;
+        font-size: 11px;
+        font-weight: 300;
+        line-height: 22px;
+        text-align: center;
+      }
+    }
   }
 
   .logo {

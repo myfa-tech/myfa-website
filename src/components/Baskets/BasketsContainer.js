@@ -1,14 +1,16 @@
 import React from 'react';
-
 import Baskets from './Baskets';
 import basketsInfos from '../../assets/baskets';
 import { customBasketDetails } from '../../assets/customBasket';
+import EventEmitter from '../../services/EventEmitter';
 
 class BasketsContainer extends React.Component {
 	state = {
 		basketForCart: null,
 		showCartModal: false,
 	};
+
+	eventEmitter = new EventEmitter();
 
 	toggleCartModal = () => {
 		const state = this.state.showCartModal ?
@@ -22,7 +24,7 @@ class BasketsContainer extends React.Component {
 		e.stopPropagation();
 
 		if (typeof window !== 'undefined') {
-      let cart = JSON.parse(window.localStorage.getItem('cart'));
+			let cart = JSON.parse(window.localStorage.getItem('cart'));
 
       if (!cart) {
         cart = [];
@@ -31,7 +33,7 @@ class BasketsContainer extends React.Component {
       cart.push(basket);
 
       window.localStorage.setItem('cart', JSON.stringify(cart));
-      // @TODO: emit event to update basket icon
+			this.eventEmitter.emit('editCart');
 
 			this.setState({ basketForCart: basket }, this.toggleCartModal);
     }

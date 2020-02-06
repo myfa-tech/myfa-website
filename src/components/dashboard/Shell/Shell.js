@@ -1,10 +1,10 @@
 import React from 'react';
-import useAuthentication from '../../../hooks/useAuthentication';
+import { useAdminAuthentication } from '../../../hooks/useAuthentication';
 
 import './Shell.scss';
 
 const Shell = ({ children }) => {
-  const { loading } = useAuthentication({ redirect: '/dashboard/login' });
+  const { loading } = useAdminAuthentication({ redirect: '/dashboard/login' });
 
   return loading ? null : (
     <div className='dashboard-shell'>
