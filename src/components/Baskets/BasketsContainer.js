@@ -6,15 +6,34 @@ import { customBasketDetails } from '../../assets/customBasket';
 
 class BasketsContainer extends React.Component {
 	state = {
-		showModal: false,
-		isLoading: false,
-		modalBasket: null,
-		isLoggedIn: false,
+		basketForCart: null,
+		showCartModal: false,
 	};
 
-	componentDidMount() {
-		if (!!window.localStorage.getItem('user')) {
-      this.setState({ isLoggedIn: true });
+	toggleCartModal = () => {
+		const state = this.state.showCartModal ?
+			{ showCartModal: !this.state.showCartModal, basketForCart: null } :
+			{ showCartModal: !this.state.showCartModal };
+
+		this.setState(state);
+	};
+
+	addBasketToCart = (e, basket) => {
+		e.stopPropagation();
+
+		if (typeof window !== 'undefined') {
+      let cart = JSON.parse(window.localStorage.getItem('cart'));
+
+      if (!cart) {
+        cart = [];
+      }
+
+      cart.push(basket);
+
+      window.localStorage.setItem('cart', JSON.stringify(cart));
+      // @TODO: emit event to update basket icon
+
+			this.setState({ basketForCart: basket }, this.toggleCartModal);
     }
 	}
 
@@ -28,29 +47,17 @@ class BasketsContainer extends React.Component {
 		}
 	}
 
-	closeModal = () => {
-		if (!this.state.isLoading) {
-			this.setState({ showModal: false, modalBasket: null , form: {}, errorEmail: false, errorPhone: false })
-		}
-	}
-
-	setIsLoading = (isLoading) => {
-		this.setState({ isLoading });
-	}
-
 	render() {
-		const { modalBasket, showModal, isLoggedIn, isLoading } = this.state
+		const { basketForCart, showCartModal } = this.state
 
 		return (
 			<Baskets
+				basketForCart={basketForCart}
+				addBasketToCart={this.addBasketToCart}
 				handleBasketButtonClick={this.handleBasketButtonClick}
-				isLoading={isLoading}
-				setIsLoading={this.setIsLoading}
-				showModal={showModal}
-				isLoggedIn={isLoggedIn}
-				modalBasket={modalBasket}
+				showCartModal={showCartModal}
+				toggleCartModal={this.toggleCartModal}
 				baskets={[...basketsInfos, customBasketDetails]}
-				closeModal={this.closeModal}
 			/>
 		)
 	}

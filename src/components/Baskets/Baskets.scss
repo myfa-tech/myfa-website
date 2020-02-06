@@ -63,6 +63,10 @@
 			.price-container {
 				padding-top: 1em;
 
+				&.custom-basket {
+					margin: auto;
+				}
+
 				p {
 					margin-bottom: 0;
 				}

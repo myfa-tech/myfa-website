@@ -5,13 +5,15 @@ import { FaCheck } from 'react-icons/fa';
 
 import './CartModal.scss';
 
-const CartModal = ({ showCartModal, toggleCartModal, basket }) => {
+const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
   const cart = JSON.parse(window.localStorage.getItem('cart'));
   const cartTotal = cart.reduce((acc, curr) => curr.price ? acc + curr.price : acc, 0);
   const qty = cart.filter(b => b.type === basket.type).length;
 
   const goTo = (redirect) => {
-    if (typeof window !== 'undefined') {
+    if (!!onContinue) {
+      onContinue();
+    } else if (typeof window !== 'undefined') {
       window.location.assign(redirect);
     }
   };
