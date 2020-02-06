@@ -70,12 +70,22 @@
 		}
 	}
 
-	.basket-card {
-		border-radius: 8px;
+	.other-baskets-row {
+		display: flex;
+		flex-wrap: wrap;
 
-		h3 {
-			font-size: 20px;
-			text-align: center;
+		.basket-card {
+			border-radius: 8px;
+			padding: 1em;
+
+			img {
+				max-width: 150px;
+			}
+
+			h3 {
+				font-size: 20px;
+				text-align: center;
+			}
 		}
 	}
 
@@ -188,6 +198,10 @@
 		.other-baskets-row {
 			img {
 				width: 100%;
+			}
+
+			.basket-card {
+				width: 50%;
 			}
 
 			h3 {

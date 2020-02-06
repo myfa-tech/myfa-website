@@ -1,3 +1,5 @@
+import fruitsLegumesMyfaSrc from '../images/fruits-legumes-myfa.jpg';
+
 const availableBases = [
   { id: 'bapl', label: 'Bananes plantain' },
   { id: 'boat', label: '2 boules d’attiéké' },
@@ -60,4 +62,17 @@ const availableVeggies = [
   { id: 'hari', label: 'Haricots verts' },
 ];
 
-export { availableBases, availableFruits, availableSauces, availableSupps, availableVeggies };
+const customBasketDetails = {
+  name: 'MYFA',
+  type: 'myfa',
+  label: 'Panier MYFA 🙌🏾',
+  homeDesc: 'À vous de le composer !',
+  imgAlt: 'panier myfa',
+  img: fruitsLegumesMyfaSrc,
+  realPrice: 27.99,
+  reduction: 7,
+  price: 25.99,
+  description: 'Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !',
+};
+
+export { availableBases, availableFruits, availableSauces, availableSupps, availableVeggies, customBasketDetails };

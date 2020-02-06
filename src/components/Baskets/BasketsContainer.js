@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import Baskets from './Baskets'
-import basketsInfos from '../../assets/baskets'
+import Baskets from './Baskets';
+import basketsInfos from '../../assets/baskets';
+import { customBasketDetails } from '../../assets/customBasket';
 
 class BasketsContainer extends React.Component {
 	state = {
@@ -19,7 +20,11 @@ class BasketsContainer extends React.Component {
 
 	handleBasketButtonClick = (basketIndex) => {
 		if (typeof window !== 'undefined') {
-			window.location.assign(`/baskets?type=${basketsInfos[basketIndex].type}`);
+			if (basketIndex === 3) {
+				window.location.assign('/custom-basket');
+			} else {
+				window.location.assign(`/baskets?type=${basketsInfos[basketIndex].type}`);
+			}
 		}
 	}
 
@@ -44,7 +49,7 @@ class BasketsContainer extends React.Component {
 				showModal={showModal}
 				isLoggedIn={isLoggedIn}
 				modalBasket={modalBasket}
-				baskets={basketsInfos}
+				baskets={[...basketsInfos, customBasketDetails]}
 				closeModal={this.closeModal}
 			/>
 		)

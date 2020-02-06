@@ -1,6 +1,5 @@
 
 import fruitsSrc from '../images/fruits-legumes.jpg';
-import fruitsLegumesMyfaSrc from '../images/fruits-legumes-myfa.jpg';
 import saucesSrc from '../images/sauces.jpg';
 
 const baskets = [

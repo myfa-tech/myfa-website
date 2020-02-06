@@ -39,7 +39,7 @@ const Baskets = ({
 				</Row>
 			</Container>
 		</section>
-	)
-}
+	);
+};
 
-export default Baskets
+export default Baskets;

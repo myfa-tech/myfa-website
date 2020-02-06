@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FaCheck } from 'react-icons/fa'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+
+import CartModal from '../CartModal';
 
 import {
   availableBases,
@@ -10,12 +12,12 @@ import {
   availableSauces,
   availableSupps,
   availableVeggies,
+  customBasketDetails,
 } from '../../assets/customBasket';
 
 import './CustomBasketToOrder.scss';
 
 import defaultBasketSrc from '../../images/default-basket.png';
-import getQueryParam from '../../utils/getQueryParam';
 
 const QTY_MAX = 5;
 const QTY_BASES = 1;
@@ -23,9 +25,19 @@ const QTY_FRUITS = 3;
 const QTY_VEGGIES = 3;
 const QTY_SAUCES = 3;
 
-const Step1 = ({ nextStep }) => {
+const Step1 = ({ basketParts, nextStep }) => {
   const [bases, setBases] = useState([]);
   const [fruits, setFruits] = useState([]);
+
+  useEffect(() => {
+    if (basketParts['bases']) {
+      setBases(basketParts['bases']);
+    }
+
+    if (basketParts['fruits']) {
+      setFruits(basketParts['fruits']);
+    }
+  }, []);
 
   const editBases = (base) => {
     const index = bases.findIndex(b => b.id === base.id);
@@ -56,7 +68,7 @@ const Step1 = ({ nextStep }) => {
       <h2>Bases {bases.length}/{QTY_BASES} - Veuillez choisir une base</h2>
       <div className='ingredients-container'>
         {availableBases.map(base => (
-          <div className='ingredient-container' onClick={() => editBases(base)}>
+          <div key={base.id} className='ingredient-container' onClick={() => editBases(base)}>
             <img src={defaultBasketSrc} className={bases.map(b => b.id).includes(base.id) ? 'selected' : ''} />
             <p>{base.label}</p>
           </div>
@@ -66,7 +78,7 @@ const Step1 = ({ nextStep }) => {
       <h2>Fruits {fruits.length}/{QTY_FRUITS} - Vous pouvez choisir jusqu’à trois fruits</h2>
       <div className='ingredients-container'>
         {availableFruits.map(fruit => (
-          <div className='ingredient-container' onClick={() => editFruits(fruit)}>
+          <div key={fruit.id} className='ingredient-container' onClick={() => editFruits(fruit)}>
             <img src={defaultBasketSrc} className={fruits.map(f => f.id).includes(fruit.id) ? 'selected' : ''} />
             <p>{fruit.label}</p>
           </div>
@@ -78,8 +90,14 @@ const Step1 = ({ nextStep }) => {
   );
 };
 
-const Step2 = ({ nextStep }) => {
+const Step2 = ({ basketParts, nextStep }) => {
   const [veggies, setVeggies] = useState([]);
+
+  useEffect(() => {
+    if (basketParts['veggies']) {
+      setVeggies(basketParts['veggies']);
+    }
+  }, []);
 
   const editVeggies = (veggie) => {
     const index = veggies.findIndex(v => v.id === veggie.id);
@@ -98,7 +116,7 @@ const Step2 = ({ nextStep }) => {
       <h2>Légumes {veggies.length}/{QTY_VEGGIES} - Vous pouvez choisir jusqu’à trois légumes</h2>
       <div className='ingredients-container'>
         {availableVeggies.map(veggie => (
-          <div className='ingredient-container' onClick={() => editVeggies(veggie)}>
+          <div key={veggie.id} className='ingredient-container' onClick={() => editVeggies(veggie)}>
             <img src={defaultBasketSrc} className={veggies.map(f => f.id).includes(veggie.id) ? 'selected' : ''} />
             <p>{veggie.label}</p>
           </div>
@@ -110,8 +128,14 @@ const Step2 = ({ nextStep }) => {
   );
 };
 
-const Step3 = ({ nextStep }) => {
+const Step3 = ({ basketParts, nextStep }) => {
   const [sauces, setSauces] = useState([]);
+
+  useEffect(() => {
+    if (basketParts['sauces']) {
+      setSauces(basketParts['sauces']);
+    }
+  }, []);
 
   const editSauces = (sauce) => {
     const index = sauces.findIndex(s => s.id === sauce.id);
@@ -130,7 +154,7 @@ const Step3 = ({ nextStep }) => {
       <h2>Sauces {sauces.length}/{QTY_SAUCES} - Veuillez choisir jusqu’à trois produits</h2>
       <div className='ingredients-container'>
         {availableSauces.map(sauce => (
-          <div className='ingredient-container' onClick={() => editSauces(sauce)}>
+          <div key={sauce.id} className='ingredient-container' onClick={() => editSauces(sauce)}>
             <img src={defaultBasketSrc} className={sauces.map(s => s.id).includes(sauce.id) ? 'selected' : ''} />
             <p>{sauce.label}</p>
           </div>
@@ -147,6 +171,17 @@ const Step4 = ({ basketParts }) => {
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
   const [isDone, setIsDone] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  useEffect(() => {
+    if (basketParts['supps']) {
+      setSupps(basketParts['supps']);
+    }
+  }, []);
+
+  const toggleCartModal = () => {
+    setShowCartModal(!showCartModal);
+  };
 
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
@@ -174,7 +209,7 @@ const Step4 = ({ basketParts }) => {
     if (typeof window !== 'undefined') {
       let cart = JSON.parse(window.localStorage.getItem('cart'));
 
-      setBasket({ ...basket, supps });
+      setBasket({ ...customBasketDetails, items: { ...basket, supps }});
 
       if (!cart) {
         cart = [];
@@ -188,6 +223,8 @@ const Step4 = ({ basketParts }) => {
 
       window.localStorage.setItem('cart', JSON.stringify(cart));
       // @TODO: emit event to update basket icon
+
+      toggleCartModal();
     }
   };
 
@@ -196,7 +233,7 @@ const Step4 = ({ basketParts }) => {
       <h2>Suppléments (+ 1,5€)</h2>
       <div className='ingredients-container'>
         {availableSupps.map(supp => (
-          <div className='ingredient-container' onClick={() => editSupps(supp)}>
+          <div key={supp.id} className='ingredient-container' onClick={() => editSupps(supp)}>
             <img src={defaultBasketSrc} className={supps.map(s => s.id).includes(supp.id) ? 'selected' : ''} />
             <p>{supp.label}</p>
           </div>
@@ -221,11 +258,17 @@ const Step4 = ({ basketParts }) => {
           <button type='button' className='order-button' onClick={addToCart}>Ajouter au panier</button>
         }
       </div>
+
+      {showCartModal &&
+        <CartModal
+          showCartModal={showCartModal}
+          toggleCartModal={toggleCartModal}
+          basket={basket}
+        />
+      }
     </div>
   );
 };
-
-
 
 const CustomBasketToOrder = () => {
   const [step, setStep] = useState(1);
@@ -235,6 +278,8 @@ const CustomBasketToOrder = () => {
     const newBasket = { ...basket, ...currentBasket };
     setBasket({ ...newBasket });
     setStep(step + 1);
+
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -243,28 +288,27 @@ const CustomBasketToOrder = () => {
         <Row>
           <Col md='4'>
             <div className='basket-img-container'>
-              <img src={defaultBasketSrc} alt='panier myfa' />
+              <img src={customBasketDetails.img} alt={customBasketDetails.imgAlt} />
               <p>Photo non contractuelle</p>
             </div>
           </Col>
           <Col md='8'>
-            <h1>Panier MYFA 🙌🏾</h1>
+            <h1>{customBasketDetails.label}</h1>
 
             <h2>
-              <span className='regular-price'>27.99€</span>
-              <span className='new-price'>25.99€</span>
-              <span className='reduction'>-7%</span>
+              <span className='regular-price'>{customBasketDetails.realPrice}€</span>
+              <span className='new-price'>{customBasketDetails.price}€</span>
+              <span className='reduction'>-{customBasketDetails.reduction}%</span>
             </h2>
 
             <p className='description'>
-              Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches.
-              Vous pouvez y mettre un peu de chaque panier et bien plus encore !
+              {customBasketDetails.description}
             </p>
 
-            {step === 1 ? <Step1 nextStep={nextStep} />: null}
-            {step === 2 ? <Step2 nextStep={nextStep} />: null}
-            {step === 3 ? <Step3 nextStep={nextStep} />: null}
-            {step === 4 ? <Step4 basket={basket} />: null}
+            {step === 1 ? <Step1 basketParts={basket} nextStep={nextStep} />: null}
+            {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} />: null}
+            {step === 3 ? <Step3 basketParts={basket} nextStep={nextStep} />: null}
+            {step === 4 ? <Step4 basketParts={basket} />: null}
           </Col>
         </Row>
       </Container>

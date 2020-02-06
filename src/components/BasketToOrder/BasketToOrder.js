@@ -4,8 +4,11 @@ import { FaCheck } from 'react-icons/fa'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
+import CartModal from '../CartModal';
+
 import './BasketToOrder.scss';
 import baskets from '../../assets/baskets';
+import { customBasketDetails } from '../../assets/customBasket';
 import getQueryParam from '../../utils/getQueryParam';
 
 const QTY_MAX = 5;
@@ -13,10 +16,15 @@ const QTY_MAX = 5;
 const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
   const basket = baskets.find(b => b.type === type);
-  const otherBaskets = basket ? baskets.filter(b => b.type !== basket.type) : [];
+  const otherBaskets = basket ? [...baskets, customBasketDetails].filter(b => b.type !== basket.type) : [];
+
+  const toggleCartModal = () => {
+    setShowCartModal(!showCartModal);
+  };
 
   const addToCart = () => {
     if (typeof window !== 'undefined') {
@@ -34,6 +42,7 @@ const BasketToOrder = () => {
 
       window.localStorage.setItem('cart', JSON.stringify(cart));
       // @TODO: emit event to update basket icon
+      toggleCartModal();
     }
   };
 
@@ -49,7 +58,11 @@ const BasketToOrder = () => {
 
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
-			window.location.assign(`/baskets?type=${type}`);
+      if (type === 'myfa') {
+				window.location.assign('/custom-basket');
+			} else {
+        window.location.assign(`/baskets?type=${type}`);
+      }
 		}
   }
 
@@ -103,18 +116,24 @@ const BasketToOrder = () => {
 
             <h3>Nos autres paniers</h3>
 
-            <Row className='other-baskets-row'>
+            <div className='other-baskets-row'>
               {otherBaskets.map(otherBasket => (
-                <Col key={otherBasket.type} xs={Math.floor(12 / otherBaskets.length)}>
-                  <div className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
-                    <img src={otherBasket.img} />
-                    <h3>{otherBasket.label}</h3>
-                  </div>
-                </Col>
+                <div key={otherBasket.type} className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
+                  <img src={otherBasket.img} />
+                  <h3>{otherBasket.label}</h3>
+                </div>
               ))}
-            </Row>
+            </div>
           </Col>
         </Row>
+
+        {showCartModal &&
+          <CartModal
+            showCartModal={showCartModal}
+            toggleCartModal={toggleCartModal}
+            basket={basket}
+          />
+        }
       </Container>
     </section>
   ): null;
