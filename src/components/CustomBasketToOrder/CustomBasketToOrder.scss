@@ -25,6 +25,7 @@
 
       img {
         max-width: 120px;
+				height: 100px;
 
         &.selected {
           border: 2px solid #EA1B1B;
@@ -201,6 +202,7 @@
 
       .ingredient-container {
         img {
+					height: 80px;
           max-width: 80px;
         }
 

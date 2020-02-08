@@ -1,6 +1,7 @@
 
 import fruitsSrc from '../images/fruits-legumes.jpg';
 import saucesSrc from '../images/sauces.jpg';
+import veggiesSrc from '../images/veggies.jpg';
 
 const baskets = [
   {
@@ -29,7 +30,7 @@ const baskets = [
     label: 'Panier Légumes 🧅',
     homeDesc: 'Oignons, carottes, Ignames...',
     imgAlt: 'panier légumes',
-    img: fruitsSrc,
+    img: veggiesSrc,
     realPrice: 11.99,
     reduction: 20,
     price: 9.99,

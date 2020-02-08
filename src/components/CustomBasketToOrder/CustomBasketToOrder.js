@@ -70,7 +70,7 @@ const Step1 = ({ basketParts, nextStep }) => {
       <div className='ingredients-container'>
         {availableBases.map(base => (
           <div key={base.id} className='ingredient-container' onClick={() => editBases(base)}>
-            <img src={defaultBasketSrc} className={bases.map(b => b.id).includes(base.id) ? 'selected' : ''} />
+            <img src={base.img || defaultBasketSrc} className={bases.map(b => b.id).includes(base.id) ? 'selected' : ''} />
             <p>{base.label}</p>
           </div>
         ))}
@@ -80,7 +80,7 @@ const Step1 = ({ basketParts, nextStep }) => {
       <div className='ingredients-container'>
         {availableFruits.map(fruit => (
           <div key={fruit.id} className='ingredient-container' onClick={() => editFruits(fruit)}>
-            <img src={defaultBasketSrc} className={fruits.map(f => f.id).includes(fruit.id) ? 'selected' : ''} />
+            <img src={fruit.img || defaultBasketSrc} className={fruits.map(f => f.id).includes(fruit.id) ? 'selected' : ''} />
             <p>{fruit.label}</p>
           </div>
         ))}
@@ -118,7 +118,7 @@ const Step2 = ({ basketParts, nextStep }) => {
       <div className='ingredients-container'>
         {availableVeggies.map(veggie => (
           <div key={veggie.id} className='ingredient-container' onClick={() => editVeggies(veggie)}>
-            <img src={defaultBasketSrc} className={veggies.map(f => f.id).includes(veggie.id) ? 'selected' : ''} />
+            <img src={veggie.img || defaultBasketSrc} className={veggies.map(f => f.id).includes(veggie.id) ? 'selected' : ''} />
             <p>{veggie.label}</p>
           </div>
         ))}
@@ -156,7 +156,7 @@ const Step3 = ({ basketParts, nextStep }) => {
       <div className='ingredients-container'>
         {availableSauces.map(sauce => (
           <div key={sauce.id} className='ingredient-container' onClick={() => editSauces(sauce)}>
-            <img src={defaultBasketSrc} className={sauces.map(s => s.id).includes(sauce.id) ? 'selected' : ''} />
+            <img src={sauce.img || defaultBasketSrc} className={sauces.map(s => s.id).includes(sauce.id) ? 'selected' : ''} />
             <p>{sauce.label}</p>
           </div>
         ))}
@@ -236,7 +236,7 @@ const Step4 = ({ basketParts }) => {
       <div className='ingredients-container'>
         {availableSupps.map(supp => (
           <div key={supp.id} className='ingredient-container' onClick={() => editSupps(supp)}>
-            <img src={defaultBasketSrc} className={supps.map(s => s.id).includes(supp.id) ? 'selected' : ''} />
+            <img src={supp.img || defaultBasketSrc} className={supps.map(s => s.id).includes(supp.id) ? 'selected' : ''} />
             <p>{supp.label}</p>
           </div>
         ))}
