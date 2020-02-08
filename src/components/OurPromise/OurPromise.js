@@ -13,13 +13,13 @@ const OurPromise = () => {
       <Row className='content-container'>
         <Col md={5} className='image-container'>
           <img src={foundersSrc} />
-          <p>Doris, Florian & Alexandre</p>
+          <p>Florian, Doris & Alexandre</p>
         </Col>
         <Col md={7} className='text-container'>
           <div className='content'>
             <h3>S’assurer du bien-être de vos proches.</h3>
             <p>
-              Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ai mangé, c’est mieux.
+              Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux.
             </p>
           </div>
         </Col>
