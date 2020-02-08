@@ -1,6 +1,7 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
+import foundersSrc from '../../images/founders.jpeg';
 import './OurPromise.scss'
 
 const OurPromise = () => {
@@ -11,7 +12,7 @@ const OurPromise = () => {
       </div>
       <Row className='content-container'>
         <Col md={5} className='image-container'>
-          <div className='empty'></div>
+          <img src={foundersSrc} />
           <p>Doris, Florian & Alexandre</p>
         </Col>
         <Col md={7} className='text-container'>
