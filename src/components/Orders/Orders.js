@@ -34,8 +34,15 @@ const Orders = () => {
 		}
   }
 
+  const emptyCart = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('cart');
+    }
+  };
+
   useEffect(() => {
     checkRef();
+    emptyCart()
   }, []);
 
   return isRef && !isLoading ? (
@@ -43,20 +50,7 @@ const Orders = () => {
       <Container>
         <h1>Merci de votre commande 🎉</h1>
 
-        <p>Pour suivre l’avancement de votre commande, cliquez <a href='/profile'>ici</a>.</p>
-
-        <h2>Découvrez nos autres paniers</h2>
-
-        <Row className='other-baskets-row'>
-          {otherBaskets.map(otherBasket => (
-            <Col key={otherBasket.type} xs={Math.floor(12 / otherBaskets.length)}>
-              <div className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
-                <img src={otherBasket.img} />
-                <h3>{otherBasket.label}</h3>
-              </div>
-            </Col>
-          ))}
-        </Row>
+        <p>Pour suivre l’avancement de votre commande, cliquez <a href='/profile/orders'>ici</a>.</p>
       </Container>
     </section>
   ) : null

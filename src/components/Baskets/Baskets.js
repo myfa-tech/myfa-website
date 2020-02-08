@@ -59,7 +59,6 @@ const Baskets = ({
 					showCartModal={showCartModal}
 					toggleCartModal={toggleCartModal}
 					basket={basketForCart}
-					onContinue={toggleCartModal}
 				/>
 			}
 		</section>

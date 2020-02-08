@@ -29,11 +29,12 @@ const requestPayment = async (order, userEmail) => {
     payment_mail_description: `Commande MYFA`,
     confirm_url,
     cancel_url,
-    order,
+    order: { ...order, ref: orderRef },
   });
 
   if (response.data.error == 0) {
     const redirectUrl = response.data.mobile_url;
+
     window.location.assign(redirectUrl);
   } else {
     console.log(response.data);

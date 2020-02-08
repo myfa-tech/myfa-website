@@ -47,7 +47,7 @@ class BasketsContainer extends React.Component {
 				window.location.assign(`/baskets?type=${basketsInfos[basketIndex].type}`);
 			}
 		}
-	}
+	};
 
 	render() {
 		const { basketForCart, showCartModal } = this.state

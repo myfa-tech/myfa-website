@@ -100,7 +100,7 @@ const ProfileOrders = () => {
         }
       </div>
       <div className='treated-orders-container'>
-        <h2>Commandes passées </h2>
+        <h2>Commandes traitées </h2>
 
         {deliveredBaskets.length ?
           <ul className='baskets-container'>
@@ -129,7 +129,7 @@ const ProfileOrders = () => {
               );
             })}
           </ul> :
-          <p>Vous n’avez aucune commande passée.</p>
+          <p>Vous n’avez aucune commande traitée.</p>
         }
       </div>
     </div>

@@ -7,7 +7,7 @@ const ProfileGreeting = () => {
 
   return (
     <div id='profile-greeting'>
-      <h1>Bonjour {firstname} {lastname} 👋</h1>
+      <h1>Bonjour {firstname} 👋</h1>
     </div>
   )
 };
