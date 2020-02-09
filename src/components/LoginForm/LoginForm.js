@@ -59,7 +59,9 @@ const LoginForm = ({ onLogin }) => {
 
   const verifyForm = () => verifyEmail(form.email) && verifyPassword(form.password);
 
-  const login = async () => {
+  const login = async (e) => {
+    e.preventDefault();
+
     if (verifyForm()) {
       try {
         setIsLoading(true);
@@ -118,7 +120,7 @@ const LoginForm = ({ onLogin }) => {
               loading={true}
             />
           </span> :
-          <button type='submit' className='login-button' onClick={login}>Se connecter</button>
+          <button type='submit' className='login-button'>Se connecter</button>
         }
       </form>
     </div>

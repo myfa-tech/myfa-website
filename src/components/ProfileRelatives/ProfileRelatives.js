@@ -133,17 +133,6 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
     return false;
   };
 
-  const	verifyEmail = (email) => {
-		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			return true;
-		}
-
-    errors['email'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
 	const verifyPhone = (phone) => {
     const countryCodes = { '+225': 'CI', '+33': 'FR' };
 		const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[form.country]);
@@ -161,7 +150,6 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
   const verifyForm = () => {
     return verifyFirstname(form.firstname)
       && verifyLastname(form.lastname)
-      && verifyEmail(form.email)
       && verifyPhone(form.phone);
   }
 
@@ -175,7 +163,9 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
 		setErrors({ ...errors });
   };
 
-  const update = async () => {
+  const update = async (e) => {
+    e.preventDefault();
+
     if (verifyForm()) {
       try {
         setIsLoading(true);
@@ -340,7 +330,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             loading={true}
           />
         </span> :
-        <button type='submit' className='modify-button' onClick={update}>Sauvegarder</button>
+        <button type='submit' className='modify-button'>Sauvegarder</button>
       }
     </form>
   );

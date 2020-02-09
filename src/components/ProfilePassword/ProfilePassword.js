@@ -48,7 +48,9 @@ const ProfilePassword = () => {
     return verifyNewPassword(form.newPassword);
   }
 
-  const updateInfo = async () => {
+  const updateInfo = async (e) => {
+    e.preventDefault();
+
     if (verifyForm()) {
       try {
         setIsLoading(true);
@@ -107,7 +109,7 @@ const ProfilePassword = () => {
               loading={true}
             />
           </span> :
-          <button type='submit' className='update-user-button' onClick={updateInfo}>Sauvegarder</button>
+          <button type='submit' className='update-user-button'>Sauvegarder</button>
         }
       </form>
     </div>

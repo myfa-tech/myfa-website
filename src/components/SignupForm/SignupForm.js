@@ -133,7 +133,9 @@ const SignupForm = ({ onSignup }) => {
     return false;
   }
 
-  const signup = async () => {
+  const signup = async (e) => {
+    e.preventDefault();
+
     if (verifyForm()) {
       try {
         setIsLoading(true);
@@ -227,7 +229,7 @@ const SignupForm = ({ onSignup }) => {
             loading={true}
           />
         </span> :
-        <button type='submit' className='signup-button' onClick={signup}>S'inscrire</button>
+        <button type='submit' className='signup-button'>S'inscrire</button>
       }
     </form>
   )
