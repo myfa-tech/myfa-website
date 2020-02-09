@@ -70,7 +70,7 @@ const ProfileOrders = () => {
 
         {pendingBaskets.length ?
           <ul className='baskets-container'>
-            {pendingBaskets.map((basket) => (
+            {pendingBaskets.map((basket) => console.log(basket) || (
               <li key={basket.count}>
                 <Row>
                   <Col md={3} xs={2} className='image-container'>

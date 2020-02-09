@@ -121,18 +121,45 @@
 		font-size: 18px;
   }
 
-  .next-button {
-    color: #311A19;
-    border-radius: 6px;
-    font-weight: bold;
-    margin: auto;
-    display: block;
-    min-width: 215px;
-    border: 1px solid #311A19;
-    font-size: 18px;
-    padding: 15px 40px;
-    background-color: #F1D866;
-  }
+	.navigation-container {
+		display: flex;
+		justify-content: center;
+
+		.next-button {
+			color: #311A19;
+			border-radius: 6px;
+			font-weight: bold;
+			margin: auto;
+			display: block;
+			min-width: 215px;
+			border: 1px solid #311A19;
+			font-size: 18px;
+			padding: 15px 40px;
+			background-color: #F1D866;
+		}
+
+		.previous-button {
+			color: white;
+			border-radius: 6px;
+			font-weight: bold;
+			margin: auto;
+			display: block;
+			min-width: 215px;
+			border: 1px solid grey;
+			font-size: 18px;
+			padding: 15px 40px;
+			background-color: grey;
+
+			&.disabled {
+				background-color: #ccc;
+				border: 1px solid #ccc;
+			}
+
+			&.small {
+				min-width: 150px;
+			}
+		}
+	}
 }
 
 @media (max-width: 1366px) {
@@ -198,7 +225,32 @@
 
 		h3 {
 			text-align: center;
-    }
+		}
+
+		.navigation-container {
+			.next-button {
+				min-width: 150px;
+				font-size: 15px;
+				padding: 10px 30px;
+			}
+
+			.previous-button {
+				min-width: 150px;
+				font-size: 15px;
+				padding: 10px 30px;
+
+				&.small {
+					min-width: 100px;
+				}
+			}
+
+			.qty-container {
+				.order-button {
+					font-size: 15px;
+					padding: 10px 30px;
+				}
+			}
+		}
 
     .ingredients-container {
       justify-content: center;

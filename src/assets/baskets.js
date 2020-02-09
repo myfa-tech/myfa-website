@@ -1,5 +1,5 @@
 
-import fruitsSrc from '../images/fruits-legumes.jpg';
+import fruitsSrc from '../images/fruits.jpg';
 import saucesSrc from '../images/sauces.jpg';
 import veggiesSrc from '../images/veggies.jpg';
 

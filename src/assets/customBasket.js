@@ -1,4 +1,4 @@
-import fruitsLegumesMyfaSrc from '../images/fruits-legumes-myfa.jpg';
+import myfaSrc from '../images/myfa.jpg';
 import bananaSrc from '../images/banana.png';
 import akpiSrc from '../images/akpi.png';
 import attiekeSrc from '../images/attieke.png';
@@ -91,7 +91,7 @@ const customBasketDetails = {
   label: 'Panier MYFA 🙌🏾',
   homeDesc: 'À vous de le composer !',
   imgAlt: 'panier myfa',
-  img: fruitsLegumesMyfaSrc,
+  img: myfaSrc,
   realPrice: 27.99,
   reduction: 7,
   price: 25.99,

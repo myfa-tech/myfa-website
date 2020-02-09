@@ -132,12 +132,15 @@ const Step1 = ({ basketParts, nextStep }) => {
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>Suivant</button>
+      <div className='navigation-container'>
+        <button className='previous-button disabled' disabled>Précédent</button>
+        <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>Suivant</button>
+      </div>
     </div>
   );
 };
 
-const Step2 = ({ basketParts, nextStep }) => {
+const Step2 = ({ basketParts, nextStep, previousStep }) => {
   const [veggies, setVeggies] = useState([]);
   const [supps, setSupps] = useState([]);
 
@@ -199,12 +202,15 @@ const Step2 = ({ basketParts, nextStep }) => {
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ veggies, supps })}>Suivant</button>
+      <div className='navigation-container'>
+        <button className='previous-button' onClick={() => previousStep()}>Précédent</button>
+        <button className='next-button' onClick={() => nextStep({ veggies, supps })}>Suivant</button>
+      </div>
     </div>
   );
 };
 
-const Step3 = ({ basketParts, nextStep }) => {
+const Step3 = ({ basketParts, nextStep, previousStep }) => {
   const [sauces, setSauces] = useState([]);
   const [supps, setSupps] = useState([]);
 
@@ -266,12 +272,15 @@ const Step3 = ({ basketParts, nextStep }) => {
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ sauces, supps })}>Suivant</button>
+      <div className='navigation-container'>
+        <button className='previous-button' onClick={() => previousStep()}>Précédent</button>
+        <button className='next-button' onClick={() => nextStep({ sauces, supps })}>Suivant</button>
+      </div>
     </div>
   );
 };
 
-const Step4 = ({ basketParts }) => {
+const Step4 = ({ basketParts, previousStep }) => {
   const [supps, setSupps] = useState([]);
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
@@ -352,23 +361,26 @@ const Step4 = ({ basketParts }) => {
         ))}
       </div>
 
-      <div className='qty-container'>
-        <h4>Quantité</h4>
+      <div className='navigation-container'>
+        <button className='previous-button small' onClick={() => previousStep()}>Précédent</button>
+        <div className='qty-container'>
+          <h4>Quantité</h4>
 
-        <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
-          <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
-          <Button className='qty-display'>{qty}</Button>
-          <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
-        </ButtonGroup>
+          <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
+            <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
+            <Button className='qty-display'>{qty}</Button>
+            <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
+          </ButtonGroup>
 
-        {qty === QTY_MAX ? <p className='max-qty-msg'>Quantité maximum atteinte</p> : null}
+          {qty === QTY_MAX ? <p className='max-qty-msg'>Quantité maximum atteinte</p> : null}
 
-        {isDone ?
-          <span className='order-button isDone'>
-            <FaCheck color='#6c6' />
-          </span> :
-          <button type='button' className='order-button' onClick={addToCart}>Ajouter au panier</button>
-        }
+          {isDone ?
+            <span className='order-button isDone'>
+              <FaCheck color='#6c6' />
+            </span> :
+            <button type='button' className='order-button' onClick={addToCart}>Ajouter au panier</button>
+          }
+        </div>
       </div>
 
       {showCartModal &&
@@ -398,6 +410,10 @@ const CustomBasketToOrder = () => {
     window.scrollTo(0, 0);
   };
 
+  const previousStep = () => {
+    setStep(step - 1);
+  };
+
   return (
     <section id='custom-basket-to-order'>
       <Container>
@@ -422,9 +438,9 @@ const CustomBasketToOrder = () => {
             </p>
 
             {step === 1 ? <Step1 basketParts={basket} nextStep={nextStep} />: null}
-            {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} />: null}
-            {step === 3 ? <Step3 basketParts={basket} nextStep={nextStep} />: null}
-            {step === 4 ? <Step4 basketParts={basket} />: null}
+            {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} previousStep={previousStep} />: null}
+            {step === 3 ? <Step3 basketParts={basket} nextStep={nextStep} previousStep={previousStep} />: null}
+            {step === 4 ? <Step4 basketParts={basket} previousStep={previousStep} />: null}
           </Col>
         </Row>
       </Container>

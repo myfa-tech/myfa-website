@@ -53,7 +53,7 @@ const Header = () => {
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/profile');
+      window.location.assign('/');
     }
   };
 

@@ -39,8 +39,8 @@ const CartItems = ({ basketsPrice, cart }) => {
                   <img src={cart.baskets[basketKey].img} />
                 </Col>
                 <Col xs={7} sm={6} className='label-container'>
-                  <h3>{(baskets.find(b => b.type === basketKey) || {}).label}</h3>
-                  <p>{(baskets.find(b => b.type === basketKey) || {}).price} €</p>
+                  <h3>{cart.baskets[basketKey].label}</h3>
+                  <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                 </Col>
                 <Col xs={3} sm={4} className='qty-container'>
                   <p>Qté : {cart.baskets[basketKey].qty}</p>
@@ -53,7 +53,7 @@ const CartItems = ({ basketsPrice, cart }) => {
       </ul>
 
       <div className='subtotal-container'>
-        <p className='subtotal'>Sous-total : {basketsPrice} €</p>
+        <p className='subtotal'>Sous-total : {basketsPrice.toFixed(2)} €</p>
       </div>
     </div>
   );
@@ -113,7 +113,7 @@ const RelativeInfo = ({ errors, form, setErrors, setForm }) => {
       <form className='relative-form'>
         <TextField
           select
-          label='Proche'
+          label='Mes proches enregistrés'
           name='relation'
           variant='outlined'
           className='full-width form-input'
@@ -123,7 +123,7 @@ const RelativeInfo = ({ errors, form, setErrors, setForm }) => {
           {user && user.recipients.map((rec, index) => (
             <MenuItem key={index} value={index}>{rec.firstname} {rec.lastname}</MenuItem>
           ))}
-          <MenuItem value={-1}>Autre</MenuItem>
+          <MenuItem value={-1}>--</MenuItem>
         </TextField>
 
         <Row>
@@ -419,6 +419,7 @@ const Cart = () => {
             acc[cur.type] = {
               price: 0,
               qty: 0,
+              label: cur.label,
               img: cur.img,
             };
           }
@@ -648,8 +649,8 @@ const Cart = () => {
               <Divider variant='middle' />
 
               <div className='content-container'>
-                <p>{basketsNumber} paniers : {basketsPrice} €</p>
-                <p>Total TTC : {cart.price} €</p>
+                <p>{basketsNumber} paniers : {basketsPrice.toFixed(2)} €</p>
+                <p>Total TTC : {cart.price.toFixed(2)} €</p>
               </div>
 
               <Divider variant='middle' />

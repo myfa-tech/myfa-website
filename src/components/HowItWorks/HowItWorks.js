@@ -60,7 +60,7 @@ const HowItWorks = () => {
     {
       Icon: FaMapMarkerAlt,
       title: <h4>Sélectionnez le quartier de livraison</h4>,
-      description: <p>Parmi les 10 quartiers d'Abidjan.</p>,
+      description: <p>Parmi les 12 quartiers d'Abidjan.</p>,
     },
     {
       Icon: FaCreditCard,
