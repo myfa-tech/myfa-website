@@ -97,10 +97,30 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-right: 0;
 
         p {
-          font-size: 15px;
+          margin-bottom: 0;
           font-weight: 400;
+
+          span {
+            font-size: 20px;
+          }
+
+          .minus-button, .plus-button {
+            padding: 0;
+            font-size: 35px;
+            background: none;
+            border: none;
+          }
+
+          .minus-button {
+            margin-right: 5px;
+          }
+
+          .plus-button {
+            margin-left: 5px;
+          }
         }
       }
 

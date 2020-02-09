@@ -8,8 +8,6 @@ const requestPayment = async (order, userEmail) => {
   const randomId = uuid();
   const orderRef = randomId.substr(0, 8);
   const browser_success_url = `${origin}/orders?ref=${orderRef}`;
-  const confirm_url = `${BACKEND_URL}/confirm_payment?order_ref=${orderRef}`;
-  const cancel_url = `${BACKEND_URL}/cancel_payment?order_ref=${orderRef}`;
 
   let JWT_TOKEN = window.localStorage.getItem('userToken');
 
@@ -27,8 +25,6 @@ const requestPayment = async (order, userEmail) => {
     browser_success_url,
     display_confirmation: 'no',
     payment_mail_description: `Commande MYFA`,
-    confirm_url,
-    cancel_url,
     order: { ...order, ref: orderRef },
   });
 

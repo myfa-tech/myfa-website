@@ -17,13 +17,19 @@ import './Cart.scss';
 import { Row, Col } from 'react-bootstrap';
 
 import baskets from '../../assets/baskets';
+import { customBasketDetails } from '../../assets/customBasket';
+
+const basketsDetails = [
+  ...baskets,
+  customBasketDetails,
+];
 
 const spinnerStyle = css`
   display: block;
   margin: 0 auto;
 `;
 
-const CartItems = ({ basketsPrice, cart }) => {
+const CartItems = ({ basketsPrice, cart, editItems }) => {
   return (
     <div className='cart-container'>
       <h2>Mon panier</h2>
@@ -31,8 +37,7 @@ const CartItems = ({ basketsPrice, cart }) => {
       <Divider variant='middle' />
 
       <ul className='baskets-container'>
-        {Object.keys(cart.baskets).map((basketKey, index) => {
-          return (
+        {Object.keys(cart.baskets).map((basketKey, index) => (
             <li key={index}>
               <Row>
                 <Col xs={2} sm={2} className='image-container'>
@@ -43,13 +48,17 @@ const CartItems = ({ basketsPrice, cart }) => {
                   <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                 </Col>
                 <Col xs={3} sm={4} className='qty-container'>
-                  <p>Qté : {cart.baskets[basketKey].qty}</p>
+                  <p>Qté</p>
+                  <p>
+                    <button className='minus-button' onClick={() => editItems(cart.baskets[basketKey].type, -1)}>-</button>
+                    <span>{cart.baskets[basketKey].qty}</span>
+                    <button className='plus-button' onClick={() => editItems(cart.baskets[basketKey].type, 1)}>+</button>
+                  </p>
                 </Col>
                 <Col></Col>
               </Row>
             </li>
-          );
-        })}
+          ))}
       </ul>
 
       <div className='subtotal-container'>
@@ -369,7 +378,7 @@ const PersonalInfo = ({ errors, form, responseStatus, setErrors, setForm, setRes
 
 const Cart = () => {
   const [cart, setCart] = useState({});
-  const [basketsPrice, setBasketPrice] = useState(0);
+  const [basketsPrice, setBasketsPrice] = useState(0);
   const [basketsNumber, setBasketsNumber] = useState(0);
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({
@@ -420,6 +429,8 @@ const Cart = () => {
               price: 0,
               qty: 0,
               label: cur.label,
+              singlePrice: cur.price,
+              type: cur.type,
               img: cur.img,
             };
           }
@@ -433,14 +444,26 @@ const Cart = () => {
         let newBasketsNumber = Object.values(enhancedCart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
         let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
 
-        enhancedCart.price = newBasketsPrice;
-
         setCart(enhancedCart);
         setBasketsNumber(newBasketsNumber);
-        setBasketPrice(newBasketsPrice);
+        setBasketsPrice(newBasketsPrice);
       }
     }
   }, []);
+
+  useEffect(() => {
+    updateBasketsPriceAndNumber();
+  }, [cart]);
+
+  const updateBasketsPriceAndNumber = () => {
+    if (cart && cart.baskets) {
+      let newBasketsNumber = Object.values(cart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
+      let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+
+      setBasketsNumber(newBasketsNumber);
+      setBasketsPrice(newBasketsPrice);
+    }
+  };
 
   const verifyFirstname = (type, name) => {
     if (name !== '') {
@@ -548,6 +571,18 @@ const Cart = () => {
     window.scrollTo(0, 0);
   };
 
+  const editItems = (type, adding) => {
+    let oldQty = cart.baskets[type].qty;
+    let newQty = cart.baskets[type].qty + adding;
+
+    if (newQty >= 0 && newQty <= 5) {
+      cart.baskets[type].price = oldQty === 0 ? cart.baskets[type].singlePrice : newQty * (cart.baskets[type].price / oldQty);
+      cart.baskets[type].qty = newQty;
+
+      setCart({ ...cart });
+    }
+  };
+
   const nextStep = () => {
     const user = JSON.parse(window.localStorage.getItem('user'));
 
@@ -575,6 +610,7 @@ const Cart = () => {
     setIsLoading(true);
 
     cart.recipient = form;
+    cart.price = basketsPrice;
 
     const promises = [lydiaService.requestPayment(cart, user.email)];
 
@@ -612,7 +648,7 @@ const Cart = () => {
       {cart && cart.baskets && Object.keys(cart.baskets).length ?
         <Row>
           <Col md='8'>
-            {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} /> : null}
+            {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} /> : null}
             {step === 2 ?
               <>
                 <PersonalInfo
@@ -650,7 +686,7 @@ const Cart = () => {
 
               <div className='content-container'>
                 <p>{basketsNumber} paniers : {basketsPrice.toFixed(2)} €</p>
-                <p>Total TTC : {cart.price.toFixed(2)} €</p>
+                <p>Total TTC : {basketsPrice.toFixed(2)} €</p>
               </div>
 
               <Divider variant='middle' />

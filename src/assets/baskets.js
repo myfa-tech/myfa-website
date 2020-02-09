@@ -71,6 +71,6 @@ const baskets = [
       '4 gousses d\'ail',
     ],
   },
-]
+];
 
-export default baskets
+export default baskets;
