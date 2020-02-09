@@ -14,6 +14,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
     if (!!onContinue) {
       onContinue();
     } else if (typeof window !== 'undefined') {
+      toggleCartModal();
       window.location.assign(redirect);
     }
   };
