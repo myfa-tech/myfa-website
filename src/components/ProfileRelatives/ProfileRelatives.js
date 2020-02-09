@@ -147,9 +147,21 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
     return false;
   };
 
+  const verifyZone = (zone) => {
+		if (zone && zone !== '') {
+			return true;
+    }
+
+    errors['zone'] = true;
+    setErrors({ ...errors });
+
+    return false;
+  };
+
   const verifyForm = () => {
     return verifyFirstname(form.firstname)
       && verifyLastname(form.lastname)
+      && verifyZone(form.zone)
       && verifyPhone(form.phone);
   }
 
@@ -271,6 +283,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         select
         label='Zone de livraison'
         required
+        error={errors['zone']}
         name='zone'
         variant='outlined'
         disabled={isLoading}
@@ -345,7 +358,7 @@ const ProfileInformation = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const modifyRelativeIndex = (index) => {
-    if (index) {
+    if (index > -1) {
       setRelativeIndex(index);
     }
 
