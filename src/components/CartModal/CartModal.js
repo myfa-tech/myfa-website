@@ -30,7 +30,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
               </Col>
               <Col md='6'>
                 <h1>{basket.label}</h1>
-                <p><b>Prix :</b> {basket.price} €</p>
+                <p><b>Prix :</b> {basket.price.toFixed(2)} €</p>
                 <p><b>Quantité :</b> {qty}</p>
               </Col>
             </Row>

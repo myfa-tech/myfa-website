@@ -25,10 +25,12 @@ const QTY_BASES = 1;
 const QTY_FRUITS = 3;
 const QTY_VEGGIES = 3;
 const QTY_SAUCES = 3;
+const SUPP_PRICE = 1.5;
 
 const Step1 = ({ basketParts, nextStep }) => {
   const [bases, setBases] = useState([]);
   const [fruits, setFruits] = useState([]);
+  const [supps, setSupps] = useState([]);
 
   useEffect(() => {
     if (basketParts['bases']) {
@@ -40,16 +42,39 @@ const Step1 = ({ basketParts, nextStep }) => {
     }
   }, []);
 
+  const editSupps = (supp) => {
+    const index = supps.findIndex(s => s.id === supp.id);
+
+    if (index >= 0) {
+      supps.splice(index, 1);
+    } else {
+      supps.push(supp);
+    }
+
+    setSupps([...supps]);
+  };
+
   const editBases = (base) => {
     const index = bases.findIndex(b => b.id === base.id);
 
     if (index >= 0) {
       bases.splice(index, 1);
+
+      const suppIndex = supps.findIndex(s => s.type === 'bases');
+
+      if (bases.length < QTY_BASES && suppIndex >= 0) {
+        let supp = supps.splice(suppIndex, 1)[0];
+        bases.push(supp);
+        setSupps([...supps]);
+      }
+
+      setBases([...bases]);
+    } else if (bases.length >= QTY_BASES) {
+      editSupps(base);
     } else {
       bases.push(base);
+      setBases([...bases]);
     }
-
-    setBases([...bases]);
   };
 
   const editFruits = (fruit) => {
@@ -57,42 +82,64 @@ const Step1 = ({ basketParts, nextStep }) => {
 
     if (index >= 0) {
       fruits.splice(index, 1);
+
+      const suppIndex = supps.findIndex(s => s.type === 'fruits');
+
+      if (fruits.length < QTY_FRUITS && suppIndex >= 0) {
+        let supp = supps.splice(suppIndex, 1)[0];
+        fruits.push(supp);
+        setSupps([...supps]);
+      }
+
+      setFruits([...fruits]);
+    } else if (fruits.length >= QTY_FRUITS) {
+      editSupps(fruit);
     } else {
       fruits.push(fruit);
+      setFruits([...fruits]);
     }
-
-    setFruits([...fruits]);
   };
 
   return (
     <div>
-      <h2>Bases {bases.length}/{QTY_BASES} - Veuillez choisir une base</h2>
+      <h2>Bases {(bases.length + supps.filter(s => s.type === 'bases').length)}/{QTY_BASES} - Veuillez choisir une base</h2>
       <div className='ingredients-container'>
         {availableBases.map(base => (
           <div key={base.id} className='ingredient-container' onClick={() => editBases(base)}>
-            <img src={base.img || defaultBasketSrc} className={bases.map(b => b.id).includes(base.id) ? 'selected' : ''} />
-            <p>{base.label}</p>
+            <img src={base.img || defaultBasketSrc} className={(bases.map(b => b.id).includes(base.id) || supps.map(s => s.id).includes(base.id)) ? 'selected' : ''} />
+            <p>
+              {base.label}
+              {(bases.length >= QTY_BASES && !bases.map(b => b.id).includes(base.id)) ?
+                <span className='supp-prices'>+1,5 €</span> : null
+              }
+            </p>
           </div>
         ))}
       </div>
 
-      <h2>Fruits {fruits.length}/{QTY_FRUITS} - Vous pouvez choisir jusqu’à trois fruits</h2>
+      <h2>Fruits {(fruits.length + supps.filter(s => s.type === 'fruits').length)}/{QTY_FRUITS} - Vous pouvez choisir jusqu’à trois fruits</h2>
       <div className='ingredients-container'>
         {availableFruits.map(fruit => (
           <div key={fruit.id} className='ingredient-container' onClick={() => editFruits(fruit)}>
-            <img src={fruit.img || defaultBasketSrc} className={fruits.map(f => f.id).includes(fruit.id) ? 'selected' : ''} />
-            <p>{fruit.label}</p>
+            <img src={fruit.img || defaultBasketSrc} className={(fruits.map(f => f.id).includes(fruit.id) || supps.map(s => s.id).includes(fruit.id)) ? 'selected' : ''} />
+            <p>
+              {fruit.label}
+              {(fruits.length >= QTY_FRUITS && !fruits.map(f => f.id).includes(fruit.id)) ?
+                <span className='supp-prices'>+1,5 €</span> : null
+              }
+            </p>
           </div>
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ bases, fruits })}>Suivant</button>
+      <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>Suivant</button>
     </div>
   );
 };
 
 const Step2 = ({ basketParts, nextStep }) => {
   const [veggies, setVeggies] = useState([]);
+  const [supps, setSupps] = useState([]);
 
   useEffect(() => {
     if (basketParts['veggies']) {
@@ -100,37 +147,66 @@ const Step2 = ({ basketParts, nextStep }) => {
     }
   }, []);
 
+  const editSupps = (supp) => {
+    const index = supps.findIndex(s => s.id === supp.id);
+
+    if (index >= 0) {
+      supps.splice(index, 1);
+    } else {
+      supps.push(supp);
+    }
+
+    setSupps([...supps]);
+  };
+
   const editVeggies = (veggie) => {
-    const index = veggies.findIndex(v => v.id === veggie.id);
+    const index = veggies.findIndex(f => f.id === veggie.id);
 
     if (index >= 0) {
       veggies.splice(index, 1);
+
+      const suppIndex = supps.findIndex(s => s.type === 'veggies');
+
+      if (veggies.length < QTY_VEGGIES && suppIndex >= 0) {
+        let supp = supps.splice(suppIndex, 1)[0];
+        veggies.push(supp);
+        setSupps([...supps]);
+      }
+
+      setVeggies([...veggies]);
+    } else if (veggies.length >= QTY_VEGGIES) {
+      editSupps(veggie);
     } else {
       veggies.push(veggie);
+      setVeggies([...veggies]);
     }
-
-    setVeggies([...veggies]);
   };
 
   return (
     <div>
-      <h2>Légumes {veggies.length}/{QTY_VEGGIES} - Vous pouvez choisir jusqu’à trois légumes</h2>
+      <h2>Légumes {(veggies.length + supps.filter(s => s.type === 'veggies').length)}/{QTY_VEGGIES} - Vous pouvez choisir jusqu’à trois légumes</h2>
       <div className='ingredients-container'>
         {availableVeggies.map(veggie => (
           <div key={veggie.id} className='ingredient-container' onClick={() => editVeggies(veggie)}>
-            <img src={veggie.img || defaultBasketSrc} className={veggies.map(f => f.id).includes(veggie.id) ? 'selected' : ''} />
-            <p>{veggie.label}</p>
+            <img src={veggie.img || defaultBasketSrc} className={(veggies.map(f => f.id).includes(veggie.id) || supps.map(s => s.id).includes(veggie.id)) ? 'selected' : ''} />
+            <p>
+              {veggie.label}
+              {(veggies.length >= QTY_VEGGIES && !veggies.map(v => v.id).includes(veggie.id)) ?
+                <span className='supp-prices'>+1,5 €</span> : null
+              }
+            </p>
           </div>
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ veggies })}>Suivant</button>
+      <button className='next-button' onClick={() => nextStep({ veggies, supps })}>Suivant</button>
     </div>
   );
 };
 
 const Step3 = ({ basketParts, nextStep }) => {
   const [sauces, setSauces] = useState([]);
+  const [supps, setSupps] = useState([]);
 
   useEffect(() => {
     if (basketParts['sauces']) {
@@ -138,31 +214,59 @@ const Step3 = ({ basketParts, nextStep }) => {
     }
   }, []);
 
+  const editSupps = (supp) => {
+    const index = supps.findIndex(s => s.id === supp.id);
+
+    if (index >= 0) {
+      supps.splice(index, 1);
+    } else {
+      supps.push(supp);
+    }
+
+    setSupps([...supps]);
+  };
+
   const editSauces = (sauce) => {
-    const index = sauces.findIndex(s => s.id === sauce.id);
+    const index = sauces.findIndex(f => f.id === sauce.id);
 
     if (index >= 0) {
       sauces.splice(index, 1);
+
+      const suppIndex = supps.findIndex(s => s.type === 'sauces');
+
+      if (sauces.length < QTY_SAUCES && suppIndex >= 0) {
+        let supp = supps.splice(suppIndex, 1)[0];
+        sauces.push(supp);
+        setSupps([...supps]);
+      }
+
+      setSauces([...sauces]);
+    } else if (sauces.length >= QTY_SAUCES) {
+      editSupps(sauce);
     } else {
       sauces.push(sauce);
+      setSauces([...sauces]);
     }
-
-    setSauces([...sauces]);
   };
 
   return (
     <div>
-      <h2>Sauces {sauces.length}/{QTY_SAUCES} - Veuillez choisir jusqu’à trois produits</h2>
+      <h2>Sauces {(sauces.length + supps.filter(s => s.type === 'sauces').length)}/{QTY_SAUCES} - Veuillez choisir jusqu’à trois produits</h2>
       <div className='ingredients-container'>
         {availableSauces.map(sauce => (
           <div key={sauce.id} className='ingredient-container' onClick={() => editSauces(sauce)}>
-            <img src={sauce.img || defaultBasketSrc} className={sauces.map(s => s.id).includes(sauce.id) ? 'selected' : ''} />
-            <p>{sauce.label}</p>
+            <img src={sauce.img || defaultBasketSrc} className={(sauces.map(s => s.id).includes(sauce.id) || supps.map(s => s.id).includes(sauce.id)) ? 'selected' : ''} />
+            <p>
+              {sauce.label}
+              {(sauces.length >= QTY_SAUCES && !sauces.map(s => s.id).includes(sauce.id)) ?
+                <span className='supp-prices'>+1,5 €</span> : null
+              }
+            </p>
           </div>
         ))}
       </div>
 
-      <button className='next-button' onClick={() => nextStep({ sauces })}>Suivant</button>
+      <button className='next-button' onClick={() => nextStep({ sauces, supps })}>Suivant</button>
     </div>
   );
 };
@@ -210,15 +314,21 @@ const Step4 = ({ basketParts }) => {
     if (typeof window !== 'undefined') {
       const eventEmitter = new EventEmitter();
       let cart = JSON.parse(window.localStorage.getItem('cart'));
+      let basketPrice = customBasketDetails.price;
 
-      setBasket({ ...customBasketDetails, items: { ...basket, supps }});
+      if (!!supps.length) {
+        basketPrice += (supps.length * SUPP_PRICE);
+      }
+
+      let newBasket = { ...customBasketDetails, price: basketPrice, items: { ...basket, supps }};
+      setBasket({ ...newBasket });
 
       if (!cart) {
         cart = [];
       }
 
       for (let i=0; i<qty; i++) {
-        cart.push(basket);
+        cart.push(newBasket);
       }
 
       setIsDone(true);
@@ -274,9 +384,13 @@ const Step4 = ({ basketParts }) => {
 
 const CustomBasketToOrder = () => {
   const [step, setStep] = useState(1);
-  const [basket, setBasket] = useState({});
+  const [basket, setBasket] = useState({ supps: [] });
 
   const nextStep = (currentBasket) => {
+    if (!!currentBasket.supps.length) {
+      currentBasket.supps = [...currentBasket.supps, ...basket.supps];
+    }
+
     const newBasket = { ...basket, ...currentBasket };
     setBasket({ ...newBasket });
     setStep(step + 1);

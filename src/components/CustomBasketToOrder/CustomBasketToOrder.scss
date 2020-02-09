@@ -33,7 +33,11 @@
       }
 
       p {
-        text-align: center;
+				text-align: center;
+
+				.supp-prices {
+					color: #EA1B1B;
+				}
       }
     }
   }
