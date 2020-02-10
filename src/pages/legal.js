@@ -4,7 +4,7 @@ import SEO from '../components/seo';
 import Layout from '../components/layout';
 import { Container } from 'react-bootstrap';
 
-const OrdersPage = () => (
+const LegalPage = () => (
   <Layout>
     <SEO title='Mentions légales' />
 
@@ -85,4 +85,4 @@ const OrdersPage = () => (
   </Layout>
 );
 
-export default OrdersPage;
+export default LegalPage;
