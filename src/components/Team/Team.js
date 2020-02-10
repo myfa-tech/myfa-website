@@ -44,7 +44,7 @@ const Team = () => (
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
             Notre ambition est d'apporter une vraie bonne solution
-            aux problèmes de confiance, pour ce qui concerne l'envoi d'argent.
+            aux problèmes causés par la distance. Nous rapprochons les familles.
           </p>
         </div>
         <div className='author-id'>
@@ -60,7 +60,7 @@ const Team = () => (
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
             Notre ambition est d'apporter une vraie bonne solution
-            aux problèmes de confiance, pour ce qui concerne l'envoi d'argent.
+            aux problèmes causés par la distance. Nous rapprochons les familles.
           </p>
         </div>
       </Col>
