@@ -7,11 +7,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import { isEqual, some } from 'lodash';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 import { addRecipient } from '../../services/users';
 import lydiaService from '../../services/lydia';
 import { saveUser } from '../../services/users';
+import EventEmitter from '../../services/EventEmitter';
 
 import './Cart.scss';
 import { Row, Col } from 'react-bootstrap';
@@ -29,7 +31,7 @@ const spinnerStyle = css`
   margin: 0 auto;
 `;
 
-const CartItems = ({ basketsPrice, cart, editItems }) => {
+const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
   return (
     <div className='cart-container'>
       <h2>Mon panier</h2>
@@ -40,20 +42,25 @@ const CartItems = ({ basketsPrice, cart, editItems }) => {
         {Object.keys(cart.baskets).map((basketKey, index) => (
             <li key={index}>
               <Row>
-                <Col xs={2} sm={2} className='image-container'>
+                <Col xs={0} sm={2} className='image-container d-none d-sm-block'>
                   <img src={cart.baskets[basketKey].img} />
                 </Col>
                 <Col xs={7} sm={6} className='label-container'>
                   <h3>{cart.baskets[basketKey].label}</h3>
                   <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                 </Col>
-                <Col xs={3} sm={4} className='qty-container'>
-                  <p>Qté</p>
-                  <p>
-                    <button className='minus-button' onClick={() => editItems(cart.baskets[basketKey].type, -1)}>-</button>
-                    <span>{cart.baskets[basketKey].qty}</span>
-                    <button className='plus-button' onClick={() => editItems(cart.baskets[basketKey].type, 1)}>+</button>
-                  </p>
+                <Col xs={5} sm={4} className='qty-container'>
+                  <div className='qty'>
+                    <p>Qté</p>
+                    <p>
+                      <button className='minus-button' onClick={() => editItems(cart.baskets[basketKey].type, -1)}>-</button>
+                      <span>{cart.baskets[basketKey].qty}</span>
+                      <button className='plus-button' onClick={() => editItems(cart.baskets[basketKey].type, 1)}>+</button>
+                    </p>
+                  </div>
+                  <div className='trash-container'>
+                    <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
+                  </div>
                 </Col>
                 <Col></Col>
               </Row>
@@ -416,6 +423,8 @@ const Cart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
 
+  const eventEmitter = new EventEmitter();
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let newCart = JSON.parse(window.localStorage.getItem('cart'));
@@ -604,6 +613,18 @@ const Cart = () => {
     }
   };
 
+  const removeBaskets = (basketTypeToRemove) => {
+    const savedCart = JSON.parse(window.localStorage.getItem('cart'));
+
+    let filteredCart = savedCart.filter(b => b.type !== basketTypeToRemove);
+
+    window.localStorage.setItem('cart', JSON.stringify(filteredCart));
+    eventEmitter.emit('editCart');
+
+    delete cart.baskets[basketTypeToRemove];
+    setCart({ ...cart });
+  };
+
   const pay = async () => {
     const user = JSON.parse(window.localStorage.getItem('user'));
 
@@ -648,7 +669,7 @@ const Cart = () => {
       {cart && cart.baskets && Object.keys(cart.baskets).length ?
         <Row>
           <Col md='8'>
-            {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} /> : null}
+            {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
             {step === 2 ?
               <>
                 <PersonalInfo

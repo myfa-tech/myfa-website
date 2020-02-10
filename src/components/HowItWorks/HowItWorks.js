@@ -2,7 +2,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import { FaCreditCard, FaEnvelopeOpen, FaMapMarkerAlt, FaRegListAlt, FaShoppingBasket, FaTruck } from 'react-icons/fa';
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
-import { IconContext } from 'react-icons';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -69,7 +68,7 @@ const HowItWorks = () => {
     },
     {
       Icon: FaTruck,
-      title: <h4>Livraison en moins de 48h*</h4>,
+      title: <h4>Livraison en moins de 48h</h4>,
       description: <p>Sous réserve de la disponibilité de votre proche.</p>,
     },
     {

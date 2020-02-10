@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
 import CartModal from '../CartModal';
 
@@ -29,25 +29,21 @@ const Baskets = ({
 								<h5>{basket.homeDesc}</h5>
 								<img src={basket.img} alt={basket.imgAlt} />
 								<Row>
-									{basket.type !== 'myfa' ?
-										<>
-										<Col xs={6} className='price-container'>
-											<p><span className='regular-price'>{basket.realPrice}€</span><span className='reduction'>-{basket.reduction}%</span></p>
-											<p className='new-price'><b>{basket.price}€</b> jusqu'au 10/03/2020</p>
-										</Col>
+									<Col xs={6} className='price-container'>
+										<p><span className='regular-price'>{basket.realPrice}€</span><span className='reduction'>-{basket.reduction}%</span></p>
+										<p className='new-price'><b>{basket.price}€</b> jusqu'au 31/03/2020</p>
+									</Col>
 
-										<Col xs={6} className='cart-container'>
-
-												<div className='cart-button' onClick={(e) => addBasketToCart(e, basket)}>
-													<FaShoppingCart className='cart-icon' />
-												</div>
-										</Col>
-										</>:
-										<Col xs={6} className='price-container custom-basket'>
-											<p><span className='regular-price'>{basket.realPrice}€</span><span className='reduction'>-{basket.reduction}%</span></p>
-											<p className='new-price'><b>{basket.price}€</b> jusqu'au 10/03/2020</p>
-										</Col>
-									}
+									<Col xs={6} className='cart-container'>
+										{basket.type !== 'myfa' ?
+											<div className='cart-button' onClick={(e) => addBasketToCart(e, basket)}>
+												<FaShoppingCart className='cart-icon' />
+											</div> :
+											<div className='cart-button'>
+												<FaShoppingBasket className='cart-icon' />
+											</div>
+										}
+									</Col>
 								</Row>
 							</div>
 						</Col>

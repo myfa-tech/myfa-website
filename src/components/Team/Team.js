@@ -68,8 +68,8 @@ const Team = () => (
         <div className='desktop-quote'>
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
-            MYFA est plus qu'une simple application visant à contrôler l'usage
-            de votre argent, c'est une expérience de confiance.
+            Nous vous proposons une expérience nouvelle pour ravir vos proches
+            et entretenir la confiance malgré la distance !
           </p>
         </div>
         <div className='author-id'>
@@ -83,8 +83,8 @@ const Team = () => (
         <div className='mobile-quote'>
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
-            MYFA est plus qu'une simple application visant à contrôler l'usage
-            de votre argent, c'est une expérience de confiance.
+            Nous vous proposons une expérience nouvelle pour ravir vos proches
+            et entretenir la confiance malgré la distance !
           </p>
         </div>
       </Col>
