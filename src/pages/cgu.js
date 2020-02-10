@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 
 const CGUPage = () => (
   <Layout>
-    <SEO title='CGU' />
+    <SEO title="MYFA - Conditions Générales d'Utilisation" />
 
     <Container>
       <h1>Conditions Générales d'Utilisation</h1>

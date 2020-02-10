@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 
 const CGVPage = () => (
   <Layout>
-    <SEO title='CGV' />
+    <SEO title="MYFA - Conditions Générales de Vente" />
 
     <Container>
       <h1>Conditions Générales de Vente</h1>

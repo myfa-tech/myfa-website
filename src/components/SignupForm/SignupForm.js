@@ -216,7 +216,7 @@ const SignupForm = ({ onSignup }) => {
             color='primary'
           />
         }
-        label={'J\'accepte les CGV et CGU'}
+        label={<p className='cgu-cgv-label'>J'accepte les <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a></p>}
       />
 
       {isLoading ?

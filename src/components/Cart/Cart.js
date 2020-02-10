@@ -369,7 +369,7 @@ const PersonalInfo = ({ errors, form, responseStatus, setErrors, setForm, setRes
               color='primary'
             />
           }
-          label={'J\'accepte les CGV et CGU'}
+          label={<p className='cgu-cgv-label'>J'accepte les <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a></p>}
         />
       </form>
     </div>
