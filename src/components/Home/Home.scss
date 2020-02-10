@@ -80,6 +80,24 @@
   }
 }
 
+#launch-modal {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+
+  .modal-content {
+    background-color: #F1D866;
+  }
+
+  .modal-header {
+    border: none;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}
+
 @media (min-width: 1024px) {
   #home {
     .section-1 {
