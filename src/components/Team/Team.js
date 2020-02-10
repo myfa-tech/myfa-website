@@ -18,7 +18,7 @@ const Team = () => (
         <div className='desktop-quote'>
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
-            Avec MYFA, j’ai voulu créer un moyen de pouvoir aider, sans frustrations.
+            Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations.
             Ici, je sais ce que devient mon argent.
           </p>
         </div>
@@ -34,7 +34,7 @@ const Team = () => (
         <div className='mobile-quote'>
           <FaQuoteLeft size='2em' className='quote-icon' />
           <p>
-            Avec MYFA, j’ai voulu créer un moyen de pouvoir aider, sans frustrations.
+            Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations.
             Ici, je sais ce que devient mon argent.
           </p>
         </div>

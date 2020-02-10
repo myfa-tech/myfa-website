@@ -12,7 +12,7 @@ const baskets = [
     imgAlt: 'panier fruits',
     img: fruitsSrc,
     realPrice: 5.99,
-    reduction: 20,
+    reduction: 16,
     price: 4.99,
     description: 'Le panier Fruits rassemble jusqu\'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.',
     items: [
@@ -32,7 +32,7 @@ const baskets = [
     imgAlt: 'panier légumes',
     img: veggiesSrc,
     realPrice: 11.99,
-    reduction: 20,
+    reduction: 16,
     price: 9.99,
     description: 'Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs/ producteurs avec qui nous sommes en contact direct ! 😉',
     items: [
