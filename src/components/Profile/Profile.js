@@ -35,7 +35,9 @@ const Profile = () => {
   const logout = () => {
     if (typeof window !== 'undefined') {
       window.localStorage.removeItem('user');
+      window.localStorage.removeItem('cart');
       window.localStorage.removeItem('userToken');
+      window.localStorage.removeItem('popupViewed');
 
       window.location.assign('/');
     }

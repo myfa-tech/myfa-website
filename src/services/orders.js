@@ -16,19 +16,6 @@ const getOrdersByRef = async (ref) => {
   return response.data;
 }
 
-const countBaskets = async () => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
-
-  let axios = Axios.create({
-    baseURL: BACKEND_URL,
-    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
-  });
-
-  const response = await axios.get(`/baskets/count`);
-
-  return Number(response.data.count);
-}
-
 const getBasketsByEmail = async (email) => {
   let JWT_TOKEN = window.localStorage.getItem('userToken');
 
@@ -42,4 +29,4 @@ const getBasketsByEmail = async (email) => {
   return response.data.baskets;
 };
 
-export { countBaskets, getOrdersByRef, getBasketsByEmail };
+export { getOrdersByRef, getBasketsByEmail };

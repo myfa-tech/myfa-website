@@ -70,15 +70,15 @@ const ProfileOrders = () => {
 
         {pendingBaskets.length ?
           <ul className='baskets-container'>
-            {pendingBaskets.map((basket) => console.log(basket) || (
-              <li key={basket.count}>
+            {pendingBaskets.map((basket, index) => (
+              <li key={index}>
                 <Row>
                   <Col md={3} xs={2} className='image-container'>
                     <img src={(baskets.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                   </Col>
                   <Col md={9} xs={10} className='stepper-container'>
                     <div className='title-container'>
-                      <h3>Commande MYFA {basket.count}</h3>
+                      <h3>Commande {basket.orderRef}</h3>
                     </div>
                     <div className='content-container'>
                     <ThemeProvider theme={theme}>
@@ -104,11 +104,11 @@ const ProfileOrders = () => {
 
         {deliveredBaskets.length ?
           <ul className='baskets-container'>
-            {deliveredBaskets.map((basket) => {
+            {deliveredBaskets.map((basket, index) => {
               let deliveredAt = new Date(basket.deliveredAt);
 
               return (
-                <li key={basket.count}>
+                <li key={index}>
                   <Row>
                     <Col md={3} xs={3} className='image-container'>
                       <img src={(baskets.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
@@ -119,7 +119,7 @@ const ProfileOrders = () => {
                           <h3>{(baskets.find(b => b.type === basket.type) || {}).label}</h3>
                         </Col>
                         <Col sm={7} className='delivery-info-container'>
-                          <h3>Commande MYFA {basket.count}</h3>
+                          <h3>Commande {basket.orderRef}</h3>
                           <h3>Livrée : {deliveredAt.getDate()} {new Intl.DateTimeFormat('fr-FR', monthDisplayingOptions).format(deliveredAt)} {deliveredAt.getFullYear()}</h3>
                         </Col>
                       </Row>

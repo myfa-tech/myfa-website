@@ -12,9 +12,14 @@ const Home = ({ setShowToast, showToast, toastType }) => {
   const [showLaunchModal, setShowLaunchModal] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      toggleLaunchModal();
-    }, 2000);
+    const popupViewed = window.localStorage.getItem('popupViewed');
+
+    if (!popupViewed) {
+      setTimeout(() => {
+        toggleLaunchModal();
+        window.localStorage.setItem('popupViewed', 'true');
+      }, 2000);
+    }
   }, []);
 
   const toggleLaunchModal = () => {

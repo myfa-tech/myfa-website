@@ -73,7 +73,7 @@ const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRela
               );
             })}
           </ul> :
-          <p className='no-relatives'>Vous n’avez pas encore enregistrer de proches.</p>
+          <p className='no-relatives'>Vous n’avez pas encore enregistré de proche.</p>
         }
       </div>
     </>
