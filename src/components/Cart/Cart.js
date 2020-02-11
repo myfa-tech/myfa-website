@@ -441,6 +441,7 @@ const Cart = () => {
               singlePrice: cur.price,
               type: cur.type,
               img: cur.img,
+              items: cur.items || {},
             };
           }
 
