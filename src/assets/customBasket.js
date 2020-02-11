@@ -45,8 +45,8 @@ const availableSauces = [
   { id: 'toma', type: 'sauces', label: 'Tomates (1kg)', img: tomatoSrc },
   { id: 'citr', type: 'sauces', label: 'Citrons (1kg)', img: citronSrc },
   { id: 'paar', type: 'sauces', label: 'Pate d’arachide (1 pot)', img: peanutPasteSrc },
-  { id: 'seba', type: 'sauces', label: 'Sel baleine', img: saltSrc },
-  { id: 'pomo', type: 'sauces', label: 'Poivre moulu', img: pepperSrc },
+  { id: 'seba', type: 'sauces', label: 'Sel baleine (200g)', img: saltSrc },
+  { id: 'pomo', type: 'sauces', label: 'Poivre moulu (200g)', img: pepperSrc },
   { id: 'grak', type: 'sauces', label: 'Graines d’akpi (200g)', img: akpiSrc },
   { id: 'gimo', type: 'sauces', label: 'Gingembre moulu (200g)', img: gingerSrc },
 ];
@@ -72,8 +72,8 @@ const availableSupps = [
   { id: 'toma', type: 'supps', label: 'Tomates (1kg)', img: tomatoSrc },
   { id: 'citr', type: 'supps', label: 'Citrons (1kg)', img: citronSrc },
   { id: 'paar', type: 'supps', label: 'Pate d’arachide (1 pot)', img: peanutPasteSrc },
-  { id: 'seba', type: 'supps', label: 'Sel baleine', img: saltSrc },
-  { id: 'pomo', type: 'supps', label: 'Poivre moulu', img: pepperSrc },
+  { id: 'seba', type: 'supps', label: 'Sel baleine (200g)', img: saltSrc },
+  { id: 'pomo', type: 'supps', label: 'Poivre moulu (200g)', img: pepperSrc },
   { id: 'grak', type: 'supps', label: 'Graines d’akpi (200g)', img: akpiSrc },
 ];
 
@@ -94,7 +94,7 @@ const customBasketDetails = {
   img: myfaSrc,
   realPrice: 27.99,
   reduction: 7,
-  price: 1, // 25.99,
+  price: 25.99,
   description: 'Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !',
 };
 

@@ -584,7 +584,7 @@ const Cart = () => {
     let oldQty = cart.baskets[type].qty;
     let newQty = cart.baskets[type].qty + adding;
 
-    if (newQty >= 0 && newQty <= 5) {
+    if (newQty > 0 && newQty <= 5) {
       cart.baskets[type].price = oldQty === 0 ? cart.baskets[type].singlePrice : newQty * (cart.baskets[type].price / oldQty);
       cart.baskets[type].qty = newQty;
 

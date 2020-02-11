@@ -11,7 +11,11 @@ import defaultBasketSrc from '../../images/default-basket.png';
 import './ProfileOrders.scss';
 
 import baskets from '../../assets/baskets';
+import { customBasketDetails } from '../../assets/customBasket';
+
 import { Row, Col } from 'react-bootstrap';
+
+const basketsDetails = [ ...baskets, customBasketDetails ];
 
 const basketStatus = {
   'pending': 'Commandé',
@@ -74,7 +78,7 @@ const ProfileOrders = () => {
               <li key={index}>
                 <Row>
                   <Col md={3} xs={2} className='image-container'>
-                    <img src={(baskets.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
+                    <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                   </Col>
                   <Col md={9} xs={10} className='stepper-container'>
                     <div className='title-container'>
@@ -111,12 +115,12 @@ const ProfileOrders = () => {
                 <li key={index}>
                   <Row>
                     <Col md={3} xs={3} className='image-container'>
-                      <img src={(baskets.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
+                      <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                     </Col>
                     <Col md={9} xs={9} className='info-container'>
                       <Row>
                         <Col sm={5} className='basket-name-container'>
-                          <h3>{(baskets.find(b => b.type === basket.type) || {}).label}</h3>
+                          <h3>{(basketsDetails.find(b => b.type === basket.type) || {}).label}</h3>
                         </Col>
                         <Col sm={7} className='delivery-info-container'>
                           <h3>Commande {basket.orderRef}</h3>
