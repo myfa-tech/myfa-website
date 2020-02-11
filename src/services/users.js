@@ -1,13 +1,13 @@
 
-import Axios from 'axios'
+import Axios from 'axios';
 
-const BACKEND_URL = 'https://myfa-website-backend.herokuapp.com/users'
+const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const fetchUsers = async () => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
 
   let axios = Axios.create({
-    baseURL: 'https://myfa-website-backend.herokuapp.com',
+    baseURL: BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -17,7 +17,7 @@ const fetchUsers = async () => {
 };
 
 const saveUser = async (user) => {
-  const response = await Axios.post(BACKEND_URL, user);
+  const response = await Axios.post(`${BACKEND_URL}/users`, user);
   const createdUser = response.data.user;
   const { token } = response.data;
 
@@ -35,7 +35,7 @@ const updateUser = async (userPart) => {
 
   const user = { ...JSON.parse(window.localStorage.getItem('user')), ...userPart };
 
-  await axios.put(BACKEND_URL, user);
+  await axios.put('/users', user);
 
   window.localStorage.setItem('user', JSON.stringify(user));
 };
@@ -49,13 +49,12 @@ const updatePassword = async ({ actualPassword, newPassword }) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.post(`${BACKEND_URL}/password/verify`, { email: user.email, password: actualPassword });
-
-  await axios.put(`${BACKEND_URL}/password`, { email: user.email, password: newPassword });
+  await axios.post(`/users/password/verify`, { email: user.email, password: actualPassword });
+  await axios.put(`/users/password`, { email: user.email, password: newPassword });
 };
 
 const loginUser = async (user) => {
-  const response = await Axios.post(`${BACKEND_URL}/login`, user);
+  const response = await Axios.post(`${BACKEND_URL}/users/login`, user);
   const { user: loggedInUser, token } = response.data;
 
   window.localStorage.setItem('user', JSON.stringify(loggedInUser));
@@ -73,7 +72,7 @@ const addRecipient = async (recipient) => {
   const user = JSON.parse(window.localStorage.getItem('user'));
   user.recipients.push(recipient);
 
-  await axios.put(BACKEND_URL, user);
+  await axios.put('/users', user);
 
   window.localStorage.setItem('user', JSON.stringify(user));
 };

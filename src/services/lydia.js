@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import uuid from 'uuid/v4';
 
-const BACKEND_URL = 'https://myfa-website-backend.herokuapp.com/lydia';
+const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const requestPayment = async (order, userEmail) => {
   const origin = window.location.origin;
@@ -12,11 +12,11 @@ const requestPayment = async (order, userEmail) => {
   let JWT_TOKEN = window.localStorage.getItem('userToken');
 
   let axios = Axios.create({
-    baseURL: 'https://myfa-website-backend.herokuapp.com',
+    baseURL: BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-	const response = await axios.post(`${BACKEND_URL}/pay`, {
+	const response = await axios.post(`/lydia/pay`, {
     amount: order.price, // amount in €
     type: 'email',
     currency: 'EUR',
