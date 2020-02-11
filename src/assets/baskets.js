@@ -13,7 +13,7 @@ const baskets = [
     img: fruitsSrc,
     realPrice: 5.99,
     reduction: 16,
-    price: 4.99,
+    price: 1, // 4.99,
     description: 'Le panier Fruits rassemble jusqu\'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.',
     items: [
       '1kg de bananes',
@@ -33,7 +33,7 @@ const baskets = [
     img: veggiesSrc,
     realPrice: 11.99,
     reduction: 16,
-    price: 9.99,
+    price: 1, // 9.99,
     description: 'Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs/ producteurs avec qui nous sommes en contact direct ! 😉',
     items: [
       '1kg de carottes',
@@ -53,7 +53,7 @@ const baskets = [
     img: saucesSrc,
     realPrice: 23.99,
     reduction: 8,
-    price: 0.99, // 21.99,
+    price: 1, // 21.99,
     description: 'Tout bon plat se doit d\'être accompagné d\'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉',
     items: [
       '1 bouteille d\'huile de palme 1L',

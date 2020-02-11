@@ -94,7 +94,7 @@ const customBasketDetails = {
   img: myfaSrc,
   realPrice: 27.99,
   reduction: 7,
-  price: 25.99,
+  price: 1, // 25.99,
   description: 'Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !',
 };
 
