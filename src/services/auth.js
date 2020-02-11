@@ -7,10 +7,13 @@ const axios = Axios.create({
 
 const isBrowser = () => typeof window !== 'undefined';
 
-const getUser = () => isBrowser() && window.localStorage.getItem('myfaDashboardUser') ?
+const getAdmin = () => isBrowser() && window.localStorage.getItem('myfaDashboardUser') ?
   JSON.parse(window.localStorage.getItem('myfaDashboardUser')) : {};
 
-const setUser = (user) => window.localStorage.setItem('myfaDashboardUser', JSON.stringify(user));
+const getUser = () => isBrowser() && window.localStorage.getItem('user') ?
+  JSON.parse(window.localStorage.getItem('user')) : {};
+
+const setAdmin = (user) => window.localStorage.setItem('myfaDashboardUser', JSON.stringify(user));
 
 const setToken = async (token) => window.localStorage.setItem('myfaDashboardToken', token);
 
@@ -19,7 +22,7 @@ const handleLogin = async (creds) => {
 
   if (!!response.data.user && !!response.data.token) {
     await setToken(response.data.token);
-    return setUser(response.data.user);
+    return setAdmin(response.data.user);
   }
 
   return false;
@@ -30,10 +33,15 @@ const isLoggedIn = () => {
   return !!user.email;
 };
 
+const isAdminLoggedIn = () => {
+  const user = getAdmin();
+  return !!user.email;
+};
+
 const logout = (callback) => {
   setToken('');
-  setUser({});
+  setAdmin({});
   callback();
 }
 
-export { getUser, handleLogin, isLoggedIn, logout, setUser };
+export { getUser, handleLogin, isAdminLoggedIn, isLoggedIn, logout, setAdmin };

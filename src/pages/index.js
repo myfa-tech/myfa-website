@@ -1,23 +1,29 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import Home from '../components/Home'
-import Features from '../components/Features'
-import OurEssence from '../components/OurEssence'
-import News from '../components/News'
-import Newsletter from '../components/Newsletter'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Home from '../components/Home';
+import OurPromise from '../components/OurPromise';
+import Team from '../components/Team';
+import Newsletter from '../components/Newsletter';
+import Baskets from '../components/Baskets';
+import HowItWorks from '../components/HowItWorks';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Myfa, pour vos proches au loin" />
+import './index.scss';
 
-    <Home />
-    <Features />
-    <OurEssence />
-    <News />
-    <Newsletter />
-  </Layout>
-)
+const IndexPage = () => {
+  return (
+    <Layout hideHeader={true}>
+      <SEO title="MYFA, pour vos proches au loin" />
+
+      <Home />
+      <HowItWorks />
+      <Baskets />
+      <OurPromise />
+      <Team />
+      <Newsletter />
+    </Layout>
+  );
+}
 
 export default IndexPage

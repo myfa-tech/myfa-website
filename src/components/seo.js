@@ -64,7 +64,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           property: `og:site_name`,
-          content: 'Myfa',
+          content: 'MYFA',
         },
         {
           property: `og:image`,

@@ -20,7 +20,7 @@ import logoSrc from '../../images/logo-1.png'
 const Article = (props) => (
   <Layout>
     <SEO
-      title="Myfa, une application pensée pour la mif"
+      title="MYFA, une application pensée pour la mif"
       description="En tant que membre de la diaspora africaine, nous avons la mission de prendre en charge une partie des dépenses de nos proches restés au pays."
       type="article"
       img={logoSrc}
@@ -30,7 +30,7 @@ const Article = (props) => (
     <Container className='article-container'>
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <h1>Myfa, une application pensée pour la mif</h1>
+          <h1>MYFA, une application pensée pour la mif</h1>
 
           <div className='author'>
             <img src={dorisSrc} alt='doris' />
@@ -41,7 +41,7 @@ const Article = (props) => (
           </div>
 
           <p>
-            Hein ? Quoi ? Que veut dire “Myfa” ? <br />
+            Hein ? Quoi ? Que veut dire “MYFA” ? <br />
             Cela veut dire “famille” en verlan.
             Le verlan étant une forme d'argot français qui consiste en
             l'inversion des syllabes d'un mot.
@@ -95,13 +95,13 @@ const Article = (props) => (
           <p>
             Pour avoir cette certitude, j’ai décidé (en étant très bien accompagnée :
             Florian Adonis - <strong>CTO</strong>; Morgane CHASSON - <strong>Graphiste</strong>;
-            Marc Blanchard - <strong>Business Angel</strong>) de créer Myfa :
+            Marc Blanchard - <strong>Business Angel</strong>) de créer MYFA :
             l’application pour vos proches, au loin.
           </p>
 
           <Row>
             <Col sm={3} className='img-container'>
-              <img src={logoSrc} alt='logo Myfa' className='logo-img' />
+              <img src={logoSrc} alt='logo MYFA' className='logo-img' />
             </Col>
             <Col>
               <p>
@@ -117,7 +117,7 @@ const Article = (props) => (
             De cette manière, j’ai un certain contrôle sur l’argent que j’envoie au Cameroun. <br />
             Imaginons la situation suivante : tous les mois, j’envoie 100 euros à ma grand-mère.
             Jusqu’à présent, impossible de vérifier que cet argent est utilisé à bon escient.
-            Grâce à Myfa, sur les 100 euros je peux faire 40-50 euros de courses,
+            Grâce à MYFA, sur les 100 euros je peux faire 40-50 euros de courses,
             lui permettant de se faire plaisir avec le reste.
           </p>
 
@@ -133,7 +133,7 @@ const Article = (props) => (
             </FacebookShareButton>
             <TwitterShareButton
               url={props.location.href}
-              title='Myfa, une application pensée pour la mif 🌍'
+              title='MYFA, une application pensée pour la mif 🌍'
               via='myfa_fr'
               hashtags={['entreprenariat', 'afrique', 'toutpourlamyfa']}
               className='sharing-buttons'

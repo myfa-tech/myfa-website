@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Nav, Navbar } from 'react-bootstrap'
-import { isLoggedIn, logout } from '../../../services/auth';
+import { isAdminLoggedIn, logout } from '../../../services/auth';
 
 import './Header.scss';
 import logoSrc from '../../../images/logo-1.png';
@@ -14,7 +14,7 @@ const Header = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
         <Nav className='menu'>
-          {isLoggedIn() ?
+          {isAdminLoggedIn() ?
             <Nav.Link href="/#" onClick={logout}>Logout</Nav.Link> :
             <Nav.Link href="/">Accueil</Nav.Link>
           }

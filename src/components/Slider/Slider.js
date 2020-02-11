@@ -39,7 +39,7 @@ export default class extends React.Component {
                 <div className='author-id'>
                   <img src={slide.author === 'florian' ? florianSrc : dorisSrc} className='profile-pic' alt={slide.author} />
                   <h4>{slide.author === 'florian' ? 'Florian Adonis' : 'Doris Somon'}</h4>
-                  <span>{slide.author === 'florian' ? 'CTO, Myfa' : 'CEO, Myfa'}</span>
+                  <span>{slide.author === 'florian' ? 'CTO, MYFA' : 'CEO, MYFA'}</span>
                 </div>
               </div>
             </div>

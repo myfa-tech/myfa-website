@@ -18,7 +18,7 @@ import coverSrc from '../../images/mobileone.png'
 const Article = (props) => (
   <Layout>
     <SEO
-      title="Vous, le premier membre de la myfa"
+      title="Vous, le premier membre de la MYFA"
       description="La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes."
       type="article"
       img={coverSrc}
@@ -28,7 +28,7 @@ const Article = (props) => (
     <Container className='article-container'>
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <h1>Vous, le premier membre de la myfa*</h1>
+          <h1>Vous, le premier membre de la MYFA*</h1>
 
           <div className='author'>
             <img src={dorisSrc} alt='doris' />
@@ -49,7 +49,7 @@ const Article = (props) => (
           </p>
 
           <p>
-            De grands noms sont montés sur scène : Snapchat, Happn, Google Pay, Whoomies, et Myfa……
+            De grands noms sont montés sur scène : Snapchat, Happn, Google Pay, Whoomies, et MYFA……
             Ah non, nous étions présents en tant que participants ! Pour mieux vous servir.
           </p>
 
@@ -91,7 +91,7 @@ const Article = (props) => (
           </p>
 
           <p>
-            *Myfa = famille
+            *MYFA = famille
           </p>
           <p>
             <a href='https://twitter.com/hashtag/toutpourlamyfa' target='_blank' rel="noopener noreferrer">#toutpourlamyfa</a>
@@ -108,7 +108,7 @@ const Article = (props) => (
             </FacebookShareButton>
             <TwitterShareButton
               url={props.location.href}
-              title='Vous, le premier membre de la myfa'
+              title='Vous, le premier membre de la MYFA'
               via='myfa_fr'
               hashtags={['consumercentric', 'mobileapp', 'toutpourlamyfa']}
               className='sharing-buttons'

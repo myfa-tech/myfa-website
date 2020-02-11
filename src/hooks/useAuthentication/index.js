@@ -1,1 +1,1 @@
-export { default } from './useAuthentication';
+export { useAdminAuthentication, useAuthentication } from './useAuthentication';

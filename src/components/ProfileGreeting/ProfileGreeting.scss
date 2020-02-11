@@ -1,0 +1,33 @@
+#profile-greeting {
+  border-radius: 8px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: white;
+
+  h1 {
+    padding: 1em 0.5em;
+  }
+}
+
+@media (min-width: 1024px) {}
+
+@media (max-width: 1024px) {}
+
+@media (min-width: 768px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) {
+  #profile-greeting {
+    border-radius: 0;
+    width: 100%;
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 350px) {}

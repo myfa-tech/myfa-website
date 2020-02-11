@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Newsletter from './Newsletter'
-import { saveMember } from '../../services/mailchimp'
+import { saveNewsletterMember } from '../../services/mailjet'
 
 class NewsletterContainer extends Component {
   state = {
@@ -26,7 +26,7 @@ class NewsletterContainer extends Component {
     const { email } = this.state
 
     try {
-      await saveMember({ email })
+      await saveNewsletterMember({ email })
       this.setToastType('success')
       this.setShowToast(true)
       this.resetEmail()

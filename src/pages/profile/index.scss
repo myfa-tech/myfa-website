@@ -1,0 +1,71 @@
+.profile-background, .cart-background {
+  background-color: rgba(241, 216, 102, 0.1);
+}
+
+.profile {
+  .profile-container {
+    width: 90%;
+    margin: 0 auto;
+
+    .left-column {
+      padding: 0;
+    }
+
+    .right-column {
+      display: none;
+    }
+  }
+
+  .information-container, .orders-container, .relatives-container {
+    width: 90%;
+    margin: 0 auto;
+
+    .left-column {
+      padding: 0;
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .profile {}
+}
+
+@media (max-width: 1024px) {
+  .profile {}
+}
+
+@media (min-width: 768px) {
+  .profile {
+    .profile-container, .information-container, .orders-container, .relatives-container {
+      .right-column {
+        display: block;
+        padding-right: 0;
+      }
+
+      .left-column {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) {
+  .profile {
+    .information-container, .orders-container, .relatives-container {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .profile {
+    .information-container, .orders-container, .relatives-container {
+      .right-column {
+        padding: 0;
+      }
+    }
+  }
+}

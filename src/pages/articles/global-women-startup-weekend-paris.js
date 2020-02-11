@@ -94,8 +94,8 @@ const Article = (props) => (
               <p>
                 « Doris m’a approché il y a quelques mois avec cette idée, que j’ai trouvé tout de suite intéressante.
                 Il lui fallait quelqu’un qui allait pouvoir l’accompagner lors de cette aventure entrepreneuriale,
-                quelqu’un qui allait lui permettre de mettre en place la tech de Myfa de manière efficace.
-                J’ai fait de mon mieux, le futur en jugera. Ce week-end, c’est la première fois que Myfa aura
+                quelqu’un qui allait lui permettre de mettre en place la tech de MYFA de manière efficace.
+                J’ai fait de mon mieux, le futur en jugera. Ce week-end, c’est la première fois que MYFA aura
                 une exposition publique, et c’est une chance pour nous d’approcher des talents et obtenir
                 un regard extérieur quant au projet que nous sommes en train de monter.
               </p>

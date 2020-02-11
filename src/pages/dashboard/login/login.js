@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/Layout';
-import { handleLogin, isLoggedIn } from '../../../services/auth';
+import { handleLogin, isAdminLoggedIn } from '../../../services/auth';
 import { navigate } from 'gatsby';
 
 import './login.scss';
@@ -26,7 +26,7 @@ const Login = () => {
     navigate('/dashboard');
   }
 
-  if (isLoggedIn()) {
+  if (isAdminLoggedIn()) {
     navigate('/dashboard');
   }
 

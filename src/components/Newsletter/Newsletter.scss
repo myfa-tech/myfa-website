@@ -1,57 +1,68 @@
-.newsletter {
-  padding: 90px 0px;
-  background-image: url(../../images/fabric_dark.jpg);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff;
-  position: relative;
+#newsletter {
+  .content-container {
+    padding: 4em 0px;
+    background-color: rgba(241, 216, 102, 0.1);
+    color: #311a19;
+    border-radius: 8px;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
 
-  .content {
-    margin: 0;
-    text-align: center;
-  }
+    .content {
+      margin: 0;
+      text-align: center;
+    }
 
-  input {
-    border-top-left-radius: 30px !important;
-    border-bottom-left-radius: 30px !important;
-  }
+    input {
+      border-top-left-radius: 6px !important;
+      border-bottom-left-radius: 6px !important;
+    }
 
-  .subscribe-btn {
-    border-top-right-radius: 30px !important;
-    border-bottom-right-radius: 30px !important;
-    background-color: #f1d866;
-    border-color: #f1d866;
-    padding: .5rem 2rem !important;
+    .subscribe-btn {
+      border-top-right-radius: 6px !important;
+      border-bottom-right-radius: 6px !important;
+      background-color: #f1d866;
+      border-color: #f1d866;
+      padding: .5rem 2rem !important;
 
-    .subscribe-icon {
-      display: none;
+      .subscribe-icon {
+        display: none;
+      }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .newsletter {
-    .subscribe-btn {
-      .subscribe-text {
-        display: none;
-      }
+  #newsletter {
+    .content-container {
+      .subscribe-btn {
+        .subscribe-text {
+          display: none;
+        }
 
-      .subscribe-icon {
-        display: block;
+        .subscribe-icon {
+          display: block;
+        }
       }
     }
   }
 }
 
 @media (max-width: 480px) {
-  .newsletter {
-    h2 {
-      font-size: 25px;
-    }
+  #newsletter {
+    .content-container {
+      padding: 2em 1em;
+      border: none;
+      border-radius: 0;
+      width: 100%;
 
-    .input-group-lg>.form-control {
-      font-size: 1em;
+      h2 {
+        font-size: 25px;
+      }
+
+      .input-group-lg>.form-control {
+        font-size: 1em;
+      }
     }
   }
 }
