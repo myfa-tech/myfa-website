@@ -39,6 +39,28 @@
 		}
 	}
 
+	.google-button {
+		background-color: rgb(255, 255, 255);
+    display: inline-block;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+		padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+		width: 100%;
+    border-radius: 6px;
+		margin-top: 1em;
+    border: 1px solid transparent;
+    font-size: calc(.27548vw + 12.71074px);
+    font-weight: 500;
+		font-family: Roboto, sans-serif;
+
+		svg {
+			margin-bottom: 3px;
+			margin-right: 10px;
+			font-size: 23px;
+		}
+	}
+
 	.cgu-cgv-accept {
 		color: rgba(0, 0, 0, 0.54);
 		margin: 0;
@@ -87,6 +109,19 @@
 
 @media (max-width: 480px) {
 	#login-form {
+
+		.login-button {
+			padding: 10px 40px;
+		}
+
+		.google-button {
+			padding: 10px;
+
+			svg {
+				display: none;
+			}
+		}
+
 		.facebook-button {
 			padding-right: 0;
 			padding-left: 0;

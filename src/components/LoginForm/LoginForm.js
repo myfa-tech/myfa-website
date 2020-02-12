@@ -3,9 +3,10 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import GoogleLogin from 'react-google-login';
 
-import { loginUser, loginFBUser } from '../../services/users';
+import { loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 
 import './LoginForm.scss';
 
@@ -15,6 +16,7 @@ const spinnerStyle = css`
 `;
 
 const FB_APP_ID = process.env.GATSBY_FB_APP_ID;
+const GOOGLE_CLIENT_ID = process.env.GATSBY_GOOGLE_CLIENT_ID;
 
 const LoginForm = ({ onLogin }) => {
   const [errors, setErrors] = useState({
@@ -27,6 +29,7 @@ const LoginForm = ({ onLogin }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFBLoading, setIsFBLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
 
   const handleChangeFormValue = (e) => {
@@ -112,6 +115,33 @@ const LoginForm = ({ onLogin }) => {
     }
   };
 
+  const responseGoogle = async (response) => {
+    try {
+      const { givenName, familyName, email } = response.profileObj;
+
+      if (!!email) {
+        let user = {
+          firstname: givenName,
+          lastname: familyName,
+          email,
+          cgu: true,
+          googleToken: response.accessToken,
+        };
+
+        setIsGoogleLoading(true);
+        await loginGoogleUser(user);
+        onLogin();
+      } else {
+        // @TODO: deal with error
+        console.log(response);
+      }
+    } catch(e) {
+      console.log(e);
+    } finally {
+      setIsGoogleLoading(false);
+    }
+  };
+
   const componentClicked = () => {};
 
   return (
@@ -175,6 +205,31 @@ const LoginForm = ({ onLogin }) => {
                 <>
                   <FaFacebook />
                   <span>Continuer avec Facebook</span>
+                </>
+              }
+            </button>
+          )}
+        />
+
+        <GoogleLogin
+          clientId={`${GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          render={renderProps => (
+            <button type='button' className='google-button' onClick={renderProps.onClick}>
+              {isGoogleLoading ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#fff'}
+                  loading={true}
+                /> :
+                <>
+                  <FaGoogle />
+                  <span>Continuer avec Google</span>
                 </>
               }
             </button>
