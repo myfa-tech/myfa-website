@@ -3,7 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
@@ -19,6 +19,8 @@ const Header = () => {
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
   const [basketCount, setBasketCount] = useState(0);
+  const [user, setUser] = useState(null);
+
   const eventEmitter = new EventEmitter();
 
   const updateCartCount = () => {
@@ -38,8 +40,11 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (!!window.localStorage.getItem('user')) {
+    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+
+    if (!!userFromStorage) {
       setIsLoggedIn(true);
+      setUser({ ...userFromStorage });
     }
   }, [showLoginSignupModal]);
 
@@ -71,7 +76,7 @@ const Header = () => {
             <Nav.Link href="/#our-promise">Notre Promesse</Nav.Link>
             <Nav.Link href="/#team">L'équipe</Nav.Link>
             {isLoggedIn ?
-              <NavDropdown title='Mon compte' className='account'>
+              <NavDropdown title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>} className='account'>
                 <NavDropdown.Item href="/profile/information">Mes informations</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/orders'>Mes commandes</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/password'>Changer mon mot de passe</NavDropdown.Item>

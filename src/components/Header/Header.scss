@@ -15,8 +15,19 @@
       border-radius: 8px;
     }
 
+    .profile-link {
+      svg {
+        margin-bottom: 5px;
+        margin-right: 5px;
+      }
+    }
+
     .basket-link {
       position: relative;
+
+      svg {
+        margin-bottom: 5px;
+      }
 
       .baskets-count {
         position: absolute;
