@@ -61,6 +61,14 @@ const loginUser = async (user) => {
   window.localStorage.setItem('userToken', token);
 };
 
+const loginFBUser = async (user) => {
+  const response = await Axios.post(`${BACKEND_URL}/users/facebook-login`, user);
+  const { user: loggedInUser, token } = response.data;
+
+  window.localStorage.setItem('user', JSON.stringify(loggedInUser));
+  window.localStorage.setItem('userToken', token);
+};
+
 const addRecipient = async (recipient) => {
   let JWT_TOKEN = window.localStorage.getItem('userToken');
 
@@ -77,4 +85,4 @@ const addRecipient = async (recipient) => {
   window.localStorage.setItem('user', JSON.stringify(user));
 };
 
-export { addRecipient, fetchUsers, loginUser, saveUser, updatePassword, updateUser };
+export { addRecipient, fetchUsers, loginFBUser, loginUser, saveUser, updatePassword, updateUser };
