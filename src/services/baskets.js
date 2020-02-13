@@ -14,4 +14,15 @@ const fetchBaskets = async () => {
   return result.data.baskets;
 };
 
-export { fetchBaskets };
+const updateBasketById = async (id, editFields) => {
+  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+
+  let axios = Axios.create({
+    baseURL: process.env.GATSBY_BACKEND_URL,
+    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
+  });
+
+  await axios.put('/dashboard/baskets', { id, editFields });
+}
+
+export { fetchBaskets, updateBasketById };

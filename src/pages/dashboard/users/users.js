@@ -13,59 +13,58 @@ const DashbboardUsers = () => {
 
   const columns = [
     {
-      Header: 'Prénom',
-      accessor: 'firstname',
+      text: 'Prénom',
+      dataField: 'firstname',
     },
     {
-      Header: 'Nom',
-      accessor: 'lastname',
+      text: 'Nom',
+      dataField: 'lastname',
     },
     {
-      Header: 'Email',
-      accessor: 'email',
+      text: 'Email',
+      dataField: 'email',
     },
     {
-      Header: 'Phone',
-      accessor: 'phone',
+      text: 'Phone',
+      dataField: 'phone',
     },
     {
-      Header: 'Nombre de paniers payés',
-      accessor: data => {
-        if (!!data.qtyPaidBaskets) {
-          if (data.qtyPaidBaskets < 3) {
-            return `${data.qtyPaidBaskets} 👶🏽`;
-          } else if (data.qtyPaidBaskets < 10) {
-            return `${data.qtyPaidBaskets} 👩🏽‍🦱`;
-          } else {
-            return `${data.qtyPaidBaskets} 👵🏽`;
-          }
-        }
-
-        return ''
-      },
+      text: 'Paniers payés',
+      dataField: 'qtyPaidBaskets',
     },
     {
-      Header: 'Date de création',
-      accessor: data => {
-        if (!!data.createdAt) {
-          const date = new Date(data.createdAt);
-
-          return date.toLocaleDateString('fr-FR');
-        }
-
-        return ''
-      },
+      text: 'Date de création',
+      dataField: 'createdAt',
     }
   ];
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUsers = await fetchUsers();
+      let fetchedUsers = await fetchUsers();
+
+      fetchedUsers = fetchedUsers.map(user => {
+        let qtyPaidBaskets = 0;
+        let date = new Date(user.createdAt);
+
+        if (user.qtyPaidBaskets < 3) {
+          qtyPaidBaskets = `${user.qtyPaidBaskets} 👶🏽`;
+        } else if (user.qtyPaidBaskets < 10) {
+          qtyPaidBaskets = `${user.qtyPaidBaskets} 👩🏽‍🦱`;
+        } else {
+          qtyPaidBaskets = `${user.qtyPaidBaskets} 👵🏽`;
+        }
+
+        return {
+          ...user,
+          qtyPaidBaskets,
+          createdAt: date.toLocaleDateString('fr-FR'),
+        };
+      });
 
       if (fetchedUsers.length < 15) {
         for (let i = 0; i < 15; i++) {
           if (!fetchedUsers[i]) {
-            fetchedUsers.push({ email: '' });
+            fetchedUsers.push({ _id: i, email: '' });
           }
         }
       }
