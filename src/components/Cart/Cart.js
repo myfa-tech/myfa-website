@@ -18,14 +18,6 @@ import EventEmitter from '../../services/EventEmitter';
 import './Cart.scss';
 import { Row, Col } from 'react-bootstrap';
 
-import baskets from '../../assets/baskets';
-import { customBasketDetails } from '../../assets/customBasket';
-
-const basketsDetails = [
-  ...baskets,
-  customBasketDetails,
-];
-
 const spinnerStyle = css`
   display: block;
   margin: 0 auto;

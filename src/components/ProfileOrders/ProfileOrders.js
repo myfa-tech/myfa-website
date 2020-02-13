@@ -77,11 +77,12 @@ const ProfileOrders = () => {
             {pendingBaskets.map((basket, index) => (
               <li key={index}>
                 <Row>
-                  <Col md={3} xs={2} className='image-container'>
+                  <Col md={3} xs={0} className='image-container d-none d-sm-block'>
                     <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                   </Col>
-                  <Col md={9} xs={10} className='stepper-container'>
+                  <Col md={9} xs={12} className='stepper-container'>
                     <div className='title-container'>
+                      <h3>{basketsDetails.find(b => b.type === basket.type).label}</h3>
                       <h3>Commande {basket.orderRef}</h3>
                     </div>
                     <div className='content-container'>
@@ -114,10 +115,10 @@ const ProfileOrders = () => {
               return (
                 <li key={index}>
                   <Row>
-                    <Col md={3} xs={3} className='image-container'>
+                    <Col md={3} xs={2} className='image-container'>
                       <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                     </Col>
-                    <Col md={9} xs={9} className='info-container'>
+                    <Col md={9} xs={10} className='info-container'>
                       <Row>
                         <Col sm={5} className='basket-name-container'>
                           <h3>{(basketsDetails.find(b => b.type === basket.type) || {}).label}</h3>
