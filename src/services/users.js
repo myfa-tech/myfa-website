@@ -40,6 +40,18 @@ const updateUser = async (userPart) => {
   window.localStorage.setItem('user', JSON.stringify(user));
 };
 
+const deleteAccount = async () => {
+  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let user = JSON.parse(window.localStorage.getItem('user'));
+
+  let axios = Axios.create({
+    baseURL: BACKEND_URL,
+    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
+  });
+
+  await axios.put('/users/delete', { email: user.email });
+};
+
 const updatePassword = async ({ actualPassword, newPassword }) => {
   let JWT_TOKEN = window.localStorage.getItem('userToken');
   const user = JSON.parse(window.localStorage.getItem('user'));
@@ -93,4 +105,4 @@ const addRecipient = async (recipient) => {
   window.localStorage.setItem('user', JSON.stringify(user));
 };
 
-export { addRecipient, fetchUsers, loginFBUser, loginGoogleUser, loginUser, saveUser, updatePassword, updateUser };
+export { addRecipient, deleteAccount, fetchUsers, loginFBUser, loginGoogleUser, loginUser, saveUser, updatePassword, updateUser };
