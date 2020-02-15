@@ -85,6 +85,8 @@
 }
 
 #cart-popover {
+  font-family: "Josefin Sans", sans-serif;
+
   .title {
     font-size: 20px;
     margin: 0;
@@ -103,6 +105,10 @@
     font-weight: 600;
     border: 1px solid #311A19;
     border-radius: 8px;
+  }
+
+  .empty-cart {
+    padding: 4em;
   }
 
   .baskets-container {

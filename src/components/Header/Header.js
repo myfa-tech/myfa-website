@@ -47,37 +47,45 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
 
           <Divider variant='middle' />
 
-          <ul className='baskets-container'>
-            {Object.keys(cart.baskets).map((basketKey, index) => (
-              <li key={index}>
-                <Row>
-                  <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                    <img src={cart.baskets[basketKey].img} />
-                  </Col>
-                  <Col xs={7} sm={6} className='label-container'>
-                    <h4>{cart.baskets[basketKey].label}</h4>
-                    <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
-                  </Col>
-                  <Col xs={5} sm={4} className='qty-container'>
-                    <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
-                    <p>Quantité: {cart.baskets[basketKey].qty}</p>
-                  </Col>
-                  <Col></Col>
-                </Row>
-              </li>
-            ))}
-          </ul>
+          {Object.keys(cart.baskets).length ?
+            <>
+              <ul className='baskets-container'>
+                {Object.keys(cart.baskets).map((basketKey, index) => (
+                  <li key={index}>
+                    <Row>
+                      <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
+                        <img src={cart.baskets[basketKey].img} />
+                      </Col>
+                      <Col xs={7} sm={6} className='label-container'>
+                        <h4>{cart.baskets[basketKey].label}</h4>
+                        <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
+                      </Col>
+                      <Col xs={5} sm={4} className='qty-container'>
+                        <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
+                        <p>Quantité: {cart.baskets[basketKey].qty}</p>
+                      </Col>
+                      <Col></Col>
+                    </Row>
+                  </li>
+                ))}
+              </ul>
 
-          <Divider variant='middle' />
+              <Divider variant='middle' />
 
-          <div className='price-container'>
-            <h3>Total TTC</h3>
-            <h3>{basketsPrice} €</h3>
-          </div>
+              <div className='price-container'>
+                <h3>Total TTC</h3>
+                <h3>{basketsPrice} €</h3>
+              </div>
 
-          <Divider variant='middle' />
+              <Divider variant='middle' />
 
-          <button className='pay-button' onClick={goToCart}>Payer</button>
+              <button className='pay-button' onClick={goToCart}>Payer</button>
+            </> :
+            <div className='empty-cart'>
+              <p>Votre panier est vide</p>
+            </div>
+          }
+
         </div>
       }>
         <span>
@@ -108,11 +116,25 @@ const Header = () => {
   };
 
   useEffect(() => {
+    updateCart();
+    eventEmitter.listen('editCart', updateCart);
+  }, []);
+
+  useEffect(() => {
+    updateBasketsPriceAndNumber();
+  }, [cart]);
+
+  useEffect(() => {
+    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+
+    if (!!userFromStorage) {
+      setIsLoggedIn(true);
+      setUser({ ...userFromStorage });
+    }
+  }, [showLoginSignupModal]);
+
+  const updateCart = () => {
     if (typeof window !== 'undefined') {
-      updateCartCount();
-
-      eventEmitter.listen('editCart', updateCartCount);
-
       let newCart = JSON.parse(window.localStorage.getItem('cart'));
 
       if (!!newCart) {
@@ -141,18 +163,18 @@ const Header = () => {
 
         setCart(enhancedCart);
         setBasketsPrice(newBasketsPrice);
+        setBasketCount(newCart.length);
       }
     }
-  }, []);
+  };
 
-  useEffect(() => {
-    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+  const updateBasketsPriceAndNumber = () => {
+    if (cart && cart.baskets) {
+      let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+      setBasketsPrice(newBasketsPrice);
 
-    if (!!userFromStorage) {
-      setIsLoggedIn(true);
-      setUser({ ...userFromStorage });
     }
-  }, [showLoginSignupModal]);
+  };
 
   const toggleShowLoginSignupModal = () => setShowLoginSignupModal(!showLoginSignupModal);
 
@@ -169,10 +191,18 @@ const Header = () => {
   };
 
   const removeBaskets = (basketKey) => {
-    console.log(cart.baskets);
-    const newBaskets = cart.baskets.splice(Object.keys(cart.baskets).indexOf(basketKey), 1);
+    const savedCart = JSON.parse(window.localStorage.getItem('cart'));
 
-    setCart({ ...cart, baskets: newBaskets });
+    let filteredCart = savedCart.filter(b => b.type !== basketKey);
+
+    window.localStorage.setItem('cart', JSON.stringify(filteredCart));
+
+    updateCartCount();
+
+    eventEmitter.emit('editCart');
+
+    delete cart.baskets[basketKey];
+    setCart({ ...cart });
   };
 
   return (
