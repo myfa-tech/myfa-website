@@ -20,10 +20,10 @@ const Footer = ({ noBackgroundColor }) => {
           <Col sm={7} className='text-container'>
             <a href='/legal'>Mentions légales</a>
             <div>
-              <SocialIcon className='social-icon' network='facebook' url='https://www.facebook.com/myfa.fr' />
-              <SocialIcon className='social-icon' network='twitter' url='https://www.twitter.com/myfa_fr' />
-              <SocialIcon className='social-icon' network='instagram' url='https://www.instagram.com/myfa.fr' />
-              <SocialIcon className='social-icon' network='linkedin' url='https://www.linkedin.com/company/myfa-sas' />
+              <SocialIcon className='social-icon' target='_blank' network='facebook' url='https://www.facebook.com/myfa.fr' />
+              <SocialIcon className='social-icon' target='_blank' network='twitter' url='https://www.twitter.com/myfa_fr' />
+              <SocialIcon className='social-icon' target='_blank' network='instagram' url='https://www.instagram.com/myfa.fr' />
+              <SocialIcon className='social-icon' target='_blank' network='linkedin' url='https://www.linkedin.com/company/myfa-sas' />
             </div>
           </Col>
         </Row>
