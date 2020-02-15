@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import uuid from 'uuid/v4';
 
 import fabricSrc from '../images/fabric.png'
 
@@ -27,8 +28,9 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const metaAuthor = site.siteMetadata.author
+  const metaDescription = description || site.siteMetadata.description;
+  const metaAuthor = site.siteMetadata.author;
+  const uniqueId = uuid().substr(0, 8);
 
   return (
     <Helmet
@@ -72,11 +74,11 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:image`,
-          content: img || fabricSrc,
+          content: img || `${fabricSrc}?id=${uniqueId}`,
         },
         {
           name: `twitter:site`,

@@ -9,12 +9,14 @@ import Newsletter from '../components/Newsletter';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 
+import fruitsBackgroundSrc from '../images/fruits-background.jpg';
+
 import './index.scss';
 
 const IndexPage = () => {
   return (
     <Layout hideHeader={true}>
-      <SEO title="MYFA, pour vos proches au loin" />
+      <SEO title="MYFA, pour vos proches au loin" img={fruitsBackgroundSrc} />
 
       <Home />
       <HowItWorks />

@@ -8,6 +8,7 @@ import GoogleLogin from 'react-google-login';
 
 import { loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 
+import googleLogoSrc from '../../images/google_logo.svg';
 import './LoginForm.scss';
 
 const spinnerStyle = css`
@@ -228,7 +229,7 @@ const LoginForm = ({ onLogin }) => {
                   loading={true}
                 /> :
                 <>
-                  <FaGoogle />
+                  <img src={googleLogoSrc} />
                   <span>Continuer avec Google</span>
                 </>
               }

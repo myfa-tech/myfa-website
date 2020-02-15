@@ -47,7 +47,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
 
           <Divider variant='middle' />
 
-          {Object.keys(cart.baskets).length ?
+          {cart.baskets && Object.keys(cart.baskets).length ?
             <>
               <ul className='baskets-container'>
                 {Object.keys(cart.baskets).map((basketKey, index) => (
@@ -104,6 +104,7 @@ const Header = () => {
   const [user, setUser] = useState(null);
   const [basketsPrice, setBasketsPrice] = useState(0);
   const [cart, setCart] = useState({});
+  const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
 
   const eventEmitter = new EventEmitter();
 
@@ -176,6 +177,8 @@ const Header = () => {
     }
   };
 
+  const toggleIsProfileNavOpen = () => setIsProfileNavOpen(!isProfileNavOpen);
+
   const toggleShowLoginSignupModal = () => setShowLoginSignupModal(!showLoginSignupModal);
 
   const onSignup = () => {
@@ -219,7 +222,13 @@ const Header = () => {
             <Nav.Link href="/#our-promise">Notre Promesse</Nav.Link>
             <Nav.Link href="/#team">L'équipe</Nav.Link>
             {isLoggedIn ?
-              <NavDropdown title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>} className='account'>
+              <NavDropdown
+                onMouseEnter={toggleIsProfileNavOpen}
+                onMouseLeave={toggleIsProfileNavOpen}
+                show={isProfileNavOpen}
+                title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
+                className='account'
+              >
                 <NavDropdown.Item href="/profile/information">Mes informations</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/orders'>Mes commandes</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/password'>Changer mon mot de passe</NavDropdown.Item>
@@ -229,9 +238,7 @@ const Header = () => {
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>Mon compte</Nav.Link>
             }
             <Nav.Link href="/cart" className='basket-link'>
-
-            {cart && cart.baskets && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
-
+              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

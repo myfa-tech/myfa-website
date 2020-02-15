@@ -26,7 +26,6 @@
     display: inline-block;
     font-size: calc(.27548vw + 12.71074px);
     text-decoration: none;
-    text-transform: uppercase;
     transition: background-color .3s,border-color .3s;
     background-color: #4c69ba;
     border: calc(.06887vw + .67769px) solid #4c69ba;
@@ -54,10 +53,10 @@
     font-weight: 500;
 		font-family: Roboto, sans-serif;
 
-		svg {
+		img {
 			margin-bottom: 3px;
 			margin-right: 10px;
-			font-size: 23px;
+			width: 23px;
 		}
 	}
 
@@ -116,19 +115,11 @@
 
 		.google-button {
 			padding: 10px;
-
-			svg {
-				display: none;
-			}
 		}
 
 		.facebook-button {
 			padding-right: 0;
 			padding-left: 0;
-
-			svg {
-				display: none;
-			}
 		}
 	}
 }
