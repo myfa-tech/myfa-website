@@ -1,6 +1,13 @@
 #home {
   .section-1 {
-    background-image: url(../../images/fruits-background.jpg);
+    &.webp-background {
+      background-image: url(../../images/fruits-background-lg.webp);
+    }
+
+    &.jpg-background {
+      background-image: url(../../images/fruits-background-lg.jpg);
+    }
+
     max-width: 100%;
     background-size:cover;
     background-position: center 0;
@@ -102,14 +109,6 @@
 
   h1 {
     font-size: 30px;
-  }
-}
-
-@media (min-width: 1500px) {
-  #home {
-    .section-1 {
-      background-image: url(../../images/fruits-background-lg.jpg);
-    }
   }
 }
 

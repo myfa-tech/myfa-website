@@ -2,7 +2,16 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import foundersSrc from '../../images/founders.jpeg';
-import './OurPromise.scss'
+import foundersWebPSrc from '../../images/founders.webp';
+
+import './OurPromise.scss';
+
+const isSafariOrIE = typeof window !== 'undefined' ?
+  /constructor/i.test(window.HTMLElement) ||
+  (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
+  (typeof window.safari !== 'undefined' && window.safari.pushNotification)) ||
+  /*@cc_on!@*/false || !!document.documentMode :
+  false;
 
 const OurPromise = () => {
   return (
@@ -12,7 +21,7 @@ const OurPromise = () => {
       </div>
       <Row className='content-container'>
         <Col md={5} className='image-container'>
-          <img src={foundersSrc} />
+          <img src={isSafariOrIE ? foundersSrc : foundersWebPSrc} />
           <p>Florian, Doris & Alexandre</p>
         </Col>
         <Col md={7} className='text-container'>
