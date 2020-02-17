@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Col, Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
+import Divider from '@material-ui/core/Divider';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-import { FaShoppingCart } from 'react-icons/fa';
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
+import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
@@ -14,11 +17,95 @@ import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
 
+const CustomTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: '#fff',
+    color: '#000',
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+  arrow: {
+    color: '#ddd',
+  }
+}))(Tooltip);
+
+const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
+  const goToCart = () => {
+    if (typeof window !== 'undefined') {
+      window.location.assign('/cart');
+    }
+  };
+
+  return (
+    <CustomTooltip
+      interactive
+      arrow
+      className='popover-container'
+      title={
+        <div id='cart-popover'>
+          <h3 className='title'>Mon panier</h3>
+
+          <Divider variant='middle' />
+
+          {cart.baskets && Object.keys(cart.baskets).length ?
+            <>
+              <ul className='baskets-container'>
+                {Object.keys(cart.baskets).map((basketKey, index) => (
+                  <li key={index}>
+                    <Row>
+                      <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
+                        <img src={cart.baskets[basketKey].img} />
+                      </Col>
+                      <Col xs={7} sm={6} className='label-container'>
+                        <h4>{cart.baskets[basketKey].label}</h4>
+                        <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
+                      </Col>
+                      <Col xs={5} sm={4} className='qty-container'>
+                        <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
+                        <p>Quantité: {cart.baskets[basketKey].qty}</p>
+                      </Col>
+                      <Col></Col>
+                    </Row>
+                  </li>
+                ))}
+              </ul>
+
+              <Divider variant='middle' />
+
+              <div className='price-container'>
+                <h3>Total TTC</h3>
+                <h3>{basketsPrice} €</h3>
+              </div>
+
+              <Divider variant='middle' />
+
+              <button className='pay-button' onClick={goToCart}>Payer</button>
+            </> :
+            <div className='empty-cart'>
+              <p>Votre panier est vide</p>
+            </div>
+          }
+
+        </div>
+      }>
+        <span>
+          <FaShoppingCart style={{ pointerEvents: "none" }} />
+          {basketCount ? <div className='baskets-count'>{basketCount}</div> : null}
+        </span>
+    </CustomTooltip>
+  )
+};
+
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
   const [basketCount, setBasketCount] = useState(0);
+  const [user, setUser] = useState(null);
+  const [basketsPrice, setBasketsPrice] = useState(0);
+  const [cart, setCart] = useState({});
+  const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
+
   const eventEmitter = new EventEmitter();
 
   const updateCartCount = () => {
@@ -30,18 +117,67 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      updateCartCount();
-
-      eventEmitter.listen('editCart', updateCartCount);
-    }
+    updateCart();
+    eventEmitter.listen('editCart', updateCart);
   }, []);
 
   useEffect(() => {
-    if (!!window.localStorage.getItem('user')) {
+    updateBasketsPriceAndNumber();
+  }, [cart]);
+
+  useEffect(() => {
+    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+
+    if (!!userFromStorage) {
       setIsLoggedIn(true);
+      setUser({ ...userFromStorage });
     }
   }, [showLoginSignupModal]);
+
+  const updateCart = () => {
+    if (typeof window !== 'undefined') {
+      let newCart = JSON.parse(window.localStorage.getItem('cart'));
+
+      if (!!newCart) {
+        let enhancedCart = {};
+
+        enhancedCart.baskets = newCart.reduce((acc, cur) => {
+          if (!acc[cur.type]) {
+            acc[cur.type] = {
+              price: 0,
+              qty: 0,
+              label: cur.label,
+              singlePrice: cur.price,
+              type: cur.type,
+              img: cur.img,
+              items: cur.items || {},
+            };
+          }
+
+          acc[cur.type].qty = acc[cur.type].qty + 1;
+          acc[cur.type].price = acc[cur.type].price + cur.price;
+
+          return acc;
+        }, {});
+
+        let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+
+        setCart(enhancedCart);
+        setBasketsPrice(newBasketsPrice);
+        setBasketCount(newCart.length);
+      }
+    }
+  };
+
+  const updateBasketsPriceAndNumber = () => {
+    if (cart && cart.baskets) {
+      let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+      setBasketsPrice(newBasketsPrice);
+
+    }
+  };
+
+  const toggleIsProfileNavOpen = () => setIsProfileNavOpen(!isProfileNavOpen);
 
   const toggleShowLoginSignupModal = () => setShowLoginSignupModal(!showLoginSignupModal);
 
@@ -55,6 +191,21 @@ const Header = () => {
     if (typeof window !== 'undefined') {
       window.location.assign('/');
     }
+  };
+
+  const removeBaskets = (basketKey) => {
+    const savedCart = JSON.parse(window.localStorage.getItem('cart'));
+
+    let filteredCart = savedCart.filter(b => b.type !== basketKey);
+
+    window.localStorage.setItem('cart', JSON.stringify(filteredCart));
+
+    updateCartCount();
+
+    eventEmitter.emit('editCart');
+
+    delete cart.baskets[basketKey];
+    setCart({ ...cart });
   };
 
   return (
@@ -71,7 +222,13 @@ const Header = () => {
             <Nav.Link href="/#our-promise">Notre Promesse</Nav.Link>
             <Nav.Link href="/#team">L'équipe</Nav.Link>
             {isLoggedIn ?
-              <NavDropdown title='Mon compte' className='account'>
+              <NavDropdown
+                onMouseEnter={toggleIsProfileNavOpen}
+                onMouseLeave={toggleIsProfileNavOpen}
+                show={isProfileNavOpen}
+                title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
+                className='account'
+              >
                 <NavDropdown.Item href="/profile/information">Mes informations</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/orders'>Mes commandes</NavDropdown.Item>
                 <NavDropdown.Item href='/profile/password'>Changer mon mot de passe</NavDropdown.Item>
@@ -81,8 +238,7 @@ const Header = () => {
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>Mon compte</Nav.Link>
             }
             <Nav.Link href="/cart" className='basket-link'>
-              <FaShoppingCart />
-              {basketCount ? <div className='baskets-count'>{basketCount}</div> : null}
+              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

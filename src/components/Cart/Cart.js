@@ -18,14 +18,6 @@ import EventEmitter from '../../services/EventEmitter';
 import './Cart.scss';
 import { Row, Col } from 'react-bootstrap';
 
-import baskets from '../../assets/baskets';
-import { customBasketDetails } from '../../assets/customBasket';
-
-const basketsDetails = [
-  ...baskets,
-  customBasketDetails,
-];
-
 const spinnerStyle = css`
   display: block;
   margin: 0 auto;
@@ -426,6 +418,15 @@ const Cart = () => {
   const eventEmitter = new EventEmitter();
 
   useEffect(() => {
+    initCart();
+    eventEmitter.listen('editCart', initCart);
+  }, []);
+
+  useEffect(() => {
+    updateBasketsPriceAndNumber();
+  }, [cart]);
+
+  const initCart = () => {
     if (typeof window !== 'undefined') {
       let newCart = JSON.parse(window.localStorage.getItem('cart'));
 
@@ -459,11 +460,7 @@ const Cart = () => {
         setBasketsPrice(newBasketsPrice);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    updateBasketsPriceAndNumber();
-  }, [cart]);
+  };
 
   const updateBasketsPriceAndNumber = () => {
     if (cart && cart.baskets) {
@@ -620,6 +617,7 @@ const Cart = () => {
     let filteredCart = savedCart.filter(b => b.type !== basketTypeToRemove);
 
     window.localStorage.setItem('cart', JSON.stringify(filteredCart));
+
     eventEmitter.emit('editCart');
 
     delete cart.baskets[basketTypeToRemove];

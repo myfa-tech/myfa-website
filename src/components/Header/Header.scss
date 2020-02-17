@@ -15,8 +15,19 @@
       border-radius: 8px;
     }
 
+    .profile-link {
+      svg {
+        margin-bottom: 5px;
+        margin-right: 5px;
+      }
+    }
+
     .basket-link {
       position: relative;
+
+      svg {
+        margin-bottom: 5px;
+      }
 
       .baskets-count {
         position: absolute;
@@ -69,6 +80,141 @@
           font-weight: bold;
         }
       }
+    }
+  }
+}
+
+#cart-popover {
+  font-family: "Josefin Sans", sans-serif;
+
+  .title {
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    padding: 1em;
+  }
+
+  .pay-button {
+    color: #311A19;
+    background-color: #F1D866;
+    padding: 1em 2em;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #311A19;
+    border-radius: 8px;
+  }
+
+  .empty-cart {
+    padding: 4em;
+  }
+
+  .baskets-container {
+    padding: 5px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
+
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+
+    .label-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 0;
+      padding-left: 5px;
+
+      h4 {
+        font-size: 14px;
+      }
+
+      p {
+        margin-bottom: 0;
+        font-size: 14px;
+      }
+    }
+
+    .qty-container {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        margin-bottom: 0;
+        font-weight: 400;
+        font-size: 15px;
+      }
+
+      .trash-icon {
+        margin: 10px;
+        font-size: 20px;
+        color: rgb(228, 86, 86);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .basket-name-container {
+      padding-right: 0;
+    }
+
+    .info-container {
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+      align-items: center;
+
+      .row {
+        width: 100%;
+      }
+    }
+
+    li {
+      background-color: #eee;
+      list-style-type: none;
+      padding: 5px;
+      border-radius: 8px;
+
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+
+      .row {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    .title-container {
+      h3 {
+        text-align: right;
+      }
+    }
+  }
+
+  .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+
+    h3 {
+      font-size: 20px;
+      margin: 0;
     }
   }
 }

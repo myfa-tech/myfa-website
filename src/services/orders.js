@@ -1,7 +1,7 @@
 
-import Axios from 'axios'
+import Axios from 'axios';
 
-const BACKEND_URL = 'https://myfa-website-backend.herokuapp.com'
+const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const getOrdersByRef = async (ref) => {
   let JWT_TOKEN = window.localStorage.getItem('userToken');
@@ -24,7 +24,7 @@ const getBasketsByEmail = async (email) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  const response = await axios.get(`${BACKEND_URL}/users/baskets?email=${email}`);
+  const response = await axios.get(`/users/baskets?email=${email}`);
 
   return response.data.baskets;
 };

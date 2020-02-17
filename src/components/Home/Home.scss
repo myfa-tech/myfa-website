@@ -39,6 +39,13 @@
       color: #311a19;
     }
 
+    h2 {
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 19px;
+      color: #311a19;
+    }
+
     .image-container {
       display: flex;
       align-items: center;
@@ -146,6 +153,10 @@
         font-size: 30px;
       }
 
+      h2 {
+        font-size: 25px;
+      }
+
       p {
         text-align: justify;
       }
@@ -168,6 +179,10 @@
     .section-1 {
       .btn-main {
         padding: 15px 30px;
+      }
+
+      h2 {
+        font-size: 20px;
       }
     }
   }

@@ -45,9 +45,11 @@ const Home = ({ setShowToast, showToast, toastType }) => {
           <Col md={1} className='image-container'></Col>
           <Col md={10}>
             <img src={logoSrc} alt='logo' className='logo-big' />
-            <h1>Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h.</h1>
+            <h1>Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h*.</h1>
 
             <a className='btn-main link' href='#baskets'>Découvrir les paniers 🥭</a>
+
+            <h2>*période de lancement : la livraison sera faite courant mars, par les fondateurs.</h2>
           </Col>
           <Col md={1}></Col>
         </Row>

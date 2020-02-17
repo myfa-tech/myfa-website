@@ -1,8 +1,8 @@
 
-import Axios from 'axios'
+import Axios from 'axios';
 
 const axios = Axios.create({
-  baseURL: 'https://myfa-website-backend.herokuapp.com',
+  baseURL: process.env.GATSBY_BACKEND_URL,
 });
 
 const isBrowser = () => typeof window !== 'undefined';

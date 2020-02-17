@@ -24,6 +24,40 @@
   }
 }
 
+#delete-account-modal {
+  .logo-big {
+    width: 50%;
+    margin: auto;
+    display: block;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .confirm-button {
+    color: black;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+    border-color: #e57373;
+    padding: 15px;
+    background-color: #e57373;
+  }
+
+  .cancel-button {
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+    border-color: grey;
+    padding: 15px;
+    margin: auto;
+    display: block;
+    background-color: grey;
+  }
+}
+
 @media (min-width: 768px) {
   #profile-menu {
     .list-container {

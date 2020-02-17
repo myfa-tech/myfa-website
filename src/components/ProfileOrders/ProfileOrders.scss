@@ -45,9 +45,9 @@
       }
 
       .title-container {
-        h3 {
-          text-align: right;
-        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       img {
@@ -146,10 +146,6 @@
 
         .info-container {
           padding-left: 1em;
-        }
-
-        .stepper-container {
-          padding-left: 0;
         }
       }
     }

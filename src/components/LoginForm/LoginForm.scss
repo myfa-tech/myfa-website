@@ -14,6 +14,59 @@
 		}
 	}
 
+	.facebook-button {
+		font-family: Helvetica,sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+		color: #fff;
+		border-radius: 6px;
+		margin-top: 1em;
+		width: 100%;
+    cursor: pointer;
+    display: inline-block;
+    font-size: calc(.27548vw + 12.71074px);
+    text-decoration: none;
+    transition: background-color .3s,border-color .3s;
+    background-color: #4c69ba;
+    border: calc(.06887vw + .67769px) solid #4c69ba;
+		padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+
+		svg {
+			margin-bottom: 3px;
+			margin-right: 10px;
+			font-size: 23px;
+		}
+	}
+
+	.google-button {
+		background-color: rgb(255, 255, 255);
+    display: inline-block;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+		padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+		width: 100%;
+    border-radius: 6px;
+		margin-top: 1em;
+    border: 1px solid transparent;
+    font-size: calc(.27548vw + 12.71074px);
+    font-weight: 500;
+		font-family: Roboto, sans-serif;
+
+		img {
+			margin-bottom: 3px;
+			margin-right: 10px;
+			width: 23px;
+		}
+	}
+
+	.cgu-cgv-accept {
+		color: rgba(0, 0, 0, 0.54);
+		margin: 0;
+		margin-top: 1em;
+    font-size: 0.75rem;
+	}
+
 	.password-field {
 		margin-bottom: 1em;
 	}
@@ -42,9 +95,6 @@
 		padding: 15px 40px;
 		display: inline-block;
 		background-color: #315f69;
-		-moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
-		-webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
-		box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
 		background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
 		background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
 		background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
@@ -52,6 +102,24 @@
 
 		&.modal-order {
 			padding: 10px 30px;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	#login-form {
+
+		.login-button {
+			padding: 10px 40px;
+		}
+
+		.google-button {
+			padding: 10px;
+		}
+
+		.facebook-button {
+			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 }
