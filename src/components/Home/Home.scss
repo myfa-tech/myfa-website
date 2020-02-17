@@ -105,6 +105,14 @@
   }
 }
 
+@media (min-width: 1500px) {
+  #home {
+    .section-1 {
+      background-image: url(../../images/fruits-background-lg.jpg);
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   #home {
     .section-1 {
