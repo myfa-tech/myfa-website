@@ -26,7 +26,7 @@ export default function HTML(props) {
         {props.postBodyComponents}
         <div id="root"></div>
         <div id="fb-root"></div>
-        <script dangerouslySetInnerHTML={{
+        <script async dangerouslySetInnerHTML={{
           __html: `
             window.$crisp=[];
             window.CRISP_WEBSITE_ID="f2462632-645d-4f57-b1b7-f7e5ac9c96ae";
@@ -35,7 +35,8 @@ export default function HTML(props) {
             s.src="https://client.crisp.chat/l.js";
             s.async=1;
             d.getElementsByTagName("head")[0].appendChild(s);
-          `}} />
+          `}}
+        />
       </body>
     </html>
   )

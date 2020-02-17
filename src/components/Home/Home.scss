@@ -1,6 +1,15 @@
 #home {
   .section-1 {
-    background-image: url(../../images/fruits-background.jpg);
+    background-image: url(../../images/fruits-background-lg.jpg);
+
+    &.webp-background {
+      background-image: url(../../images/fruits-background-lg.webp);
+    }
+
+    &.jpg-background {
+      background-image: url(../../images/fruits-background-lg.jpg);
+    }
+
     max-width: 100%;
     background-size:cover;
     background-position: center 0;

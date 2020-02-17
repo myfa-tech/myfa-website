@@ -3,6 +3,18 @@ import fruitsSrc from '../images/fruits.jpg';
 import saucesSrc from '../images/sauces.jpg';
 import veggiesSrc from '../images/veggies.jpg';
 
+
+import fruitsWebPSrc from '../images/fruits.webp';
+import saucesWebPSrc from '../images/sauces.webp';
+import veggiesWebPSrc from '../images/veggies.webp';
+
+const isSafariOrIE = typeof window !== 'undefined' ?
+  /constructor/i.test(window.HTMLElement) ||
+  (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
+  (typeof window.safari !== 'undefined' && window.safari.pushNotification)) ||
+  /*@cc_on!@*/false || !!document.documentMode :
+  false;
+
 const baskets = [
   {
     name: 'Fruits',
@@ -10,7 +22,7 @@ const baskets = [
     label: 'Panier Fruits 🍌',
     homeDesc: 'Bananes, oranges, noix de coco...',
     imgAlt: 'panier fruits',
-    img: fruitsSrc,
+    img: isSafariOrIE ? fruitsSrc : fruitsWebPSrc,
     realPrice: 5.99,
     reduction: 16,
     price: 4.99,
@@ -30,7 +42,7 @@ const baskets = [
     label: 'Panier Légumes 🧅',
     homeDesc: 'Oignons, carottes, Ignames...',
     imgAlt: 'panier légumes',
-    img: veggiesSrc,
+    img: isSafariOrIE ? veggiesSrc : veggiesWebPSrc,
     realPrice: 11.99,
     reduction: 16,
     price: 9.99,
@@ -50,7 +62,7 @@ const baskets = [
     label: 'Panier Sauces 🍗🍖',
     homeDesc: 'Poivre, sel, gingembre...',
     imgAlt: 'panier sauces',
-    img: saucesSrc,
+    img: isSafariOrIE ? saucesSrc : saucesWebPSrc,
     realPrice: 23.99,
     reduction: 8,
     price: 21.99,
