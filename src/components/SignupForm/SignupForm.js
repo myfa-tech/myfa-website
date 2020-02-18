@@ -59,7 +59,6 @@ const SignupForm = ({ onSignup }) => {
     return verifyFirstname(form.firstname)
       && verifyLastname(form.lastname)
       && verifyEmail(form.email)
-      && verifyPhone(form.phone)
       && verifyPassword(form.password)
       && verifyCGU(form.cgu);
   }
@@ -107,20 +106,6 @@ const SignupForm = ({ onSignup }) => {
 
     return false;
 	};
-
-	const verifyPhone = (phone) => {
-    const countryCodes = { '+225': 'CI', '+33': 'FR' };
-		const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[form.country]);
-
-		if (phoneNumber && phoneNumber.isValid()) {
-      return true;
-    }
-
-    errors['phone'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
 
   const verifyPassword = (password) => {
     if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/.test(password)) {
