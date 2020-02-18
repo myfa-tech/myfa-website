@@ -8,18 +8,9 @@ import Toast from '../Toast';
 import './Home.scss';
 import logoSrc from '../../images/logo-1.png';
 
-import fruitsBackgroundSrc from '../../images/fruits-background.jpg';
-import fruitsBackgroundWebpSrc from '../../images/fruits-background.webp';
-
-const isSafariOrIE = typeof window !== 'undefined' ?
-  /constructor/i.test(window.HTMLElement) ||
-  (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
-  (typeof window.safari !== 'undefined' && window.safari.pushNotification)) ||
-  /*@cc_on!@*/false || !!document.documentMode :
-  false;
-
 const Home = ({ setShowToast, showToast, toastType }) => {
   const [showLaunchModal, setShowLaunchModal] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
     const popupViewed = window.localStorage.getItem('popupViewed');
@@ -30,11 +21,19 @@ const Home = ({ setShowToast, showToast, toastType }) => {
         window.localStorage.setItem('popupViewed', 'true');
       }, 2000);
     }
+
+    const newIsSafari = typeof navigator !== 'undefined' ?
+      /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
+      false;
+
+    setIsSafari(newIsSafari);
   }, []);
 
   const toggleLaunchModal = () => {
     setShowLaunchModal(!showLaunchModal);
   };
+
+  console.log(isSafari);
 
   return (
     <section id='home'>
@@ -49,7 +48,7 @@ const Home = ({ setShowToast, showToast, toastType }) => {
           <Toast show={showToast} setShow={setShowToast} type={toastType} />
         </div>
       : null}
-      <Container className={`section-1 ${isSafariOrIE ? 'jpg-background' : 'webp-background'}`}>
+      <Container className={`section-1 ${isSafari ? 'jpg-background' : 'webp-background'}`}>
         <Header />
         <Row>
           <Col md={1} className='image-container'></Col>
