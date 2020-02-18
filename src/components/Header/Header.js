@@ -17,6 +17,8 @@ import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
 
+const STICKY_LIMIT = 300;
+
 const CustomTooltip = withStyles(theme => ({
   tooltip: {
     backgroundColor: '#fff',
@@ -105,6 +107,7 @@ const Header = () => {
   const [basketsPrice, setBasketsPrice] = useState(0);
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
 
   const eventEmitter = new EventEmitter();
 
@@ -122,6 +125,10 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
+    window.onscroll = updateNavbarStickines;
+  }, [sticky]);
+
+  useEffect(() => {
     updateBasketsPriceAndNumber();
   }, [cart]);
 
@@ -133,6 +140,14 @@ const Header = () => {
       setUser({ ...userFromStorage });
     }
   }, [showLoginSignupModal]);
+
+  const updateNavbarStickines = () => {
+    if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
+      setSticky(true);
+    } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
+      setSticky(false);
+    }
+  };
 
   const updateCart = () => {
     if (typeof window !== 'undefined') {
@@ -210,7 +225,7 @@ const Header = () => {
 
   return (
     <Container id='header'>
-      <Navbar expand="lg">
+      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
         <Navbar.Brand href="/">
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>

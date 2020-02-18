@@ -1,4 +1,14 @@
 #header {
+  .sticky-navbar {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+    left: 0;
+    z-index: 900;
+  }
+
   .menu {
     a {
       color: #311a19 !important;
@@ -231,6 +241,13 @@
 
 @media (min-width: 480px) {}
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+  #header {
+    .sticky-navbar {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
 
 @media (max-width: 330px) {}
