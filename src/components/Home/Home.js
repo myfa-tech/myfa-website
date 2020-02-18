@@ -10,7 +10,6 @@ import logoSrc from '../../images/logo-1.png';
 
 const Home = ({ setShowToast, showToast, toastType }) => {
   const [showLaunchModal, setShowLaunchModal] = useState(false);
-  const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
     const popupViewed = window.localStorage.getItem('popupViewed');
@@ -21,19 +20,11 @@ const Home = ({ setShowToast, showToast, toastType }) => {
         window.localStorage.setItem('popupViewed', 'true');
       }, 2000);
     }
-
-    const newIsSafari = typeof navigator !== 'undefined' ?
-      /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
-      false;
-
-    setIsSafari(newIsSafari);
   }, []);
 
   const toggleLaunchModal = () => {
     setShowLaunchModal(!showLaunchModal);
   };
-
-  console.log(isSafari);
 
   return (
     <section id='home'>
@@ -48,7 +39,7 @@ const Home = ({ setShowToast, showToast, toastType }) => {
           <Toast show={showToast} setShow={setShowToast} type={toastType} />
         </div>
       : null}
-      <Container className={`section-1 ${isSafari ? 'jpg-background' : 'webp-background'}`}>
+      <Container className='section-1'>
         <Header />
         <Row>
           <Col md={1} className='image-container'></Col>
