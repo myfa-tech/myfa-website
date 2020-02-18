@@ -2,13 +2,9 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import foundersSrc from '../../images/founders.jpeg';
-import foundersWebPSrc from '../../images/founders.webp';
+// import foundersWebPSrc from '../../images/founders.webp';
 
 import './OurPromise.scss';
-
-const isSafari = typeof navigator !== 'undefined' ?
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
-  false;
 
 const OurPromise = () => {
   return (
@@ -18,7 +14,7 @@ const OurPromise = () => {
       </div>
       <Row className='content-container'>
         <Col md={5} className='image-container'>
-          <img src={isSafari ? foundersSrc : foundersWebPSrc} />
+          <img src={foundersSrc} />
           <p>Florian, Doris & Alexandre</p>
         </Col>
         <Col md={7} className='text-container'>

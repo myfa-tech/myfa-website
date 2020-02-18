@@ -24,10 +24,6 @@ import whiteOnionSrc from '../images/white-onion.png';
 import yamSrc from '../images/yam.png';
 import myfaWebPSrc from '../images/myfa.webp';
 
-const isSafari = typeof navigator !== 'undefined' ?
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
-  false;
-
 const availableBases = [
   { id: 'bapl', type: 'bases', label: 'Bananes plantain (1kg)', img: plantainSrc },
   { id: 'boat', type: 'bases', label: '2 boules d’attiéké', img: attiekeSrc },
@@ -96,7 +92,7 @@ const customBasketDetails = {
   label: 'Panier MYFA 🙌🏾',
   homeDesc: 'À vous de le composer !',
   imgAlt: 'panier myfa',
-  img: isSafari ? myfaSrc : myfaWebPSrc,
+  img: myfaSrc,
   realPrice: 27.99,
   reduction: 7,
   price: 25.99,

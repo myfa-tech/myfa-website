@@ -8,10 +8,6 @@ import paymentsWebpSrc from '../../images/payments.webp';
 
 import './Footer.scss'
 
-const isSafari = typeof navigator !== 'undefined' ?
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
-  false;
-
 const Footer = ({ noBackgroundColor }) => {
   return (
     <footer className='footer'>
@@ -34,7 +30,7 @@ const Footer = ({ noBackgroundColor }) => {
         </Row>
         <Row className='footer-footer'>
           <Col sm={5}>
-            <img src={isSafari ? paymentsSrc : paymentsWebpSrc} />
+            <img src={paymentsSrc} />
           </Col>
           <Col sm={7}>
             <p className='copyright-text'>

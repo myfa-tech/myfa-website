@@ -4,13 +4,9 @@ import saucesSrc from '../images/sauces.jpg';
 import veggiesSrc from '../images/veggies.jpg';
 
 
-import fruitsWebPSrc from '../images/fruits.webp';
-import saucesWebPSrc from '../images/sauces.webp';
-import veggiesWebPSrc from '../images/veggies.webp';
-
-const isSafari = typeof navigator !== 'undefined' ?
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
-  false;
+// import fruitsWebPSrc from '../images/fruits.webp';
+// import saucesWebPSrc from '../images/sauces.webp';
+// import veggiesWebPSrc from '../images/veggies.webp';
 
 const baskets = [
   {
@@ -19,7 +15,7 @@ const baskets = [
     label: 'Panier Fruits 🍌',
     homeDesc: 'Bananes, oranges, noix de coco...',
     imgAlt: 'panier fruits',
-    img: isSafari ? fruitsSrc : fruitsWebPSrc,
+    img: fruitsSrc,
     realPrice: 5.99,
     reduction: 16,
     price: 4.99,
@@ -39,7 +35,7 @@ const baskets = [
     label: 'Panier Légumes 🧅',
     homeDesc: 'Oignons, carottes, Ignames...',
     imgAlt: 'panier légumes',
-    img: isSafari ? veggiesSrc : veggiesWebPSrc,
+    img: veggiesSrc,
     realPrice: 11.99,
     reduction: 16,
     price: 9.99,
@@ -59,7 +55,7 @@ const baskets = [
     label: 'Panier Sauces 🍗🍖',
     homeDesc: 'Poivre, sel, gingembre...',
     imgAlt: 'panier sauces',
-    img: isSafari ? saucesSrc : saucesWebPSrc,
+    img: saucesSrc,
     realPrice: 23.99,
     reduction: 8,
     price: 21.99,
