@@ -8,11 +8,8 @@ import paymentsWebpSrc from '../../images/payments.webp';
 
 import './Footer.scss'
 
-const isSafariOrIE = typeof window !== 'undefined' ?
-  /constructor/i.test(window.HTMLElement) ||
-  (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
-  (typeof window.safari !== 'undefined' && window.safari.pushNotification)) ||
-  /*@cc_on!@*/false || !!document.documentMode :
+const isSafari = typeof navigator !== 'undefined' ?
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
   false;
 
 const Footer = ({ noBackgroundColor }) => {
@@ -37,7 +34,7 @@ const Footer = ({ noBackgroundColor }) => {
         </Row>
         <Row className='footer-footer'>
           <Col sm={5}>
-            <img src={isSafariOrIE ? paymentsSrc : paymentsWebpSrc} />
+            <img src={isSafari ? paymentsSrc : paymentsWebpSrc} />
           </Col>
           <Col sm={7}>
             <p className='copyright-text'>

@@ -24,11 +24,8 @@ import whiteOnionSrc from '../images/white-onion.png';
 import yamSrc from '../images/yam.png';
 import myfaWebPSrc from '../images/myfa.webp';
 
-const isSafariOrIE = typeof window !== 'undefined' ?
-  /constructor/i.test(window.HTMLElement) ||
-  (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
-  (typeof window.safari !== 'undefined' && window.safari.pushNotification)) ||
-  /*@cc_on!@*/false || !!document.documentMode :
+const isSafari = typeof navigator !== 'undefined' ?
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) :
   false;
 
 const availableBases = [
@@ -99,7 +96,7 @@ const customBasketDetails = {
   label: 'Panier MYFA 🙌🏾',
   homeDesc: 'À vous de le composer !',
   imgAlt: 'panier myfa',
-  img: isSafariOrIE ? myfaSrc : myfaWebPSrc,
+  img: isSafari ? myfaSrc : myfaWebPSrc,
   realPrice: 27.99,
   reduction: 7,
   price: 25.99,
