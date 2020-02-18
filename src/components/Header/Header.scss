@@ -14,6 +14,11 @@
       color: #311a19 !important;
       font-size: 14px;
       font-weight: bold;
+      padding: .5rem 1rem 0 1rem;
+    }
+
+    .underlined {
+      border-bottom: 5px solid #F1D866;
     }
 
     .dropdown-item:active {

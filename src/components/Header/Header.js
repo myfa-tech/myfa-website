@@ -108,6 +108,7 @@ const Header = () => {
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const [underlinedSection, setUnderlinedSection] = useState('home');
 
   const eventEmitter = new EventEmitter();
 
@@ -146,6 +147,23 @@ const Header = () => {
       setSticky(true);
     } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
       setSticky(false);
+    }
+
+    let basketsHeight = document.getElementById('baskets').offsetTop - 200;
+    let promiseHeight = document.getElementById('our-promise').offsetTop - 200;
+    let teamHeight = document.getElementById('team').offsetTop - 200;
+    let cursor = window.pageYOffset;
+
+    if (basketsHeight && promiseHeight && teamHeight) {
+      if (cursor < basketsHeight && underlinedSection !== 'home') {
+        setUnderlinedSection('home');
+      } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
+        setUnderlinedSection('baskets');
+      } else if (cursor >= promiseHeight && cursor < teamHeight && underlinedSection !== 'promise') {
+        setUnderlinedSection('promise');
+      } else if (cursor >= teamHeight && underlinedSection !== 'team') {
+        setUnderlinedSection('team');
+      }
     }
   };
 
@@ -232,10 +250,10 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
-            <Nav.Link href="/#home">Accueil</Nav.Link>
-            <Nav.Link href="/#baskets">Nos paniers</Nav.Link>
-            <Nav.Link href="/#our-promise">Notre Promesse</Nav.Link>
-            <Nav.Link href="/#team">L'équipe</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">Accueil</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">Nos paniers</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">Notre Promesse</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">L'équipe</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
