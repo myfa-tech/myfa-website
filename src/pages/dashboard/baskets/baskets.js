@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Type } from 'react-bootstrap-table2-editor';
+import { FaPencilAlt } from 'react-icons/fa';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
 
-import { fetchBaskets } from '../../../services/baskets';
+import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 
 import './baskets.scss';
 
@@ -14,8 +16,8 @@ const getRelation = (code) => {
     CO: 'Conjoint(e)',
     EN: 'Enfant',
     FR: 'Frère',
-    GM: 'Grand',
-    GP: 'Grand',
+    GM: 'Grand-Mère',
+    GP: 'Grand-Père',
     ME: 'Mère',
     NE: 'Neveu',
     NI: 'Nièce',
@@ -53,100 +55,152 @@ const DashbboardBaskets = () => {
 
   const columns = [
     {
-      Header: 'Numéro',
-      accessor: data => {
-        return data.count || '';
+      text: 'Référence',
+      dataField: 'orderRef',
+      editable: false,
+      headerStyle: () => {
+        return { width: '90px' };
+      }
+    },
+    {
+      text: 'Type',
+      dataField: 'name',
+      editable: false,
+      headerStyle: () => {
+        return { width: '80px' };
+      }
+    },
+    {
+      text: '@ utilisateur',
+      dataField: 'userEmail',
+      editable: false,
+      headerStyle: () => {
+        return { width: '200px' };
+      }
+    },
+    {
+      text: 'Destinataire',
+      dataField: 'recipient.label',
+      formatter: (cell, row, rowIndex) => {
+        return `${row.recipient.firstname} ${row.recipient.lastname} (${getRelation(row.recipient.relation)})`;
       },
+      editable: false,
+      headerStyle: () => {
+        return { width: '250px' };
+      }
     },
     {
-      Header: 'Référence',
-      accessor: data => {
-        return data.orderRef || '';
+      text: 'Tél. Destin. ✏️',
+      dataField: 'recipient.phone',
+      headerStyle: () => {
+        return { width: '120px' };
+      }
+    },
+    {
+      text: 'Zone ✏️',
+      dataField: 'recipient.zone',
+      formatter: (cell, row, rowIndex) => {
+        return getDeliveryZone(row.recipient.zone);
       },
-    },
-    {
-      Header: 'Type',
-      accessor: 'name',
-    },
-    {
-      Header: 'Email utilisateur',
-      accessor: 'userEmail',
-    },
-    {
-      Header: 'Destinataire',
-      accessor: data => {
-        return data.recipient ? `${data.recipient.firstname} ${data.recipient.lastname} (${getRelation(data.recipient.relation)})` : '';
+      editor: {
+        type: Type.SELECT,
+        options: [
+          { value: '2PL', label:  '2 Plateaux' },
+          { value: 'AB',  label: 'Abobo' },
+          { value: 'AD',  label: 'Adjamé' },
+          { value: 'AT',  label: 'Attécoubé' },
+          { value: 'CO',  label: 'Cocody' },
+          { value: 'KO',  label: 'Koumassi' },
+          { value: 'MA',  label: 'Marcory' },
+          { value: 'PL',  label: 'Plateau' },
+          { value: 'PB',  label: 'Port-Bouet' },
+          { value: 'RI',  label: 'Riviera' },
+          { value: 'TR',  label: 'Treichville' },
+          { value: 'YO',  label: 'Yopougon' },
+        ],
       },
+      headerStyle: () => {
+        return { width: '110px' };
+      }
     },
     {
-      Header: 'Tél. Destinataire',
-      accessor: 'recipient.phone',
-    },
-    {
-      Header: 'Zone de livraison',
-      accessor: data => {
-        return data.recipient ? getDeliveryZone(data.recipient.zone) : '';
-      },
-    },
-    {
-      Header: 'Statut',
-      accessor: data => {
-        if (data.status === 'pending') {
+      text: 'Statut ✏️',
+      dataField: 'status',
+      formatter: (cell, row, rowIndex) => {
+        if (row.status === 'pending') {
           return 'paiement 🏃🏽‍♀️';
-        } else if (data.status === 'paid') {
+        } else if (row.status === 'paid') {
           return 'payé 💰';
-        } else if (data.status === 'preparing') {
-          return 'en préparation 🧺';
-        } else if (data.status === 'delivered') {
+        } else if (row.status === 'preparing') {
+          return 'préparation 🧺';
+        } else if (row.status === 'delivered') {
           return 'livré ✅';
         }
-
-        return '';
       },
+      editor: {
+        type: Type.SELECT,
+        options: [{
+          value: 'pending',
+          label: 'paiement 🏃🏽‍♀️',
+        }, {
+          value: 'paid',
+          label: 'payé 💰',
+        }, {
+          value: 'preparing',
+          label: 'préparation 🧺',
+        }, {
+          value: 'delivered',
+          label: 'livré ✅',
+        }],
+      },
+      headerStyle: () => {
+        return { width: '100px' };
+      }
     },
     {
-      Header: 'Date de création',
-      accessor: data => {
-        if (!!data.createdAt) {
-          const date = new Date(data.createdAt);
-
-          return date.toLocaleDateString('fr-FR');
-        }
-
-        return '';
+      text: 'Création',
+      editable: false,
+      formatter: (cell, row, rowIndex) => {
+        return new Date(row.createdAt).toLocaleDateString('fr-FR')
       },
+      dataField: 'createdAt',
+      sort: true
     },
     {
-      Header: 'Date de livraison',
-      accessor: data => {
-        if (!!data.deliveredAt) {
-          const date = new Date(data.deliveredAt);
-
-          return date.toLocaleDateString('fr-FR');
-        }
-
-        return ''
+      text: 'Livraison',
+      editable: false,
+      formatter: (cell, row, rowIndex) => {
+        return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
       },
+      dataField: 'deliveredAt',
+      sort: true
     },
   ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      const fetchedBaskets = await fetchBaskets();
-
-      if (fetchedBaskets.length < 10) {
-        for (let i = 0; i < 10; i++) {
-          if (!fetchedBaskets[i]) {
-            fetchedBaskets.push({ email: '' });
-          }
-        }
-      }
-
-      setBaskets(fetchedBaskets);
-    };
-
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    let fetchedBaskets = await fetchBaskets();
+
+    if (fetchedBaskets.length < 10) {
+      for (let i = 0; i < 10; i++) {
+        if (!fetchedBaskets[i]) {
+          fetchedBaskets.push({ _id: i, email: '' });
+        }
+      }
+    }
+
+    setBaskets(fetchedBaskets);
+  };
+
+  const saveCell = async (oldValue, newValue, row, column) => {
+    if (!!newValue) {
+      await updateBasketById(row._id, { [column.dataField]: newValue });
+      fetchData();
+    }
+  };
 
   return (
     <DashboardLayout>
@@ -154,7 +208,7 @@ const DashbboardBaskets = () => {
         <div className='dashboard-baskets'>
           <h1>Paniers</h1>
           <div className='baskets'>
-            <Table data={baskets} columns={columns} />
+            <Table editable={true} data={baskets} columns={columns} onSaveCell={saveCell} />
           </div>
         </div>
       </DashboardShell>

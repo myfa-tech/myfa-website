@@ -18,8 +18,25 @@
         border: 1px solid rgb(226, 226, 226);
         border-radius: 8px;
 
+        &.red {
+          background-color: #ef5350;
+          color: white;
+        }
+
+        &.orange {
+          background-color: #ffa726;
+        }
+
+        &.green {
+          background-color: #66bb6a;
+        }
+
         h2 {
-          font-size: 50px;
+          font-size: 30px;
+        }
+
+        h3 {
+          font-size: 20px;
         }
       }
     }
