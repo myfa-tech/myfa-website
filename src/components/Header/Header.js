@@ -108,7 +108,7 @@ const Header = () => {
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [underlinedSection, setUnderlinedSection] = useState('home');
+  const [underlinedSection, setUnderlinedSection] = useState('');
 
   const eventEmitter = new EventEmitter();
 
@@ -149,9 +149,13 @@ const Header = () => {
       setSticky(false);
     }
 
-    let basketsHeight = document.getElementById('baskets').offsetTop - 200;
-    let promiseHeight = document.getElementById('our-promise').offsetTop - 200;
-    let teamHeight = document.getElementById('team').offsetTop - 200;
+    let basketsAnchor = document.getElementById('baskets');
+    let promiseAnchor = document.getElementById('our-promise');
+    let teamAnchor = document.getElementById('team');
+
+    let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
+    let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
+    let teamHeight = teamAnchor ? teamAnchor.offsetTop - 200 : null;
     let cursor = window.pageYOffset;
 
     if (basketsHeight && promiseHeight && teamHeight) {
@@ -206,7 +210,6 @@ const Header = () => {
     if (cart && cart.baskets) {
       let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
       setBasketsPrice(newBasketsPrice);
-
     }
   };
 
