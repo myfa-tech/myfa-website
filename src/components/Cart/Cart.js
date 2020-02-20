@@ -3,7 +3,6 @@ import Divider from '@material-ui/core/Divider';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import { some } from 'lodash';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { Row, Col } from 'react-bootstrap';
 
 import PersonalInfo from './PersonalInfo';
@@ -15,6 +14,7 @@ import lydiaService from '../../services/lydia';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
 import useSignupForm from '../../hooks/useSignupForm';
+import useRelativeForm from '../../hooks/useRelativeForm';
 
 import './Cart.scss';
 
@@ -28,23 +28,6 @@ const Cart = () => {
   const [basketsPrice, setBasketsPrice] = useState(0);
   const [basketsNumber, setBasketsNumber] = useState(0);
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState({
-    firstname: '',
-    lastname: '',
-    relation: '',
-    email: '',
-    country: '+225',
-    zone: '',
-    phone: '',
-  });
-  const [errors, setErrors] = useState({
-    email: false,
-    phone: false,
-    zone: false,
-    firstname: false,
-    lastname: false,
-    cgu: false,
-  });
   const [isLoading, setIsLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
   const [
@@ -54,6 +37,14 @@ const Cart = () => {
     personalFormErrors,
     setPersonalFormErrors
   ] = useSignupForm(signup, setResponseStatus);
+  const [
+    relativeFormValues,
+    handleChangeRelativeFormValues,
+    handleSubmitRelativeForm,
+    relativeFormErrors,
+    relativeFormRecipientIndex,
+    handleRelativeFormRecipientChange
+  ] = useRelativeForm(pay);
 
   const eventEmitter = new EventEmitter();
 
@@ -112,98 +103,6 @@ const Cart = () => {
     }
   };
 
-  const verifyFirstname = (type, name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    if (type === 'personal') {
-      errors['firstname'] = true;
-      setErrors({ ...errors });
-    } else {
-      errors['firstname'] = true;
-      setErrors({ ...errors });
-    }
-
-    return false;
-  };
-
-  const verifyLastname = (type, name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    if (type === 'personal') {
-      errors['lastname'] = true;
-      setErrors({ ...errors });
-    } else {
-      errors['lastname'] = true;
-      setErrors({ ...errors });
-    }
-
-    return false;
-  };
-
-	const verifyPhone = (phone) => {
-    const countryCodes = { '+225': 'CI', '+33': 'FR' };
-		const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[form.country]);
-
-		if (phoneNumber && phoneNumber.isValid()) {
-      return true;
-    }
-
-    errors['phone'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-	const verifyZone = (zone) => {
-		if (zone !== '') {
-			return true;
-    }
-
-    errors['zone'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyCGU = (cgu) => {
-    if (cgu) {
-      return true;
-    }
-
-    errors['cgu'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyPassword = (password) => {
-    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/.test(password)) {
-      return [];
-    }
-
-    errors['password'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  }
-
-  const verifyForm = (type) => {
-    let errors = { ...verifyFirstname(type, form.firstname) };
-    errors = { ...errors, ...verifyLastname(type, form.lastname) };
-    errors = { ...errors, ...verifyZone(form.zone) };
-    errors = { ...errors, ...verifyPhone(form.phone) };
-
-    if (!errors.length) {
-      return true;
-    } else {
-      setErrors({ ...errors });
-    }
-  }
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -220,21 +119,8 @@ const Cart = () => {
     }
   };
 
-  const resetErrors = () => {
-    setErrors({
-      email: false,
-      phone: false,
-      zone: false,
-      firstname: false,
-      lastname: false,
-      cgu: false,
-    });
-  };
-
   const nextStep = () => {
     const user = JSON.parse(window.localStorage.getItem('user'));
-
-    resetErrors();
 
     if (user && step === 1) {
       setStep(step + 2);
@@ -243,11 +129,7 @@ const Cart = () => {
       setStep(step + 1);
       scrollToTop();
     } else if (step === 3) {
-      if (verifyForm('relative')) {
-        pay();
-      } else {
-        scrollToTop();
-      }
+      pay();
     } else {
       setStep(step + 1);
       scrollToTop();
@@ -267,18 +149,18 @@ const Cart = () => {
     setCart({ ...cart });
   };
 
-  const pay = async () => {
+  async function pay() {
     const user = JSON.parse(window.localStorage.getItem('user'));
 
     setIsLoading(true);
 
-    cart.recipient = form;
+    cart.recipient = relativeFormValues;
     cart.price = basketsPrice;
 
     const promises = [lydiaService.requestPayment(cart, user.email)];
 
-    if (!some(user.recipients, form)) {
-      promises.push(addRecipient(form));
+    if (!some(user.recipients, relativeFormValues)) {
+      promises.push(addRecipient(relativeFormValues));
     }
 
     await Promise.all(promises);
@@ -314,7 +196,6 @@ const Cart = () => {
                   form={personalFormValues}
                   responseStatus={responseStatus}
                   handleChangeFormValue={handleChangePersonalFormValues}
-                  setResponseStatus={setResponseStatus}
                 />
                 <div className='disabled-section relative-info'>
                   <h2>Informations sur mon proche</h2>
@@ -327,10 +208,11 @@ const Cart = () => {
                   <h2>Je m'inscris pour commander</h2>
                 </div>
                 <RelativeInfo
-                  errors={errors}
-                  form={form}
-                  setErrors={setErrors}
-                  setForm={setForm}
+                  errors={relativeFormErrors}
+                  form={relativeFormValues}
+                  handleChangeFormValue={handleChangeRelativeFormValues}
+                  recipientIndex={relativeFormRecipientIndex}
+                  handleRecipientChange={handleRelativeFormRecipientChange}
                 />
               </>: null
             }
@@ -379,7 +261,7 @@ const Cart = () => {
                       loading={true}
                     />
                   </button> :
-                  <button className='next-button' onClick={nextStep}>Commander</button>
+                  <button className='next-button' onClick={handleSubmitRelativeForm}>Commander</button>
                 ) : null
               }
             </div>

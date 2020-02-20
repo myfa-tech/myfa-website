@@ -8,7 +8,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import './PersonalInfo.scss';
 
-const PersonalInfo = ({ errors, form, responseStatus, handleChangeFormValue, setResponseStatus }) => {
+const PersonalInfo = ({ errors, form, responseStatus, handleChangeFormValue }) => {
   return (
     <div className='personal-container'>
       <h2>Je m'inscris pour commander</h2>

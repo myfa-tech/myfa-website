@@ -1,56 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { isEqual } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
 import './RelativeInfo.scss';
 
-const RelativeInfo = ({ errors, form, setErrors, setForm }) => {
+const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, handleRecipientChange }) => {
   const user = JSON.parse(window.localStorage.getItem('user'));
-  const [recipientIndex, setRecipientIndex] = useState(0);
-  const [isFirstUpdate, setIsFirstUpdate] = useState(true);
-
-  useEffect(() => {
-    setIsFirstUpdate(false);
-  }, []);
-
-  useEffect(() => {
-    if (recipientIndex !== -1 && !!user.recipients.length) {
-      const newFormValues = user.recipients[recipientIndex];
-      setForm({ ...newFormValues });
-    }
-  }, [recipientIndex]);
-
-  useEffect(() => {
-    if (recipientIndex !== -1 && !isEqual(user.recipients[recipientIndex], form) && !isFirstUpdate) {
-      setRecipientIndex(-1);
-    }
-  }, [form]);
-
-  const handleChangeFormValue = (e) => {
-		const targetName = e.target.name;
-
-    form[targetName] = e.target.value;
-    errors[targetName] = false;
-
-    setForm({ ...form });
-		setErrors({ ...errors });
-  };
-
-  const handleRecipientChange = (e) => {
-    setForm({
-      firstname: '',
-      lastname: '',
-      relation: '',
-      email: '',
-      country: '+225',
-      zone: '',
-      phone: '',
-    });
-    setRecipientIndex(Number(e.target.value));
-  };
 
   return (
     <div className='relative-container'>

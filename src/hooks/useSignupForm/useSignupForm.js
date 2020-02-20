@@ -78,9 +78,7 @@ const useSignupForm = (submit, setResponseStatus) => {
     setIsSubmitting(true);
   };
 
-  const areErrors = () => {
-    return !!Object.values(errors).filter(v => !!v).length;
-  }
+  const areErrors = () => !!Object.values(errors).filter(v => !!v).length;
 
   return [values, handleChangeValues, handleSubmit, errors, setErrors];
 };
