@@ -29,14 +29,14 @@ const useRelativeForm = (submit) => {
   }, []);
 
   useEffect(() => {
-    if (recipientIndex !== -1 && !!user.recipients.length) {
+    if (recipientIndex !== -1 && !!user && !!user.recipients.length) {
       const newFormValues = user.recipients[recipientIndex];
       setValues({ ...newFormValues });
     }
   }, [recipientIndex]);
 
   useEffect(() => {
-    if (recipientIndex !== -1 && !isEqual(user.recipients[recipientIndex], values) && !isFirstUpdate) {
+    if (recipientIndex !== -1 && !!user && !isEqual(user.recipients[recipientIndex], values) && !isFirstUpdate) {
       setRecipientIndex(-1);
     }
   }, [values]);

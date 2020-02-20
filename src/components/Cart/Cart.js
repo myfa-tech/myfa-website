@@ -9,11 +9,12 @@ import PersonalInfo from './PersonalInfo';
 import RelativeInfo from './RelativeInfo';
 import CartItems from './CartItems';
 
-import { addRecipient } from '../../services/users';
+import { addRecipient, loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 import lydiaService from '../../services/lydia';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
 import useSignupForm from '../../hooks/useSignupForm';
+import useLoginForm from '../../hooks/useLoginForm';
 import useRelativeForm from '../../hooks/useRelativeForm';
 
 import './Cart.scss';
@@ -30,13 +31,21 @@ const Cart = () => {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
+  const [identificationPath, setIdentificationPath] = useState('signup');
   const [
-    personalFormValues,
-    handleChangePersonalFormValues,
-    handleSubmitPersonalForm,
-    personalFormErrors,
-    setPersonalFormErrors
+    signupFormValues,
+    handleChangeSignupFormValues,
+    handleSubmitSignupForm,
+    signupFormErrors,
+    setSignupFormErrors
   ] = useSignupForm(signup, setResponseStatus);
+  const [
+    loginFormValues,
+    handleChangeLoginFormValues,
+    handleSubmitLoginForm,
+    loginFormErrors,
+    setLoginFormErrors
+  ] = useLoginForm(login, setResponseStatus);
   const [
     relativeFormValues,
     handleChangeRelativeFormValues,
@@ -164,18 +173,44 @@ const Cart = () => {
     }
 
     await Promise.all(promises);
+
+    emptyStoredCart();
     setIsLoading(false);
+  };
+
+  const emptyStoredCart = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('cart');
+    }
   };
 
   async function signup() {
     try {
       setIsLoading(true);
-      await saveUser({ ...personalFormValues, recipients: [] });
+      await saveUser({ ...signupFormValues, recipients: [] });
       nextStep();
     } catch(e) {
       if (e.response.status === 409) {
-        personalFormErrors.email = true;
-        setPersonalFormErrors({ ...personalFormErrors });
+        signupFormErrors.email = true;
+        setSignupFormErrors({ ...signupFormErrors });
+        setResponseStatus(e.response.status);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  async function login() {
+    try {
+      setIsLoading(true);
+      await loginUser(loginFormValues);
+      eventEmitter.emit('login');
+      nextStep();
+    } catch(e) {
+      console.log(e);
+      if (e.response.status === 404) {
+        loginFormErrors.email = true;
+        setLoginFormErrors({ ...loginFormErrors });
         setResponseStatus(e.response.status);
       }
     } finally {
@@ -192,10 +227,16 @@ const Cart = () => {
             {step === 2 ?
               <>
                 <PersonalInfo
-                  errors={personalFormErrors}
-                  form={personalFormValues}
+                  signupErrors={signupFormErrors}
+                  signupForm={signupFormValues}
                   responseStatus={responseStatus}
-                  handleChangeFormValue={handleChangePersonalFormValues}
+                  handleChangeSignupFormValue={handleChangeSignupFormValues}
+                  loginErrors={loginFormErrors}
+                  isLoading={isLoading}
+                  loginForm={loginFormValues}
+                  handleChangeLoginFormValue={handleChangeLoginFormValues}
+                  identificationPath={identificationPath}
+                  setIdentificationPath={setIdentificationPath}
                 />
                 <div className='disabled-section relative-info'>
                   <h2>Informations sur mon proche</h2>
@@ -246,7 +287,7 @@ const Cart = () => {
                       loading={true}
                     />
                   </button> :
-                  <button className='next-button' onClick={handleSubmitPersonalForm}>Suivant</button>
+                  <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>Suivant</button>
                 ) : null
               }
 

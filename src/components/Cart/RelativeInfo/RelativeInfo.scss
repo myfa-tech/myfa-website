@@ -73,7 +73,15 @@
 @media (max-width: 480px) {
   .relative-container {
     h2 {
-      font-size: 22px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .relative-container {
+    h2 {
+      font-size: 17px;
     }
   }
 }

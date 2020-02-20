@@ -123,6 +123,7 @@ const Header = () => {
   useEffect(() => {
     updateCart();
     eventEmitter.listen('editCart', updateCart);
+    eventEmitter.listen('login', setupLogin);
   }, []);
 
   useEffect(() => {
@@ -134,13 +135,14 @@ const Header = () => {
   }, [cart]);
 
   useEffect(() => {
-    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
-
-    if (!!userFromStorage) {
-      setIsLoggedIn(true);
-      setUser({ ...userFromStorage });
-    }
+    setupLogin();
   }, [showLoginSignupModal]);
+
+  useEffect(() => {
+    if (!!user) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
 
   const updateNavbarStickines = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
@@ -168,6 +170,14 @@ const Header = () => {
       } else if (cursor >= teamHeight && underlinedSection !== 'team') {
         setUnderlinedSection('team');
       }
+    }
+  };
+
+  const setupLogin = () => {
+    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+
+    if (!!userFromStorage) {
+      setUser({ ...userFromStorage });
     }
   };
 

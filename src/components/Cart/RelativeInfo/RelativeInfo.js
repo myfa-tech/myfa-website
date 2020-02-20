@@ -25,10 +25,10 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
           value={recipientIndex}
           onChange={handleRecipientChange}
         >
+          <MenuItem value={-1}>--</MenuItem>
           {user && user.recipients.map((rec, index) => (
             <MenuItem key={index} value={index}>{rec.firstname} {rec.lastname}</MenuItem>
           ))}
-          <MenuItem value={-1}>--</MenuItem>
         </TextField>
 
         <Row>
