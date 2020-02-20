@@ -8,25 +8,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import './PersonalInfo.scss';
 
-const PersonalInfo = ({ errors, form, responseStatus, setErrors, setForm, setResponseStatus }) => {
-  const handleChangeFormValue = (e) => {
-		const targetName = e.target.name;
-
-    if (e.target.type === 'checkbox') {
-      form[targetName] = e.target.checked;
-    } else if (targetName === 'email') {
-      form[targetName] = e.target.value;
-      setResponseStatus(null);
-    } else {
-      form[targetName] = e.target.value;
-    }
-
-    errors[targetName] = false;
-
-    setForm({ ...form });
-		setErrors({ ...errors });
-  };
-
+const PersonalInfo = ({ errors, form, responseStatus, handleChangeFormValue, setResponseStatus }) => {
   return (
     <div className='personal-container'>
       <h2>Je m'inscris pour commander</h2>
@@ -106,6 +88,7 @@ const PersonalInfo = ({ errors, form, responseStatus, setErrors, setForm, setRes
           label='Mot de passe'
           required
           name='password'
+          variant='outlined'
           className='full-width'
           value={form.password}
           onChange={handleChangeFormValue}

@@ -14,6 +14,7 @@ import { addRecipient } from '../../services/users';
 import lydiaService from '../../services/lydia';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
+import useSignupForm from '../../hooks/useSignupForm';
 
 import './Cart.scss';
 
@@ -42,25 +43,17 @@ const Cart = () => {
     zone: false,
     firstname: false,
     lastname: false,
-  });
-  const [personalForm, setPersonalForm] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    country: '+33',
-    phone: '',
-    cgu: false,
-  });
-  const [personalFormErrors, setPersonalFormErrors] = useState({
-    email: false,
-    phone: false,
-    zone: false,
-    firstname: false,
-    lastname: false,
     cgu: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
+  const [
+    personalFormValues,
+    handleChangePersonalFormValues,
+    handleSubmitPersonalForm,
+    personalFormErrors,
+    setPersonalFormErrors
+  ] = useSignupForm(signup, setResponseStatus);
 
   const eventEmitter = new EventEmitter();
 
@@ -125,8 +118,8 @@ const Cart = () => {
     }
 
     if (type === 'personal') {
-      personalFormErrors['firstname'] = true;
-      setPersonalFormErrors({ ...personalFormErrors });
+      errors['firstname'] = true;
+      setErrors({ ...errors });
     } else {
       errors['firstname'] = true;
       setErrors({ ...errors });
@@ -141,23 +134,12 @@ const Cart = () => {
     }
 
     if (type === 'personal') {
-      personalFormErrors['lastname'] = true;
-      setPersonalFormErrors({ ...personalFormErrors });
+      errors['lastname'] = true;
+      setErrors({ ...errors });
     } else {
       errors['lastname'] = true;
       setErrors({ ...errors });
     }
-
-    return false;
-  };
-
-  const verifyEmail = (email) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			return true;
-		}
-
-    personalFormErrors['email'] = true;
-    setPersonalFormErrors({ ...personalFormErrors });
 
     return false;
   };
@@ -192,33 +174,34 @@ const Cart = () => {
       return true;
     }
 
-    personalFormErrors['cgu'] = true;
-    setPersonalFormErrors({ ...personalFormErrors });
+    errors['cgu'] = true;
+    setErrors({ ...errors });
 
     return false;
   };
 
   const verifyPassword = (password) => {
     if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/.test(password)) {
-      return true;
+      return [];
     }
 
-    personalFormErrors['password'] = true;
-    setPersonalFormErrors({ ...personalFormErrors });
+    errors['password'] = true;
+    setErrors({ ...errors });
 
     return false;
   }
 
   const verifyForm = (type) => {
-    let formToCheck = (type === 'personal') ? personalForm : form;
+    let errors = { ...verifyFirstname(type, form.firstname) };
+    errors = { ...errors, ...verifyLastname(type, form.lastname) };
+    errors = { ...errors, ...verifyZone(form.zone) };
+    errors = { ...errors, ...verifyPhone(form.phone) };
 
-    return verifyFirstname(type, formToCheck.firstname)
-      && verifyLastname(type, formToCheck.lastname)
-      && (step !== 2 || verifyEmail(formToCheck.email))
-      && (step !== 2 || verifyPassword(personalForm.password))
-      && verifyZone(formToCheck.zone)
-      && (step === 2 || verifyPhone(formToCheck.phone))
-      && (step !== 2 || verifyCGU(personalForm.cgu));
+    if (!errors.length) {
+      return true;
+    } else {
+      setErrors({ ...errors });
+    }
   }
 
   const scrollToTop = () => {
@@ -237,8 +220,21 @@ const Cart = () => {
     }
   };
 
+  const resetErrors = () => {
+    setErrors({
+      email: false,
+      phone: false,
+      zone: false,
+      firstname: false,
+      lastname: false,
+      cgu: false,
+    });
+  };
+
   const nextStep = () => {
     const user = JSON.parse(window.localStorage.getItem('user'));
+
+    resetErrors();
 
     if (user && step === 1) {
       setStep(step + 2);
@@ -289,24 +285,19 @@ const Cart = () => {
     setIsLoading(false);
   };
 
-  const signup = async () => {
-    if (verifyForm('personal')) {
-      try {
-        setIsLoading(true);
-        await saveUser({ ...personalForm, recipients: [] });
-        nextStep();
-      } catch(e) {
-        if (e.response.status === 409) {
-          personalFormErrors['email'] = true;
-          setPersonalFormErrors({ ...personalFormErrors });
-          setResponseStatus(e.response.status);
-          scrollToTop();
-        }
-      } finally {
-        setIsLoading(false);
+  async function signup() {
+    try {
+      setIsLoading(true);
+      await saveUser({ ...personalFormValues, recipients: [] });
+      nextStep();
+    } catch(e) {
+      if (e.response.status === 409) {
+        personalFormErrors.email = true;
+        setPersonalFormErrors({ ...personalFormErrors });
+        setResponseStatus(e.response.status);
       }
-    } else {
-      scrollToTop();
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -320,10 +311,9 @@ const Cart = () => {
               <>
                 <PersonalInfo
                   errors={personalFormErrors}
-                  form={personalForm}
+                  form={personalFormValues}
                   responseStatus={responseStatus}
-                  setErrors={setPersonalFormErrors}
-                  setForm={setPersonalForm}
+                  handleChangeFormValue={handleChangePersonalFormValues}
                   setResponseStatus={setResponseStatus}
                 />
                 <div className='disabled-section relative-info'>
@@ -374,7 +364,7 @@ const Cart = () => {
                       loading={true}
                     />
                   </button> :
-                  <button className='next-button' onClick={signup}>Suivant</button>
+                  <button className='next-button' onClick={handleSubmitPersonalForm}>Suivant</button>
                 ) : null
               }
 
