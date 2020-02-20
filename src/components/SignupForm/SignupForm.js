@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { saveUser } from '../../services/users';
+import useSignupForm from '../../hooks/useSignupForm';
 
 import './SignupForm.scss';
 
@@ -17,191 +17,138 @@ const spinnerStyle = css`
 `;
 
 const SignupForm = ({ onSignup }) => {
-  const [errors, setErrors] = useState({
-    firstname: false,
-    lastname: false,
-    phone: false,
-    password: false,
-    passwordConfirm: false,
-    cgu: false,
-  });
-  const [form, setForm] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    country: '+33',
-    password: '',
-    phone: '',
-    cgu: false,
-  });
   const [responseStatus, setResponseStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [
+    signupFormValues,
+    handleChangeSignupFormValues,
+    handleSubmitSignupForm,
+    signupFormErrors,
+    setSignupFormErrors
+  ] = useSignupForm(signup, setResponseStatus);
 
-  const handleChangeFormValue = (e) => {
-		const targetName = e.target.name;
-
-    if (e.target.type === 'checkbox') {
-      form[targetName] = e.target.checked;
-    } else if (targetName === 'email') {
-      form[targetName] = e.target.value;
-      setResponseStatus(null);
-    } else {
-      form[targetName] = e.target.value;
-    }
-
-    errors[targetName] = false;
-
-    setForm({ ...form });
-		setErrors({ ...errors });
-  };
-
-  const verifyForm = () => {
-    return verifyFirstname(form.firstname)
-      && verifyLastname(form.lastname)
-      && verifyEmail(form.email)
-      && verifyPassword(form.password)
-      && verifyCGU(form.cgu);
-  }
-
-  const verifyFirstname = (name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    errors['firstname'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyLastname = (name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    errors['lastname'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyCGU = (cgu) => {
-    if (cgu) {
-      return true;
-    }
-
-    errors['cgu'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const	verifyEmail = (email) => {
-		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			return true;
-		}
-
-    errors['email'] = true;
-    setErrors({ ...errors });
-
-    return false;
-	};
-
-  const verifyPassword = (password) => {
-    if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/.test(password)) {
-      return true;
-    }
-
-    errors['password'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  }
-
-  const signup = async (e) => {
-    e.preventDefault();
-
-    if (verifyForm()) {
-      try {
-        setIsLoading(true);
-        await saveUser({ ...form, recipients: [] });
-        onSignup()
-      } catch(e) {
-        if (e.response.status === 409) {
-          errors['email'] = true;
-          setErrors({ ...errors });
-          setResponseStatus(e.response.status);
-        }
-      } finally {
-        setIsLoading(false);
+  async function signup() {
+    try {
+      setIsLoading(true);
+      await saveUser({ ...signupFormValues, recipients: [] });
+      onSignup()
+    } catch(e) {
+      if (e.response.status === 409) {
+        signupFormErrors.email = true;
+        setSignupFormErrors({ ...signupFormErrors });
+        setResponseStatus(e.response.status);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form id='signup-form' onSubmit={signup}>
+    <form id='signup-form'>
       <Row>
         <Col xs='6'>
-          <TextField type='text' className='full-width' required error={errors['firstname']} label='Prénom' name='firstname' value={form.firstname} onChange={handleChangeFormValue} disabled={isLoading} />
+          <TextField
+            type='text'
+            className='full-width form-input'
+            required
+            variant='outlined'
+            error={signupFormErrors.firstname}
+            label='Prénom'
+            name='firstname'
+            value={signupFormValues.firstname}
+            onChange={handleChangeSignupFormValues}
+            disabled={isLoading}
+          />
         </Col>
         <Col xs='6'>
-          <TextField type='text' className='full-width' required error={errors['lastname']} label='Nom' name='lastname' value={form.lastname} onChange={handleChangeFormValue} disabled={isLoading} />
+          <TextField
+            type='text'
+            className='full-width form-input'
+            required
+            variant='outlined'
+            error={signupFormErrors.lastname}
+            label='Nom'
+            name='lastname'
+            value={signupFormValues.lastname}
+            onChange={handleChangeSignupFormValues}
+            disabled={isLoading}
+          />
         </Col>
       </Row>
 
-      <TextField type='email' helperText={responseStatus === 409 ? 'Utilisateur déja existant' : null} required className='full-width' error={errors['email']} label='Email' name='email' value={form.email} onChange={handleChangeFormValue} disabled={isLoading} />
+      <TextField
+        type='email'
+        helperText={responseStatus === 409 ? 'Utilisateur déja existant' : null}
+        required
+        variant='outlined'
+        className='full-width form-input'
+        error={signupFormErrors.email}
+        label='Email'
+        name='email'
+        value={signupFormValues.email}
+        onChange={handleChangeSignupFormValues}
+        disabled={isLoading}
+      />
 
       <div className='phone-container'>
           <TextField
             select
             label='Indicatif'
             name='country'
-            className='country-code'
+            variant='outlined'
+            className='country-code form-input'
             disabled={isLoading}
-            value={form.country}
-            onChange={handleChangeFormValue}
+            value={signupFormValues.country}
+            onChange={handleChangeSignupFormValues}
           >
             <MenuItem value='+33'>🇫🇷 +33</MenuItem>
             <MenuItem value='+225'>🇨🇮 +225</MenuItem>
           </TextField>
           <TextField
             type='tel'
-            error={errors['phone']}
+            error={signupFormErrors.phone}
             label='Téléphone'
+            variant='outlined'
             name='phone'
-            className='phone-input'
-            value={form.phone}
-            onChange={handleChangeFormValue}
+            className='phone-input form-input'
+            value={signupFormValues.phone}
+            onChange={handleChangeSignupFormValues}
             disabled={isLoading}
           />
         </div>
 
       <TextField
         type='password'
-        error={errors['password']}
+        error={signupFormErrors.password}
         label='Mot de passe'
         required
+        variant='outlined'
         name='password'
-        className='full-width'
-        value={form.password}
-        onChange={handleChangeFormValue}
+        className='full-width form-input'
+        value={signupFormValues.password}
+        onChange={handleChangeSignupFormValues}
         helperText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
         disabled={isLoading}
       />
 
       <FormControlLabel
-        className={`full-width cgu-cgv ${errors['cgu'] ? 'error' : ''}`}
+        className={`full-width cgu-cgv ${signupFormErrors.cgu ? 'error' : ''}`}
         control={
           <Checkbox
-            checked={form.cgu}
+            checked={signupFormValues.cgu}
             name='cgu'
+            variant='outlined'
             required
-            onChange={handleChangeFormValue}
-            value={form.cgu}
+            onChange={handleChangeSignupFormValues}
+            value={signupFormValues.cgu}
             color='primary'
           />
         }
-        label={<p className='cgu-cgv-label'>J'accepte les <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a></p>}
+        label={
+          <p className='cgu-cgv-label'>
+            J'accepte les <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a>
+          </p>
+        }
       />
 
       {isLoading ?
@@ -214,7 +161,7 @@ const SignupForm = ({ onSignup }) => {
             loading={true}
           />
         </span> :
-        <button type='submit' className='signup-button'>S'inscrire</button>
+        <button type='button' onClick={handleSubmitSignupForm} className='signup-button'>S'inscrire</button>
       }
     </form>
   )
