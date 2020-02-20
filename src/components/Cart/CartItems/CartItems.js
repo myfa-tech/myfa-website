@@ -7,7 +7,7 @@ import './CartItems.scss';
 
 const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
   return (
-    <div className='cart-container'>
+    <div className='my-cart-container'>
       <h2>Mon panier</h2>
 
       <Divider variant='middle' />
