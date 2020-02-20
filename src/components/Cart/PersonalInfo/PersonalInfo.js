@@ -5,8 +5,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Row, Col } from 'react-bootstrap';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { FaFacebook } from 'react-icons/fa';
+import GoogleLogin from 'react-google-login';
 
 import './PersonalInfo.scss';
+
+import googleLogoSrc from '../../../images/google_logo.svg';
+
+const FB_APP_ID = process.env.GATSBY_FB_APP_ID;
+const GOOGLE_CLIENT_ID = process.env.GATSBY_GOOGLE_CLIENT_ID;
 
 const PersonalInfo = ({
   signupErrors,
@@ -19,6 +27,8 @@ const PersonalInfo = ({
   handleChangeLoginFormValue,
   identificationPath,
   setIdentificationPath,
+  responseFacebook,
+  responseGoogle,
 }) => {
   return (
     <div className='personal-container'>
@@ -46,6 +56,8 @@ const PersonalInfo = ({
           handleChangeLoginFormValue={handleChangeLoginFormValue}
           responseStatus={responseStatus}
           isLoading={isLoading}
+          responseFacebook={responseFacebook}
+          responseGoogle={responseGoogle}
         />
       }
     </div>
@@ -57,7 +69,9 @@ const LoginPath = ({
   loginForm,
   handleChangeLoginFormValue,
   responseStatus,
-  isLoading
+  isLoading,
+  responseFacebook,
+  responseGoogle,
 }) => (
   <>
     <form className='personal-form' noValidate>
@@ -90,27 +104,16 @@ const LoginPath = ({
 
       {responseStatus === 404 ? <p className='wrong-user-password'>Utilisateur inconnu</p> : null}
 
-      {/* <FacebookLogin
+      <FacebookLogin
         appId={FB_APP_ID}
         autoLoad={false}
         fields='name, email'
         callback={responseFacebook}
-        onClick={componentClicked}
+        onClick={() => {}}
         render={renderProps => (
           <button type='button' className='facebook-button' onClick={renderProps.onClick}>
-            {isFBLoading ?
-              <ClipLoader
-                css={spinnerStyle}
-                sizeUnit={'px'}
-                size={25}
-                color={'#fff'}
-                loading={true}
-              /> :
-              <>
-                <FaFacebook />
-                <span>Continuer avec Facebook</span>
-              </>
-            }
+            <FaFacebook />
+            <span>Continuer avec Facebook</span>
           </button>
         )}
       />
@@ -123,22 +126,11 @@ const LoginPath = ({
         cookiePolicy={'single_host_origin'}
         render={renderProps => (
           <button type='button' className='google-button' onClick={renderProps.onClick}>
-            {isGoogleLoading ?
-              <ClipLoader
-                css={spinnerStyle}
-                sizeUnit={'px'}
-                size={25}
-                color={'#fff'}
-                loading={true}
-              /> :
-              <>
-                <img src={googleLogoSrc} />
-                <span>Continuer avec Google</span>
-              </>
-            }
+            <img src={googleLogoSrc} />
+            <span>Continuer avec Google</span>
           </button>
         )}
-      /> */}
+      />
 
       <p className='cgu-cgv-accept'>En vous connectant, vous acceptez nos <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a>.</p>
     </form>

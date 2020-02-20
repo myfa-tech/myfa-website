@@ -3,7 +3,7 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { isEqual } from 'lodash';
 
 const useRelativeForm = (submit) => {
-  const user = JSON.parse(window.localStorage.getItem('user'));
+  const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
 
   const [values, setValues] = useState({
     firstname: '',
@@ -36,12 +36,6 @@ const useRelativeForm = (submit) => {
   }, [recipientIndex]);
 
   useEffect(() => {
-    if (recipientIndex !== -1 && !!user && !isEqual(user.recipients[recipientIndex], values) && !isFirstUpdate) {
-      setRecipientIndex(-1);
-    }
-  }, [values]);
-
-  useEffect(() => {
     if (isSubmitting) {
       if (areErrors()) {
         scrollToTop();
@@ -59,6 +53,7 @@ const useRelativeForm = (submit) => {
     errors[name] = false;
 
     setErrors({ ...errors });
+    setRecipientIndex(-1);
     setValues({ ...values, [name]: value });
   };
 
@@ -72,11 +67,20 @@ const useRelativeForm = (submit) => {
       zone: '',
       phone: '',
     });
+
+    setErrors({
+      firstname: false,
+      lastname: false,
+      phone: false,
+      zone: false,
+    });
     setRecipientIndex(Number(e.target.value));
   };
 
   const scrollToTop = () => {
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   };
 
   const handleSubmit = () => {

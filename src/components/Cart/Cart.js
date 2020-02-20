@@ -128,6 +128,56 @@ const Cart = () => {
     }
   };
 
+  const responseFacebook = async (response) => {
+    const { name, email } = response;
+
+    try {
+      if (!!name) {
+        let user = {
+          firstname: name.split(' ')[0],
+          lastname: name.split(' ')[1],
+          email,
+          cgu: true,
+          fbToken: response.accessToken,
+        };
+
+        await loginFBUser(user);
+        eventEmitter.emit('login');
+        nextStep();
+      } else {
+        // @TODO: deal with error
+        console.log(response);
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  };
+
+  const responseGoogle = async (response) => {
+    try {
+      const { givenName, familyName, email } = response.profileObj;
+
+      if (!!email) {
+        let user = {
+          firstname: givenName,
+          lastname: familyName,
+          email,
+          cgu: true,
+          googleToken: response.accessToken,
+        };
+
+        await loginGoogleUser(user);
+        eventEmitter.emit('login');
+        nextStep();
+      } else {
+        // @TODO: deal with error
+        console.log(response);
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  };
+
   const nextStep = () => {
     const user = JSON.parse(window.localStorage.getItem('user'));
 
@@ -237,6 +287,8 @@ const Cart = () => {
                   handleChangeLoginFormValue={handleChangeLoginFormValues}
                   identificationPath={identificationPath}
                   setIdentificationPath={setIdentificationPath}
+                  responseFacebook={responseFacebook}
+                  responseGoogle={responseGoogle}
                 />
                 <div className='disabled-section relative-info'>
                   <h2>Informations sur mon proche</h2>
