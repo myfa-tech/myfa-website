@@ -3,13 +3,15 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 import GoogleLogin from 'react-google-login';
 
 import { loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
+import useLoginForm from '../../hooks/useLoginForm';
 
 import googleLogoSrc from '../../images/google_logo.svg';
 import './LoginForm.scss';
+
 
 const spinnerStyle = css`
   display: block;
@@ -20,72 +22,32 @@ const FB_APP_ID = process.env.GATSBY_FB_APP_ID;
 const GOOGLE_CLIENT_ID = process.env.GATSBY_GOOGLE_CLIENT_ID;
 
 const LoginForm = ({ onLogin }) => {
-  const [errors, setErrors] = useState({
-    email: false,
-    password: false,
-  });
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-  });
   const [isLoading, setIsLoading] = useState(false);
   const [isFBLoading, setIsFBLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
+  const [
+    loginFormValues,
+    handleChangeLoginFormValues,
+    handleLoginFormSubmit,
+    loginFormErrors,
+    setLoginFormErrors,
+  ] = useLoginForm(login, setResponseStatus);
 
-  const handleChangeFormValue = (e) => {
-		const targetName = e.target.name;
-
-    form[targetName] = e.target.value;
-    errors[targetName] = false;
-
-    setResponseStatus(null);
-    setForm({ ...form });
-		setErrors({ ...errors });
-  };
-
-  const	verifyEmail = (email) => {
-		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			return true;
-		}
-
-    errors['email'] = true;
-    setErrors({ ...errors });
-
-    return false;
-	};
-
-  const verifyPassword = (password) => {
-    if (password !== '') {
-      return true;
-    }
-
-    errors['password'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  }
-
-  const verifyForm = () => verifyEmail(form.email) && verifyPassword(form.password);
-
-  const login = async (e) => {
-    e.preventDefault();
-
-    if (verifyForm()) {
-      try {
-        setIsLoading(true);
-        await loginUser(form);
-        onLogin();
-      } catch(e) {
-        console.log(e);
-        if (e.response.status === 404) {
-          errors['email'] = true;
-          setErrors({ ...errors });
-          setResponseStatus(e.response.status);
-        }
-      } finally {
-        setIsLoading(false);
+  async function login() {
+    try {
+      setIsLoading(true);
+      await loginUser(loginFormValues);
+      onLogin();
+    } catch(e) {
+      console.log(e);
+      if (e.response.status === 404) {
+        loginFormErrors.email = true;
+        setLoginFormErrors({ ...loginFormErrors });
+        setResponseStatus(e.response.status);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -147,28 +109,30 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <div id='login-form'>
-      <form onSubmit={login}>
+      <form onSubmit={handleLoginFormSubmit} noValidate>
         <TextField
           type='email'
           required
-          className='full-width'
-          error={errors['email'] || responseStatus === 404}
+          className='full-width form-input'
+          variant='outlined'
+          error={loginFormErrors.email || responseStatus === 404}
           label='Email'
           name='email'
-          value={form.email}
-          onChange={handleChangeFormValue}
+          value={loginFormValues.email}
+          onChange={handleChangeLoginFormValues}
           disabled={isLoading}
         />
 
         <TextField
           type='password'
-          error={errors['password'] || responseStatus === 404}
+          error={loginFormErrors.password || responseStatus === 404}
           label='Mot de passe'
           required
+          variant='outlined'
           name='password'
-          className='full-width password-field'
-          value={form.password}
-          onChange={handleChangeFormValue}
+          className='full-width password-field form-input'
+          value={loginFormValues.password}
+          onChange={handleChangeLoginFormValues}
           helperText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
           disabled={isLoading}
         />
@@ -214,7 +178,7 @@ const LoginForm = ({ onLogin }) => {
 
         <GoogleLogin
           clientId={`${GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
-          buttonText="Login"
+          buttonText='Login'
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={'single_host_origin'}
