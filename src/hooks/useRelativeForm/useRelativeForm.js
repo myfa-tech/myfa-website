@@ -34,6 +34,14 @@ const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
     }
   }, [isSubmitting]);
 
+  useEffect(() => {
+    if (values.relation === 'AU') {
+      setShowOtherRelationInput(true);
+    } else {
+      setShowOtherRelationInput(false);
+    }
+  }, [values]);
+
   const handleChangeValues = (e) => {
     const { name, value } = e.target;
 
@@ -68,7 +76,11 @@ const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
     const { country, firstname, lastname, phone, zone } = values;
     const countryCodes = { '+225': 'CI', '+33': 'FR' };
     const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[country]);
@@ -103,7 +115,6 @@ const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
     errors,
     handleRecipientChange,
     showOtherRelationInput,
-    setShowOtherRelationInput,
   ];
 };
 

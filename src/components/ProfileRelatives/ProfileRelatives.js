@@ -85,33 +85,21 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
   const [
     relativeFormValues,
     handleChangeRelativeFormValues,
+    setRelativeFormValues,
     handleSubmitRelativeForm,
     relativeFormErrors,
-    relativeFormRecipientIndex,
     handleRelativeFormRecipientChange,
     showOtherRelationInput,
-    setShowOtherRelationInput,
   ] = useRelativeForm(update, relative);
 
-  console.log(relatives, relative, relativeIndex, relativeFormValues);
-
-  const handleChangeValue = (e) => {
-    if (e.target.name === 'relation') {
-      if (e.target.value === 'AU') {
-        setShowOtherRelationInput(true);
-      } else {
-        setShowOtherRelationInput(false);
-      }
-    }
-
-    handleChangeRelativeFormValues(e);
-  };
-
-  async function update(e) {
-    e.preventDefault();
-
+  async function update() {
     try {
       setIsLoading(true);
+
+      if (relativeFormValues.relation !== 'AU') {
+        delete relativeFormValues.otherRelation;
+      }
+
       if (relativeIndex === -1) {
         relatives.push({ ...relativeFormValues });
       } else {
@@ -142,7 +130,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             variant='outlined'
             name='firstname'
             value={relativeFormValues.firstname}
-            onChange={handleChangeValue}
+            onChange={handleChangeRelativeFormValues}
             disabled={isLoading}
           />
         </Col>
@@ -156,7 +144,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             label='Nom'
             name='lastname'
             value={relativeFormValues.lastname}
-            onChange={handleChangeValue}
+            onChange={handleChangeRelativeFormValues}
             disabled={isLoading}
           />
         </Col>
@@ -169,7 +157,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         label='Email'
         name='email'
         value={relativeFormValues.email}
-        onChange={handleChangeValue}
+        onChange={handleChangeRelativeFormValues}
         disabled={isLoading}
       />
       <TextField
@@ -180,7 +168,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         variant='outlined'
         disabled={isLoading}
         value={relativeFormValues.relation}
-        onChange={handleChangeValue}
+        onChange={handleChangeRelativeFormValues}
         helperText='Quelle relation avez-vous avec votre proche ?'
       >
         <MenuItem value='AM'>Ami(e)</MenuItem>
@@ -208,7 +196,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           label='Type de relation'
           name='otherRelation'
           value={relativeFormValues.otherRelation}
-          onChange={handleChangeValue}
+          onChange={handleChangeRelativeFormValues}
           disabled={isLoading}
         /> : null
       }
@@ -220,7 +208,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         label='Adresse'
         name='address'
         value={relativeFormValues.address}
-        onChange={handleChangeValue}
+        onChange={handleChangeRelativeFormValues}
         disabled={isLoading}
       />
       <TextField
@@ -234,7 +222,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         placeholder='Quartier de la livraison'
         value={relativeFormValues.zone}
         className='full-width input'
-        onChange={handleChangeValue}
+        onChange={handleChangeRelativeFormValues}
       >
         <MenuItem value='2PL'>2 Plateaux</MenuItem>
         <MenuItem value='AB'>Abobo</MenuItem>
@@ -258,7 +246,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           className='country-code input'
           disabled={isLoading}
           value={relativeFormValues.country}
-          onChange={handleChangeValue}
+          onChange={handleChangeRelativeFormValues}
         >
           <MenuItem value='+225'>🇨🇮 +225</MenuItem>
           <MenuItem value='+33'>🇫🇷 +33</MenuItem>
@@ -272,7 +260,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           variant='outlined'
           className='phone-input input'
           value={relativeFormValues.phone}
-          onChange={handleChangeValue}
+          onChange={handleChangeRelativeFormValues}
           disabled={isLoading}
         />
       </div>

@@ -53,7 +53,8 @@ const Cart = () => {
     setRelativeFormValues,
     handleSubmitRelativeForm,
     relativeFormErrors,
-    handleRelativeFormRecipientChange
+    handleRelativeFormRecipientChange,
+    showOtherRelationInput,
   ] = useRelativeForm(pay);
 
   const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
@@ -325,6 +326,7 @@ const Cart = () => {
                   handleChangeFormValue={handleChangeRelativeForm}
                   recipientIndex={relativeFormRecipientIndex}
                   handleRecipientChange={handleRecipientChange}
+                  showOtherRelationInput={showOtherRelationInput}
                 />
               </>: null
             }

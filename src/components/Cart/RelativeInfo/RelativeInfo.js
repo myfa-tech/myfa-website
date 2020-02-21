@@ -6,7 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import './RelativeInfo.scss';
 
-const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, handleRecipientChange }) => {
+const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, handleRecipientChange, showOtherRelationInput }) => {
   const user = JSON.parse(window.localStorage.getItem('user'));
 
   return (
@@ -94,6 +94,20 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
           <MenuItem value='TA'>Tante</MenuItem>
           <MenuItem value='AU'>Autre</MenuItem>
         </TextField>
+
+        {showOtherRelationInput ?
+          <TextField
+            type='text'
+            className='full-width form-input'
+            variant='outlined'
+            error={errors['otherRelation']}
+            label='Type de relation'
+            name='otherRelation'
+            value={form.otherRelation}
+            onChange={handleChangeFormValue}
+          /> : null
+        }
+
         <TextField
           select
           label='Zone de livraison'
