@@ -76,7 +76,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
 
               <div className='price-container'>
                 <h3>Total TTC</h3>
-                <h3>{basketsPrice} €</h3>
+                <h3>{basketsPrice.toFixed(2)} €</h3>
               </div>
 
               <Divider variant='middle' />
