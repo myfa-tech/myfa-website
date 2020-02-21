@@ -11,7 +11,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import uuid from 'uuid/v4';
 
-import fabricSrc from '../images/fabric.png'
+import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
   const { site } = useStaticQuery(
@@ -26,7 +26,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         }
       }
     `
-  )
+  );
 
   const metaDescription = description || site.siteMetadata.description;
   const metaAuthor = site.siteMetadata.author;
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           property: `og:image`,
-          content: img || fabricSrc,
+          content: img || socialSharingImgSrc,
         },
         {
           name: `twitter:card`,
@@ -78,7 +78,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           name: `twitter:image`,
-          content: img || `${fabricSrc}?id=${uniqueId}`,
+          content: img || `${socialSharingImgSrc}?id=${uniqueId}`,
         },
         {
           name: `twitter:site`,
