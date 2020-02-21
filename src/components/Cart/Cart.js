@@ -32,6 +32,7 @@ const Cart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
+  const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(0);
   const [
     signupFormValues,
     handleChangeSignupFormValues,
@@ -49,12 +50,13 @@ const Cart = () => {
   const [
     relativeFormValues,
     handleChangeRelativeFormValues,
+    setRelativeFormValues,
     handleSubmitRelativeForm,
     relativeFormErrors,
-    relativeFormRecipientIndex,
     handleRelativeFormRecipientChange
   ] = useRelativeForm(pay);
 
+  const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
   const eventEmitter = new EventEmitter();
 
   useEffect(() => {
@@ -63,8 +65,20 @@ const Cart = () => {
   }, []);
 
   useEffect(() => {
+    if (relativeFormRecipientIndex !== -1 && !!user && !!user.recipients.length) {
+      const newFormValues = user.recipients[relativeFormRecipientIndex];
+      setRelativeFormValues({ ...newFormValues });
+    }
+  }, [relativeFormRecipientIndex]);
+
+  useEffect(() => {
     updateBasketsPriceAndNumber();
   }, [cart]);
+
+  const handleRecipientChange = (e) => {
+    setRelativeFormRecipientIndex(Number(e.target.value));
+    handleRelativeFormRecipientChange(e);
+  };
 
   const initCart = () => {
     if (typeof window !== 'undefined') {
@@ -234,6 +248,11 @@ const Cart = () => {
     }
   };
 
+  const handleChangeRelativeForm = (e) => {
+    setRelativeFormRecipientIndex(-1);
+    handleChangeRelativeFormValues(e);
+  }
+
   async function signup() {
     try {
       setIsLoading(true);
@@ -303,9 +322,9 @@ const Cart = () => {
                 <RelativeInfo
                   errors={relativeFormErrors}
                   form={relativeFormValues}
-                  handleChangeFormValue={handleChangeRelativeFormValues}
+                  handleChangeFormValue={handleChangeRelativeForm}
                   recipientIndex={relativeFormRecipientIndex}
-                  handleRecipientChange={handleRelativeFormRecipientChange}
+                  handleRecipientChange={handleRecipientChange}
                 />
               </>: null
             }

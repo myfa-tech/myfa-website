@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
-import { isEqual } from 'lodash';
 
-const useRelativeForm = (submit) => {
-  const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
+const INITIAL_VALUES = {
+  firstname: '',
+  lastname: '',
+  relation: '',
+  email: '',
+  country: '+225',
+  zone: '',
+  phone: '',
+};
 
-  const [values, setValues] = useState({
-    firstname: '',
-    lastname: '',
-    relation: '',
-    email: '',
-    country: '+225',
-    zone: '',
-    phone: '',
-  });
+const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
+  const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({
     firstname: false,
     lastname: false,
@@ -21,19 +20,7 @@ const useRelativeForm = (submit) => {
     zone: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recipientIndex, setRecipientIndex] = useState(0);
-  const [isFirstUpdate, setIsFirstUpdate] = useState(true);
-
-  useEffect(() => {
-    setIsFirstUpdate(false);
-  }, []);
-
-  useEffect(() => {
-    if (recipientIndex !== -1 && !!user && !!user.recipients.length) {
-      const newFormValues = user.recipients[recipientIndex];
-      setValues({ ...newFormValues });
-    }
-  }, [recipientIndex]);
+  const [showOtherRelationInput, setShowOtherRelationInput] = useState(false);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -53,7 +40,6 @@ const useRelativeForm = (submit) => {
     errors[name] = false;
 
     setErrors({ ...errors });
-    setRecipientIndex(-1);
     setValues({ ...values, [name]: value });
   };
 
@@ -74,7 +60,6 @@ const useRelativeForm = (submit) => {
       phone: false,
       zone: false,
     });
-    setRecipientIndex(Number(e.target.value));
   };
 
   const scrollToTop = () => {
@@ -113,10 +98,12 @@ const useRelativeForm = (submit) => {
   return [
     values,
     handleChangeValues,
+    setValues,
     handleSubmit,
     errors,
-    recipientIndex,
-    handleRecipientChange
+    handleRecipientChange,
+    showOtherRelationInput,
+    setShowOtherRelationInput,
   ];
 };
 
