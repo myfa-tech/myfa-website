@@ -25,7 +25,7 @@ const basketStatus = {
 };
 
 const useStyles = makeStyles({
-  stepperRroot: {
+  stepperRoot: {
     background: 'transparent',
     padding: 0,
     width: '100%',
@@ -87,7 +87,7 @@ const ProfileOrders = () => {
                     </div>
                     <div className='content-container'>
                     <ThemeProvider theme={theme}>
-                      <Stepper activeStep={Object.keys(basketStatus).indexOf(basket.status)} alternativeLabel classes={{ root: classes.stepperRroot }}>
+                      <Stepper activeStep={Object.keys(basketStatus).indexOf(basket.status)} alternativeLabel classes={{ root: classes.stepperRoot }}>
                         {Object.values(basketStatus).map(status => (
                           <Step key={status} classes={{ root: classes.stepRoot }}>
                             <StepLabel>{status}</StepLabel>

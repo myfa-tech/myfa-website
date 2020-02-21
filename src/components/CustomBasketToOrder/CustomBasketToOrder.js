@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import StepLabel from '@material-ui/core/StepLabel';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import Step1 from './Step1';
@@ -10,9 +15,33 @@ import { customBasketDetails } from '../../assets/customBasket';
 
 import './CustomBasketToOrder.scss';
 
+const useStyles = makeStyles({
+  stepperRoot: {
+    background: 'transparent',
+    padding: 0,
+    width: '100%',
+  },
+  stepRoot: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  labelContainer: {
+    fontSize: '15px',
+  }
+});
+
 const CustomBasketToOrder = () => {
   const [step, setStep] = useState(1);
   const [basket, setBasket] = useState({ supps: [] });
+
+  const classes = useStyles();
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#000',
+      }
+    },
+  });
 
   const nextStep = (currentBasket) => {
     if (!!currentBasket.supps.length) {
@@ -52,6 +81,25 @@ const CustomBasketToOrder = () => {
             <p className='description'>
               {customBasketDetails.description}
             </p>
+
+            <div className='stepper-container'>
+              <ThemeProvider theme={theme}>
+                <Stepper activeStep={step - 1} alternativeLabel classes={{ root: classes.stepperRoot }}>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Bases & Fruits</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Légumes</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Sauces</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Suppléments</StepLabel>
+                  </Step>
+                </Stepper>
+              </ThemeProvider>
+            </div>
 
             {step === 1 ? <Step1 basketParts={basket} nextStep={nextStep} />: null}
             {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} previousStep={previousStep} />: null}
