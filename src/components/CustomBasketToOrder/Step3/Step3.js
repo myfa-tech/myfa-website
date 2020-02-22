@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { intersectionBy } from 'lodash';
 
 import { availableSauces } from '../../../assets/customBasket';
 
@@ -9,12 +10,26 @@ const QTY_SAUCES = 3;
 const Step3 = ({ basketParts, nextStep, previousStep }) => {
   const [sauces, setSauces] = useState([]);
   const [supps, setSupps] = useState([]);
+  const [itemsCount, setItemsCount] = useState(0);
 
   useEffect(() => {
+    if (basketParts['supps']) {
+      setSupps(basketParts['supps']);
+    }
+
     if (basketParts['sauces']) {
       setSauces(basketParts['sauces']);
     }
   }, []);
+
+  useEffect(() => {
+    countItems();
+  }, [sauces, supps]);
+
+  const countItems = () => {
+    const count = sauces.length + intersectionBy(availableSauces, supps, 'id').length;
+    setItemsCount(count);
+  };
 
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
@@ -53,14 +68,14 @@ const Step3 = ({ basketParts, nextStep, previousStep }) => {
 
   return (
     <div>
-      <h2>Sauces {(sauces.length + supps.filter(s => s.type === 'sauces').length)}/{QTY_SAUCES} - Veuillez choisir jusqu’à trois produits</h2>
+      <h2>Sauces {itemsCount}/{QTY_SAUCES} - Veuillez choisir jusqu’à trois produits</h2>
       <div className='ingredients-container'>
         {availableSauces.map(sauce => (
           <div key={sauce.id} className='ingredient-container' onClick={() => editSauces(sauce)}>
             <img src={sauce.img || defaultBasketSrc} className={(sauces.map(s => s.id).includes(sauce.id) || supps.map(s => s.id).includes(sauce.id)) ? 'selected' : ''} />
             <p>
               {sauce.label}
-              {(sauces.length >= QTY_SAUCES && !sauces.map(s => s.id).includes(sauce.id)) ?
+              {(itemsCount >= QTY_SAUCES && !sauces.map(s => s.id).includes(sauce.id)) ?
                 <span className='supp-prices'>+1,5 €</span> : null
               }
             </p>

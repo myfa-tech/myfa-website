@@ -44,11 +44,8 @@ const CustomBasketToOrder = () => {
   });
 
   const nextStep = (currentBasket) => {
-    if (!!currentBasket.supps.length) {
-      currentBasket.supps = [...currentBasket.supps, ...basket.supps];
-    }
-
     const newBasket = { ...basket, ...currentBasket };
+
     setBasket({ ...newBasket });
     setStep(step + 1);
 
