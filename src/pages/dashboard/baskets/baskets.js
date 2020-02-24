@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Type } from 'react-bootstrap-table2-editor';
-import { FaPencilAlt } from 'react-icons/fa';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';

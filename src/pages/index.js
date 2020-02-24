@@ -9,14 +9,14 @@ import Newsletter from '../components/Newsletter';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 
-import fruitsBackgroundSrc from '../images/fruits-background.jpg';
+import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 import './index.scss';
 
 const IndexPage = () => {
   return (
     <Layout hideHeader={true}>
-      <SEO title="MYFA, pour vos proches au loin" img={fruitsBackgroundSrc} />
+      <SEO title="MYFA, pour vos proches au loin" img={socialSharingImgSrc} />
 
       <Home />
       <HowItWorks />

@@ -1,9 +1,25 @@
 #header {
+  .sticky-navbar {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+    top: 0;
+    left: 0;
+    z-index: 900;
+  }
+
   .menu {
     a {
       color: #311a19 !important;
       font-size: 14px;
       font-weight: bold;
+      padding: .5rem 1rem 0 1rem;
+    }
+
+    .underlined {
+      border-bottom: 5px solid #F1D866;
     }
 
     .dropdown-item:active {
@@ -35,8 +51,8 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        top: 3px;
-        left: 22px;
+        top: 0;
+        left: 26px;
         color: white;
         font-size: 11px;
         font-weight: 300;
@@ -231,6 +247,13 @@
 
 @media (min-width: 480px) {}
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+  #header {
+    .sticky-navbar {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
 
 @media (max-width: 330px) {}

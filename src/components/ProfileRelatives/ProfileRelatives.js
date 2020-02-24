@@ -3,11 +3,11 @@ import { Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import { updateUser } from '../../services/users';
+import useRelativeForm from '../../hooks/useRelativeForm';
 
 import logoHandsSrc from '../../images/logo-1.png';
 
@@ -81,124 +81,42 @@ const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRela
 };
 
 const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
-  const [form, setForm] = useState({
-    firstname: '',
-    lastname: '',
-    relation: '',
-    address: '',
-    email: '',
-    country: '+225',
-    zone: '',
-    phone: '',
-  });
-  const [errors, setErrors] = useState({
-    firstname: false,
-    lastname: false,
-    relation: false,
-    address: false,
-    email: false,
-    country: false,
-    zone: false,
-    phone: false,
-  });
   const [isLoading, setIsLoading] = useState(false);
+  const [
+    relativeFormValues,
+    handleChangeRelativeFormValues,
+    setRelativeFormValues,
+    handleSubmitRelativeForm,
+    relativeFormErrors,
+    handleRelativeFormRecipientChange,
+    showOtherRelationInput,
+  ] = useRelativeForm(update, relative);
 
-  useEffect(() => {
-    if (!!relative) {
-      setForm({ ...relative });
-    } else {
-      setForm({ country: '+225' });
-    }
-  }, []);
+  async function update() {
+    try {
+      setIsLoading(true);
 
-  const verifyFirstname = (name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    errors['firstname'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyLastname = (name) => {
-    if (name !== '') {
-      return true;
-    }
-
-    errors['lastname'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-	const verifyPhone = (phone) => {
-    const countryCodes = { '+225': 'CI', '+33': 'FR' };
-		const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[form.country]);
-
-		if (phoneNumber && phoneNumber.isValid()) {
-      return true;
-    }
-
-    errors['phone'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyZone = (zone) => {
-		if (zone && zone !== '') {
-			return true;
-    }
-
-    errors['zone'] = true;
-    setErrors({ ...errors });
-
-    return false;
-  };
-
-  const verifyForm = () => {
-    return verifyFirstname(form.firstname)
-      && verifyLastname(form.lastname)
-      && verifyZone(form.zone)
-      && verifyPhone(form.phone);
-  }
-
-  const handleChangeFormValue = (e) => {
-		const targetName = e.target.name;
-
-    form[targetName] = e.target.value;
-    errors[targetName] = false;
-
-    setForm({ ...form });
-		setErrors({ ...errors });
-  };
-
-  const update = async (e) => {
-    e.preventDefault();
-
-    if (verifyForm()) {
-      try {
-        setIsLoading(true);
-        if (relativeIndex === -1) {
-          relatives.push({ ...form });
-        } else {
-          relatives[relativeIndex] = { ...form };
-        }
-        await updateUser({ recipients: relatives });
-        window.location.assign('/profile/relatives');
-      } catch(e) {
-        // @TODO: deal with error
-        console.log(e);
-      } finally {
-        setIsLoading(false);
+      if (relativeFormValues.relation !== 'AU') {
+        delete relativeFormValues.otherRelation;
       }
+
+      if (relativeIndex === -1) {
+        relatives.push({ ...relativeFormValues });
+      } else {
+        relatives[relativeIndex] = { ...relativeFormValues };
+      }
+      await updateUser({ recipients: relatives });
+      window.location.assign('/profile/relatives');
+    } catch(e) {
+      // @TODO: deal with error
+      console.log(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form id='relative-form' onSubmit={update}>
+    <form id='relative-form' onSubmit={handleSubmitRelativeForm}>
       <h2>Pour gagner en rapidité lors des achats de paniers, vous pouvez enregistrer vos proches</h2>
 
       <Row>
@@ -206,13 +124,13 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           <TextField
             type='text'
             required
-            error={errors['firstname']}
+            error={relativeFormErrors['firstname']}
             label='Prénom'
             className='full-width input'
             variant='outlined'
             name='firstname'
-            value={form.firstname}
-            onChange={handleChangeFormValue}
+            value={relativeFormValues.firstname}
+            onChange={handleChangeRelativeFormValues}
             disabled={isLoading}
           />
         </Col>
@@ -221,12 +139,12 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             type='text'
             required
             className='full-width input'
-            error={errors['lastname']}
+            error={relativeFormErrors['lastname']}
             variant='outlined'
             label='Nom'
             name='lastname'
-            value={form.lastname}
-            onChange={handleChangeFormValue}
+            value={relativeFormValues.lastname}
+            onChange={handleChangeRelativeFormValues}
             disabled={isLoading}
           />
         </Col>
@@ -235,11 +153,11 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         type='email'
         className='full-width input'
         variant='outlined'
-        error={errors['email']}
+        error={relativeFormErrors['email']}
         label='Email'
         name='email'
-        value={form.email}
-        onChange={handleChangeFormValue}
+        value={relativeFormValues.email}
+        onChange={handleChangeRelativeFormValues}
         disabled={isLoading}
       />
       <TextField
@@ -249,8 +167,8 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         className='full-width input'
         variant='outlined'
         disabled={isLoading}
-        value={form.relation}
-        onChange={handleChangeFormValue}
+        value={relativeFormValues.relation}
+        onChange={handleChangeRelativeFormValues}
         helperText='Quelle relation avez-vous avec votre proche ?'
       >
         <MenuItem value='AM'>Ami(e)</MenuItem>
@@ -268,29 +186,43 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         <MenuItem value='TA'>Tante</MenuItem>
         <MenuItem value='AU'>Autre</MenuItem>
       </TextField>
+
+      {showOtherRelationInput ?
+        <TextField
+          type='text'
+          className='full-width input'
+          variant='outlined'
+          error={relativeFormErrors['otherRelation']}
+          label='Type de relation'
+          name='otherRelation'
+          value={relativeFormValues.otherRelation}
+          onChange={handleChangeRelativeFormValues}
+          disabled={isLoading}
+        /> : null
+      }
       <TextField
         type='text'
         className='full-width input'
         variant='outlined'
-        error={errors['address']}
+        error={relativeFormErrors['address']}
         label='Adresse'
         name='address'
-        value={form.address}
-        onChange={handleChangeFormValue}
+        value={relativeFormValues.address}
+        onChange={handleChangeRelativeFormValues}
         disabled={isLoading}
       />
       <TextField
         select
         label='Zone de livraison'
         required
-        error={errors['zone']}
+        error={relativeFormErrors['zone']}
         name='zone'
         variant='outlined'
         disabled={isLoading}
         placeholder='Quartier de la livraison'
-        value={form.zone}
+        value={relativeFormValues.zone}
         className='full-width input'
-        onChange={handleChangeFormValue}
+        onChange={handleChangeRelativeFormValues}
       >
         <MenuItem value='2PL'>2 Plateaux</MenuItem>
         <MenuItem value='AB'>Abobo</MenuItem>
@@ -313,22 +245,22 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           variant='outlined'
           className='country-code input'
           disabled={isLoading}
-          value={form.country}
-          onChange={handleChangeFormValue}
+          value={relativeFormValues.country}
+          onChange={handleChangeRelativeFormValues}
         >
           <MenuItem value='+225'>🇨🇮 +225</MenuItem>
           <MenuItem value='+33'>🇫🇷 +33</MenuItem>
         </TextField>
         <TextField
           type='tel'
-          error={errors['phone']}
+          error={relativeFormErrors['phone']}
           label='Téléphone'
           name='phone'
           required
           variant='outlined'
           className='phone-input input'
-          value={form.phone}
-          onChange={handleChangeFormValue}
+          value={relativeFormValues.phone}
+          onChange={handleChangeRelativeFormValues}
           disabled={isLoading}
         />
       </div>

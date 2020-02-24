@@ -17,6 +17,8 @@ import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
 
+const STICKY_LIMIT = 300;
+
 const CustomTooltip = withStyles(theme => ({
   tooltip: {
     backgroundColor: '#fff',
@@ -74,7 +76,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
 
               <div className='price-container'>
                 <h3>Total TTC</h3>
-                <h3>{basketsPrice} €</h3>
+                <h3>{basketsPrice.toFixed(2)} €</h3>
               </div>
 
               <Divider variant='middle' />
@@ -105,6 +107,8 @@ const Header = () => {
   const [basketsPrice, setBasketsPrice] = useState(0);
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
+  const [underlinedSection, setUnderlinedSection] = useState('');
 
   const eventEmitter = new EventEmitter();
 
@@ -119,20 +123,63 @@ const Header = () => {
   useEffect(() => {
     updateCart();
     eventEmitter.listen('editCart', updateCart);
+    eventEmitter.listen('login', setupLogin);
   }, []);
+
+  useEffect(() => {
+    window.onscroll = updateNavbarStickines;
+  }, [sticky]);
 
   useEffect(() => {
     updateBasketsPriceAndNumber();
   }, [cart]);
 
   useEffect(() => {
+    setupLogin();
+  }, [showLoginSignupModal]);
+
+  useEffect(() => {
+    if (!!user) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
+
+  const updateNavbarStickines = () => {
+    if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
+      setSticky(true);
+    } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
+      setSticky(false);
+    }
+
+    let basketsAnchor = document.getElementById('baskets');
+    let promiseAnchor = document.getElementById('our-promise');
+    let teamAnchor = document.getElementById('team');
+
+    let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
+    let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
+    let teamHeight = teamAnchor ? teamAnchor.offsetTop - 200 : null;
+    let cursor = window.pageYOffset;
+
+    if (basketsHeight && promiseHeight && teamHeight) {
+      if (cursor < basketsHeight && underlinedSection !== 'home') {
+        setUnderlinedSection('home');
+      } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
+        setUnderlinedSection('baskets');
+      } else if (cursor >= promiseHeight && cursor < teamHeight && underlinedSection !== 'promise') {
+        setUnderlinedSection('promise');
+      } else if (cursor >= teamHeight && underlinedSection !== 'team') {
+        setUnderlinedSection('team');
+      }
+    }
+  };
+
+  const setupLogin = () => {
     let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
 
     if (!!userFromStorage) {
-      setIsLoggedIn(true);
       setUser({ ...userFromStorage });
     }
-  }, [showLoginSignupModal]);
+  };
 
   const updateCart = () => {
     if (typeof window !== 'undefined') {
@@ -173,7 +220,6 @@ const Header = () => {
     if (cart && cart.baskets) {
       let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
       setBasketsPrice(newBasketsPrice);
-
     }
   };
 
@@ -210,17 +256,17 @@ const Header = () => {
 
   return (
     <Container id='header'>
-      <Navbar expand="lg">
+      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
         <Navbar.Brand href="/">
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
-            <Nav.Link href="/#home">Accueil</Nav.Link>
-            <Nav.Link href="/#baskets">Nos paniers</Nav.Link>
-            <Nav.Link href="/#our-promise">Notre Promesse</Nav.Link>
-            <Nav.Link href="/#team">L'équipe</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">Accueil</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">Nos paniers</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">Notre Promesse</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">L'équipe</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
