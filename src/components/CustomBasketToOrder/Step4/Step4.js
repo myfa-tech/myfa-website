@@ -11,7 +11,7 @@ import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_MAX = 5;
 
-const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps }) => {
+const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay }) => {
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
   const [isDone, setIsDone] = useState(false);
@@ -67,9 +67,9 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps }) => {
           <h4>Quantité</h4>
 
           <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
-            <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
-            <Button className='qty-display'>{qty}</Button>
-            <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
+            <Button className={`qty-button ${canPay ? '' : 'disabled'}`}  onClick={() => updateQty(-1)} disabled={!canPay}>-</Button>
+            <Button className={`qty-display ${canPay ? '' : 'disabled'}`} disabled={!canPay}>{qty}</Button>
+            <Button className={`qty-button ${canPay ? '' : 'disabled'}`} onClick={() => updateQty(1)} disabled={!canPay}>+</Button>
           </ButtonGroup>
 
           {qty === QTY_MAX ? <p className='max-qty-msg'>Quantité maximum atteinte</p> : null}
@@ -78,7 +78,7 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps }) => {
             <span className='order-button isDone'>
               <FaCheck color='#6c6' />
             </span> :
-            <button type='button' className='order-button' onClick={finishPurchase}>Ajouter au panier</button>
+            <button type='button' className={`order-button ${canPay ? '' : 'disabled'}`} onClick={finishPurchase} disabled={!canPay}>Ajouter au panier</button>
           }
         </div>
       </div>

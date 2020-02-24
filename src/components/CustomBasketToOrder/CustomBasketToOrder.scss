@@ -119,6 +119,10 @@
 				border: 1px solid #311A19;
 				background-color: #F1D866;
 				color: #311A19;
+
+				&.disabled {
+					opacity: 0.33;
+				}
 			}
 		}
 
@@ -141,6 +145,10 @@
 			&.isDone {
 				width: 40%;
 				text-align: center;
+			}
+
+			&.disabled {
+				opacity: 0.33;
 			}
 		}
 	}

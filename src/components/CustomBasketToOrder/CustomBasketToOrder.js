@@ -44,24 +44,12 @@ const CustomBasketToOrder = () => {
   const [slidingInfosTop, setSlidingInfosTop] = useState(null);
   const [canPay, setCanPay] = useState(false);
 
-  let SLIDER_LIMIT = 0;
   let isSliding = true;
 
   useEffect(() => {
     let suppsPrice = supps.length * SUPP_PRICE;
     setBasketPrice(customBasketDetails.price + suppsPrice);
   }, [supps]);
-
-  useEffect(() => {
-    const setHeight = setInterval(function() {
-      if (document.getElementById('sliding-infos-container').offsetHeight) {
-        let slidingContainerHeight = document.getElementById('sliding-infos-container').offsetHeight;
-        SLIDER_LIMIT = slidingContainerHeight - 200;
-
-        clearInterval(setHeight);
-      }
-   }, 100);
-  }, [step]);
 
   useEffect(() => {
     if (basket.fruits && basket.fruits.length &&
@@ -75,11 +63,13 @@ const CustomBasketToOrder = () => {
   }, [basket]);
 
   useEffect(() => {
-    window.onscroll = () => {
-      if (window.pageYOffset >= SLIDER_LIMIT && isSliding) {
-        setSlidingInfosTop(SLIDER_LIMIT);
+    window.onscroll = function() {
+      let limit = document.getElementById('sliding-infos-container').offsetHeight - 200;
+
+      if (window.pageYOffset >= limit && isSliding) {
+        setSlidingInfosTop(limit);
         isSliding = false;
-      } else if (window.pageYOffset < SLIDER_LIMIT && !isSliding) {
+      } else if (window.pageYOffset < limit && !isSliding) {
         setSlidingInfosTop(null);
         isSliding = true;
       }
@@ -188,10 +178,10 @@ const CustomBasketToOrder = () => {
           {step === 1 ? <Step1 basketParts={basket} nextStep={nextStep} supps={supps} setSupps={setSupps} />: null}
           {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} previousStep={previousStep} supps={supps} setSupps={setSupps} />: null}
           {step === 3 ? <Step3 basketParts={basket} nextStep={nextStep} previousStep={previousStep} supps={supps} setSupps={setSupps} />: null}
-          {step === 4 ? <Step4 basketParts={basket} previousStep={previousStep} addToCart={addToCart} supps={supps} setSupps={setSupps} />: null}
+          {step === 4 ? <Step4 basketParts={basket} previousStep={previousStep} addToCart={addToCart} supps={supps} setSupps={setSupps} canPay={canPay} />: null}
         </Col>
         <Col xs={0} lg={2} id='sliding-infos-container' className='.d-none .d-lg-block'>
-          <div id='sliding-infos' style={slidingInfosTop ? { position: 'absolute', top: slidingInfosTop } : { position: 'fixed', top: 100 }}>
+          <div id='sliding-infos' style={slidingInfosTop ? { position: 'absolute', bottom: 0 } : { position: 'fixed', top: 100 }}>
             <h2>{customBasketDetails.label}</h2>
             <p>à partir de {customBasketDetails.price} €</p>
             <p>Votre panier : <b>{basketPrice.toFixed(2)} €</b></p>
