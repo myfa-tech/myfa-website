@@ -7,9 +7,8 @@ import { availableVeggies } from '../../../assets/customBasket';
 
 const QTY_VEGGIES = 3;
 
-const Step2 = ({ basketParts, nextStep, previousStep }) => {
+const Step2 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
   const [veggies, setVeggies] = useState([]);
-  const [supps, setSupps] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
 
   useEffect(() => {

@@ -7,10 +7,9 @@ import defaultBasketSrc from '../../../images/default-basket.png';
 const QTY_BASES = 1;
 const QTY_FRUITS = 3;
 
-const Step1 = ({ basketParts, nextStep }) => {
+const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
   const [bases, setBases] = useState([]);
   const [fruits, setFruits] = useState([]);
-  const [supps, setSupps] = useState([]);
   const [fruitsCount, setFruitsCount] = useState(0);
   const [basesCount, setBasesCount] = useState(0);
 

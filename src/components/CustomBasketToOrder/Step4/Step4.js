@@ -3,34 +3,24 @@ import { FaCheck } from 'react-icons/fa'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
-import CartModal from '../../CartModal';
-
 import {
   availableSupps,
   customBasketDetails,
 } from '../../../assets/customBasket';
-import EventEmitter from '../../../services/EventEmitter';
 import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_MAX = 5;
-const SUPP_PRICE = 1.5;
 
-const Step4 = ({ basketParts, previousStep }) => {
-  const [supps, setSupps] = useState([]);
+const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps }) => {
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
   const [isDone, setIsDone] = useState(false);
-  const [showCartModal, setShowCartModal] = useState(false);
 
   useEffect(() => {
     if (basketParts['supps']) {
       setSupps(basketParts['supps']);
     }
   }, []);
-
-  const toggleCartModal = () => {
-    setShowCartModal(!showCartModal);
-  };
 
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
@@ -54,34 +44,9 @@ const Step4 = ({ basketParts, previousStep }) => {
     setIsDone(false);
   };
 
-  const addToCart = () => {
-    if (typeof window !== 'undefined') {
-      const eventEmitter = new EventEmitter();
-      let cart = JSON.parse(window.localStorage.getItem('cart'));
-      let basketPrice = customBasketDetails.price;
-
-      if (!!supps.length) {
-        basketPrice += (supps.length * SUPP_PRICE);
-      }
-
-      let newBasket = { ...customBasketDetails, price: basketPrice, items: { ...basket, supps }};
-      setBasket({ ...newBasket });
-
-      if (!cart) {
-        cart = [];
-      }
-
-      for (let i=0; i<qty; i++) {
-        cart.push(newBasket);
-      }
-
-      setIsDone(true);
-
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-      eventEmitter.emit('editCart');
-
-      toggleCartModal();
-    }
+  const finishPurchase = () => {
+    addToCart(basket, qty);
+    setIsDone(true);
   };
 
   return (
@@ -113,18 +78,10 @@ const Step4 = ({ basketParts, previousStep }) => {
             <span className='order-button isDone'>
               <FaCheck color='#6c6' />
             </span> :
-            <button type='button' className='order-button' onClick={addToCart}>Ajouter au panier</button>
+            <button type='button' className='order-button' onClick={finishPurchase}>Ajouter au panier</button>
           }
         </div>
       </div>
-
-      {showCartModal &&
-        <CartModal
-          showCartModal={showCartModal}
-          toggleCartModal={toggleCartModal}
-          basket={basket}
-        />
-      }
     </div>
   );
 };

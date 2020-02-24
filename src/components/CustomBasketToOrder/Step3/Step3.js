@@ -7,9 +7,8 @@ import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_SAUCES = 3;
 
-const Step3 = ({ basketParts, nextStep, previousStep }) => {
+const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
   const [sauces, setSauces] = useState([]);
-  const [supps, setSupps] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
 
   useEffect(() => {
