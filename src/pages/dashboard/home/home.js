@@ -1,35 +1,71 @@
 import React, { useEffect, useState } from 'react';
+import ContentEditable from 'react-contenteditable';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 
 import './home.scss';
 import { fetchKPIs } from '../../../services/kpis';
+import { fetchGoals, updateGoalById } from '../../../services/kpi-goals';
 
-const getColor = (id, value) => {
-  const colors = {
-    week_nb_paid_fruits_baskets: (13/4),
-    week_nb_paid_legumes_baskets: (6/4),
-    week_nb_paid_sauces_baskets: (1/4),
-    week_nb_paid_myfa_baskets: (5/4),
+const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
+  const { generalKpis, weekKpis, monthKpis } = kpis;
 
-    month_nb_paid_fruits_baskets: 13,
-    month_nb_paid_legumes_baskets: 6,
-    month_nb_paid_sauces_baskets: 1,
-    month_nb_paid_myfa_baskets: 5,
+  const getColor = (id, value) => {
+    if (!goals) {
+      return '';
+    }
+
+    const month_nb_paid_fruits_baskets = goals.find(g => g.id === 'month_nb_paid_fruits_baskets').value;
+    const week_nb_paid_fruits_baskets = month_nb_paid_fruits_baskets / 4;
+    const month_nb_paid_legumes_baskets = goals.find(g => g.id === 'month_nb_paid_legumes_baskets').value;
+    const week_nb_paid_legumes_baskets = month_nb_paid_legumes_baskets / 4;
+    const month_nb_paid_sauces_baskets = goals.find(g => g.id === 'month_nb_paid_sauces_baskets').value;
+    const week_nb_paid_sauces_baskets = month_nb_paid_sauces_baskets / 4;
+    const month_nb_paid_myfa_baskets = goals.find(g => g.id === 'month_nb_paid_myfa_baskets').value;
+    const week_nb_paid_myfa_baskets = month_nb_paid_myfa_baskets / 4;
+
+    const colors = {
+      week_nb_paid_fruits_baskets,
+      month_nb_paid_fruits_baskets,
+      month_nb_paid_legumes_baskets,
+      week_nb_paid_legumes_baskets,
+      month_nb_paid_sauces_baskets,
+      week_nb_paid_sauces_baskets,
+      month_nb_paid_myfa_baskets,
+      week_nb_paid_myfa_baskets,
+    };
+
+    if (value < (colors[id] / 2)) {
+      return 'red';
+    } else if (value >= (colors[id] / 2) && value < colors[id]) {
+      return 'orange';
+    } else {
+      return 'green';
+    }
   };
 
-  if (value < (colors[id] / 2)) {
-    return 'red';
-  } else if (value >= (colors[id] / 2) && value < colors[id]) {
-    return 'orange';
-  } else {
-    return 'green';
-  }
-};
+  const handleGoalChange = (id, value) => {
+    let goalIndex = goals.findIndex(g => g.id === id);
+    goals[goalIndex].value = value;
 
-const KPIs = ({ kpis }) => {
-  const { generalKpis, weekKpis, monthKpis } = kpis;
+    setGoals([...goals]);
+  };
+
+  const handleKeyDown = (e, id) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
+  const updateGoal = (id) => {
+    const value = goals.find(g => g.id === id).value;
+    editGoal(id, value);
+  };
+
+  const getGoal = (id) => {
+    return (goals.find(g => g.id === id) || {}).value;
+  };
 
   return (
     <div className='kpis-container'>
@@ -49,6 +85,15 @@ const KPIs = ({ kpis }) => {
           <div className={`kpi-container ${getColor(kpi.id, kpi.result)}`} key={index}>
             <h2>{kpi.result}</h2>
             <h3>{kpi.label}</h3>
+            <ContentEditable
+              className='goal'
+              tagName='div'
+              html={getGoal(kpi.id)} // innerHTML of the editable div
+              disabled={false} // use true to disable edition
+              onChange={(e) => handleGoalChange(kpi.id, e.target.value)} // handle innerHTML change
+              onBlur={() => updateGoal(kpi.id)}
+              onKeyDown={(e) => handleKeyDown(e, kpi.id)}
+            />
           </div>
         ))}
       </div>
@@ -70,10 +115,17 @@ const DashbboardHome = () => {
   const [generalKpis, setGeneralKpis] = useState([]);
   const [weekKpis, setWeekKpis] = useState([]);
   const [monthKpis, setMonthKpis] = useState([]);
+  const [goals, setGoals] = useState([]);
+
+  const editGoal = (id, value) => {
+    updateGoalById(id, value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedKPIs = await fetchKPIs();
+      const fetchedGoals = await fetchGoals();
+
       const generalKpis = fetchedKPIs.filter(kpi => kpi.section === 'general');
       const weekKpis = fetchedKPIs.filter(kpi => kpi.section === 'week');
       const monthKpis = fetchedKPIs.filter(kpi => kpi.section === 'month');
@@ -81,6 +133,8 @@ const DashbboardHome = () => {
       setGeneralKpis(generalKpis);
       setWeekKpis(weekKpis);
       setMonthKpis(monthKpis);
+
+      setGoals(fetchedGoals);
     };
 
     fetchData();
@@ -91,7 +145,7 @@ const DashbboardHome = () => {
       <DashboardShell>
         <div className='dashboard-home'>
           <h1>Accueil</h1>
-          <KPIs kpis={{ generalKpis, weekKpis, monthKpis }} />
+          {goals.length && <KPIs goals={goals} setGoals={setGoals} editGoal={editGoal} kpis={{ generalKpis, weekKpis, monthKpis }} />}
         </div>
       </DashboardShell>
     </DashboardLayout>
