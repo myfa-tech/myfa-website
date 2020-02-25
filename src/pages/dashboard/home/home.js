@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ContentEditable from 'react-contenteditable';
+import sanitizeHtml from "sanitize-html";
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
@@ -47,7 +48,7 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
 
   const handleGoalChange = (id, value) => {
     let goalIndex = goals.findIndex(g => g.id === id);
-    goals[goalIndex].value = value;
+    goals[goalIndex].value = sanitizeHtml(value);
 
     setGoals([...goals]);
   };
