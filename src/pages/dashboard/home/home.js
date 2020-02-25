@@ -54,7 +54,7 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
   };
 
   const handleKeyDown = (e, id) => {
-    if (e.key === 'Enter') {
+    if ((!Number.isInteger(Number(e.key)) && e.key !== 'Backspace' && e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') || e.key === ' ') {
       e.preventDefault();
     }
   };
