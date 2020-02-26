@@ -2,6 +2,22 @@
   height: 100%;
   width: 100%;
 
+  h1 {
+    display: flex;
+    vertical-align: middle;
+
+    button {
+      font-size: 18px;
+      color: #311A19;
+      background-color: #F1D866;
+      padding: 0.5em 2em;
+      font-weight: 500;
+      border: 1px solid #311A19;
+      border-radius: 8px;
+      margin-left: 2em;
+    }
+  }
+
   .baskets {
     width: 100%;
     height: calc(100% - 48px);
