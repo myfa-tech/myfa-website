@@ -1,35 +1,11 @@
-// table {
-//   width: 100%;
-//   border-spacing: 0;
-//   border: 1px solid rgb(199, 199, 199);
-
-//   tr {
-//     height: 42px;
-
-//     :last-child {
-//       td {
-//         border-bottom: 0;
-//       }
-//     }
-//   }
-
-//   th,
-//   td {
-//     margin: 0;
-//     padding: 0.5rem;
-//     border-bottom: 1px solid rgb(199, 199, 199);
-//     border-right: 1px solid rgb(199, 199, 199);
-//     width: 1%;
-
-//     &.collapse {
-//       width: 0.0000000001%;
-//     }
-
-//     :last-child {
-//       border-right: 0;
-//     }
-//   }
-// }
+table {
+  tr {
+    &.warning {
+      color: white;
+      background-color: rgb(255, 162, 162);
+    }
+  }
+}
 
 .scroll-button {
   position: fixed;

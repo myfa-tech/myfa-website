@@ -10,6 +10,7 @@ import './users.scss';
 
 const DashbboardUsers = () => {
   const [users, setUsers] = useState([]);
+  const [timeFilter, setTimeFilter] = useState(null);
 
   const columns = [
     {
@@ -39,47 +40,56 @@ const DashbboardUsers = () => {
   ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      let fetchedUsers = await fetchUsers();
+    fetchData();
+  }, [timeFilter]);
 
-      fetchedUsers = fetchedUsers.map(user => {
-        let qtyPaidBaskets = 0;
-        let date = new Date(user.createdAt);
-
-        if (user.qtyPaidBaskets < 3) {
-          qtyPaidBaskets = `${user.qtyPaidBaskets} 👶🏽`;
-        } else if (user.qtyPaidBaskets < 10) {
-          qtyPaidBaskets = `${user.qtyPaidBaskets} 👩🏽‍🦱`;
-        } else {
-          qtyPaidBaskets = `${user.qtyPaidBaskets} 👵🏽`;
-        }
-
-        return {
-          ...user,
-          qtyPaidBaskets,
-          createdAt: date.toLocaleDateString('fr-FR'),
-        };
-      });
-
-      if (fetchedUsers.length < 15) {
-        for (let i = 0; i < 15; i++) {
-          if (!fetchedUsers[i]) {
-            fetchedUsers.push({ _id: i, email: '' });
-          }
-        }
-      }
-
-      setUsers(fetchedUsers);
-    };
-
+  useEffect(() => {
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    let fetchedUsers = await fetchUsers(timeFilter);
+
+    fetchedUsers = fetchedUsers.map(user => {
+      let qtyPaidBaskets = 0;
+      let date = new Date(user.createdAt);
+
+      if (user.qtyPaidBaskets < 3) {
+        qtyPaidBaskets = `${user.qtyPaidBaskets} 👶🏽`;
+      } else if (user.qtyPaidBaskets < 10) {
+        qtyPaidBaskets = `${user.qtyPaidBaskets} 👩🏽‍🦱`;
+      } else {
+        qtyPaidBaskets = `${user.qtyPaidBaskets} 👵🏽`;
+      }
+
+      return {
+        ...user,
+        qtyPaidBaskets,
+        createdAt: date.toLocaleDateString('fr-FR'),
+      };
+    });
+
+    if (fetchedUsers.length < 15) {
+      for (let i = 0; i < 15; i++) {
+        if (!fetchedUsers[i]) {
+          fetchedUsers.push({ _id: i, email: '' });
+        }
+      }
+    }
+
+    setUsers(fetchedUsers);
+  };
 
   return (
     <DashboardLayout>
       <DashboardShell>
         <div className='dashboard-users'>
-          <h1>Utilisateurs</h1>
+          <h1>
+            <span>Utilisateurs</span>
+            <button onClick={() => setTimeFilter('month')}>Ce mois-ci</button>
+            <button onClick={() => setTimeFilter('week')}>Cette semaine</button>
+            <button onClick={() => setTimeFilter('today')}>Aujourd'hui</button>
+          </h1>
           <div className='users'>
             <Table data={users} columns={columns} />
           </div>

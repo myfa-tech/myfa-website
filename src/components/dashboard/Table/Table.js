@@ -8,7 +8,7 @@ import './Table.scss';
 
 const { SearchBar } = Search;
 
-const Table = ({ data, columns, editable, onSaveCell }) => {
+const Table = ({ data, columns, editable, onSaveCell, rowClasses }) => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -28,6 +28,7 @@ const Table = ({ data, columns, editable, onSaveCell }) => {
 
               <BootstrapTable
                 {...props.baseProps}
+                rowClasses={rowClasses}
                 cellEdit={ !!editable ? cellEditFactory({ mode: 'click', blurToSave: true, afterSaveCell: onSaveCell }) : undefined}
               />
             </div>

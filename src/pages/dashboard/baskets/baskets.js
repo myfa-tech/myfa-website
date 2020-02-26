@@ -49,8 +49,26 @@ const getDeliveryZone = (code) => {
   return zones[code] || code;
 }
 
+const isPendingBasketOverOneHour = (row) => {
+  // getTime give time in milliseconds - we want diff in hours
+  let hoursDiff = (new Date().getTime() - new Date(row.createdAt).getTime())/(1000*3600);
+
+  return !!(row.status === 'pending' && hoursDiff > 1);
+};
+
 const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
+  const [timeFilter, setTimeFilter] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, [timeFilter]);
+
+  const rowClasses = (row, rowIndex) => {
+    if (isPendingBasketOverOneHour(row)) {
+      return 'warning';
+    }
+  };
 
   const columns = [
     {
@@ -181,7 +199,7 @@ const DashbboardBaskets = () => {
   }, []);
 
   const fetchData = async () => {
-    let fetchedBaskets = await fetchBaskets();
+    let fetchedBaskets = await fetchBaskets(timeFilter);
 
     if (fetchedBaskets.length < 10) {
       for (let i = 0; i < 10; i++) {
@@ -205,9 +223,14 @@ const DashbboardBaskets = () => {
     <DashboardLayout>
       <DashboardShell>
         <div className='dashboard-baskets'>
-          <h1>Paniers</h1>
+          <h1>
+            <span>Paniers</span>
+            <button onClick={() => setTimeFilter('month')}>Ce mois-ci</button>
+            <button onClick={() => setTimeFilter('week')}>Cette semaine</button>
+            <button onClick={() => setTimeFilter('today')}>Aujourd'hui</button>
+          </h1>
           <div className='baskets'>
-            <Table editable={true} data={baskets} columns={columns} onSaveCell={saveCell} />
+            <Table editable={true} data={baskets} columns={columns} rowClasses={rowClasses} onSaveCell={saveCell} />
           </div>
         </div>
       </DashboardShell>

@@ -3,15 +3,20 @@ import Axios from 'axios';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
-const fetchUsers = async () => {
+const fetchUsers = async (timeFilter) => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let query = '';
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  const result = await axios.get('/dashboard/users');
+  if (!!timeFilter) {
+    query = `?time_filter=${timeFilter}`;
+  }
+
+  const result = await axios.get(`/dashboard/users${query}`);
 
   return result.data.users;
 };

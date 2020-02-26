@@ -1,25 +1,20 @@
 
 import Axios from 'axios';
 
-const fetchBaskets = async (timeFilter) => {
+const fetchGoals = async () => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
-  let query = '';
 
   let axios = Axios.create({
     baseURL: process.env.GATSBY_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  if (!!timeFilter) {
-    query = `?time_filter=${timeFilter}`;
-  }
+  const result = await axios.get('/dashboard/goals');
 
-  const result = await axios.get(`/dashboard/baskets${query}`);
-
-  return result.data.baskets;
+  return result.data;
 };
 
-const updateBasketById = async (id, editFields) => {
+const updateGoalById = async (id, value) => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
 
   let axios = Axios.create({
@@ -27,7 +22,7 @@ const updateBasketById = async (id, editFields) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.put('/dashboard/baskets', { id, editFields });
-}
+  await axios.put(`/dashboard/goals?id=${id}`, { value });
+};
 
-export { fetchBaskets, updateBasketById };
+export { fetchGoals, updateGoalById };
