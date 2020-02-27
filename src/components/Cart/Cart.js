@@ -9,7 +9,7 @@ import PersonalInfo from './PersonalInfo';
 import RelativeInfo from './RelativeInfo';
 import CartItems from './CartItems';
 
-import { addRecipient, loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
+import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
 import lydiaService from '../../services/lydia';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
@@ -30,6 +30,7 @@ const Cart = () => {
   const [basketsNumber, setBasketsNumber] = useState(0);
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isEmailConfirmed, setIsEmailConfirmed] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
   const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(0);
@@ -76,9 +77,25 @@ const Cart = () => {
     updateBasketsPriceAndNumber();
   }, [cart]);
 
+  useEffect(() => {
+    if (step === 3) {
+      checkEmailIsConfirmed();
+    }
+  }, [step]);
+
   const handleRecipientChange = (e) => {
     setRelativeFormRecipientIndex(Number(e.target.value));
     handleRelativeFormRecipientChange(e);
+  };
+
+  const checkEmailIsConfirmed = async () => {
+    const user = await fetchUser();
+
+    if (!!user.emailConfirmed) {
+      setIsEmailConfirmed(true);
+    } else {
+      setIsEmailConfirmed(false);
+    }
   };
 
   const initCart = () => {
@@ -375,7 +392,23 @@ const Cart = () => {
                       loading={true}
                     />
                   </button> :
-                  <button className='next-button' onClick={handleSubmitRelativeForm}>Commander</button>
+                  <>
+                    <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>Commander</button>
+                    {isEmailConfirmed === false ?
+                      <p className='email-not-confirmed'>Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email.</p>:
+                      null
+                    }
+                    {typeof isEmailConfirmed === 'undefined' ?
+                      <ClipLoader
+                        css={spinnerStyle}
+                        sizeUnit={'px'}
+                        size={25}
+                        color={'#f00'}
+                        loading={true}
+                      />
+                      : null
+                    }
+                  </>
                 ) : null
               }
             </div>

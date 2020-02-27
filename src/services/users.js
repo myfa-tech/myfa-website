@@ -3,6 +3,19 @@ import Axios from 'axios';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
+const fetchUser = async () => {
+  let JWT_TOKEN = window.localStorage.getItem('userToken');
+
+  let axios = Axios.create({
+    baseURL: BACKEND_URL,
+    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
+  });
+
+  const result = await axios.get('/users');
+
+  return result.data;
+};
+
 const fetchUsers = async (timeFilter) => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
   let query = '';
@@ -110,4 +123,16 @@ const addRecipient = async (recipient) => {
   window.localStorage.setItem('user', JSON.stringify(user));
 };
 
-export { addRecipient, deleteAccount, fetchUsers, loginFBUser, loginGoogleUser, loginUser, saveUser, updatePassword, updateUser };
+const confirmEmail = async (email, hash) => {
+  try {
+    await Axios.post(`${BACKEND_URL}/users/email/confirm`, { email, hash });
+
+    window.location.assign('/email_confirmation_success');
+  } catch(e) {
+    if (e.response.status === 404) {
+      window.location.assign('/404');
+    }
+  }
+};
+
+export { addRecipient, confirmEmail, deleteAccount, fetchUser, fetchUsers, loginFBUser, loginGoogleUser, loginUser, saveUser, updatePassword, updateUser };
