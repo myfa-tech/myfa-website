@@ -24,19 +24,31 @@ const DashbboardUsers = () => {
     {
       text: 'Email',
       dataField: 'email',
+      headerStyle: () => {
+        return { width: '300px' };
+      },
     },
     {
       text: 'Phone',
       dataField: 'phone',
+      headerStyle: () => {
+        return { width: '180px' };
+      },
     },
     {
       text: 'Paniers payés',
       dataField: 'qtyPaidBaskets',
+      headerStyle: () => {
+        return { width: '120px' };
+      },
     },
     {
       text: 'Date de création',
       dataField: 'createdAt',
-    }
+      headerStyle: () => {
+        return { width: '180px' };
+      },
+    },
   ];
 
   useEffect(() => {
