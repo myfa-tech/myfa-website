@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/core';
+import { ClipLoader } from 'react-spinners';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
@@ -8,9 +10,15 @@ import { fetchUsers } from '../../../services/users';
 
 import './users.scss';
 
+const spinnerStyle = css`
+  display: block;
+  margin: 0 auto;
+`;
+
 const DashbboardUsers = () => {
   const [users, setUsers] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
 
   const columns = [
     {
@@ -59,6 +67,11 @@ const DashbboardUsers = () => {
     fetchData();
   }, []);
 
+  const handleFilterClicked = (type) => {
+    setIsLoading(type);
+    setTimeFilter(type);
+  };
+
   const fetchData = async () => {
     let fetchedUsers = await fetchUsers(timeFilter);
 
@@ -98,9 +111,45 @@ const DashbboardUsers = () => {
         <div className='dashboard-users'>
           <h1>
             <span>Utilisateurs</span>
-            <button onClick={() => setTimeFilter('month')}>Ce mois-ci</button>
-            <button onClick={() => setTimeFilter('week')}>Cette semaine</button>
-            <button onClick={() => setTimeFilter('today')}>Aujourd'hui</button>
+            <button onClick={() => handleFilterClicked('month')}>
+              {
+                isLoading === 'month' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Ce mois-ci'
+              }
+            </button>
+            <button onClick={() => handleFilterClicked('week')}>
+              {
+                isLoading === 'week' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Cette semaine'
+              }
+            </button>
+            <button onClick={() => handleFilterClicked('today')}>
+              {
+                isLoading === 'today' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Aujourd\'hui'
+              }
+            </button>
           </h1>
           <div className='users'>
             <Table data={users} columns={columns} />
