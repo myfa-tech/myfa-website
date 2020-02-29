@@ -215,7 +215,6 @@ const DashbboardBaskets = () => {
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
       await updateBasketById(row._id, { [column.dataField]: newValue });
-      fetchData();
     }
   };
 

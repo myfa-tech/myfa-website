@@ -44,6 +44,7 @@ const CustomBasketToOrder = () => {
   const [slidingInfosTop, setSlidingInfosTop] = useState(null);
   const [canPay, setCanPay] = useState(false);
 
+  const classes = useStyles();
   let isSliding = true;
 
   useEffect(() => {
@@ -76,7 +77,6 @@ const CustomBasketToOrder = () => {
     };
   }, []);
 
-  const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -134,6 +134,8 @@ const CustomBasketToOrder = () => {
     window.location.assign('/cart');
   }
 
+  console.log('classes : ', classes);
+
   return (
     <section id='custom-basket-to-order'>
       <Row>
@@ -158,7 +160,8 @@ const CustomBasketToOrder = () => {
 
           <div className='stepper-container'>
             <ThemeProvider theme={theme}>
-              <Stepper activeStep={step - 1} alternativeLabel classes={{ root: classes.stepperRoot }}>
+              {classes && classes.stepperRoot ?
+                <Stepper activeStep={step - 1} alternativeLabel classes={{ root: classes.stepperRoot }}>
                 <Step classes={{ root: classes.stepRoot }}>
                   <StepLabel>Bases & Fruits</StepLabel>
                 </Step>
@@ -171,7 +174,7 @@ const CustomBasketToOrder = () => {
                 <Step classes={{ root: classes.stepRoot }}>
                   <StepLabel>Suppléments</StepLabel>
                 </Step>
-              </Stepper>
+              </Stepper> : null}
             </ThemeProvider>
           </div>
 
