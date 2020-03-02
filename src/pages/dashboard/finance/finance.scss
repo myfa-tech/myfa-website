@@ -35,4 +35,14 @@
       background-color: rgb(214, 110, 110);
     }
   }
+
+  .delete-request-button {
+    color: red;
+    display: block;
+    margin: auto;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
