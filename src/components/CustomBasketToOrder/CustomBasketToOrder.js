@@ -134,8 +134,6 @@ const CustomBasketToOrder = () => {
     window.location.assign('/cart');
   }
 
-  console.log('classes : ', classes);
-
   return (
     <section id='custom-basket-to-order'>
       <Row>
@@ -162,19 +160,20 @@ const CustomBasketToOrder = () => {
             <ThemeProvider theme={theme}>
               {classes && classes.stepperRoot ?
                 <Stepper activeStep={step - 1} alternativeLabel classes={{ root: classes.stepperRoot }}>
-                <Step classes={{ root: classes.stepRoot }}>
-                  <StepLabel>Bases & Fruits</StepLabel>
-                </Step>
-                <Step classes={{ root: classes.stepRoot }}>
-                  <StepLabel>Légumes</StepLabel>
-                </Step>
-                <Step classes={{ root: classes.stepRoot }}>
-                  <StepLabel>Sauces</StepLabel>
-                </Step>
-                <Step classes={{ root: classes.stepRoot }}>
-                  <StepLabel>Suppléments</StepLabel>
-                </Step>
-              </Stepper> : null}
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Bases & Fruits</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Légumes</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Sauces</StepLabel>
+                  </Step>
+                  <Step classes={{ root: classes.stepRoot }}>
+                    <StepLabel>Suppléments</StepLabel>
+                  </Step>
+                </Stepper> : null
+              }
             </ThemeProvider>
           </div>
 

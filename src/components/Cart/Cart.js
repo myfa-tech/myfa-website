@@ -33,7 +33,7 @@ const Cart = () => {
   const [isEmailConfirmed, setIsEmailConfirmed] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
-  const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(0);
+  const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(-1);
   const [
     signupFormValues,
     handleChangeSignupFormValues,
@@ -69,6 +69,7 @@ const Cart = () => {
   useEffect(() => {
     if (relativeFormRecipientIndex !== -1 && !!user && !!user.recipients.length) {
       const newFormValues = user.recipients[relativeFormRecipientIndex];
+
       setRelativeFormValues({ ...newFormValues });
     }
   }, [relativeFormRecipientIndex]);
@@ -175,6 +176,7 @@ const Cart = () => {
 
         await loginFBUser(user);
         eventEmitter.emit('login');
+        setRelativeFormRecipientIndex(0);
         nextStep();
       } else {
         // @TODO: deal with error
@@ -200,6 +202,7 @@ const Cart = () => {
 
         await loginGoogleUser(user);
         eventEmitter.emit('login');
+        setRelativeFormRecipientIndex(0);
         nextStep();
       } else {
         // @TODO: deal with error
@@ -275,6 +278,7 @@ const Cart = () => {
     try {
       setIsLoading(true);
       await saveUser({ ...signupFormValues, recipients: [] });
+      setRelativeFormRecipientIndex(0);
       nextStep();
     } catch(e) {
       if (e.response.status === 409) {
@@ -292,6 +296,7 @@ const Cart = () => {
       setIsLoading(true);
       await loginUser(loginFormValues);
       eventEmitter.emit('login');
+      setRelativeFormRecipientIndex(0);
       nextStep();
     } catch(e) {
       console.log(e);
