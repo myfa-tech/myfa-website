@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 import CartModal from '../CartModal';
 
@@ -19,21 +19,6 @@ import { customBasketDetails } from '../../assets/customBasket';
 import './CustomBasketToOrder.scss';
 
 const SUPP_PRICE = 1.5;
-
-const useStyles = makeStyles({
-  stepperRoot: {
-    background: 'transparent',
-    padding: 0,
-    width: '100%',
-  },
-  stepRoot: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  labelContainer: {
-    fontSize: '15px',
-  }
-});
 
 const CustomBasketToOrder = () => {
   const [step, setStep] = useState(1);
@@ -76,7 +61,6 @@ const CustomBasketToOrder = () => {
     };
   }, []);
 
-  const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -158,17 +142,17 @@ const CustomBasketToOrder = () => {
 
           <div className='stepper-container'>
             <ThemeProvider theme={theme}>
-              <Stepper activeStep={step - 1} alternativeLabel classes={{ root: classes.stepperRoot }}>
-                <Step classes={{ root: classes.stepRoot }}>
+              <Stepper activeStep={step - 1} alternativeLabel>
+                <Step>
                   <StepLabel>Bases & Fruits</StepLabel>
                 </Step>
-                <Step classes={{ root: classes.stepRoot }}>
+                <Step>
                   <StepLabel>Légumes</StepLabel>
                 </Step>
-                <Step classes={{ root: classes.stepRoot }}>
+                <Step>
                   <StepLabel>Sauces</StepLabel>
                 </Step>
-                <Step classes={{ root: classes.stepRoot }}>
+                <Step>
                   <StepLabel>Suppléments</StepLabel>
                 </Step>
               </Stepper>
