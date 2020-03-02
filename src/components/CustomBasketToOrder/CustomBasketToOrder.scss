@@ -44,6 +44,29 @@
 	.stepper-container {
 		margin-top: 2em;
 		margin-bottom: 2em;
+
+		.MuiStepper-root {
+			background: transparent;
+			display: flex;
+    	padding: 0;
+			width: 100%;
+
+			&.MuiStepper-horizontal {
+				flex-direction: row;
+			}
+
+			.MuiStep-root {
+				padding-left: 0;
+				padding-right: 0;
+
+				.MuiSvgIcon-root {
+					width: 1em;
+					height: 1em;
+					display: inline-block;
+					font-size: 1.5rem;
+				}
+			}
+		}
 	}
 
 	.error {
