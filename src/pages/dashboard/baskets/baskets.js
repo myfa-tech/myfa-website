@@ -165,6 +165,8 @@ const DashbboardBaskets = () => {
           return 'préparation 🧺';
         } else if (row.status === 'delivered') {
           return 'livré ✅';
+        } else if (row.status === 'canceled') {
+          return 'canceled ❌';
         }
       },
       editor: {
@@ -181,6 +183,9 @@ const DashbboardBaskets = () => {
         }, {
           value: 'delivered',
           label: 'livré ✅',
+        }, {
+          value: 'canceled',
+          label: 'annulé ❌',
         }],
       },
       headerStyle: () => {
