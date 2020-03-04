@@ -166,7 +166,7 @@ const DashbboardBaskets = () => {
         } else if (row.status === 'delivered') {
           return 'livré ✅';
         } else if (row.status === 'canceled') {
-          return 'canceled ❌';
+          return 'annulé ❌';
         }
       },
       editor: {
@@ -212,10 +212,6 @@ const DashbboardBaskets = () => {
     },
   ];
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     let fetchedBaskets = await fetchBaskets(timeFilter);
 
@@ -234,7 +230,6 @@ const DashbboardBaskets = () => {
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
       await updateBasketById(row._id, { [column.dataField]: newValue });
-      fetchData();
     }
   };
 

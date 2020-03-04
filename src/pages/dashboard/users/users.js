@@ -63,10 +63,6 @@ const DashbboardUsers = () => {
     fetchData();
   }, [timeFilter]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleFilterClicked = (type) => {
     setIsLoading(type);
     setTimeFilter(type);
