@@ -22,6 +22,7 @@ const basketStatus = {
   'paid': 'Payé',
   'preparing': 'Préparé',
   'delivered': 'Livré',
+  'canceled': 'Annulé',
 };
 
 const useStyles = makeStyles({
@@ -49,7 +50,7 @@ const ProfileOrders = () => {
   useEffect(() => {
     const run = async () => {
       const fetchedBaskets = await getBasketsByEmail(user.email);
-      const pendingBaskets = fetchedBaskets.filter(b => b.status !== 'delivered');
+      const pendingBaskets = fetchedBaskets.filter(b => (b.status !== 'delivered' && b.status !== 'canceled'));
       const deliveredBaskets = fetchedBaskets.filter(b => b.status === 'delivered');
 
       setPendingBaskets([...pendingBaskets]);

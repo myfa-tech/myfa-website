@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Type } from 'react-bootstrap-table2-editor';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
 import FinanceModal from '../../../components/dashboard/FinanceModal';
-import { fetchRequests, updateRequestById } from '../../../services/finance';
+import { deleteRequestById, fetchRequests, updateRequestById } from '../../../services/finance';
 
 import './finance.scss';
+import DeleteRequestModal from '../../../components/dashboard/DeleteRequestModal/DeleteRequestModal';
 
 const FinancePage = () => {
   const [requests, setRequests] = useState([]);
   const [showFinanceModal, setShowFinanceModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const [showDeleteRequestModal, setShowDeleteRequestModal] = useState(false);
 
   const columns = [
     {
@@ -64,6 +68,20 @@ const FinancePage = () => {
           { value: 'denied',  label: 'Refusé' },
         ]
       },
+    },
+    {
+      text: 'Supprimer',
+      editable: false,
+      isDummyField: true,
+      formatter: (cell, row) => (
+        <FaRegTrashAlt
+          className='delete-request-button'
+          onClick={() => {
+            setItemToDelete(row);
+            setShowDeleteRequestModal(true);
+          }}
+        />
+      ),
     }
   ];
 
@@ -73,7 +91,7 @@ const FinancePage = () => {
 
   useEffect(() => {
     fetchData();
-  }, [showFinanceModal]);
+  }, [showFinanceModal, showDeleteRequestModal]);
 
   const toggleFinanceModal = () => {
     setShowFinanceModal(!showFinanceModal);
@@ -93,10 +111,20 @@ const FinancePage = () => {
     setRequests(fetchedRequests);
   };
 
+  const toggleDeleteRequestModal = () => {
+    setShowDeleteRequestModal(!showDeleteRequestModal);
+    setItemToDelete(null);
+  }
+
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
       await updateRequestById(row._id, { [column.dataField]: newValue });
     }
+  };
+
+  const confirmDeleteRequest = async () => {
+    await deleteRequestById(itemToDelete._id);
+    toggleDeleteRequestModal();
   };
 
   return (
@@ -109,6 +137,14 @@ const FinancePage = () => {
           </div>
         </div>
         {showFinanceModal && <FinanceModal showModal={showFinanceModal} toggleModal={toggleFinanceModal} />}
+        {showDeleteRequestModal &&
+          <DeleteRequestModal
+            confirmDelete={confirmDeleteRequest}
+            showModal={showDeleteRequestModal}
+            toggleModal={toggleDeleteRequestModal}
+            labelToDelete={itemToDelete.label}
+          />
+        }
       </DashboardShell>
     </DashboardLayout>
   );

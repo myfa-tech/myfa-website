@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Type } from 'react-bootstrap-table2-editor';
+import { css } from '@emotion/core';
+import { ClipLoader } from 'react-spinners';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
@@ -49,6 +51,11 @@ const getDeliveryZone = (code) => {
   return zones[code] || code;
 }
 
+const spinnerStyle = css`
+  display: block;
+  margin: 0 auto;
+`;
+
 const isPendingBasketOverOneHour = (row) => {
   // getTime give time in milliseconds - we want diff in hours
   let hoursDiff = (new Date().getTime() - new Date(row.createdAt).getTime())/(1000*3600);
@@ -59,10 +66,16 @@ const isPendingBasketOverOneHour = (row) => {
 const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
 
   useEffect(() => {
     fetchData();
   }, [timeFilter]);
+
+  const handleFilterClicked = (type) => {
+    setIsLoading(type);
+    setTimeFilter(type);
+  };
 
   const rowClasses = (row, rowIndex) => {
     if (isPendingBasketOverOneHour(row)) {
@@ -152,6 +165,8 @@ const DashbboardBaskets = () => {
           return 'préparation 🧺';
         } else if (row.status === 'delivered') {
           return 'livré ✅';
+        } else if (row.status === 'canceled') {
+          return 'annulé ❌';
         }
       },
       editor: {
@@ -168,6 +183,9 @@ const DashbboardBaskets = () => {
         }, {
           value: 'delivered',
           label: 'livré ✅',
+        }, {
+          value: 'canceled',
+          label: 'annulé ❌',
         }],
       },
       headerStyle: () => {
@@ -194,10 +212,6 @@ const DashbboardBaskets = () => {
     },
   ];
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     let fetchedBaskets = await fetchBaskets(timeFilter);
 
@@ -210,6 +224,7 @@ const DashbboardBaskets = () => {
     }
 
     setBaskets(fetchedBaskets);
+    setIsLoading(null);
   };
 
   const saveCell = async (oldValue, newValue, row, column) => {
@@ -224,9 +239,45 @@ const DashbboardBaskets = () => {
         <div className='dashboard-baskets'>
           <h1>
             <span>Paniers</span>
-            <button onClick={() => setTimeFilter('month')}>Ce mois-ci</button>
-            <button onClick={() => setTimeFilter('week')}>Cette semaine</button>
-            <button onClick={() => setTimeFilter('today')}>Aujourd'hui</button>
+            <button onClick={() => handleFilterClicked('month')}>
+              {
+                isLoading === 'month' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Ce mois-ci'
+              }
+            </button>
+            <button onClick={() => handleFilterClicked('week')}>
+              {
+                isLoading === 'week' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Cette semaine'
+              }
+            </button>
+            <button onClick={() => handleFilterClicked('today')}>
+              {
+                isLoading === 'today' ?
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                /> :
+                'Aujourd\'hui'
+              }
+            </button>
           </h1>
           <div className='baskets'>
             <Table editable={true} data={baskets} columns={columns} rowClasses={rowClasses} onSaveCell={saveCell} />
