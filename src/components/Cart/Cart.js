@@ -30,6 +30,7 @@ const Cart = () => {
   const [basketsNumber, setBasketsNumber] = useState(0);
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
   const [isEmailConfirmed, setIsEmailConfirmed] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
@@ -131,6 +132,7 @@ const Cart = () => {
         setCart(enhancedCart);
         setBasketsNumber(newBasketsNumber);
         setBasketsPrice(newBasketsPrice);
+        setIsFetching(false);
       }
     }
   };
@@ -312,10 +314,10 @@ const Cart = () => {
 
   return (
     <section id='cart'>
-      {cart && cart.baskets && Object.keys(cart.baskets).length ?
+      {!isFetching && cart && cart.baskets && Object.keys(cart.baskets).length ?
         <Row>
           <Col md='8'>
-            {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
+            {!isFetching && step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
             {step === 2 ?
               <>
                 <PersonalInfo
