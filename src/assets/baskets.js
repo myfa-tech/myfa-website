@@ -24,7 +24,7 @@ const baskets = [
       '1kg de bananes',
       '1kg d\'oranges',
       '1 noix de coco',
-      '1kg de poires',
+      '1 ananas',
       '1kg de mangues ',
       '1kg d\'avocats ',
     ],
