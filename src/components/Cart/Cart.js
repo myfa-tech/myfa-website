@@ -314,119 +314,119 @@ const Cart = () => {
 
   return (
     <section id='cart'>
-      {!isFetching && cart && cart.baskets && Object.keys(cart.baskets).length ?
-        <Row>
-          <Col md='8'>
-            {!isFetching && step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
-            {step === 2 ?
-              <>
-                <PersonalInfo
-                  signupErrors={signupFormErrors}
-                  signupForm={signupFormValues}
-                  responseStatus={responseStatus}
-                  handleChangeSignupFormValue={handleChangeSignupFormValues}
-                  loginErrors={loginFormErrors}
-                  isLoading={isLoading}
-                  loginForm={loginFormValues}
-                  handleChangeLoginFormValue={handleChangeLoginFormValues}
-                  identificationPath={identificationPath}
-                  setIdentificationPath={setIdentificationPath}
-                  responseFacebook={responseFacebook}
-                  responseGoogle={responseGoogle}
-                />
-                <div className='disabled-section relative-info'>
-                  <h2>Informations sur mon proche</h2>
-                </div>
-              </> : null
-            }
-            {step === 3 ?
-              <>
-                <div className='disabled-section signup-to-order'>
-                  <h2>Je m'inscris pour commander</h2>
-                </div>
-                <RelativeInfo
-                  errors={relativeFormErrors}
-                  form={relativeFormValues}
-                  handleChangeFormValue={handleChangeRelativeForm}
-                  recipientIndex={relativeFormRecipientIndex}
-                  handleRecipientChange={handleRecipientChange}
-                  showOtherRelationInput={showOtherRelationInput}
-                />
-              </>: null
-            }
-          </Col>
-          <Col md='4'>
-            <div className='price-container'>
-              <h2>Total</h2>
-
-              <Divider variant='middle' />
-
-              <div className='content-container'>
-                <p>{basketsNumber} paniers : {basketsPrice.toFixed(2)} €</p>
-                <p>Total TTC : {basketsPrice.toFixed(2)} €</p>
-              </div>
-
-              <Divider variant='middle' />
-
-              {step === 1 ?
-                <button className='next-button' onClick={nextStep}>Suivant</button> :
-                null
-              }
-
+      {!isFetching ?
+        cart && cart.baskets && Object.keys(cart.baskets).length ?
+          <Row>
+            <Col md='8'>
+              {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
               {step === 2 ?
-                (isLoading ?
-                  <button className='next-button'>
-                    <ClipLoader
-                      css={spinnerStyle}
-                      sizeUnit={'px'}
-                      size={25}
-                      color={'#000'}
-                      loading={true}
-                    />
-                  </button> :
-                  <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>Suivant</button>
-                ) : null
+                <>
+                  <PersonalInfo
+                    signupErrors={signupFormErrors}
+                    signupForm={signupFormValues}
+                    responseStatus={responseStatus}
+                    handleChangeSignupFormValue={handleChangeSignupFormValues}
+                    loginErrors={loginFormErrors}
+                    isLoading={isLoading}
+                    loginForm={loginFormValues}
+                    handleChangeLoginFormValue={handleChangeLoginFormValues}
+                    identificationPath={identificationPath}
+                    setIdentificationPath={setIdentificationPath}
+                    responseFacebook={responseFacebook}
+                    responseGoogle={responseGoogle}
+                  />
+                  <div className='disabled-section relative-info'>
+                    <h2>Informations sur mon proche</h2>
+                  </div>
+                </> : null
               }
-
               {step === 3 ?
-                (isLoading ?
-                  <button className='next-button'>
-                    <ClipLoader
-                      css={spinnerStyle}
-                      sizeUnit={'px'}
-                      size={25}
-                      color={'#000'}
-                      loading={true}
-                    />
-                  </button> :
-                  <>
-                    <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>Commander</button>
-                    {isEmailConfirmed === false ?
-                      <p className='email-not-confirmed'>Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email.</p>:
-                      null
-                    }
-                    {typeof isEmailConfirmed === 'undefined' ?
+                <>
+                  <div className='disabled-section signup-to-order'>
+                    <h2>Je m'inscris pour commander</h2>
+                  </div>
+                  <RelativeInfo
+                    errors={relativeFormErrors}
+                    form={relativeFormValues}
+                    handleChangeFormValue={handleChangeRelativeForm}
+                    recipientIndex={relativeFormRecipientIndex}
+                    handleRecipientChange={handleRecipientChange}
+                    showOtherRelationInput={showOtherRelationInput}
+                  />
+                </>: null
+              }
+            </Col>
+            <Col md='4'>
+              <div className='price-container'>
+                <h2>Total</h2>
+
+                <Divider variant='middle' />
+
+                <div className='content-container'>
+                  <p>{basketsNumber} paniers : {basketsPrice.toFixed(2)} €</p>
+                  <p>Total TTC : {basketsPrice.toFixed(2)} €</p>
+                </div>
+
+                <Divider variant='middle' />
+
+                {step === 1 ?
+                  <button className='next-button' onClick={nextStep}>Suivant</button> :
+                  null
+                }
+
+                {step === 2 ?
+                  (isLoading ?
+                    <button className='next-button'>
                       <ClipLoader
                         css={spinnerStyle}
                         sizeUnit={'px'}
                         size={25}
-                        color={'#f00'}
+                        color={'#000'}
                         loading={true}
                       />
-                      : null
-                    }
-                  </>
-                ) : null
-              }
-            </div>
-          </Col>
-        </Row> :
-        <div className='empty-cart-container'>
-          <p>Votre panier est vide.</p>
-          <a href='/#baskets' className='discover-baskets-button'>Découvrir les paniers</a>
-        </div>
-    }
+                    </button> :
+                    <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>Suivant</button>
+                  ) : null
+                }
 
+                {step === 3 ?
+                  (isLoading ?
+                    <button className='next-button'>
+                      <ClipLoader
+                        css={spinnerStyle}
+                        sizeUnit={'px'}
+                        size={25}
+                        color={'#000'}
+                        loading={true}
+                      />
+                    </button> :
+                    <>
+                      <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>Commander</button>
+                      {isEmailConfirmed === false ?
+                        <p className='email-not-confirmed'>Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email.</p>:
+                        null
+                      }
+                      {typeof isEmailConfirmed === 'undefined' ?
+                        <ClipLoader
+                          css={spinnerStyle}
+                          sizeUnit={'px'}
+                          size={25}
+                          color={'#f00'}
+                          loading={true}
+                        />
+                        : null
+                      }
+                    </>
+                  ) : null
+                }
+              </div>
+            </Col>
+          </Row> :
+          <div className='empty-cart-container'>
+            <p>Votre panier est vide.</p>
+            <a href='/#baskets' className='discover-baskets-button'>Découvrir les paniers</a>
+          </div> :
+      null}
     </section>
   );
 };
