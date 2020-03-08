@@ -45,6 +45,12 @@
 		margin-top: 2em;
 		margin-bottom: 2em;
 
+		.MuiPaper-root {
+			color: rgba(0, 0, 0, 0.87);
+			transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+			background-color: #fff;
+		}
+
 		.MuiStepper-root {
 			background: transparent;
 			display: flex;
@@ -59,12 +65,75 @@
 				padding-left: 0;
 				padding-right: 0;
 
+				.MuiStepLabel-root {
+					display: flex;
+					align-items: center;
+
+					&.MuiStepLabel-alternativeLabel {
+						flex-direction: column;
+					}
+
+					.MuiStepLabel-iconContainer {
+						&.MuiStepLabel-alternativeLabel {
+							padding-right: 0;
+						}
+					}
+
+					.MuiStepLabel-labelContainer {
+						width: 100%;
+
+						.MuiStepLabel-label {
+							&.MuiStepLabel-alternativeLabel {
+								margin-top: 16px;
+								text-align: center;
+							}
+						}
+					}
+				}
+
 				.MuiSvgIcon-root {
 					width: 1em;
 					height: 1em;
 					display: inline-block;
 					font-size: 1.5rem;
+
+					.MuiStepIcon-text {
+						fill: #fff;
+						font-size: 0.75rem;
+						font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+					}
 				}
+
+				.MuiStepConnector-root {
+					flex: 1 1 auto;
+
+					.MuiStepConnector-lineHorizontal {
+						border-top-style: solid;
+						border-top-width: 1px;
+
+						.MuiStepConnector-line {
+							display: block;
+							border-color: #bdbdbd;
+						}
+					}
+				}
+
+				.MuiStepConnector-alternativeLabel {
+					top: 12px;
+					left: calc(-50% + 20px);
+					right: calc(50% + 20px);
+					position: absolute;
+				}
+			}
+		}
+
+		.MuiStepper-alternativeLabel {
+			align-items: flex-start;
+
+			.MuiStep-alternativeLabel {
+				flex: 1;
+				position: relative;
+
 			}
 		}
 	}
