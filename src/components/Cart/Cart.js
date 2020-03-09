@@ -10,7 +10,6 @@ import RelativeInfo from './RelativeInfo';
 import CartItems from './CartItems';
 
 import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
-import lydiaService from '../../services/lydia';
 import stripeService from '../../services/stripe';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
