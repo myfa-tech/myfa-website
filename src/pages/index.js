@@ -8,6 +8,7 @@ import Team from '../components/Team';
 import Newsletter from '../components/Newsletter';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
+import Trustees from '../components/Trustees';
 
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
@@ -22,6 +23,7 @@ const IndexPage = () => {
       <HowItWorks />
       <Baskets />
       <OurPromise />
+      <Trustees />
       <Team />
       <Newsletter />
     </Layout>
