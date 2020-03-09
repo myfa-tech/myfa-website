@@ -11,6 +11,7 @@ import CartItems from './CartItems';
 
 import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
 import lydiaService from '../../services/lydia';
+import stripeService from '../../services/stripe';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
 import useSignupForm from '../../hooks/useSignupForm';
@@ -132,8 +133,9 @@ const Cart = () => {
         setCart(enhancedCart);
         setBasketsNumber(newBasketsNumber);
         setBasketsPrice(newBasketsPrice);
-        setIsFetching(false);
       }
+
+      setIsFetching(false);
     }
   };
 
@@ -253,7 +255,7 @@ const Cart = () => {
     cart.recipient = relativeFormValues;
     cart.price = basketsPrice;
 
-    const promises = [lydiaService.requestPayment(cart, user.email)];
+    const promises = [stripeService.createPayment(cart, user.email)];
 
     if (!some(user.recipients, relativeFormValues)) {
       promises.push(addRecipient(relativeFormValues));

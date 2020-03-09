@@ -17,11 +17,11 @@ const requestPayment = async (order, userEmail) => {
   });
 
 	const response = await axios.post(`/lydia/pay`, {
-    amount: order.price, // amount in €
+    amount: order.price,
     type: 'email',
     currency: 'EUR',
-    recipient: userEmail, // cellphone or email
-    message : `Commande MYFA`, // object of the payment
+    recipient: userEmail,
+    message : `Commande MYFA`,
     browser_success_url,
     display_confirmation: 'no',
     payment_mail_description: `Commande MYFA`,
