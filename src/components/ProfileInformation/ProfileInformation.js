@@ -53,7 +53,7 @@ const ProfileInformation = () => {
   };
 
 	const verifyPhone = (phone) => {
-    const countryCodes = { '+225': 'CI', '+33': 'FR' };
+    const countryCodes = { '+225': 'CI', '+33': 'FR', '+1': 'US' };
 		const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[form.country]);
 
 		if (phoneNumber && phoneNumber.isValid()) {
@@ -149,6 +149,7 @@ const ProfileInformation = () => {
           >
             <MenuItem value='+33'>🇫🇷 +33</MenuItem>
             <MenuItem value='+225'>🇨🇮 +225</MenuItem>
+            <MenuItem value='+1'>🇺🇸 +1</MenuItem>
           </TextField>
           <TextField
             type='tel'
