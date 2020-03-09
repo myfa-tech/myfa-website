@@ -82,7 +82,7 @@ const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
     }
 
     const { country, firstname, lastname, phone, zone } = values;
-    const countryCodes = { '+225': 'CI', '+33': 'FR' };
+    const countryCodes = { '+225': 'CI', '+33': 'FR', '+1': 'US' };
     const phoneNumber = parsePhoneNumberFromString(phone, countryCodes[country]);
 
     if (!firstname) {

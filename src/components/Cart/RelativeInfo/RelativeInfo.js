@@ -145,6 +145,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
           >
             <MenuItem value='+225'>🇨🇮 +225</MenuItem>
             <MenuItem value='+33'>🇫🇷 +33</MenuItem>
+            <MenuItem value='+1'>🇺🇸 +1</MenuItem>
           </TextField>
           <TextField
             type='tel'
