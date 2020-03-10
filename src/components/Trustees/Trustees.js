@@ -19,7 +19,7 @@ const Trustees = () => {
   return (
     <section id='trustees'>
       <div className='title-container'>
-        <h2>Ils nous font confiance</h2>
+        <h2>Ils nous font confiance 🤝</h2>
       </div>
       <Row className='content-container'>
         {trusteesList.map(trustee => (
