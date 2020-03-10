@@ -43,10 +43,10 @@ const baskets = [
     items: [
       '1kg de carottes',
       '1kg de pommes de terre',
-      '1kg d\'oignons blancs',
+      '1kg d\'oignons rouges',
       '1kg d\'ignames',
-      '1kg de choux rouges',
-      '1kg de haricots verts',
+      '1 choux rouge',
+      '400g de haricots verts',
     ],
   },
   {
@@ -62,10 +62,10 @@ const baskets = [
     description: 'Tout bon plat se doit d\'être accompagné d\'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉',
     items: [
       '1 bouteille d\'huile de palme 1L',
-      '1kg de gombos',
-      '1kg d\'oignons blancs',
+      '250g de gombos',
+      '1kg d\'oignons rouges',
       '1 tablier de 60 cubes d\'épices de 10gr',
-      '1kg de piments frais',
+      '300g de piments frais',
       '1kg de tomates',
       '1kg de citrons',
       '70g de graines d\'akpi',

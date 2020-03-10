@@ -38,8 +38,8 @@ const availableFruits = [
 
 const availableSauces = [
   { id: 'hupa', type: 'sauces', label: 'Huile de palme (1btl)', img: palmOilSrc },
-  { id: 'gomb', type: 'sauces', label: 'Gombos (1kg)', img: gomboSrc },
-  { id: 'oibl', type: 'sauces', label: 'Oignons blancs (1kg)', img: whiteOnionSrc },
+  { id: 'gomb', type: 'sauces', label: 'Gombos (250g)', img: gomboSrc },
+  { id: 'oibl', type: 'sauces', label: 'Oignons rouges (1kg)', img: whiteOnionSrc },
   { id: 'cuep', type: 'sauces', label: '50 Cubes d’épices', img: maggieSrc },
   { id: 'popo', type: 'sauces', label: 'Pourdre de poisson (40g)', img: fishPasteSrc },
   { id: 'goai', type: 'sauces', label: '1 Gousse d’ail', img: garlicSrc },
@@ -62,11 +62,11 @@ const availableSupps = [
   { id: 'caro', type: 'supps', label: 'Carottes (1kg)', img: carrotSrc },
   { id: 'igna', type: 'supps', label: 'Ignames (1kg)', img: yamSrc },
   { id: 'pote', type: 'supps', label: 'Pommes de terre (1kg)', img: potatoSrc },
-  { id: 'oibl', type: 'supps', label: 'Oignons blancs (1kg)', img: whiteOnionSrc },
-  { id: 'hari', type: 'supps', label: 'Haricots verts (1kg)', img: beansSrc },
+  { id: 'oibl', type: 'supps', label: 'Oignons rouges (1kg)', img: whiteOnionSrc },
+  { id: 'hari', type: 'supps', label: 'Haricots verts (400g)', img: beansSrc },
   { id: 'gimo', type: 'supps', label: 'Gingembre moulu (200g)', img: gingerSrc },
   { id: 'hupa', type: 'supps', label: 'Huile de palme (1btl)', img: palmOilSrc },
-  { id: 'gomb', type: 'supps', label: 'Gombos (1kg)', img: gomboSrc },
+  { id: 'gomb', type: 'supps', label: 'Gombos (250g)', img: gomboSrc },
   { id: 'cuep', type: 'supps', label: '50 Cubes d’épices', img: maggieSrc },
   { id: 'popo', type: 'supps', label: 'Pourdre de poisson (40g)', img: fishPasteSrc },
   { id: 'goai', type: 'supps', label: '1 Gousse d’ail', img: garlicSrc },
@@ -80,10 +80,10 @@ const availableSupps = [
 
 const availableVeggies = [
   { id: 'pote', type: 'veggies', label: 'Pomme de terre (1kg)', img: potatoSrc },
-  { id: 'oibl', type: 'veggies', label: 'Oignons blancs (1kg)', img: whiteOnionSrc },
+  { id: 'oibl', type: 'veggies', label: 'Oignons rouges (1kg)', img: whiteOnionSrc },
   { id: 'caro', type: 'veggies', label: 'Carottes (1kg)', img: carrotSrc },
   { id: 'igna', type: 'veggies', label: 'Ignames (1kg)', img: yamSrc },
-  { id: 'hari', type: 'veggies', label: 'Haricots verts (1kg)', img: beansSrc },
+  { id: 'hari', type: 'veggies', label: 'Haricots verts (400g)', img: beansSrc },
 ];
 
 const customBasketDetails = {
