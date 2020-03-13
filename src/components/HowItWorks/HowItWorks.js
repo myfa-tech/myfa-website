@@ -64,7 +64,7 @@ const HowItWorks = () => {
     {
       Icon: FaCreditCard,
       title: <h4>Réglez en toute sécurité</h4>,
-      description: <p>Via Lydia, ou autre mode de paiement.</p>,
+      description: <p>Faites vos achats l'esprit serein.</p>,
     },
     {
       Icon: FaTruck,
