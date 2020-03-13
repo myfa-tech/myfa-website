@@ -5,7 +5,6 @@
     border-radius: 8px;
     width: 90%;
     margin: auto;
-    margin-bottom: 100px;
 
     .article-block {
       text-align: center;
@@ -55,7 +54,8 @@
 
   .title-container {
     text-align: center;
-    margin-bottom: 70px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 
     h2 {
       color: #311a19;
@@ -90,8 +90,6 @@
 @media (max-width: 480px) {
   #team {
     .title-container {
-      margin-bottom: 50px;
-
       h2 {
         font-size: 27px;
       }
@@ -99,7 +97,6 @@
 
     .content-container {
       border: none;
-      margin-bottom: 0;
       border-radius: 0;
       width: 100%;
     }

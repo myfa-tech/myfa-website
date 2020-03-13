@@ -6,6 +6,7 @@ import Home from '../components/Home';
 import OurPromise from '../components/OurPromise';
 import Team from '../components/Team';
 import Newsletter from '../components/Newsletter';
+import News from '../components/News';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
@@ -25,6 +26,7 @@ const IndexPage = () => {
       <OurPromise />
       <Trustees />
       <Team />
+      <News />
       <Newsletter />
     </Layout>
   );
