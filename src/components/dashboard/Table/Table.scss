@@ -1,8 +1,11 @@
 table {
   tr {
     &.warning {
-      color: white;
-      background-color: rgb(255, 162, 162);
+      background-color: rgb(255, 221, 158);
+    }
+
+    &.canceled {
+      background-color: rgb(255, 191, 191);
     }
   }
 }

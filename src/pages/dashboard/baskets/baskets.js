@@ -63,6 +63,8 @@ const isPendingBasketOverOneHour = (row) => {
   return !!(row.status === 'pending' && hoursDiff > 1);
 };
 
+const isBasketCanceled = (row) => (row.status === 'canceled');
+
 const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
@@ -80,6 +82,8 @@ const DashbboardBaskets = () => {
   const rowClasses = (row, rowIndex) => {
     if (isPendingBasketOverOneHour(row)) {
       return 'warning';
+    } else if (isBasketCanceled(row)) {
+      return 'canceled';
     }
   };
 
