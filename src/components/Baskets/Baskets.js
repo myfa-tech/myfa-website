@@ -15,7 +15,7 @@ const Baskets = ({
 	toggleCartModal,
 }) => {
 	return (
-		<section id='baskets' className='section section-2'>
+		<section id='baskets' className='section-2'>
 			<div className='heading'>
 				<h2>Choisissez votre panier ! 🧺</h2>
 				<h3>Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.</h3>

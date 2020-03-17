@@ -18,7 +18,7 @@ const trusteesList = [
 const Trustees = () => {
   return (
     <section id='trustees'>
-      <div className='title-container'>
+      <div className='heading'>
         <h2>Ils nous font confiance 🤝</h2>
       </div>
       <Row className='content-container'>

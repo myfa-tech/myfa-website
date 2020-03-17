@@ -154,10 +154,12 @@ const Header = () => {
     let basketsAnchor = document.getElementById('baskets');
     let promiseAnchor = document.getElementById('our-promise');
     let teamAnchor = document.getElementById('team');
+    let newsAnchor = document.getElementById('news');
 
     let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
     let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
     let teamHeight = teamAnchor ? teamAnchor.offsetTop - 200 : null;
+    let newsHeight = newsAnchor ? newsAnchor.offsetTop - 200 : null;
     let cursor = window.pageYOffset;
 
     if (basketsHeight && promiseHeight && teamHeight) {
@@ -167,8 +169,10 @@ const Header = () => {
         setUnderlinedSection('baskets');
       } else if (cursor >= promiseHeight && cursor < teamHeight && underlinedSection !== 'promise') {
         setUnderlinedSection('promise');
-      } else if (cursor >= teamHeight && underlinedSection !== 'team') {
+      } else if (cursor >= teamHeight && cursor < newsHeight && underlinedSection !== 'team') {
         setUnderlinedSection('team');
+      } else if (cursor >= newsHeight && underlinedSection !== 'news') {
+        setUnderlinedSection('news');
       }
     }
   };
@@ -267,6 +271,7 @@ const Header = () => {
             <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">Nos paniers</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">Notre Promesse</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">L'équipe</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href="/#news">Actualités</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
