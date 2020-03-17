@@ -10,6 +10,33 @@
         "paragraph1": "Toute commande réalisée sera livrée dans un délai d’un mois, par les fondateurs eux mêmes !",
         "paragraph2": "Fin de la période de lancement : 31 mars 2020. Profitez des petits prix durant cette période !"
       }
+    },
+    "how_it_works": {
+      "title": "Comment ça marche ?",
+      "slide1": {
+        "title": "Sélectionnez votre panier",
+        "description": "Fruits, Légumes, Sauces ou MYFA."
+      },
+      "slide2": {
+        "title": "Renseignez les informations sur votre proche",
+        "description": "Nous l'appelons pour déterminer les conditions de livraison."
+      },
+      "slide3": {
+        "title": "Sélectionnez le quartier de livraison",
+        "description": "Parmi les 12 quartiers d'Abidjan."
+      },
+      "slide4": {
+        "title": "Réglez en toute sécurité",
+        "description": "Faites vos achats l'esprit serein."
+      },
+      "slide5": {
+        "title": "Livraison en moins de 48h",
+        "description": "Sous réserve de la disponibilité de votre proche."
+      },
+      "slide6": {
+        "title": "Suivez l'acheminement",
+        "description": "Par email ou SMS, restez au courant."
+      }
     }
   }
 }

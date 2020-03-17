@@ -2,12 +2,15 @@ import React from 'react';
 import Slider from 'react-slick';
 import { FaCreditCard, FaEnvelopeOpen, FaMapMarkerAlt, FaRegListAlt, FaShoppingBasket, FaTruck } from 'react-icons/fa';
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import useTranslate from '../../hooks/useTranslate';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './HowItWorks.scss';
 
 const HowItWorks = () => {
+  const [t] = useTranslate();
+
   const settings = {
     dots: true,
     infinite: false,
@@ -48,40 +51,40 @@ const HowItWorks = () => {
   const slides = [
     {
       Icon: FaShoppingBasket,
-      title: <h4>Sélectionnez votre panier</h4>,
-      description: <p>Fruits, Légumes, Sauces ou MYFA.</p>,
+      title: <h4>{t('home_page.how_it_works.slide1.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide1.description')}</p>,
     },
     {
       Icon: FaRegListAlt,
-      title: <h4>Renseignez les informations sur votre proche</h4>,
-      description: <p>Nous l'appelons pour déterminer les conditions de livraison.</p>,
+      title: <h4>{t('home_page.how_it_works.slide2.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide2.description')}</p>,
     },
     {
       Icon: FaMapMarkerAlt,
-      title: <h4>Sélectionnez le quartier de livraison</h4>,
-      description: <p>Parmi les 12 quartiers d'Abidjan.</p>,
+      title: <h4>{t('home_page.how_it_works.slide3.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide3.description')}</p>,
     },
     {
       Icon: FaCreditCard,
-      title: <h4>Réglez en toute sécurité</h4>,
-      description: <p>Faites vos achats l'esprit serein.</p>,
+      title: <h4>{t('home_page.how_it_works.slide4.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide4.description')}</p>,
     },
     {
       Icon: FaTruck,
-      title: <h4>Livraison en moins de 48h</h4>,
-      description: <p>Sous réserve de la disponibilité de votre proche.</p>,
+      title: <h4>{t('home_page.how_it_works.slide5.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide5.description')}</p>,
     },
     {
       Icon: FaEnvelopeOpen,
-      title: <h4>Suivez l'acheminement</h4>,
-      description: <p>Par email ou SMS, restez au courant.</p>,
+      title: <h4>{t('home_page.how_it_works.slide6.title')}</h4>,
+      description: <p>{t('home_page.how_it_works.slide6.description')}</p>,
     },
   ];
 
   return (
     <section id='how-it-works'>
       <div className='heading'>
-        <h2>Comment ça marche ? 🤔</h2>
+        <h2>{t('home_page.how_it_works.title')} 🤔</h2>
       </div>
       <Slider {...settings} className='custom-slider'>
         {slides.map((slide, index) => (

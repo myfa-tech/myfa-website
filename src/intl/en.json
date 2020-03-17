@@ -10,6 +10,33 @@
         "paragraph1": "Any order made will be delivered within one month, by the founders themselves!",
         "paragraph2": "End of the launch period: March 31, 2020. Take advantage of the low prices during this period!"
       }
+    },
+    "how_it_works": {
+      "title": "How it works?",
+      "slide1": {
+        "title": "Select your basket",
+        "description": "Fruits, Vegetables, Sauces or MYFA."
+      },
+      "slide2": {
+        "title": "Enter information about your loved one",
+        "description": "We call them to determine the delivery conditions."
+      },
+      "slide3": {
+        "title": "Select the district of delivery",
+        "description": "Among the 12 districts of Abidjan."
+      },
+      "slide4": {
+        "title": "Pay securely",
+        "description": "Shop with peace of mind."
+      },
+      "slide5": {
+        "title": "Delivery in less than 48 hours",
+        "description": "Depending on the availability of your loved one."
+      },
+      "slide6": {
+        "title": "Follow the route",
+        "description": "By email or SMS, stay informed."
+      }
     }
   }
 }
