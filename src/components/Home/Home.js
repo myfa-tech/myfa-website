@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import useTranslate from '../../hooks/useTranslate';
 
 import Header from '../Header';
 import Toast from '../Toast';
@@ -10,6 +11,7 @@ import logoSrc from '../../images/logo-1.png';
 
 const Home = ({ setShowToast, showToast, toastType }) => {
   const [showLaunchModal, setShowLaunchModal] = useState(false);
+  const [t] = useTranslate();
 
   useEffect(() => {
     const popupViewed = window.localStorage.getItem('popupViewed');
@@ -45,11 +47,11 @@ const Home = ({ setShowToast, showToast, toastType }) => {
           <Col md={1} className='image-container'></Col>
           <Col md={10}>
             <img src={logoSrc} alt='logo' className='logo-big' />
-            <h1>Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h*.</h1>
+            <h1>{t('home_page.home.title')}</h1>
 
-            <a className='btn-main link' href='#baskets'>Découvrir les paniers 🥭</a>
+            <a className='btn-main link' href='#baskets'>{t('home_page.home.discover_baskets_button')} 🥭</a>
 
-            <h2>*période de lancement : la livraison sera faite courant mars, par les fondateurs.</h2>
+            <h2>{t('home_page.home.subtitle')}</h2>
           </Col>
           <Col md={1}></Col>
         </Row>
@@ -58,14 +60,10 @@ const Home = ({ setShowToast, showToast, toastType }) => {
         <Modal show={showLaunchModal} onHide={toggleLaunchModal} id='launch-modal'>
           <Modal.Header closeButton />
           <Modal.Body>
-            <h1>Lancement 🎉</h1>
+            <h1>{t('home_page.home.launch_popup.title')} 🎉</h1>
 
-            <p>
-              Toute commande réalisée sera livrée dans un délai d’un mois, par les fondateurs eux mêmes !
-            </p>
-            <p>
-              Fin de la période de lancement : 31 mars 2020. Profitez des petits prix durant cette période !
-            </p>
+            <p>{t('home_page.home.launch_popup.paragraph1')}</p>
+            <p>{t('home_page.home.launch_popup.paragraph2')}</p>
           </Modal.Body>
         </Modal>
       }
