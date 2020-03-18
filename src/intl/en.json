@@ -95,7 +95,12 @@
       "title": "Subscribe to our newsletter !",
       "description": "Once a week, follow the news (new baskets, evolution of the company, etc.)",
       "subscribe_button": "Subscribe",
-      "input_placeholder": "Enter your e-mail adress"
+      "input_placeholder": "Enter your e-mail adress",
+      "popup": {
+        "success": "Yay ! Email saved !",
+        "failure": "Problem encountered. Contact us directly",
+        "event_time": "now"
+      }
     }
   },
   "ingredients": {

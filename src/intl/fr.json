@@ -95,7 +95,12 @@
       "title": "Abonnez-vous à notre newsletter !",
       "description": "Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)",
       "subscribe_button": "Souscrire",
-      "input_placeholder": "Entrez votre adresse email"
+      "input_placeholder": "Entrez votre adresse email",
+      "popup": {
+        "success": "Yay ! Email enregistré !",
+        "failure": "Problème rencontré. Contactez-nous directement",
+        "event_time": "maintenant"
+      }
     }
   },
   "ingredients": {
