@@ -54,6 +54,12 @@
       "custom_basket_title": "Panier MYFA 🙌🏾",
       "custom_basket_home_description": "À vous de le composer !",
       "custom_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !"
+    },
+    "our_promise": {
+      "title": "Notre promesse",
+      "image_title": "Florian, Doris & Alexandre",
+      "paragraph_title": "S’assurer du bien-être de vos proches.",
+      "paragraph_description": "Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux."
     }
   },
   "ingredients": {

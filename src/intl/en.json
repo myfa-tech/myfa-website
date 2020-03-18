@@ -54,6 +54,12 @@
       "custom_basket_title": "MYFA Basket 🙌🏾",
       "custom_basket_home_description": "It's up to you to compose it!",
       "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!"
+    },
+    "our_promise": {
+      "title": "Our promise",
+      "image_title": "Florian, Doris & Alexandre",
+      "paragraph_title": "Ensure the well-being of your loved ones.",
+      "paragraph_description": "Sending money to family is good. Make sure they ate is even better."
     }
   },
   "ingredients": {

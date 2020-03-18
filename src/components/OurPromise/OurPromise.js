@@ -1,28 +1,28 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
-
+import useTranslate from '../../hooks/useTranslate';
 import foundersSrc from '../../images/founders.jpeg';
 // import foundersWebPSrc from '../../images/founders.webp';
 
 import './OurPromise.scss';
 
 const OurPromise = () => {
+  const [t] = useTranslate();
+
   return (
     <section id='our-promise' className='section-3'>
       <div className='title-container'>
-        <h2>Notre promesse ✨</h2>
+        <h2>{t('home_page.our_promise.title')} ✨</h2>
       </div>
       <Row className='content-container'>
         <Col md={5} className='image-container'>
           <img src={foundersSrc} />
-          <p>Florian, Doris & Alexandre</p>
+          <p>{t('home_page.our_promise.image_title')}</p>
         </Col>
         <Col md={7} className='text-container'>
           <div className='content'>
-            <h3>S’assurer du bien-être de vos proches.</h3>
-            <p>
-              Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux.
-            </p>
+            <h3>{t('home_page.our_promise.paragraph_title')}</h3>
+            <p>{t('home_page.our_promise.paragraph_description')}</p>
           </div>
         </Col>
       </Row>
