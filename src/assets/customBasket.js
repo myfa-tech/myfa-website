@@ -90,13 +90,16 @@ const customBasketDetails = {
   name: 'MYFA',
   type: 'myfa',
   label: 'Panier MYFA 🙌🏾',
+  labelTranslate: 'home_page.baskets.custom_basket_title',
   homeDesc: 'À vous de le composer !',
+  homeDescTranslate: 'home_page.baskets.custom_basket_home_description',
   imgAlt: 'panier myfa',
   img: myfaSrc,
   realPrice: 27.99,
   reduction: 7,
   price: 25.99,
   description: 'Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !',
+  descriptionTranslate: 'home_page.baskets.custom_basket_description',
 };
 
 export { availableBases, availableFruits, availableSauces, availableSupps, availableVeggies, customBasketDetails };

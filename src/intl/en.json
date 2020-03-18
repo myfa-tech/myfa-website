@@ -37,6 +37,49 @@
         "title": "Follow the route",
         "description": "By email or SMS, stay informed."
       }
+    },
+    "baskets": {
+      "title": "Choose your basket!",
+      "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
+      "until_date": "until 03/31/2020",
+      "fruits_basket_title": "Fruits Basket 🍌",
+      "fruits_basket_home_description": "Bananas, oranges, coconut...",
+      "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
+      "vegetables_basket_title": "Veggies Basket 🧅",
+      "vegetables_basket_home_description": "Onions, carots, yams...",
+      "vegetables_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
+      "sauces_basket_title": "Sauces Basket 🍗🍖",
+      "sauces_basket_home_description": "Pepper, salt, ginger...",
+      "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
+      "custom_basket_title": "MYFA Basket 🙌🏾",
+      "custom_basket_home_description": "It's up to you to compose it!",
+      "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!"
     }
+  },
+  "ingredients": {
+    "1L_palm_oil": "1 bouteille d'huile de palme 1L",
+    "250g_gombo": "250g de gombos",
+    "1kg_red_onions": "1kg d'oignons rouges",
+    "60_maggie_10gr": "1 tablier de 60 cubes d'épices de 10gr",
+    "300g_fresh_chili": "300g de piments frais",
+    "1kg_tomatoes": "1kg de tomates",
+    "1kg_lime": "1kg de citrons",
+    "70g_akpi": "70g de graines d'akpi",
+    "425g_peanut_paste": "425g  de pâte d'arachide Dakatine",
+    "500g_salt": "500g de sel Baleine",
+    "50g_pepper_pouder": "50g de poivre moulu",
+    "30g_ginger_pouder": "30g de gingembre moulu",
+    "4_garlics": "4 gousses d'ail",
+    "1kg_bananas": "1kg de bananes",
+    "1kg_oranges": "1kg d'oranges",
+    "1_coconut": "1 noix de coco",
+    "1_pineapple": "1 ananas",
+    "1kg_mangos": "1kg de mangues",
+    "1kg_avocados": "1kg d'avocats",
+    "1kg_carots": "1kg de carottes",
+    "1kg_potatoes": "1kg de pommes de terre",
+    "1kg_yams": "1kg d'ignames",
+    "1_red_cabbage": "1 choux rouge",
+    "400g_french_beans": "400g de haricots verts"
   }
 }
