@@ -60,6 +60,15 @@
       "image_title": "Florian, Doris & Alexandre",
       "paragraph_title": "S’assurer du bien-être de vos proches.",
       "paragraph_description": "Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux."
+    },
+    "trustees": {
+      "title": "Ils nous font confiance"
+    },
+    "team": {
+      "title": "L'équipe",
+      "doris_description": "Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations. Ici, je sais ce que devient mon argent.",
+      "florian_description": "Notre ambition est d'apporter une vraie bonne solution aux problèmes causés par la distance. Nous rapprochons les familles.",
+      "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !"
     }
   },
   "ingredients": {

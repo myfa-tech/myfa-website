@@ -60,6 +60,15 @@
       "image_title": "Florian, Doris & Alexandre",
       "paragraph_title": "Ensure the well-being of your loved ones.",
       "paragraph_description": "Sending money to family is good. Make sure they ate is even better."
+    },
+    "trustees": {
+      "title": "They trust us"
+    },
+    "team": {
+      "title": "The Team",
+      "doris_description": "With MYFA, I wanted to create a way to be able to please, without frustrations. Here I know what becomes of my money.",
+      "florian_description": "Our ambition is to provide a real good solution to the problems caused by distance. We bring families together.",
+      "alex_description": "We offer you a new experience to delight your loved ones and maintain confidence despite the distance!"
     }
   },
   "ingredients": {
