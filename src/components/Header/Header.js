@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 
+import useTranslate from '../../hooks/useTranslate';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import EventEmitter from '../../services/EventEmitter';
@@ -109,6 +110,7 @@ const Header = () => {
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
+  const [t] = useTranslate();
 
   const eventEmitter = new EventEmitter();
 
@@ -267,11 +269,11 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
-            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">Accueil</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">Nos paniers</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">Notre Promesse</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">L'équipe</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href="/#news">Actualités</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">{t('header.home')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">{t('header.baskets')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">{t('header.promise')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">{t('header.team')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href="/#news">{t('header.news')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
@@ -280,13 +282,13 @@ const Header = () => {
                 title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
                 className='account'
               >
-                <NavDropdown.Item href="/profile/information">Mes informations</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/orders'>Mes commandes</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/password'>Changer mon mot de passe</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/relatives'>Mes proches</NavDropdown.Item>
-                <NavDropdown.Item href='/logout'>Déconnexion</NavDropdown.Item>
+                <NavDropdown.Item href="/profile/information">{t('header.profile.information')}</NavDropdown.Item>
+                <NavDropdown.Item href='/profile/orders'>{t('header.profile.orders')}</NavDropdown.Item>
+                <NavDropdown.Item href='/profile/password'>{t('header.profile.password')}</NavDropdown.Item>
+                <NavDropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</NavDropdown.Item>
+                <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
               </NavDropdown> :
-              <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>Mon compte</Nav.Link>
+              <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
             }
             <Nav.Link href="/cart" className='basket-link'>
               {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
@@ -300,8 +302,8 @@ const Header = () => {
           <div className='form-container'>
             <img src={logoHandsSrc} alt='logo' className='logo-big' />
             <ButtonGroup className='login-signup-switch' aria-label="outlined primary button group">
-              <Button className={`switch-button ${switchValue === 'login' ? 'active' : ''}`} onClick={() => setSwitchValue('login')}>Se connecter</Button>
-              <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>S'inscrire</Button>
+              <Button className={`switch-button ${switchValue === 'login' ? 'active' : ''}`} onClick={() => setSwitchValue('login')}>{t('header.login_signup_modal.login_button')}</Button>
+              <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>{t('header.login_signup_modal.signup_button')}</Button>
             </ButtonGroup>
             {switchValue === 'login' ?
               <LoginForm onLogin={onLogin} /> :

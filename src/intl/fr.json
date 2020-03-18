@@ -103,6 +103,25 @@
       }
     }
   },
+  "header": {
+    "home": "Accueil",
+    "baskets": "Nos paniers",
+    "promise": "Notre promesse",
+    "team": "L'équipe",
+    "news": "Actualités",
+    "profile": {
+      "account": "Mon compte",
+      "information": "Mes informations",
+      "orders": "Mes commandes",
+      "password": "Changer mon mot de passe",
+      "relatives": "Mes proches",
+      "logout": "Déconnexion"
+    },
+    "login_signup_modal": {
+      "login_button": "Se connecter",
+      "signup_button": "S'inscrire"
+    }
+  },
   "footer": {
     "legal_notice": "Mentions légales"
   },

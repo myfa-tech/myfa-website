@@ -103,6 +103,25 @@
       }
     }
   },
+  "header": {
+    "home": "Home",
+    "baskets": "Baskets",
+    "promise": "Our promise",
+    "team": "Team",
+    "news": "News",
+    "profile": {
+      "account": "My account",
+      "information": "My info",
+      "orders": "My orders",
+      "password": "Change my password",
+      "relatives": "My relatives",
+      "logout": "Log out"
+    },
+    "login_signup_modal": {
+      "login_button": "Log in",
+      "signup_button": "Sign up"
+    }
+  },
   "footer": {
     "legal_notice": "Legal Notice"
   },
