@@ -90,6 +90,12 @@
       "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
       "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
       "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style..."
+    },
+    "newsletter": {
+      "title": "Abonnez-vous à notre newsletter !",
+      "description": "Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)",
+      "subscribe_button": "Souscrire",
+      "input_placeholder": "Entrez votre adresse email"
     }
   },
   "ingredients": {

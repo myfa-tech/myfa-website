@@ -90,6 +90,12 @@
       "slide2_description": "If we had been told, 8 months ago, when we launched out, that things would materialize so quickly, I would not have believed it, and Doris neither. It has already been 1 week since we returned from our first \"business trip\", no more and no less than in Côte d'Ivoire. In Africa, a continent that is dear to us.",
       "slide3_description": "We agree, the name of the event is long. But the principle is simple! \"Women\", I believe you understood already, means that the promoters of projects are only women (Who run the world? Ask Beyoncé).",
       "slide4_description": "Huh? What? What does \"Myfa\" mean? It means \"family\" in \"verlan\". Verlan is a form of French slang which consists of inverting the syllables of a word. So you understand now where the singer Stromae got his name from... The \"y\"? just for style..."
+    },
+    "newsletter": {
+      "title": "Subscribe to our newsletter !",
+      "description": "Once a week, follow the news (new baskets, evolution of the company, etc.)",
+      "subscribe_button": "Subscribe",
+      "input_placeholder": "Enter your e-mail adress"
     }
   },
   "ingredients": {

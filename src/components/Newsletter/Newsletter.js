@@ -1,14 +1,16 @@
-import React from 'react'
-import { Button, Container, Col, FormControl, InputGroup, Row, Form } from 'react-bootstrap'
-import { FaCheck } from 'react-icons/fa'
-import { ClipLoader } from 'react-spinners'
-import { css } from '@emotion/core'
+import React from 'react';
+import { Button, Container, Col, FormControl, InputGroup, Row, Form } from 'react-bootstrap';
+import { FaCheck } from 'react-icons/fa';
+import { ClipLoader } from 'react-spinners';
+import { css } from '@emotion/core';
 
-import './Newsletter.scss'
-import Toast from '../Toast'
+import useTranslate from '../../hooks/useTranslate';
+import './Newsletter.scss';
+import Toast from '../Toast';
 
 const Newsletter = (props) => {
   const { email, isLoading, onEmailChange, onSubmit, showToast, setShowToast, toastType } = props
+  const [t] = useTranslate();
 
   return (
     <section id='newsletter'>
@@ -25,10 +27,8 @@ const Newsletter = (props) => {
       : null}
       <div className='content-container'>
         <div className='content'>
-          <h2>Abonnez-vous à notre newsletter !</h2>
-          <p>
-            Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)
-          </p>
+          <h2>{t('home_page.newsletter.title')}</h2>
+          <p>{t('home_page.newsletter.description')}</p>
         </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
@@ -36,7 +36,7 @@ const Newsletter = (props) => {
               <InputGroup className="mb-3" size="lg">
                 <FormControl
                   aria-label="Default"
-                  placeholder="Entrez votre adresse email"
+                  placeholder={t('home_page.newsletter.input_placeholder')}
                   aria-describedby="inputGroup-sizing-default"
                   className='input'
                   type='email'
@@ -54,7 +54,7 @@ const Newsletter = (props) => {
                         loading={true}
                       /> :
                       <>
-                        <span className='subscribe-text'>Souscrire</span>
+                        <span className='subscribe-text'>{t('home_page.newsletter.subscribe_button')}</span>
                         <FaCheck className='subscribe-icon' />
                       </>
                     }
