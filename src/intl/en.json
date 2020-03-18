@@ -53,7 +53,20 @@
       "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
       "custom_basket_title": "MYFA Basket 🙌🏾",
       "custom_basket_home_description": "It's up to you to compose it!",
-      "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!"
+      "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
+      "cart_modal": {
+        "header": "Successfully added to purchases",
+        "price": "Price",
+        "qty": "Quantity",
+        "baskets_nb_part_1": "You have",
+        "baskets_nb_part_2": "pending baskets.",
+        "baskets_total": "Total baskets",
+        "delivery": "Delivery",
+        "free": "free",
+        "total": "Total",
+        "continue_button": "Continue",
+        "pay_button": "Checkout"
+      }
     },
     "our_promise": {
       "title": "Our promise",
