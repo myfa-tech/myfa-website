@@ -103,6 +103,9 @@
       }
     }
   },
+  "footer": {
+    "legal_notice": "Mentions légales"
+  },
   "ingredients": {
     "1L_palm_oil": "1 bouteille d'huile de palme 1L",
     "250g_gombo": "250g de gombos",

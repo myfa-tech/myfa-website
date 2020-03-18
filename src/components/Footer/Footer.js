@@ -2,13 +2,16 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { SocialIcon } from 'react-social-icons';
 
+import useTranslate from '../../hooks/useTranslate';
+
 import logoSrc from '../../images/logo-1.png';
 import paymentsSrc from '../../images/payments.png';
-import paymentsWebpSrc from '../../images/payments.webp';
 
 import './Footer.scss'
 
 const Footer = ({ noBackgroundColor }) => {
+  const [t] = useTranslate();
+
   return (
     <footer className='footer'>
       <div>
@@ -19,7 +22,7 @@ const Footer = ({ noBackgroundColor }) => {
             </a>
           </Col>
           <Col sm={7} className='text-container'>
-            <a href='/legal'>Mentions légales</a>
+            <a href='/legal'>{t('footer.legal_notice')}</a>
             <div>
               <SocialIcon className='social-icon' target='_blank' network='facebook' url='https://www.facebook.com/myfa.fr' />
               <SocialIcon className='social-icon' target='_blank' network='twitter' url='https://www.twitter.com/myfa_fr' />
