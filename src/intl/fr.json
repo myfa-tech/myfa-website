@@ -69,6 +69,14 @@
       "doris_description": "Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations. Ici, je sais ce que devient mon argent.",
       "florian_description": "Notre ambition est d'apporter une vraie bonne solution aux problèmes causés par la distance. Nous rapprochons les familles.",
       "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !"
+    },
+    "news": {
+      "title": "Actualités",
+      "read_more_button": "Lire la suite",
+      "slide1_description": "La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.",
+      "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
+      "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
+      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style..."
     }
   },
   "ingredients": {
