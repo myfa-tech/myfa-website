@@ -32,7 +32,7 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
+const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
       window.location.assign('/cart');
@@ -46,7 +46,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
       className='popover-container'
       title={
         <div id='cart-popover'>
-          <h3 className='title'>Mon panier</h3>
+          <h3 className='title'>{t('header.custom_tooltip.title')}</h3>
 
           <Divider variant='middle' />
 
@@ -60,12 +60,12 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
                         <img src={cart.baskets[basketKey].img} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        <h4>{cart.baskets[basketKey].label}</h4>
+                        <h4>{t(cart.baskets[basketKey].labelTranslate)}</h4>
                         <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>
                         <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
-                        <p>Quantité: {cart.baskets[basketKey].qty}</p>
+                        <p>{t('header.custom_tooltip.qty')}: {cart.baskets[basketKey].qty}</p>
                       </Col>
                       <Col></Col>
                     </Row>
@@ -76,16 +76,16 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
               <Divider variant='middle' />
 
               <div className='price-container'>
-                <h3>Total TTC</h3>
+                <h3>{t('header.custom_tooltip.total_ttc')}</h3>
                 <h3>{basketsPrice.toFixed(2)} €</h3>
               </div>
 
               <Divider variant='middle' />
 
-              <button className='pay-button' onClick={goToCart}>Payer</button>
+              <button className='pay-button' onClick={goToCart}>{t('header.custom_tooltip.checkout')}</button>
             </> :
             <div className='empty-cart'>
-              <p>Votre panier est vide</p>
+              <p>{t('header.custom_tooltip.empty_basket')}</p>
             </div>
           }
 
@@ -197,6 +197,7 @@ const Header = () => {
         enhancedCart.baskets = newCart.reduce((acc, cur) => {
           if (!acc[cur.type]) {
             acc[cur.type] = {
+              ...cur,
               price: 0,
               qty: 0,
               label: cur.label,
@@ -291,7 +292,7 @@ const Header = () => {
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
             }
             <Nav.Link href="/cart" className='basket-link'>
-              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
+              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t)}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

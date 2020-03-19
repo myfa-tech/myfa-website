@@ -120,6 +120,13 @@
     "login_signup_modal": {
       "login_button": "Se connecter",
       "signup_button": "S'inscrire"
+    },
+    "custom_tooltip": {
+      "title": "Mon panier",
+      "qty": "Quantité",
+      "total_ttc": "Total TTC",
+      "checkout": "Payer",
+      "empty_basket": "Votre panier est vide"
     }
   },
   "footer": {

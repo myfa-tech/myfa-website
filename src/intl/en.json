@@ -120,6 +120,13 @@
     "login_signup_modal": {
       "login_button": "Log in",
       "signup_button": "Sign up"
+    },
+    "custom_tooltip": {
+      "title": "My Cart",
+      "qty": "Quantity",
+      "total_ttc": "Total Price",
+      "checkout": "Checkout",
+      "empty_basket": "Your cart is empty"
     }
   },
   "footer": {
