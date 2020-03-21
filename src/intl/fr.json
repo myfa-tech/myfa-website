@@ -191,6 +191,61 @@
     "cgu": "CGU",
     "cgv": "CGV"
   },
+  "profile": {
+    "greeting": {
+      "hello": "Bonjour"
+    },
+    "menu": {
+      "my_info": "Mes informations",
+      "my_orders": "Mes commandes",
+      "password": "Changer mon mot de passe",
+      "relatives": "Mes proches",
+      "logout": "Déconnexion",
+      "delete_account": "Supprimer mon compte"
+    },
+    "info": {
+      "keep_up_to_date": "Veillez à garder vos informations à jour",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "save": "Sauvegarder"
+    },
+    "orders": {
+      "processing_title": "Commandes en cours",
+      "processed_title": "Commandes traitées",
+      "order": "Commande",
+      "no_processing_orders": "Vous n’avez aucune commande en cours.",
+      "no_processed_orders": "Vous n’avez aucune commande traitée."
+    },
+    "password": {
+      "headline": "Pour un compte sécurisé, mettez régulièrement à jour votre mot de passe",
+      "current_password": "Mot de passe actuel",
+      "new_password": "Nouveau mot de passe",
+      "save": "Sauvegarder"
+    },
+    "relatives": {
+      "headline": "Pour gagner en rapidité lors des achats de paniers, vous pouvez enregistrer vos proches",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "save": "Sauvegarder",
+      "relationship": "Relation",
+      "relationship_type": "Type de relation",
+      "add_relative": "Ajouter un proche",
+      "my_relatives": "Mes proches",
+      "modify": "Modifier",
+      "delete": "Supprimer",
+      "delivery_zone": "Zone de livraison",
+      "delivery_zone_placeholder": "Quartier de la livraison",
+      "relationship_helper_text": "Quelle relation avez-vous avec votre proche ?",
+      "verify_delete_relative_part_1": "Etes-vous sûr(e) de vouloir retirer",
+      "verify_delete_relative_part_2": "de vos proches ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    }
+  },
   "ingredients": {
     "1L_palm_oil": "1 bouteille d'huile de palme 1L",
     "2_attiekes": "2 boules d'attiéké",

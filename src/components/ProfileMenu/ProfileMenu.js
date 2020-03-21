@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 
 import { deleteAccount } from '../../services/users';
+import useTranslate from '../../hooks/useTranslate';
 
 import './ProfileMenu.scss';
 
@@ -13,6 +14,7 @@ import logoHandsSrc from '../../images/logo-1.png';
 const ProfileMenu = ({ pageName }) => {
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [t] = useTranslate();
 
   const toggleDeleteAccountModal = () => {
     setShowDeleteAccountModal(!showDeleteAccountModal);
@@ -29,11 +31,11 @@ const ProfileMenu = ({ pageName }) => {
   };
 
   const listItems = [
-    { label: 'Mes informations', link: '/profile/information' },
-    { label: 'Mes commandes', link: '/profile/orders' },
-    { label: 'Changer mon mot de passe', link: '/profile/password' },
-    { label: 'Mes proches', link: '/profile/relatives' },
-    { label: 'Déconnexion', link: '/logout' },
+    { label: t('profile.menu.my_info'), link: '/profile/information' },
+    { label: t('profile.menu.my_orders'), link: '/profile/orders' },
+    { label: t('profile.menu.password'), link: '/profile/password' },
+    { label: t('profile.menu.relatives'), link: '/profile/relatives' },
+    { label: t('profile.menu.logout'), link: '/logout' },
   ];
 
   const spinnerStyle = css`
@@ -48,7 +50,7 @@ const ProfileMenu = ({ pageName }) => {
           <li key={item.link} className={item.link.includes(pageName) ? 'active' : ''}><a href={item.link}>{item.label}</a></li>
         ))}
 
-        <li key='/signout'><a href='#' onClick={toggleDeleteAccountModal}>Supprimer mon compte</a></li>
+        <li key='/signout'><a href='#' onClick={toggleDeleteAccountModal}>{t('profile.menu.delete_account')}</a></li>
       </ul>
 
       {showDeleteAccountModal &&

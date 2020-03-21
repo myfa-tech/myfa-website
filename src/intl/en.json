@@ -191,6 +191,61 @@
     "cgu": "terms of use",
     "cgv": "terms of sales"
   },
+  "profile": {
+    "greeting": {
+      "hello": "Hello"
+    },
+    "menu": {
+      "my_info": "My info",
+      "my_orders": "My orders",
+      "password": "Change my password",
+      "relatives": "My relatives",
+      "logout": "Log out",
+      "delete_account": "Delete my account"
+    },
+    "info": {
+      "keep_up_to_date": "Kindly keep your info up to date",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "save": "Save"
+    },
+    "orders": {
+      "processing_title": "Processing orders",
+      "processed_title": "Processed orders",
+      "order": "Order",
+      "no_processing_orders": "You have no current order.",
+      "no_processed_orders": "You have no treated processed."
+    },
+    "password": {
+      "headline": "For a secure account, kindly update your password regularly",
+      "current_password": "Current password",
+      "new_password": "New password",
+      "save": "Save"
+    },
+    "relatives": {
+      "headline": "To gain speed when shopping for baskets, you can register your relatives",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "save": "Save",
+      "relationship": "Relationship",
+      "relationship_type": "Type of relationship",
+      "add_relative": "Add a relative",
+      "my_relatives": "My relatives",
+      "modify": "Modify",
+      "delete": "Delete",
+      "delivery_zone": "Delivery zone",
+      "delivery_zone_placeholder": "District of the delivery",
+      "relationship_helper_text": "What is the link between your relative and you?",
+      "verify_delete_relative_part_1": "Are you sure you want to remove",
+      "verify_delete_relative_part_2": "from your relatives?",
+      "cancel": "Dismiss",
+      "confirm": "Confirm"
+    }
+  },
   "ingredients": {
     "1L_palm_oil": "1L palm oil bottle",
     "2_attiekes": "2 bags of attieke",

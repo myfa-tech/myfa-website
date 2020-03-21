@@ -5,6 +5,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { getBasketsByEmail } from '../../services/orders';
+import useTranslate from '../../hooks/useTranslate';
 
 import defaultBasketSrc from '../../images/default-basket.png';
 
@@ -40,12 +41,11 @@ const useStyles = makeStyles({
   }
 });
 
-const monthDisplayingOptions = { month: 'long'};
-
 const ProfileOrders = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
   const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : null;
+  const [t] = useTranslate();
 
   useEffect(() => {
     const run = async () => {
@@ -71,7 +71,7 @@ const ProfileOrders = () => {
   return (
     <div id='profile-orders'>
       <div className='pending-orders-container'>
-        <h2>Commandes en cours</h2>
+        <h2>{t('profile.orders.processing_title')}</h2>
 
         {pendingBaskets.length ?
           <ul className='baskets-container'>
@@ -83,8 +83,8 @@ const ProfileOrders = () => {
                   </Col>
                   <Col md={9} xs={12} className='stepper-container'>
                     <div className='title-container'>
-                      <h3>{basketsDetails.find(b => b.type === basket.type).label}</h3>
-                      <h3>Commande {basket.orderRef}</h3>
+                      <h3>{t(basketsDetails.find(b => b.type === basket.type).labelTranslate)}</h3>
+                      <h3>{t('profile.orders.order')} {basket.orderRef}</h3>
                     </div>
                     <div className='content-container'>
                     <ThemeProvider theme={theme}>
@@ -102,40 +102,35 @@ const ProfileOrders = () => {
               </li>
             ))}
           </ul> :
-          <p>Vous n’avez aucune commande en cours.</p>
+          <p>{t('profile.orders.no_processing_orders')}</p>
         }
       </div>
       <div className='treated-orders-container'>
-        <h2>Commandes traitées </h2>
+        <h2>{t('profile.orders.processed_title')}</h2>
 
         {deliveredBaskets.length ?
           <ul className='baskets-container'>
-            {deliveredBaskets.map((basket, index) => {
-              let deliveredAt = new Date(basket.deliveredAt);
-
-              return (
-                <li key={index}>
-                  <Row>
-                    <Col md={3} xs={2} className='image-container'>
-                      <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
-                    </Col>
-                    <Col md={9} xs={10} className='info-container'>
-                      <Row>
-                        <Col sm={5} className='basket-name-container'>
-                          <h3>{(basketsDetails.find(b => b.type === basket.type) || {}).label}</h3>
-                        </Col>
-                        <Col sm={7} className='delivery-info-container'>
-                          <h3>Commande {basket.orderRef}</h3>
-                          <h3>Livrée : {deliveredAt.getDate()} {new Intl.DateTimeFormat('fr-FR', monthDisplayingOptions).format(deliveredAt)} {deliveredAt.getFullYear()}</h3>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </li>
-              );
-            })}
+            {deliveredBaskets.map((basket, index) => (
+              <li key={index}>
+                <Row>
+                  <Col md={3} xs={2} className='image-container'>
+                    <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
+                  </Col>
+                  <Col md={9} xs={10} className='info-container'>
+                    <Row>
+                      <Col sm={5} className='basket-name-container'>
+                        <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
+                      </Col>
+                      <Col sm={7} className='delivery-info-container'>
+                        <h3>{t('profile.orders.order')} {basket.orderRef}</h3>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </li>
+            ))}
           </ul> :
-          <p>Vous n’avez aucune commande traitée.</p>
+          <p>{t('profile.orders.no_processed_orders')}</p>
         }
       </div>
     </div>
