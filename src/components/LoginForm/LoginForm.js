@@ -6,6 +6,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { FaFacebook } from 'react-icons/fa';
 import GoogleLogin from 'react-google-login';
 
+import useTranslate from '../../hooks/useTranslate';
 import { loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 import useLoginForm from '../../hooks/useLoginForm';
 
@@ -33,6 +34,7 @@ const LoginForm = ({ onLogin }) => {
     loginFormErrors,
     setLoginFormErrors,
   ] = useLoginForm(login, setResponseStatus);
+  const [t] = useTranslate();
 
   async function login() {
     try {
@@ -126,18 +128,18 @@ const LoginForm = ({ onLogin }) => {
         <TextField
           type='password'
           error={loginFormErrors.password || responseStatus === 404}
-          label='Mot de passe'
+          label={t('login_form.password')}
           required
           variant='outlined'
           name='password'
           className='full-width password-field form-input'
           value={loginFormValues.password}
           onChange={handleChangeLoginFormValues}
-          helperText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
+          helperText={t('login_form.password_helper_text')}
           disabled={isLoading}
         />
 
-        {responseStatus === 404 ? <p className='wrong-user-password'>Utilisateur inconnu</p> : null}
+        {responseStatus === 404 ? <p className='wrong-user-password'>{t('login_form.unknown_user')}</p> : null}
 
         {isLoading ?
           <span className='login-button'>
@@ -149,7 +151,7 @@ const LoginForm = ({ onLogin }) => {
               loading={true}
             />
           </span> :
-          <button type='submit' className='login-button'>Se connecter</button>
+          <button type='submit' className='login-button'>{t('login_form.login')}</button>
         }
         <FacebookLogin
           appId={FB_APP_ID}
@@ -169,7 +171,7 @@ const LoginForm = ({ onLogin }) => {
                 /> :
                 <>
                   <FaFacebook />
-                  <span>Continuer avec Facebook</span>
+                <span>{t('login_form.continue_with_fb')}</span>
                 </>
               }
             </button>
@@ -194,14 +196,16 @@ const LoginForm = ({ onLogin }) => {
                 /> :
                 <>
                   <img src={googleLogoSrc} />
-                  <span>Continuer avec Google</span>
+                  <span>{t('login_form.continue_with_google')}</span>
                 </>
               }
             </button>
           )}
         />
 
-        <p className='cgu-cgv-accept'>En vous connectant, vous acceptez nos <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a>.</p>
+        <p className='cgu-cgv-accept'>
+          {t('login_form.when_login_part_1')} <a href='/cgv' target='_blank'>{t('login_form.cgv')}</a> {t('login_form.and')} <a href='/cgu' target='_blank'>{t('login_form.cgu')}</a>.
+        </p>
       </form>
     </div>
   );

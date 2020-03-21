@@ -165,6 +165,18 @@
     "stepper_sauces": "Sauces",
     "stepper_supps": "Extras"
   },
+  "login_form": {
+    "password": "Password",
+    "unknown_user": "Unknown user",
+    "login": "Log in",
+    "continue_with_fb": "Continue with Facebook",
+    "continue_with_google": "Continue with Google",
+    "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+    "when_login_part_1": "By logging in you accept our",
+    "and": "and",
+    "cgu": "terms of use",
+    "cgv": "terms of sales"
+  },
   "ingredients": {
     "1L_palm_oil": "1L palm oil bottle",
     "2_attiekes": "2 bags of attieke",

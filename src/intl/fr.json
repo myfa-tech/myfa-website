@@ -165,6 +165,18 @@
     "stepper_sauces": "Sauces",
     "stepper_supps": "Suppléments"
   },
+  "login_form": {
+    "password": "Mot de passe",
+    "unknown_user": "Utilisateur inconnu",
+    "login": "Se connecter",
+    "continue_with_fb": "Continuer avec Facebook",
+    "continue_with_google": "Continuer avec Google",
+    "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+    "when_login_part_1": "En vous connectant, vous acceptez nos",
+    "and": "et",
+    "cgu": "CGU",
+    "cgv": "CGV"
+  },
   "ingredients": {
     "1L_palm_oil": "1 bouteille d'huile de palme 1L",
     "2_attiekes": "2 boules d'attiéké",
