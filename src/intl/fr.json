@@ -177,6 +177,20 @@
     "cgu": "CGU",
     "cgv": "CGV"
   },
+  "signup_form": {
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "country_code": "Indicatif",
+    "phone": "Téléphone",
+    "password": "Mot de passe",
+    "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+    "accept_cgu_cgv_part_1": "J'accepte les",
+    "signup_button": "S'inscrire",
+    "existing_user": "Utilisateur déja existant",
+    "and": "et",
+    "cgu": "CGU",
+    "cgv": "CGV"
+  },
   "ingredients": {
     "1L_palm_oil": "1 bouteille d'huile de palme 1L",
     "2_attiekes": "2 boules d'attiéké",

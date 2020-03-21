@@ -177,6 +177,20 @@
     "cgu": "terms of use",
     "cgv": "terms of sales"
   },
+  "signup_form": {
+    "firstname": "Firsname",
+    "lastname": "Lastname",
+    "country_code": "Country code",
+    "phone": "Phone",
+    "password": "Password",
+    "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+    "accept_cgu_cgv_part_1": "I have read and I accept",
+    "signup_button": "Sign up",
+    "existing_user": "User already exists",
+    "and": "and",
+    "cgu": "terms of use",
+    "cgv": "terms of sales"
+  },
   "ingredients": {
     "1L_palm_oil": "1L palm oil bottle",
     "2_attiekes": "2 bags of attieke",

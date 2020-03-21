@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { saveUser } from '../../services/users';
 import useSignupForm from '../../hooks/useSignupForm';
+import useTranslate from '../../hooks/useTranslate';
 
 import './SignupForm.scss';
 
@@ -26,6 +27,7 @@ const SignupForm = ({ onSignup }) => {
     signupFormErrors,
     setSignupFormErrors
   ] = useSignupForm(signup, setResponseStatus);
+  const [t] = useTranslate();
 
   async function signup() {
     try {
@@ -53,7 +55,7 @@ const SignupForm = ({ onSignup }) => {
             required
             variant='outlined'
             error={signupFormErrors.firstname}
-            label='Prénom'
+            label={t('signup_form.firstname')}
             name='firstname'
             value={signupFormValues.firstname}
             onChange={handleChangeSignupFormValues}
@@ -67,7 +69,7 @@ const SignupForm = ({ onSignup }) => {
             required
             variant='outlined'
             error={signupFormErrors.lastname}
-            label='Nom'
+            label={t('signup_form.lastname')}
             name='lastname'
             value={signupFormValues.lastname}
             onChange={handleChangeSignupFormValues}
@@ -78,7 +80,7 @@ const SignupForm = ({ onSignup }) => {
 
       <TextField
         type='email'
-        helperText={responseStatus === 409 ? 'Utilisateur déja existant' : null}
+        helperText={responseStatus === 409 ? t('signup_form.existing_user') : null}
         required
         variant='outlined'
         className='full-width form-input'
@@ -93,7 +95,7 @@ const SignupForm = ({ onSignup }) => {
       <div className='phone-container'>
           <TextField
             select
-            label='Indicatif'
+            label={t('signup_form.country_code')}
             name='country'
             variant='outlined'
             className='country-code form-input'
@@ -108,7 +110,7 @@ const SignupForm = ({ onSignup }) => {
           <TextField
             type='tel'
             error={signupFormErrors.phone}
-            label='Téléphone'
+            label={t('signup_form.phone')}
             variant='outlined'
             name='phone'
             className='phone-input form-input'
@@ -121,14 +123,14 @@ const SignupForm = ({ onSignup }) => {
       <TextField
         type='password'
         error={signupFormErrors.password}
-        label='Mot de passe'
+        label={t('signup_form.password')}
         required
         variant='outlined'
         name='password'
         className='full-width form-input'
         value={signupFormValues.password}
         onChange={handleChangeSignupFormValues}
-        helperText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
+        helperText={t('signup_form.password_helper_text')}
         disabled={isLoading}
       />
 
@@ -147,7 +149,7 @@ const SignupForm = ({ onSignup }) => {
         }
         label={
           <p className='cgu-cgv-label'>
-            J'accepte les <a href='/cgv' target='_blank'>CGV</a> et <a href='/cgu' target='_blank'>CGU</a>
+            {t('signup_form.accept_cgu_cgv_part_1')} <a href='/cgv' target='_blank'>{t('signup_form.cgv')}</a> {t('signup_form.and')} <a href='/cgu' target='_blank'>{t('signup_form.cgu')}</a>
           </p>
         }
       />
@@ -162,7 +164,9 @@ const SignupForm = ({ onSignup }) => {
             loading={true}
           />
         </span> :
-        <button type='button' onClick={handleSubmitSignupForm} className='signup-button'>S'inscrire</button>
+        <button type='button' onClick={handleSubmitSignupForm} className='signup-button'>
+          {t('signup_form.signup_button')}
+        </button>
       }
     </form>
   )
