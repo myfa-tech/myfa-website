@@ -16,6 +16,7 @@ import EventEmitter from '../../services/EventEmitter';
 import useSignupForm from '../../hooks/useSignupForm';
 import useLoginForm from '../../hooks/useLoginForm';
 import useRelativeForm from '../../hooks/useRelativeForm';
+import useTranslate from '../../hooks/useTranslate';
 
 import './Cart.scss';
 
@@ -58,6 +59,7 @@ const Cart = () => {
     handleRelativeFormRecipientChange,
     showOtherRelationInput,
   ] = useRelativeForm(pay);
+  const [t] = useTranslate();
 
   const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
   const eventEmitter = new EventEmitter();
@@ -110,12 +112,10 @@ const Cart = () => {
         enhancedCart.baskets = newCart.reduce((acc, cur) => {
           if (!acc[cur.type]) {
             acc[cur.type] = {
+              ...cur,
               price: 0,
               qty: 0,
-              label: cur.label,
               singlePrice: cur.price,
-              type: cur.type,
-              img: cur.img,
               items: cur.items || {},
             };
           }
@@ -337,14 +337,14 @@ const Cart = () => {
                     responseGoogle={responseGoogle}
                   />
                   <div className='disabled-section relative-info'>
-                    <h2>Informations sur mon proche</h2>
+                    <h2>{t('cart.relative_info_title')}</h2>
                   </div>
                 </> : null
               }
               {step === 3 ?
                 <>
                   <div className='disabled-section signup-to-order'>
-                    <h2>Je m'inscris pour commander</h2>
+                    <h2>{t('cart.self_info_title')}</h2>
                   </div>
                   <RelativeInfo
                     errors={relativeFormErrors}
@@ -359,19 +359,19 @@ const Cart = () => {
             </Col>
             <Col md='4'>
               <div className='price-container'>
-                <h2>Total</h2>
+                <h2>{t('cart.price_container.total')}</h2>
 
                 <Divider variant='middle' />
 
                 <div className='content-container'>
-                  <p>{basketsNumber} paniers : {basketsPrice.toFixed(2)} €</p>
-                  <p>Total TTC : {basketsPrice.toFixed(2)} €</p>
+                  <p>{basketsNumber} {t('cart.price_container.baskets')} : {basketsPrice.toFixed(2)} €</p>
+                  <p>{t('cart.price_container.grand_total')} : {basketsPrice.toFixed(2)} €</p>
                 </div>
 
                 <Divider variant='middle' />
 
                 {step === 1 ?
-                  <button className='next-button' onClick={nextStep}>Suivant</button> :
+                  <button className='next-button' onClick={nextStep}>{t('cart.price_container.next')}</button> :
                   null
                 }
 
@@ -386,7 +386,7 @@ const Cart = () => {
                         loading={true}
                       />
                     </button> :
-                    <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>Suivant</button>
+                    <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>{t('cart.price_container.next')}</button>
                   ) : null
                 }
 
@@ -402,9 +402,11 @@ const Cart = () => {
                       />
                     </button> :
                     <>
-                      <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>Commander</button>
+                      <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>
+                        {t('cart.price_container.checkout')}
+                      </button>
                       {isEmailConfirmed === false ?
-                        <p className='email-not-confirmed'>Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email.</p>:
+                        <p className='email-not-confirmed'>{t('cart.price_container.email_not_confirmed')}</p>:
                         null
                       }
                       {typeof isEmailConfirmed === 'undefined' ?
@@ -424,8 +426,8 @@ const Cart = () => {
             </Col>
           </Row> :
           <div className='empty-cart-container'>
-            <p>Votre panier est vide.</p>
-            <a href='/#baskets' className='discover-baskets-button'>Découvrir les paniers</a>
+            <p>{t('cart.empty_cart')}</p>
+            <a href='/#baskets' className='discover-baskets-button'>{t('cart.discover_baskets')}</a>
           </div> :
       null}
     </section>

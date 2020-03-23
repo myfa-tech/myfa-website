@@ -3,22 +3,24 @@ import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Row, Col } from 'react-bootstrap';
+import useTranslate from '../../../hooks/useTranslate';
 
 import './RelativeInfo.scss';
 
 const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, handleRecipientChange, showOtherRelationInput }) => {
   const user = JSON.parse(window.localStorage.getItem('user'));
+  const [t] = useTranslate();
 
   return (
     <div className='relative-container'>
-      <h2>Informations sur mon proche</h2>
+      <h2>{t('cart.relative_info_title')}</h2>
 
       <Divider variant='middle' />
 
       <form className='relative-form'>
         <TextField
           select
-          label='Mes proches enregistrés'
+          label={t('cart.relative_info.saved_relatives')}
           name='relation'
           variant='outlined'
           className='full-width form-input'
@@ -37,7 +39,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
               type='text'
               required
               error={errors['firstname']}
-              label='Prénom'
+              label={t('cart.relative_info.firstname')}
               variant='outlined'
               className='full-width form-input'
               name='firstname'
@@ -52,7 +54,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
               variant='outlined'
               className='full-width form-input'
               error={errors['lastname']}
-              label='Nom'
+              label={t('cart.relative_info.lastname')}
               name='lastname'
               value={form.lastname}
               onChange={handleChangeFormValue}
@@ -71,28 +73,28 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
         />
         <TextField
           select
-          label='Relation'
+          label={t('cart.relative_info.relationship')}
           name='relation'
           variant='outlined'
           className='full-width form-input'
           value={form.relation}
           onChange={handleChangeFormValue}
-          helperText='Quelle relation avez-vous avec votre proche ?'
+          helperText={t('cart.relative_info.relationship_type')}
         >
-          <MenuItem value='AM'>Ami(e)</MenuItem>
-          <MenuItem value='CO'>Conjoint(e)</MenuItem>
-          <MenuItem value='EN'>Enfant</MenuItem>
-          <MenuItem value='FR'>Frère</MenuItem>
-          <MenuItem value='GM'>Grand-mère</MenuItem>
-          <MenuItem value='GP'>Grand-père</MenuItem>
-          <MenuItem value='ME'>Mère</MenuItem>
-          <MenuItem value='NE'>Neveu</MenuItem>
-          <MenuItem value='NI'>Nièce</MenuItem>
-          <MenuItem value='ON'>Oncle</MenuItem>
-          <MenuItem value='PE'>Père</MenuItem>
-          <MenuItem value='SO'>Soeur</MenuItem>
-          <MenuItem value='TA'>Tante</MenuItem>
-          <MenuItem value='AU'>Autre</MenuItem>
+          <MenuItem value='AM'>{t('relationship_types.AM')}</MenuItem>
+          <MenuItem value='CO'>{t('relationship_types.CO')}</MenuItem>
+          <MenuItem value='EN'>{t('relationship_types.EN')}</MenuItem>
+          <MenuItem value='FR'>{t('relationship_types.FR')}</MenuItem>
+          <MenuItem value='GM'>{t('relationship_types.GM')}</MenuItem>
+          <MenuItem value='GP'>{t('relationship_types.GP')}</MenuItem>
+          <MenuItem value='ME'>{t('relationship_types.ME')}</MenuItem>
+          <MenuItem value='NE'>{t('relationship_types.NE')}</MenuItem>
+          <MenuItem value='NI'>{t('relationship_types.NI')}</MenuItem>
+          <MenuItem value='ON'>{t('relationship_types.ON')}</MenuItem>
+          <MenuItem value='PE'>{t('relationship_types.PE')}</MenuItem>
+          <MenuItem value='SO'>{t('relationship_types.SO')}</MenuItem>
+          <MenuItem value='TA'>{t('relationship_types.TA')}</MenuItem>
+          <MenuItem value='AU'>{t('relationship_types.AU')}</MenuItem>
         </TextField>
 
         {showOtherRelationInput ?
@@ -101,7 +103,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
             className='full-width form-input'
             variant='outlined'
             error={errors['otherRelation']}
-            label='Type de relation'
+            label={t('cart.relative_info.relationship_type')}
             name='otherRelation'
             value={form.otherRelation}
             onChange={handleChangeFormValue}
@@ -110,12 +112,12 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
 
         <TextField
           select
-          label='Zone de livraison'
+          label={t('cart.relative_info.delivery_zone')}
           required
           name='zone'
           error={errors['zone']}
           variant='outlined'
-          placeholder='Quartier de la livraison'
+          placeholder={t('cart.relative_info.delivery_zone_placeholder')}
           value={form.zone}
           className='full-width form-input'
           onChange={handleChangeFormValue}
@@ -136,7 +138,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
         <div className='phone-container form-input'>
           <TextField
             select
-            label='Indicatif'
+            label={t('cart.relative_info.country_code')}
             name='country'
             variant='outlined'
             className='country-code'
@@ -150,7 +152,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
           <TextField
             type='tel'
             error={errors['phone']}
-            label='Téléphone'
+            label={t('cart.relative_info.phone')}
             variant='outlined'
             name='phone'
             required

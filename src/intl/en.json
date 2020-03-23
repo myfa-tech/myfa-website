@@ -132,6 +132,57 @@
   "footer": {
     "legal_notice": "Legal Notice"
   },
+  "cart": {
+    "relative_info_title": "Information about my relative",
+    "self_info_title": "I sign up to order",
+    "price_container": {
+      "total": "Total",
+      "checkout": "Checkout",
+      "grand_total": "Grand total",
+      "baskets": "baskets",
+      "next": "Next",
+      "email_not_confirmed": "Before placing your order, please click on the confirmation link that we sent to you by email."
+    },
+    "empty_cart": "Your cart is empty.",
+    "discover_baskets": "Discover the baskets",
+    "personal_info": {
+      "signup": "Sign up",
+      "login": "Log in",
+      "unknown_user":"Unknown user",
+      "continue_with_fb": "Continue with Facebook",
+      "continue_with_google": "Continue with Google",
+      "when_login_part_1": "By logging in you accept our",
+      "firstname": "Firsname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "password": "Password",
+      "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+      "accept_cgu_cgv_part_1": "I have read and I accept",
+      "signup_button": "Sign up",
+      "existing_user": "User already exists",
+      "and": "and",
+      "cgu": "terms of use",
+      "cgv": "terms of sales"
+    },
+    "relative_info": {
+      "saved_relatives": "My saved relatives",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "relationship": "Relationship",
+      "relationship_type":"Type of relationship",
+      "relationship_helper_text":"What is the link between your relative and you?",
+      "delivery_zone":"Delivery zone",
+      "delivery_zone_placeholder":"District of the delivery"
+    },
+    "items": {
+      "title": "My cart",
+      "subtotal": "Subtotal",
+      "qty": "Qty"
+    }
+  },
   "basket_to_order": {
     "photo_disclaimer": "Non contractual photo",
     "basket_contains": "This basket contains",
@@ -190,6 +241,12 @@
     "and": "and",
     "cgu": "terms of use",
     "cgv": "terms of sales"
+  },
+  "orders": {
+    "seo_title": "Order",
+    "title": "Thank's for your order",
+    "description_part_1": "To follow the progress of your order, click",
+    "here": "here"
   },
   "profile": {
     "greeting": {
@@ -250,6 +307,22 @@
       "cancel": "Dismiss",
       "confirm": "Confirm"
     }
+  },
+  "relationship_types": {
+    "AM": "Friend",
+    "CO": "Spouse",
+    "EN": "Child",
+    "FR": "Brother",
+    "GM": "Grandmother",
+    "GP": "Grandfather",
+    "ME": "Mother",
+    "NE": "Nephew",
+    "NI": "Niece",
+    "ON": "Uncle",
+    "PE": "Father",
+    "SO": "Sister",
+    "TA": "Aunt",
+    "AU": "Other"
   },
   "ingredients": {
     "1L_palm_oil": "1L palm oil bottle",

@@ -132,6 +132,57 @@
   "footer": {
     "legal_notice": "Mentions légales"
   },
+  "cart": {
+    "relative_info_title": "Informations sur mon proche",
+    "self_info_title": "Je m'inscris pour commander",
+    "price_container": {
+      "total": "Total",
+      "grand_total": "Total TTC",
+      "baskets": "paniers",
+      "next": "Suivant",
+      "checkout": "Commander",
+      "email_not_confirmed": "Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email."
+    },
+    "empty_cart": "Votre panier est vide.",
+    "discover_baskets": "Découvrir les paniers",
+    "personal_info": {
+      "signup": "Je m'inscris",
+      "login": "Je me connecte",
+      "unknown_user": "Utilisateur inconnu",
+      "continue_with_fb": "Continuer avec Facebook",
+      "continue_with_google": "Continuer avec Google",
+      "when_login_part_1": "En vous connectant, vous acceptez nos",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "password": "Mot de passe",
+      "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+      "accept_cgu_cgv_part_1": "J'accepte les",
+      "signup_button": "S'inscrire",
+      "existing_user": "Utilisateur déja existant",
+      "and": "et",
+      "cgu": "CGU",
+      "cgv": "CGV"
+    },
+    "relative_info": {
+      "saved_relatives": "Mes proches enregistrés",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "relationship": "Relation",
+      "relationship_type":"Type de relation",
+      "relationship_helper_text":"Quelle relation avez-vous avec votre proche ?",
+      "delivery_zone":"Zone de livraison",
+      "delivery_zone_placeholder":"Quartier de la livraison"
+    },
+    "items": {
+      "title": "Mon panier",
+      "subtotal": "Sous-total",
+      "qty": "Qté"
+    }
+  },
   "basket_to_order": {
     "photo_disclaimer": "Photo non contractuelle",
     "basket_contains": "Ce panier contient",
@@ -190,6 +241,12 @@
     "and": "et",
     "cgu": "CGU",
     "cgv": "CGV"
+  },
+  "orders": {
+    "seo_title": "Commande",
+    "title": "Merci de votre commande",
+    "description_part_1": "Pour suivre l’avancement de votre commande, cliquez",
+    "here": "ici"
   },
   "profile": {
     "greeting": {
@@ -250,6 +307,22 @@
       "cancel": "Annuler",
       "confirm": "Confirmer"
     }
+  },
+  "relationship_types": {
+    "AM": "Ami(e)",
+    "CO": "Conjoint(e)",
+    "EN": "Enfant",
+    "FR": "Frère",
+    "GM": "Grand-mère",
+    "GP": "Grand-père",
+    "ME": "Mère",
+    "NE": "Neveu",
+    "NI": "Nièce",
+    "ON": "Oncle",
+    "PE": "Père",
+    "SO": "Soeur",
+    "TA": "Tante",
+    "AU": "Autre"
   },
   "ingredients": {
     "1L_palm_oil": "1 bouteille d'huile de palme 1L",

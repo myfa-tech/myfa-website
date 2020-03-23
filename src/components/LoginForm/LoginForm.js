@@ -34,7 +34,7 @@ const LoginForm = ({ onLogin }) => {
     loginFormErrors,
     setLoginFormErrors,
   ] = useLoginForm(login, setResponseStatus);
-  const [t] = useTranslate();
+  const [t, locale] = useTranslate();
 
   async function login() {
     try {
@@ -204,7 +204,7 @@ const LoginForm = ({ onLogin }) => {
         />
 
         <p className='cgu-cgv-accept'>
-          {t('login_form.when_login_part_1')} <a href='/cgv' target='_blank'>{t('login_form.cgv')}</a> {t('login_form.and')} <a href='/cgu' target='_blank'>{t('login_form.cgu')}</a>.
+          {t('login_form.when_login_part_1')} <a href={`/${locale}/cgv_${locale}`} target='_blank'>{t('login_form.cgv')}</a> {t('login_form.and')} <a href={`/${locale}/cgu_${locale}`} target='_blank'>{t('login_form.cgu')}</a>.
         </p>
       </form>
     </div>

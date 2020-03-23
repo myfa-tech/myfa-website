@@ -110,7 +110,7 @@ const Header = () => {
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
-  const [t] = useTranslate();
+  const [t, locale] = useTranslate();
 
   const eventEmitter = new EventEmitter();
 
@@ -242,7 +242,7 @@ const Header = () => {
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/');
+      window.location.assign(`/${locale}`);
     }
   };
 
@@ -264,17 +264,17 @@ const Header = () => {
   return (
     <Container id='header'>
       <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={`/${locale}`}>
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
-            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">{t('header.home')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">{t('header.baskets')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">{t('header.promise')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">{t('header.team')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href="/#news">{t('header.news')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href={`/${locale}/#team`}>{t('header.team')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href={`/${locale}/#news`}>{t('header.news')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
@@ -283,17 +283,19 @@ const Header = () => {
                 title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
                 className='account'
               >
-                <NavDropdown.Item href="/profile/information">{t('header.profile.information')}</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/orders'>{t('header.profile.orders')}</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/password'>{t('header.profile.password')}</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
                 <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
               </NavDropdown> :
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
             }
-            <Nav.Link href="/cart" className='basket-link'>
+            <Nav.Link href={`/${locale}/cart`} className='basket-link'>
               {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t)}
             </Nav.Link>
+            <Nav.Link href='/en'>EN</Nav.Link>
+            <Nav.Link href='/fr'>FR</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
