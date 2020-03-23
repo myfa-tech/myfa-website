@@ -201,7 +201,12 @@
       "password": "Changer mon mot de passe",
       "relatives": "Mes proches",
       "logout": "Déconnexion",
-      "delete_account": "Supprimer mon compte"
+      "delete_account": "Supprimer mon compte",
+      "delete_account_modal": {
+        "are_you_sure": "Etes-vous sûr(e) de vouloir supprimer votre compte ?",
+        "cancel": "Annuler",
+        "confirm": "Confirmer"
+      }
     },
     "info": {
       "keep_up_to_date": "Veillez à garder vos informations à jour",

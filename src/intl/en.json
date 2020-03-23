@@ -201,7 +201,12 @@
       "password": "Change my password",
       "relatives": "My relatives",
       "logout": "Log out",
-      "delete_account": "Delete my account"
+      "delete_account": "Delete my account",
+      "delete_account_modal": {
+        "are_you_sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+      }
     },
     "info": {
       "keep_up_to_date": "Kindly keep your info up to date",

@@ -59,11 +59,13 @@ const ProfileMenu = ({ pageName }) => {
             <div>
               <img src={logoHandsSrc} alt='logo' className='logo-big' />
 
-              <p>Etes-vous sûr(e) de vouloir supprimer votre compte ?</p>
+              <p>{t('profile.menu.delete_account_modal.are_you_sure')}</p>
 
               <Row>
                 <Col xs={6}>
-                  <button type='button' className='cancel-button' onClick={toggleDeleteAccountModal}>Annuler</button>
+                  <button type='button' className='cancel-button' onClick={toggleDeleteAccountModal}>
+                    {t('profile.menu.delete_account_modal.cancel')}
+                  </button>
                 </Col>
                 <Col xs={6}>
                   {isLoading ?
@@ -76,7 +78,9 @@ const ProfileMenu = ({ pageName }) => {
                         loading={true}
                       />
                     </button> :
-                    <button type='button' className='confirm-button' onClick={confirmDeleteAccount}>Confirmer</button>
+                    <button type='button' className='confirm-button' onClick={confirmDeleteAccount}>
+                      {t('profile.menu.delete_account_modal.confirm')}
+                    </button>
                   }
                 </Col>
               </Row>
