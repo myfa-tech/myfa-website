@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { intersectionBy } from 'lodash';
 
+import useTranslate from '../../../hooks/useTranslate';
 import { availableBases, availableFruits } from '../../../assets/customBasket';
+
 import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_BASES = 1;
@@ -12,6 +14,7 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
   const [fruits, setFruits] = useState([]);
   const [fruitsCount, setFruitsCount] = useState(0);
   const [basesCount, setBasesCount] = useState(0);
+  const [t] = useTranslate();
 
   useEffect(() => {
     if (basketParts['bases']) {
@@ -105,13 +108,13 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
 
   return (
     <div>
-      <h2>Bases {basesCount}/{QTY_BASES} - Veuillez choisir une base</h2>
+      <h2>{t('custom_basket_to_order.bases')} {basesCount}/{QTY_BASES} - {t('custom_basket_to_order.choose_base')}</h2>
       <div className='ingredients-container'>
         {availableBases.map(base => (
           <div key={base.id} className='ingredient-container' onClick={() => editBases(base)}>
             <img src={base.img || defaultBasketSrc} className={(bases.map(b => b.id).includes(base.id) || supps.map(s => s.id).includes(base.id)) ? 'selected' : ''} />
             <p>
-              {base.label}
+              {t(`ingredients.${base.labelTranslate}`)}
               {(basesCount >= QTY_BASES && !bases.map(b => b.id).includes(base.id)) ?
                 <span className='supp-prices'>+1,5 €</span> : null
               }
@@ -120,7 +123,7 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
         ))}
       </div>
 
-      <h2>Fruits {fruitsCount}/{QTY_FRUITS} - Vous pouvez choisir jusqu’à trois fruits</h2>
+      <h2>{t('custom_basket_to_order.fruits')} {fruitsCount}/{QTY_FRUITS} - {t('custom_basket_to_order.choose_3_fruits')}</h2>
       <div className='ingredients-container'>
         {availableFruits.map(fruit => (
           <div key={fruit.id} className='ingredient-container' onClick={() => editFruits(fruit)}>
@@ -136,8 +139,8 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
       </div>
 
       <div className='navigation-container'>
-        <button className='previous-button disabled' disabled>Précédent</button>
-        <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>Suivant</button>
+        <button className='previous-button disabled' disabled>{t('custom_basket_to_order.previous')}</button>
+        <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>{t('custom_basket_to_order.next')}</button>
       </div>
     </div>
   );

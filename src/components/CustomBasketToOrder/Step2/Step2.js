@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { intersectionBy } from 'lodash';
 
-import defaultBasketSrc from '../../../images/default-basket.png';
+import useTranslate from '../../../hooks/useTranslate';
 
+import defaultBasketSrc from '../../../images/default-basket.png';
 import { availableVeggies } from '../../../assets/customBasket';
 
 const QTY_VEGGIES = 3;
@@ -10,6 +11,7 @@ const QTY_VEGGIES = 3;
 const Step2 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
   const [veggies, setVeggies] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
+  const [t] = useTranslate();
 
   useEffect(() => {
     if (basketParts['veggies']) {
@@ -67,13 +69,13 @@ const Step2 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
 
   return (
     <div>
-      <h2>Légumes {itemsCount}/{QTY_VEGGIES} - Vous pouvez choisir jusqu’à trois légumes</h2>
+      <h2>{t('custom_basket_to_order.veggies')} {itemsCount}/{QTY_VEGGIES} - {t('custom_basket_to_order.choose_3_veggies')}</h2>
       <div className='ingredients-container'>
         {availableVeggies.map(veggie => (
           <div key={veggie.id} className='ingredient-container' onClick={() => editVeggies(veggie)}>
             <img src={veggie.img || defaultBasketSrc} className={(veggies.map(f => f.id).includes(veggie.id) || supps.map(s => s.id).includes(veggie.id)) ? 'selected' : ''} />
             <p>
-              {veggie.label}
+              {t(`ingredients.${veggie.labelTranslate}`)}
               {(itemsCount >= QTY_VEGGIES && !veggies.map(v => v.id).includes(veggie.id)) ?
                 <span className='supp-prices'>+1,5 €</span> : null
               }
@@ -83,8 +85,8 @@ const Step2 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
       </div>
 
       <div className='navigation-container'>
-        <button className='previous-button' onClick={() => previousStep()}>Précédent</button>
-        <button className='next-button' onClick={() => nextStep({ veggies, supps })}>Suivant</button>
+        <button className='previous-button' onClick={() => previousStep()}>{t('custom_basket_to_order.previous')}</button>
+        <button className='next-button' onClick={() => nextStep({ veggies, supps })}>{t('custom_basket_to_order.next')}</button>
       </div>
     </div>
   );

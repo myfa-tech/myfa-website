@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 
+import useTranslate from '../../hooks/useTranslate';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import EventEmitter from '../../services/EventEmitter';
@@ -31,7 +32,7 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
+const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
       window.location.assign('/cart');
@@ -45,7 +46,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
       className='popover-container'
       title={
         <div id='cart-popover'>
-          <h3 className='title'>Mon panier</h3>
+          <h3 className='title'>{t('header.custom_tooltip.title')}</h3>
 
           <Divider variant='middle' />
 
@@ -59,12 +60,12 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
                         <img src={cart.baskets[basketKey].img} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        <h4>{cart.baskets[basketKey].label}</h4>
+                        <h4>{t(cart.baskets[basketKey].labelTranslate)}</h4>
                         <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>
                         <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
-                        <p>Quantité: {cart.baskets[basketKey].qty}</p>
+                        <p>{t('header.custom_tooltip.qty')}: {cart.baskets[basketKey].qty}</p>
                       </Col>
                       <Col></Col>
                     </Row>
@@ -75,16 +76,16 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets) => {
               <Divider variant='middle' />
 
               <div className='price-container'>
-                <h3>Total TTC</h3>
+                <h3>{t('header.custom_tooltip.total_ttc')}</h3>
                 <h3>{basketsPrice.toFixed(2)} €</h3>
               </div>
 
               <Divider variant='middle' />
 
-              <button className='pay-button' onClick={goToCart}>Payer</button>
+              <button className='pay-button' onClick={goToCart}>{t('header.custom_tooltip.checkout')}</button>
             </> :
             <div className='empty-cart'>
-              <p>Votre panier est vide</p>
+              <p>{t('header.custom_tooltip.empty_basket')}</p>
             </div>
           }
 
@@ -109,6 +110,7 @@ const Header = () => {
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
+  const [t, locale] = useTranslate();
 
   const eventEmitter = new EventEmitter();
 
@@ -195,6 +197,7 @@ const Header = () => {
         enhancedCart.baskets = newCart.reduce((acc, cur) => {
           if (!acc[cur.type]) {
             acc[cur.type] = {
+              ...cur,
               price: 0,
               qty: 0,
               label: cur.label,
@@ -239,7 +242,7 @@ const Header = () => {
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/');
+      window.location.assign(`/${locale}`);
     }
   };
 
@@ -261,17 +264,17 @@ const Header = () => {
   return (
     <Container id='header'>
       <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={`/${locale}`}>
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className='menu'>
-            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href="/#home">Accueil</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href="/#baskets">Nos paniers</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href="/#our-promise">Notre Promesse</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href="/#team">L'équipe</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href="/#news">Actualités</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href={`/${locale}/#team`}>{t('header.team')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href={`/${locale}/#news`}>{t('header.news')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}
@@ -280,17 +283,19 @@ const Header = () => {
                 title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
                 className='account'
               >
-                <NavDropdown.Item href="/profile/information">Mes informations</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/orders'>Mes commandes</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/password'>Changer mon mot de passe</NavDropdown.Item>
-                <NavDropdown.Item href='/profile/relatives'>Mes proches</NavDropdown.Item>
-                <NavDropdown.Item href='/logout'>Déconnexion</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
+                <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
+                <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
               </NavDropdown> :
-              <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>Mon compte</Nav.Link>
+              <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
             }
-            <Nav.Link href="/cart" className='basket-link'>
-              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets)}
+            <Nav.Link href={`/${locale}/cart`} className='basket-link'>
+              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t)}
             </Nav.Link>
+            <Nav.Link href='/en'>EN</Nav.Link>
+            <Nav.Link href='/fr'>FR</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -300,8 +305,8 @@ const Header = () => {
           <div className='form-container'>
             <img src={logoHandsSrc} alt='logo' className='logo-big' />
             <ButtonGroup className='login-signup-switch' aria-label="outlined primary button group">
-              <Button className={`switch-button ${switchValue === 'login' ? 'active' : ''}`} onClick={() => setSwitchValue('login')}>Se connecter</Button>
-              <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>S'inscrire</Button>
+              <Button className={`switch-button ${switchValue === 'login' ? 'active' : ''}`} onClick={() => setSwitchValue('login')}>{t('header.login_signup_modal.login_button')}</Button>
+              <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>{t('header.login_signup_modal.signup_button')}</Button>
             </ButtonGroup>
             {switchValue === 'login' ?
               <LoginForm onLogin={onLogin} /> :

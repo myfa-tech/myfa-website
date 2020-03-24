@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import useTranslate from '../../hooks/useTranslate';
 import { updateUser } from '../../services/users';
 
 import './ProfileInformation.scss';
@@ -17,6 +17,7 @@ const spinnerStyle = css`
 
 const ProfileInformation = () => {
   const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : {};
+  const [t] = useTranslate();
 
   const [errors, setErrors] = useState({
     firstname: false,
@@ -102,7 +103,7 @@ const ProfileInformation = () => {
 
   return (
     <div id='profile-information'>
-      <h2>Veillez à garder vos informations à jour</h2>
+      <h2>{t('profile.info.keep_up_to_date')}</h2>
 
       <form onSubmit={updateInfo}>
         <Row>
@@ -112,7 +113,7 @@ const ProfileInformation = () => {
               className='full-width form-input'
               required
               error={errors['firstname']}
-              label='Prénom'
+              label={t('profile.info.firstname')}
               name='firstname'
               value={form.firstname}
               variant='outlined'
@@ -126,7 +127,7 @@ const ProfileInformation = () => {
               className='full-width form-input'
               required
               error={errors['lastname']}
-              label='Nom'
+              label={t('profile.info.lastname')}
               name='lastname'
               value={form.lastname}
               variant='outlined'
@@ -139,7 +140,7 @@ const ProfileInformation = () => {
         <div className='phone-container'>
           <TextField
             select
-            label='Indicatif'
+            label={t('profile.info.country_code')}
             name='country'
             className='country-code form-input'
             disabled={isLoading}
@@ -154,7 +155,7 @@ const ProfileInformation = () => {
           <TextField
             type='tel'
             error={errors['phone']}
-            label='Téléphone'
+            label={t('profile.info.phone')}
             name='phone'
             className='phone-input form-input'
             value={form.phone}
@@ -174,7 +175,7 @@ const ProfileInformation = () => {
               loading={true}
             />
           </span> :
-          <button type='submit' className='update-user-button'>Sauvegarder</button>
+          <button type='submit' className='update-user-button'>{t('profile.info.save')}</button>
         }
       </form>
     </div>

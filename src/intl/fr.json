@@ -1,0 +1,359 @@
+{
+  "site_seo": {
+    "description": "MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !"
+  },
+  "home_page": {
+    "seo_title": "MYFA, pour vos proches au loin",
+    "home": {
+      "title": "Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h*",
+      "subtitle": "*période de lancement : la livraison sera faite courant mars, par les fondateurs.",
+      "discover_baskets_button": "Découvrir les paniers",
+      "launch_popup": {
+        "title": "Lancement",
+        "paragraph1": "Toute commande réalisée sera livrée dans un délai d’un mois, par les fondateurs eux mêmes !",
+        "paragraph2": "Fin de la période de lancement : 31 mars 2020. Profitez des petits prix durant cette période !"
+      }
+    },
+    "how_it_works": {
+      "title": "Comment ça marche ?",
+      "slide1": {
+        "title": "Sélectionnez votre panier",
+        "description": "Fruits, Légumes, Sauces ou MYFA."
+      },
+      "slide2": {
+        "title": "Renseignez les informations sur votre proche",
+        "description": "Nous l'appelons pour déterminer les conditions de livraison."
+      },
+      "slide3": {
+        "title": "Sélectionnez le quartier de livraison",
+        "description": "Parmi les 12 quartiers d'Abidjan."
+      },
+      "slide4": {
+        "title": "Réglez en toute sécurité",
+        "description": "Faites vos achats l'esprit serein."
+      },
+      "slide5": {
+        "title": "Livraison en moins de 48h",
+        "description": "Sous réserve de la disponibilité de votre proche."
+      },
+      "slide6": {
+        "title": "Suivez l'acheminement",
+        "description": "Par email ou SMS, restez au courant."
+      }
+    },
+    "baskets": {
+      "title": "Choisissez votre panier !",
+      "subtitle": "Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.",
+      "until_date": "jusqu'au 31/03/2020",
+      "fruits_basket_title": "Panier Fruits 🍌",
+      "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
+      "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
+      "vegetables_basket_title": "Panier Légumes 🧅",
+      "vegetables_basket_home_description": "Oignons, carottes, Ignames...",
+      "vegetables_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
+      "sauces_basket_title": "Panier Sauces 🍗🍖",
+      "sauces_basket_home_description": "Poivre, sel, gingembre...",
+      "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
+      "custom_basket_title": "Panier MYFA 🙌🏾",
+      "custom_basket_home_description": "À vous de le composer !",
+      "custom_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
+      "cart_modal": {
+        "header": "Ajouté aux achats avec succès",
+        "price": "Prix",
+        "qty": "Quantité",
+        "baskets_nb_part_1": "Vous avez",
+        "baskets_nb_part_2": "paniers en attente.",
+        "baskets_total": "Total paniers",
+        "delivery": "Livraison",
+        "free": "gratuite",
+        "total": "Total",
+        "continue_button": "Continuer",
+        "pay_button": "Payer"
+      }
+    },
+    "our_promise": {
+      "title": "Notre promesse",
+      "image_title": "Florian, Doris & Alexandre",
+      "paragraph_title": "S’assurer du bien-être de vos proches.",
+      "paragraph_description": "Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux."
+    },
+    "trustees": {
+      "title": "Ils nous font confiance"
+    },
+    "team": {
+      "title": "L'équipe",
+      "doris_description": "Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations. Ici, je sais ce que devient mon argent.",
+      "florian_description": "Notre ambition est d'apporter une vraie bonne solution aux problèmes causés par la distance. Nous rapprochons les familles.",
+      "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !"
+    },
+    "news": {
+      "title": "Actualités",
+      "read_more_button": "Lire la suite",
+      "slide1_description": "La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.",
+      "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
+      "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
+      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style..."
+    },
+    "newsletter": {
+      "title": "Abonnez-vous à notre newsletter !",
+      "description": "Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)",
+      "subscribe_button": "Souscrire",
+      "input_placeholder": "Entrez votre adresse email",
+      "popup": {
+        "success": "Yay ! Email enregistré !",
+        "failure": "Problème rencontré. Contactez-nous directement",
+        "event_time": "maintenant"
+      }
+    }
+  },
+  "header": {
+    "home": "Accueil",
+    "baskets": "Nos paniers",
+    "promise": "Notre promesse",
+    "team": "L'équipe",
+    "news": "Actualités",
+    "profile": {
+      "account": "Mon compte",
+      "information": "Mes informations",
+      "orders": "Mes commandes",
+      "password": "Changer mon mot de passe",
+      "relatives": "Mes proches",
+      "logout": "Déconnexion"
+    },
+    "login_signup_modal": {
+      "login_button": "Se connecter",
+      "signup_button": "S'inscrire"
+    },
+    "custom_tooltip": {
+      "title": "Mon panier",
+      "qty": "Quantité",
+      "total_ttc": "Total TTC",
+      "checkout": "Payer",
+      "empty_basket": "Votre panier est vide"
+    }
+  },
+  "footer": {
+    "legal_notice": "Mentions légales"
+  },
+  "cart": {
+    "relative_info_title": "Informations sur mon proche",
+    "self_info_title": "Je m'inscris pour commander",
+    "price_container": {
+      "total": "Total",
+      "grand_total": "Total TTC",
+      "baskets": "paniers",
+      "next": "Suivant",
+      "checkout": "Commander",
+      "email_not_confirmed": "Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email."
+    },
+    "empty_cart": "Votre panier est vide.",
+    "discover_baskets": "Découvrir les paniers",
+    "personal_info": {
+      "signup": "Je m'inscris",
+      "login": "Je me connecte",
+      "unknown_user": "Utilisateur inconnu",
+      "continue_with_fb": "Continuer avec Facebook",
+      "continue_with_google": "Continuer avec Google",
+      "when_login_part_1": "En vous connectant, vous acceptez nos",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "password": "Mot de passe",
+      "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+      "accept_cgu_cgv_part_1": "J'accepte les",
+      "signup_button": "S'inscrire",
+      "existing_user": "Utilisateur déja existant",
+      "and": "et",
+      "cgu": "CGU",
+      "cgv": "CGV"
+    },
+    "relative_info": {
+      "saved_relatives": "Mes proches enregistrés",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "relationship": "Relation",
+      "relationship_type":"Type de relation",
+      "relationship_helper_text":"Quelle relation avez-vous avec votre proche ?",
+      "delivery_zone":"Zone de livraison",
+      "delivery_zone_placeholder":"Quartier de la livraison"
+    },
+    "items": {
+      "title": "Mon panier",
+      "subtotal": "Sous-total",
+      "qty": "Qté"
+    }
+  },
+  "basket_to_order": {
+    "photo_disclaimer": "Photo non contractuelle",
+    "basket_contains": "Ce panier contient",
+    "qty": "Quantité",
+    "max_qty_reached": "Quantité maximum atteinte",
+    "add_to_cart": "Ajouter au panier",
+    "other_baskets": "Nos autres paniers"
+  },
+  "custom_basket_to_order": {
+    "bases": "Bases",
+    "veggies": "Légumes",
+    "fruits": "Fruits",
+    "sauces": "Sauces",
+    "supps": "Suppléments",
+    "choose_base": "Veuillez choisir une base",
+    "choose_3_fruits": "Vous pouvez choisir jusqu’à trois fruits",
+    "choose_3_veggies": "Vous pouvez choisir jusqu’à trois légumes",
+    "choose_3_products": "Veuillez choisir jusqu’à trois produits",
+    "photo_disclaimer": "Photo non contractuelle",
+    "basket_contains": "Ce panier contient",
+    "qty": "Quantité",
+    "max_qty_reached": "Quantité maximum atteinte",
+    "add_to_cart": "Ajouter au panier",
+    "price_from": "à partir de",
+    "your_basket": "Votre panier",
+    "checkout": "Payer",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "stepper_bases_fruits": "Bases & Fruits",
+    "stepper_veggies": "Légumes",
+    "stepper_sauces": "Sauces",
+    "stepper_supps": "Suppléments"
+  },
+  "login_form": {
+    "password": "Mot de passe",
+    "unknown_user": "Utilisateur inconnu",
+    "login": "Se connecter",
+    "continue_with_fb": "Continuer avec Facebook",
+    "continue_with_google": "Continuer avec Google",
+    "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+    "when_login_part_1": "En vous connectant, vous acceptez nos",
+    "and": "et",
+    "cgu": "CGU",
+    "cgv": "CGV"
+  },
+  "signup_form": {
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "country_code": "Indicatif",
+    "phone": "Téléphone",
+    "password": "Mot de passe",
+    "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",
+    "accept_cgu_cgv_part_1": "J'accepte les",
+    "signup_button": "S'inscrire",
+    "existing_user": "Utilisateur déja existant",
+    "and": "et",
+    "cgu": "CGU",
+    "cgv": "CGV"
+  },
+  "orders": {
+    "seo_title": "Commande",
+    "title": "Merci de votre commande",
+    "description_part_1": "Pour suivre l’avancement de votre commande, cliquez",
+    "here": "ici"
+  },
+  "profile": {
+    "greeting": {
+      "hello": "Bonjour"
+    },
+    "menu": {
+      "my_info": "Mes informations",
+      "my_orders": "Mes commandes",
+      "password": "Changer mon mot de passe",
+      "relatives": "Mes proches",
+      "logout": "Déconnexion",
+      "delete_account": "Supprimer mon compte",
+      "delete_account_modal": {
+        "are_you_sure": "Etes-vous sûr(e) de vouloir supprimer votre compte ?",
+        "cancel": "Annuler",
+        "confirm": "Confirmer"
+      }
+    },
+    "info": {
+      "keep_up_to_date": "Veillez à garder vos informations à jour",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "save": "Sauvegarder"
+    },
+    "orders": {
+      "processing_title": "Commandes en cours",
+      "processed_title": "Commandes traitées",
+      "order": "Commande",
+      "no_processing_orders": "Vous n’avez aucune commande en cours.",
+      "no_processed_orders": "Vous n’avez aucune commande traitée."
+    },
+    "password": {
+      "headline": "Pour un compte sécurisé, mettez régulièrement à jour votre mot de passe",
+      "current_password": "Mot de passe actuel",
+      "new_password": "Nouveau mot de passe",
+      "save": "Sauvegarder"
+    },
+    "relatives": {
+      "headline": "Pour gagner en rapidité lors des achats de paniers, vous pouvez enregistrer vos proches",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "country_code": "Indicatif",
+      "phone": "Téléphone",
+      "save": "Sauvegarder",
+      "relationship": "Relation",
+      "relationship_type": "Type de relation",
+      "add_relative": "Ajouter un proche",
+      "my_relatives": "Mes proches",
+      "modify": "Modifier",
+      "delete": "Supprimer",
+      "delivery_zone": "Zone de livraison",
+      "delivery_zone_placeholder": "Quartier de la livraison",
+      "relationship_helper_text": "Quelle relation avez-vous avec votre proche ?",
+      "verify_delete_relative_part_1": "Etes-vous sûr(e) de vouloir retirer",
+      "verify_delete_relative_part_2": "de vos proches ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    }
+  },
+  "relationship_types": {
+    "AM": "Ami(e)",
+    "CO": "Conjoint(e)",
+    "EN": "Enfant",
+    "FR": "Frère",
+    "GM": "Grand-mère",
+    "GP": "Grand-père",
+    "ME": "Mère",
+    "NE": "Neveu",
+    "NI": "Nièce",
+    "ON": "Oncle",
+    "PE": "Père",
+    "SO": "Soeur",
+    "TA": "Tante",
+    "AU": "Autre"
+  },
+  "ingredients": {
+    "1L_palm_oil": "1 bouteille d'huile de palme 1L",
+    "2_attiekes": "2 boules d'attiéké",
+    "1kg_plantain": "1kg de bananes plantain",
+    "250g_gombos": "250g de gombos",
+    "40g_fish_pouder": "40g de poudre de poisson",
+    "1kg_red_onions": "1kg d'oignons rouges",
+    "50_maggie_10gr": "1 tablier de 50 cubes d'épices de 10gr",
+    "300g_fresh_chili": "300g de piments frais",
+    "1kg_tomatoes": "1kg de tomates",
+    "1kg_lime": "1kg de citrons",
+    "70g_akpi": "70g de graines d'akpi",
+    "425g_peanut_paste": "425g  de pâte d'arachide Dakatine",
+    "200g_salt": "200g de sel Baleine",
+    "50g_pepper_pouder": "50g de poivre moulu",
+    "30g_ginger_pouder": "30g de gingembre moulu",
+    "4_garlics": "4 gousses d'ail",
+    "1kg_bananas": "1kg de bananes",
+    "1kg_oranges": "1kg d'oranges",
+    "1_coconut": "1 noix de coco",
+    "1_pineapple": "1 ananas",
+    "1kg_mangos": "1kg de mangues",
+    "1kg_avocados": "1kg d'avocats",
+    "1kg_carots": "1kg de carottes",
+    "2kg_potatoes": "2kg de pommes de terre",
+    "1kg_yams": "1kg d'ignames",
+    "1_red_cabbage": "1 choux rouge",
+    "400g_french_beans": "400g de haricots verts"
+  }
+}

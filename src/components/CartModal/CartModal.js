@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { FaCheck } from 'react-icons/fa';
+import useTranslate from '../../hooks/useTranslate';
 
 import './CartModal.scss';
 
@@ -9,6 +10,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
   const cart = JSON.parse(window.localStorage.getItem('cart'));
   const cartTotal = cart.reduce((acc, curr) => curr.price ? acc + curr.price : acc, 0);
   const qty = cart.filter(b => b.type === basket.type).length;
+  const [t] = useTranslate();
 
   const goTo = (redirect) => {
     if (!!onContinue) {
@@ -21,7 +23,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
 
   return (
     <Modal dialogClassName='modal-90w modal-75w' show={showCartModal} onHide={toggleCartModal} id='cart-modal'>
-      <Modal.Header closeButton className='header-text'><FaCheck /> Ajouté aux achats avec succès</Modal.Header>
+      <Modal.Header closeButton className='header-text'><FaCheck /> {t('home_page.baskets.cart_modal.header')}</Modal.Header>
       <Modal.Body>
         <Row>
           <Col md='6'>
@@ -30,20 +32,24 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
                 <img src={basket.img} alt={basket.imgAlt} />
               </Col>
               <Col md='6'>
-                <h1>{basket.label}</h1>
-                <p><b>Prix :</b> {basket.price.toFixed(2)} €</p>
-                <p><b>Quantité :</b> {qty}</p>
+                <h1>{t(basket.labelTranslate)}</h1>
+                <p><b>{t('home_page.baskets.cart_modal.price')} :</b> {basket.price.toFixed(2)} €</p>
+                <p><b>{t('home_page.baskets.cart_modal.qty')} :</b> {qty}</p>
               </Col>
             </Row>
           </Col>
           <Col md='6'>
-            <p>Vous avez {cart.length} paniers en attente.</p>
-            <p><b>Total paniers :</b> {cartTotal.toFixed(2)} €</p>
-            <p><b>Livraison :</b> gratuite</p>
-            <p><b>Total :</b> {cartTotal.toFixed(2)} €</p>
+            <p>{t('home_page.baskets.cart_modal.baskets_nb_part_1')} {cart.length} {t('home_page.baskets.cart_modal.baskets_nb_part_2')}</p>
+            <p><b>{t('home_page.baskets.cart_modal.baskets_total')} :</b> {cartTotal.toFixed(2)} €</p>
+            <p><b>{t('home_page.baskets.cart_modal.delivery')} :</b> {t('home_page.baskets.cart_modal.free')}</p>
+            <p><b>{t('home_page.baskets.cart_modal.total')} :</b> {cartTotal.toFixed(2)} €</p>
 
-            <button className='continue-button' onClick={() => goTo('/#baskets')}>Continuer</button>
-            <button className='checkout-button' onClick={() => goTo('/cart')}>Payer</button>
+            <button className='continue-button' onClick={() => goTo('/#baskets')}>
+              {t('home_page.baskets.cart_modal.continue_button')}
+            </button>
+            <button className='checkout-button' onClick={() => goTo('/cart')}>
+              {t('home_page.baskets.cart_modal.pay_button')}
+            </button>
           </Col>
         </Row>
       </Modal.Body>

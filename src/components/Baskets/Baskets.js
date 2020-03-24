@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
+import useTranslate from '../../hooks/useTranslate';
 
 import CartModal from '../CartModal';
 
@@ -14,24 +15,26 @@ const Baskets = ({
 	showCartModal,
 	toggleCartModal,
 }) => {
+	const [t] = useTranslate();
+
 	return (
 		<section id='baskets' className='section-2'>
 			<div className='heading'>
-				<h2>Choisissez votre panier ! 🧺</h2>
-				<h3>Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.</h3>
+				<h2>{t('home_page.baskets.title')} 🧺</h2>
+				<h3>{t('home_page.baskets.subtitle')}</h3>
 			</div>
 			<Container>
 				<Row className='baskets-container'>
 					{baskets.map((basket, index) => (
 						<Col md={6} key={basket.name} onClick={() => handleBasketButtonClick(index)}>
 							<div className='basket-container'>
-								<h4>{basket.label}</h4>
-								<h5>{basket.homeDesc}</h5>
+								<h4>{t(basket.labelTranslate)}</h4>
+								<h5>{t(basket.homeDescTranslate)}</h5>
 								<img src={basket.img} alt={basket.imgAlt} />
 								<Row>
 									<Col xs={6} className='price-container'>
 										<p><span className='regular-price'>{basket.realPrice}€</span><span className='reduction'>-{basket.reduction}%</span></p>
-										<p className='new-price'><b>{basket.price}€</b> jusqu'au 31/03/2020</p>
+										<p className='new-price'><b>{basket.price}€</b> {t('home_page.baskets.until_date')}</p>
 									</Col>
 
 									<Col xs={6} className='cart-container'>

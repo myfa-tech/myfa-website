@@ -4,11 +4,13 @@ import { Container } from 'react-bootstrap'
 import './Orders.scss'
 import getQueryParam from '../../utils/getQueryParam'
 import { getOrdersByRef } from '../../services/orders'
+import useTranslate from '../../hooks/useTranslate'
 
 const Orders = () => {
   const [isLoading, setIsLoading] = useState(true);
   const  [isRef, setIsRef] = useState(false);
   const basketRef = getQueryParam('ref');
+  const [t, locale] = useTranslate();
 
   const checkRef = async () => {
     try {
@@ -17,7 +19,7 @@ const Orders = () => {
     } catch (e) {
       setIsRef(false);
       if (typeof window !== 'undefined') {
-        window.location.assign('/404');
+        window.location.assign(`/${locale}/404`);
       }
     } finally {
       setIsLoading(false);
@@ -31,12 +33,12 @@ const Orders = () => {
   return isRef && !isLoading ? (
     <section id='orders'>
       <Container>
-        <h1>Merci de votre commande 🎉</h1>
+        <h1>{t('orders.title')} 🎉</h1>
 
-        <p>Pour suivre l’avancement de votre commande, cliquez <a href='/profile/orders'>ici</a>.</p>
+        <p>{t('orders.description_part_1')} <a href={`/${locale}/profile/orders`}>{t('orders.here')}</a>.</p>
       </Container>
     </section>
-  ) : null
-}
+  ) : null;
+};
 
-export default Orders
+export default Orders;

@@ -11,6 +11,7 @@ import baskets from '../../assets/baskets';
 import { customBasketDetails } from '../../assets/customBasket';
 import getQueryParam from '../../utils/getQueryParam';
 import EventEmitter from '../../services/EventEmitter';
+import useTranslate from '../../hooks/useTranslate';
 
 const QTY_MAX = 5;
 
@@ -18,6 +19,7 @@ const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
+  const [t] = useTranslate();
 
   const eventEmitter = new EventEmitter();
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
@@ -76,30 +78,30 @@ const BasketToOrder = () => {
           <Col md='4'>
             <div className='basket-img-container'>
               <img src={basket.img} alt={basket.imgAlt} />
-              <p>Photo non contractuelle</p>
+              <p>{t('basket_to_order.photo_disclaimer')}</p>
             </div>
           </Col>
           <Col md='8'>
-            <h1>{basket.label}</h1>
+            <h1>{t(basket.labelTranslate)}</h1>
 
             <h2>
-              <span className='regular-price'>{basket.realPrice}€</span>
-              <span className='new-price'>{basket.price}€</span>
+              <span className='regular-price'>{basket.realPrice} €</span>
+              <span className='new-price'>{basket.price} €</span>
               <span className='reduction'>-{basket.reduction}%</span>
             </h2>
 
-            <p className='description'>{basket.description}</p>
+            <p className='description'>{t(basket.descriptionTranslate)}</p>
 
-            <h3>Ce panier contient</h3>
+            <h3>{t('basket_to_order.basket_contains')}</h3>
 
             <ul>
-              {basket.items.map(item => (
-                <li>{item}</li>
+              {basket.itemsTranslate.map(item => (
+                <li>{t(`ingredients.${item}`)}</li>
               ))}
             </ul>
 
             <div className='qty-container'>
-              <h4>Quantité</h4>
+              <h4>{t('basket_to_order.qty')}</h4>
 
               <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
                 <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
@@ -107,23 +109,23 @@ const BasketToOrder = () => {
                 <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
               </ButtonGroup>
 
-              {qty === QTY_MAX ? <p className='max-qty-msg'>Quantité maximum atteinte</p> : null}
+              {qty === QTY_MAX ? <p className='max-qty-msg'>{t('basket_to_order.max_qty_reached')}</p> : null}
 
               {isDone ?
                 <span className='order-button isDone'>
                   <FaCheck color='#6c6' />
                 </span> :
-                <button type='button' className='order-button' onClick={addToCart}>Ajouter au panier</button>
+                <button type='button' className='order-button' onClick={addToCart}>{t('basket_to_order.add_to_cart')}</button>
               }
             </div>
 
-            <h3>Nos autres paniers</h3>
+            <h3>{t('basket_to_order.other_baskets')}</h3>
 
             <div className='other-baskets-row'>
               {otherBaskets.map(otherBasket => (
                 <div key={otherBasket.type} className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
                   <img src={otherBasket.img} />
-                  <h3>{otherBasket.label}</h3>
+                  <h3>{t(otherBasket.labelTranslate)}</h3>
                 </div>
               ))}
             </div>

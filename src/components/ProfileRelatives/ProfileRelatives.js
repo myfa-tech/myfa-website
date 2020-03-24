@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import useTranslate from '../../hooks/useTranslate';
 import { updateUser } from '../../services/users';
 import useRelativeForm from '../../hooks/useRelativeForm';
 
@@ -38,6 +38,8 @@ const getZone = (code) => {
 };
 
 const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRelative }) => {
+  const [t] = useTranslate();
+
   useEffect(() => {
     modifyRelativeIndex(-1);
   }, []);
@@ -45,12 +47,14 @@ const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRela
   return (
     <>
       <div className='relatives-list-title-container'>
-        <h2>Pour gagner en rapidité lors des achats de paniers, vous pouvez enregistrer vos proches</h2>
+        <h2>{t('profile.relatives.headline')}</h2>
 
-        <button type='button' className='add-relative-button' onClick={() => addRelative()}>Ajouter un proche</button>
+        <button type='button' className='add-relative-button' onClick={() => addRelative()}>
+          {t('profile.relatives.add_relative')}
+        </button>
       </div>
       <div className='relatives-list-container'>
-        <h2>Mes proches</h2>
+        <h2>{t('profile.relatives.my_relatives')}</h2>
 
         {relatives && relatives.length ?
           <ul className='relatives-container'>
@@ -65,8 +69,12 @@ const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRela
                       <p className='relatives-info'>{getZone(relative.zone)}</p>
                     </Col>
                     <Col xs={5} sm={3} className='edit-container'>
-                      <button className='action' onClick={() => modifyRelativeIndex(index)}>Modifier</button>
-                      <button className='action' onClick={() => deleteRelative(index)}>Supprimer</button>
+                      <button className='action' onClick={() => modifyRelativeIndex(index)}>
+                        {t('profile.relatives.modify')}
+                      </button>
+                      <button className='action' onClick={() => deleteRelative(index)}>
+                        {t('profile.relatives.delete')}
+                      </button>
                     </Col>
                   </Row>
                 </li>
@@ -85,12 +93,11 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
   const [
     relativeFormValues,
     handleChangeRelativeFormValues,
-    setRelativeFormValues,
     handleSubmitRelativeForm,
     relativeFormErrors,
-    handleRelativeFormRecipientChange,
     showOtherRelationInput,
   ] = useRelativeForm(update, relative);
+  const [t] = useTranslate();
 
   async function update() {
     try {
@@ -117,7 +124,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
 
   return (
     <form id='relative-form' onSubmit={handleSubmitRelativeForm}>
-      <h2>Pour gagner en rapidité lors des achats de paniers, vous pouvez enregistrer vos proches</h2>
+      <h2>{t('profile.relatives.headline')}</h2>
 
       <Row>
         <Col xs='6'>
@@ -125,7 +132,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             type='text'
             required
             error={relativeFormErrors['firstname']}
-            label='Prénom'
+            label={t('profile.relatives.firstname')}
             className='full-width input'
             variant='outlined'
             name='firstname'
@@ -141,7 +148,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             className='full-width input'
             error={relativeFormErrors['lastname']}
             variant='outlined'
-            label='Nom'
+            label={t('profile.relatives.lastname')}
             name='lastname'
             value={relativeFormValues.lastname}
             onChange={handleChangeRelativeFormValues}
@@ -162,14 +169,14 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
       />
       <TextField
         select
-        label='Relation'
+        label={t('profile.relatives.relationship')}
         name='relation'
         className='full-width input'
         variant='outlined'
         disabled={isLoading}
         value={relativeFormValues.relation}
         onChange={handleChangeRelativeFormValues}
-        helperText='Quelle relation avez-vous avec votre proche ?'
+        helperText={t('profile.relatives.relationship_helper_text')}
       >
         <MenuItem value='AM'>Ami(e)</MenuItem>
         <MenuItem value='CO'>Conjoint(e)</MenuItem>
@@ -193,7 +200,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
           className='full-width input'
           variant='outlined'
           error={relativeFormErrors['otherRelation']}
-          label='Type de relation'
+          label={t('profile.relatives.relationship_type')}
           name='otherRelation'
           value={relativeFormValues.otherRelation}
           onChange={handleChangeRelativeFormValues}
@@ -205,7 +212,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         className='full-width input'
         variant='outlined'
         error={relativeFormErrors['address']}
-        label='Adresse'
+        label={t('profile.relatives.address')}
         name='address'
         value={relativeFormValues.address}
         onChange={handleChangeRelativeFormValues}
@@ -213,13 +220,13 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
       />
       <TextField
         select
-        label='Zone de livraison'
+        label={t('profile.relatives.delivery_zone')}
         required
         error={relativeFormErrors['zone']}
         name='zone'
         variant='outlined'
         disabled={isLoading}
-        placeholder='Quartier de la livraison'
+        placeholder={t('profile.relatives.delivery_zone_placeholder')}
         value={relativeFormValues.zone}
         className='full-width input'
         onChange={handleChangeRelativeFormValues}
@@ -240,7 +247,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
       <div className='phone-container'>
         <TextField
           select
-          label='Indicatif'
+          label={t('profile.relatives.country_code')}
           name='country'
           variant='outlined'
           className='country-code input'
@@ -255,7 +262,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         <TextField
           type='tel'
           error={relativeFormErrors['phone']}
-          label='Téléphone'
+          label={t('profile.relatives.phone')}
           name='phone'
           required
           variant='outlined'
@@ -276,7 +283,9 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             loading={true}
           />
         </span> :
-        <button type='submit' className='modify-button'>Sauvegarder</button>
+        <button type='submit' className='modify-button'>
+          {t('profile.relatives.save')}
+        </button>
       }
     </form>
   );
@@ -289,6 +298,7 @@ const ProfileInformation = () => {
   const [modifying, setModifying] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [t] = useTranslate();
 
   const modifyRelativeIndex = (index) => {
     if (index > -1) {
@@ -341,11 +351,13 @@ const ProfileInformation = () => {
             <div>
               <img src={logoHandsSrc} alt='logo' className='logo-big' />
 
-              <p>Etes-vous sûr(e) de vouloir retirer {relatives[relativeIndex].firstname} de vos proches ?</p>
+              <p>{t('profile.relatives.verify_delete_relative_part_1')} {relatives[relativeIndex].firstname} {t('profile.relatives.verify_delete_relative_part_2')}</p>
 
               <Row>
                 <Col xs={6}>
-                  <button type='button' className='cancel-button' onClick={closeDeletingModal}>Annuler</button>
+                  <button type='button' className='cancel-button' onClick={closeDeletingModal}>
+                    {t('profile.relatives.cancel')}
+                  </button>
                 </Col>
                 <Col xs={6}>
                   {isLoading ?
@@ -358,7 +370,9 @@ const ProfileInformation = () => {
                         loading={true}
                       />
                     </button> :
-                    <button type='button' className='confirm-button' onClick={confirmDelete}>Confirmer</button>
+                    <button type='button' className='confirm-button' onClick={confirmDelete}>
+                      {t('profile.relatives.confirm')}
+                    </button>
                   }
                 </Col>
               </Row>

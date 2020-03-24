@@ -1,0 +1,359 @@
+{
+  "site_seo": {
+    "description": "MYFA allows you to compose a basket of food goods for your relatives in Ivory Coast!"
+  },
+  "home_page": {
+    "seo_title": "MYFA, away has never been so close",
+    "home": {
+      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours*",
+      "subtitle": "*launch period: delivery will be made in March, by the founders.",
+      "discover_baskets_button": "Discover the baskets",
+      "launch_popup": {
+        "title": "Launch",
+        "paragraph1": "Any order made will be delivered within one month, by the founders themselves!",
+        "paragraph2": "End of the launch period: March 31, 2020. Take advantage of the low prices during this period!"
+      }
+    },
+    "how_it_works": {
+      "title": "How it works?",
+      "slide1": {
+        "title": "Select your basket",
+        "description": "Fruits, Vegetables, Sauces or MYFA."
+      },
+      "slide2": {
+        "title": "Enter information about your loved one",
+        "description": "We call them to determine the delivery conditions."
+      },
+      "slide3": {
+        "title": "Select the district of delivery",
+        "description": "Among the 12 districts of Abidjan."
+      },
+      "slide4": {
+        "title": "Pay securely",
+        "description": "Shop with peace of mind."
+      },
+      "slide5": {
+        "title": "Delivery in less than 48 hours",
+        "description": "Depending on the availability of your loved one."
+      },
+      "slide6": {
+        "title": "Follow the route",
+        "description": "By email or SMS, stay informed."
+      }
+    },
+    "baskets": {
+      "title": "Choose your basket!",
+      "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
+      "until_date": "until 03/31/2020",
+      "fruits_basket_title": "Fruits Basket 🍌",
+      "fruits_basket_home_description": "Bananas, oranges, coconut...",
+      "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
+      "vegetables_basket_title": "Veggies Basket 🧅",
+      "vegetables_basket_home_description": "Onions, carots, yams...",
+      "vegetables_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
+      "sauces_basket_title": "Sauces Basket 🍗🍖",
+      "sauces_basket_home_description": "Pepper, salt, ginger...",
+      "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
+      "custom_basket_title": "MYFA Basket 🙌🏾",
+      "custom_basket_home_description": "It's up to you to compose it!",
+      "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
+      "cart_modal": {
+        "header": "Successfully added to purchases",
+        "price": "Price",
+        "qty": "Quantity",
+        "baskets_nb_part_1": "You have",
+        "baskets_nb_part_2": "pending baskets.",
+        "baskets_total": "Total baskets",
+        "delivery": "Delivery",
+        "free": "free",
+        "total": "Total",
+        "continue_button": "Continue",
+        "pay_button": "Checkout"
+      }
+    },
+    "our_promise": {
+      "title": "Our promise",
+      "image_title": "Florian, Doris & Alexandre",
+      "paragraph_title": "Ensure the well-being of your loved ones.",
+      "paragraph_description": "Sending money to family is good. Make sure they ate is even better."
+    },
+    "trustees": {
+      "title": "They trust us"
+    },
+    "team": {
+      "title": "The Team",
+      "doris_description": "With MYFA, I wanted to create a way to be able to please, without frustrations. Here I know what becomes of my money.",
+      "florian_description": "Our ambition is to provide a real good solution to the problems caused by distance. We bring families together.",
+      "alex_description": "We offer you a new experience to delight your loved ones and maintain confidence despite the distance!"
+    },
+    "news": {
+      "title": "News",
+      "read_more_button": "Read more",
+      "slide1_description": "Last week we participated in the MobileOne conference. For two days, the event covers all aspects related to mobile, from technique to marketing. The various issues are dealt with in the form of 30-minute lectures.",
+      "slide2_description": "If we had been told, 8 months ago, when we launched out, that things would materialize so quickly, I would not have believed it, and Doris neither. It has already been 1 week since we returned from our first \"business trip\", no more and no less than in Côte d'Ivoire. In Africa, a continent that is dear to us.",
+      "slide3_description": "We agree, the name of the event is long. But the principle is simple! \"Women\", I believe you understood already, means that the promoters of projects are only women (Who run the world? Ask Beyoncé).",
+      "slide4_description": "Huh? What? What does \"Myfa\" mean? It means \"family\" in \"verlan\". Verlan is a form of French slang which consists of inverting the syllables of a word. So you understand now where the singer Stromae got his name from... The \"y\"? just for style..."
+    },
+    "newsletter": {
+      "title": "Subscribe to our newsletter !",
+      "description": "Once a week, follow the news (new baskets, evolution of the company, etc.)",
+      "subscribe_button": "Subscribe",
+      "input_placeholder": "Enter your e-mail adress",
+      "popup": {
+        "success": "Yay ! Email saved !",
+        "failure": "Problem encountered. Contact us directly",
+        "event_time": "now"
+      }
+    }
+  },
+  "header": {
+    "home": "Home",
+    "baskets": "Baskets",
+    "promise": "Our promise",
+    "team": "Team",
+    "news": "News",
+    "profile": {
+      "account": "My account",
+      "information": "My info",
+      "orders": "My orders",
+      "password": "Change my password",
+      "relatives": "My relatives",
+      "logout": "Log out"
+    },
+    "login_signup_modal": {
+      "login_button": "Log in",
+      "signup_button": "Sign up"
+    },
+    "custom_tooltip": {
+      "title": "My Cart",
+      "qty": "Quantity",
+      "total_ttc": "Total Price",
+      "checkout": "Checkout",
+      "empty_basket": "Your cart is empty"
+    }
+  },
+  "footer": {
+    "legal_notice": "Legal Notice"
+  },
+  "cart": {
+    "relative_info_title": "Information about my relative",
+    "self_info_title": "I sign up to order",
+    "price_container": {
+      "total": "Total",
+      "checkout": "Checkout",
+      "grand_total": "Grand total",
+      "baskets": "baskets",
+      "next": "Next",
+      "email_not_confirmed": "Before placing your order, please click on the confirmation link that we sent to you by email."
+    },
+    "empty_cart": "Your cart is empty.",
+    "discover_baskets": "Discover the baskets",
+    "personal_info": {
+      "signup": "Sign up",
+      "login": "Log in",
+      "unknown_user":"Unknown user",
+      "continue_with_fb": "Continue with Facebook",
+      "continue_with_google": "Continue with Google",
+      "when_login_part_1": "By logging in you accept our",
+      "firstname": "Firsname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "password": "Password",
+      "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+      "accept_cgu_cgv_part_1": "I have read and I accept",
+      "signup_button": "Sign up",
+      "existing_user": "User already exists",
+      "and": "and",
+      "cgu": "terms of use",
+      "cgv": "terms of sales"
+    },
+    "relative_info": {
+      "saved_relatives": "My saved relatives",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "relationship": "Relationship",
+      "relationship_type":"Type of relationship",
+      "relationship_helper_text":"What is the link between your relative and you?",
+      "delivery_zone":"Delivery zone",
+      "delivery_zone_placeholder":"District of the delivery"
+    },
+    "items": {
+      "title": "My cart",
+      "subtotal": "Subtotal",
+      "qty": "Qty"
+    }
+  },
+  "basket_to_order": {
+    "photo_disclaimer": "Non contractual photo",
+    "basket_contains": "This basket contains",
+    "qty": "Quantity",
+    "max_qty_reached": "Maximum quantity reached",
+    "add_to_cart": "Add to cart",
+    "other_baskets": "Our other baskets"
+  },
+  "custom_basket_to_order": {
+    "bases": "Bases",
+    "veggies": "Veggies",
+    "fruits": "Fruits",
+    "sauces": "Sauces",
+    "supps": "Extras",
+    "choose_base": "Please choose 1 base",
+    "choose_3_fruits": "You can choose up to 3 fruits",
+    "choose_3_veggies": "You can choose up to 3 vegetables",
+    "choose_3_products": "You can choose up to 3 products",
+    "photo_disclaimer": "Non contractual photo",
+    "basket_contains": "This basket contains",
+    "qty": "Quantity",
+    "max_qty_reached": "Maximum quantity reached",
+    "add_to_cart": "Add to cart",
+    "price_from": "from",
+    "your_basket": "Your basket",
+    "checkout": "Checkout",
+    "previous": "Previous",
+    "next": "Next",
+    "stepper_bases_fruits": "Bases & Fruits",
+    "stepper_veggies": "Veggies",
+    "stepper_sauces": "Sauces",
+    "stepper_supps": "Extras"
+  },
+  "login_form": {
+    "password": "Password",
+    "unknown_user": "Unknown user",
+    "login": "Log in",
+    "continue_with_fb": "Continue with Facebook",
+    "continue_with_google": "Continue with Google",
+    "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+    "when_login_part_1": "By logging in you accept our",
+    "and": "and",
+    "cgu": "terms of use",
+    "cgv": "terms of sales"
+  },
+  "signup_form": {
+    "firstname": "Firsname",
+    "lastname": "Lastname",
+    "country_code": "Country code",
+    "phone": "Phone",
+    "password": "Password",
+    "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
+    "accept_cgu_cgv_part_1": "I have read and I accept",
+    "signup_button": "Sign up",
+    "existing_user": "User already exists",
+    "and": "and",
+    "cgu": "terms of use",
+    "cgv": "terms of sales"
+  },
+  "orders": {
+    "seo_title": "Order",
+    "title": "Thank's for your order",
+    "description_part_1": "To follow the progress of your order, click",
+    "here": "here"
+  },
+  "profile": {
+    "greeting": {
+      "hello": "Hello"
+    },
+    "menu": {
+      "my_info": "My info",
+      "my_orders": "My orders",
+      "password": "Change my password",
+      "relatives": "My relatives",
+      "logout": "Log out",
+      "delete_account": "Delete my account",
+      "delete_account_modal": {
+        "are_you_sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+      }
+    },
+    "info": {
+      "keep_up_to_date": "Kindly keep your info up to date",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "save": "Save"
+    },
+    "orders": {
+      "processing_title": "Processing orders",
+      "processed_title": "Processed orders",
+      "order": "Order",
+      "no_processing_orders": "You have no current order.",
+      "no_processed_orders": "You have no treated processed."
+    },
+    "password": {
+      "headline": "For a secure account, kindly update your password regularly",
+      "current_password": "Current password",
+      "new_password": "New password",
+      "save": "Save"
+    },
+    "relatives": {
+      "headline": "To gain speed when shopping for baskets, you can register your relatives",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "country_code": "Country code",
+      "phone": "Phone",
+      "save": "Save",
+      "relationship": "Relationship",
+      "relationship_type": "Type of relationship",
+      "add_relative": "Add a relative",
+      "my_relatives": "My relatives",
+      "modify": "Modify",
+      "delete": "Delete",
+      "delivery_zone": "Delivery zone",
+      "delivery_zone_placeholder": "District of the delivery",
+      "relationship_helper_text": "What is the link between your relative and you?",
+      "verify_delete_relative_part_1": "Are you sure you want to remove",
+      "verify_delete_relative_part_2": "from your relatives?",
+      "cancel": "Dismiss",
+      "confirm": "Confirm"
+    }
+  },
+  "relationship_types": {
+    "AM": "Friend",
+    "CO": "Spouse",
+    "EN": "Child",
+    "FR": "Brother",
+    "GM": "Grandmother",
+    "GP": "Grandfather",
+    "ME": "Mother",
+    "NE": "Nephew",
+    "NI": "Niece",
+    "ON": "Uncle",
+    "PE": "Father",
+    "SO": "Sister",
+    "TA": "Aunt",
+    "AU": "Other"
+  },
+  "ingredients": {
+    "1L_palm_oil": "1L palm oil bottle",
+    "2_attiekes": "2 bags of attieke",
+    "1kg_plantain": "1kg plantain",
+    "250g_gombos": "250g gombos",
+    "40g_fish_pouder": "40g fish pouder",
+    "1kg_red_onions": "1kg red onions",
+    "50_maggie_10gr": "50 spices cubes (10gr)",
+    "300g_fresh_chili": "300g fresh chili",
+    "1kg_tomatoes": "1kg tomatoes",
+    "1kg_lime": "1kg lemons",
+    "70g_akpi": "70g akpi nuts",
+    "425g_peanut_paste": "425g of Dakatine peanut paste",
+    "200g_salt": "200g Baleine salt",
+    "50g_pepper_pouder": "50g ground pepper",
+    "30g_ginger_pouder": "30g ground ginger",
+    "4_garlics": "4 garlic cloves",
+    "1kg_bananas": "1kg bananas",
+    "1kg_oranges": "1kg oranges",
+    "1_coconut": "1 coconut",
+    "1_pineapple": "1 pineapple",
+    "1kg_mangos": "1kg mangoes",
+    "1kg_avocados": "1kg avocados",
+    "1kg_carots": "1kg carots",
+    "2kg_potatoes": "2kg potatoes",
+    "1kg_yams": "1kg yams",
+    "1_red_cabbage": "1 red cabbage",
+    "400g_french_beans": "400g French beans"
+  }
+}

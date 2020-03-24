@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -14,11 +14,14 @@ import Trustees from '../components/Trustees';
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 import './index.scss';
+import useTranslate from '../hooks/useTranslate';
 
 const IndexPage = () => {
+  const [t] = useTranslate();
+
   return (
     <Layout hideHeader={true}>
-      <SEO title="MYFA, pour vos proches au loin" img={socialSharingImgSrc} />
+      <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
 
       <Home />
       <HowItWorks />

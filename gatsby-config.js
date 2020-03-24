@@ -14,6 +14,19 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: ['fr', 'en'],
+        // language file path
+        defaultLanguage: 'fr',
+        // option to redirect to `/fr` when connecting `/`
+        redirect: true,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

@@ -15,6 +15,7 @@ import Step4 from './Step4';
 
 import EventEmitter from '../../services/EventEmitter';
 import { customBasketDetails } from '../../assets/customBasket';
+import useTranslate from '../../hooks/useTranslate';
 
 import './CustomBasketToOrder.scss';
 
@@ -28,6 +29,7 @@ const CustomBasketToOrder = () => {
   const [supps, setSupps] = useState([]);
   const [slidingInfosTop, setSlidingInfosTop] = useState(null);
   const [canPay, setCanPay] = useState(false);
+  const [t] = useTranslate();
 
   let isSliding = true;
 
@@ -124,11 +126,11 @@ const CustomBasketToOrder = () => {
         <Col md='4' lg='3'>
           <div className='basket-img-container'>
             <img src={customBasketDetails.img} alt={customBasketDetails.imgAlt} />
-            <p>Photo non contractuelle</p>
+            <p>{t('custom_basket_to_order.photo_disclaimer')}</p>
           </div>
         </Col>
         <Col md='8' lg='7'>
-          <h1>{customBasketDetails.label}</h1>
+          <h1>{t(customBasketDetails.labelTranslate)}</h1>
 
           <h2>
             <span className='regular-price'>{customBasketDetails.realPrice}€</span>
@@ -137,23 +139,23 @@ const CustomBasketToOrder = () => {
           </h2>
 
           <p className='description'>
-            {customBasketDetails.description}
+            {t(customBasketDetails.descriptionTranslate)}
           </p>
 
           <div className='stepper-container'>
             <ThemeProvider theme={theme}>
               <Stepper activeStep={step - 1} alternativeLabel>
                 <Step>
-                  <StepLabel>Bases & Fruits</StepLabel>
+                  <StepLabel>{t('custom_basket_to_order.stepper_bases_fruits')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>Légumes</StepLabel>
+                  <StepLabel>{t('custom_basket_to_order.stepper_veggies')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>Sauces</StepLabel>
+                  <StepLabel>{t('custom_basket_to_order.stepper_sauces')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>Suppléments</StepLabel>
+                  <StepLabel>{t('custom_basket_to_order.stepper_supps')}</StepLabel>
                 </Step>
               </Stepper>
             </ThemeProvider>
@@ -167,9 +169,11 @@ const CustomBasketToOrder = () => {
         <Col xs={0} lg={2} id='sliding-infos-container' className='.d-none .d-lg-block'>
           <div id='sliding-infos' style={slidingInfosTop ? { position: 'absolute', bottom: 0 } : { position: 'fixed', top: 100 }}>
             <h2>{customBasketDetails.label}</h2>
-            <p>à partir de {customBasketDetails.price} €</p>
-            <p>Votre panier : <b>{basketPrice.toFixed(2)} €</b></p>
-            <button className={`pay-button ${canPay ? '' : 'disabled'}`} disabled={!canPay} onClick={pay}>Payer</button>
+            <p>{t('custom_basket_to_order.price_from')} {customBasketDetails.price} €</p>
+            <p>{t('custom_basket_to_order.your_basket')} : <b>{basketPrice.toFixed(2)} €</b></p>
+            <button className={`pay-button ${canPay ? '' : 'disabled'}`} disabled={!canPay} onClick={pay}>
+              {t('custom_basket_to_order.checkout')}
+            </button>
           </div>
         </Col>
       </Row>

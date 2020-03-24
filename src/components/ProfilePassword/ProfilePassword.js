@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
-
+import useTranslate from '../../hooks/useTranslate';
 import { updatePassword } from '../../services/users';
 
 import './ProfilePassword.scss';
@@ -22,6 +22,7 @@ const ProfilePassword = () => {
     newPassword: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [t] = useTranslate();
 
   const handleChangeFormValue = (e) => {
 		const targetName = e.target.name;
@@ -67,7 +68,7 @@ const ProfilePassword = () => {
 
   return (
     <div id='profile-password'>
-      <h2>Pour un compte sécurisé, mettez régulièrement à jour votre mot de passe.</h2>
+      <h2>{t('profile.password.headline')}</h2>
 
       <form onSubmit={updateInfo}>
         <div>
@@ -76,7 +77,7 @@ const ProfilePassword = () => {
             className='full-width form-input'
             required
             error={errors['actualPassword']}
-            label='Mot de passe actuel'
+            label={t('profile.password.current_password')}
             name='actualPassword'
             value={form.actualPassword}
             variant='outlined'
@@ -90,7 +91,7 @@ const ProfilePassword = () => {
             className='full-width form-input'
             required
             error={errors['newPassword']}
-            label='Nouveau mot de passe'
+            label={t('profile.password.new_password')}
             name='newPassword'
             value={form.newPassword}
             variant='outlined'
@@ -109,7 +110,9 @@ const ProfilePassword = () => {
               loading={true}
             />
           </span> :
-          <button type='submit' className='update-user-button'>Sauvegarder</button>
+          <button type='submit' className='update-user-button'>
+            {t('profile.password.save')}
+          </button>
         }
       </form>
     </div>

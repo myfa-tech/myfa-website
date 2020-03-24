@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 
 import { deleteAccount } from '../../services/users';
+import useTranslate from '../../hooks/useTranslate';
 
 import './ProfileMenu.scss';
 
@@ -13,6 +14,7 @@ import logoHandsSrc from '../../images/logo-1.png';
 const ProfileMenu = ({ pageName }) => {
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [t, locale] = useTranslate();
 
   const toggleDeleteAccountModal = () => {
     setShowDeleteAccountModal(!showDeleteAccountModal);
@@ -29,11 +31,11 @@ const ProfileMenu = ({ pageName }) => {
   };
 
   const listItems = [
-    { label: 'Mes informations', link: '/profile/information' },
-    { label: 'Mes commandes', link: '/profile/orders' },
-    { label: 'Changer mon mot de passe', link: '/profile/password' },
-    { label: 'Mes proches', link: '/profile/relatives' },
-    { label: 'Déconnexion', link: '/logout' },
+    { label: t('profile.menu.my_info'), link: `/${locale}/profile/information` },
+    { label: t('profile.menu.my_orders'), link: `/${locale}/profile/orders` },
+    { label: t('profile.menu.password'), link: `/${locale}/profile/password` },
+    { label: t('profile.menu.relatives'), link: `/${locale}/profile/relatives` },
+    { label: t('profile.menu.logout'), link: `/${locale}/logout` },
   ];
 
   const spinnerStyle = css`
@@ -48,7 +50,7 @@ const ProfileMenu = ({ pageName }) => {
           <li key={item.link} className={item.link.includes(pageName) ? 'active' : ''}><a href={item.link}>{item.label}</a></li>
         ))}
 
-        <li key='/signout'><a href='#' onClick={toggleDeleteAccountModal}>Supprimer mon compte</a></li>
+        <li key='/signout'><a href='#' onClick={toggleDeleteAccountModal}>{t('profile.menu.delete_account')}</a></li>
       </ul>
 
       {showDeleteAccountModal &&
@@ -57,11 +59,13 @@ const ProfileMenu = ({ pageName }) => {
             <div>
               <img src={logoHandsSrc} alt='logo' className='logo-big' />
 
-              <p>Etes-vous sûr(e) de vouloir supprimer votre compte ?</p>
+              <p>{t('profile.menu.delete_account_modal.are_you_sure')}</p>
 
               <Row>
                 <Col xs={6}>
-                  <button type='button' className='cancel-button' onClick={toggleDeleteAccountModal}>Annuler</button>
+                  <button type='button' className='cancel-button' onClick={toggleDeleteAccountModal}>
+                    {t('profile.menu.delete_account_modal.cancel')}
+                  </button>
                 </Col>
                 <Col xs={6}>
                   {isLoading ?
@@ -74,7 +78,9 @@ const ProfileMenu = ({ pageName }) => {
                         loading={true}
                       />
                     </button> :
-                    <button type='button' className='confirm-button' onClick={confirmDeleteAccount}>Confirmer</button>
+                    <button type='button' className='confirm-button' onClick={confirmDeleteAccount}>
+                      {t('profile.menu.delete_account_modal.confirm')}
+                    </button>
                   }
                 </Col>
               </Row>

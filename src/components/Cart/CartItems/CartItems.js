@@ -3,12 +3,16 @@ import Divider from '@material-ui/core/Divider';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { Row, Col } from 'react-bootstrap';
 
+import useTranslate from '../../../hooks/useTranslate';
+
 import './CartItems.scss';
 
 const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
+  const [t] = useTranslate();
+
   return (
     <div className='my-cart-container'>
-      <h2>Mon panier</h2>
+      <h2>{t('cart.items.title')}</h2>
 
       <Divider variant='middle' />
 
@@ -20,12 +24,12 @@ const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
                   <img src={cart.baskets[basketKey].img} />
                 </Col>
                 <Col xs={7} sm={6} className='label-container'>
-                  <h3>{cart.baskets[basketKey].label}</h3>
+                  <h3>{t(cart.baskets[basketKey].labelTranslate)}</h3>
                   <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                 </Col>
                 <Col xs={5} sm={4} className='qty-container'>
                   <div className='qty'>
-                    <p>Qté</p>
+                    <p>{t('cart.items.qty')}</p>
                     <p>
                       <button className='minus-button' onClick={() => editItems(cart.baskets[basketKey].type, -1)}>-</button>
                       <span>{cart.baskets[basketKey].qty}</span>
@@ -43,7 +47,7 @@ const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
       </ul>
 
       <div className='subtotal-container'>
-        <p className='subtotal'>Sous-total : {basketsPrice.toFixed(2)} €</p>
+        <p className='subtotal'>{t('cart.items.subtotal')} : {basketsPrice.toFixed(2)} €</p>
       </div>
     </div>
   );
