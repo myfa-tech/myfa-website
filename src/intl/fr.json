@@ -1,4 +1,7 @@
 {
+  "site_seo": {
+    "description": "MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !"
+  },
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {

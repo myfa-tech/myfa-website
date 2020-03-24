@@ -11,9 +11,12 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import uuid from 'uuid/v4';
 
+import useTranslate from "../hooks/useTranslate";
+
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
+  const [t] = useTranslate();
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -28,7 +31,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description || t('site_seo.description');
   const metaAuthor = site.siteMetadata.author;
   const uniqueId = uuid().substr(0, 8);
 
