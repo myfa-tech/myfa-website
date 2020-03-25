@@ -37,6 +37,17 @@ export default function HTML(props) {
             d.getElementsByTagName("head")[0].appendChild(s);
           `}}
         />
+        <script async dangerouslySetInnerHTML={{
+          __html: `
+            window._mfq = window._mfq || [];
+            (function() {
+                var mf = document.createElement("script");
+                mf.type = "text/javascript"; mf.defer = true;
+                mf.src = "//cdn.mouseflow.com/projects/d242c0c3-eb37-4282-b375-448eeff6e728.js";
+                document.getElementsByTagName("head")[0].appendChild(mf);
+            })();
+          `}}
+        />
       </body>
     </html>
   )
