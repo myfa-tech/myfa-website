@@ -38,10 +38,15 @@ const isAdminLoggedIn = () => {
   return !!user.email;
 };
 
+const isEmployeeLoggedIn = () => {
+  const user = getAdmin();
+  return !!user.isEmployee;
+};
+
 const logout = (callback) => {
   setToken('');
   setAdmin({});
   callback();
 }
 
-export { getUser, handleLogin, isAdminLoggedIn, isLoggedIn, logout, setAdmin };
+export { getUser, handleLogin, isAdminLoggedIn, isEmployeeLoggedIn, isLoggedIn, logout, setAdmin };

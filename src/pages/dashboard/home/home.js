@@ -8,9 +8,11 @@ import DashboardShell from '../../../components/dashboard/Shell';
 import './home.scss';
 import { fetchKPIs } from '../../../services/kpis';
 import { fetchGoals, updateGoalById } from '../../../services/kpi-goals';
+import { isEmployeeLoggedIn } from '../../../services/auth';
 
 const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
   const { generalKpis, weekKpis, monthKpis } = kpis;
+  const isEmployee = isEmployeeLoggedIn();
 
   const getColor = (id, value) => {
     if (!goals) {
@@ -90,7 +92,7 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
               className='goal'
               tagName='div'
               html={getGoal(kpi.id)} // innerHTML of the editable div
-              disabled={false} // use true to disable edition
+              disabled={isEmployee} // use true to disable edition
               onChange={(e) => handleGoalChange(kpi.id, e.target.value)} // handle innerHTML change
               onBlur={() => updateGoal(kpi.id)}
               onKeyDown={(e) => handleKeyDown(e, kpi.id)}

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useAdminAuthentication } from '../../../hooks/useAuthentication';
+import { isEmployeeLoggedIn } from '../../../services/auth';
 
 import './Shell.scss';
 
 const Shell = ({ children }) => {
   const { loading } = useAdminAuthentication({ redirect: '/dashboard/login' });
+  const isEmployee = isEmployeeLoggedIn();
 
   return loading ? null : (
     <div className='dashboard-shell'>
@@ -13,7 +15,7 @@ const Shell = ({ children }) => {
           <li><a href='/dashboard'><span aria-label='accueil' role="img">🏠</span> Accueil</a></li>
           <li><a href='/dashboard/users'><span aria-label='utilisateurs' role="img">👥</span> Utilisateurs</a></li>
           <li><a href='/dashboard/baskets'><span aria-label='paniers' role="img">🧺</span> Paniers</a></li>
-          <li><a href='/dashboard/finance'><span aria-label='finance' role="img">💰</span> Finance</a></li>
+          {isEmployee ? null : <li><a href='/dashboard/finance'><span aria-label='finance' role="img">💰</span> Finance</a></li>}
         </ul>
       </div>
       <div className='content'>
