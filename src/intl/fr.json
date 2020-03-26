@@ -6,12 +6,12 @@
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
       "title": "Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h*",
-      "subtitle": "*période de lancement : la livraison sera faite courant mars, par les fondateurs.",
+      "subtitle": "*COVID-19 : la livraison des paniers est en suspend pour le moment, mais les commandes sont toujours possibles",
       "discover_baskets_button": "Découvrir les paniers",
       "launch_popup": {
-        "title": "Lancement",
-        "paragraph1": "Toute commande réalisée sera livrée dans un délai d’un mois, par les fondateurs eux mêmes !",
-        "paragraph2": "Fin de la période de lancement : 31 mars 2020. Profitez des petits prix durant cette période !"
+        "title": "COVID-19 ⚠️",
+        "paragraph1": "En raison de la situation actuelle, les livraisons des paniers MYFA sont en suspend.",
+        "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
     "how_it_works": {
@@ -310,6 +310,13 @@
       "cancel": "Annuler",
       "confirm": "Confirmer"
     }
+  },
+  "countdown": {
+    "title": "Fin des réductions Lancement",
+    "d": "j",
+    "h": "h",
+    "m": "mins",
+    "s": "s"
   },
   "relationship_types": {
     "AM": "Ami(e)",

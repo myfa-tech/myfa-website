@@ -10,6 +10,7 @@ import News from '../components/News';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
+import Countdown from '../components/Countdown';
 
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
@@ -31,6 +32,8 @@ const IndexPage = () => {
       <Team />
       <News />
       <Newsletter />
+
+      <Countdown />
     </Layout>
   );
 }

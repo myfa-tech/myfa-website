@@ -6,12 +6,12 @@
     "seo_title": "MYFA, away has never been so close",
     "home": {
       "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours*",
-      "subtitle": "*launch period: delivery will be made in March, by the founders.",
+      "subtitle": "*COVID-19 : baskets delivery is on hold at this time, but orders are still possible",
       "discover_baskets_button": "Discover the baskets",
       "launch_popup": {
-        "title": "Launch",
-        "paragraph1": "Any order made will be delivered within one month, by the founders themselves!",
-        "paragraph2": "End of the launch period: March 31, 2020. Take advantage of the low prices during this period!"
+        "title": "COVID-19 ⚠️",
+        "paragraph1": "Due to the current situation, deliveries of MYFA baskets are on hold.",
+        "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },
     "how_it_works": {
@@ -310,6 +310,13 @@
       "cancel": "Dismiss",
       "confirm": "Confirm"
     }
+  },
+  "countdown": {
+    "title": "End of Launch sales",
+    "d": "d",
+    "h": "h",
+    "m": "mins",
+    "s": "s"
   },
   "relationship_types": {
     "AM": "Friend",
