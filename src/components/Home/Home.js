@@ -60,7 +60,7 @@ const Home = ({ setShowToast, showToast, toastType }) => {
         <Modal show={showLaunchModal} onHide={toggleLaunchModal} id='launch-modal'>
           <Modal.Header closeButton />
           <Modal.Body>
-            <h1>{t('home_page.home.launch_popup.title')} 🎉</h1>
+            <h1>{t('home_page.home.launch_popup.title')}</h1>
 
             <p>{t('home_page.home.launch_popup.paragraph1')}</p>
             <p>{t('home_page.home.launch_popup.paragraph2')}</p>
