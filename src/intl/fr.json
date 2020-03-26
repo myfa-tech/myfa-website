@@ -311,6 +311,13 @@
       "confirm": "Confirmer"
     }
   },
+  "countdown": {
+    "title": "Fin des réductions Lancement",
+    "d": "j",
+    "h": "h",
+    "m": "mins",
+    "s": "s"
+  },
   "relationship_types": {
     "AM": "Ami(e)",
     "CO": "Conjoint(e)",

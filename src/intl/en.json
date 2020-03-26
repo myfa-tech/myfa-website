@@ -311,6 +311,13 @@
       "confirm": "Confirm"
     }
   },
+  "countdown": {
+    "title": "End of Launch sales",
+    "d": "d",
+    "h": "h",
+    "m": "mins",
+    "s": "s"
+  },
   "relationship_types": {
     "AM": "Friend",
     "CO": "Spouse",
