@@ -135,6 +135,12 @@
   "footer": {
     "legal_notice": "Mentions légales"
   },
+  "404": {
+    "seo_title": "404: Introuvable",
+    "title": "404 : la page que vous cherchez n’existe pas",
+    "subtitle": "Ceci est une banane, mais ce n’est peut-être pas ce que vous cherchez...",
+    "cta": "Retour à l'accueil"
+  },
   "cart": {
     "relative_info_title": "Informations sur mon proche",
     "self_info_title": "Je m'inscris pour commander",
