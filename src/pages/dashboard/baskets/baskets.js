@@ -233,7 +233,12 @@ const DashbboardBaskets = () => {
 
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
-      await updateBasketById(row._id, { [column.dataField]: newValue });
+      const newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
+      let id = baskets.findIndex(b => b._id === newBasket._id);
+
+      baskets[id] = { ...newBasket };
+
+      setBaskets([...baskets]);
     }
   };
 
