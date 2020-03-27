@@ -91,6 +91,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Référence',
       dataField: 'orderRef',
+      sort: true,
       editable: false,
       headerStyle: () => {
         return { width: '90px' };
@@ -100,6 +101,7 @@ const DashbboardBaskets = () => {
       text: 'Type',
       dataField: 'name',
       editable: false,
+      sort: true,
       headerStyle: () => {
         return { width: '80px' };
       }
@@ -108,6 +110,7 @@ const DashbboardBaskets = () => {
       text: '@ utilisateur',
       dataField: 'userEmail',
       editable: false,
+      sort: true,
       headerStyle: () => {
         return { width: '200px' };
       }
@@ -115,6 +118,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Destinataire',
       dataField: 'recipient.label',
+      sort: true,
       formatter: (cell, row, rowIndex) => {
         return `${row.recipient.firstname} ${row.recipient.lastname} (${getRelation(row.recipient.relation)})`;
       },
@@ -126,6 +130,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Tél. Destin. ✏️',
       dataField: 'recipient.phone',
+      sort: true,
       headerStyle: () => {
         return { width: '120px' };
       }
@@ -133,6 +138,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Zone ✏️',
       dataField: 'recipient.zone',
+      sort: true,
       formatter: (cell, row, rowIndex) => {
         return getDeliveryZone(row.recipient.zone);
       },
@@ -194,7 +200,8 @@ const DashbboardBaskets = () => {
       },
       headerStyle: () => {
         return { width: '100px' };
-      }
+      },
+      sort: true,
     },
     {
       text: 'Création',
@@ -203,7 +210,7 @@ const DashbboardBaskets = () => {
         return new Date(row.createdAt).toLocaleDateString('fr-FR')
       },
       dataField: 'createdAt',
-      sort: true
+      sort: true,
     },
     {
       text: 'Livraison',
@@ -212,7 +219,7 @@ const DashbboardBaskets = () => {
         return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
       },
       dataField: 'deliveredAt',
-      sort: true
+      sort: true,
     },
   ];
 
