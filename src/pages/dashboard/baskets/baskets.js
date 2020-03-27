@@ -213,10 +213,13 @@ const DashbboardBaskets = () => {
       sort: true,
     },
     {
-      text: 'Livraison',
-      editable: false,
+      text: 'Livraison ✏️',
+      editable: true,
       formatter: (cell, row, rowIndex) => {
         return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
+      },
+      editor: {
+        type: Type.DATE,
       },
       dataField: 'deliveredAt',
       sort: true,
