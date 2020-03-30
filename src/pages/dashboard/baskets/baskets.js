@@ -2,35 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Type } from 'react-bootstrap-table2-editor';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
+import Typography from '@material-ui/core/Typography';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
+import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 
 import './baskets.scss';
-
-const getRelation = (code) => {
-  const relations = {
-    AM: 'Ami(e)',
-    CO: 'Conjoint(e)',
-    EN: 'Enfant',
-    FR: 'Frère',
-    GM: 'Grand-Mère',
-    GP: 'Grand-Père',
-    ME: 'Mère',
-    NE: 'Neveu',
-    NI: 'Nièce',
-    ON: 'Oncle',
-    PE: 'Père',
-    SO: 'Soeur',
-    TA: 'Tante',
-    AU: 'Autre',
-  }
-
-  return relations[code] || code;
-};
 
 const getDeliveryZone = (code) => {
   const zones = {
@@ -57,7 +38,7 @@ const spinnerStyle = css`
 `;
 
 const isPendingBasketOverOneHour = (row) => {
-  // getTime give time in milliseconds - we want diff in hours
+  // getTime gives time in milliseconds - we want diff in hours
   let hoursDiff = (new Date().getTime() - new Date(row.createdAt).getTime())/(1000*3600);
 
   return !!(row.status === 'pending' && hoursDiff > 1);
@@ -69,6 +50,8 @@ const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [popoverInfo, setPopoverInfo] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -86,6 +69,17 @@ const DashbboardBaskets = () => {
       return 'canceled';
     }
   };
+
+  const handlePeopleInfoPopoverOpen = (event, recipientInfo) => {
+    setPopoverInfo(recipientInfo);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePeopleInfoPopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   const columns = [
     {
@@ -120,19 +114,18 @@ const DashbboardBaskets = () => {
       dataField: 'recipient.label',
       sort: true,
       formatter: (cell, row, rowIndex) => {
-        return `${row.recipient.firstname} ${row.recipient.lastname} (${getRelation(row.recipient.relation)})`;
+        return <Typography
+          aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
+          aria-haspopup="true"
+          onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.recipient)}
+          onMouseLeave={handlePeopleInfoPopoverClose}
+        >
+          {row.recipient.firstname} {row.recipient.lastname}
+        </Typography>
       },
       editable: false,
       headerStyle: () => {
         return { width: '250px' };
-      }
-    },
-    {
-      text: 'Tél. Destin. ✏️',
-      dataField: 'recipient.phone',
-      sort: true,
-      headerStyle: () => {
-        return { width: '120px' };
       }
     },
     {
@@ -224,6 +217,25 @@ const DashbboardBaskets = () => {
       dataField: 'deliveredAt',
       sort: true,
     },
+    {
+      text: 'Commentaire ✏️',
+      dataField: 'comment',
+      editable: true,
+      headerStyle: () => {
+        return { width: '150px' };
+      },
+      formatter: (cell, row, rowIndex) => {
+        return row.comment.length >= 15 ? <Typography
+          aria-owns={open ? 'mouse-over-comment-popover' : undefined}
+          aria-haspopup="true"
+          onMouseEnter={(e) => handleCommentPopoverOpen(e, row.comment)}
+          onMouseLeave={handleCommentPopoverClose}
+        >
+          {row.comment.substr(0, 15)}...
+        </Typography> :
+        row.comment
+      },
+    },
   ];
 
   const fetchData = async () => {
@@ -242,6 +254,7 @@ const DashbboardBaskets = () => {
   };
 
   const saveCell = async (oldValue, newValue, row, column) => {
+    console.log('saving stuff')
     if (!!newValue) {
       const newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
       let id = baskets.findIndex(b => b._id === newBasket._id);
@@ -302,6 +315,18 @@ const DashbboardBaskets = () => {
             <Table editable={true} data={baskets} columns={columns} rowClasses={rowClasses} onSaveCell={saveCell} />
           </div>
         </div>
+        <PeopleInfoPopover
+          anchorEl={anchorEl}
+          info={popoverInfo}
+          open={open}
+          handlePopoverClose={handlePeopleInfoPopoverClose}
+        />
+        <CommentPopover
+          anchorEl={commentAnchorEl}
+          info={comment}
+          open={commentPopoverOpen}
+          handlePopoverClose={handleCommentPopoverClose}
+        />
       </DashboardShell>
     </DashboardLayout>
   );
