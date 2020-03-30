@@ -37,7 +37,7 @@ const PersonalInfo = ({
     <div className='personal-container'>
       <Row>
         <Col xs={6} className='first-title'>
-  <h2 onClick={() => setIdentificationPath('signup')}>{t('cart.personal_info.signup')}</h2>
+          <h2 onClick={() => setIdentificationPath('signup')}>{t('cart.personal_info.signup')}</h2>
         </Col>
         <Col xs={6}>
           <h2 onClick={() => setIdentificationPath('login')}>{t('cart.personal_info.login')}</h2>

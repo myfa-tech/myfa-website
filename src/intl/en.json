@@ -135,9 +135,16 @@
   "footer": {
     "legal_notice": "Legal Notice"
   },
+  "404": {
+    "seo_title": "404: Not Found",
+    "title": "404: the page you are looking for does not exist",
+    "subtitle": "This is a banana, but it may not be what you're looking for ...",
+    "cta": "Go to Home"
+  },
   "cart": {
     "relative_info_title": "Information about my relative",
-    "self_info_title": "I sign up to order",
+    "self_info_title": "Sign up to order",
+    "message_to_relative_title": "Message for my relative",
     "price_container": {
       "total": "Total",
       "checkout": "Checkout",

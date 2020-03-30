@@ -1,0 +1,60 @@
+#page-404 {
+  h1 {
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 28px;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    width: 400px;
+  }
+
+  .go-home-button {
+    color: black;
+    border-radius: 6px;
+    font-size: 18px;
+    display: block;
+    margin: auto;
+    width: 200px;
+    border: 1px solid #311A19;
+    margin-top: 1em;
+    padding: 15px 0px;
+    background-color: #F1D866;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #page-404 {
+    margin-left: 1em;
+    margin-right: 1em;
+
+    .go-home-button {
+      padding: 15px 0px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #page-404 {
+    h1 {
+      font-size: 28px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 1em;
+    }
+
+    img {
+      width: 80%;
+    }
+  }
+}
