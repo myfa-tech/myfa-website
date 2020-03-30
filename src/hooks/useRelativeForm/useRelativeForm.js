@@ -23,15 +23,19 @@ const useRelativeForm = (submit, initialValues = INITIAL_VALUES) => {
   const [showOtherRelationInput, setShowOtherRelationInput] = useState(false);
 
   useEffect(() => {
-    if (isSubmitting) {
-      if (areErrors()) {
-        scrollToTop();
-      } else if (!!isSubmitting) {
-        submit();
-      }
+    const asyncFunc = async () => {
+      if (isSubmitting) {
+        if (areErrors()) {
+          scrollToTop();
+        } else if (!!isSubmitting) {
+          await submit();
+        }
 
-      setIsSubmitting(false);
+        setIsSubmitting(false);
+      }
     }
+
+    asyncFunc();
   }, [isSubmitting]);
 
   useEffect(() => {

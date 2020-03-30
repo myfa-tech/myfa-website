@@ -1,0 +1,13 @@
+.next-button {
+  color: #311A19;
+  background-color: #F1D866;
+  padding: 0.5em 2em;
+  width: 100%;
+  font-weight: 500;
+  border: 1px solid #311A19;
+  border-radius: 8px;
+
+  &.disabled {
+    opacity: 0.4;
+  }
+}

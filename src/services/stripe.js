@@ -16,6 +16,12 @@ const redirectToCheckout = async (id) => {
   }
 };
 
+const redirectToOrder = (successUrl) => {
+  if (typeof window !== 'undefined') {
+    window.location.assign(successUrl);
+  }
+}
+
 const createPayment = async (order, userEmail) => {
   const origin = window.location.origin;
   const randomId = uuid();
@@ -34,7 +40,11 @@ const createPayment = async (order, userEmail) => {
     success_url,
   });
 
-  redirectToCheckout(response.data.id);
+  if (response.data.id === 'test') {
+    redirectToOrder(success_url);
+  } else {
+    redirectToCheckout(response.data.id);
+  }
 };
 
 export default { createPayment };

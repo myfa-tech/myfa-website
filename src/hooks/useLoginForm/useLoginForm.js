@@ -22,15 +22,19 @@ const useLoginForm = (submit, setResponseStatus) => {
   };
 
   useEffect(() => {
-    if (isSubmitting) {
-      if (areErrors()) {
-        scrollToTop();
-      } else if (!!isSubmitting) {
-        submit();
-      }
+    const asyncFunc = async () => {
+      if (isSubmitting) {
+        if (areErrors()) {
+          scrollToTop();
+        } else if (!!isSubmitting) {
+          await submit();
+        }
 
-      setIsSubmitting(false);
+        setIsSubmitting(false);
+      }
     }
+
+    asyncFunc();
   }, [isSubmitting]);
 
   const scrollToTop = () => {

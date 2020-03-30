@@ -8,6 +8,8 @@ import { Row, Col } from 'react-bootstrap';
 import PersonalInfo from './PersonalInfo';
 import RelativeInfo from './RelativeInfo';
 import CartItems from './CartItems';
+import MessageToRelative from './MessageToRelative';
+import ButtonWithLoader from '../ButtonWithLoader';
 
 import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
 import stripeService from '../../services/stripe';
@@ -25,6 +27,8 @@ const spinnerStyle = css`
   margin: 0 auto;
 `;
 
+const NODE_ENV = process.env.NODE_ENV;
+
 const Cart = () => {
   const [cart, setCart] = useState({});
   const [basketsPrice, setBasketsPrice] = useState(0);
@@ -36,6 +40,7 @@ const Cart = () => {
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
   const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(-1);
+  const [messageToRelative, setMessageToRelative] = useState('');
   const [
     signupFormValues,
     handleChangeSignupFormValues,
@@ -58,7 +63,7 @@ const Cart = () => {
     relativeFormErrors,
     handleRelativeFormRecipientChange,
     showOtherRelationInput,
-  ] = useRelativeForm(pay);
+  ] = useRelativeForm(nextStep);
   const [t] = useTranslate();
 
   const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
@@ -82,7 +87,7 @@ const Cart = () => {
   }, [cart]);
 
   useEffect(() => {
-    if (step === 3) {
+    if (step >= 3) {
       checkEmailIsConfirmed();
     }
   }, [step]);
@@ -216,21 +221,35 @@ const Cart = () => {
     }
   };
 
-  const nextStep = () => {
+  const handleNext = (e) => {
     const user = JSON.parse(window.localStorage.getItem('user'));
+    let increment = 1;
 
     if (user && step === 1) {
-      setStep(step + 2);
-      scrollToTop();
+      increment = 2;
+      nextStep(increment);
     } else if (step === 2) {
-      setStep(step + 1);
-      scrollToTop();
+      if (identificationPath === 'signup') {
+        handleSubmitSignupForm(e);
+      } else {
+        handleSubmitLoginForm(e);
+      }
     } else if (step === 3) {
+      handleSubmitRelativeForm(e);
+    } else if (step === 4) {
       pay();
     } else {
-      setStep(step + 1);
-      scrollToTop();
+      nextStep();
     }
+  };
+
+  function nextStep(increment = 1) {
+    setStep(step + increment);
+    scrollToTop();
+  };
+
+  const handleChangeMessageToRelative = (message) => {
+    setCart({ ...cart, message });
   };
 
   const removeBaskets = (basketTypeToRemove) => {
@@ -254,7 +273,13 @@ const Cart = () => {
     cart.recipient = relativeFormValues;
     cart.price = basketsPrice;
 
-    const promises = [stripeService.createPayment(cart, user.email)];
+    const promises = [];
+
+    if (NODE_ENV === 'development') {
+      cart.isTest = true;
+    }
+
+    promises.push(stripeService.createPayment(cart, user.email));
 
     if (!some(user.recipients, relativeFormValues)) {
       promises.push(addRecipient(relativeFormValues));
@@ -319,42 +344,57 @@ const Cart = () => {
         cart && cart.baskets && Object.keys(cart.baskets).length ?
           <Row>
             <Col md='8'>
-              {step === 1 ? <CartItems cart={cart} basketsPrice={basketsPrice} editItems={editItems} removeBaskets={removeBaskets} /> : null}
+              {step === 1 ?
+                <CartItems
+                  cart={cart}
+                  basketsPrice={basketsPrice}
+                  editItems={editItems}
+                  removeBaskets={removeBaskets}
+                /> :
+                <div className='disabled-section'>
+                  <h2>{t('cart.items.title')}</h2>
+                </div>
+              }
               {step === 2 ?
-                <>
-                  <PersonalInfo
-                    signupErrors={signupFormErrors}
-                    signupForm={signupFormValues}
-                    responseStatus={responseStatus}
-                    handleChangeSignupFormValue={handleChangeSignupFormValues}
-                    loginErrors={loginFormErrors}
-                    isLoading={isLoading}
-                    loginForm={loginFormValues}
-                    handleChangeLoginFormValue={handleChangeLoginFormValues}
-                    identificationPath={identificationPath}
-                    setIdentificationPath={setIdentificationPath}
-                    responseFacebook={responseFacebook}
-                    responseGoogle={responseGoogle}
-                  />
-                  <div className='disabled-section relative-info'>
-                    <h2>{t('cart.relative_info_title')}</h2>
-                  </div>
-                </> : null
+                <PersonalInfo
+                  signupErrors={signupFormErrors}
+                  signupForm={signupFormValues}
+                  responseStatus={responseStatus}
+                  handleChangeSignupFormValue={handleChangeSignupFormValues}
+                  loginErrors={loginFormErrors}
+                  isLoading={isLoading}
+                  loginForm={loginFormValues}
+                  handleChangeLoginFormValue={handleChangeLoginFormValues}
+                  identificationPath={identificationPath}
+                  setIdentificationPath={setIdentificationPath}
+                  responseFacebook={responseFacebook}
+                  responseGoogle={responseGoogle}
+                /> :
+                <div className='disabled-section signup-to-order'>
+                  <h2>{t('cart.self_info_title')}</h2>
+                </div>
               }
               {step === 3 ?
-                <>
-                  <div className='disabled-section signup-to-order'>
-                    <h2>{t('cart.self_info_title')}</h2>
-                  </div>
-                  <RelativeInfo
-                    errors={relativeFormErrors}
-                    form={relativeFormValues}
-                    handleChangeFormValue={handleChangeRelativeForm}
-                    recipientIndex={relativeFormRecipientIndex}
-                    handleRecipientChange={handleRecipientChange}
-                    showOtherRelationInput={showOtherRelationInput}
-                  />
-                </>: null
+                <RelativeInfo
+                  errors={relativeFormErrors}
+                  form={relativeFormValues}
+                  handleChangeFormValue={handleChangeRelativeForm}
+                  recipientIndex={relativeFormRecipientIndex}
+                  handleRecipientChange={handleRecipientChange}
+                  showOtherRelationInput={showOtherRelationInput}
+                /> :
+                <div className='disabled-section relative-info'>
+                  <h2>{t('cart.relative_info_title')}</h2>
+                </div>
+              }
+              {step === 4 ?
+                <MessageToRelative
+                  message={cart.message}
+                  handleChangeMessage={handleChangeMessageToRelative}
+                /> :
+                <div className='disabled-section message-to-relative'>
+                  <h2>{t('cart.message_to_relative_title')}</h2>
+                </div>
               }
             </Col>
             <Col md='4'>
@@ -370,57 +410,28 @@ const Cart = () => {
 
                 <Divider variant='middle' />
 
-                {step === 1 ?
-                  <button className='next-button' onClick={nextStep}>{t('cart.price_container.next')}</button> :
-                  null
-                }
+                <ButtonWithLoader
+                  isLoading={isLoading}
+                  label={(step <= 3) ?
+                    t('cart.price_container.next') :
+                    t('cart.price_container.checkout')
+                  }
+                  onClick={handleNext}
+                  className='next-button'
+                />
 
-                {step === 2 ?
-                  (isLoading ?
-                    <button className='next-button'>
+                {(step === 3 || step === 4) ?
+                  isEmailConfirmed === false ?
+                    <p className='email-not-confirmed'>{t('cart.price_container.email_not_confirmed')}</p>:
+                    null :
+                    typeof isEmailConfirmed === 'undefined' ?
                       <ClipLoader
                         css={spinnerStyle}
                         sizeUnit={'px'}
                         size={25}
-                        color={'#000'}
+                        color={'#f00'}
                         loading={true}
-                      />
-                    </button> :
-                    <button className='next-button' onClick={identificationPath === 'signup' ? handleSubmitSignupForm : handleSubmitLoginForm}>{t('cart.price_container.next')}</button>
-                  ) : null
-                }
-
-                {step === 3 ?
-                  (isLoading ?
-                    <button className='next-button'>
-                      <ClipLoader
-                        css={spinnerStyle}
-                        sizeUnit={'px'}
-                        size={25}
-                        color={'#000'}
-                        loading={true}
-                      />
-                    </button> :
-                    <>
-                      <button className={`next-button ${!!isEmailConfirmed ? '' : 'disabled'}`} onClick={handleSubmitRelativeForm} disabled={!isEmailConfirmed}>
-                        {t('cart.price_container.checkout')}
-                      </button>
-                      {isEmailConfirmed === false ?
-                        <p className='email-not-confirmed'>{t('cart.price_container.email_not_confirmed')}</p>:
-                        null
-                      }
-                      {typeof isEmailConfirmed === 'undefined' ?
-                        <ClipLoader
-                          css={spinnerStyle}
-                          sizeUnit={'px'}
-                          size={25}
-                          color={'#f00'}
-                          loading={true}
-                        />
-                        : null
-                      }
-                    </>
-                  ) : null
+                      />: null
                 }
               </div>
             </Col>
