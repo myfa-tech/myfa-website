@@ -18,9 +18,7 @@ const baskets = [
     homeDescTranslate: 'home_page.baskets.fruits_basket_home_description',
     imgAlt: 'panier fruits',
     img: fruitsSrc,
-    realPrice: 5.99,
-    reduction: 16,
-    price: 4.99,
+    price: 5.99,
     description: 'Le panier Fruits rassemble jusqu\'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.',
     descriptionTranslate: 'home_page.baskets.fruits_basket_description',
     items: [
@@ -49,9 +47,7 @@ const baskets = [
     homeDescTranslate: 'home_page.baskets.vegetables_basket_home_description',
     imgAlt: 'panier légumes',
     img: veggiesSrc,
-    realPrice: 11.99,
-    reduction: 16,
-    price: 9.99,
+    price: 12.99,
     description: 'Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs/ producteurs avec qui nous sommes en contact direct ! 😉',
     descriptionTranslate: 'home_page.baskets.vegetables_basket_description',
     items: [
@@ -80,9 +76,7 @@ const baskets = [
     homeDescTranslate: 'home_page.baskets.sauces_basket_home_description',
     imgAlt: 'panier sauces',
     img: saucesSrc,
-    realPrice: 23.99,
-    reduction: 8,
-    price: 21.99,
+    price: 23.99,
     description: 'Tout bon plat se doit d\'être accompagné d\'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉',
     descriptionTranslate: 'home_page.baskets.sauces_basket_description',
     items: [

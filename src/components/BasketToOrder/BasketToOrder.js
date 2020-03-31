@@ -85,9 +85,7 @@ const BasketToOrder = () => {
             <h1>{t(basket.labelTranslate)}</h1>
 
             <h2>
-              <span className='regular-price'>{basket.realPrice} €</span>
               <span className='new-price'>{basket.price} €</span>
-              <span className='reduction'>-{basket.reduction}%</span>
             </h2>
 
             <p className='description'>{t(basket.descriptionTranslate)}</p>

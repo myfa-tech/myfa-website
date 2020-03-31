@@ -31,10 +31,9 @@ const Baskets = ({
 								<h4>{t(basket.labelTranslate)}</h4>
 								<h5>{t(basket.homeDescTranslate)}</h5>
 								<img src={basket.img} alt={basket.imgAlt} />
-								<Row>
+								<Row className='price-and-buy-container'>
 									<Col xs={6} className='price-container'>
-										<p><span className='regular-price'>{basket.realPrice}€</span><span className='reduction'>-{basket.reduction}%</span></p>
-										<p className='new-price'><b>{basket.price}€</b> {t('home_page.baskets.until_date')}</p>
+										<p className='new-price'>{basket.price}€</p>
 									</Col>
 
 									<Col xs={6} className='cart-container'>
