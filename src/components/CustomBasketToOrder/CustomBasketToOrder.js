@@ -133,9 +133,7 @@ const CustomBasketToOrder = () => {
           <h1>{t(customBasketDetails.labelTranslate)}</h1>
 
           <h2>
-            <span className='regular-price'>{customBasketDetails.realPrice}€</span>
-            <span className='new-price'>{customBasketDetails.price}€</span>
-            <span className='reduction'>-{customBasketDetails.reduction}%</span>
+            <span className='new-price'>{t('custom_basket_to_order.from')} {customBasketDetails.price}€</span>
           </h2>
 
           <p className='description'>

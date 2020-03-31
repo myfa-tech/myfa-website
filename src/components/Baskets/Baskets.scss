@@ -61,23 +61,25 @@
 			margin: 1em auto 1em auto;
 			width: 100%;
 
-			.price-container {
+			.price-and-buy-container {
 				padding-top: 1em;
 
-				&.custom-basket {
-					margin: auto;
-				}
+				.price-container {
+					padding-top: 1.5em;
+					padding-left: 2.5em;
 
-				p {
-					margin-bottom: 0;
-				}
+					&.custom-basket {
+						margin: auto;
+					}
 
-				.regular-price {
-					text-decoration: line-through;
-				}
+					p {
+						margin-bottom: 0;
+					}
 
-				.new-price {
-					color: rgb(211, 64, 64);
+					.new-price {
+						font-size: 25px;
+						font-weight: 400;
+					}
 				}
 			}
 
