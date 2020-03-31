@@ -8,8 +8,11 @@ import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
 import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
+import CommentPopover from '../../../components/CommentPopover';
+import BasketItemsPopover from '../../../components/BasketItemsPopover';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
+import usePopover from '../../../hooks/usePopover';
 
 import './baskets.scss';
 
@@ -50,8 +53,33 @@ const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const [popoverInfo, setPopoverInfo] = useState({});
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [
+    popoverInfo,
+    setPopoverInfo,
+    anchorEl,
+    setAnchorEl,
+    open,
+    handlePeopleInfoPopoverOpen,
+    handlePeopleInfoPopoverClose,
+  ] = usePopover({}, null);
+  const [
+    popoverComment,
+    setPopoverComment,
+    popoverCommentAnchorEl,
+    setPopoverCommentAnchorEl,
+    commentPopoverOpen,
+    handleCommentPopoverOpen,
+    handleCommentPopoverClose,
+  ] = usePopover('', null);
+  const [
+    popoverItems,
+    setPopoverItems,
+    popoverItemsAnchorEl,
+    setPopoverItemsAnchorEl,
+    itemsPopoverOpen,
+    handleItemsPopoverOpen,
+    handleItemsPopoverClose,
+  ] = usePopover([], null);
 
   useEffect(() => {
     fetchData();
@@ -70,17 +98,6 @@ const DashbboardBaskets = () => {
     }
   };
 
-  const handlePeopleInfoPopoverOpen = (event, recipientInfo) => {
-    setPopoverInfo(recipientInfo);
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePeopleInfoPopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-
   const columns = [
     {
       text: 'Référence',
@@ -98,7 +115,24 @@ const DashbboardBaskets = () => {
       sort: true,
       headerStyle: () => {
         return { width: '80px' };
-      }
+      },
+      formatter: (cell, row, rowIndex) => {
+        const basket = baskets.find(b => b._id === row._id);
+        let items = basket.items;
+
+        if (basket.name === 'MYFA' && basket.items) {
+          items = Object.values(basket.items).reduce((acc, cur) => [...acc, ...(cur.map(item => item.label))], []);
+        }
+
+        return <Typography
+          aria-owns={open ? 'mouse-over-items-popover' : undefined}
+          aria-haspopup='true'
+          onMouseEnter={(e) => handleItemsPopoverOpen(e, items)}
+          onMouseLeave={handleItemsPopoverClose}
+        >
+          {row.name}
+        </Typography>
+      },
     },
     {
       text: '@ utilisateur',
@@ -116,7 +150,7 @@ const DashbboardBaskets = () => {
       formatter: (cell, row, rowIndex) => {
         return <Typography
           aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
-          aria-haspopup="true"
+          aria-haspopup='gridtrue'grid
           onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.recipient)}
           onMouseLeave={handlePeopleInfoPopoverClose}
         >
@@ -227,7 +261,7 @@ const DashbboardBaskets = () => {
       formatter: (cell, row, rowIndex) => {
         return row.comment.length >= 15 ? <Typography
           aria-owns={open ? 'mouse-over-comment-popover' : undefined}
-          aria-haspopup="true"
+          aria-haspopup='gridtrue'grid
           onMouseEnter={(e) => handleCommentPopoverOpen(e, row.comment)}
           onMouseLeave={handleCommentPopoverClose}
         >
@@ -254,7 +288,6 @@ const DashbboardBaskets = () => {
   };
 
   const saveCell = async (oldValue, newValue, row, column) => {
-    console.log('saving stuff')
     if (!!newValue) {
       const newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
       let id = baskets.findIndex(b => b._id === newBasket._id);
@@ -322,10 +355,16 @@ const DashbboardBaskets = () => {
           handlePopoverClose={handlePeopleInfoPopoverClose}
         />
         <CommentPopover
-          anchorEl={commentAnchorEl}
-          info={comment}
+          anchorEl={popoverCommentAnchorEl}
+          comment={popoverComment}
           open={commentPopoverOpen}
           handlePopoverClose={handleCommentPopoverClose}
+        />
+        <BasketItemsPopover
+          anchorEl={popoverItemsAnchorEl}
+          items={popoverItems}
+          open={itemsPopoverOpen}
+          handlePopoverClose={handleItemsPopoverClose}
         />
       </DashboardShell>
     </DashboardLayout>

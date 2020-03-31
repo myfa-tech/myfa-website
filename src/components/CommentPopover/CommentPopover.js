@@ -9,36 +9,16 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(1),
+    maxWidth: 500,
   },
 }));
 
-const getRelation = (code) => {
-  const relations = {
-    AM: 'Ami(e)',
-    CO: 'Conjoint(e)',
-    EN: 'Enfant',
-    FR: 'Frère',
-    GM: 'Grand-Mère',
-    GP: 'Grand-Père',
-    ME: 'Mère',
-    NE: 'Neveu',
-    NI: 'Nièce',
-    ON: 'Oncle',
-    PE: 'Père',
-    SO: 'Soeur',
-    TA: 'Tante',
-    AU: 'Autre',
-  };
-
-  return relations[code] || code;
-};
-
-const PeopleInfoPopover = ({ anchorEl, open, handlePopoverClose, info }) => {
+const CommentPopover = ({ anchorEl, open, handlePopoverClose, comment }) => {
   const classes = useStyles();
 
   return (
     <Popover
-      id='mouse-over-realtive-popover'
+      id='mouse-over-comment-popover'
       className={classes.popover}
       classes={{
         paper: classes.paper,
@@ -56,13 +36,11 @@ const PeopleInfoPopover = ({ anchorEl, open, handlePopoverClose, info }) => {
       onClose={handlePopoverClose}
       disableRestoreFocus
     >
-      <h1>Infos</h1>
-      <p>{info.firstname} {info.lastname} ({getRelation(info.relation)})</p>
-      {info.email ? <p>@ : {info.email}</p> : null}
-      <p>Tel : {info.country} {info.phone}</p>
-      <p>{info.address}</p>
+      <h1>Commentaire</h1>
+
+      <p>{comment}</p>
     </Popover>
   );
 };
 
-export default PeopleInfoPopover;
+export default CommentPopover;

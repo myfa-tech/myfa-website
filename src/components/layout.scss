@@ -4,6 +4,15 @@
   line-height: 25px;
   color: #3b4045;
   font-family: "Josefin Sans", sans-serif;
+
+  * {
+    font-family: "Josefin Sans", sans-serif !important;
+
+    &.MuiTypography-root {
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
 }
 
 .section {
