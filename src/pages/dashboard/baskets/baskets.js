@@ -15,6 +15,39 @@ import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 import usePopover from '../../../hooks/usePopover';
 
 import './baskets.scss';
+import TableSelectEditor from '../../../components/TableSelectEditor/TableSelectEditor';
+
+const STATUS_EDITOR_OPTIONS = [{
+  value: 'pending',
+  label: 'paiement 🏃🏽‍♀️',
+}, {
+  value: 'paid',
+  label: 'payé 💰',
+}, {
+  value: 'preparing',
+  label: 'préparation 🧺',
+}, {
+  value: 'delivered',
+  label: 'livré ✅',
+}, {
+  value: 'canceled',
+  label: 'annulé ❌',
+}];
+
+const ZONE_EDITOR_OPTIONS = [
+  { value: '2PL', label:  '2 Plateaux' },
+  { value: 'AB',  label: 'Abobo' },
+  { value: 'AD',  label: 'Adjamé' },
+  { value: 'AT',  label: 'Attécoubé' },
+  { value: 'CO',  label: 'Cocody' },
+  { value: 'KO',  label: 'Koumassi' },
+  { value: 'MA',  label: 'Marcory' },
+  { value: 'PL',  label: 'Plateau' },
+  { value: 'PB',  label: 'Port-Bouet' },
+  { value: 'RI',  label: 'Riviera' },
+  { value: 'TR',  label: 'Treichville' },
+  { value: 'YO',  label: 'Yopougon' },
+];
 
 const getDeliveryZone = (code) => {
   const zones = {
@@ -169,25 +202,11 @@ const DashbboardBaskets = () => {
       formatter: (cell, row, rowIndex) => {
         return getDeliveryZone(row.recipient.zone);
       },
-      editor: {
-        type: Type.SELECT,
-        options: [
-          { value: '2PL', label:  '2 Plateaux' },
-          { value: 'AB',  label: 'Abobo' },
-          { value: 'AD',  label: 'Adjamé' },
-          { value: 'AT',  label: 'Attécoubé' },
-          { value: 'CO',  label: 'Cocody' },
-          { value: 'KO',  label: 'Koumassi' },
-          { value: 'MA',  label: 'Marcory' },
-          { value: 'PL',  label: 'Plateau' },
-          { value: 'PB',  label: 'Port-Bouet' },
-          { value: 'RI',  label: 'Riviera' },
-          { value: 'TR',  label: 'Treichville' },
-          { value: 'YO',  label: 'Yopougon' },
-        ],
-      },
+      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+        <TableSelectEditor { ...editorProps } options={ZONE_EDITOR_OPTIONS} value={value} />
+      ),
       headerStyle: () => {
-        return { width: '110px' };
+        return { width: '90px' };
       }
     },
     {
@@ -206,27 +225,11 @@ const DashbboardBaskets = () => {
           return 'annulé ❌';
         }
       },
-      editor: {
-        type: Type.SELECT,
-        options: [{
-          value: 'pending',
-          label: 'paiement 🏃🏽‍♀️',
-        }, {
-          value: 'paid',
-          label: 'payé 💰',
-        }, {
-          value: 'preparing',
-          label: 'préparation 🧺',
-        }, {
-          value: 'delivered',
-          label: 'livré ✅',
-        }, {
-          value: 'canceled',
-          label: 'annulé ❌',
-        }],
-      },
+      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+        <TableSelectEditor { ...editorProps } options={STATUS_EDITOR_OPTIONS} value={value} />
+      ),
       headerStyle: () => {
-        return { width: '100px' };
+        return { width: '120px' };
       },
       sort: true,
     },
@@ -289,12 +292,18 @@ const DashbboardBaskets = () => {
 
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
-      const newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
-      let id = baskets.findIndex(b => b._id === newBasket._id);
+      let newBasket = {};
 
-      baskets[id] = { ...newBasket };
+      if (column.dataField.includes('.')) {
+        const parts = column.dataField.split('.');
+        newBasket = await updateBasketById(row._id, { [parts[0]]: { ...row[parts[0]], [parts[1]]: newValue } });
+      } else {
+        newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
+      }
 
-      setBaskets([...baskets]);
+      const newBaskets = baskets.map(b => (b._id === row._id) ? newBasket : b);
+
+      setBaskets(newBaskets);
     }
   };
 
