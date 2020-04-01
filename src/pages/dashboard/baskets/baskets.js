@@ -2,35 +2,52 @@ import React, { useEffect, useState } from 'react';
 import { Type } from 'react-bootstrap-table2-editor';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
+import Typography from '@material-ui/core/Typography';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
+import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
+import CommentPopover from '../../../components/CommentPopover';
+import BasketItemsPopover from '../../../components/BasketItemsPopover';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
+import usePopover from '../../../hooks/usePopover';
 
 import './baskets.scss';
+import TableSelectEditor from '../../../components/TableSelectEditor/TableSelectEditor';
 
-const getRelation = (code) => {
-  const relations = {
-    AM: 'Ami(e)',
-    CO: 'Conjoint(e)',
-    EN: 'Enfant',
-    FR: 'Frère',
-    GM: 'Grand-Mère',
-    GP: 'Grand-Père',
-    ME: 'Mère',
-    NE: 'Neveu',
-    NI: 'Nièce',
-    ON: 'Oncle',
-    PE: 'Père',
-    SO: 'Soeur',
-    TA: 'Tante',
-    AU: 'Autre',
-  }
+const STATUS_EDITOR_OPTIONS = [{
+  value: 'pending',
+  label: 'paiement 🏃🏽‍♀️',
+}, {
+  value: 'paid',
+  label: 'payé 💰',
+}, {
+  value: 'preparing',
+  label: 'préparation 🧺',
+}, {
+  value: 'delivered',
+  label: 'livré ✅',
+}, {
+  value: 'canceled',
+  label: 'annulé ❌',
+}];
 
-  return relations[code] || code;
-};
+const ZONE_EDITOR_OPTIONS = [
+  { value: '2PL', label:  '2 Plateaux' },
+  { value: 'AB',  label: 'Abobo' },
+  { value: 'AD',  label: 'Adjamé' },
+  { value: 'AT',  label: 'Attécoubé' },
+  { value: 'CO',  label: 'Cocody' },
+  { value: 'KO',  label: 'Koumassi' },
+  { value: 'MA',  label: 'Marcory' },
+  { value: 'PL',  label: 'Plateau' },
+  { value: 'PB',  label: 'Port-Bouet' },
+  { value: 'RI',  label: 'Riviera' },
+  { value: 'TR',  label: 'Treichville' },
+  { value: 'YO',  label: 'Yopougon' },
+];
 
 const getDeliveryZone = (code) => {
   const zones = {
@@ -57,7 +74,7 @@ const spinnerStyle = css`
 `;
 
 const isPendingBasketOverOneHour = (row) => {
-  // getTime give time in milliseconds - we want diff in hours
+  // getTime gives time in milliseconds - we want diff in hours
   let hoursDiff = (new Date().getTime() - new Date(row.createdAt).getTime())/(1000*3600);
 
   return !!(row.status === 'pending' && hoursDiff > 1);
@@ -69,6 +86,33 @@ const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [
+    popoverInfo,
+    setPopoverInfo,
+    anchorEl,
+    setAnchorEl,
+    open,
+    handlePeopleInfoPopoverOpen,
+    handlePeopleInfoPopoverClose,
+  ] = usePopover({}, null);
+  const [
+    popoverComment,
+    setPopoverComment,
+    popoverCommentAnchorEl,
+    setPopoverCommentAnchorEl,
+    commentPopoverOpen,
+    handleCommentPopoverOpen,
+    handleCommentPopoverClose,
+  ] = usePopover('', null);
+  const [
+    popoverItems,
+    setPopoverItems,
+    popoverItemsAnchorEl,
+    setPopoverItemsAnchorEl,
+    itemsPopoverOpen,
+    handleItemsPopoverOpen,
+    handleItemsPopoverClose,
+  ] = usePopover([], null);
 
   useEffect(() => {
     fetchData();
@@ -91,6 +135,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Référence',
       dataField: 'orderRef',
+      sort: true,
       editable: false,
       headerStyle: () => {
         return { width: '90px' };
@@ -100,14 +145,33 @@ const DashbboardBaskets = () => {
       text: 'Type',
       dataField: 'name',
       editable: false,
+      sort: true,
       headerStyle: () => {
         return { width: '80px' };
-      }
+      },
+      formatter: (cell, row, rowIndex) => {
+        const basket = baskets.find(b => b._id === row._id);
+        let items = basket.items;
+
+        if (basket.name === 'MYFA' && basket.items) {
+          items = Object.values(basket.items).reduce((acc, cur) => [...acc, ...(cur.map(item => item.label))], []);
+        }
+
+        return <Typography
+          aria-owns={open ? 'mouse-over-items-popover' : undefined}
+          aria-haspopup='true'
+          onMouseEnter={(e) => handleItemsPopoverOpen(e, items)}
+          onMouseLeave={handleItemsPopoverClose}
+        >
+          {row.name}
+        </Typography>
+      },
     },
     {
       text: '@ utilisateur',
       dataField: 'userEmail',
       editable: false,
+      sort: true,
       headerStyle: () => {
         return { width: '200px' };
       }
@@ -115,8 +179,16 @@ const DashbboardBaskets = () => {
     {
       text: 'Destinataire',
       dataField: 'recipient.label',
+      sort: true,
       formatter: (cell, row, rowIndex) => {
-        return `${row.recipient.firstname} ${row.recipient.lastname} (${getRelation(row.recipient.relation)})`;
+        return <Typography
+          aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
+          aria-haspopup='gridtrue'grid
+          onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.recipient)}
+          onMouseLeave={handlePeopleInfoPopoverClose}
+        >
+          {row.recipient.firstname} {row.recipient.lastname}
+        </Typography>
       },
       editable: false,
       headerStyle: () => {
@@ -124,37 +196,17 @@ const DashbboardBaskets = () => {
       }
     },
     {
-      text: 'Tél. Destin. ✏️',
-      dataField: 'recipient.phone',
-      headerStyle: () => {
-        return { width: '120px' };
-      }
-    },
-    {
       text: 'Zone ✏️',
       dataField: 'recipient.zone',
+      sort: true,
       formatter: (cell, row, rowIndex) => {
         return getDeliveryZone(row.recipient.zone);
       },
-      editor: {
-        type: Type.SELECT,
-        options: [
-          { value: '2PL', label:  '2 Plateaux' },
-          { value: 'AB',  label: 'Abobo' },
-          { value: 'AD',  label: 'Adjamé' },
-          { value: 'AT',  label: 'Attécoubé' },
-          { value: 'CO',  label: 'Cocody' },
-          { value: 'KO',  label: 'Koumassi' },
-          { value: 'MA',  label: 'Marcory' },
-          { value: 'PL',  label: 'Plateau' },
-          { value: 'PB',  label: 'Port-Bouet' },
-          { value: 'RI',  label: 'Riviera' },
-          { value: 'TR',  label: 'Treichville' },
-          { value: 'YO',  label: 'Yopougon' },
-        ],
-      },
+      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+        <TableSelectEditor { ...editorProps } options={ZONE_EDITOR_OPTIONS} value={value} />
+      ),
       headerStyle: () => {
-        return { width: '110px' };
+        return { width: '90px' };
       }
     },
     {
@@ -173,28 +225,13 @@ const DashbboardBaskets = () => {
           return 'annulé ❌';
         }
       },
-      editor: {
-        type: Type.SELECT,
-        options: [{
-          value: 'pending',
-          label: 'paiement 🏃🏽‍♀️',
-        }, {
-          value: 'paid',
-          label: 'payé 💰',
-        }, {
-          value: 'preparing',
-          label: 'préparation 🧺',
-        }, {
-          value: 'delivered',
-          label: 'livré ✅',
-        }, {
-          value: 'canceled',
-          label: 'annulé ❌',
-        }],
-      },
+      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+        <TableSelectEditor { ...editorProps } options={STATUS_EDITOR_OPTIONS} value={value} />
+      ),
       headerStyle: () => {
-        return { width: '100px' };
-      }
+        return { width: '120px' };
+      },
+      sort: true,
     },
     {
       text: 'Création',
@@ -203,16 +240,38 @@ const DashbboardBaskets = () => {
         return new Date(row.createdAt).toLocaleDateString('fr-FR')
       },
       dataField: 'createdAt',
-      sort: true
+      sort: true,
     },
     {
-      text: 'Livraison',
-      editable: false,
+      text: 'Livraison ✏️',
+      editable: true,
       formatter: (cell, row, rowIndex) => {
         return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
       },
+      editor: {
+        type: Type.DATE,
+      },
       dataField: 'deliveredAt',
-      sort: true
+      sort: true,
+    },
+    {
+      text: 'Commentaire ✏️',
+      dataField: 'comment',
+      editable: true,
+      headerStyle: () => {
+        return { width: '150px' };
+      },
+      formatter: (cell, row, rowIndex) => {
+        return row.comment.length >= 15 ? <Typography
+          aria-owns={open ? 'mouse-over-comment-popover' : undefined}
+          aria-haspopup='gridtrue'grid
+          onMouseEnter={(e) => handleCommentPopoverOpen(e, row.comment)}
+          onMouseLeave={handleCommentPopoverClose}
+        >
+          {row.comment.substr(0, 15)}...
+        </Typography> :
+        row.comment
+      },
     },
   ];
 
@@ -233,7 +292,18 @@ const DashbboardBaskets = () => {
 
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
-      await updateBasketById(row._id, { [column.dataField]: newValue });
+      let newBasket = {};
+
+      if (column.dataField.includes('.')) {
+        const parts = column.dataField.split('.');
+        newBasket = await updateBasketById(row._id, { [parts[0]]: { ...row[parts[0]], [parts[1]]: newValue } });
+      } else {
+        newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
+      }
+
+      const newBaskets = baskets.map(b => (b._id === row._id) ? newBasket : b);
+
+      setBaskets(newBaskets);
     }
   };
 
@@ -287,6 +357,24 @@ const DashbboardBaskets = () => {
             <Table editable={true} data={baskets} columns={columns} rowClasses={rowClasses} onSaveCell={saveCell} />
           </div>
         </div>
+        <PeopleInfoPopover
+          anchorEl={anchorEl}
+          info={popoverInfo}
+          open={open}
+          handlePopoverClose={handlePeopleInfoPopoverClose}
+        />
+        <CommentPopover
+          anchorEl={popoverCommentAnchorEl}
+          comment={popoverComment}
+          open={commentPopoverOpen}
+          handlePopoverClose={handleCommentPopoverClose}
+        />
+        <BasketItemsPopover
+          anchorEl={popoverItemsAnchorEl}
+          items={popoverItems}
+          open={itemsPopoverOpen}
+          handlePopoverClose={handleItemsPopoverClose}
+        />
       </DashboardShell>
     </DashboardLayout>
   );

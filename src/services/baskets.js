@@ -27,7 +27,9 @@ const updateBasketById = async (id, editFields) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.put('/dashboard/baskets', { id, editFields });
+  const response = await axios.put('/dashboard/baskets', { id, editFields });
+
+  return response.data;
 }
 
 export { fetchBaskets, updateBasketById };

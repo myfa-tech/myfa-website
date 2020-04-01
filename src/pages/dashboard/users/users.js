@@ -24,14 +24,17 @@ const DashbboardUsers = () => {
     {
       text: 'Prénom',
       dataField: 'firstname',
+      sort: true,
     },
     {
       text: 'Nom',
       dataField: 'lastname',
+      sort: true,
     },
     {
       text: 'Email',
       dataField: 'email',
+      sort: true,
       headerStyle: () => {
         return { width: '300px' };
       },
@@ -39,6 +42,7 @@ const DashbboardUsers = () => {
     {
       text: 'Phone',
       dataField: 'phone',
+      sort: true,
       headerStyle: () => {
         return { width: '180px' };
       },
@@ -46,6 +50,7 @@ const DashbboardUsers = () => {
     {
       text: 'Paniers payés',
       dataField: 'qtyPaidBaskets',
+      sort: true,
       headerStyle: () => {
         return { width: '120px' };
       },
@@ -53,6 +58,7 @@ const DashbboardUsers = () => {
     {
       text: 'Date de création',
       dataField: 'createdAt',
+      sort: true,
       headerStyle: () => {
         return { width: '180px' };
       },
