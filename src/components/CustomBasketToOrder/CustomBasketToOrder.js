@@ -14,8 +14,8 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 
 import EventEmitter from '../../services/EventEmitter';
-import { customBasketDetails } from '../../assets/customBasket';
 import useTranslate from '../../hooks/useTranslate';
+import useFetchCustomBasket from '../../hooks/useFetchCustomBasket';
 
 import './CustomBasketToOrder.scss';
 
@@ -24,11 +24,12 @@ const SUPP_PRICE = 1.5;
 const CustomBasketToOrder = () => {
   const [step, setStep] = useState(1);
   const [basket, setBasket] = useState({ supps: [] });
-  const [basketPrice, setBasketPrice] = useState(customBasketDetails.price);
+  const [basketPrice, setBasketPrice] = useState(0);
   const [showCartModal, setShowCartModal] = useState(false);
   const [supps, setSupps] = useState([]);
   const [slidingInfosTop, setSlidingInfosTop] = useState(null);
   const [canPay, setCanPay] = useState(false);
+  const [customBasketDetails, setCustomBasketDetails] = useFetchCustomBasket({});
   const [t] = useTranslate();
 
   let isSliding = true;
@@ -36,7 +37,7 @@ const CustomBasketToOrder = () => {
   useEffect(() => {
     let suppsPrice = supps.length * SUPP_PRICE;
     setBasketPrice(customBasketDetails.price + suppsPrice);
-  }, [supps]);
+  }, [supps, customBasketDetails]);
 
   useEffect(() => {
     if (basket.fruits && basket.fruits.length &&
@@ -120,7 +121,7 @@ const CustomBasketToOrder = () => {
     window.location.assign('/cart');
   }
 
-  return (
+  return Object.keys(customBasketDetails).length && (
     <section id='custom-basket-to-order'>
       <Row>
         <Col md='4' lg='3'>
@@ -159,10 +160,42 @@ const CustomBasketToOrder = () => {
             </ThemeProvider>
           </div>
 
-          {step === 1 ? <Step1 basketParts={basket} nextStep={nextStep} supps={supps} setSupps={setSupps} />: null}
-          {step === 2 ? <Step2 basketParts={basket} nextStep={nextStep} previousStep={previousStep} supps={supps} setSupps={setSupps} />: null}
-          {step === 3 ? <Step3 basketParts={basket} nextStep={nextStep} previousStep={previousStep} supps={supps} setSupps={setSupps} />: null}
-          {step === 4 ? <Step4 basketParts={basket} previousStep={previousStep} addToCart={addToCart} supps={supps} setSupps={setSupps} canPay={canPay} />: null}
+          {step === 1 ? <Step1
+            availableBases={customBasketDetails.availableBases}
+            availableFruits={customBasketDetails.availableFruits}
+            basketParts={basket}
+            nextStep={nextStep}
+            supps={supps}
+            setSupps={setSupps}
+          /> : null}
+
+          {step === 2 ? <Step2
+            availableVeggies={customBasketDetails.availableVeggies}
+            basketParts={basket}
+            nextStep={nextStep}
+            previousStep={previousStep}
+            supps={supps}
+            setSupps={setSupps}
+          /> : null}
+
+          {step === 3 ? <Step3
+            availableSauces={customBasketDetails.availableSauces}
+            basketParts={basket}
+            nextStep={nextStep}
+            previousStep={previousStep}
+            supps={supps}
+            setSupps={setSupps}
+          /> : null}
+
+          {step === 4 ? <Step4
+            availableSupps={customBasketDetails.availableSupps}
+            basketParts={basket}
+            previousStep={previousStep}
+            addToCart={addToCart}
+            supps={supps}
+            setSupps={setSupps}
+            canPay={canPay}
+          />: null}
         </Col>
         <Col xs={0} lg={2} id='sliding-infos-container' className='.d-none .d-lg-block'>
           <div id='sliding-infos' style={slidingInfosTop ? { position: 'absolute', bottom: 0 } : { position: 'fixed', top: 100 }}>

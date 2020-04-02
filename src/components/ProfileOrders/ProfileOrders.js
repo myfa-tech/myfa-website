@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
+
 import { getBasketsByEmail } from '../../services/orders';
 import useTranslate from '../../hooks/useTranslate';
+import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 
 import defaultBasketSrc from '../../images/default-basket.png';
 
 import './ProfileOrders.scss';
-
-import baskets from '../../assets/baskets';
-import { customBasketDetails } from '../../assets/customBasket';
-
-import { Row, Col } from 'react-bootstrap';
-
-const basketsDetails = [ ...baskets, customBasketDetails ];
 
 const basketStatus = {
   'pending': 'Commandé',
@@ -44,6 +40,7 @@ const useStyles = makeStyles({
 const ProfileOrders = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
+  const [basketsDetails, setBasketsDetails] = useFetchBasketsInfo([]);
   const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : null;
   const [t] = useTranslate();
 

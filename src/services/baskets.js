@@ -19,6 +19,26 @@ const fetchBaskets = async (timeFilter) => {
   return result.data.baskets;
 };
 
+const fetchCustomBasket = async () => {
+  let axios = Axios.create({
+    baseURL: process.env.GATSBY_BACKEND_URL,
+  });
+
+  const result = await axios.get(`/baskets/custom-basket/details`);
+
+  return result.data.basket;
+};
+
+const fetchHomeBaskets = async () => {
+  let axios = Axios.create({
+    baseURL: process.env.GATSBY_BACKEND_URL,
+  });
+
+  const result = await axios.get(`/baskets/details`);
+
+  return result.data.baskets;
+};
+
 const updateBasketById = async (id, editFields) => {
   let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
 
@@ -32,4 +52,4 @@ const updateBasketById = async (id, editFields) => {
   return response.data;
 }
 
-export { fetchBaskets, updateBasketById };
+export { fetchBaskets, fetchCustomBasket, fetchHomeBaskets, updateBasketById };

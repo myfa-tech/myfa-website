@@ -4,14 +4,11 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
 import useTranslate from '../../../hooks/useTranslate';
-import {
-  availableSupps,
-} from '../../../assets/customBasket';
 import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_MAX = 5;
 
-const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay }) => {
+const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, availableSupps }) => {
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
   const [isDone, setIsDone] = useState(false);

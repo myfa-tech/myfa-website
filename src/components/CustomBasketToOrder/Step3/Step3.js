@@ -3,12 +3,11 @@ import { intersectionBy } from 'lodash';
 
 import useTranslate from '../../../hooks/useTranslate';
 
-import { availableSauces } from '../../../assets/customBasket';
 import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_SAUCES = 3;
 
-const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps }) => {
+const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, availableSauces }) => {
   const [sauces, setSauces] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
   const [t] = useTranslate();

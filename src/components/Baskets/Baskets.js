@@ -1,21 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
-import useTranslate from '../../hooks/useTranslate';
 
 import CartModal from '../CartModal';
 
+import useTranslate from '../../hooks/useTranslate';
+import EventEmitter from '../../services/EventEmitter';
+import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+
 import './Baskets.scss';
 
-const Baskets = ({
-	addBasketToCart,
-	handleBasketButtonClick,
-	basketForCart,
-	baskets,
-	showCartModal,
-	toggleCartModal,
-}) => {
-	const [t] = useTranslate();
+const Baskets = () => {
+	const [basketForCart, setBasketForCart] = useState(null);
+	const [showCartModal, setShowCartModal] = useState(false);
+	const [baskets, setBaskets] = useFetchBasketsInfo([]);
+	const [t, locale] = useTranslate();
+
+	const eventEmitter = new EventEmitter();
+
+	const toggleCartModal = () => {
+		if (!!showCartModal) {
+			setBasketForCart(null);
+		}
+
+		setShowCartModal(!showCartModal);
+	};
+
+	const handleBasketButtonClick = (basketType) => {
+		if (typeof window !== 'undefined') {
+			if (basketType === 'myfa') {
+				window.location.assign(`/${locale}/custom-basket`);
+			} else {
+				window.location.assign(`/${locale}/baskets?type=${basketType}`);
+			}
+		}
+	};
+
+	const addBasketToCart = (e, basket) => {
+		e.stopPropagation();
+
+		if (typeof window !== 'undefined') {
+			let cart = JSON.parse(window.localStorage.getItem('cart'));
+
+      if (!cart) {
+        cart = [];
+      }
+
+      cart.push(basket);
+
+      window.localStorage.setItem('cart', JSON.stringify(cart));
+			eventEmitter.emit('editCart');
+
+			setBasketForCart(basket);
+			toggleCartModal();
+    }
+	};
 
 	return (
 		<section id='baskets' className='section-2'>
@@ -25,8 +64,8 @@ const Baskets = ({
 			</div>
 			<Container>
 				<Row className='baskets-container'>
-					{baskets.map((basket, index) => (
-						<Col md={6} key={basket.name} onClick={() => handleBasketButtonClick(index)}>
+					{baskets.map((basket) => (
+						<Col md={6} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
 							<div className='basket-container'>
 								<h4>{t(basket.labelTranslate)}</h4>
 								<h5>{t(basket.homeDescTranslate)}</h5>
