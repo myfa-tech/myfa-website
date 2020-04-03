@@ -141,6 +141,8 @@ const LoginForm = ({ onLogin }) => {
 
         {responseStatus === 404 ? <p className='wrong-user-password'>{t('login_form.unknown_user')}</p> : null}
 
+        <a className='forgot-password' href={`/${locale}/reset_password/email`}>{t('login_form.forgot_password')}</a>
+
         {isLoading ?
           <span className='login-button'>
             <ClipLoader

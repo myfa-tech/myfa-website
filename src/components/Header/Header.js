@@ -111,6 +111,8 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
   const [t, locale] = useTranslate();
+  const [frHref, setFrHref] = useState('/fr');
+  const [enHref, setEnHref] = useState('/en');
 
   const eventEmitter = new EventEmitter();
 
@@ -124,6 +126,7 @@ const Header = () => {
 
   useEffect(() => {
     updateCart();
+    setLocaleLinks()
     eventEmitter.listen('editCart', updateCart);
     eventEmitter.listen('login', setupLogin);
   }, []);
@@ -145,6 +148,13 @@ const Header = () => {
       setIsLoggedIn(true);
     }
   }, [user]);
+
+  const setLocaleLinks = () => {
+    const href = window.location.pathname;
+
+    setFrHref(`/fr/${href.substr(4)}`);
+    setEnHref(`/en/${href.substr(4)}`);
+  };
 
   const updateNavbarStickines = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
@@ -294,8 +304,8 @@ const Header = () => {
             <Nav.Link href={`/${locale}/cart`} className='basket-link'>
               {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t)}
             </Nav.Link>
-            <Nav.Link href='/en'>EN</Nav.Link>
-            <Nav.Link href='/fr'>FR</Nav.Link>
+            <Nav.Link href={enHref}>EN</Nav.Link>
+            <Nav.Link href={frHref}>FR</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

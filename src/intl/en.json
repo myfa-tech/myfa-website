@@ -2,6 +2,20 @@
   "site_seo": {
     "description": "MYFA allows you to compose a basket of food goods for your relatives in Ivory Coast!"
   },
+  "reset_password": {
+    "title": "Forgot your password",
+    "validate": "Validate",
+    "password": "Password",
+    "password_reset": "Your password was changed",
+    "email_subtitle": "Please enter the email you connected with",
+    "password_subtitle": "Renew your password",
+    "description": "You will receive an email with a magic link that will allow you to reset your password",
+    "email_sent": "A reset email has been sent to you",
+    "user_unknown": "Unknown email address",
+    "error500": "Something went wrong on our side, we are sorry.",
+    "something_wrong": "Something went wrong",
+    "send": "Send"
+  },
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
@@ -231,6 +245,7 @@
     "password": "Password",
     "unknown_user": "Unknown user",
     "login": "Log in",
+    "forgot_password": "Forgot your password?",
     "continue_with_fb": "Continue with Facebook",
     "continue_with_google": "Continue with Google",
     "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",
