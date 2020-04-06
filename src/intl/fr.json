@@ -164,6 +164,7 @@
       "grand_total": "Total TTC",
       "baskets": "paniers",
       "next": "Suivant",
+      "covid19_warning": "Les délais de livraison peuvent augmenter à cause de la crise de Covid-19. Merci pour votre compréhension.",
       "checkout": "Commander",
       "email_not_confirmed": "Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email."
     },
