@@ -11,7 +11,7 @@ const spinnerStyle = css`
 
 const ButtonWithLoader = ({ isLoading, label, onClick, className }) => {
   return isLoading ?
-    <button className={className}>
+    <button className={`${className} button-with-loader`}>
       <ClipLoader
         css={spinnerStyle}
         sizeUnit={'px'}
@@ -20,7 +20,7 @@ const ButtonWithLoader = ({ isLoading, label, onClick, className }) => {
         loading={true}
       />
     </button> :
-    <button className={className} onClick={onClick}>{label}</button>
+    <button className={`${className} button-with-loader`} onClick={onClick}>{label}</button>
 };
 
 export default ButtonWithLoader;

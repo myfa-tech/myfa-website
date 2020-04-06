@@ -83,6 +83,42 @@ const updatePassword = async ({ actualPassword, newPassword }) => {
   await axios.put(`/users/password`, { email: user.email, password: newPassword });
 };
 
+const resetPasswordSendMagicLink = async (email) => {
+  try {
+    let axios = Axios.create({
+      baseURL: BACKEND_URL,
+    });
+
+    const host = window.location.host;
+
+    const response = await axios.post(`/users/password/magic_link`, { host, email });
+
+    return response.data;
+  } catch(e) {
+    if (e.response.status === 404) {
+      return { error: 404 }
+    }
+
+    return { error: 500, text: 'something went wrong' };
+  }
+};
+
+const resetPassword = async (newPassword) => {
+  try {
+    const url = window.location.search;
+
+    let axios = Axios.create({
+      baseURL: BACKEND_URL,
+    });
+
+    const response = await axios.post(`/users/password/reset`, { newPassword, url });
+
+    return response.data;
+  } catch(e) {
+    return { error: e.response.status }
+  }
+};
+
 const loginUser = async (user) => {
   const response = await Axios.post(`${BACKEND_URL}/users/login`, user);
   const { user: loggedInUser, token } = response.data;
@@ -135,4 +171,18 @@ const confirmEmail = async (email, hash) => {
   }
 };
 
-export { addRecipient, confirmEmail, deleteAccount, fetchUser, fetchUsers, loginFBUser, loginGoogleUser, loginUser, saveUser, updatePassword, updateUser };
+export {
+  addRecipient,
+  confirmEmail,
+  deleteAccount,
+  fetchUser,
+  fetchUsers,
+  loginFBUser,
+  loginGoogleUser,
+  loginUser,
+  saveUser,
+  updatePassword,
+  updateUser,
+  resetPassword,
+  resetPasswordSendMagicLink,
+};

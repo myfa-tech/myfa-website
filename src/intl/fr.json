@@ -2,15 +2,29 @@
   "site_seo": {
     "description": "MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !"
   },
+  "reset_password": {
+    "title": "Mot de passe oublié",
+    "validate": "Valider",
+    "password": "Mot de passe",
+    "password_reset": "Votre mot de passe a été réinitialisé",
+    "email_subtitle": "Veuillez entrer l'email avec lequel vous vous êtes connecté(e)",
+    "password_subtitle": "Renouvelez votre mot de passe",
+    "description": "Vous recevrez un email avec un lien magique qui vous permettra de réinitialiser votre mot de passe",
+    "email_sent": "Un email de réinitialisation vous a été envoyé",
+    "user_unknown": "Adresse email inconnue",
+    "error500": "Quelque chose s'est mal passé de notre coté, nous en sommes navrés.",
+    "something_wrong": "Quelque chose s'est mal passé",
+    "send": "Envoyer"
+  },
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
-      "title": "Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h*",
+      "title": "Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h",
       "subtitle": "*COVID-19 : la livraison des paniers est en suspend pour le moment, mais les commandes sont toujours possibles",
       "discover_baskets_button": "Découvrir les paniers",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
-        "paragraph1": "En raison de la situation actuelle, les livraisons des paniers MYFA sont en suspend.",
+        "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",
         "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
@@ -231,6 +245,7 @@
     "password": "Mot de passe",
     "unknown_user": "Utilisateur inconnu",
     "login": "Se connecter",
+    "forgot_password": "Mot de passe oublié ?",
     "continue_with_fb": "Continuer avec Facebook",
     "continue_with_google": "Continuer avec Google",
     "password_helper_text": "8 caractères, 1 minuscule, 1 majuscule, 1 chiffre",

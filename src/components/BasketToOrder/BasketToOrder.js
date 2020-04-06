@@ -6,12 +6,12 @@ import Button from 'react-bootstrap/Button';
 
 import CartModal from '../CartModal';
 
-import './BasketToOrder.scss';
-import baskets from '../../assets/baskets';
-import { customBasketDetails } from '../../assets/customBasket';
 import getQueryParam from '../../utils/getQueryParam';
 import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
+import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+
+import './BasketToOrder.scss';
 
 const QTY_MAX = 5;
 
@@ -19,12 +19,13 @@ const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
-  const [t] = useTranslate();
+  const [baskets, setBaskets] = useFetchBasketsInfo([]);
+  const [t, locale] = useTranslate();
 
   const eventEmitter = new EventEmitter();
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
   const basket = baskets.find(b => b.type === type);
-  const otherBaskets = basket ? [...baskets, customBasketDetails].filter(b => b.type !== basket.type) : [];
+  const otherBaskets = basket ? baskets.filter(b => b.type !== basket.type) : [];
 
   const toggleCartModal = () => {
     setShowCartModal(!showCartModal);
@@ -64,9 +65,9 @@ const BasketToOrder = () => {
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
       if (type === 'myfa') {
-				window.location.assign('/custom-basket');
+				window.location.assign(`/${locale}/custom-basket`);
 			} else {
-        window.location.assign(`/baskets?type=${type}`);
+        window.location.assign(`/${locale}/baskets?type=${type}`);
       }
 		}
   }
@@ -93,8 +94,8 @@ const BasketToOrder = () => {
             <h3>{t('basket_to_order.basket_contains')}</h3>
 
             <ul>
-              {basket.itemsTranslate.map(item => (
-                <li>{t(`ingredients.${item}`)}</li>
+              {basket.itemsTranslate.map((item, index) => (
+                <li key={index}>{t(`ingredients.${item}`)}</li>
               ))}
             </ul>
 

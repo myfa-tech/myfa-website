@@ -2,15 +2,29 @@
   "site_seo": {
     "description": "MYFA allows you to compose a basket of food goods for your relatives in Ivory Coast!"
   },
+  "reset_password": {
+    "title": "Forgot your password",
+    "validate": "Validate",
+    "password": "Password",
+    "password_reset": "Your password was changed",
+    "email_subtitle": "Please enter the email you connected with",
+    "password_subtitle": "Renew your password",
+    "description": "You will receive an email with a magic link that will allow you to reset your password",
+    "email_sent": "A reset email has been sent to you",
+    "user_unknown": "Unknown email address",
+    "error500": "Something went wrong on our side, we are sorry.",
+    "something_wrong": "Something went wrong",
+    "send": "Send"
+  },
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
-      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours*",
+      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours",
       "subtitle": "*COVID-19 : baskets delivery is on hold at this time, but orders are still possible",
       "discover_baskets_button": "Discover the baskets",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
-        "paragraph1": "Due to the current situation, deliveries of MYFA baskets are on hold.",
+        "paragraph1": "Due to the current situation, delivery times for MYFA baskets may be longer.",
         "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },
@@ -231,6 +245,7 @@
     "password": "Password",
     "unknown_user": "Unknown user",
     "login": "Log in",
+    "forgot_password": "Forgot your password?",
     "continue_with_fb": "Continue with Facebook",
     "continue_with_google": "Continue with Google",
     "password_helper_text": "8 characters, 1 uppercase, 1 lowercase, 1 number",

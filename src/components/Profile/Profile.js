@@ -6,7 +6,7 @@ import defaultBasketSrc from '../../images/default-basket.png';
 import './Profile.scss';
 import { getBasketsByEmail } from '../../services/orders';
 
-import baskets from '../../assets/baskets';
+import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 
 const basketStatus = {
   'pending': 'Paiement en attente',
@@ -20,6 +20,7 @@ const Profile = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
   const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : null;
+  const [baskets, setBaskets] = useFetchBasketsInfo([]);
 
   useEffect(() => {
     const run = async () => {

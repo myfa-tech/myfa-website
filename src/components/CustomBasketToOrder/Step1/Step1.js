@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { intersectionBy } from 'lodash';
 
 import useTranslate from '../../../hooks/useTranslate';
-import { availableBases, availableFruits } from '../../../assets/customBasket';
 
 import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_BASES = 1;
 const QTY_FRUITS = 3;
 
-const Step1 = ({ basketParts, nextStep, supps, setSupps }) => {
+const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availableFruits }) => {
   const [bases, setBases] = useState([]);
   const [fruits, setFruits] = useState([]);
   const [fruitsCount, setFruitsCount] = useState(0);
