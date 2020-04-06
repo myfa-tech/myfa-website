@@ -19,12 +19,12 @@
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
-      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours*",
+      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours",
       "subtitle": "*COVID-19 : baskets delivery is on hold at this time, but orders are still possible",
       "discover_baskets_button": "Discover the baskets",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
-        "paragraph1": "Due to the current situation, deliveries of MYFA baskets are on hold.",
+        "paragraph1": "Due to the current situation, delivery times for MYFA baskets may be longer.",
         "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },

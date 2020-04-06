@@ -10,7 +10,7 @@ import News from '../components/News';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
-
+import Covid19 from '../components/Covid19';
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 import './index.scss';
@@ -24,6 +24,7 @@ const IndexPage = () => {
       <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
 
       <Home />
+      <Covid19 />
       <HowItWorks />
       <Baskets />
       <OurPromise />
