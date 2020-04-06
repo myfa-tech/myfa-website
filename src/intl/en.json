@@ -165,6 +165,7 @@
       "grand_total": "Grand total",
       "baskets": "baskets",
       "next": "Next",
+      "covid19_warning": "Delivery times may increase due to the Covid-19 crisis. Thanks for your understanding.",
       "email_not_confirmed": "Before placing your order, please click on the confirmation link that we sent to you by email."
     },
     "empty_cart": "Your cart is empty.",

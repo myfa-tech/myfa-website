@@ -408,7 +408,7 @@ const Cart = () => {
                   <p>{t('cart.price_container.grand_total')} : {basketsPrice.toFixed(2)} €</p>
                 </div>
 
-                <Divider variant='middle' />
+                <Divider variant='middle' className='second-divider' />
 
                 <ButtonWithLoader
                   isLoading={isLoading}
@@ -433,6 +433,8 @@ const Cart = () => {
                         loading={true}
                       />: null
                 }
+
+                <p className='covid19-warning'>{t('cart.price_container.covid19_warning')}</p>
               </div>
             </Col>
           </Row> :

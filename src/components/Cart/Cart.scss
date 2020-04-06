@@ -48,6 +48,18 @@
     padding: 2em;
     height: 564px;
 
+    .second-divider {
+      margin-bottom: 1em;
+    }
+
+    .covid19-warning {
+      color: red;
+      text-align: justify;
+      width: 80%;
+      display: block;
+      margin: 1em auto 0 auto;
+    }
+
     .email-not-confirmed {
       margin-top: 1em;
       padding: 0 1em;
@@ -106,7 +118,7 @@
 
     .price-container {
       margin-top: 2em;
-      height: 300px;
+      height: 400px;
 
       h2 {
         font-size: 22px;
