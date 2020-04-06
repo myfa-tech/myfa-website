@@ -30,11 +30,19 @@
   &.success {
     background-color: #28a745;
     color: white;
+
+    .close-button {
+      color: white;
+    }
   }
 
   &.info {
     background-color: #ffc107;
     color: #212529;
+
+    .close-button {
+      color: #212529;
+    }
   }
 
   .close-button {

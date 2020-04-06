@@ -41,7 +41,7 @@ const ResetPasswordPassword = () => {
     <Layout className='reset-password password'>
       <SEO title='Reset password' />
 
-      <Banner show={success} type='success' text={t('reset_password.password_reset')} />
+      <Banner show={success} type='success' text={t('reset_password.password_reset')} onClose={() => setSuccess(false)} />
 
       <h1>{t('reset_password.title')}</h1>
 
