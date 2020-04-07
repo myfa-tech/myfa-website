@@ -10,12 +10,12 @@ import Table from '../../../components/dashboard/Table';
 import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
 import CommentPopover from '../../../components/CommentPopover';
 import BasketItemsPopover from '../../../components/BasketItemsPopover';
+import TableSelectEditor from '../../../components/TableSelectEditor';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 import usePopover from '../../../hooks/usePopover';
 
 import './baskets.scss';
-import TableSelectEditor from '../../../components/TableSelectEditor/TableSelectEditor';
 
 const STATUS_EDITOR_OPTIONS = [{
   value: 'pending',

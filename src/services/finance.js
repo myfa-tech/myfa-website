@@ -24,7 +24,9 @@ const updateRequestById = async (id, data) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.put(`/dashboard/finance/requests?id=${id}`, data);
+  const response = await axios.put(`/dashboard/finance/requests?id=${id}`, data);
+
+  return response.data;
 };
 
 const deleteRequestById = async (id) => {
