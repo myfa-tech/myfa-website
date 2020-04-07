@@ -183,7 +183,7 @@ const DashbboardBaskets = () => {
       formatter: (cell, row, rowIndex) => {
         return <Typography
           aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
-          aria-haspopup='gridtrue'grid
+          aria-haspopup='gridtrue'
           onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.recipient)}
           onMouseLeave={handlePeopleInfoPopoverClose}
         >
@@ -261,17 +261,9 @@ const DashbboardBaskets = () => {
       headerStyle: () => {
         return { width: '150px' };
       },
-      formatter: (cell, row, rowIndex) => {
-        return row.comment.length >= 15 ? <Typography
-          aria-owns={open ? 'mouse-over-comment-popover' : undefined}
-          aria-haspopup='gridtrue'grid
-          onMouseEnter={(e) => handleCommentPopoverOpen(e, row.comment)}
-          onMouseLeave={handleCommentPopoverClose}
-        >
-          {row.comment.substr(0, 15)}...
-        </Typography> :
-        row.comment
-      },
+      formatter: (cell, row, rowIndex) => (
+        <p className='comment-container'>{row.comment}</p>
+      ),
     },
   ];
 
