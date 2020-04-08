@@ -6,10 +6,19 @@ import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
 import FinanceModal from '../../../components/dashboard/FinanceModal';
+import TableSelectEditor from '../../../components/TableSelectEditor';
+
 import { deleteRequestById, fetchRequests, updateRequestById } from '../../../services/finance';
 
 import './finance.scss';
 import DeleteRequestModal from '../../../components/dashboard/DeleteRequestModal/DeleteRequestModal';
+
+const STATUS_EDITOR_OPTIONS = [
+  { value: 'pending', label:  'En attente' },
+  { value: 'pinged',  label: 'Relance' },
+  { value: 'accepted',  label: 'Accepté' },
+  { value: 'denied',  label: 'Refusé' },
+];
 
 const FinancePage = () => {
   const [requests, setRequests] = useState([]);
@@ -59,15 +68,9 @@ const FinancePage = () => {
           return <span className='status-pill denied'>Refusé</span>;
         }
       },
-      editor: {
-        type: Type.SELECT,
-        options: [
-          { value: 'pending', label:  'En attente' },
-          { value: 'pinged',  label: 'Relance' },
-          { value: 'accepted',  label: 'Accepté' },
-          { value: 'denied',  label: 'Refusé' },
-        ]
-      },
+      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+        <TableSelectEditor { ...editorProps } options={STATUS_EDITOR_OPTIONS} value={value} />
+      ),
     },
     {
       text: 'Supprimer',
@@ -87,10 +90,6 @@ const FinancePage = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    fetchData();
   }, [showFinanceModal, showDeleteRequestModal]);
 
   const toggleFinanceModal = () => {
@@ -99,14 +98,6 @@ const FinancePage = () => {
 
   const fetchData = async () => {
     let fetchedRequests = await fetchRequests();
-
-    if (fetchedRequests.length < 15) {
-      for (let i = 0; i < 15; i++) {
-        if (!fetchedRequests[i]) {
-          fetchedRequests.push({ _id: i, email: '' });
-        }
-      }
-    }
 
     setRequests(fetchedRequests);
   };
@@ -118,7 +109,11 @@ const FinancePage = () => {
 
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
-      await updateRequestById(row._id, { [column.dataField]: newValue });
+      const newRequest = await updateRequestById(row._id, { [column.dataField]: newValue });
+
+      const newRequests = requests.map(r => (r._id === row._id) ? newRequest : r);
+
+      setRequests(newRequests);
     }
   };
 
