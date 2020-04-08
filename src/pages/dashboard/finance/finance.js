@@ -88,10 +88,6 @@ const FinancePage = () => {
     }
   ];
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     fetchData();
   }, [showFinanceModal, showDeleteRequestModal]);
