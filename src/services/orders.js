@@ -1,10 +1,11 @@
 
 import Axios from 'axios';
+import UserStorage from './UserStorage';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const getOrdersByRef = async (ref) => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -17,7 +18,7 @@ const getOrdersByRef = async (ref) => {
 }
 
 const getBasketsByEmail = async (email) => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,

@@ -62,15 +62,15 @@
       "fruits_basket_title": "Panier Fruits 🍌",
       "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
       "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
-      "vegetables_basket_title": "Panier Légumes 🧅",
-      "vegetables_basket_home_description": "Oignons, carottes, Ignames...",
-      "vegetables_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
+      "legumes_basket_title": "Panier Légumes 🧅",
+      "legumes_basket_home_description": "Oignons, carottes, Ignames...",
+      "legumes_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
       "sauces_basket_title": "Panier Sauces 🍗🍖",
       "sauces_basket_home_description": "Poivre, sel, gingembre...",
       "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
-      "custom_basket_title": "Panier MYFA 🙌🏾",
-      "custom_basket_home_description": "À vous de le composer !",
-      "custom_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
+      "myfa_basket_title": "Panier MYFA 🙌🏾",
+      "myfa_basket_home_description": "À vous de le composer !",
+      "myfa_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -106,7 +106,9 @@
       "slide1_description": "La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.",
       "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
       "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
-      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style..."
+      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style...",
+      "slide5_description": "De cette Pandémie Covid-19 qui sévit dans le monde entier, plusieurs entreprises sont en baisse d’activité. Le confinement étant de rigueur dans la plupart des pays, est née une crise financière et seules quelques grandes entreprises arrivent à stabiliser leur activité économique.",
+      "slide6_description": "C'est la deuxième fois que je commence par un titre comme celui-ci. J'ai utilisé le même dans mon dernier article, sur LinkedIn : c'était le 1er avril dernier, j'y annonçais la fermeture de MYFA, en guise de poisson d'avril. Rire au lieu de paniquer, tel est mon remède."
     },
     "newsletter": {
       "title": "Abonnez-vous à notre newsletter !",
@@ -216,7 +218,7 @@
     "add_to_cart": "Ajouter au panier",
     "other_baskets": "Nos autres paniers"
   },
-  "custom_basket_to_order": {
+  "myfa_basket_to_order": {
     "bases": "Bases",
     "veggies": "Légumes",
     "fruits": "Fruits",

@@ -62,15 +62,15 @@
       "fruits_basket_title": "Fruits Basket 🍌",
       "fruits_basket_home_description": "Bananas, oranges, coconut...",
       "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
-      "vegetables_basket_title": "Veggies Basket 🧅",
-      "vegetables_basket_home_description": "Onions, carots, yams...",
-      "vegetables_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
+      "legumes_basket_title": "Veggies Basket 🧅",
+      "legumes_basket_home_description": "Onions, carots, yams...",
+      "legumes_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
       "sauces_basket_title": "Sauces Basket 🍗🍖",
       "sauces_basket_home_description": "Pepper, salt, ginger...",
       "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
-      "custom_basket_title": "MYFA Basket 🙌🏾",
-      "custom_basket_home_description": "It's up to you to compose it!",
-      "custom_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
+      "myfa_basket_title": "MYFA Basket 🙌🏾",
+      "myfa_basket_home_description": "It's up to you to compose it!",
+      "myfa_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
       "cart_modal": {
         "header": "Successfully added to purchases",
         "price": "Price",
@@ -106,7 +106,9 @@
       "slide1_description": "Last week we participated in the MobileOne conference. For two days, the event covers all aspects related to mobile, from technique to marketing. The various issues are dealt with in the form of 30-minute lectures.",
       "slide2_description": "If we had been told, 8 months ago, when we launched out, that things would materialize so quickly, I would not have believed it, and Doris neither. It has already been 1 week since we returned from our first \"business trip\", no more and no less than in Côte d'Ivoire. In Africa, a continent that is dear to us.",
       "slide3_description": "We agree, the name of the event is long. But the principle is simple! \"Women\", I believe you understood already, means that the promoters of projects are only women (Who run the world? Ask Beyoncé).",
-      "slide4_description": "Huh? What? What does \"Myfa\" mean? It means \"family\" in \"verlan\". Verlan is a form of French slang which consists of inverting the syllables of a word. So you understand now where the singer Stromae got his name from... The \"y\"? just for style..."
+      "slide4_description": "Huh? What? What does \"Myfa\" mean? It means \"family\" in \"verlan\". Verlan is a form of French slang which consists of inverting the syllables of a word. So you understand now where the singer Stromae got his name from... The \"y\"? just for style...",
+      "slide5_description": "In this Covid-19 Pandemic that is raging around the world, several companies are down. As containment is de rigueur in most countries, a financial crisis has arisen and only a few large companies have managed to stabilize their economic activity.",
+      "slide6_description": "This is the second time I have started with a title like this. I used the same in my last article on LinkedIn: it was April 1, I announced the closure of MYFA, as an April Fool. Laughing instead of panicking is my remedy."
     },
     "newsletter": {
       "title": "Subscribe to our newsletter !",
@@ -216,7 +218,7 @@
     "add_to_cart": "Add to cart",
     "other_baskets": "Our other baskets"
   },
-  "custom_basket_to_order": {
+  "myfa_basket_to_order": {
     "bases": "Bases",
     "veggies": "Veggies",
     "fruits": "Fruits",

@@ -1,8 +1,9 @@
 
 import Axios from 'axios';
+import DashboardUserStorage from '../services/DashboardUserStorage';
 
 const fetchBaskets = async (timeFilter) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
   let query = '';
 
   let axios = Axios.create({
@@ -40,7 +41,7 @@ const fetchHomeBaskets = async () => {
 };
 
 const updateBasketById = async (id, editFields) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: process.env.GATSBY_BACKEND_URL,

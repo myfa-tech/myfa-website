@@ -13,6 +13,7 @@ import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 import defaultBasketSrc from '../../images/default-basket.png';
 
 import './ProfileOrders.scss';
+import UserStorage from '../../services/UserStorage';
 
 const basketStatus = {
   'pending': 'Commandé',
@@ -41,7 +42,7 @@ const ProfileOrders = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
   const [basketsDetails, setBasketsDetails] = useFetchBasketsInfo([]);
-  const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : null;
+  const user = UserStorage.getUser();
   const [t] = useTranslate();
 
   useEffect(() => {

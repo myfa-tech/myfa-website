@@ -1,10 +1,13 @@
 
 import Axios from 'axios';
+import UserStorage from './UserStorage';
+import DashboardUserStorage from './DashboardUserStorage';
+import CartStorage from './CartStorage';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const fetchUser = async () => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -17,7 +20,7 @@ const fetchUser = async () => {
 };
 
 const fetchUsers = async (timeFilter) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
   let query = '';
 
   let axios = Axios.create({
@@ -39,28 +42,26 @@ const saveUser = async (user) => {
   const createdUser = response.data.user;
   const { token } = response.data;
 
-  window.localStorage.setItem('user', JSON.stringify(createdUser));
-  window.localStorage.setItem('userToken', token);
+  UserStorage.saveUser(createdUser, token, true);
 };
 
 const updateUser = async (userPart) => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  const user = { ...JSON.parse(window.localStorage.getItem('user')), ...userPart };
+  const user = { ...UserStorage.getUser(), ...userPart };
 
   await axios.put('/users', user);
 
-  window.localStorage.setItem('user', JSON.stringify(user));
+  UserStorage.saveUser(user);
 };
 
 const deleteAccount = async () => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
-  let user = JSON.parse(window.localStorage.getItem('user'));
+  const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -71,8 +72,7 @@ const deleteAccount = async () => {
 };
 
 const updatePassword = async ({ actualPassword, newPassword }) => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
-  const user = JSON.parse(window.localStorage.getItem('user'));
+  const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -123,40 +123,38 @@ const loginUser = async (user) => {
   const response = await Axios.post(`${BACKEND_URL}/users/login`, user);
   const { user: loggedInUser, token } = response.data;
 
-  window.localStorage.setItem('user', JSON.stringify(loggedInUser));
-  window.localStorage.setItem('userToken', token);
+  UserStorage.saveUser(loggedInUser, token, true);
 };
 
 const loginFBUser = async (user) => {
   const response = await Axios.post(`${BACKEND_URL}/users/facebook-login`, user);
   const { user: loggedInUser, token } = response.data;
 
-  window.localStorage.setItem('user', JSON.stringify(loggedInUser));
-  window.localStorage.setItem('userToken', token);
+  UserStorage.saveUser(loggedInUser, token, true);
 };
 
 const loginGoogleUser = async (user) => {
   const response = await Axios.post(`${BACKEND_URL}/users/google-login`, user);
   const { user: loggedInUser, token } = response.data;
 
-  window.localStorage.setItem('user', JSON.stringify(loggedInUser));
-  window.localStorage.setItem('userToken', token);
+  UserStorage.saveUser(loggedInUser, token, true);
 };
 
 const addRecipient = async (recipient) => {
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  const user = JSON.parse(window.localStorage.getItem('user'));
+  const user = UserStorage.getUser();
+
   user.recipients.push(recipient);
 
   await axios.put('/users', user);
 
-  window.localStorage.setItem('user', JSON.stringify(user));
+  UserStorage.saveUser(user);
 };
 
 const confirmEmail = async (email, hash) => {

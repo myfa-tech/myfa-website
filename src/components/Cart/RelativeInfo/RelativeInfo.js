@@ -4,11 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Row, Col } from 'react-bootstrap';
 import useTranslate from '../../../hooks/useTranslate';
+import UserStorage from '../../../services/UserStorage';
 
 import './RelativeInfo.scss';
 
 const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, handleRecipientChange, showOtherRelationInput }) => {
-  const user = JSON.parse(window.localStorage.getItem('user'));
+  const user = UserStorage.getUser();
   const [t] = useTranslate();
 
   return (

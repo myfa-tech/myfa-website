@@ -7,9 +7,9 @@ import Button from 'react-bootstrap/Button';
 import CartModal from '../CartModal';
 
 import getQueryParam from '../../utils/getQueryParam';
-import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
 import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+import CartStorage from '../../services/CartStorage';
 
 import './BasketToOrder.scss';
 
@@ -22,7 +22,6 @@ const BasketToOrder = () => {
   const [baskets, setBaskets] = useFetchBasketsInfo([]);
   const [t, locale] = useTranslate();
 
-  const eventEmitter = new EventEmitter();
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
   const basket = baskets.find(b => b.type === type);
   const otherBaskets = basket ? baskets.filter(b => b.type !== basket.type) : [];
@@ -31,25 +30,10 @@ const BasketToOrder = () => {
     setShowCartModal(!showCartModal);
   };
 
-  const addToCart = () => {
-    if (typeof window !== 'undefined') {
-      let cart = JSON.parse(window.localStorage.getItem('cart'));
-
-      if (!cart) {
-        cart = [];
-      }
-
-      for (let i=0; i<qty; i++) {
-        cart.push(basket);
-      }
-
-      setIsDone(true);
-
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-      eventEmitter.emit('editCart');
-
-      toggleCartModal();
-    }
+  const addToCart = async () => {
+    await CartStorage.addToCart({ ...basket }, qty);
+    setIsDone(true);
+    toggleCartModal();
   };
 
   const updateQty = (adding) => {

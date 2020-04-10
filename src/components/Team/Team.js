@@ -6,6 +6,7 @@ import useTranslate from '../../hooks/useTranslate';
 import dorisSrc from '../../images/doris.png';
 import florianSrc from '../../images/florian.png';
 import alexSrc from '../../images/alex.png';
+import manuellaSrc from '../../images/manuella.png';
 
 import './Team.scss'
 
@@ -72,6 +73,25 @@ const Team = () => {
           <div className='mobile-quote'>
             <FaQuoteLeft size='2em' className='quote-icon' />
             <p>{t('home_page.team.alex_description')}</p>
+          </div>
+        </Col>
+
+        <Col md={4} className='article-block'>
+          <div className='desktop-quote'>
+            <FaQuoteLeft size='2em' className='quote-icon' />
+            <p>{t('home_page.team.manuella_description')}</p>
+          </div>
+          <div className='author-id'>
+            <img src={manuellaSrc} className='profile-pic' alt='manuella' />
+            <h4>Manuella Sani</h4>
+            <div className='social-links'>
+              <a href='https://www.linkedin.com/in/manuella-sani-29a59b1a5' target="_blank"><FaLinkedinIn /></a>
+            </div>
+            <span>Responsable Opérations CI, MYFA</span>
+          </div>
+          <div className='mobile-quote'>
+            <FaQuoteLeft size='2em' className='quote-icon' />
+            <p>{t('home_page.team.manuella_description')}</p>
           </div>
         </Col>
       </Row>
