@@ -11,6 +11,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-704176659"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -46,6 +47,18 @@ export default function HTML(props) {
                 mf.src = "//cdn.mouseflow.com/projects/d242c0c3-eb37-4282-b375-448eeff6e728.js";
                 document.getElementsByTagName("head")[0].appendChild(mf);
             })();
+          `}}
+        />
+        <script  async dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-704176659');
+
+            if (window.location.pathname.includes('/orders')) {
+              gtag('event', 'conversion', { 'send_to': 'AW-704176659/cam8CMCnjM0BEJPE488C', 'transaction_id': '' });
+            }
           `}}
         />
       </body>
