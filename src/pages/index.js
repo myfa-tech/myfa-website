@@ -4,7 +4,6 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Home from '../components/Home';
 import OurPromise from '../components/OurPromise';
-import Team from '../components/Team';
 import Newsletter from '../components/Newsletter';
 import News from '../components/News';
 import Baskets from '../components/Baskets';
@@ -29,7 +28,6 @@ const IndexPage = () => {
       <Baskets />
       <OurPromise />
       <Trustees />
-      <Team />
       <News />
       <Newsletter />
     </Layout>

@@ -21,6 +21,8 @@ import useRelativeForm from '../../hooks/useRelativeForm';
 import useTranslate from '../../hooks/useTranslate';
 
 import './Cart.scss';
+import UserStorage from '../../services/UserStorage';
+import CartStorage from '../../services/CartStorage';
 
 const spinnerStyle = css`
   display: block;
@@ -66,7 +68,7 @@ const Cart = () => {
   ] = useRelativeForm(nextStep);
   const [t] = useTranslate();
 
-  const user = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('user')) : {};
+  const user = UserStorage.getUser();
   const eventEmitter = new EventEmitter();
 
   useEffect(() => {
@@ -107,40 +109,42 @@ const Cart = () => {
     }
   };
 
-  const initCart = () => {
-    if (typeof window !== 'undefined') {
-      let newCart = JSON.parse(window.localStorage.getItem('cart'));
+  const initCart = async () => {
+    let newCart = await CartStorage.getCartFromStorage();
 
-      if (!!newCart) {
-        let enhancedCart = {};
+    if (!!newCart) {
+      let enhancedCart = {};
 
-        enhancedCart.baskets = newCart.reduce((acc, cur) => {
-          if (!acc[cur.type]) {
-            acc[cur.type] = {
-              ...cur,
-              price: 0,
-              qty: 0,
-              singlePrice: cur.price,
-              items: cur.items || {},
-            };
-          }
+      enhancedCart.baskets = newCart.baskets.reduce((acc, cur) => {
+        if (!acc[cur.type]) {
+          acc[cur.type] = {
+            ...cur,
+            price: 0,
+            qty: 0,
+            singlePrice: cur.price,
+            items: cur.items || {},
+          };
+        }
 
-          acc[cur.type].qty = acc[cur.type].qty + 1;
-          acc[cur.type].price = acc[cur.type].price + cur.price;
+        acc[cur.type].qty = acc[cur.type].qty + 1;
+        acc[cur.type].price = acc[cur.type].price + cur.price;
 
-          return acc;
-        }, {});
+        return acc;
+      }, {});
 
-        let newBasketsNumber = Object.values(enhancedCart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
-        let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+      let newBasketsNumber = Object.values(enhancedCart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
+      let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
 
-        setCart(enhancedCart);
-        setBasketsNumber(newBasketsNumber);
-        setBasketsPrice(newBasketsPrice);
-      }
-
-      setIsFetching(false);
+      setCart(enhancedCart);
+      setBasketsNumber(newBasketsNumber);
+      setBasketsPrice(newBasketsPrice);
+    } else {
+      setCart({});
+      setBasketsNumber(0);
+      setBasketsPrice(0);
     }
+
+    setIsFetching(false);
   };
 
   const updateBasketsPriceAndNumber = () => {
@@ -183,7 +187,6 @@ const Cart = () => {
         };
 
         await loginFBUser(user);
-        eventEmitter.emit('login');
         setRelativeFormRecipientIndex(0);
         nextStep();
       } else {
@@ -209,7 +212,6 @@ const Cart = () => {
         };
 
         await loginGoogleUser(user);
-        eventEmitter.emit('login');
         setRelativeFormRecipientIndex(0);
         nextStep();
       } else {
@@ -222,7 +224,7 @@ const Cart = () => {
   };
 
   const handleNext = (e) => {
-    const user = JSON.parse(window.localStorage.getItem('user'));
+    const user = UserStorage.getUser();
     let increment = 1;
 
     if (user && step === 1) {
@@ -253,20 +255,14 @@ const Cart = () => {
   };
 
   const removeBaskets = (basketTypeToRemove) => {
-    const savedCart = JSON.parse(window.localStorage.getItem('cart'));
-
-    let filteredCart = savedCart.filter(b => b.type !== basketTypeToRemove);
-
-    window.localStorage.setItem('cart', JSON.stringify(filteredCart));
-
-    eventEmitter.emit('editCart');
+    CartStorage.deleteBasketsByType(basketTypeToRemove);
 
     delete cart.baskets[basketTypeToRemove];
     setCart({ ...cart });
   };
 
   async function pay() {
-    const user = JSON.parse(window.localStorage.getItem('user'));
+    const user = UserStorage.getUser();
 
     setIsLoading(true);
 
@@ -291,10 +287,8 @@ const Cart = () => {
     setIsLoading(false);
   };
 
-  const emptyStoredCart = () => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.removeItem('cart');
-    }
+  const emptyStoredCart = async () => {
+    await CartStorage.deleteCart();
   };
 
   const handleChangeRelativeForm = (e) => {
@@ -323,7 +317,6 @@ const Cart = () => {
     try {
       setIsLoading(true);
       await loginUser(loginFormValues);
-      eventEmitter.emit('login');
       setRelativeFormRecipientIndex(0);
       nextStep();
     } catch(e) {

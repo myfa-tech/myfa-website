@@ -1,10 +1,12 @@
 
 import Axios from 'axios';
 
+import DashboardUserStorage from '../services/DashboardUserStorage';
+
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 const fetchRequests = async () => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: process.env.GATSBY_BACKEND_URL,
@@ -17,7 +19,7 @@ const fetchRequests = async () => {
 };
 
 const updateRequestById = async (id, data) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -30,7 +32,7 @@ const updateRequestById = async (id, data) => {
 };
 
 const deleteRequestById = async (id) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,
@@ -41,7 +43,7 @@ const deleteRequestById = async (id) => {
 };
 
 const saveFinanceRequest = async (data) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: BACKEND_URL,

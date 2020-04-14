@@ -7,6 +7,7 @@ import './Profile.scss';
 import { getBasketsByEmail } from '../../services/orders';
 
 import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+import UserStorage from '../../services/UserStorage';
 
 const basketStatus = {
   'pending': 'Paiement en attente',
@@ -19,7 +20,7 @@ const basketStatus = {
 const Profile = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
-  const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : null;
+  const user = UserStorage.getUser();
   const [baskets, setBaskets] = useFetchBasketsInfo([]);
 
   useEffect(() => {
@@ -36,12 +37,7 @@ const Profile = () => {
 
   const logout = () => {
     if (typeof window !== 'undefined') {
-      window.localStorage.removeItem('user');
-      window.localStorage.removeItem('cart');
-      window.localStorage.removeItem('userToken');
-      window.localStorage.removeItem('popupViewed');
-
-      window.location.assign('/');
+      window.location.assign('/logout');
     }
   }
 

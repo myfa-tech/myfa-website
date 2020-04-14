@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import useTranslate from '../hooks/useTranslate';
+import UserStorage from '../services/UserStorage';
+import CartStorage from '../services/CartStorage';
+import DashboardUserStorage from '../services/DashboardUserStorage';
 
 const LogoutPage = () => {
   const [t, locale] = useTranslate();
 
   useEffect(() => {
-    window.localStorage.removeItem('userToken');
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('cart');
+    UserStorage.deleteUser();
+    CartStorage.deleteCart();
+    DashboardUserStorage.deleteUser();
     window.localStorage.removeItem('popupViewed');
 
     window.location.assign(`/${locale}`);

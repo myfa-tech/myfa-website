@@ -24,7 +24,7 @@ const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
                   <img src={cart.baskets[basketKey].img} />
                 </Col>
                 <Col xs={7} sm={6} className='label-container'>
-                  <h3>{t(cart.baskets[basketKey].labelTranslate)}</h3>
+                  <h3>{t(`home_page.baskets.${basketKey}_basket_title`)}</h3>
                   <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                 </Col>
                 <Col xs={5} sm={4} className='qty-container'>

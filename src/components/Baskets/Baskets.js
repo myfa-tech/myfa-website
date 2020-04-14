@@ -5,18 +5,16 @@ import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 import CartModal from '../CartModal';
 
 import useTranslate from '../../hooks/useTranslate';
-import EventEmitter from '../../services/EventEmitter';
 import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 
 import './Baskets.scss';
+import CartStorage from '../../services/CartStorage';
 
 const Baskets = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
 	const [baskets, setBaskets] = useFetchBasketsInfo([]);
 	const [t, locale] = useTranslate();
-
-	const eventEmitter = new EventEmitter();
 
 	const toggleCartModal = () => {
 		if (!!showCartModal) {
@@ -36,24 +34,13 @@ const Baskets = () => {
 		}
 	};
 
-	const addBasketToCart = (e, basket) => {
+	const addBasketToCart = async (e, basket) => {
 		e.stopPropagation();
 
-		if (typeof window !== 'undefined') {
-			let cart = JSON.parse(window.localStorage.getItem('cart'));
+		await CartStorage.addToCart({ ...basket });
 
-      if (!cart) {
-        cart = [];
-      }
-
-      cart.push(basket);
-
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-			eventEmitter.emit('editCart');
-
-			setBasketForCart(basket);
-			toggleCartModal();
-    }
+		setBasketForCart(basket);
+		toggleCartModal();
 	};
 
 	return (

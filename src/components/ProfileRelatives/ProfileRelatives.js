@@ -12,6 +12,7 @@ import useRelativeForm from '../../hooks/useRelativeForm';
 import logoHandsSrc from '../../images/logo-1.png';
 
 import './ProfileRelatives.scss';
+import UserStorage from '../../services/UserStorage';
 
 const spinnerStyle = css`
   display: block;
@@ -292,7 +293,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
 };
 
 const ProfileInformation = () => {
-  const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : {};
+  const user = UserStorage.getUser();
   const [relatives, setRelatives] = useState(user.recipients);
   const [relativeIndex, setRelativeIndex] = useState(-1);
   const [modifying, setModifying] = useState(false);

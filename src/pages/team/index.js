@@ -1,19 +1,25 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { FaLinkedinIn, FaTwitter, FaQuoteLeft } from 'react-icons/fa'
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { FaLinkedinIn, FaTwitter, FaQuoteLeft } from 'react-icons/fa';
+
+import SEO from '../../components/seo';
+import Layout from '../../components/layout';
 
 import useTranslate from '../../hooks/useTranslate';
 import dorisSrc from '../../images/doris.png';
 import florianSrc from '../../images/florian.png';
 import alexSrc from '../../images/alex.png';
+import manuellaSrc from '../../images/manuella.png';
 
-import './Team.scss'
+import './team.scss';
 
-const Team = () => {
+const TeamPage = () => {
   const [t] = useTranslate();
 
   return (
-    <section id='team' className='section-4'>
+    <Layout noBackgroundColor={true} className='team'>
+      <SEO title='Team' />
+
       <div className='title-container'>
         <h2>{t('home_page.team.title')} 🏆</h2>
       </div>
@@ -34,13 +40,13 @@ const Team = () => {
           </div>
           <div className='mobile-quote'>
             <FaQuoteLeft size='2em' className='quote-icon' />
-            <p>{t('home_page.team.doris_description')}</p>
+            <p className='member-description'>{t('home_page.team.doris_description')}</p>
           </div>
         </Col>
         <Col md={4} className='article-block'>
           <div className='desktop-quote'>
             <FaQuoteLeft size='2em' className='quote-icon' />
-            <p>{t('home_page.team.florian_description')}</p>
+            <p className='member-description'>{t('home_page.team.florian_description')}</p>
           </div>
           <div className='author-id'>
             <img src={florianSrc} className='profile-pic' alt='florian' />
@@ -59,7 +65,7 @@ const Team = () => {
         <Col md={4} className='article-block'>
           <div className='desktop-quote'>
             <FaQuoteLeft size='2em' className='quote-icon' />
-            <p>{t('home_page.team.alex_description')}</p>
+            <p className='member-description'>{t('home_page.team.alex_description')}</p>
           </div>
           <div className='author-id'>
             <img src={alexSrc} className='profile-pic' alt='alex' />
@@ -74,9 +80,28 @@ const Team = () => {
             <p>{t('home_page.team.alex_description')}</p>
           </div>
         </Col>
+
+        <Col md={4} className='article-block'>
+          <div className='desktop-quote'>
+            <FaQuoteLeft size='2em' className='quote-icon' />
+            <p className='member-description'>{t('home_page.team.manuella_description')}</p>
+          </div>
+          <div className='author-id'>
+            <img src={manuellaSrc} className='profile-pic' alt='manuella' />
+            <h4>Manuella Sani</h4>
+            <div className='social-links'>
+              <a href='https://www.linkedin.com/in/manuella-sani-29a59b1a5' target="_blank"><FaLinkedinIn /></a>
+            </div>
+            <span>Responsable Opérations CI, MYFA</span>
+          </div>
+          <div className='mobile-quote'>
+            <FaQuoteLeft size='2em' className='quote-icon' />
+            <p>{t('home_page.team.manuella_description')}</p>
+          </div>
+        </Col>
       </Row>
-    </section>
-  )
+    </Layout>
+  );
 };
 
-export default Team;
+export default TeamPage;

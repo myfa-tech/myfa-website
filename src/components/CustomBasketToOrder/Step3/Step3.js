@@ -34,6 +34,8 @@ const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, available
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
 
+    delete supp.img;
+
     if (index >= 0) {
       supps.splice(index, 1);
     } else {
@@ -45,6 +47,8 @@ const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, available
 
   const editSauces = (sauce) => {
     const index = sauces.findIndex(f => f.id === sauce.id);
+
+    delete sauce.img;
 
     if (index >= 0) {
       sauces.splice(index, 1);
@@ -68,10 +72,10 @@ const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, available
 
   return (
     <div>
-      <h2>{t('custom_basket_to_order.sauces')} {itemsCount}/{QTY_SAUCES} - {t('custom_basket_to_order.choose_3_products')}</h2>
+      <h2>{t('myfa_basket_to_order.sauces')} {itemsCount}/{QTY_SAUCES} - {t('myfa_basket_to_order.choose_3_products')}</h2>
       <div className='ingredients-container'>
         {availableSauces.map(sauce => (
-          <div key={sauce.id} className='ingredient-container' onClick={() => editSauces(sauce)}>
+          <div key={sauce.id} className='ingredient-container' onClick={() => editSauces({ ...sauce })}>
             <img src={sauce.img || defaultBasketSrc} className={(sauces.map(s => s.id).includes(sauce.id) || supps.map(s => s.id).includes(sauce.id)) ? 'selected' : ''} />
             <p>
               {t(`ingredients.${sauce.labelTranslate}`)}
@@ -84,8 +88,8 @@ const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, available
       </div>
 
       <div className='navigation-container'>
-        <button className='previous-button' onClick={() => previousStep()}>{t('custom_basket_to_order.previous')}</button>
-        <button className='next-button' onClick={() => nextStep({ sauces, supps })}>{t('custom_basket_to_order.next')}</button>
+        <button className='previous-button' onClick={() => previousStep()}>{t('myfa_basket_to_order.previous')}</button>
+        <button className='next-button' onClick={() => nextStep({ sauces, supps })}>{t('myfa_basket_to_order.next')}</button>
       </div>
     </div>
   );

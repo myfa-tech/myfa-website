@@ -1,52 +1,36 @@
 
 import Axios from 'axios';
+import DashboardUserStorage from './DashboardUserStorage';
+import UserStorage from './UserStorage';
 
 const axios = Axios.create({
   baseURL: process.env.GATSBY_BACKEND_URL,
 });
 
-const isBrowser = () => typeof window !== 'undefined';
-
-const getAdmin = () => isBrowser() && window.localStorage.getItem('myfaDashboardUser') ?
-  JSON.parse(window.localStorage.getItem('myfaDashboardUser')) : {};
-
-const getUser = () => isBrowser() && window.localStorage.getItem('user') ?
-  JSON.parse(window.localStorage.getItem('user')) : {};
-
-const setAdmin = (user) => window.localStorage.setItem('myfaDashboardUser', JSON.stringify(user));
-
-const setToken = async (token) => window.localStorage.setItem('myfaDashboardToken', token);
-
 const handleLogin = async (creds) => {
   const response = await axios.post('/dashboard/login', creds);
 
   if (!!response.data.user && !!response.data.token) {
-    await setToken(response.data.token);
-    return setAdmin(response.data.user);
+    DashboardUserStorage.saveUser(response.data.user, response.data.token);
+    return true;
   }
 
   return false;
 };
 
-const isLoggedIn = () => {
-  const user = getUser();
-  return !!user.email;
+const isUserLoggedIn = () => {
+  const user = UserStorage.getUser();
+  return !!user && !!user.email;
 };
 
 const isAdminLoggedIn = () => {
-  const user = getAdmin();
-  return !!user.email;
+  const user = DashboardUserStorage.getUser();
+  return !!user && !!user.email;
 };
 
 const isEmployeeLoggedIn = () => {
-  const user = getAdmin();
-  return !!user.isEmployee;
+  const user = DashboardUserStorage.getUser();
+  return !!user && !!user.isEmployee;
 };
 
-const logout = (callback) => {
-  setToken('');
-  setAdmin({});
-  callback();
-}
-
-export { getUser, handleLogin, isAdminLoggedIn, isEmployeeLoggedIn, isLoggedIn, logout, setAdmin };
+export { handleLogin, isAdminLoggedIn, isEmployeeLoggedIn, isUserLoggedIn };

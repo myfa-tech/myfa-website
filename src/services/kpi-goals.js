@@ -1,8 +1,9 @@
 
 import Axios from 'axios';
+import DashboardUserStorage from './DashboardUserStorage';
 
 const fetchGoals = async () => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: process.env.GATSBY_BACKEND_URL,
@@ -15,7 +16,7 @@ const fetchGoals = async () => {
 };
 
 const updateGoalById = async (id, value) => {
-  let JWT_TOKEN = window.localStorage.getItem('myfaDashboardToken');
+  let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
     baseURL: process.env.GATSBY_BACKEND_URL,

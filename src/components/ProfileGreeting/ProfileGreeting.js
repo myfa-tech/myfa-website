@@ -2,9 +2,10 @@ import React from 'react';
 
 import './ProfileGreeting.scss';
 import useTranslate from '../../hooks/useTranslate';
+import UserStorage from '../../services/UserStorage';
 
 const ProfileGreeting = () => {
-  const { firstname } = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : {};
+  const { firstname } = UserStorage.getUser();
   const [t] = useTranslate();
 
   return (

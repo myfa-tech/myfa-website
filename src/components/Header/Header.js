@@ -17,6 +17,8 @@ import logoHandsSrc from '../../images/logo-1.png';
 import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
+import CartStorage from '../../services/CartStorage';
+import UserStorage from '../../services/UserStorage';
 
 const STICKY_LIMIT = 300;
 
@@ -60,7 +62,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t) => {
                         <img src={cart.baskets[basketKey].img} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        <h4>{t(cart.baskets[basketKey].labelTranslate)}</h4>
+                        <h4>{t(`home_page.baskets.${basketKey}_basket_title`)}</h4>
                         <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>
@@ -116,14 +118,6 @@ const Header = () => {
 
   const eventEmitter = new EventEmitter();
 
-  const updateCartCount = () => {
-    let cart = JSON.parse(window.localStorage.getItem('cart'));
-
-    if (cart) {
-      setBasketCount(cart.length);
-    }
-  };
-
   useEffect(() => {
     updateCart();
     setLocaleLinks()
@@ -165,24 +159,20 @@ const Header = () => {
 
     let basketsAnchor = document.getElementById('baskets');
     let promiseAnchor = document.getElementById('our-promise');
-    let teamAnchor = document.getElementById('team');
     let newsAnchor = document.getElementById('news');
 
     let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
     let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
-    let teamHeight = teamAnchor ? teamAnchor.offsetTop - 200 : null;
     let newsHeight = newsAnchor ? newsAnchor.offsetTop - 200 : null;
     let cursor = window.pageYOffset;
 
-    if (basketsHeight && promiseHeight && teamHeight) {
+    if (basketsHeight && promiseHeight && newsHeight) {
       if (cursor < basketsHeight && underlinedSection !== 'home') {
         setUnderlinedSection('home');
       } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
         setUnderlinedSection('baskets');
-      } else if (cursor >= promiseHeight && cursor < teamHeight && underlinedSection !== 'promise') {
+      } else if (cursor >= promiseHeight && cursor < newsHeight && underlinedSection !== 'promise') {
         setUnderlinedSection('promise');
-      } else if (cursor >= teamHeight && cursor < newsHeight && underlinedSection !== 'team') {
-        setUnderlinedSection('team');
       } else if (cursor >= newsHeight && underlinedSection !== 'news') {
         setUnderlinedSection('news');
       }
@@ -190,46 +180,48 @@ const Header = () => {
   };
 
   const setupLogin = () => {
-    let userFromStorage = JSON.parse(window.localStorage.getItem('user'));
+    let userFromStorage = UserStorage.getUser();
 
     if (!!userFromStorage) {
       setUser({ ...userFromStorage });
     }
   };
 
-  const updateCart = () => {
-    if (typeof window !== 'undefined') {
-      let newCart = JSON.parse(window.localStorage.getItem('cart'));
+  const updateCart = async () => {
+    let newCart = await CartStorage.getCartFromStorage();
 
-      if (!!newCart) {
-        let enhancedCart = {};
+    if (!!newCart) {
+      let enhancedCart = {};
 
-        enhancedCart.baskets = newCart.reduce((acc, cur) => {
-          if (!acc[cur.type]) {
-            acc[cur.type] = {
-              ...cur,
-              price: 0,
-              qty: 0,
-              label: cur.label,
-              singlePrice: cur.price,
-              type: cur.type,
-              img: cur.img,
-              items: cur.items || {},
-            };
-          }
+      enhancedCart.baskets = newCart.baskets.reduce((acc, cur) => {
+        if (!acc[cur.type]) {
+          acc[cur.type] = {
+            ...cur,
+            price: 0,
+            qty: 0,
+            label: cur.label,
+            singlePrice: cur.price,
+            type: cur.type,
+            img: cur.img,
+            items: cur.items || {},
+          };
+        }
 
-          acc[cur.type].qty = acc[cur.type].qty + 1;
-          acc[cur.type].price = acc[cur.type].price + cur.price;
+        acc[cur.type].qty = acc[cur.type].qty + 1;
+        acc[cur.type].price = acc[cur.type].price + cur.price;
 
-          return acc;
-        }, {});
+        return acc;
+      }, {});
 
-        let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
+      let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
 
-        setCart(enhancedCart);
-        setBasketsPrice(newBasketsPrice);
-        setBasketCount(newCart.length);
-      }
+      setCart(enhancedCart);
+      setBasketsPrice(newBasketsPrice);
+      setBasketCount(newCart.baskets.length);
+    } else {
+      setCart({});
+      setBasketsPrice(0);
+      setBasketCount(0);
     }
   };
 
@@ -257,17 +249,14 @@ const Header = () => {
   };
 
   const removeBaskets = (basketKey) => {
-    const savedCart = JSON.parse(window.localStorage.getItem('cart'));
-
-    let filteredCart = savedCart.filter(b => b.type !== basketKey);
-
-    window.localStorage.setItem('cart', JSON.stringify(filteredCart));
-
-    updateCartCount();
-
-    eventEmitter.emit('editCart');
+    CartStorage.deleteBasketsByType(basketKey);
 
     delete cart.baskets[basketKey];
+
+    if (cart.baskets.length) {
+      setBasketCount(cart.baskets.length);
+    }
+
     setCart({ ...cart });
   };
 
@@ -283,8 +272,8 @@ const Header = () => {
             <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href={`/${locale}/#team`}>{t('header.team')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href={`/${locale}/#news`}>{t('header.news')}</Nav.Link>
+            <Nav.Link href={`/${locale}/team`}>{t('header.team')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}

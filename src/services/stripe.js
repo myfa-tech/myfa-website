@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import uuid from 'uuid/v4';
+import UserStorage from './UserStorage';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
@@ -26,7 +27,7 @@ const createPayment = async (order, userEmail) => {
   const origin = window.location.origin;
   const randomId = uuid();
   const orderRef = randomId.substr(0, 8);
-  let JWT_TOKEN = window.localStorage.getItem('userToken');
+  let JWT_TOKEN = UserStorage.getToken();
   const success_url = `${origin}/orders?ref=${orderRef}`;
 
   let axios = Axios.create({

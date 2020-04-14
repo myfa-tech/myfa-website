@@ -50,6 +50,8 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
 
+    delete supp.img;
+
     if (index >= 0) {
       supps.splice(index, 1);
     } else {
@@ -61,6 +63,8 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
 
   const editBases = (base) => {
     const index = bases.findIndex(b => b.id === base.id);
+
+    delete base.img;
 
     if (index >= 0) {
       bases.splice(index, 1);
@@ -85,6 +89,8 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
   const editFruits = (fruit) => {
     const index = fruits.findIndex(f => f.id === fruit.id);
 
+    delete fruit.img;
+
     if (index >= 0) {
       fruits.splice(index, 1);
 
@@ -107,10 +113,10 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
 
   return (
     <div>
-      <h2>{t('custom_basket_to_order.bases')} {basesCount}/{QTY_BASES} - {t('custom_basket_to_order.choose_base')}</h2>
+      <h2>{t('myfa_basket_to_order.bases')} {basesCount}/{QTY_BASES} - {t('myfa_basket_to_order.choose_base')}</h2>
       <div className='ingredients-container'>
         {availableBases.map(base => (
-          <div key={base.id} className='ingredient-container' onClick={() => editBases(base)}>
+          <div key={base.id} className='ingredient-container' onClick={() => editBases({ ...base })}>
             <img src={base.img || defaultBasketSrc} className={(bases.map(b => b.id).includes(base.id) || supps.map(s => s.id).includes(base.id)) ? 'selected' : ''} />
             <p>
               {t(`ingredients.${base.labelTranslate}`)}
@@ -122,10 +128,10 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
         ))}
       </div>
 
-      <h2>{t('custom_basket_to_order.fruits')} {fruitsCount}/{QTY_FRUITS} - {t('custom_basket_to_order.choose_3_fruits')}</h2>
+      <h2>{t('myfa_basket_to_order.fruits')} {fruitsCount}/{QTY_FRUITS} - {t('myfa_basket_to_order.choose_3_fruits')}</h2>
       <div className='ingredients-container'>
         {availableFruits.map(fruit => (
-          <div key={fruit.id} className='ingredient-container' onClick={() => editFruits(fruit)}>
+          <div key={fruit.id} className='ingredient-container' onClick={() => editFruits({ ...fruit })}>
             <img src={fruit.img || defaultBasketSrc} className={(fruits.map(f => f.id).includes(fruit.id) || supps.map(s => s.id).includes(fruit.id)) ? 'selected' : ''} />
             <p>
               {fruit.label}
@@ -138,8 +144,8 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
       </div>
 
       <div className='navigation-container'>
-        <button className='previous-button disabled' disabled>{t('custom_basket_to_order.previous')}</button>
-        <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>{t('custom_basket_to_order.next')}</button>
+        <button className='previous-button disabled' disabled>{t('myfa_basket_to_order.previous')}</button>
+        <button className='next-button' onClick={() => nextStep({ bases, fruits, supps })}>{t('myfa_basket_to_order.next')}</button>
       </div>
     </div>
   );

@@ -23,6 +23,8 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
   const editSupps = (supp) => {
     const index = supps.findIndex(s => s.id === supp.id);
 
+    delete supp.img;
+
     if (index >= 0) {
       supps.splice(index, 1);
     } else {
@@ -49,10 +51,10 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
 
   return (
     <div>
-      <h2>{t('custom_basket_to_order.supps')} (+ 1,5€)</h2>
+      <h2>{t('myfa_basket_to_order.supps')} (+ 1,5€)</h2>
       <div className='ingredients-container'>
         {availableSupps.map(supp => (
-          <div key={supp.id} className='ingredient-container' onClick={() => editSupps(supp)}>
+          <div key={supp.id} className='ingredient-container' onClick={() => editSupps({ ...supp })}>
             <img src={supp.img || defaultBasketSrc} className={supps.map(s => s.id).includes(supp.id) ? 'selected' : ''} />
             <p>{t(`ingredients.${supp.labelTranslate}`)}</p>
           </div>
@@ -60,9 +62,9 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
       </div>
 
       <div className='navigation-container'>
-        <button className='previous-button small' onClick={() => previousStep()}>{t('custom_basket_to_order.previous')}</button>
+        <button className='previous-button small' onClick={() => previousStep()}>{t('myfa_basket_to_order.previous')}</button>
         <div className='qty-container'>
-          <h4>{t('custom_basket_to_order.qty')}</h4>
+          <h4>{t('myfa_basket_to_order.qty')}</h4>
 
           <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
             <Button className={`qty-button ${canPay ? '' : 'disabled'}`}  onClick={() => updateQty(-1)} disabled={!canPay}>-</Button>
@@ -70,14 +72,14 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
             <Button className={`qty-button ${canPay ? '' : 'disabled'}`} onClick={() => updateQty(1)} disabled={!canPay}>+</Button>
           </ButtonGroup>
 
-          {qty === QTY_MAX ? <p className='max-qty-msg'>{t('custom_basket_to_order.max_qty_reached')}</p> : null}
+          {qty === QTY_MAX ? <p className='max-qty-msg'>{t('myfa_basket_to_order.max_qty_reached')}</p> : null}
 
           {isDone ?
             <span className='order-button isDone'>
               <FaCheck color='#6c6' />
             </span> :
             <button type='button' className={`order-button ${canPay ? '' : 'disabled'}`} onClick={finishPurchase} disabled={!canPay}>
-              {t('custom_basket_to_order.add_to_cart')}
+              {t('myfa_basket_to_order.add_to_cart')}
             </button>
           }
         </div>

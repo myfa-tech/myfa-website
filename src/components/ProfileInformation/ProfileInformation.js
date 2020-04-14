@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import useTranslate from '../../hooks/useTranslate';
 import { updateUser } from '../../services/users';
+import UserStorage from '../../services/UserStorage';
 
 import './ProfileInformation.scss';
 
@@ -16,7 +17,7 @@ const spinnerStyle = css`
 `;
 
 const ProfileInformation = () => {
-  const user = (typeof window !== 'undefined') ? JSON.parse(window.localStorage.getItem('user')) : {};
+  const user = UserStorage.getUser();
   const [t] = useTranslate();
 
   const [errors, setErrors] = useState({

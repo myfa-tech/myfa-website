@@ -62,15 +62,15 @@
       "fruits_basket_title": "Panier Fruits 🍌",
       "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
       "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
-      "vegetables_basket_title": "Panier Légumes 🧅",
-      "vegetables_basket_home_description": "Oignons, carottes, Ignames...",
-      "vegetables_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
+      "legumes_basket_title": "Panier Légumes 🧅",
+      "legumes_basket_home_description": "Oignons, carottes, Ignames...",
+      "legumes_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
       "sauces_basket_title": "Panier Sauces 🍗🍖",
       "sauces_basket_home_description": "Poivre, sel, gingembre...",
       "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
-      "custom_basket_title": "Panier MYFA 🙌🏾",
-      "custom_basket_home_description": "À vous de le composer !",
-      "custom_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
+      "myfa_basket_title": "Panier MYFA 🙌🏾",
+      "myfa_basket_home_description": "À vous de le composer !",
+      "myfa_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -98,15 +98,18 @@
       "title": "L'équipe",
       "doris_description": "Avec MYFA, j’ai voulu créer un moyen de pouvoir faire plaisir, sans frustrations. Ici, je sais ce que devient mon argent.",
       "florian_description": "Notre ambition est d'apporter une vraie bonne solution aux problèmes causés par la distance. Nous rapprochons les familles.",
-      "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !"
+      "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !",
+      "manuella_description": "Chez MYFA, procurer de la joie à vos proches est notre Objectif."
     },
     "news": {
       "title": "Actualités",
-      "read_more_button": "Lire la suite",
-      "slide1_description": "La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.",
-      "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
-      "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
-      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style..."
+      "read_more_button": "Lire",
+      "slide1_description": "Vous, le premier membre de la MYFA",
+      "slide2_description": "Un voyage d’affaires à Abidjan",
+      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA y sera",
+      "slide4_description": "MYFA, une application pensée pour la mif",
+      "slide5_description": "En plein confinement, je trouve un emploi",
+      "slide6_description": "Récession : comment je parviens à maintenir la croissance de ma Start up ?"
     },
     "newsletter": {
       "title": "Abonnez-vous à notre newsletter !",
@@ -216,7 +219,7 @@
     "add_to_cart": "Ajouter au panier",
     "other_baskets": "Nos autres paniers"
   },
-  "custom_basket_to_order": {
+  "myfa_basket_to_order": {
     "bases": "Bases",
     "veggies": "Légumes",
     "fruits": "Fruits",

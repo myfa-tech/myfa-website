@@ -13,11 +13,11 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 
-import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
 import useFetchCustomBasket from '../../hooks/useFetchCustomBasket';
 
 import './CustomBasketToOrder.scss';
+import CartStorage from '../../services/CartStorage';
 
 const SUPP_PRICE = 1.5;
 
@@ -89,30 +89,16 @@ const CustomBasketToOrder = () => {
     setStep(step - 1);
   };
 
-  const addToCart = (currentBasket, qty, quickPay = false) => {
-    if (typeof window !== 'undefined') {
-      const eventEmitter = new EventEmitter();
-      let cart = JSON.parse(window.localStorage.getItem('cart'));
+  const addToCart = async (currentBasket, qty, quickPay = false) => {
+    const updatedBasket = { ...basket, ...currentBasket };
+    let newBasket = { ...customBasketDetails, price: basketPrice, items: { ...updatedBasket, supps: currentBasket.supps }};
 
-      setBasket({ ...basket, ...currentBasket });
+    setBasket({ ...newBasket });
 
-      let newBasket = { ...customBasketDetails, price: basketPrice, items: { ...basket, supps: currentBasket.supps }};
-      setBasket({ ...newBasket });
+    await CartStorage.addToCart(newBasket, qty);
 
-      if (!cart) {
-        cart = [];
-      }
-
-      for (let i=0; i<qty; i++) {
-        cart.push(newBasket);
-      }
-
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-      eventEmitter.emit('editCart');
-
-      if (!quickPay) {
-        toggleCartModal();
-      }
+    if (!quickPay) {
+      toggleCartModal();
     }
   };
 
@@ -127,14 +113,14 @@ const CustomBasketToOrder = () => {
         <Col md='4' lg='3'>
           <div className='basket-img-container'>
             <img src={customBasketDetails.img} alt={customBasketDetails.imgAlt} />
-            <p>{t('custom_basket_to_order.photo_disclaimer')}</p>
+            <p>{t('myfa_basket_to_order.photo_disclaimer')}</p>
           </div>
         </Col>
         <Col md='8' lg='7'>
           <h1>{t(customBasketDetails.labelTranslate)}</h1>
 
           <h2>
-            <span className='new-price'>{t('custom_basket_to_order.from')} {customBasketDetails.price}€</span>
+            <span className='new-price'>{t('myfa_basket_to_order.from')} {customBasketDetails.price}€</span>
           </h2>
 
           <p className='description'>
@@ -145,16 +131,16 @@ const CustomBasketToOrder = () => {
             <ThemeProvider theme={theme}>
               <Stepper activeStep={step - 1} alternativeLabel>
                 <Step>
-                  <StepLabel>{t('custom_basket_to_order.stepper_bases_fruits')}</StepLabel>
+                  <StepLabel>{t('myfa_basket_to_order.stepper_bases_fruits')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>{t('custom_basket_to_order.stepper_veggies')}</StepLabel>
+                  <StepLabel>{t('myfa_basket_to_order.stepper_veggies')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>{t('custom_basket_to_order.stepper_sauces')}</StepLabel>
+                  <StepLabel>{t('myfa_basket_to_order.stepper_sauces')}</StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel>{t('custom_basket_to_order.stepper_supps')}</StepLabel>
+                  <StepLabel>{t('myfa_basket_to_order.stepper_supps')}</StepLabel>
                 </Step>
               </Stepper>
             </ThemeProvider>
@@ -200,10 +186,10 @@ const CustomBasketToOrder = () => {
         <Col xs={0} lg={2} id='sliding-infos-container' className='.d-none .d-lg-block'>
           <div id='sliding-infos' style={slidingInfosTop ? { position: 'absolute', bottom: 0 } : { position: 'fixed', top: 100 }}>
             <h2>{customBasketDetails.label}</h2>
-            <p>{t('custom_basket_to_order.price_from')} {customBasketDetails.price} €</p>
-            <p>{t('custom_basket_to_order.your_basket')} : <b>{basketPrice.toFixed(2)} €</b></p>
+            <p>{t('myfa_basket_to_order.price_from')} {customBasketDetails.price} €</p>
+            <p>{t('myfa_basket_to_order.your_basket')} : <b>{basketPrice.toFixed(2)} €</b></p>
             <button className={`pay-button ${canPay ? '' : 'disabled'}`} disabled={!canPay} onClick={pay}>
-              {t('custom_basket_to_order.checkout')}
+              {t('myfa_basket_to_order.checkout')}
             </button>
           </div>
         </Col>
