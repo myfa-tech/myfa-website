@@ -103,7 +103,7 @@ const News = () => {
           <div key={slide.id}>
             <div className='article-block'>
               <FaQuoteLeft size='2em' className='quote-icon' />
-              <p>
+              <p className='article-title'>
                 {slide.description}
               </p>
               <a href={slide.url} className='btn-news'>{t('home_page.news.read_more_button')}</a>

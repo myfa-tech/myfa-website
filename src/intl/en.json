@@ -103,13 +103,13 @@
     },
     "news": {
       "title": "News",
-      "read_more_button": "Read more",
-      "slide1_description": "Last week we participated in the MobileOne conference. For two days, the event covers all aspects related to mobile, from technique to marketing. The various issues are dealt with in the form of 30-minute lectures.",
-      "slide2_description": "If we had been told, 8 months ago, when we launched out, that things would materialize so quickly, I would not have believed it, and Doris neither. It has already been 1 week since we returned from our first \"business trip\", no more and no less than in Côte d'Ivoire. In Africa, a continent that is dear to us.",
-      "slide3_description": "We agree, the name of the event is long. But the principle is simple! \"Women\", I believe you understood already, means that the promoters of projects are only women (Who run the world? Ask Beyoncé).",
-      "slide4_description": "Huh? What? What does \"Myfa\" mean? It means \"family\" in \"verlan\". Verlan is a form of French slang which consists of inverting the syllables of a word. So you understand now where the singer Stromae got his name from... The \"y\"? just for style...",
-      "slide5_description": "In this Covid-19 Pandemic that is raging around the world, several companies are down. As containment is de rigueur in most countries, a financial crisis has arisen and only a few large companies have managed to stabilize their economic activity.",
-      "slide6_description": "This is the second time I have started with a title like this. I used the same in my last article on LinkedIn: it was April 1, I announced the closure of MYFA, as an April Fool. Laughing instead of panicking is my remedy."
+      "read_more_button": "Read",
+      "slide1_description": "You, the first member of MYFA",
+      "slide2_description": "A business trip to Abidjan",
+      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA will be there",
+      "slide4_description": "MYFA, an application designed for the family",
+      "slide5_description": "During times of confinement, I find a job",
+      "slide6_description": "Recession: how do I manage to maintain the growth of my Start-up?"
     },
     "newsletter": {
       "title": "Subscribe to our newsletter !",

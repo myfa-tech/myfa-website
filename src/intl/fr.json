@@ -103,13 +103,13 @@
     },
     "news": {
       "title": "Actualités",
-      "read_more_button": "Lire la suite",
-      "slide1_description": "La semaine dernière nous participions à la conférence MobileOne. Pendant deux jours, l'événement couvre tous les aspects liés au mobile, de la technique au marketing. Les différentes problématiques sont traitées sous forme de conférences de 30 minutes.",
-      "slide2_description": "Si on nous avait dit, il y a 8 mois, lorsque nous nous lancions, que les choses se concrétiseraient aussi rapidement, je n’y aurais pas cru, et Doris non plus. Voilà déjà 1 semaine que nous sommes rentrés de notre premier “voyage d’affaires”, ni plus ni moins qu’en Côte d’Ivoire. En Afrique, continent qui nous est cher.",
-      "slide3_description": "On est d’accord, le nom de l’évènement est long. Mais le principe est simple ! « Women », vous l’aurez compris, signifie que les porteuses de projets sont uniquement des femmes (Who run the world ? demandez à Beyoncé).",
-      "slide4_description": "Hein ? Quoi ? Que veut dire “Myfa” ? Cela veut dire “famille” en verlan. Le verlan étant une forme d'argot français qui consiste en l'inversion des syllabes d'un mot. Vous comprendrez donc d’où le chanteur Stromae tient son nom… Le y ? juste pour le style...",
-      "slide5_description": "De cette Pandémie Covid-19 qui sévit dans le monde entier, plusieurs entreprises sont en baisse d’activité. Le confinement étant de rigueur dans la plupart des pays, est née une crise financière et seules quelques grandes entreprises arrivent à stabiliser leur activité économique.",
-      "slide6_description": "C'est la deuxième fois que je commence par un titre comme celui-ci. J'ai utilisé le même dans mon dernier article, sur LinkedIn : c'était le 1er avril dernier, j'y annonçais la fermeture de MYFA, en guise de poisson d'avril. Rire au lieu de paniquer, tel est mon remède."
+      "read_more_button": "Lire",
+      "slide1_description": "Vous, le premier membre de la MYFA",
+      "slide2_description": "Un voyage d’affaires à Abidjan",
+      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA y sera",
+      "slide4_description": "MYFA, une application pensée pour la mif",
+      "slide5_description": "En plein confinement, je trouve un emploi",
+      "slide6_description": "Récession : comment je parviens à maintenir la croissance de ma Start up ?"
     },
     "newsletter": {
       "title": "Abonnez-vous à notre newsletter !",
