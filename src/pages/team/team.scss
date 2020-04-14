@@ -1,5 +1,5 @@
 
-#team {
+.team {
   .content-container {
     background-color: rgba(241, 216, 102, 0.1);
     border-radius: 8px;
@@ -70,7 +70,7 @@
 }
 
 @media (max-width: 768px) {
-  #team {
+  .team {
     .content-container {
       .article-block {
         .author-id {
@@ -92,7 +92,7 @@
 }
 
 @media (max-width: 480px) {
-  #team {
+  .team {
     .title-container {
       h2 {
         font-size: 27px;
@@ -108,7 +108,7 @@
 }
 
 @media (max-width: 350px) {
-  #team {
+  .team {
     h2 {
       font-size: 23px;
     }

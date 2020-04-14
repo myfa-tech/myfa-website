@@ -159,24 +159,20 @@ const Header = () => {
 
     let basketsAnchor = document.getElementById('baskets');
     let promiseAnchor = document.getElementById('our-promise');
-    let teamAnchor = document.getElementById('team');
     let newsAnchor = document.getElementById('news');
 
     let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
     let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
-    let teamHeight = teamAnchor ? teamAnchor.offsetTop - 200 : null;
     let newsHeight = newsAnchor ? newsAnchor.offsetTop - 200 : null;
     let cursor = window.pageYOffset;
 
-    if (basketsHeight && promiseHeight && teamHeight) {
+    if (basketsHeight && promiseHeight && newsHeight) {
       if (cursor < basketsHeight && underlinedSection !== 'home') {
         setUnderlinedSection('home');
       } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
         setUnderlinedSection('baskets');
-      } else if (cursor >= promiseHeight && cursor < teamHeight && underlinedSection !== 'promise') {
+      } else if (cursor >= promiseHeight && cursor < newsHeight && underlinedSection !== 'promise') {
         setUnderlinedSection('promise');
-      } else if (cursor >= teamHeight && cursor < newsHeight && underlinedSection !== 'team') {
-        setUnderlinedSection('team');
       } else if (cursor >= newsHeight && underlinedSection !== 'news') {
         setUnderlinedSection('news');
       }
@@ -276,8 +272,8 @@ const Header = () => {
             <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'team' ? 'underlined' : ''}`} href={`/${locale}/#team`}>{t('header.team')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href={`/${locale}/#news`}>{t('header.news')}</Nav.Link>
+            <Nav.Link href={`/${locale}/team`}>{t('header.team')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown
                 onMouseEnter={toggleIsProfileNavOpen}

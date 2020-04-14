@@ -1,6 +1,9 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { FaLinkedinIn, FaTwitter, FaQuoteLeft } from 'react-icons/fa'
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { FaLinkedinIn, FaTwitter, FaQuoteLeft } from 'react-icons/fa';
+
+import SEO from '../../components/seo';
+import Layout from '../../components/layout';
 
 import useTranslate from '../../hooks/useTranslate';
 import dorisSrc from '../../images/doris.png';
@@ -8,13 +11,15 @@ import florianSrc from '../../images/florian.png';
 import alexSrc from '../../images/alex.png';
 import manuellaSrc from '../../images/manuella.png';
 
-import './Team.scss'
+import './team.scss';
 
-const Team = () => {
+const TeamPage = () => {
   const [t] = useTranslate();
 
   return (
-    <section id='team' className='section-4'>
+    <Layout noBackgroundColor={true} className='team'>
+      <SEO title='Team' />
+
       <div className='title-container'>
         <h2>{t('home_page.team.title')} 🏆</h2>
       </div>
@@ -95,8 +100,8 @@ const Team = () => {
           </div>
         </Col>
       </Row>
-    </section>
-  )
+    </Layout>
+  );
 };
 
-export default Team;
+export default TeamPage;
