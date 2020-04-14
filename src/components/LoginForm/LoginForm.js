@@ -63,6 +63,7 @@ const LoginForm = ({ onLogin }) => {
           lastname: name.split(' ')[1],
           email,
           cgu: true,
+          emailConfirmed: true,
           fbToken: response.accessToken,
         };
 
@@ -90,6 +91,7 @@ const LoginForm = ({ onLogin }) => {
           lastname: familyName,
           email,
           cgu: true,
+          emailConfirmed: true,
           googleToken: response.accessToken,
         };
 
