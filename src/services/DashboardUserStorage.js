@@ -12,7 +12,7 @@ const deleteUser = () => {
 
 const getUser = () => {
   if (typeof window !== 'undefined') {
-    const user = window.localStorage.getItem('myfaDashboardUser');
+    const user = JSON.parse(window.localStorage.getItem('myfaDashboardUser'));
 
     return user;
   }
@@ -35,7 +35,7 @@ const saveUser = (user, token, shouldEmitLogin = false) => {
     window.localStorage.setItem('myfaDashboardUser', JSON.stringify(user));
 
     if (!!token) {
-      window.localStorage.setItem('userToken', token);
+      window.localStorage.setItem('myfaDashboardToken', token);
     }
 
     if (shouldEmitLogin) {
