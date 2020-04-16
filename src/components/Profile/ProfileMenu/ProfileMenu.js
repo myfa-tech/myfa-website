@@ -4,12 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 
-import { deleteAccount } from '../../services/users';
-import useTranslate from '../../hooks/useTranslate';
+import { deleteAccount } from '../../../services/users';
+import useTranslate from '../../../hooks/useTranslate';
 
 import './ProfileMenu.scss';
 
-import logoHandsSrc from '../../images/logo-1.png';
+import logoHandsSrc from '../../../images/logo-1.png';
 
 const ProfileMenu = ({ pageName }) => {
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);

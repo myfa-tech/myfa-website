@@ -5,9 +5,9 @@ import { ClipLoader } from 'react-spinners';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import useTranslate from '../../hooks/useTranslate';
-import { updateUser } from '../../services/users';
-import UserStorage from '../../services/UserStorage';
+import useTranslate from '../../../hooks/useTranslate';
+import { updateUser } from '../../../services/users';
+import UserStorage from '../../../services/UserStorage';
 
 import './ProfileInformation.scss';
 

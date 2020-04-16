@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './ProfileGreeting.scss';
-import useTranslate from '../../hooks/useTranslate';
-import UserStorage from '../../services/UserStorage';
+import useTranslate from '../../../hooks/useTranslate';
+import UserStorage from '../../../services/UserStorage';
 
 const ProfileGreeting = () => {
   const { firstname } = UserStorage.getUser();

@@ -5,14 +5,14 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import useTranslate from '../../hooks/useTranslate';
-import { updateUser } from '../../services/users';
-import useRelativeForm from '../../hooks/useRelativeForm';
+import useTranslate from '../../../hooks/useTranslate';
+import { updateUser } from '../../../services/users';
+import useRelativeForm from '../../../hooks/useRelativeForm';
 
-import logoHandsSrc from '../../images/logo-1.png';
+import logoHandsSrc from '../../../images/logo-1.png';
 
 import './ProfileRelatives.scss';
-import UserStorage from '../../services/UserStorage';
+import UserStorage from '../../../services/UserStorage';
 
 const spinnerStyle = css`
   display: block;
