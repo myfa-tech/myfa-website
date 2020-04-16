@@ -1,4 +1,10 @@
 table {
+
+  th {
+    padding: 0.25rem 0.75rem !important;
+    background-color: rgb(226, 226, 226);
+  }
+
   tr {
     &.warning {
       background-color: rgb(255, 221, 158);
@@ -6,6 +12,14 @@ table {
 
     &.canceled {
       background-color: rgb(255, 191, 191);
+    }
+
+    &.done {
+      background-color: rgb(114, 209, 150);
+    }
+
+    &.blank {
+      background-color: rgb(255, 255, 255);
     }
   }
 }
