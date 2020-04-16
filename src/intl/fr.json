@@ -2,6 +2,9 @@
   "site_seo": {
     "description": "MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !"
   },
+  "asterisks": {
+    "working_days": "48h sur les jours ouvrables"
+  },
   "reset_password": {
     "title": "Mot de passe oublié",
     "validate": "Valider",

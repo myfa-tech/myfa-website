@@ -10,6 +10,8 @@ import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
 import Covid19 from '../components/Covid19';
+import Asterisks from '../components/Asterisks';
+
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 import './index.scss';
@@ -30,6 +32,7 @@ const IndexPage = () => {
       <Trustees />
       <News />
       <Newsletter />
+      <Asterisks />
     </Layout>
   );
 }

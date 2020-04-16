@@ -2,6 +2,9 @@
   "site_seo": {
     "description": "MYFA allows you to compose a basket of food goods for your relatives in Ivory Coast!"
   },
+  "asterisks": {
+    "working_days": "48h over working days"
+  },
   "reset_password": {
     "title": "Forgot your password",
     "validate": "Validate",

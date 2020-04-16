@@ -60,7 +60,7 @@ const Home = ({ setShowToast, showToast, toastType }) => {
           <Col md={1} className='image-container'></Col>
           <Col md={10}>
             <img src={logoSrc} alt='logo' className='logo-big' />
-            <h1 className='title'>{t('home_page.home.title')}</h1>
+            <h1 className='title'>{t('home_page.home.title')}*</h1>
 
             <a className='btn-main link' href='#baskets'>{t('home_page.home.discover_baskets_button')} 🥭</a>
           </Col>
