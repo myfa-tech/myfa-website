@@ -11,6 +11,7 @@ import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
 import Covid19 from '../components/Covid19';
 import Asterisks from '../components/Asterisks';
+import ThanksSection from '../components/ThanksSection';
 
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
@@ -31,6 +32,7 @@ const IndexPage = () => {
       <OurPromise />
       <Trustees />
       <News />
+      <ThanksSection />
       <Newsletter />
       <Asterisks />
     </Layout>
