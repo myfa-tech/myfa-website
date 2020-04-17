@@ -55,6 +55,12 @@ const News = () => {
 
   const slides = [
     {
+      id:'profiter-confinement-ameliorer-startup',
+      description: t('home_page.news.slide7_description'),
+      url: '/articles/profiter-confinement-ameliorer-startup',
+      author: 'florian',
+    },
+    {
       id:'recession-croissance-startup',
       description: t('home_page.news.slide6_description'),
       url: '/articles/recession-croissance-startup',
