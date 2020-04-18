@@ -92,8 +92,6 @@ const ThanksSection = () => {
             </div>
           ))}
         </Slider>
-
-        <a href={`/${locale}/comments`} className='comments-button'>Ils en parlent</a>
       </div>
     </section>
   );
