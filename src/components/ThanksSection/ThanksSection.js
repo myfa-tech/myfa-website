@@ -13,7 +13,7 @@ import useTranslate from '../../hooks/useTranslate';
 import './ThanksSection.scss';
 
 const ThanksSection = () => {
-  const [t] = useTranslate();
+  const [t, locale] = useTranslate();
 
   const settings = {
     dots: true,
@@ -32,7 +32,7 @@ const ThanksSection = () => {
           slidesToScroll: 2,
           infinite: false,
           dots: true
-        }
+        },
       },
       {
         breakpoint: 600,
@@ -40,15 +40,15 @@ const ThanksSection = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
-        }
-      }
+        },
+      },
     ],
     nextArrow: <IoMdArrowDropright />,
     prevArrow: <IoMdArrowDropleft />,
@@ -92,6 +92,8 @@ const ThanksSection = () => {
             </div>
           ))}
         </Slider>
+
+        <a href={`/${locale}/comments`} className='comments-button'>Ils en parlent</a>
       </div>
     </section>
   );

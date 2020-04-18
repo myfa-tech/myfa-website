@@ -30,9 +30,9 @@ const IndexPage = () => {
       <HowItWorks />
       <Baskets />
       <OurPromise />
+      <ThanksSection />
       <Trustees />
       <News />
-      <ThanksSection />
       <Newsletter />
       <Asterisks />
     </Layout>
