@@ -115,6 +115,7 @@ const Header = () => {
   const [t, locale] = useTranslate();
   const [frHref, setFrHref] = useState('/fr');
   const [enHref, setEnHref] = useState('/en');
+  const [navExpanded, setNavExpanded] = useState(false);
 
   const eventEmitter = new EventEmitter();
 
@@ -260,15 +261,19 @@ const Header = () => {
     setCart({ ...cart });
   };
 
+  const closeNav = () => {
+    setNavExpanded(false);
+  };
+
   return (
     <Container id='header'>
-      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
+      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`} onToggle={setNavExpanded} expanded={navExpanded}>
         <Navbar.Brand href={`/${locale}`}>
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className='menu'>
+          <Nav className='menu' onSelect={closeNav}>
             <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
