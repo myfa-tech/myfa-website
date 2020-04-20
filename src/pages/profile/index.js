@@ -3,9 +3,9 @@ import { Col, Row } from 'react-bootstrap';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
-import ProfileGreeting from '../../components/ProfileGreeting';
-import ProfileMenu from '../../components/ProfileMenu';
-import ProfileInformation from '../../components/ProfileInformation';
+import ProfileGreeting from '../../components/Profile/ProfileGreeting';
+import ProfileMenu from '../../components/Profile/ProfileMenu';
+import ProfileInformation from '../../components/Profile/ProfileInformation';
 
 import { useAuthentication } from '../../hooks/useAuthentication';
 

@@ -5,11 +5,14 @@ import SEO from '../components/seo';
 import Home from '../components/Home';
 import OurPromise from '../components/OurPromise';
 import Newsletter from '../components/Newsletter';
-import News from '../components/News';
+import Blog from '../components/Blog';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
 import Covid19 from '../components/Covid19';
+import Asterisks from '../components/Asterisks';
+import ThanksSection from '../components/ThanksSection';
+
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 import './index.scss';
@@ -27,9 +30,11 @@ const IndexPage = () => {
       <HowItWorks />
       <Baskets />
       <OurPromise />
+      <ThanksSection />
       <Trustees />
-      <News />
+      <Blog />
       <Newsletter />
+      <Asterisks />
     </Layout>
   );
 }

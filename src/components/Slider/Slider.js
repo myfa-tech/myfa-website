@@ -33,7 +33,7 @@ export default class extends React.Component {
                 <p>
                   {slide.description}
                 </p>
-                <a href={slide.url} className='btn-news'>
+                <a href={slide.url} className='btn-blog'>
                   Lire la suite
                 </a>
                 <div className='author-id'>

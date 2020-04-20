@@ -6,14 +6,14 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import { getBasketsByEmail } from '../../services/orders';
-import useTranslate from '../../hooks/useTranslate';
-import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+import { getBasketsByEmail } from '../../../services/orders';
+import useTranslate from '../../../hooks/useTranslate';
+import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
 
-import defaultBasketSrc from '../../images/default-basket.png';
+import defaultBasketSrc from '../../../images/default-basket.png';
 
 import './ProfileOrders.scss';
-import UserStorage from '../../services/UserStorage';
+import UserStorage from '../../../services/UserStorage';
 
 const basketStatus = {
   'pending': 'Commandé',

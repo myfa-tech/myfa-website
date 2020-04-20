@@ -29,7 +29,7 @@ const Article = (props) => (
           <h1>En plein confinement, je trouve un emploi</h1>
 
           <div className='author'>
-            <img src={manuellaSrc} alt='doris' />
+            <img src={manuellaSrc} alt='manuella' />
             <div>
               <span>Manuella Sani</span>
               <span className='date'>{moment.utc(1586690758064).format('D MMM YYYY')}</span>

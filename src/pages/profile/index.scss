@@ -16,7 +16,7 @@
     }
   }
 
-  .information-container, .orders-container, .relatives-container {
+  .information-container, .orders-container, .relatives-container, .password-container {
     width: 90%;
     margin: 0 auto;
 
@@ -37,7 +37,7 @@
 
 @media (min-width: 768px) {
   .profile {
-    .profile-container, .information-container, .orders-container, .relatives-container {
+    .profile-container, .information-container, .orders-container, .relatives-container, .password-container {
       .right-column {
         display: block;
         padding-right: 0;
@@ -54,7 +54,7 @@
 
 @media (max-width: 480px) {
   .profile {
-    .information-container, .orders-container, .relatives-container {
+    .information-container, .orders-container, .relatives-container, .password-container {
       width: 100%;
     }
   }
@@ -62,7 +62,7 @@
 
 @media (max-width: 350px) {
   .profile {
-    .information-container, .orders-container, .relatives-container {
+    .information-container, .orders-container, .relatives-container, .password-container {
       .right-column {
         padding: 0;
       }

@@ -115,6 +115,7 @@ const Header = () => {
   const [t, locale] = useTranslate();
   const [frHref, setFrHref] = useState('/fr');
   const [enHref, setEnHref] = useState('/en');
+  const [navExpanded, setNavExpanded] = useState(false);
 
   const eventEmitter = new EventEmitter();
 
@@ -159,22 +160,22 @@ const Header = () => {
 
     let basketsAnchor = document.getElementById('baskets');
     let promiseAnchor = document.getElementById('our-promise');
-    let newsAnchor = document.getElementById('news');
+    let blogAnchor = document.getElementById('blog');
 
     let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
     let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
-    let newsHeight = newsAnchor ? newsAnchor.offsetTop - 200 : null;
+    let blogHeight = blogAnchor ? blogAnchor.offsetTop - 200 : null;
     let cursor = window.pageYOffset;
 
-    if (basketsHeight && promiseHeight && newsHeight) {
+    if (basketsHeight && promiseHeight && blogHeight) {
       if (cursor < basketsHeight && underlinedSection !== 'home') {
         setUnderlinedSection('home');
       } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
         setUnderlinedSection('baskets');
-      } else if (cursor >= promiseHeight && cursor < newsHeight && underlinedSection !== 'promise') {
+      } else if (cursor >= promiseHeight && cursor < blogHeight && underlinedSection !== 'promise') {
         setUnderlinedSection('promise');
-      } else if (cursor >= newsHeight && underlinedSection !== 'news') {
-        setUnderlinedSection('news');
+      } else if (cursor >= blogHeight && underlinedSection !== 'blog') {
+        setUnderlinedSection('blog');
       }
     }
   };
@@ -260,19 +261,23 @@ const Header = () => {
     setCart({ ...cart });
   };
 
+  const closeNav = () => {
+    setNavExpanded(false);
+  };
+
   return (
     <Container id='header'>
-      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`}>
+      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`} onToggle={setNavExpanded} expanded={navExpanded}>
         <Navbar.Brand href={`/${locale}`}>
           <img src={logoLettersSrc} alt='logo' className='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className='menu'>
+          <Nav className='menu' onSelect={closeNav}>
             <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
             <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'news' ? 'underlined' : ''}`} href={`/${locale}/#news`}>{t('header.news')}</Nav.Link>
+            <Nav.Link className={`${underlinedSection === 'blog' ? 'underlined' : ''}`} href={`/${locale}/#blog`}>{t('header.blog')}</Nav.Link>
             <Nav.Link href={`/${locale}/team`}>{t('header.team')}</Nav.Link>
             {isLoggedIn ?
               <NavDropdown

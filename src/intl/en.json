@@ -2,6 +2,9 @@
   "site_seo": {
     "description": "MYFA allows you to compose a basket of food goods for your relatives in Ivory Coast!"
   },
+  "asterisks": {
+    "working_days": "48h over working days"
+  },
   "reset_password": {
     "title": "Forgot your password",
     "validate": "Validate",
@@ -63,7 +66,7 @@
       "fruits_basket_home_description": "Bananas, oranges, coconut...",
       "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
       "legumes_basket_title": "Veggies Basket 🧅",
-      "legumes_basket_home_description": "Onions, carots, yams...",
+      "legumes_basket_home_description": "Onions, carrots, yams...",
       "legumes_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
       "sauces_basket_title": "Sauces Basket 🍗🍖",
       "sauces_basket_home_description": "Pepper, salt, ginger...",
@@ -89,7 +92,7 @@
       "title": "Our promise",
       "image_title": "Florian, Doris & Alexandre",
       "paragraph_title": "Ensure the well-being of your loved ones.",
-      "paragraph_description": "Sending money to family is good. Make sure they ate is even better."
+      "paragraph_description": "Sending money to family is good. Make sure they eat is even better."
     },
     "trustees": {
       "title": "They trust us"
@@ -101,15 +104,17 @@
       "alex_description": "We offer you a new experience to delight your loved ones and maintain confidence despite the distance!",
       "manuella_description": "At MYFA, bringing joy to your loved ones is our goal."
     },
-    "news": {
-      "title": "News",
+    "blog": {
+      "title": "Blog",
       "read_more_button": "Read",
       "slide1_description": "You, the first member of MYFA",
       "slide2_description": "A business trip to Abidjan",
       "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA will be there",
       "slide4_description": "MYFA, an application designed for the family",
       "slide5_description": "During times of confinement, I find a job",
-      "slide6_description": "Recession: how do I manage to maintain the growth of my Start-up?"
+      "slide6_description": "Recession: how do I manage to maintain the growth of my Start-up?",
+      "slide7_description": "How to take advantage of confinement to improve my startup site?",
+      "slide8_description": "My role as CFO at MYFA in times of health crisis"
     },
     "newsletter": {
       "title": "Subscribe to our newsletter !",
@@ -128,7 +133,7 @@
     "baskets": "Baskets",
     "promise": "Our promise",
     "team": "Team",
-    "news": "News",
+    "blog": "Blog",
     "profile": {
       "account": "My account",
       "information": "My info",
@@ -384,7 +389,7 @@
     "1_pineapple": "1 pineapple",
     "1kg_mangos": "1kg mangoes",
     "1kg_avocados": "1kg avocados",
-    "1kg_carots": "1kg carots",
+    "1kg_carots": "1kg carrots",
     "2kg_potatoes": "2kg potatoes",
     "1kg_yams": "1kg yams",
     "1_red_cabbage": "1 red cabbage",

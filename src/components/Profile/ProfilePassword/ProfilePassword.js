@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
-import useTranslate from '../../hooks/useTranslate';
-import { updatePassword } from '../../services/users';
+import useTranslate from '../../../hooks/useTranslate';
+import { updatePassword } from '../../../services/users';
 
 import './ProfilePassword.scss';
 
