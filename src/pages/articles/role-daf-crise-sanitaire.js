@@ -77,7 +77,7 @@ const Article = (props) => (
 
           <p>
             Mais nous devons prévoir tous les scénarios possibles ! Aujourd’hui, nous sommes rivés sur
-            Abidjan, ancienne capitale de la Côte d’Ivoire. Mais demain, nous irons aller ailleurs.
+            Abidjan, ancienne capitale de la Côte d’Ivoire. Mais demain, nous irons ailleurs.
           </p>
 
           <p>
