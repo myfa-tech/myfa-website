@@ -5,7 +5,7 @@ import SEO from '../components/seo';
 import Home from '../components/Home';
 import OurPromise from '../components/OurPromise';
 import Newsletter from '../components/Newsletter';
-import News from '../components/News';
+import Blog from '../components/Blog';
 import Baskets from '../components/Baskets';
 import HowItWorks from '../components/HowItWorks';
 import Trustees from '../components/Trustees';
@@ -32,7 +32,7 @@ const IndexPage = () => {
       <OurPromise />
       <ThanksSection />
       <Trustees />
-      <News />
+      <Blog />
       <Newsletter />
       <Asterisks />
     </Layout>

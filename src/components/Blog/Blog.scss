@@ -1,5 +1,5 @@
 
-#news {
+#blog {
   .heading {
 		text-align: center;
     color: #777777;
@@ -78,7 +78,7 @@
     }
   }
 
-  .btn-news {
+  .btn-blog {
     color: #fff;
     border-radius: 30px;
     font-size: 16px;
@@ -96,13 +96,13 @@
 }
 
 @media (max-width: 768px) {
-  #news {
+  #blog {
 
   }
 }
 
 @media (max-width: 480px) {
-  #news {
+  #blog {
     .article-block {
       width: 100%;
     }
@@ -122,7 +122,7 @@
 }
 
 @media (max-width: 350px) {
-  #news {
+  #blog {
     .heading {
       h2 {
         font-size: 23px;

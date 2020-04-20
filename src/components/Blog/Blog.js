@@ -12,7 +12,7 @@ import alexandreSrc from '../../images/alex.png';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './News.scss';
+import './Blog.scss';
 
 const authors = {
   'florian': {
@@ -37,7 +37,7 @@ const authors = {
   },
 };
 
-const News = () => {
+const Blog = () => {
   const [t] = useTranslate();
 
   const settings = {
@@ -55,53 +55,59 @@ const News = () => {
 
   const slides = [
     {
+      id:'role-daf-crise-sanitaire',
+      description: t('home_page.blog.slide8_description'),
+      url: '/articles/role-daf-crise-sanitaire',
+      author: 'alexandre',
+    },
+    {
       id:'profiter-confinement-ameliorer-startup',
-      description: t('home_page.news.slide7_description'),
+      description: t('home_page.blog.slide7_description'),
       url: '/articles/profiter-confinement-ameliorer-startup',
       author: 'florian',
     },
     {
       id:'recession-croissance-startup',
-      description: t('home_page.news.slide6_description'),
+      description: t('home_page.blog.slide6_description'),
       url: '/articles/recession-croissance-startup',
       author: 'doris',
     },
     {
       id:'confinement-trouve-emploi',
-      description: t('home_page.news.slide5_description'),
+      description: t('home_page.blog.slide5_description'),
       url: '/articles/confinement-trouve-emploi',
       author: 'manuella',
     },
     {
       id:'premier-membre-myfa',
-      description: t('home_page.news.slide1_description'),
+      description: t('home_page.blog.slide1_description'),
       url: '/articles/premier-membre-myfa',
       author: 'doris',
     },
     {
       id:'voyage-abidjan',
-      description: t('home_page.news.slide2_description'),
+      description: t('home_page.blog.slide2_description'),
       url: '/articles/voyage-abidjan',
       author: 'florian',
     },
     {
       id:'global-women-startup-weekend-paris',
-      description: t('home_page.news.slide3_description'),
+      description: t('home_page.blog.slide3_description'),
       url: '/articles/global-women-startup-weekend-paris',
       author: 'doris',
     },
     {
       id:'appli-pour-la-mif',
-      description: t('home_page.news.slide4_description'),
+      description: t('home_page.blog.slide4_description'),
       url: '/articles/appli-pour-la-mif',
       author: 'doris',
     },
   ];
 
   return (
-    <section id='news'>
+    <section id='blog'>
       <div className='heading'>
-        <h2>{t('home_page.news.title')} 📰</h2>
+        <h2>{t('home_page.blog.title')} 📰</h2>
       </div>
 
       <Slider {...settings} className='custom-slider'>
@@ -112,7 +118,7 @@ const News = () => {
               <p className='article-title'>
                 {slide.description}
               </p>
-              <a href={slide.url} className='btn-news'>{t('home_page.news.read_more_button')}</a>
+              <a href={slide.url} className='btn-blog'>{t('home_page.blog.read_more_button')}</a>
               <div className='author-id'>
                 <img src={authors[slide.author].img} className='profile-pic' alt={slide.author} />
                 <h4>{authors[slide.author].name}</h4>
@@ -126,4 +132,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Blog;
