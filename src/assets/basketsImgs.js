@@ -3,7 +3,7 @@ import fruitsSrc from '../images/fruits.jpg';
 import saucesSrc from '../images/sauces.jpg';
 import veggiesSrc from '../images/veggies.jpg';
 import ramadanSugarSrc from '../images/ramadan-sugar.jpg';
-import ramadanFruitsSrc from '../images/default-basket.png';
+import ramadanFruitsSrc from '../images/ramadan-fruits.jpg';
 import ramadanFullSrc from '../images/ramadan-full.jpg';
 import myfaSrc from '../images/myfa.jpg';
 
