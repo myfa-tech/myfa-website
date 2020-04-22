@@ -56,7 +56,7 @@ const Baskets = () => {
 			</div>
 
 			<div className='sub-heading'>
-				<h2>{t('home_page.baskets.ramadan_baskets_title')} 🙏🏽</h2>
+				<h2>{t('home_page.baskets.ramadan_baskets_title')}</h2>
 			</div>
 
 			<div>
