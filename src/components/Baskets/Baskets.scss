@@ -214,6 +214,30 @@
 				font-size: 25px;
 			}
 		}
+
+		.baskets-container {
+			&.ramadan-baskets-container {
+				margin: 0 2em;
+			}
+
+			.basket-container {
+				.price-and-buy-container {
+					.price-container {
+						padding-left: 1.5em;
+						padding-right: 0.5em;
+
+						.new-price-euro {
+							font-size: 15px;
+							font-weight: 400;
+						}
+
+						.new-price-cfa {
+							font-size: 15px;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -228,8 +252,20 @@
 			border-radius: 0;
 		}
 
+		.baskets-container {
+			&.ramadan-baskets-container {
+				margin: 0 0.5em;
+			}
+		}
+
 		.basket-container {
 			width: 90%;
+
+			.price-and-buy-container {
+				.price-container {
+					padding-right: 0.5em;
+				}
+			}
 		}
 
 		&.section {

@@ -36,9 +36,9 @@ const basketsImgs = {
 	legumes: veggiesSrc,
 	sauces: saucesSrc,
 	myfa: myfaSrc,
-	ramadanFruits: ramadanFruitsSrc,
-	ramadanSugar: ramadanSugarSrc,
-	ramadanFull: ramadanFullSrc,
+	ramadan_fruits: ramadanFruitsSrc,
+	ramadan_sugar: ramadanSugarSrc,
+	ramadan_full: ramadanFullSrc,
 };
 
 const foodImages = {

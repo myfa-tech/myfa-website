@@ -70,7 +70,7 @@ const BasketToOrder = () => {
             <h1>{t(basket.labelTranslate)}</h1>
 
             <h2>
-              <span className='new-price'>{basket.price} €</span>
+              <span className='new-price'>{basket.price} € - {basket.priceCFA} FCFA</span>
             </h2>
 
             <p className='description'>{t(basket.descriptionTranslate)}</p>
