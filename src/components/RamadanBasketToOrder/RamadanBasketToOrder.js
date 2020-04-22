@@ -8,18 +8,18 @@ import CartModal from '../CartModal';
 
 import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
-import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+import useFetchRamadanBaskets from '../../hooks/useFetchRamadanBaskets';
 import CartStorage from '../../services/CartStorage';
 
-import './BasketToOrder.scss';
+import './RamadanBasketToOrder.scss';
 
 const QTY_MAX = 5;
 
-const BasketToOrder = () => {
+const RamadanBasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
-  const [baskets, setBaskets] = useFetchBasketsInfo([]);
+  const [baskets, setBaskets] = useFetchRamadanBaskets([]);
   const [t, locale] = useTranslate();
 
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
@@ -48,11 +48,7 @@ const BasketToOrder = () => {
 
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
-      if (type === 'myfa') {
-				window.location.assign(`/${locale}/custom-basket`);
-			} else {
-        window.location.assign(`/${locale}/baskets?type=${type}`);
-      }
+      window.location.assign(`/${locale}/ramadan-baskets?type=${type}`);
 		}
   }
 
@@ -127,4 +123,4 @@ const BasketToOrder = () => {
   ): null;
 };
 
-export default BasketToOrder;
+export default RamadanBasketToOrder;

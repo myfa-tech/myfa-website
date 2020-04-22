@@ -2,6 +2,9 @@
 import fruitsSrc from '../images/fruits.jpg';
 import saucesSrc from '../images/sauces.jpg';
 import veggiesSrc from '../images/veggies.jpg';
+import ramadanSugarSrc from '../images/ramadan-sugar.jpg';
+import ramadanFruitsSrc from '../images/ramadan-fruits.jpg';
+import ramadanFullSrc from '../images/ramadan-full.jpg';
 import myfaSrc from '../images/myfa.jpg';
 
 import bananaSrc from '../images/banana.png';
@@ -33,6 +36,9 @@ const basketsImgs = {
 	legumes: veggiesSrc,
 	sauces: saucesSrc,
 	myfa: myfaSrc,
+	ramadan_fruits: ramadanFruitsSrc,
+	ramadan_sugar: ramadanSugarSrc,
+	ramadan_full: ramadanFullSrc,
 };
 
 const foodImages = {
