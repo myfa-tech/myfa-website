@@ -40,6 +40,16 @@ const fetchHomeBaskets = async () => {
   return result.data.baskets;
 };
 
+const fetchRamadanBaskets = async () => {
+  let axios = Axios.create({
+    baseURL: process.env.GATSBY_BACKEND_URL,
+  });
+
+  const result = await axios.get(`/ramadanbaskets/details`);
+
+  return result.data.baskets;
+};
+
 const updateBasketById = async (id, editFields) => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
@@ -53,4 +63,4 @@ const updateBasketById = async (id, editFields) => {
   return response.data;
 }
 
-export { fetchBaskets, fetchCustomBasket, fetchHomeBaskets, updateBasketById };
+export { fetchBaskets, fetchCustomBasket, fetchHomeBaskets, fetchRamadanBaskets, updateBasketById };

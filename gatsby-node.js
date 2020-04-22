@@ -1,11 +1,17 @@
 
-// exports.onCreatePage = async ({ page, actions }) => {
-//   const { createPage } = actions;
-
-//   console.log('path: ', page.path);
-
-//   if (page.path.match(/^\/dashboard/) && page.path !== '/dashboard/login') {
-//     page.matchPath = '/dashboard/*';
-//     createPage(page);
-//   }
+// exports.onCreateWebpackConfig = ({
+//   stage,
+//   rules,
+//   loaders,
+//   plugins,
+//   actions,
+// }) => {
+//   actions.setWebpackConfig({
+//     node: {
+//       net: 'empty',
+//       tls: 'empty',
+//       dns: 'empty',
+//       fs:  'empty',
+//     },
+//   });
 // };
