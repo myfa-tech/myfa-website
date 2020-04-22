@@ -15,6 +15,30 @@
       width: 50%;
     }
 
+    .phone-infos {
+      margin-top: 5em;
+
+      .whatsapp-icon {
+        font-size: 70px;
+        color: #311a19;
+      }
+
+      .number {
+        font-weight: 800;
+        margin-bottom: 0;
+      }
+
+      .hours {
+        font-size: 13px;
+        font-weight: 700;
+        background-color: #F1D866;
+        border: 1px solid #311a19;
+        border-radius: 30px;
+        display: inline-block;
+        padding: 2px 10px;
+      }
+    }
+
     input {
       border-top-left-radius: 6px !important;
       border-bottom-left-radius: 6px !important;
@@ -63,6 +87,8 @@
       color: #311A19;
       border-radius: 6px;
       font-weight: bold;
+      width: 290px;
+      text-align: center;
       margin: auto;
       display: block;
       border: none;
@@ -130,7 +156,16 @@
 
       .image-container {
         img {
-          transform: scale(0.8);
+          width: 40%;
+          margin-top: 0;
+        }
+      }
+
+      .phone-infos {
+        margin-top: 2em;
+
+        .whatsapp-icon {
+          font-size: 40px;
         }
       }
 
@@ -153,6 +188,14 @@
   #home {
     .section-1 {
       height: 100vh;
+
+      .phone-infos {
+        margin-top: 3em;
+
+        .whatsapp-icon {
+          font-size: 50px;
+        }
+      }
 
       .title {
         text-align: center;
@@ -181,6 +224,14 @@
     .section-1 {
       .btn-main {
         padding: 15px 30px;
+      }
+
+      .phone-infos {
+        margin-top: 2em;
+
+        .whatsapp-icon {
+          display: none;
+        }
       }
 
       h2 {

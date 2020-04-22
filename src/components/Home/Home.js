@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Banner from '../Banner';
-import useTranslate from '../../hooks/useTranslate';
-
+import { IoLogoWhatsapp } from 'react-icons/io';
 import Header from '../Header';
 import Toast from '../Toast';
 
+import useTranslate from '../../hooks/useTranslate';
+
 import './Home.scss';
 import logoSrc from '../../images/logo-1.png';
+
+const PhoneInfos = () => (
+  <div className='phone-infos'>
+    <IoLogoWhatsapp className='whatsapp-icon' />
+    <p className='number'>(+225) 84 21 51 54</p>
+    <p className='hours'>9h-18h lun au ven | 9h-13h we et fériés</p>
+  </div>
+);
 
 const Home = ({ setShowToast, showToast, toastType }) => {
   const [showBanner, setShowBanner] = useState(false);
@@ -57,12 +66,24 @@ const Home = ({ setShowToast, showToast, toastType }) => {
         }
         <Header />
         <Row>
-          <Col md={1} className='image-container'></Col>
+          <Col md={1}></Col>
           <Col md={10}>
-            <img src={logoSrc} alt='logo' className='logo-big' />
+            <Row>
+              <Col lg={4} className='d-none d-lg-block'></Col>
+              <Col lg={4} className='image-container'>
+                <img src={logoSrc} alt='logo' className='logo-big' />
+              </Col>
+              <Col lg={4} className='d-none d-lg-block'>
+                <PhoneInfos />
+              </Col>
+            </Row>
             <h1 className='title'>{t('home_page.home.title')}*</h1>
 
             <a className='btn-main link' href='#baskets'>{t('home_page.home.discover_baskets_button')} 🥭</a>
+
+            <div className='d-block d-lg-none'>
+              <PhoneInfos />
+            </div>
           </Col>
           <Col md={1}></Col>
         </Row>
