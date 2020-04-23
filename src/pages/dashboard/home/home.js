@@ -28,6 +28,13 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
     const month_nb_paid_myfa_baskets = goals.find(g => g.id === 'month_nb_paid_myfa_baskets').value;
     const week_nb_paid_myfa_baskets = month_nb_paid_myfa_baskets / 4;
 
+    const month_nb_paid_ramadan_fruits_baskets = goals.find(g => g.id === 'month_nb_paid_ramadan_fruits_baskets').value;
+    const week_nb_paid_ramadan_fruits_baskets = month_nb_paid_ramadan_fruits_baskets / 4;
+    const month_nb_paid_ramadan_sugar_baskets = goals.find(g => g.id === 'month_nb_paid_ramadan_sugar_baskets').value;
+    const week_nb_paid_ramadan_sugar_baskets = month_nb_paid_ramadan_sugar_baskets / 4;
+    const month_nb_paid_ramadan_full_baskets = goals.find(g => g.id === 'month_nb_paid_ramadan_full_baskets').value;
+    const week_nb_paid_ramadan_full_baskets = month_nb_paid_ramadan_full_baskets / 4;
+
     const colors = {
       week_nb_paid_fruits_baskets,
       month_nb_paid_fruits_baskets,
@@ -37,6 +44,12 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
       week_nb_paid_sauces_baskets,
       month_nb_paid_myfa_baskets,
       week_nb_paid_myfa_baskets,
+      month_nb_paid_ramadan_fruits_baskets,
+      week_nb_paid_ramadan_fruits_baskets,
+      month_nb_paid_ramadan_sugar_baskets,
+      week_nb_paid_ramadan_sugar_baskets,
+      month_nb_paid_ramadan_full_baskets,
+      week_nb_paid_ramadan_full_baskets,
     };
 
     if (value < (colors[id] / 2)) {
