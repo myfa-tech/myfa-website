@@ -28,7 +28,7 @@
     height: calc(100% - 48px);
   }
 
-  .comment-container {
+  .comment-container, .message-container {
     width: 100%;
     height: 50px;
     overflow-y: auto;
@@ -50,5 +50,39 @@
         border: 2px solid white; /* should match background, can't be transparent */
         background-color: rgba(0, 0, 0, .5);
     }
+  }
+}
+
+#confirm-change-modal {
+  .logo-big {
+    width: 50%;
+    margin: auto;
+    display: block;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .confirm-button {
+    color: black;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+    border-color: #F1D866;
+    padding: 15px;
+    background-color: #F1D866;
+  }
+
+  .cancel-button {
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+    border-color: grey;
+    padding: 15px;
+    margin: auto;
+    display: block;
+    background-color: grey;
   }
 }
