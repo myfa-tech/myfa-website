@@ -3,6 +3,8 @@ import { Type } from 'react-bootstrap-table2-editor';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import Typography from '@material-ui/core/Typography';
+import Modal from 'react-bootstrap/Modal';
+import { Col, Row } from 'react-bootstrap';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
@@ -84,10 +86,35 @@ const isBasketCanceled = (row) => (row.status === 'canceled');
 
 const isBasketDelivered = (row) => (row.status === 'delivered');
 
+const ConfirmChangeStatusModal = ({ showModal, cancelChange, confirmChange }) => {
+  return (
+    <Modal dialogClassName='modal-90w modal-75w' show={showModal} onHide={cancelChange} id='confirm-change-modal'>
+      <Modal.Header closeButton className='header-text'>Supprimer une demande</Modal.Header>
+      <Modal.Body>
+        <div>
+          <p>Etes-vous sûr(e) de vouloir changer le statut ?</p>
+
+          <Row>
+            <Col xs={6}>
+              <button type='button' className='cancel-button' onClick={cancelChange}>Annuler</button>
+            </Col>
+            <Col xs={6}>
+              <button type='button' className='confirm-button' onClick={confirmChange}>Confirmer</button>
+            </Col>
+          </Row>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
 const DashbboardBaskets = () => {
   const [baskets, setBaskets] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [editStatusField, setEditStatusField] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const [
     popoverInfo,
     setPopoverInfo,
@@ -198,7 +225,7 @@ const DashbboardBaskets = () => {
       },
       editable: false,
       headerStyle: () => {
-        return { width: '250px' };
+        return { width: '180px' };
       }
     },
     {
@@ -242,6 +269,9 @@ const DashbboardBaskets = () => {
     {
       text: 'Création',
       editable: false,
+      headerStyle: () => {
+        return { width: '100px' };
+      },
       formatter: (cell, row, rowIndex) => {
         return new Date(row.createdAt).toLocaleDateString('fr-FR')
       },
@@ -251,6 +281,9 @@ const DashbboardBaskets = () => {
     {
       text: 'Livraison ✏️',
       editable: true,
+      headerStyle: () => {
+        return { width: '110px' };
+      },
       formatter: (cell, row, rowIndex) => {
         return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
       },
@@ -261,11 +294,22 @@ const DashbboardBaskets = () => {
       sort: true,
     },
     {
-      text: 'Commentaire ✏️',
+      text: 'Message',
+      dataField: 'message',
+      editable: false,
+      headerStyle: () => {
+        return { width: '75px' };
+      },
+      formatter: (cell, row, rowIndex) => (
+        <p className='message-container'>{row.message}</p>
+      ),
+    },
+    {
+      text: 'Comment ✏️',
       dataField: 'comment',
       editable: true,
       headerStyle: () => {
-        return { width: '150px' };
+        return { width: '110px' };
       },
       formatter: (cell, row, rowIndex) => (
         <p className='comment-container'>{row.comment}</p>
@@ -288,11 +332,34 @@ const DashbboardBaskets = () => {
     setIsLoading(null);
   };
 
+  const toggleShowConfirmModal = () => {
+    setShowConfirmModal(!showConfirmModal);
+
+    if (!!showConfirmModal && typeof window !== 'undefined') {
+      setEditStatusField(null);
+      window.location.reload();
+    }
+  };
+
+  const confirmChangeStatus = async () => {
+    const { row, column, newValue } = editStatusField;
+
+    const newBasket = await updateBasketById(row._id, { [column.dataField]: newValue });
+    const newBaskets = baskets.map(b => (b._id === row._id) ? newBasket : b);
+
+    setBaskets(newBaskets);
+    toggleShowConfirmModal();
+  };
+
   const saveCell = async (oldValue, newValue, row, column) => {
     if (!!newValue) {
       let newBasket = {};
 
-      if (column.dataField.includes('.')) {
+      if (column.dataField === 'status') {
+        setEditStatusField({ row, newValue, column });
+        toggleShowConfirmModal();
+        return;
+      } else if (column.dataField.includes('.')) {
         const parts = column.dataField.split('.');
         newBasket = await updateBasketById(row._id, { [parts[0]]: { ...row[parts[0]], [parts[1]]: newValue } });
       } else {
@@ -372,6 +439,11 @@ const DashbboardBaskets = () => {
           items={popoverItems}
           open={itemsPopoverOpen}
           handlePopoverClose={handleItemsPopoverClose}
+        />
+        <ConfirmChangeStatusModal
+          showModal={showConfirmModal}
+          cancelChange={toggleShowConfirmModal}
+          confirmChange={confirmChangeStatus}
         />
       </DashboardShell>
     </DashboardLayout>
