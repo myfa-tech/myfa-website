@@ -68,7 +68,7 @@ const Article = (props) => (
             L'aventure MYFA a débuté avec du test-and-learn. Les fonctionnalités présentent sur le site de MYFA (www.myfa.fr),
             relèvent d'un processus méticuleux. Nous commençons par penser à la fonctionnalité; ensuite nous en parlons à
             certains utilisateurs. De ces discussions émanent leurs inquiétudes, leurs impressions quant à cette fonctionnalité,
-            puis nous la retravaillons et leur présentons une maquette sur un outils de design graphique. Une fois la fonctionnalité
+            puis nous la retravaillons et leur présentons une maquette sur un outil de design graphique. Une fois la fonctionnalité
             validée, nous la développons, et la publions sur une adresse de test pour permettre à l’équipe en interne chez MYFA
             de tester de A à Z cette nouvelle fonctionnalité et détecter d’éventuels bugs créés. Après cette période de tests,
             la fonctionnalité est mise en ligne, mais ce n’est pas la fin du processus. Une fois qu’elle est accessible au grand
