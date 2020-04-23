@@ -8,7 +8,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import { getBasketsByEmail } from '../../../services/orders';
 import useTranslate from '../../../hooks/useTranslate';
-import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
+import useFetchAllBasketsInfos from '../../../hooks/useFetchAllBasketsInfos';
 
 import defaultBasketSrc from '../../../images/default-basket.png';
 
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 const ProfileOrders = () => {
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
-  const [basketsDetails, setBasketsDetails] = useFetchBasketsInfo([]);
+  const [basketsDetails, setBasketsDetails] = useFetchAllBasketsInfos([]);
   const user = UserStorage.getUser();
   const [t] = useTranslate();
 
