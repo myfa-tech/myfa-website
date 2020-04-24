@@ -15,10 +15,12 @@ import './mobile_money_orders.scss';
 const OrdersPage = () => {
   const [t, locale] = useTranslate();
   const [isLoading, setIsLoading] = useState(true);
-  const [basket, setBasket] = useState();
-  const  [isRef, setIsRef] = useState(false);
-  const basketRef = getQueryParam('ref');
+  const [baskets, setBaskets] = useState();
+  const [isRef, setIsRef] = useState(false);
+  const [euroToBePaid, setEuroToBePaid] = useState(0);
+  const [cfaToBePaid, setCfaToBePaid] = useState(0);
 
+  const basketRef = getQueryParam('ref');
   const checkRef = async () => {
     try {
       await getOrdersByRef(basketRef);
@@ -38,9 +40,14 @@ const OrdersPage = () => {
       await checkRef();
 
       const ref = window.location.search.substr(5);
-      const { basket: fetchedBasket } = await getOrdersByRef(ref);
+      const { baskets: fetchedBaskets } = await getOrdersByRef(ref);
 
-      setBasket(fetchedBasket);
+      const euros = fetchedBaskets.reduce((acc, cur) => acc + cur.price, 0);
+      const cfas = fetchedBaskets.reduce((acc, cur) => acc + cur.priceCFA, 0);
+
+      setBaskets(fetchedBaskets);
+      setEuroToBePaid(euros);
+      setCfaToBePaid(cfas);
     };
 
     asyncFunc();
@@ -55,6 +62,8 @@ const OrdersPage = () => {
             <h1>{t('orders.title')} 🎉</h1>
 
             <p>{t('orders.description_part_1')} <a href={`/${locale}/profile/orders`}>{t('orders.here')}</a>.</p>
+
+            <p>Reste à payer : {euroToBePaid} € ou {cfaToBePaid} Fcfa</p>
 
             <p><b>Votre commande sera validée une fois le paiement effectué :</b></p>
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
 import { css } from '@emotion/core';
-import { ClipLoader } from 'react-spinners';
 import { some } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
@@ -11,7 +10,7 @@ import CartItems from './CartItems';
 import MessageToRelative from './MessageToRelative';
 import ButtonWithLoader from '../ButtonWithLoader';
 
-import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
+import { addRecipient, loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 import stripeService from '../../services/stripe';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
@@ -39,11 +38,9 @@ const Cart = () => {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
-  const [isEmailConfirmed, setIsEmailConfirmed] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
   const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(-1);
-  const [messageToRelative, setMessageToRelative] = useState('');
   const [
     signupFormValues,
     handleChangeSignupFormValues,
@@ -89,25 +86,9 @@ const Cart = () => {
     updateBasketsPriceAndNumber();
   }, [cart]);
 
-  useEffect(() => {
-    if (step >= 3) {
-      checkEmailIsConfirmed();
-    }
-  }, [step]);
-
   const handleRecipientChange = (e) => {
     setRelativeFormRecipientIndex(Number(e.target.value));
     handleRelativeFormRecipientChange(e);
-  };
-
-  const checkEmailIsConfirmed = async () => {
-    const user = await fetchUser();
-
-    if (!!user.emailConfirmed) {
-      setIsEmailConfirmed(true);
-    } else {
-      setIsEmailConfirmed(false);
-    }
   };
 
   const initCart = async () => {
@@ -451,20 +432,6 @@ const Cart = () => {
                       className='next-button'
                     />
                   </>
-                }
-
-                {(step === 3 || step === 4) ?
-                  isEmailConfirmed === false ?
-                    <p className='email-not-confirmed'>{t('cart.price_container.email_not_confirmed')}</p>:
-                    null :
-                    typeof isEmailConfirmed === 'undefined' ?
-                      <ClipLoader
-                        css={spinnerStyle}
-                        sizeUnit={'px'}
-                        size={25}
-                        color={'#f00'}
-                        loading={true}
-                      />: null
                 }
 
                 <p className='covid19-warning'>{t('cart.price_container.covid19_warning')}</p>
