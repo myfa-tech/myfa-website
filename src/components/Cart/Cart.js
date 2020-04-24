@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
 import { css } from '@emotion/core';
-import { ClipLoader } from 'react-spinners';
 import { some } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
@@ -11,7 +10,7 @@ import CartItems from './CartItems';
 import MessageToRelative from './MessageToRelative';
 import ButtonWithLoader from '../ButtonWithLoader';
 
-import { addRecipient, loginUser, loginFBUser, loginGoogleUser, fetchUser } from '../../services/users';
+import { addRecipient, loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 import stripeService from '../../services/stripe';
 import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
@@ -19,10 +18,11 @@ import useSignupForm from '../../hooks/useSignupForm';
 import useLoginForm from '../../hooks/useLoginForm';
 import useRelativeForm from '../../hooks/useRelativeForm';
 import useTranslate from '../../hooks/useTranslate';
-
-import './Cart.scss';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
+import mobileMoney from '../../services/mobileMoney';
+
+import './Cart.scss';
 
 const spinnerStyle = css`
   display: block;
@@ -38,11 +38,9 @@ const Cart = () => {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
-  const [isEmailConfirmed, setIsEmailConfirmed] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
   const [identificationPath, setIdentificationPath] = useState('signup');
   const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(-1);
-  const [messageToRelative, setMessageToRelative] = useState('');
   const [
     signupFormValues,
     handleChangeSignupFormValues,
@@ -88,25 +86,9 @@ const Cart = () => {
     updateBasketsPriceAndNumber();
   }, [cart]);
 
-  useEffect(() => {
-    if (step >= 3) {
-      checkEmailIsConfirmed();
-    }
-  }, [step]);
-
   const handleRecipientChange = (e) => {
     setRelativeFormRecipientIndex(Number(e.target.value));
     handleRelativeFormRecipientChange(e);
-  };
-
-  const checkEmailIsConfirmed = async () => {
-    const user = await fetchUser();
-
-    if (!!user.emailConfirmed) {
-      setIsEmailConfirmed(true);
-    } else {
-      setIsEmailConfirmed(false);
-    }
   };
 
   const initCart = async () => {
@@ -287,6 +269,32 @@ const Cart = () => {
     setIsLoading(false);
   };
 
+  async function checkoutWithMTNOrangeMoney() {
+    const user = UserStorage.getUser();
+
+    setIsLoading(true);
+
+    cart.recipient = relativeFormValues;
+    cart.price = basketsPrice;
+
+    const promises = [];
+
+    if (NODE_ENV === 'development') {
+      cart.isTest = true;
+    }
+
+    promises.push(mobileMoney.createPayment(cart, user.email));
+
+    if (!some(user.recipients, relativeFormValues)) {
+      promises.push(addRecipient(relativeFormValues));
+    }
+
+    await Promise.all(promises);
+
+    emptyStoredCart();
+    setIsLoading(false);
+  };
+
   const emptyStoredCart = async () => {
     await CartStorage.deleteCart();
   };
@@ -403,28 +411,27 @@ const Cart = () => {
 
                 <Divider variant='middle' className='second-divider' />
 
-                <ButtonWithLoader
-                  isLoading={isLoading}
-                  label={(step <= 3) ?
-                    t('cart.price_container.next') :
-                    t('cart.price_container.checkout')
-                  }
-                  onClick={handleNext}
-                  className='next-button'
-                />
-
-                {(step === 3 || step === 4) ?
-                  isEmailConfirmed === false ?
-                    <p className='email-not-confirmed'>{t('cart.price_container.email_not_confirmed')}</p>:
-                    null :
-                    typeof isEmailConfirmed === 'undefined' ?
-                      <ClipLoader
-                        css={spinnerStyle}
-                        sizeUnit={'px'}
-                        size={25}
-                        color={'#f00'}
-                        loading={true}
-                      />: null
+                {(step <= 3) ?
+                  <ButtonWithLoader
+                    isLoading={isLoading}
+                    label={t('cart.price_container.next')}
+                    onClick={handleNext}
+                    className='next-button'
+                  /> :
+                  <>
+                    <ButtonWithLoader
+                      isLoading={isLoading}
+                      label={t('cart.price_container.pay_by_card')}
+                      onClick={handleNext}
+                      className='next-button pay-by-card-btn'
+                    />
+                    <ButtonWithLoader
+                      isLoading={isLoading}
+                      label={t('cart.price_container.orange_mtn_button')}
+                      onClick={checkoutWithMTNOrangeMoney}
+                      className='next-button'
+                    />
+                  </>
                 }
 
                 <p className='covid19-warning'>{t('cart.price_container.covid19_warning')}</p>

@@ -185,6 +185,8 @@
       "next": "Suivant",
       "covid19_warning": "Les délais de livraison peuvent augmenter à cause de la crise de Covid-19. Merci pour votre compréhension.",
       "checkout": "Commander",
+      "pay_by_card": "Payer par carte",
+      "orange_mtn_button": "Payer par Mobile Money",
       "email_not_confirmed": "Avant de passer votre commande, merci de cliquer sur le lien de confirmation que nous vous avons envoyé par email."
     },
     "empty_cart": "Votre panier est vide.",
