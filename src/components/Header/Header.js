@@ -37,7 +37,7 @@ const CustomTooltip = withStyles(theme => ({
 const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/cart');
+      window.location.assign(`/${locale}/cart`);
     }
   };
 
@@ -239,7 +239,7 @@ const Header = () => {
 
   const onSignup = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/profile');
+      window.location.assign(`/${locale}/profile`);
     }
   };
 

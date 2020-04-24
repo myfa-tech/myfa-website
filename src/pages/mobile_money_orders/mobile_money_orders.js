@@ -63,9 +63,9 @@ const OrdersPage = () => {
 
             <p>{t('orders.description_part_1')} <a href={`/${locale}/profile/orders`}>{t('orders.here')}</a>.</p>
 
-            <p>Reste à payer : {euroToBePaid} € ou {cfaToBePaid} Fcfa</p>
+            <p><b>Reste à payer : {euroToBePaid} € ou {cfaToBePaid} Fcfa</b></p>
 
-            <p><b>Votre commande sera validée une fois le paiement effectué :</b></p>
+            <p>Votre commande sera validée une fois le paiement effectué :</p>
 
             <div className='payment-container'>
               <Row>

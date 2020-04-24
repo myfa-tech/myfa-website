@@ -11,7 +11,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
   const [cart, setCart] = useState(null);
   const [cartTotal, setCartTotal] = useState(0);
   const [qty, setQty] = useState(0);
-  const [t] = useTranslate();
+  const [t, locale] = useTranslate();
 
   useEffect(() => {
     const asyncFunc = async () => {
@@ -63,7 +63,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
             <button className='continue-button' onClick={toggleCartModal}>
               {t('home_page.baskets.cart_modal.continue_button')}
             </button>
-            <button className='checkout-button' onClick={() => goTo('/cart')}>
+            <button className='checkout-button' onClick={() => goTo(`/${locale}/cart`)}>
               {t('home_page.baskets.cart_modal.pay_button')}
             </button>
           </Col>
