@@ -81,7 +81,7 @@ const ThanksSection = () => {
     <section id='thanks-section'>
       <div className='heading'>
         <h2>#Toutpourlamyfa</h2>
-        <h3>Prendre soin de vos proches est notre priorité. Ils vous disent merci.</h3>
+        <h3>Prendre soin de vous et de vos proches est notre priorité. Merci MYFA !</h3>
       </div>
 
       <div className='custom-slider'>

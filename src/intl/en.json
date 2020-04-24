@@ -22,7 +22,7 @@
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
-      "title": "For the pleasure of your loved ones in Côte d'Ivoire, we deliver in 48 hours",
+      "title": "For your enjoyment and that of your loved ones in Côte d'Ivoire, we deliver in 48 hours",
       "subtitle": "*COVID-19 : baskets delivery is on hold at this time, but orders are still possible",
       "discover_baskets_button": "Discover the baskets",
       "launch_popup": {
@@ -38,7 +38,7 @@
         "description": "Fruits, Vegetables, Sauces or MYFA."
       },
       "slide2": {
-        "title": "Enter information about your loved one",
+        "title": "Fill in the information on the recipient of the basket",
         "description": "We call them to determine the delivery conditions."
       },
       "slide3": {
@@ -78,13 +78,13 @@
       "ramadan_baskets_title": "Ramadan Baskets",
       "ramadan_sugar_basket_title": "Sugar Basket",
       "ramadan_sugar_basket_home_description": "4 boxes of sugar cubes, concentrated milk, millet grains",
-      "ramadan_sugar_basket_description": "During the month of Ramadan, share with your loved ones this gourmet basket. This 100% sweet basket is ideal for staying in shape.",
+      "ramadan_sugar_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. This 100% sweet basket is ideal for staying in shape.",
       "ramadan_full_basket_title": "Full Basket",
       "ramadan_full_basket_home_description": "Multifruit juice, sugar cubes, dates...",
-      "ramadan_full_basket_description": "During the month of Ramadan, share with your loved ones this gourmet basket. Ideal for cutting the fast.",
+      "ramadan_full_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. Ideal for cutting the fast.",
       "ramadan_fruits_basket_title": "Ramadan Fruits Baskets",
       "ramadan_fruits_basket_home_description": "Mangoes, dried figs, dates, grapes...",
-      "ramadan_fruits_basket_description": "During the month of Ramadan, share with your loved ones this gourmet basket. This basket consists of the seasonal fruits you need!",
+      "ramadan_fruits_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. This basket consists of the seasonal fruits you need!",
       "cart_modal": {
         "header": "Successfully added to purchases",
         "price": "Price",
@@ -102,7 +102,7 @@
     "our_promise": {
       "title": "Our promise",
       "image_title": "Florian, Doris & Alexandre",
-      "paragraph_title": "Ensure the well-being of your loved ones.",
+      "paragraph_title": "Ensure your well-being and that of your loved ones.",
       "paragraph_description": "Sending money to family is good. Make sure they eat is even better."
     },
     "trustees": {

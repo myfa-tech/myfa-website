@@ -34,7 +34,7 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t) => {
+const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
       window.location.assign(`/${locale}/cart`);
@@ -296,7 +296,7 @@ const Header = () => {
               <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
             }
             <Nav.Link href={`/${locale}/cart`} className='basket-link'>
-              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t)}
+              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
             </Nav.Link>
             <Nav.Link href={enHref}>EN</Nav.Link>
             <Nav.Link href={frHref}>FR</Nav.Link>

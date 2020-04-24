@@ -22,7 +22,7 @@
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
-      "title": "Pour le plaisir de vos proches en Côte d’Ivoire, nous livrons en 48h",
+      "title": "Pour votre plaisir et celui de vos proches en Côte d’Ivoire, nous livrons en 48h",
       "subtitle": "*COVID-19 : la livraison des paniers est en suspend pour le moment, mais les commandes sont toujours possibles",
       "discover_baskets_button": "Découvrir les paniers",
       "launch_popup": {
@@ -38,7 +38,7 @@
         "description": "Fruits, Légumes, Sauces ou MYFA."
       },
       "slide2": {
-        "title": "Renseignez les informations sur votre proche",
+        "title": "Renseignez les informations sur le destinataire du panier",
         "description": "Nous l'appelons pour déterminer les conditions de livraison."
       },
       "slide3": {
@@ -78,13 +78,13 @@
       "ramadan_baskets_title": "Nos paniers Ramadan",
       "ramadan_sugar_basket_title": "Panier Sucré",
       "ramadan_sugar_basket_home_description": "4 boîtes de sucre en morceaux, lait concentré, mil",
-      "ramadan_sugar_basket_description": "Durant le mois du ramadan, faites profiter vos proches de ce panier gourmand. Ce panier 100% sucré est idéal pour rester en forme.",
+      "ramadan_sugar_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Ce panier 100% sucré est idéal pour rester en forme.",
       "ramadan_full_basket_title": "Panier Complet",
       "ramadan_full_basket_home_description": "Jus multifruits, sucre en morceaux, dattes...",
-      "ramadan_full_basket_description": "Durant le mois du ramadan, faites profiter vos proches de ce panier gourmand. Idéal pour couper le jeûne.",
+      "ramadan_full_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Idéal pour couper le jeûne.",
       "ramadan_fruits_basket_title": "Panier Fruité",
       "ramadan_fruits_basket_home_description": "Mangues, figues séchées, dattes, raisins...",
-      "ramadan_fruits_basket_description": "Durant le mois du ramadan, faites profiter vos proches de ce panier gourmand. Ce panier se compose des fruits de saisons qu’il vous faut !",
+      "ramadan_fruits_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Ce panier se compose des fruits de saisons qu’il vous faut !",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -102,7 +102,7 @@
     "our_promise": {
       "title": "Notre promesse",
       "image_title": "Florian, Doris & Alexandre",
-      "paragraph_title": "S’assurer du bien-être de vos proches.",
+      "paragraph_title": "S'assurer de votre bien être et celui de vos proches.",
       "paragraph_description": "Envoyer de l’argent à sa famille, c’est bien. S’assurer qu’elle ait mangé, c’est mieux."
     },
     "trustees": {
