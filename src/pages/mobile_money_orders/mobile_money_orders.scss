@@ -1,0 +1,28 @@
+#mobile-money-orders {
+  text-align: center;
+  margin-top: 3em;
+
+  .payment-container {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+
+    .row {
+      margin-bottom: 1em;
+    }
+
+    .phone-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 30px;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
