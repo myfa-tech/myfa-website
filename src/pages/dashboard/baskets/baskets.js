@@ -284,12 +284,6 @@ const DashbboardBaskets = () => {
       headerStyle: () => {
         return { width: '110px' };
       },
-      formatter: (cell, row, rowIndex) => {
-        return row.deliveredAt ? new Date(row.deliveredAt).toLocaleDateString('fr-FR') : '';
-      },
-      editor: {
-        type: Type.DATE,
-      },
       dataField: 'deliveredAt',
       sort: true,
     },
