@@ -11,7 +11,7 @@ const redirectToOrder = (successUrl) => {
   }
 };
 
-const createPayment = async (order, userEmail) => {
+const createPayment = async (order, user) => {
   const origin = window.location.origin;
   const randomId = uuid();
   const orderRef = randomId.substr(0, 8);
@@ -25,7 +25,7 @@ const createPayment = async (order, userEmail) => {
 
 	await axios.post('/mobile_money/orders', {
     order: { ...order, ref: orderRef },
-    user: { email: userEmail },
+    user,
   });
 
   redirectToOrder(success_url);

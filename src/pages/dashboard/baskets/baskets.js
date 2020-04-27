@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Type } from 'react-bootstrap-table2-editor';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +12,7 @@ import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
 import CommentPopover from '../../../components/CommentPopover';
 import BasketItemsPopover from '../../../components/BasketItemsPopover';
 import TableSelectEditor from '../../../components/TableSelectEditor';
+import NewOrderModal from '../../../components/dashboard/NewOrderModal';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 import usePopover from '../../../hooks/usePopover';
@@ -114,6 +114,7 @@ const DashbboardBaskets = () => {
   const [isLoading, setIsLoading] = useState(null);
   const [editStatusField, setEditStatusField] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showNewOrderModal, setShowNewOrderModal] = useState(false);
 
   const [
     popoverInfo,
@@ -201,9 +202,19 @@ const DashbboardBaskets = () => {
       },
     },
     {
-      text: '@ utilisateur',
-      dataField: 'userEmail',
+      text: 'Utilisateur',
+      dataField: 'user',
       editable: false,
+      formatter: (cell, row, rowIndex) => {
+        return <Typography
+          aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
+          aria-haspopup='gridtrue'
+          onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.user)}
+          onMouseLeave={handlePeopleInfoPopoverClose}
+        >
+          {row.user.firstname} {row.user.lastname}
+        </Typography>
+      },
       sort: true,
       headerStyle: () => {
         return { width: '200px' };
@@ -366,6 +377,10 @@ const DashbboardBaskets = () => {
     }
   };
 
+  const toggleShowNewOrderModal = () => {
+    setShowNewOrderModal(!showNewOrderModal);
+  };
+
   return (
     <DashboardLayout>
       <DashboardShell>
@@ -411,6 +426,8 @@ const DashbboardBaskets = () => {
                 'Aujourd\'hui'
               }
             </button>
+
+            <button className='add-order' onClick={toggleShowNewOrderModal}>Ajouter une commande</button>
           </h1>
           <div className='baskets'>
             <Table editable={true} data={baskets} columns={columns} rowClasses={rowClasses} onSaveCell={saveCell} />
@@ -439,6 +456,7 @@ const DashbboardBaskets = () => {
           cancelChange={toggleShowConfirmModal}
           confirmChange={confirmChangeStatus}
         />
+        {showNewOrderModal && <NewOrderModal showModal={showNewOrderModal} toggleModal={toggleShowNewOrderModal} />}
       </DashboardShell>
     </DashboardLayout>
   );
