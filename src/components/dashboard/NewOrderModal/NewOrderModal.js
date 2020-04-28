@@ -20,7 +20,10 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
   const saveOrder = async (e) => {
     e.preventDefault();
     await saveOrderManually(form);
-    toggleModal();
+
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
   };
 
   return (
