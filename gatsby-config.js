@@ -22,9 +22,7 @@ module.exports = {
         // supported language
         languages: ['fr', 'en'],
         // language file path
-        defaultLanguage: 'fr',
-        // option to redirect to `/fr` when connecting `/`
-        redirect: true,
+        defaultLanguage: 'fr'
       },
     },
     `gatsby-transformer-sharp`,
