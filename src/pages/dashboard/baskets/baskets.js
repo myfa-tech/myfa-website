@@ -206,14 +206,14 @@ const DashbboardBaskets = () => {
       dataField: 'user',
       editable: false,
       formatter: (cell, row, rowIndex) => {
-        return <Typography
+        return row.user ? <Typography
           aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
           aria-haspopup='gridtrue'
           onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.user)}
           onMouseLeave={handlePeopleInfoPopoverClose}
         >
-          {row.user.firstname} {row.user.lastname}
-        </Typography>
+           {row.user.firstname} {row.user.lastname}
+        </Typography> : row.userEmail
       },
       sort: true,
       headerStyle: () => {
