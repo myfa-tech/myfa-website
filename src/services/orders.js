@@ -1,6 +1,7 @@
 
 import Axios from 'axios';
 import UserStorage from './UserStorage';
+import DashboardUserStorage from './DashboardUserStorage';
 
 const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
@@ -15,7 +16,7 @@ const getOrdersByRef = async (ref) => {
   const response = await axios.get(`/baskets?ref=${ref}`);
 
   return response.data;
-}
+};
 
 const getBasketsByEmail = async (email) => {
   let JWT_TOKEN = UserStorage.getToken();
@@ -30,4 +31,15 @@ const getBasketsByEmail = async (email) => {
   return response.data.baskets;
 };
 
-export { getOrdersByRef, getBasketsByEmail };
+const saveOrderManually = async (order) => {
+  let JWT_TOKEN = DashboardUserStorage.getToken();
+
+  let axios = Axios.create({
+    baseURL: BACKEND_URL,
+    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
+  });
+
+  await axios.post('/dashboard/orders/manually', order);
+};
+
+export { getOrdersByRef, getBasketsByEmail, saveOrderManually };

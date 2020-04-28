@@ -21,9 +21,9 @@ const redirectToOrder = (successUrl) => {
   if (typeof window !== 'undefined') {
     window.location.assign(successUrl);
   }
-}
+};
 
-const createPayment = async (order, userEmail) => {
+const createPayment = async (order, user) => {
   const origin = window.location.origin;
   const randomId = uuid();
   const orderRef = randomId.substr(0, 8);
@@ -37,7 +37,7 @@ const createPayment = async (order, userEmail) => {
 
 	const response = await axios.post('/stripe/pay', {
     order: { ...order, ref: orderRef },
-    user: { email: userEmail },
+    user,
     success_url,
   });
 

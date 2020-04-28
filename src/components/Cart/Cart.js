@@ -257,7 +257,7 @@ const Cart = () => {
       cart.isTest = true;
     }
 
-    promises.push(stripeService.createPayment(cart, user.email));
+    promises.push(stripeService.createPayment(cart, user));
 
     if (!some(user.recipients, relativeFormValues)) {
       promises.push(addRecipient(relativeFormValues));
@@ -283,7 +283,7 @@ const Cart = () => {
       cart.isTest = true;
     }
 
-    promises.push(mobileMoney.createPayment(cart, user.email));
+    promises.push(mobileMoney.createPayment(cart, user));
 
     if (!some(user.recipients, relativeFormValues)) {
       promises.push(addRecipient(relativeFormValues));
