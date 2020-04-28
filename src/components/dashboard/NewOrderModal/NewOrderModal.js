@@ -10,7 +10,10 @@ import './NewOrderModal.scss';
 
 const NewOrderModal = ({ showModal, toggleModal }) => {
   const [errors, setErrors] = useState({});
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    client_country: '+225',
+    recipient_country: '+225'
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -133,17 +136,36 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             </Col>
           </Row>
 
-          <TextField
-            type='text'
-            required
-            className='full-width form-input'
-            variant='outlined'
-            error={errors.client_phone}
-            label='Téléphone'
-            name='client_phone'
-            value={form.client_phone}
-            onChange={handleChange}
-          />
+          <Row>
+            <Col md={3}>
+              <TextField
+                select
+                label='Indicatif'
+                name='client_country'
+                variant='outlined'
+                className='country-code'
+                value={form.client_country}
+                onChange={handleChange}
+              >
+                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
+                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
+                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+              </TextField>
+            </Col>
+            <Col md={9}>
+              <TextField
+                type='text'
+                required
+                className='full-width form-input'
+                variant='outlined'
+                error={errors.client_phone}
+                label='Téléphone'
+                name='client_phone'
+                value={form.client_phone}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
 
           <h1>Informations sur le destinataire</h1>
 
@@ -176,17 +198,36 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             </Col>
           </Row>
 
-          <TextField
-            type='text'
-            required
-            className='full-width form-input'
-            variant='outlined'
-            error={errors.recipient_phone}
-            label='Téléphone'
-            name='recipient_phone'
-            value={form.recipient_phone}
-            onChange={handleChange}
-          />
+          <Row>
+            <Col md={3}>
+              <TextField
+                select
+                label='Indicatif'
+                name='recipient_country'
+                variant='outlined'
+                className='country-code'
+                value={form.client_country}
+                onChange={handleChange}
+              >
+                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
+                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
+                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+              </TextField>
+            </Col>
+            <Col md={9}>
+              <TextField
+                type='text'
+                required
+                className='full-width form-input'
+                variant='outlined'
+                error={errors.recipient_phone}
+                label='Téléphone'
+                name='recipient_phone'
+                value={form.recipient_phone}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
 
           <TextField
             select
