@@ -1,0 +1,134 @@
+#ramadan-baskets {
+  .heading {
+    background-color: rgba(241, 216, 102, 0.5);
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    text-align: center;
+  }
+
+  .ramadan-baskets-container {
+    margin: 0 10em;
+
+    .basket-container {
+			text-align: center;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			margin: 1em auto 1em auto;
+      width: 100%;
+
+      .basket-inner-container {
+        background-color: white;
+        border-radius: 8px;
+        padding-top: 2em;
+        padding-bottom: 4em;
+      }
+
+			.price-and-buy-container {
+				padding-top: 1em;
+
+				.price-container {
+					padding-top: 1.5em;
+					padding-left: 2.5em;
+
+					&.custom-basket {
+						margin: auto;
+					}
+
+					p {
+						margin-bottom: 0;
+					}
+
+					.new-price-euro {
+						font-size: 20px;
+						font-weight: 400;
+					}
+
+					.new-price-cfa {
+						font-size: 18px;
+						font-weight: 400;
+					}
+				}
+			}
+
+			.cart-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.cart-button {
+					width: 60px;
+					height: 60px;
+					border-radius: 8px;
+					border: 1px solid lightgrey;
+					background-color: #F1D866;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					.cart-icon {
+						height: auto;
+						width: 50%;
+					}
+				}
+			}
+
+			.reduction {
+				background-color: rgb(211, 64, 64);
+				color: white;
+				padding: 5px;
+				border-radius: 6px;
+				margin-left: 10px;
+			}
+
+			img {
+				width: 70%;
+				border-radius: 8px;
+			}
+
+			h4 {
+				margin-top: 10px;
+				font-size: 25px;
+			}
+
+			h5 {
+				font-size: 20px;
+			}
+		}
+  }
+}
+
+@media (max-width: 768px) {
+  #ramadan-baskets {
+    .ramadan-baskets-container {
+			margin: 0 2em;
+
+			.basket-container {
+				.price-and-buy-container {
+					.price-container {
+						.new-price-euro {
+							font-size: 15px;
+							font-weight: 400;
+						}
+
+						.new-price-cfa {
+							font-size: 15px;
+						}
+					}
+				}
+			}
+    }
+  }
+}
+
+@media (max-width: 480px) {
+	#ramadan-baskets {
+		.ramadan-baskets-container {
+			margin: 0;
+
+			.basket-container {
+				width: 90%;
+				margin: auto;
+			}
+    }
+  }
+}

@@ -12,6 +12,7 @@ import Trustees from '../components/Trustees';
 import Covid19 from '../components/Covid19';
 import Asterisks from '../components/Asterisks';
 import ThanksSection from '../components/ThanksSection';
+import RamadanBaskets from '../components/RamadanBaskets';
 
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
@@ -27,8 +28,9 @@ const IndexPage = () => {
 
       <Home />
       <Covid19 />
-      <HowItWorks />
+      <RamadanBaskets />
       <Baskets />
+      <HowItWorks />
       <OurPromise />
       <ThanksSection />
       <Trustees />
