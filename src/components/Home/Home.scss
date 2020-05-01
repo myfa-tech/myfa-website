@@ -5,7 +5,7 @@
     max-width: 100%;
     background-size:cover;
     background-position: center 0;
-    height: 765px;
+    height: 565px;
     text-align: center;
 
     .logo-big {
@@ -150,8 +150,10 @@
 @media (max-width: 768px) {
   #home {
     .section-1 {
+      height: 625px;
+
       .title {
-        font-size: 50px;
+        font-size: 40px;
       }
 
       .image-container {

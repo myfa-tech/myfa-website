@@ -79,8 +79,6 @@ const Home = ({ setShowToast, showToast, toastType }) => {
             </Row>
             <h1 className='title'>{t('home_page.home.title')}*</h1>
 
-            <a className='btn-main link' href='#baskets'>{t('home_page.home.discover_baskets_button')} 🥭</a>
-
             <div className='d-block d-lg-none'>
               <PhoneInfos />
             </div>
