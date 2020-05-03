@@ -1,0 +1,12 @@
+#custom-drawer {
+  .MuiDrawer-paper {
+    background-color: #F1D866;
+
+    .list-item {
+      text-align: center;
+      * {
+        font-size: 22px;
+      }
+    }
+  }
+}
