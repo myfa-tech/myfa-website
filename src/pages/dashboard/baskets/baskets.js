@@ -187,7 +187,8 @@ const DashbboardBaskets = () => {
         const basket = baskets.find(b => b._id === row._id);
         let items = basket.items;
 
-        if (basket.name === 'MYFA' && basket.items) {
+        // Type MYFA and has items and is not an array
+        if (basket.name === 'MYFA' && basket.items && !basket.items[0]) {
           items = Object.values(basket.items).reduce((acc, cur) => [...acc, ...(cur.map(item => item.label))], []);
         }
 
