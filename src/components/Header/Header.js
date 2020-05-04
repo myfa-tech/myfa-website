@@ -124,6 +124,7 @@ const Header = () => {
   const eventEmitter = new EventEmitter();
 
   const DRAWER_LIST = [
+    { label: t('header.home'), link: `/${locale}` },
     { label: t('header.baskets'), link: `/${locale}/#baskets` },
     { label: t('header.how_it_works'), link: `/${locale}/#how-it-works` },
     { label: t('header.promise'), link: `/${locale}/#our-promise` },
