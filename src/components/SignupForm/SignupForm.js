@@ -48,7 +48,7 @@ const SignupForm = ({ onSignup }) => {
   return (
     <form id='signup-form'>
       <Row>
-        <Col xs='6'>
+        <Col xs='6' className='left-half-col'>
           <TextField
             type='text'
             className='full-width form-input'
@@ -62,7 +62,7 @@ const SignupForm = ({ onSignup }) => {
             disabled={isLoading}
           />
         </Col>
-        <Col xs='6'>
+        <Col xs='6' className='right-half-col'>
           <TextField
             type='text'
             className='full-width form-input'

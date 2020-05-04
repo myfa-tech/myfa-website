@@ -318,6 +318,7 @@ const Header = () => {
       />
 
       {showLoginSignupModal && <Modal show={showLoginSignupModal} onHide={toggleShowLoginSignupModal} id='account-modal'>
+        <Modal.Header closeButton />
         <Modal.Body>
           <div className='form-container'>
             <img src={logoHandsSrc} alt='logo' className='logo-big' />
