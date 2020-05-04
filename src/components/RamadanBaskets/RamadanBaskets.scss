@@ -1,0 +1,158 @@
+#ramadan-baskets {
+  .heading {
+    background-color: rgba(241, 216, 102, 0.5);
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    text-align: center;
+  }
+
+  .ramadan-baskets-container {
+    margin: 0 10em;
+
+    .basket-container {
+			text-align: center;
+			padding-bottom: 20px;
+			margin: 1em auto 1em auto;
+      width: 70%;
+
+      .basket-inner-container {
+        background-color: white;
+        border-radius: 8px;
+        padding-top: 1em;
+        padding-bottom: 2em;
+      }
+
+			.price-and-buy-container {
+				.price-container {
+					padding-top: 1em;
+					padding-left: 1.5em;
+
+					&.custom-basket {
+						margin: auto;
+					}
+
+					p {
+						margin-bottom: 0;
+					}
+
+					.new-price-euro {
+						font-size: 15px;
+						font-weight: 400;
+					}
+
+					.new-price-cfa {
+						font-size: 15px;
+						font-weight: 400;
+					}
+				}
+			}
+
+			.cart-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.cart-button {
+					width: 40px;
+					height: 40px;
+					border-radius: 8px;
+					border: 1px solid lightgrey;
+					background-color: #F1D866;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					.cart-icon {
+						height: auto;
+						width: 50%;
+					}
+				}
+			}
+
+			.reduction {
+				background-color: rgb(211, 64, 64);
+				color: white;
+				padding: 5px;
+				border-radius: 6px;
+				margin-left: 10px;
+			}
+
+			img {
+				width: 70%;
+				border-radius: 8px;
+			}
+
+			h4 {
+				margin-top: 10px;
+				font-size: 20px;
+			}
+
+			h5 {
+				font-size: 15px;
+			}
+		}
+  }
+}
+
+@media (min-width: 1024px) {
+	#ramadan-baskets {
+		.baskets-container {
+			.basket-container {
+				.cart-button:hover {
+					cursor: pointer;
+					box-shadow: 0 0 11px rgba(33,33,33,.2);
+				}
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+  #ramadan-baskets {
+    .ramadan-baskets-container {
+			margin: 0 2em;
+
+			.basket-container {
+				width: 90%;
+
+				h5 {
+					font-size: 14px;
+				}
+
+				.price-and-buy-container {
+					.price-container {
+						padding-right: 0;
+						padding-left: 0;
+
+						.new-price-euro {
+							font-size: 15px;
+							font-weight: 400;
+						}
+
+						.new-price-cfa {
+							font-size: 15px;
+						}
+					}
+				}
+			}
+    }
+  }
+}
+
+@media (max-width: 480px) {
+	#ramadan-baskets {
+		.ramadan-baskets-container {
+			margin: 0;
+
+			.basket-container {
+				width: 90%;
+				margin: auto;
+				margin-top: 1em;
+			}
+    }
+  }
+}

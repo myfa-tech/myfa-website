@@ -7,18 +7,22 @@ import Button from 'react-bootstrap/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
+import { IoMdMenu } from 'react-icons/io';
 
-import useTranslate from '../../hooks/useTranslate';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
+import CustomDrawer from '../CustomDrawer';
+
 import EventEmitter from '../../services/EventEmitter';
+import CartStorage from '../../services/CartStorage';
+import UserStorage from '../../services/UserStorage';
+import useDrawerState from '../../hooks/useDrawerState';
+import useTranslate from '../../hooks/useTranslate';
 
 import logoHandsSrc from '../../images/logo-1.png';
 import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
-import CartStorage from '../../services/CartStorage';
-import UserStorage from '../../services/UserStorage';
 
 const STICKY_LIMIT = 300;
 
@@ -115,9 +119,18 @@ const Header = () => {
   const [t, locale] = useTranslate();
   const [frHref, setFrHref] = useState('/fr');
   const [enHref, setEnHref] = useState('/en');
-  const [navExpanded, setNavExpanded] = useState(false);
+  const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
 
   const eventEmitter = new EventEmitter();
+
+  const DRAWER_LIST = [
+    { label: t('header.home'), link: `/${locale}` },
+    { label: t('header.baskets'), link: `/${locale}/#baskets` },
+    { label: t('header.how_it_works'), link: `/${locale}/#how-it-works` },
+    { label: t('header.promise'), link: `/${locale}/#our-promise` },
+    { label: t('header.team'), link: `/${locale}/team` },
+    { label: t('header.blog'), link: `/${locale}/#blog` },
+  ];
 
   useEffect(() => {
     updateCart();
@@ -249,6 +262,13 @@ const Header = () => {
     }
   };
 
+  const goTo = ({ link }) => {
+    if (typeof window !== 'undefined') {
+      toggleDrawer('left', false);
+      window.location.assign(link);
+    }
+  };
+
   const removeBaskets = (basketKey) => {
     CartStorage.deleteBasketsByType(basketKey);
 
@@ -261,50 +281,45 @@ const Header = () => {
     setCart({ ...cart });
   };
 
-  const closeNav = () => {
-    setNavExpanded(false);
-  };
-
   return (
     <Container id='header'>
-      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar': ''}`} onToggle={setNavExpanded} expanded={navExpanded}>
-        <Navbar.Brand href={`/${locale}`}>
-          <img src={logoLettersSrc} alt='logo' className='logo' />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav className='menu' onSelect={closeNav}>
-            <Nav.Link className={`${underlinedSection === 'home' ? 'underlined' : ''}`} href={`/${locale}/#home`}>{t('header.home')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'baskets' ? 'underlined' : ''}`} href={`/${locale}/#baskets`}>{t('header.baskets')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'promise' ? 'underlined' : ''}`} href={`/${locale}/#our-promise`}>{t('header.promise')}</Nav.Link>
-            <Nav.Link className={`${underlinedSection === 'blog' ? 'underlined' : ''}`} href={`/${locale}/#blog`}>{t('header.blog')}</Nav.Link>
-            <Nav.Link href={`/${locale}/team`}>{t('header.team')}</Nav.Link>
-            {isLoggedIn ?
-              <NavDropdown
-                onMouseEnter={toggleIsProfileNavOpen}
-                onMouseLeave={toggleIsProfileNavOpen}
-                show={isProfileNavOpen}
-                title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
-                className='account'
-              >
-                <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
-                <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
-                <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
-                <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
-                <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
-              </NavDropdown> :
-              <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
-            }
-            <Nav.Link href={`/${locale}/cart`} className='basket-link'>
-              {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
-            </Nav.Link>
-            <Nav.Link href={enHref}>EN</Nav.Link>
-            <Nav.Link href={frHref}>FR</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar justify-content-between': 'justify-content-between'}`}>
+        <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
+        <Nav className='menu'>
+          {isLoggedIn ?
+            <NavDropdown
+              onMouseEnter={toggleIsProfileNavOpen}
+              onMouseLeave={toggleIsProfileNavOpen}
+              show={isProfileNavOpen}
+              title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
+              className='account'
+            >
+              <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
+              <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
+              <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
+              <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
+              <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
+            </NavDropdown> :
+            <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
+          }
+          <Nav.Link href={`/${locale}/cart`} className='basket-link'>
+            {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
+          </Nav.Link>
+          <Nav.Link className='en-link' href={enHref}>EN</Nav.Link>
+          <Nav.Link className='fr-link' href={frHref}>FR</Nav.Link>
+        </Nav>
       </Navbar>
 
+      <CustomDrawer
+        anchor='left'
+        state={drawerState}
+        onItemClick={goTo}
+        toggleDrawer={() => toggleDrawer('left', false)}
+        list={DRAWER_LIST}
+      />
+
       {showLoginSignupModal && <Modal show={showLoginSignupModal} onHide={toggleShowLoginSignupModal} id='account-modal'>
+        <Modal.Header closeButton />
         <Modal.Body>
           <div className='form-container'>
             <img src={logoHandsSrc} alt='logo' className='logo-big' />
