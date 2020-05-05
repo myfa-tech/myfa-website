@@ -153,16 +153,36 @@ const DashbboardBaskets = () => {
     setTimeFilter(type);
   };
 
+  const isToday = (someDate) => {
+    const today = new Date();
+    return someDate.getDate() == today.getDate() &&
+      someDate.getMonth() == today.getMonth() &&
+      someDate.getFullYear() == today.getFullYear();
+  };
+
   const rowClasses = (row, rowIndex) => {
+    let classes = '';
+
     if (isPendingBasketOverOneHour(row)) {
-      return 'warning';
+      classes += 'warning ';
     } else if (isBasketCanceled(row)) {
-      return 'canceled';
+      classes += 'canceled ';
     } else if (isBasketDelivered(row)) {
-      return 'done';
+      classes += 'done ';
     } else {
-      return 'blank';
+      classes += 'blank ';
     }
+
+    if (!!row.deliveredAt && row.deliveredAt !== ' ') {
+      let dateParts = row.deliveredAt.split('/');
+      const date = new Date(dateParts[2], Number(dateParts[1]) - 1, dateParts[0]);
+
+      if (isToday(date)) {
+        classes += 'is-delivery-today ';
+      }
+    }
+
+    return classes;
   };
 
   const columns = [

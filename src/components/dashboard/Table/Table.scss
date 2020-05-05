@@ -21,6 +21,10 @@ table {
     &.blank {
       background-color: rgb(255, 255, 255);
     }
+
+    &.is-delivery-today {
+      border: 3px solid orange;
+    }
   }
 }
 
