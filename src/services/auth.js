@@ -33,4 +33,9 @@ const isEmployeeLoggedIn = () => {
   return !!user && !!user.isEmployee;
 };
 
-export { handleLogin, isAdminLoggedIn, isEmployeeLoggedIn, isUserLoggedIn };
+const isFlorianLoggedIn = () => {
+  const user = DashboardUserStorage.getUser();
+  return !!user && user.email === 'fadonis@myfa.fr';
+};
+
+export { handleLogin, isAdminLoggedIn, isEmployeeLoggedIn, isFlorianLoggedIn, isUserLoggedIn };

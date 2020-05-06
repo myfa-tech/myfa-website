@@ -15,4 +15,15 @@ const fetchStocks = async () => {
   return result.data;
 };
 
-export { fetchStocks };
+const editStock = async (stock) => {
+  let JWT_TOKEN = DashboardUserStorage.getToken();
+
+  let axios = Axios.create({
+    baseURL: process.env.GATSBY_BACKEND_URL,
+    headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
+  });
+
+  await axios.put('/dashboard/stocks', stock);
+};
+
+export { editStock, fetchStocks };

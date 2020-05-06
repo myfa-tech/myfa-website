@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { fetchStocks } from '../../services/stocks';
+import { fetchStocks, editStock } from '../../services/stocks';
 
 const useFetchStocks = (init = []) => {
   const [stocks, setStocks] = useState(init);
@@ -16,7 +16,12 @@ const useFetchStocks = (init = []) => {
     fetchData();
   }, []);
 
-  return [stocks, setStocks];
+  const editStocks = async (stocks, stock) => {
+    setStocks(stocks);
+    editStock(stock);
+  };
+
+  return [stocks, editStocks];
 };
 
 export default useFetchStocks;

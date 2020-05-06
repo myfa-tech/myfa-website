@@ -15,6 +15,10 @@
       border: 1px solid grey;
       border-radius: 8px;
 
+      .counter-container {
+        display: flex;
+      }
+
       h2 {
         font-size: 20px;
       }
