@@ -16,6 +16,7 @@ const Shell = ({ children }) => {
           <li><a href='/dashboard/users'><span aria-label='utilisateurs' role="img">👥</span> Utilisateurs</a></li>
           <li><a href='/dashboard/baskets'><span aria-label='paniers' role="img">🧺</span> Paniers</a></li>
           {isEmployee ? null : <li><a href='/dashboard/finance'><span aria-label='finance' role="img">💰</span> Finance</a></li>}
+          <li><a href='/dashboard/stocks'><span aria-label='stocks' role="img">🥑</span> Stocks</a></li>
         </ul>
       </div>
       <div className='content'>

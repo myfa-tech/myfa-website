@@ -1,0 +1,36 @@
+.dashboard-stocks {
+  .stock-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 1em;
+
+    .stock-item-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 1em;
+      margin: 1em;
+      border: 1px solid grey;
+      border-radius: 8px;
+
+      .counter-container {
+        display: flex;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .red {
+        background-color: #ef5350;
+        color: white;
+      }
+
+      .green {
+        background-color: #66bb6a;
+      }
+    }
+  }
+}
