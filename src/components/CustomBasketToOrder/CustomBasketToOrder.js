@@ -52,14 +52,18 @@ const CustomBasketToOrder = () => {
 
   useEffect(() => {
     window.onscroll = function() {
-      let limit = document.getElementById('sliding-infos-container').offsetHeight - 200;
+      let slidingInfoRef = document.getElementById('sliding-infos-container');
 
-      if (window.pageYOffset >= limit && isSliding) {
-        setSlidingInfosTop(limit);
-        isSliding = false;
-      } else if (window.pageYOffset < limit && !isSliding) {
-        setSlidingInfosTop(null);
-        isSliding = true;
+      if (!!slidingInfoRef) {
+        let limit = slidingInfoRef.offsetHeight - 200;
+
+        if (window.pageYOffset >= limit && isSliding) {
+          setSlidingInfosTop(limit);
+          isSliding = false;
+        } else if (window.pageYOffset < limit && !isSliding) {
+          setSlidingInfosTop(null);
+          isSliding = true;
+        }
       }
     };
   }, []);

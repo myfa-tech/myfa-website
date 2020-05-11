@@ -3,8 +3,9 @@ import { FaCheck } from 'react-icons/fa'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
+import ProductsGrid from '../../ProductsGrid/ProductsGrid';
+
 import useTranslate from '../../../hooks/useTranslate';
-import defaultBasketSrc from '../../../images/default-basket.png';
 
 const QTY_MAX = 5;
 
@@ -52,14 +53,12 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
   return (
     <div>
       <h2>{t('myfa_basket_to_order.supps')} (+ 1,5€)</h2>
-      <div className='ingredients-container'>
-        {availableSupps.map(supp => (
-          <div key={supp.id} className='ingredient-container' onClick={() => editSupps({ ...supp })}>
-            <img src={supp.img || defaultBasketSrc} className={supps.map(s => s.id).includes(supp.id) ? 'selected' : ''} />
-            <p>{t(`ingredients.${supp.labelTranslate}`)}</p>
-          </div>
-        ))}
-      </div>
+
+      <ProductsGrid
+        availableProducts={availableSupps}
+        onItemClicked={editSupps}
+        shouldProductByHighlighted={(supp) => supps.map(s => s.id).includes(supp.id)}
+      />
 
       <div className='navigation-container'>
         <button className='previous-button small' onClick={() => previousStep()}>{t('myfa_basket_to_order.previous')}</button>

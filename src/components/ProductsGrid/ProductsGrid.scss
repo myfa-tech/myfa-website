@@ -1,0 +1,62 @@
+#products-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  .ingredient-container {
+    width: 25%;
+    padding: 2em 0;
+    border-radius: 8px;
+    text-align: center;
+
+    img {
+      max-width: 120px;
+      height: 100px;
+
+      &.selected {
+        border: 2px solid #EA1B1B;
+      }
+    }
+
+    div {
+      text-align: center;
+      margin-bottom: 0;
+
+      .supp-prices {
+        color: #EA1B1B;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  #products-grid {
+    .ingredient-container {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #products-grid {
+    justify-content: center;
+    align-items: flex-start;
+
+    .ingredient-container {
+      width: 50%;
+      padding: 2em 0;
+
+      img {
+        display: block;
+        margin: auto;
+        height: 80px;
+        max-width: 80px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { intersectionBy } from 'lodash';
 
-import useTranslate from '../../../hooks/useTranslate';
+import ProductsGrid from '../../ProductsGrid/ProductsGrid';
 
-import defaultBasketSrc from '../../../images/default-basket.png';
+import useTranslate from '../../../hooks/useTranslate';
 
 const QTY_BASES = 1;
 const QTY_FRUITS = 3;
@@ -114,34 +114,24 @@ const Step1 = ({ basketParts, nextStep, supps, setSupps, availableBases, availab
   return (
     <div>
       <h2>{t('myfa_basket_to_order.bases')} {basesCount}/{QTY_BASES} - {t('myfa_basket_to_order.choose_base')}</h2>
-      <div className='ingredients-container'>
-        {availableBases.map(base => (
-          <div key={base.id} className='ingredient-container' onClick={() => editBases({ ...base })}>
-            <img src={base.img || defaultBasketSrc} className={(bases.map(b => b.id).includes(base.id) || supps.map(s => s.id).includes(base.id)) ? 'selected' : ''} />
-            <p>
-              {t(`ingredients.${base.labelTranslate}`)}
-              {(basesCount >= QTY_BASES && !bases.map(b => b.id).includes(base.id)) ?
-                <span className='supp-prices'>+1,5 €</span> : null
-              }
-            </p>
-          </div>
-        ))}
-      </div>
+
+      <ProductsGrid
+        availableProducts={availableBases}
+        onItemClicked={editBases}
+        suppPrice='1,5'
+        shouldSuppPriceBeDisplayed={(base) => (basesCount >= QTY_BASES && !bases.map(b => b.id).includes(base.id))}
+        shouldProductByHighlighted={(base) => (bases.map(b => b.id).includes(base.id) || supps.map(s => s.id).includes(base.id))}
+      />
 
       <h2>{t('myfa_basket_to_order.fruits')} {fruitsCount}/{QTY_FRUITS} - {t('myfa_basket_to_order.choose_3_fruits')}</h2>
-      <div className='ingredients-container'>
-        {availableFruits.map(fruit => (
-          <div key={fruit.id} className='ingredient-container' onClick={() => editFruits({ ...fruit })}>
-            <img src={fruit.img || defaultBasketSrc} className={(fruits.map(f => f.id).includes(fruit.id) || supps.map(s => s.id).includes(fruit.id)) ? 'selected' : ''} />
-            <p>
-              {fruit.label}
-              {(fruitsCount >= QTY_FRUITS && !fruits.map(f => f.id).includes(fruit.id)) ?
-                <span className='supp-prices'>+1,5 €</span> : null
-              }
-            </p>
-          </div>
-        ))}
-      </div>
+
+      <ProductsGrid
+        availableProducts={availableFruits}
+        onItemClicked={editFruits}
+        suppPrice='1,5'
+        shouldSuppPriceBeDisplayed={(fruit) => (fruitsCount >= QTY_FRUITS && !fruits.map(f => f.id).includes(fruit.id))}
+        shouldProductByHighlighted={(fruit) => (fruits.map(f => f.id).includes(fruit.id) || supps.map(s => s.id).includes(fruit.id))}
+      />
 
       <div className='navigation-container'>
         <button className='previous-button disabled' disabled>{t('myfa_basket_to_order.previous')}</button>
