@@ -147,34 +147,6 @@
 		text-decoration: line-through;
 	}
 
-  .ingredients-container {
-    display: flex;
-    flex-wrap: wrap;
-
-    .ingredient-container {
-      padding: 2em 1em;
-      border-radius: 8px;
-      text-align: center;
-
-      img {
-        max-width: 120px;
-				height: 100px;
-
-        &.selected {
-          border: 2px solid #EA1B1B;
-        }
-      }
-
-      p {
-				text-align: center;
-
-				.supp-prices {
-					color: #EA1B1B;
-				}
-      }
-    }
-  }
-
 	.new-price {
 		font-size: 25px;
 	}
@@ -317,14 +289,6 @@
 				margin-bottom: 0;
 			}
 		}
-
-		.ingredients-container {
-      .ingredient-container {
-        &:hover {
-          cursor: pointer;
-        }
-      }
-		}
 	}
 }
 
@@ -360,6 +324,9 @@
 
 @media (max-width: 480px) {
 	#custom-basket-to-order {
+		padding-left: 0;
+		padding-right: 0;
+
 		h1 {
 			font-size: 30px;
 		}
@@ -404,22 +371,6 @@
 				}
 			}
 		}
-
-    .ingredients-container {
-      justify-content: center;
-      align-items: center;
-
-      .ingredient-container {
-        img {
-					height: 80px;
-          max-width: 80px;
-        }
-
-        p {
-          font-size: 15px;
-        }
-      }
-    }
 
     .basket-img-container {
       img {

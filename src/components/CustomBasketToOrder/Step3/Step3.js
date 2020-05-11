@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { intersectionBy } from 'lodash';
 
-import useTranslate from '../../../hooks/useTranslate';
+import ProductsGrid from '../../ProductsGrid/ProductsGrid';
 
-import defaultBasketSrc from '../../../images/default-basket.png';
+import useTranslate from '../../../hooks/useTranslate';
 
 const QTY_SAUCES = 3;
 
@@ -73,19 +73,14 @@ const Step3 = ({ basketParts, nextStep, previousStep, supps, setSupps, available
   return (
     <div>
       <h2>{t('myfa_basket_to_order.sauces')} {itemsCount}/{QTY_SAUCES} - {t('myfa_basket_to_order.choose_3_products')}</h2>
-      <div className='ingredients-container'>
-        {availableSauces.map(sauce => (
-          <div key={sauce.id} className='ingredient-container' onClick={() => editSauces({ ...sauce })}>
-            <img src={sauce.img || defaultBasketSrc} className={(sauces.map(s => s.id).includes(sauce.id) || supps.map(s => s.id).includes(sauce.id)) ? 'selected' : ''} />
-            <p>
-              {t(`ingredients.${sauce.labelTranslate}`)}
-              {(itemsCount >= QTY_SAUCES && !sauces.map(s => s.id).includes(sauce.id)) ?
-                <span className='supp-prices'>+1,5 €</span> : null
-              }
-            </p>
-          </div>
-        ))}
-      </div>
+
+      <ProductsGrid
+        availableProducts={availableSauces}
+        onItemClicked={editSauces}
+        suppPrice='1,5'
+        shouldSuppPriceBeDisplayed={(sauce) => (itemsCount >= QTY_SAUCES && !sauces.map(s => s.id).includes(sauce.id))}
+        shouldProductByHighlighted={(sauce) => (sauces.map(s => s.id).includes(sauce.id) || supps.map(s => s.id).includes(sauce.id))}
+      />
 
       <div className='navigation-container'>
         <button className='previous-button' onClick={() => previousStep()}>{t('myfa_basket_to_order.previous')}</button>
