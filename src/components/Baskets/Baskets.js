@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
+import LoadingBasket from '../LoadingBasket';
 import CartModal from '../CartModal';
 
 import useTranslate from '../../hooks/useTranslate';
@@ -55,7 +56,7 @@ const Baskets = () => {
 			</div>
 
 			<Row className='baskets-container justify-content-center'>
-				{baskets.map((basket) => (
+				{baskets.length ? baskets.map((basket) => (
 					<Col md={4} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
 						<div className='basket-container'>
 							<div className='basket-inner-container'>
@@ -81,6 +82,11 @@ const Baskets = () => {
 								</Col>
 							</Row>
 						</div>
+					</Col>
+				)) :
+				[1, 2, 3].map((it, index) => (
+					<Col md={4} key={index}>
+						<LoadingBasket />
 					</Col>
 				))}
 			</Row>
