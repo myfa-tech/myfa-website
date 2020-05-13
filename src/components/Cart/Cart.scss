@@ -34,6 +34,22 @@
     margin-top: 1em;
     margin-bottom: 1em;
 
+    &:hover {
+      h2 {
+        color: #888;
+        cursor: pointer;
+      }
+    }
+
+    &.cannot-click {
+      &:hover {
+        h2 {
+          color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+
     h2 {
       padding-top: 1em;
       padding-bottom: 1em;

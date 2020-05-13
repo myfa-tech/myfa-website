@@ -35,7 +35,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
         </TextField>
 
         <Row>
-          <Col xs='6'>
+          <Col xs='6' className='left-input'>
             <TextField
               type='text'
               required
@@ -48,7 +48,7 @@ const RelativeInfo = ({ errors, form, handleChangeFormValue, recipientIndex, han
               onChange={handleChangeFormValue}
             />
           </Col>
-          <Col xs='6'>
+          <Col xs='6' className='right-input'>
             <TextField
               type='text'
               required

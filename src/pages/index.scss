@@ -7,6 +7,14 @@ html {
     .row {
       margin-left: 0;
       margin-right: 0;
+
+      .left-input {
+        padding-left: 0;
+      }
+
+      .right-input {
+        padding-right: 0;
+      }
     }
   }
 }

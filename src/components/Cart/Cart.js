@@ -155,6 +155,14 @@ const Cart = () => {
     }
   };
 
+  const goToStep = (stepId) => {
+    if (stepId === 2 && !!user) {
+      return;
+    }
+
+    setStep(stepId);
+  };
+
   const responseFacebook = async (response) => {
     const { name, email } = response;
 
@@ -352,7 +360,7 @@ const Cart = () => {
                   editItems={editItems}
                   removeBaskets={removeBaskets}
                 /> :
-                <div className='disabled-section'>
+                <div className='disabled-section' onClick={() => goToStep(1)}>
                   <h2>{t('cart.items.title')}</h2>
                 </div>
               }
@@ -371,7 +379,7 @@ const Cart = () => {
                   responseFacebook={responseFacebook}
                   responseGoogle={responseGoogle}
                 /> :
-                <div className='disabled-section signup-to-order'>
+                <div className={`disabled-section signup-to-order ${!!user ? 'cannot-click' : ''}`} onClick={() => goToStep(2)}>
                   <h2>{t('cart.self_info_title')}</h2>
                 </div>
               }
@@ -384,7 +392,7 @@ const Cart = () => {
                   handleRecipientChange={handleRecipientChange}
                   showOtherRelationInput={showOtherRelationInput}
                 /> :
-                <div className='disabled-section relative-info'>
+                <div className='disabled-section relative-info' onClick={() => goToStep(3)}>
                   <h2>{t('cart.relative_info_title')}</h2>
                 </div>
               }
@@ -393,7 +401,7 @@ const Cart = () => {
                   message={cart.message}
                   handleChangeMessage={handleChangeMessageToRelative}
                 /> :
-                <div className='disabled-section message-to-relative'>
+                <div className='disabled-section message-to-relative' onClick={() => goToStep(4)}>
                   <h2>{t('cart.message_to_relative_title')}</h2>
                 </div>
               }
