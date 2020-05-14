@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
+import LoadingBasket from '../LoadingBasket';
+
 import useTranslate from '../../hooks/useTranslate';
 import useFetchRamadanBaskets from '../../hooks/useFetchRamadanBaskets';
 import CartStorage from '../../services/CartStorage';
@@ -45,7 +47,7 @@ const RamadanBaskets = () => {
 
       <div>
         <Row className='ramadan-baskets-container baskets-container'>
-          {baskets.map((basket) => (
+          {baskets.length ? baskets.map((basket) => (
             <Col md={4} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
               <div className='basket-container'>
                 <div className='basket-inner-container'>
@@ -72,7 +74,13 @@ const RamadanBaskets = () => {
                 </Row>
               </div>
             </Col>
-          ))}
+          )) :
+          [1, 2, 3].map((it, index) => (
+            <Col md={4} key={index}>
+              <LoadingBasket />
+            </Col>
+          ))
+          }
         </Row>
       </div>
     </section>

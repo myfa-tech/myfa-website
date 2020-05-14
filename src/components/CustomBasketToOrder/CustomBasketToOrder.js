@@ -106,8 +106,8 @@ const CustomBasketToOrder = () => {
     }
   };
 
-  const pay = () => {
-    addToCart(basket, 1, true);
+  const pay = async () => {
+    await addToCart(basket, 1, true);
     window.location.assign('/cart');
   }
 
