@@ -13,9 +13,9 @@ import Footer from "./Footer"
 
 import './layout.scss'
 
-const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
+const Layout = ({ path, children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
   return (
-    <div className={`layout ${className}`}>
+    <div className={`layout ${className}`} path={path}>
       {hideHeader ?
         null :
         <Header

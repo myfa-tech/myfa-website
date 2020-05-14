@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+
+  * {
+    font-family: "Josefin Sans", sans-serif !important;
+  }
+
+  body {
+    background-color: rgba(241, 216, 102, 0.1);
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+
+      .left-input {
+        padding-left: 0;
+      }
+
+      .right-input {
+        padding-right: 0;
+      }
+    }
+  }
+}
