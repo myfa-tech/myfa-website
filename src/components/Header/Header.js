@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { IoMdMenu } from 'react-icons/io';
+import i18next from 'i18next';
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
@@ -20,7 +21,6 @@ import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
 
 import logoHandsSrc from '../../images/logo-1.png';
-import logoLettersSrc from '../../images/logo-letters.png';
 
 import './Header.scss';
 
@@ -134,7 +134,6 @@ const Header = () => {
 
   useEffect(() => {
     updateCart();
-    setLocaleLinks()
     eventEmitter.listen('editCart', updateCart);
     eventEmitter.listen('login', setupLogin);
   }, []);
@@ -156,13 +155,6 @@ const Header = () => {
       setIsLoggedIn(true);
     }
   }, [user]);
-
-  const setLocaleLinks = () => {
-    const href = window.location.pathname;
-
-    setFrHref(`/fr/${href.substr(4)}`);
-    setEnHref(`/en/${href.substr(4)}`);
-  };
 
   const updateNavbarStickines = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
@@ -294,19 +286,19 @@ const Header = () => {
               title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
               className='account'
             >
-              <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/information'>{t('header.profile.information')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/orders'>{t('header.profile.orders')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/password'>{t('header.profile.password')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</NavDropdown.Item>
               <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
             </NavDropdown> :
             <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
           }
-          <Nav.Link href={`/${locale}/cart`} className='basket-link'>
+          <Nav.Link href='/cart' className='basket-link'>
             {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
           </Nav.Link>
-          <Nav.Link className='en-link' href={enHref}>EN</Nav.Link>
-          <Nav.Link className='fr-link' href={frHref}>FR</Nav.Link>
+          <Nav.Link className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</Nav.Link>
+          <Nav.Link className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</Nav.Link>
         </Nav>
       </Navbar>
 

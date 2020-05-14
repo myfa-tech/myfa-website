@@ -11,14 +11,19 @@ import common_fr from './intl/fr.json';
 import common_en from './intl/en.json';
 
 import 'semantic-ui-css/semantic.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
   lng: 'fr',                              // language to use
   resources: {
-    fr: common_fr,
-    en: common_en,
+    fr: {
+      common: common_fr,
+    },
+    en: {
+      common: common_en,
+    },
   },
 });
 

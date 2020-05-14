@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 const useTranslate = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('common');
   const locale = i18n.language || window.localStorage.i18nextLng;
 
   const translate = (key) => {

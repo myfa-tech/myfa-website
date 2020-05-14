@@ -25,8 +25,8 @@ const HomePage = () => {
     <>
       <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
 
-      {/* <Welcome />
-      <Covid19 />
+      <Welcome />
+      {/* <Covid19 />
       <RamadanBaskets />
       <Baskets />
       <HowItWorks />
