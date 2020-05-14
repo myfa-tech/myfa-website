@@ -26,7 +26,7 @@ const RamadanBaskets = () => {
 
   const handleBasketButtonClick = (basketType) => {
 		if (typeof window !== 'undefined') {
-			window.location.assign(`/${locale}/ramadan-baskets?type=${basketType}`);
+			window.location.assign(`/ramadan-baskets?type=${basketType}`);
 		}
   };
 

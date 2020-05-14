@@ -2,9 +2,8 @@
 import Axios from 'axios';
 import UserStorage from './UserStorage';
 import DashboardUserStorage from './DashboardUserStorage';
-import CartStorage from './CartStorage';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const fetchUser = async () => {
   let JWT_TOKEN = UserStorage.getToken();

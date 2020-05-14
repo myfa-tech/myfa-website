@@ -3,7 +3,7 @@ import Axios from 'axios';
 import UserStorage from './UserStorage';
 import basketsImgs from '../assets/basketsImgs';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const createCart = async (cart) => {
   let JWT_TOKEN = UserStorage.getToken();

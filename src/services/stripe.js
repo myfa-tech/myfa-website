@@ -3,10 +3,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import uuid from 'uuid/v4';
 import UserStorage from './UserStorage';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const redirectToCheckout = async (id) => {
-  const stripe = await loadStripe(process.env.GATSBY_STRIPE_PUSHABLE_API_KEY);
+  const stripe = await loadStripe(process.env.STRIPE_PUSHABLE_API_KEY);
 
   const { error } = await stripe.redirectToCheckout({
     sessionId: id,

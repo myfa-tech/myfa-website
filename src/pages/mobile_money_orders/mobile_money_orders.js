@@ -28,7 +28,7 @@ const OrdersPage = () => {
     } catch (e) {
       setIsRef(false);
       if (typeof window !== 'undefined') {
-        window.location.assign(`/${locale}/404`);
+        window.location.assign('/404');
       }
     } finally {
       setIsLoading(false);
@@ -61,7 +61,7 @@ const OrdersPage = () => {
           <Container>
             <h1>{t('orders.title')} 🎉</h1>
 
-            <p>{t('orders.description_part_1')} <a href={`/${locale}/profile/orders`}>{t('orders.here')}</a>.</p>
+            <p>{t('orders.description_part_1')} <a href='/profile/orders'>{t('orders.here')}</a>.</p>
 
             <p><b>Reste à payer : {euroToBePaid} € ou {cfaToBePaid} Fcfa</b></p>
 

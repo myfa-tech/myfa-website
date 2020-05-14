@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
+import { navigate } from "@reach/router";
 import { isAdminLoggedIn, isUserLoggedIn } from '../../services/auth';
-import { navigate } from 'gatsby';
 
 const useAuthentication = ({ redirect }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isUserLoggedIn()) {
+    if (!isUserLoggedIn() && typeof window !== 'undefined') {
       navigate(redirect);
     } else {
       setLoading(false);
@@ -20,7 +20,7 @@ const useAdminAuthentication = ({ redirect }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAdminLoggedIn()) {
+    if (!isAdminLoggedIn() && typeof window !== 'undefined') {
       navigate(redirect);
     } else {
       setLoading(false);

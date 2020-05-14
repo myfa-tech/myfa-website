@@ -63,7 +63,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
             <button className='continue-button' onClick={toggleCartModal}>
               {t('home_page.baskets.cart_modal.continue_button')}
             </button>
-            <button className='checkout-button' onClick={() => goTo(`/${locale}/cart`)}>
+            <button className='checkout-button' onClick={() => goTo('/cart')}>
               {t('home_page.baskets.cart_modal.pay_button')}
             </button>
           </Col>

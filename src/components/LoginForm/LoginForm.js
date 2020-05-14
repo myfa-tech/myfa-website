@@ -19,8 +19,8 @@ const spinnerStyle = css`
   margin: 0 auto;
 `;
 
-const FB_APP_ID = process.env.GATSBY_FB_APP_ID;
-const GOOGLE_CLIENT_ID = process.env.GATSBY_GOOGLE_CLIENT_ID;
+const FB_APP_ID = process.env.FB_APP_ID;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const LoginForm = ({ onLogin }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -143,7 +143,7 @@ const LoginForm = ({ onLogin }) => {
 
         {responseStatus === 404 ? <p className='wrong-user-password'>{t('login_form.unknown_user')}</p> : null}
 
-        <a className='forgot-password' href={`/${locale}/reset_password/email`}>{t('login_form.forgot_password')}</a>
+        <a className='forgot-password' href={`/reset_password/email`}>{t('login_form.forgot_password')}</a>
 
         {isLoading ?
           <span className='login-button'>
@@ -208,7 +208,7 @@ const LoginForm = ({ onLogin }) => {
         />
 
         <p className='cgu-cgv-accept'>
-          {t('login_form.when_login_part_1')} <a href={`/${locale}/cgv_${locale}`} target='_blank'>{t('login_form.cgv')}</a> {t('login_form.and')} <a href={`/${locale}/cgu_${locale}`} target='_blank'>{t('login_form.cgu')}</a>.
+          {t('login_form.when_login_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('login_form.cgv')}</a> {t('login_form.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('login_form.cgu')}</a>.
         </p>
       </form>
     </div>

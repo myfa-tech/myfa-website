@@ -6,7 +6,7 @@ const fetchStocks = async () => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -19,7 +19,7 @@ const editStock = async (stock) => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

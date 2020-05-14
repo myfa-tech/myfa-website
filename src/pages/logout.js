@@ -13,7 +13,7 @@ const LogoutPage = () => {
     DashboardUserStorage.deleteUser();
     window.localStorage.removeItem('popupViewed');
 
-    window.location.assign(`/${locale}`);
+    window.location.assign('/');
   }, []);
 
   return null;

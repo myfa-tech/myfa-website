@@ -29,9 +29,9 @@ const Baskets = () => {
 	const handleBasketButtonClick = (basketType) => {
 		if (typeof window !== 'undefined') {
 			if (basketType === 'myfa') {
-				window.location.assign(`/${locale}/custom-basket`);
+				window.location.assign('custom-basket');
 			} else {
-				window.location.assign(`/${locale}/baskets?type=${basketType}`);
+				window.location.assign(`baskets?type=${basketType}`);
 			}
 		}
 	};

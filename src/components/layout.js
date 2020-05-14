@@ -1,9 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
 
 import React from "react"
 import PropTypes from "prop-types"
@@ -13,9 +7,9 @@ import Footer from "./Footer"
 
 import './layout.scss'
 
-const Layout = ({ path, children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
+const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
   return (
-    <div className={`layout ${className}`} path={path}>
+    <div className={`layout ${className}`}>
       {hideHeader ?
         null :
         <Header

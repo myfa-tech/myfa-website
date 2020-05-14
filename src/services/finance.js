@@ -3,13 +3,13 @@ import Axios from 'axios';
 
 import DashboardUserStorage from '../services/DashboardUserStorage';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const fetchRequests = async () => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

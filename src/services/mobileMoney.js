@@ -3,7 +3,7 @@ import Axios from 'axios';
 import uuid from 'uuid/v4';
 import UserStorage from './UserStorage';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const redirectToOrder = (successUrl) => {
   if (typeof window !== 'undefined') {

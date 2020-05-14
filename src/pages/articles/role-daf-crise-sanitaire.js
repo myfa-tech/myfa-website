@@ -37,7 +37,7 @@ const Article = (props) => (
           </div>
 
           <p>
-            A travers les derniers <a href='https://www.myfa.fr/fr/#blog'>articles</a> de <a href='https://www.linkedin.com/in/doris-somon'>Doris</a>, <a href='https://www.linkedin.com/in/manuella-sani-29a59b1a5'>Manuella</a> et <a href='https://www.linkedin.com/in/florianadonis'>Florian</a>, vous l’aurez bien compris,
+            A travers les derniers <a href='https://www.myfa.fr/#blog'>articles</a> de <a href='https://www.linkedin.com/in/doris-somon'>Doris</a>, <a href='https://www.linkedin.com/in/manuella-sani-29a59b1a5'>Manuella</a> et <a href='https://www.linkedin.com/in/florianadonis'>Florian</a>, vous l’aurez bien compris,
             malgré la crise inédite que nous traversons, il n’est pas question pour nous de tout arrêter !
           </p>
 

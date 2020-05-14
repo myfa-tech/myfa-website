@@ -31,11 +31,11 @@ const ProfileMenu = ({ pageName }) => {
   };
 
   const listItems = [
-    { label: t('profile.menu.my_info'), link: `/${locale}/profile/information` },
-    { label: t('profile.menu.my_orders'), link: `/${locale}/profile/orders` },
-    { label: t('profile.menu.password'), link: `/${locale}/profile/password` },
-    { label: t('profile.menu.relatives'), link: `/${locale}/profile/relatives` },
-    { label: t('profile.menu.logout'), link: `/${locale}/logout` },
+    { label: t('profile.menu.my_info'), link: '/profile/information' },
+    { label: t('profile.menu.my_orders'), link: '/profile/orders' },
+    { label: t('profile.menu.password'), link: '/profile/password' },
+    { label: t('profile.menu.relatives'), link: '/profile/relatives' },
+    { label: t('profile.menu.logout'), link: '/logout' },
   ];
 
   const spinnerStyle = css`

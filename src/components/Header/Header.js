@@ -41,7 +41,7 @@ const CustomTooltip = withStyles(theme => ({
 const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}/cart`);
+      window.location.assign('/cart');
     }
   };
 
@@ -117,19 +117,17 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
   const [t, locale] = useTranslate();
-  const [frHref, setFrHref] = useState('/fr');
-  const [enHref, setEnHref] = useState('/en');
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
 
   const eventEmitter = new EventEmitter();
 
   const DRAWER_LIST = [
-    { label: t('header.home'), link: `/${locale}` },
-    { label: t('header.baskets'), link: `/${locale}/#baskets` },
-    { label: t('header.how_it_works'), link: `/${locale}/#how-it-works` },
-    { label: t('header.promise'), link: `/${locale}/#our-promise` },
-    { label: t('header.team'), link: `/${locale}/team` },
-    { label: t('header.blog'), link: `/${locale}/#blog` },
+    { label: t('header.home'), link: '/' },
+    { label: t('header.baskets'), link: '/#baskets' },
+    { label: t('header.how_it_works'), link: '/#how-it-works' },
+    { label: t('header.promise'), link: '/#our-promise' },
+    { label: t('header.team'), link: '/team' },
+    { label: t('header.blog'), link: '/#blog' },
   ];
 
   useEffect(() => {
@@ -244,13 +242,13 @@ const Header = () => {
 
   const onSignup = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}/profile`);
+      window.location.assign('/profile');
     }
   };
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}`);
+      window.location.assign('/');
     }
   };
 

@@ -55,9 +55,10 @@ typings/
 .env
 .env.*
 
-# gatsby files
-.cache/
-public
+# potential JS build folders
+dist/
+public/
+build/
 
 # Mac files
 .DS_Store

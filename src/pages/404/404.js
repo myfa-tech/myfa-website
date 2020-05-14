@@ -20,7 +20,7 @@ const NotFoundPage = () => {
 
         <img src={banana404} />
 
-        <a href={`/${locale}`} className='go-home-button'>{t('404.cta')}</a>
+        <a href='/' className='go-home-button'>{t('404.cta')}</a>
       </div>
     </Layout>
   );

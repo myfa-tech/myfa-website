@@ -1,8 +1,14 @@
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url(/src/assets/fonts/JosefinSans-Regular.ttf);
+}
+
 html {
   scroll-behavior: smooth;
 
   * {
-    font-family: "Josefin Sans", sans-serif !important;
+    font-family: 'Josefin Sans', sans-serif !important;
   }
 
   body {

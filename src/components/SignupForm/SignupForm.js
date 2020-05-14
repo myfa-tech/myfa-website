@@ -149,7 +149,7 @@ const SignupForm = ({ onSignup }) => {
         }
         label={
           <p className='cgu-cgv-label'>
-            {t('signup_form.accept_cgu_cgv_part_1')} <a href={`/${locale}/cgv_${locale}`} target='_blank'>{t('signup_form.cgv')}</a> {t('signup_form.and')} <a href={`/${locale}/cgu_${locale}`} target='_blank'>{t('signup_form.cgu')}</a>
+            {t('signup_form.accept_cgu_cgv_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('signup_form.cgv')}</a> {t('signup_form.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('signup_form.cgu')}</a>
           </p>
         }
       />

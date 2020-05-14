@@ -14,8 +14,8 @@ import './PersonalInfo.scss';
 import googleLogoSrc from '../../../images/google_logo.svg';
 import useTranslate from '../../../hooks/useTranslate';
 
-const FB_APP_ID = process.env.GATSBY_FB_APP_ID;
-const GOOGLE_CLIENT_ID = process.env.GATSBY_GOOGLE_CLIENT_ID;
+const FB_APP_ID = process.env.FB_APP_ID;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const PersonalInfo = ({
   signupErrors,
@@ -139,7 +139,7 @@ const LoginPath = ({
         />
 
         <p className='cgu-cgv-accept'>
-          {t('cart.personal_info.when_login_part_1')} <a href={`/${locale}/cgv_${locale}`} target='_blank'>{t('cart.personal_info.cgv')}</a> {t('cart.personal_info.and')} <a href={`/${locale}/cgu_${locale}`} target='_blank'>{t('cart.personal_info.cgu')}</a>.</p>
+          {t('cart.personal_info.when_login_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('cart.personal_info.cgv')}</a> {t('cart.personal_info.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('cart.personal_info.cgu')}</a>.</p>
       </form>
     </>
   );
@@ -243,7 +243,7 @@ const SignupPath = ({ signupErrors, signupForm, responseStatus, handleChangeSign
               color='primary'
             />
           }
-          label={<p className='cgu-cgv-label'>{t('cart.personal_info.accept_cgu_cgv_part_1')} <a href={`/${locale}/cgv_${locale}`} target='_blank'>{t('cart.personal_info.cgv')}</a> {t('cart.personal_info.and')} <a href={`/${locale}/cgu_${locale}`} target='_blank'>{t('cart.personal_info.cgu')}</a></p>}
+          label={<p className='cgu-cgv-label'>{t('cart.personal_info.accept_cgu_cgv_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('cart.personal_info.cgv')}</a> {t('cart.personal_info.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('cart.personal_info.cgu')}</a></p>}
         />
       </form>
     </>
