@@ -19,6 +19,7 @@ import CartStorage from '../../services/CartStorage';
 import UserStorage from '../../services/UserStorage';
 import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
+import { navigate } from "@reach/router";
 
 import logoHandsSrc from '../../images/logo-1.png';
 
@@ -255,7 +256,7 @@ const Header = () => {
   const goTo = ({ link }) => {
     if (typeof window !== 'undefined') {
       toggleDrawer('left', false);
-      window.location.assign(link);
+      navigate(link);
     }
   };
 

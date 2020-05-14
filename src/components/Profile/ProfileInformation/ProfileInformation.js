@@ -108,7 +108,7 @@ const ProfileInformation = () => {
 
       <form onSubmit={updateInfo}>
         <Row>
-          <Col xs='6'>
+          <Col xs='6' className='left-input'>
             <TextField
               type='text'
               className='full-width form-input'
@@ -122,7 +122,7 @@ const ProfileInformation = () => {
               disabled={isLoading}
             />
           </Col>
-          <Col xs='6'>
+          <Col xs='6' className='right-input'>
             <TextField
               type='text'
               className='full-width form-input'

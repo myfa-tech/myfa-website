@@ -15,6 +15,10 @@ import './index.scss';
 import EmailConfirmationSuccessPage from './pages/email_confirmation_success';
 import MobileMoneyOrdersPage from './pages/mobile_money_orders';
 import ProfilePage from './pages/profile';
+import ProfileInformationPage from './pages/profile/information';
+import ProfileOrdersPage from './pages/profile/orders';
+import ProfilePasswordPage from './pages/profile/password';
+import ProfileRelativesPage from './pages/profile/relatives';
 import ResetPasswordEmailPage from './pages/reset_password/email';
 import ResetPasswordPasswordPage from './pages/reset_password/password';
 import TeamPage from './pages/team';
@@ -49,24 +53,28 @@ const App = () => (
   <Router>
     <HomePage path='/' />
     <TeamPage path='/team' />
-    <EmailConfirmationSuccessPage path='email_confirmation_success' />
-    <MobileMoneyOrdersPage path='mobile_money_orders' />
-    <ProfilePage path='profile' />
-    <ResetPasswordEmailPage path='reset_password/email' />
-    <ResetPasswordPasswordPage path='reset_password/password' />
-    <BasketsPage path='baskets' />
-    <CartPage path='cart' />
-    <CguFrPage path='cgu_fr'/>
-    <CguEnPage path='cgu_en'/>
-    <CgvFrPage path='cgv_fr'/>
-    <CgvEnPage path='cgv_en'/>
-    <LegalEnPage path='legal_en' />
-    <LegalFrPage path='legal_fr' />
-    <CustomBasketPage path='custom-basket' />
-    <EmailConfirmationPage path='email_confirmation' />
-    <LogoutPage path='logout' />
-    <OrdersPage path='orders' />
-    <RamadanBasketsPage path='ramadan-baskets' />
+    <EmailConfirmationSuccessPage path='/email_confirmation_success' />
+    <MobileMoneyOrdersPage path='/mobile_money_orders' />
+    <ProfilePage path='/profile' />
+    <ProfileInformationPage path='/profile/information' />
+    <ProfileOrdersPage path='/profile/orders' />
+    <ProfilePasswordPage path='/profile/password' />
+    <ProfileRelativesPage path='/profile/relatives' />
+    <ResetPasswordEmailPage path='/reset_password/email' />
+    <ResetPasswordPasswordPage path='/reset_password/password' />
+    <BasketsPage path='/baskets' />
+    <CartPage path='/cart' />
+    <CguFrPage path='/cgu_fr'/>
+    <CguEnPage path='/cgu_en'/>
+    <CgvFrPage path='/cgv_fr'/>
+    <CgvEnPage path='/cgv_en'/>
+    <LegalEnPage path='/legal_en' />
+    <LegalFrPage path='/legal_fr' />
+    <CustomBasketPage path='/custom-basket' />
+    <EmailConfirmationPage path='/email_confirmation' />
+    <LogoutPage path='/logout' />
+    <OrdersPage path='/orders' />
+    <RamadanBasketsPage path='/ramadan-baskets' />
   </Router>
 );
 

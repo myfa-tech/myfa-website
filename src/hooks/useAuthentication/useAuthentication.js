@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { navigate } from "@reach/router";
+import { navigate } from '@reach/router';
 import { isAdminLoggedIn, isUserLoggedIn } from '../../services/auth';
 
 const useAuthentication = ({ redirect }) => {

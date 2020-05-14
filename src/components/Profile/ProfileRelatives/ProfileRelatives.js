@@ -128,7 +128,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
       <h2>{t('profile.relatives.headline')}</h2>
 
       <Row>
-        <Col xs='6'>
+        <Col xs='6' className='left-input'>
           <TextField
             type='text'
             required
@@ -142,7 +142,7 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
             disabled={isLoading}
           />
         </Col>
-        <Col xs='6'>
+        <Col xs='6' className='right-input'>
           <TextField
             type='text'
             required
