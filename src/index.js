@@ -35,6 +35,7 @@ import EmailConfirmationPage from './pages/email_confirmation';
 import LogoutPage from './pages/logout';
 import OrdersPage from './pages/orders';
 import RamadanBasketsPage from './pages/ramadan-baskets';
+import ArticlePage from './pages/articles';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -75,6 +76,7 @@ const App = () => (
     <LogoutPage path='/logout' />
     <OrdersPage path='/orders' />
     <RamadanBasketsPage path='/ramadan-baskets' />
+    <ArticlePage path='articles/:articleId' />
   </Router>
 );
 
