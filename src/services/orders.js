@@ -3,13 +3,13 @@ import Axios from 'axios';
 import UserStorage from './UserStorage';
 import DashboardUserStorage from './DashboardUserStorage';
 
-const BACKEND_URL = process.env.BACKEND_URL;
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const getOrdersByRef = async (ref) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -22,7 +22,7 @@ const getBasketsByEmail = async (email) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -35,7 +35,7 @@ const saveOrderManually = async (order) => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

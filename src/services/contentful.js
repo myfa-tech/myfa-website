@@ -8,7 +8,7 @@ const formatArticles = (articles) => {
 
 const fetchArticles = async () => {
   let axios = Axios.create({
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/blog/articles`);
@@ -18,7 +18,7 @@ const fetchArticles = async () => {
 
 const fetchSingleArticle = async (id) => {
   let axios = Axios.create({
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/blog${id}`);

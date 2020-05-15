@@ -19,8 +19,8 @@ const spinnerStyle = css`
   margin: 0 auto;
 `;
 
-const FB_APP_ID = process.env.FB_APP_ID;
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const REACT_APP_FB_APP_ID = process.env.REACT_APP_FB_APP_ID;
+const REACT_APP_GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const LoginForm = ({ onLogin }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -158,7 +158,7 @@ const LoginForm = ({ onLogin }) => {
           <button type='submit' className='login-button'>{t('login_form.login')}</button>
         }
         <FacebookLogin
-          appId={FB_APP_ID}
+          appId={REACT_APP_FB_APP_ID}
           autoLoad={false}
           fields='name, email'
           callback={responseFacebook}
@@ -183,7 +183,7 @@ const LoginForm = ({ onLogin }) => {
         />
 
         <GoogleLogin
-          clientId={`${GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
+          clientId={`${REACT_APP_GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}
           buttonText='Login'
           onSuccess={responseGoogle}
           onFailure={responseGoogle}

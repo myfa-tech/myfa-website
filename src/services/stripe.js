@@ -3,10 +3,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import uuid from 'uuid/v4';
 import UserStorage from './UserStorage';
 
-const BACKEND_URL = process.env.BACKEND_URL;
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const redirectToCheckout = async (id) => {
-  const stripe = await loadStripe(process.env.STRIPE_PUSHABLE_API_KEY);
+  const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUSHABLE_API_KEY);
 
   const { error } = await stripe.redirectToCheckout({
     sessionId: id,
@@ -31,7 +31,7 @@ const createPayment = async (order, user) => {
   const success_url = `${origin}/orders?ref=${orderRef}`;
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

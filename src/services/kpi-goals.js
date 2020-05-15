@@ -6,7 +6,7 @@ const fetchGoals = async () => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -19,7 +19,7 @@ const updateGoalById = async (id, value) => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

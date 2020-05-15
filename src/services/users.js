@@ -3,13 +3,13 @@ import Axios from 'axios';
 import UserStorage from './UserStorage';
 import DashboardUserStorage from './DashboardUserStorage';
 
-const BACKEND_URL = process.env.BACKEND_URL;
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const fetchUser = async () => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -23,7 +23,7 @@ const fetchUsers = async (timeFilter) => {
   let query = '';
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -37,7 +37,7 @@ const fetchUsers = async (timeFilter) => {
 };
 
 const saveUser = async (user) => {
-  const response = await Axios.post(`${BACKEND_URL}/users`, user);
+  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users`, user);
   const createdUser = response.data.user;
   const { token } = response.data;
 
@@ -48,7 +48,7 @@ const updateUser = async (userPart) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -63,7 +63,7 @@ const deleteAccount = async () => {
   const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -74,7 +74,7 @@ const updatePassword = async ({ actualPassword, newPassword }) => {
   const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -85,7 +85,7 @@ const updatePassword = async ({ actualPassword, newPassword }) => {
 const resetPasswordSendMagicLink = async (email) => {
   try {
     let axios = Axios.create({
-      baseURL: BACKEND_URL,
+      baseURL: REACT_APP_BACKEND_URL,
     });
 
     const host = window.location.host;
@@ -107,7 +107,7 @@ const resetPassword = async (newPassword) => {
     const url = window.location.search;
 
     let axios = Axios.create({
-      baseURL: BACKEND_URL,
+      baseURL: REACT_APP_BACKEND_URL,
     });
 
     const response = await axios.post(`/users/password/reset`, { newPassword, url });
@@ -119,21 +119,21 @@ const resetPassword = async (newPassword) => {
 };
 
 const loginUser = async (user) => {
-  const response = await Axios.post(`${BACKEND_URL}/users/login`, user);
+  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users/login`, user);
   const { user: loggedInUser, token } = response.data;
 
   UserStorage.saveUser(loggedInUser, token, true);
 };
 
 const loginFBUser = async (user) => {
-  const response = await Axios.post(`${BACKEND_URL}/users/facebook-login`, user);
+  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users/facebook-login`, user);
   const { user: loggedInUser, token } = response.data;
 
   UserStorage.saveUser(loggedInUser, token, true);
 };
 
 const loginGoogleUser = async (user) => {
-  const response = await Axios.post(`${BACKEND_URL}/users/google-login`, user);
+  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users/google-login`, user);
   const { user: loggedInUser, token } = response.data;
 
   UserStorage.saveUser(loggedInUser, token, true);
@@ -143,7 +143,7 @@ const addRecipient = async (recipient) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -158,7 +158,7 @@ const addRecipient = async (recipient) => {
 
 const confirmEmail = async (email, hash) => {
   try {
-    await Axios.post(`${BACKEND_URL}/users/email/confirm`, { email, hash });
+    await Axios.post(`${REACT_APP_BACKEND_URL}/users/email/confirm`, { email, hash });
 
     window.location.assign('/email_confirmation_success');
   } catch(e) {
