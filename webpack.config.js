@@ -60,9 +60,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=100000',
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader?limit=100000',
+          }
+        ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
