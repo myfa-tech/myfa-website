@@ -156,9 +156,11 @@ const Cart = () => {
   };
 
   const goToStep = (stepId) => {
-    if (stepId === 2 && !!user) {
+    if ((stepId === 2 && !!user) ||
+      ((stepId === 3 || stepId === 4) && !user)) {
       return;
     }
+
 
     setStep(stepId);
   };
@@ -392,7 +394,7 @@ const Cart = () => {
                   handleRecipientChange={handleRecipientChange}
                   showOtherRelationInput={showOtherRelationInput}
                 /> :
-                <div className='disabled-section relative-info' onClick={() => goToStep(3)}>
+                <div className={`disabled-section relative-info ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(3)}>
                   <h2>{t('cart.relative_info_title')}</h2>
                 </div>
               }
@@ -401,7 +403,7 @@ const Cart = () => {
                   message={cart.message}
                   handleChangeMessage={handleChangeMessageToRelative}
                 /> :
-                <div className='disabled-section message-to-relative' onClick={() => goToStep(4)}>
+                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(4)}>
                   <h2>{t('cart.message_to_relative_title')}</h2>
                 </div>
               }
