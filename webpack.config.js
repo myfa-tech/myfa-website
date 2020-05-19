@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   output: {
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -12,17 +12,17 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
             loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
+            options: { minimize: true },
+          },
+        ],
       },
       {
         test: /(\.css$)/,
@@ -39,7 +39,7 @@ module.exports = {
               options: {},
             },
           },
-        ]
+        ],
       },
       {
         test: /\.scss$/,
@@ -51,20 +51,19 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-            }
+            },
           },
-
           {
             loader: require.resolve('sass-loader'),
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
         use: [
           {
             loader: 'url-loader?limit=100000',
-          }
+          },
         ],
       },
       {
@@ -74,21 +73,22 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      filename: "./index.html"
+      filename: "./index.html",
+      favicon: "./src/images/favicon.ico",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      chunkFilename: "[id].css",
     }),
     new Dotenv(),
   ],
