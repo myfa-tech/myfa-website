@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/Layout';
 import { handleLogin, isAdminLoggedIn } from '../../../services/auth';
-import { navigate } from 'gatsby';
+import { navigate } from "@reach/router";
 
 import './login.scss';
 

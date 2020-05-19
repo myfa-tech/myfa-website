@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 

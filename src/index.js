@@ -4,14 +4,14 @@ import { Router } from '@reach/router';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
 
-import HomePage from './pages/home';
-
 import common_fr from './intl/fr.json';
 import common_en from './intl/en.json';
 
 import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
+
+import HomePage from './pages/home';
 import EmailConfirmationSuccessPage from './pages/email_confirmation_success';
 import MobileMoneyOrdersPage from './pages/mobile_money_orders';
 import ProfilePage from './pages/profile';
@@ -36,6 +36,13 @@ import LogoutPage from './pages/logout';
 import OrdersPage from './pages/orders';
 import RamadanBasketsPage from './pages/ramadan-baskets';
 import ArticlePage from './pages/articles';
+
+import DashboardHomeKPIs from './pages/dashboard';
+import DashboardLogin from './pages/dashboard/login';
+import DashboardUsers from './pages/dashboard/users';
+import DashboardBaskets from './pages/dashboard/baskets';
+import DashboardFinance from './pages/dashboard/finance';
+import DashboardStocks from './pages/dashboard/stocks';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -77,6 +84,13 @@ const App = () => (
     <OrdersPage path='/orders' />
     <RamadanBasketsPage path='/ramadan-baskets' />
     <ArticlePage path='articles/:articleId' />
+
+    <DashboardHomeKPIs path='/dashboard' />
+    <DashboardLogin path='/dashboard/login' />
+    <DashboardUsers path='/dashboard/users' />
+    <DashboardBaskets path='/dashboard/baskets' />
+    <DashboardFinance path='/dashboard/finance' />
+    <DashboardStocks path='/dashboard/stocks' />
   </Router>
 );
 
