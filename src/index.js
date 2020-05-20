@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from '@reach/router';
+import { Redirect, Router } from '@reach/router';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
 
@@ -14,7 +14,6 @@ import './index.scss';
 import HomePage from './pages/home';
 import EmailConfirmationSuccessPage from './pages/email_confirmation_success';
 import MobileMoneyOrdersPage from './pages/mobile_money_orders';
-import ProfilePage from './pages/profile';
 import ProfileInformationPage from './pages/profile/information';
 import ProfileOrdersPage from './pages/profile/orders';
 import ProfilePasswordPage from './pages/profile/password';
@@ -63,7 +62,10 @@ const App = () => (
     <TeamPage path='/team' />
     <EmailConfirmationSuccessPage path='/email_confirmation_success' />
     <MobileMoneyOrdersPage path='/mobile_money_orders' />
-    <ProfilePage path='/profile' />
+    <Redirect
+      from="/profile"
+      to="/profile/information"
+    />
     <ProfileInformationPage path='/profile/information' />
     <ProfileOrdersPage path='/profile/orders' />
     <ProfilePasswordPage path='/profile/password' />
