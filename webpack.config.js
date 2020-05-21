@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   output: {
@@ -91,6 +92,11 @@ module.exports = {
       chunkFilename: "[id].css",
     }),
     new Dotenv(),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'static' },
+      ],
+    }),
   ],
   devServer: {
     port: 8000,
