@@ -1,101 +1,30 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import useTranslate from '../../../hooks/useTranslate';
-import { updateUser } from '../../../services/users';
-import useRelativeForm from '../../../hooks/useRelativeForm';
+import useTranslate from '../../../../hooks/useTranslate';
+import { updateUser } from '../../../../services/users';
+import useRelativeForm from '../../../../hooks/useRelativeForm';
 
-import logoHandsSrc from '../../../images/logo-1.png';
-
-import './ProfileRelatives.scss';
-import UserStorage from '../../../services/UserStorage';
+import './ModifyRelativeForm.scss';
 
 const spinnerStyle = css`
-  display: block;
-  margin: 0 auto;
+display: block;
+margin: 0 auto;
 `;
-
-const getZone = (code) => {
-  const zones = {
-    '2PL': '2 Plateaux',
-    'AB': 'Abobo',
-    'AD': 'Adjamé',
-    'AT': 'Attécoubé',
-    'CO': 'Cocody',
-    'KO': 'Koumassi',
-    'MA': 'Marcory',
-    'PL': 'Plateau',
-    'PB': 'Port-Bouet',
-    'RI': 'Riviera',
-    'TR': 'Treichville',
-    'YO': 'Yopougon',
-  };
-
-  return zones[code] || code;
-};
-
-const RelativesList = ({ addRelative, relatives, modifyRelativeIndex, deleteRelative }) => {
-  const [t] = useTranslate();
-
-  useEffect(() => {
-    modifyRelativeIndex(-1);
-  }, []);
-
-  return (
-    <>
-      <div className='relatives-list-title-container'>
-        <h2>{t('profile.relatives.headline')}</h2>
-
-        <button type='button' className='add-relative-button' onClick={() => addRelative()}>
-          {t('profile.relatives.add_relative')}
-        </button>
-      </div>
-      <div className='relatives-list-container'>
-        <h2>{t('profile.relatives.my_relatives')}</h2>
-
-        {relatives && relatives.length ?
-          <ul className='relatives-container'>
-            {relatives.map((relative, index) => {
-              return (
-                <li key={`${relative.firstname}-${relative.lastname}`}>
-                  <Row>
-                    <Col xs={7} sm={9} className='info-container'>
-                      <p className='relatives-info'>{relative.firstname} {relative.lastname}</p>
-                      {relative.address ? <p className='relatives-info'>{relative.address}</p> : null}
-                      <p className='relatives-info'>{relative.country}{relative.phone}</p>
-                      <p className='relatives-info'>{getZone(relative.zone)}</p>
-                    </Col>
-                    <Col xs={5} sm={3} className='edit-container'>
-                      <button className='action' onClick={() => modifyRelativeIndex(index)}>
-                        {t('profile.relatives.modify')}
-                      </button>
-                      <button className='action' onClick={() => deleteRelative(index)}>
-                        {t('profile.relatives.delete')}
-                      </button>
-                    </Col>
-                  </Row>
-                </li>
-              );
-            })}
-          </ul> :
-          <p className='no-relatives'>Vous n’avez pas encore enregistré de proche.</p>
-        }
-      </div>
-    </>
-  );
-};
 
 const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [
     relativeFormValues,
     handleChangeRelativeFormValues,
+    setRelativeFormValues,
     handleSubmitRelativeForm,
     relativeFormErrors,
+    handleRelativeFormRecipientChange,
     showOtherRelationInput,
   ] = useRelativeForm(update, relative);
   const [t] = useTranslate();
@@ -292,97 +221,4 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
   );
 };
 
-const ProfileInformation = () => {
-  const user = UserStorage.getUser();
-  const [relatives, setRelatives] = useState(user.recipients);
-  const [relativeIndex, setRelativeIndex] = useState(-1);
-  const [modifying, setModifying] = useState(false);
-  const [deleting, setDeleting] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [t] = useTranslate();
-
-  const modifyRelativeIndex = (index) => {
-    if (index > -1) {
-      setRelativeIndex(index);
-    }
-
-    if (index !== -1) {
-      setModifying(true);
-    }
-  };
-
-  const deleteRelative = (index) => {
-    setRelativeIndex(index);
-    setDeleting(true);
-  };
-
-  const closeDeletingModal = () => {
-    setRelativeIndex(-1);
-    setDeleting(false);
-  };
-
-  const confirmDelete = async () => {
-    setIsLoading(true);
-    relatives.splice(relativeIndex, 1);
-
-    await updateUser({ recipients: relatives });
-    setIsLoading(false);
-
-    window.location.assign('/profile/relatives');
-  };
-
-  return (
-    <div id='profile-relatives'>
-      {modifying ?
-        <ModifyRelativeForm
-          relatives={relatives}
-          relative={relatives[relativeIndex]}
-          relativeIndex={relativeIndex}
-        /> :
-        <RelativesList
-          relatives={relatives}
-          modifyRelativeIndex={modifyRelativeIndex}
-          deleteRelative={deleteRelative}
-          addRelative={modifyRelativeIndex}
-        />
-      }
-      {deleting &&
-        <Modal show={deleting} onHide={closeDeletingModal} id='deleting-modal'>
-          <Modal.Body>
-            <div>
-              <img src={logoHandsSrc} alt='logo' className='logo-big' />
-
-              <p>{t('profile.relatives.verify_delete_relative_part_1')} {relatives[relativeIndex].firstname} {t('profile.relatives.verify_delete_relative_part_2')}</p>
-
-              <Row>
-                <Col xs={6}>
-                  <button type='button' className='cancel-button' onClick={closeDeletingModal}>
-                    {t('profile.relatives.cancel')}
-                  </button>
-                </Col>
-                <Col xs={6}>
-                  {isLoading ?
-                    <button className='confirm-button'>
-                      <ClipLoader
-                        css={spinnerStyle}
-                        sizeUnit={'px'}
-                        size={25}
-                        color={'#000'}
-                        loading={true}
-                      />
-                    </button> :
-                    <button type='button' className='confirm-button' onClick={confirmDelete}>
-                      {t('profile.relatives.confirm')}
-                    </button>
-                  }
-                </Col>
-              </Row>
-            </div>
-          </Modal.Body>
-        </Modal>
-      }
-    </div>
-  );
-};
-
-export default ProfileInformation;
+export default ModifyRelativeForm;
