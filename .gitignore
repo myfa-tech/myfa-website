@@ -70,4 +70,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# old Gatsby stuff
 .cache/
+
+# apple icloud docs
+*.icloud
