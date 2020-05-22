@@ -3,7 +3,7 @@ import Axios from 'axios';
 import uuid from 'uuid/v4';
 import UserStorage from './UserStorage';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const redirectToOrder = (successUrl) => {
   if (typeof window !== 'undefined') {
@@ -19,7 +19,7 @@ const createPayment = async (order, user) => {
   const success_url = `${origin}/mobile_money_orders?ref=${orderRef}`;
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

@@ -7,7 +7,7 @@ const fetchBaskets = async (timeFilter) => {
   let query = '';
 
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -22,7 +22,7 @@ const fetchBaskets = async (timeFilter) => {
 
 const fetchCustomBasket = async () => {
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/baskets/custom-basket/details`);
@@ -32,7 +32,7 @@ const fetchCustomBasket = async () => {
 
 const fetchHomeBaskets = async () => {
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/baskets/details`);
@@ -42,7 +42,7 @@ const fetchHomeBaskets = async () => {
 
 const fetchRamadanBaskets = async () => {
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/ramadanbaskets/details`);
@@ -54,7 +54,7 @@ const updateBasketById = async (id, editFields) => {
   let JWT_TOKEN = DashboardUserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: process.env.GATSBY_BACKEND_URL,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

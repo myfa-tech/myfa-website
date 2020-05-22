@@ -49,9 +49,9 @@ const BasketToOrder = () => {
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
       if (type === 'myfa') {
-				window.location.assign(`/${locale}/custom-basket`);
+				window.location.assign('/custom-basket');
 			} else {
-        window.location.assign(`/${locale}/baskets?type=${type}`);
+        window.location.assign(`/baskets?type=${type}`);
       }
 		}
   }

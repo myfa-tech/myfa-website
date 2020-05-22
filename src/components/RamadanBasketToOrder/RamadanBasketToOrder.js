@@ -48,7 +48,7 @@ const RamadanBasketToOrder = () => {
 
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}/ramadan-baskets?type=${type}`);
+      window.location.assign(`/ramadan-baskets?type=${type}`);
 		}
   }
 

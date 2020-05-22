@@ -1,38 +1,24 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import uuid from 'uuid/v4';
 
-import useTranslate from "../hooks/useTranslate";
+import useTranslate from '../hooks/useTranslate';
 
 import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
   const [t] = useTranslate();
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  );
+  const site = {
+    title: `MYFA`,
+    siteUrl: `https://www.myfa.fr`,
+    description: `MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !`,
+    author: `MYFA SAS`,
+  };
 
   const metaDescription = description || t('site_seo.description');
-  const metaAuthor = site.siteMetadata.author;
+  const metaAuthor = site.author;
   const uniqueId = uuid().substr(0, 8);
 
   return (
@@ -89,7 +75,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.author,
         },
         {
           name: `twitter:title`,

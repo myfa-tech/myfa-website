@@ -55,9 +55,10 @@ typings/
 .env
 .env.*
 
-# gatsby files
-.cache/
-public
+# potential JS build folders
+dist/
+public/
+build/
 
 # Mac files
 .DS_Store
@@ -68,3 +69,9 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# old Gatsby stuff
+.cache/
+
+# apple icloud docs
+*.icloud

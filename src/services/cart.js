@@ -3,13 +3,13 @@ import Axios from 'axios';
 import UserStorage from './UserStorage';
 import basketsImgs from '../assets/basketsImgs';
 
-const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const createCart = async (cart) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -20,7 +20,7 @@ const updateCart = async (editFields) => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -31,7 +31,7 @@ const getCart = async () => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
@@ -48,7 +48,7 @@ const deleteSavedCart = async () => {
   let JWT_TOKEN = UserStorage.getToken();
 
   let axios = Axios.create({
-    baseURL: BACKEND_URL,
+    baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 

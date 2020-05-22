@@ -4,7 +4,7 @@ import DashboardUserStorage from './DashboardUserStorage';
 import UserStorage from './UserStorage';
 
 const axios = Axios.create({
-  baseURL: process.env.GATSBY_BACKEND_URL,
+  baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 const handleLogin = async (creds) => {

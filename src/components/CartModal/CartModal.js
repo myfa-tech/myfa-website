@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { FaCheck } from 'react-icons/fa';
+
 import useTranslate from '../../hooks/useTranslate';
 import CartStorage from '../../services/CartStorage';
+import basketsImgs from '../../assets/basketsImgs';
 
 import './CartModal.scss';
 
@@ -45,7 +47,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
           <Col md='6'>
             <Row>
               <Col md='6'>
-                <img src={basket.img} alt={basket.imgAlt} />
+                <img src={basketsImgs[basket.type]} alt={basket.imgAlt} />
               </Col>
               <Col md='6'>
                 <h1>{t(basket.labelTranslate)}</h1>
@@ -63,7 +65,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
             <button className='continue-button' onClick={toggleCartModal}>
               {t('home_page.baskets.cart_modal.continue_button')}
             </button>
-            <button className='checkout-button' onClick={() => goTo(`/${locale}/cart`)}>
+            <button className='checkout-button' onClick={() => goTo('/cart')}>
               {t('home_page.baskets.cart_modal.pay_button')}
             </button>
           </Col>

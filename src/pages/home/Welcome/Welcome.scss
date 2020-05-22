@@ -1,0 +1,242 @@
+#welcome {
+  .section-1 {
+    background-image: url(../../../images/fruits-background.jpg);
+
+    max-width: 100%;
+    background-size:cover;
+    background-position: center 0;
+    height: 280px;
+    text-align: center;
+
+    .logo-big {
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+    }
+
+    .phone-infos {
+      .whatsapp-icon {
+        font-size: 40px;
+        color: #311a19;
+      }
+
+      .number {
+        font-weight: 800;
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+
+      .hours {
+        font-size: 13px;
+        font-weight: 700;
+        background-color: #F1D866;
+        border: 1px solid #311a19;
+        border-radius: 30px;
+        display: inline-block;
+        padding: 2px 10px;
+      }
+    }
+
+    input {
+      border-top-left-radius: 6px !important;
+      border-bottom-left-radius: 6px !important;
+    }
+
+    .subscribe-btn {
+      border-top-right-radius: 6px !important;
+      border-bottom-right-radius: 6px !important;
+      background-color: #315f69;
+      border-color: #315f69;
+      padding: .5rem 2rem !important;
+
+      .subscribe-icon {
+        display: none;
+      }
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 19px;
+      color: #311a19;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 19px;
+      color: #311a19;
+    }
+
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 120px;
+      }
+    }
+
+    .btn-main {
+      color: #311A19;
+      border-radius: 6px;
+      font-weight: bold;
+      width: 290px;
+      text-align: center;
+      margin: auto;
+      display: block;
+      border: none;
+      font-size: 18px;
+      padding: 15px 40px;
+      background-color: #F1D866;
+      -moz-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+      -webkit-box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+      box-shadow: 0 15px 40px rgba(49, 95, 105, 0.5);
+      background-image: -moz-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+      background-image: -o-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+      background-image: -webkit-linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+      background-image: linear-gradient(to top, rgba(255, 239, 206, 0) 0%, rgba(255, 239, 206, 0.25) 100%);
+
+      &.link {
+        display: inline-block;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#launch-modal {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+
+  .modal-content {
+    background-color: #F1D866;
+  }
+
+  .modal-header {
+    border: none;
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1500px) {
+  #welcome {
+    .section-1 {
+      background-image: url(../../../images/fruits-background-lg.jpg);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  #welcome {
+    .section-1 {
+      .logo-big {
+        width: 360px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #welcome {
+    .section-1 {
+      height: 625px;
+
+      .title {
+        font-size: 40px;
+      }
+
+      .image-container {
+        img {
+          width: 40%;
+          margin-top: 0;
+        }
+      }
+
+      .phone-infos {
+        margin-top: 2em;
+
+        .whatsapp-icon {
+          font-size: 40px;
+        }
+      }
+
+      .subscribe-btn {
+        .subscribe-text {
+          display: none;
+        }
+
+        .subscribe-icon {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 480px) {}
+
+@media (max-width: 480px) {
+  #welcome {
+    .section-1 {
+      height: 100vh;
+
+      .phone-infos {
+        margin-top: 3em;
+
+        .whatsapp-icon {
+          font-size: 50px;
+        }
+      }
+
+      .title {
+        text-align: center;
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+
+      .btn-main {
+        width: 95%;
+      }
+
+      .image-container {
+        img {
+          transform: scale(0.6);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  #welcome {
+    .section-1 {
+      .btn-main {
+        padding: 15px 30px;
+      }
+
+      .phone-infos {
+        margin-top: 2em;
+
+        .whatsapp-icon {
+          display: none;
+        }
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  }
+}

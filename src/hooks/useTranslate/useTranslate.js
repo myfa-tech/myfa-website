@@ -1,12 +1,12 @@
-import { useIntl } from 'gatsby-plugin-intl';
+import { useTranslation } from 'react-i18next';
 
 const useTranslate = () => {
-  const intl = useIntl();
-  const locale = intl.locale;
+  const { t, i18n } = useTranslation('common');
+  const locale = i18n.language || window.localStorage.i18nextLng;
 
   const translate = (key) => {
     try {
-      return intl.formatMessage({ id: key });
+      return t(key);
     } catch(e) {
       console.log(e);
       return key;

@@ -8,6 +8,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { IoMdMenu } from 'react-icons/io';
+import i18next from 'i18next';
+import { navigate } from "@reach/router";
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
@@ -20,7 +22,7 @@ import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
 
 import logoHandsSrc from '../../images/logo-1.png';
-import logoLettersSrc from '../../images/logo-letters.png';
+import basketsImgs from '../../assets/basketsImgs';
 
 import './Header.scss';
 
@@ -41,7 +43,7 @@ const CustomTooltip = withStyles(theme => ({
 const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) => {
   const goToCart = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}/cart`);
+      window.location.assign('/cart');
     }
   };
 
@@ -63,7 +65,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) =
                   <li key={index}>
                     <Row>
                       <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                        <img src={cart.baskets[basketKey].img} />
+                        <img src={basketsImgs[cart.baskets[basketKey].type]} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
                         <h4>{t(`home_page.baskets.${basketKey}_basket_title`)}</h4>
@@ -117,24 +119,21 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
   const [t, locale] = useTranslate();
-  const [frHref, setFrHref] = useState('/fr');
-  const [enHref, setEnHref] = useState('/en');
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
 
   const eventEmitter = new EventEmitter();
 
   const DRAWER_LIST = [
-    { label: t('header.home'), link: `/${locale}` },
-    { label: t('header.baskets'), link: `/${locale}/#baskets` },
-    { label: t('header.how_it_works'), link: `/${locale}/#how-it-works` },
-    { label: t('header.promise'), link: `/${locale}/#our-promise` },
-    { label: t('header.team'), link: `/${locale}/team` },
-    { label: t('header.blog'), link: `/${locale}/#blog` },
+    { label: t('header.home'), link: '/' },
+    { label: t('header.baskets'), link: '/#baskets' },
+    { label: t('header.how_it_works'), link: '/#how-it-works' },
+    { label: t('header.promise'), link: '/#our-promise' },
+    { label: t('header.team'), link: '/team' },
+    { label: t('header.blog'), link: '/#blog' },
   ];
 
   useEffect(() => {
     updateCart();
-    setLocaleLinks()
     eventEmitter.listen('editCart', updateCart);
     eventEmitter.listen('login', setupLogin);
   }, []);
@@ -156,13 +155,6 @@ const Header = () => {
       setIsLoggedIn(true);
     }
   }, [user]);
-
-  const setLocaleLinks = () => {
-    const href = window.location.pathname;
-
-    setFrHref(`/fr/${href.substr(4)}`);
-    setEnHref(`/en/${href.substr(4)}`);
-  };
 
   const updateNavbarStickines = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
@@ -216,7 +208,7 @@ const Header = () => {
             label: cur.label,
             singlePrice: cur.price,
             type: cur.type,
-            img: cur.img,
+            img: basketsImgs[cur.type],
             items: cur.items || {},
           };
         }
@@ -252,20 +244,20 @@ const Header = () => {
 
   const onSignup = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}/profile`);
+      window.location.assign('/profile');
     }
   };
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign(`/${locale}`);
+      window.location.assign('/');
     }
   };
 
   const goTo = ({ link }) => {
     if (typeof window !== 'undefined') {
       toggleDrawer('left', false);
-      window.location.assign(link);
+      navigate(link);
     }
   };
 
@@ -294,19 +286,19 @@ const Header = () => {
               title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
               className='account'
             >
-              <NavDropdown.Item href={`/${locale}/profile/information`}>{t('header.profile.information')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/orders`}>{t('header.profile.orders')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/password`}>{t('header.profile.password')}</NavDropdown.Item>
-              <NavDropdown.Item href={`/${locale}/profile/relatives`}>{t('header.profile.relatives')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/information'>{t('header.profile.information')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/orders'>{t('header.profile.orders')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/password'>{t('header.profile.password')}</NavDropdown.Item>
+              <NavDropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</NavDropdown.Item>
               <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
             </NavDropdown> :
             <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
           }
-          <Nav.Link href={`/${locale}/cart`} className='basket-link'>
+          <Nav.Link href='/cart' className='basket-link'>
             {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
           </Nav.Link>
-          <Nav.Link className='en-link' href={enHref}>EN</Nav.Link>
-          <Nav.Link className='fr-link' href={frHref}>FR</Nav.Link>
+          <Nav.Link className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</Nav.Link>
+          <Nav.Link className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</Nav.Link>
         </Nav>
       </Navbar>
 
