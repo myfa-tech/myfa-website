@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { FaRegTrashAlt, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { IoMdMenu } from 'react-icons/io';
 import i18next from 'i18next';
+import { navigate } from "@reach/router";
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
@@ -19,9 +20,9 @@ import CartStorage from '../../services/CartStorage';
 import UserStorage from '../../services/UserStorage';
 import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
-import { navigate } from "@reach/router";
 
 import logoHandsSrc from '../../images/logo-1.png';
+import basketsImgs from '../../assets/basketsImgs';
 
 import './Header.scss';
 
@@ -64,7 +65,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) =
                   <li key={index}>
                     <Row>
                       <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                        <img src={cart.baskets[basketKey].img} />
+                        <img src={basketsImgs[cart.baskets[basketKey].type]} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
                         <h4>{t(`home_page.baskets.${basketKey}_basket_title`)}</h4>
@@ -207,7 +208,7 @@ const Header = () => {
             label: cur.label,
             singlePrice: cur.price,
             type: cur.type,
-            img: cur.img,
+            img: basketsImgs[cur.type],
             items: cur.items || {},
           };
         }

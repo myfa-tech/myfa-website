@@ -32,6 +32,10 @@ const addToCart = async (basket, qty = 1) => {
       cart.baskets.push(basket);
     }
 
+    cart.baskets.forEach(b => {
+      delete b.img;
+    });
+
     if (isUserLoggedIn()) {
       if (isNewCart) {
         await createCart(cart);
@@ -88,6 +92,10 @@ const deleteBasketsByType = async (basketTypeToRemove) => {
     }
 
     let filteredBaskets = cart.baskets.filter(b => b.type !== basketTypeToRemove);
+
+    filteredBaskets.forEach(b => {
+      delete b.img;
+    });
 
     if (isUserLoggedIn()) {
       if (filteredBaskets.length === 0) {

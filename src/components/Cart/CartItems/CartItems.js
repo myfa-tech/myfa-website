@@ -4,6 +4,7 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { Row, Col } from 'react-bootstrap';
 
 import useTranslate from '../../../hooks/useTranslate';
+import basketsImgs from '../../../assets/basketsImgs';
 
 import './CartItems.scss';
 
@@ -21,7 +22,7 @@ const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
             <li key={index}>
               <Row>
                 <Col xs={0} sm={2} className='image-container d-none d-sm-block'>
-                  <img src={cart.baskets[basketKey].img} />
+                  <img src={basketsImgs[cart.baskets[basketKey].type]} />
                 </Col>
                 <Col xs={7} sm={6} className='label-container'>
                   <h3>{t(`home_page.baskets.${basketKey}_basket_title`)}</h3>
