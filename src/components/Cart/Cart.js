@@ -106,6 +106,8 @@ const Cart = () => {
             singlePrice: cur.price,
             items: cur.items || {},
           };
+
+          delete acc[cur.type].img;
         }
 
         acc[cur.type].qty = acc[cur.type].qty + 1;
