@@ -35,6 +35,7 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const RamadanBasketsPage = lazy(() => import('./pages/ramadan-baskets'));
 const ArticlePage = lazy(() => import('./pages/articles'));
+const JobsPage = lazy(() => import('./pages/jobs'));
 
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
 const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
@@ -85,6 +86,7 @@ const App = () => (
       <EmailConfirmationPage path='/email_confirmation' />
       <LogoutPage path='/logout' />
       <OrdersPage path='/orders' />
+      <JobsPage path='/jobs' />
       <RamadanBasketsPage path='/ramadan-baskets' />
       <ArticlePage path='articles/:articleId' />
 

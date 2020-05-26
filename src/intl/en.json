@@ -139,6 +139,9 @@
       }
     }
   },
+  "jobs": {
+    "title": "Jobs"
+  },
   "header": {
     "home": "Home",
     "baskets": "Baskets",
@@ -146,6 +149,7 @@
     "how_it_works": "How does it work?",
     "team": "Team",
     "blog": "Blog",
+    "we_recruit": "Jobs",
     "profile": {
       "account": "My account",
       "information": "My info",
