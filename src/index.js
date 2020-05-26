@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Router } from '@reach/router';
 import { I18nextProvider } from 'react-i18next';
@@ -11,37 +11,37 @@ import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
-import HomePage from './pages/home';
-import EmailConfirmationSuccessPage from './pages/email_confirmation_success';
-import MobileMoneyOrdersPage from './pages/mobile_money_orders';
-import ProfileInformationPage from './pages/profile/information';
-import ProfileOrdersPage from './pages/profile/orders';
-import ProfilePasswordPage from './pages/profile/password';
-import ProfileRelativesPage from './pages/profile/relatives';
-import ResetPasswordEmailPage from './pages/reset_password/email';
-import ResetPasswordPasswordPage from './pages/reset_password/password';
-import TeamPage from './pages/team';
-import BasketsPage from './pages/baskets';
-import CartPage from './pages/cart';
-import CguEnPage from './pages/cgu_en';
-import CguFrPage from './pages/cgu_fr';
-import CgvFrPage from './pages/cgv_fr';
-import CgvEnPage from './pages/cgv_en';
-import LegalEnPage from './pages/legal_en';
-import LegalFrPage from './pages/legal_fr';
-import CustomBasketPage from './pages/custom-basket';
-import EmailConfirmationPage from './pages/email_confirmation';
-import LogoutPage from './pages/logout';
-import OrdersPage from './pages/orders';
-import RamadanBasketsPage from './pages/ramadan-baskets';
-import ArticlePage from './pages/articles';
+const HomePage = lazy(() => import('./pages/home'));
+const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
+const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
+const ProfileInformationPage = lazy(() => import('./pages/profile/information'));
+const ProfileOrdersPage = lazy(() => import('./pages/profile/orders'));
+const ProfilePasswordPage = lazy(() => import('./pages/profile/password'));
+const ProfileRelativesPage = lazy(() => import('./pages/profile/relatives'));
+const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
+const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
+const TeamPage = lazy(() => import('./pages/team'));
+const BasketsPage = lazy(() => import('./pages/baskets'));
+const CartPage = lazy(() => import('./pages/cart'));
+const CguEnPage = lazy(() => import('./pages/cgu_en'));
+const CguFrPage = lazy(() => import('./pages/cgu_fr'));
+const CgvFrPage = lazy(() => import('./pages/cgv_fr'));
+const CgvEnPage = lazy(() => import('./pages/cgv_en'));
+const LegalEnPage = lazy(() => import('./pages/legal_en'));
+const LegalFrPage = lazy(() => import('./pages/legal_fr'));
+const CustomBasketPage = lazy(() => import('./pages/custom-basket'));
+const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
+const LogoutPage = lazy(() => import('./pages/logout'));
+const OrdersPage = lazy(() => import('./pages/orders'));
+const RamadanBasketsPage = lazy(() => import('./pages/ramadan-baskets'));
+const ArticlePage = lazy(() => import('./pages/articles'));
 
-import DashboardHomeKPIs from './pages/dashboard';
-import DashboardLogin from './pages/dashboard/login';
-import DashboardUsers from './pages/dashboard/users';
-import DashboardBaskets from './pages/dashboard/baskets';
-import DashboardFinance from './pages/dashboard/finance';
-import DashboardStocks from './pages/dashboard/stocks';
+const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
+const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
+const DashboardUsers = lazy(() => import('./pages/dashboard/users'));
+const DashboardBaskets = lazy(() => import('./pages/dashboard/baskets'));
+const DashboardFinance = lazy(() => import('./pages/dashboard/finance'));
+const DashboardStocks = lazy(() => import('./pages/dashboard/stocks'));
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -57,43 +57,45 @@ i18next.init({
 });
 
 const App = () => (
-  <Router>
-    <HomePage path='/' />
-    <TeamPage path='/team' />
-    <EmailConfirmationSuccessPage path='/email_confirmation_success' />
-    <MobileMoneyOrdersPage path='/mobile_money_orders' />
-    <Redirect
-      from="/profile"
-      to="/profile/information"
-    />
-    <ProfileInformationPage path='/profile/information' />
-    <ProfileOrdersPage path='/profile/orders' />
-    <ProfilePasswordPage path='/profile/password' />
-    <ProfileRelativesPage path='/profile/relatives' />
-    <ResetPasswordEmailPage path='/reset_password/email' />
-    <ResetPasswordPasswordPage path='/reset_password/password' />
-    <BasketsPage path='/baskets' />
-    <CartPage path='/cart' />
-    <CguFrPage path='/cgu_fr'/>
-    <CguEnPage path='/cgu_en'/>
-    <CgvFrPage path='/cgv_fr'/>
-    <CgvEnPage path='/cgv_en'/>
-    <LegalEnPage path='/legal_en' />
-    <LegalFrPage path='/legal_fr' />
-    <CustomBasketPage path='/custom-basket' />
-    <EmailConfirmationPage path='/email_confirmation' />
-    <LogoutPage path='/logout' />
-    <OrdersPage path='/orders' />
-    <RamadanBasketsPage path='/ramadan-baskets' />
-    <ArticlePage path='articles/:articleId' />
+  <Suspense fallback={<div>Loading...</div>}>
+    <Router>
+      <HomePage path='/' />
+      <TeamPage path='/team' />
+      <EmailConfirmationSuccessPage path='/email_confirmation_success' />
+      <MobileMoneyOrdersPage path='/mobile_money_orders' />
+      <Redirect
+        from="/profile"
+        to="/profile/information"
+      />
+      <ProfileInformationPage path='/profile/information' />
+      <ProfileOrdersPage path='/profile/orders' />
+      <ProfilePasswordPage path='/profile/password' />
+      <ProfileRelativesPage path='/profile/relatives' />
+      <ResetPasswordEmailPage path='/reset_password/email' />
+      <ResetPasswordPasswordPage path='/reset_password/password' />
+      <BasketsPage path='/baskets' />
+      <CartPage path='/cart' />
+      <CguFrPage path='/cgu_fr'/>
+      <CguEnPage path='/cgu_en'/>
+      <CgvFrPage path='/cgv_fr'/>
+      <CgvEnPage path='/cgv_en'/>
+      <LegalEnPage path='/legal_en' />
+      <LegalFrPage path='/legal_fr' />
+      <CustomBasketPage path='/custom-basket' />
+      <EmailConfirmationPage path='/email_confirmation' />
+      <LogoutPage path='/logout' />
+      <OrdersPage path='/orders' />
+      <RamadanBasketsPage path='/ramadan-baskets' />
+      <ArticlePage path='articles/:articleId' />
 
-    <DashboardHomeKPIs path='/dashboard' />
-    <DashboardLogin path='/dashboard/login' />
-    <DashboardUsers path='/dashboard/users' />
-    <DashboardBaskets path='/dashboard/baskets' />
-    <DashboardFinance path='/dashboard/finance' />
-    <DashboardStocks path='/dashboard/stocks' />
-  </Router>
+      <DashboardHomeKPIs path='/dashboard' />
+      <DashboardLogin path='/dashboard/login' />
+      <DashboardUsers path='/dashboard/users' />
+      <DashboardBaskets path='/dashboard/baskets' />
+      <DashboardFinance path='/dashboard/finance' />
+      <DashboardStocks path='/dashboard/stocks' />
+    </Router>
+  </Suspense>
 );
 
 ReactDOM.render(

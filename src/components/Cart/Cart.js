@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
 import { css } from '@emotion/core';
-import { some } from 'lodash';
 import { Row, Col } from 'react-bootstrap';
 
 import PersonalInfo from './PersonalInfo';
@@ -21,6 +20,7 @@ import useTranslate from '../../hooks/useTranslate';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
 import mobileMoney from '../../services/mobileMoney';
+import some from '../../utils/some';
 
 import './Cart.scss';
 

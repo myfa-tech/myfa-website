@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Router } from '@reach/router';
 import { Container, Col, Row } from 'react-bootstrap';
-import moment from 'moment';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 
@@ -125,8 +124,20 @@ const ArticleDisplay = (props) => {
     return hashtags;
   };
 
+  const getDate = () => {
+    let date = new Date(props.article.createdAt);
+    let months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
+    let dateDay = date.getUTCDate();
+    let dateMonth = months[date.getUTCMonth()];
+    let dateYear = date.getUTCFullYear();
+
+    let dateString = `${dateDay} ${dateMonth} ${dateYear}`;
+
+    return dateString;
+  };
+
   useEffect(() => {
-    setAuthor(getAuthor(props.article.author))
+    setAuthor(getAuthor(props.article.author));
   }, [props.article]);
 
   return (
@@ -147,7 +158,7 @@ const ArticleDisplay = (props) => {
               <img src={author.img} alt={props.article.author} />
               <div>
                 <span>{author.name}</span>
-                <span className='date'>{moment.utc(props.article.createdAt).format('D MMM YYYY')}</span>
+                <span className='date'>{getDate()}</span>
               </div>
             </div>
 

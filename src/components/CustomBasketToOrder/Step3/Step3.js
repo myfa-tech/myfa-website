@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { intersectionBy } from 'lodash';
 
 import ProductsGrid from '../../ProductsGrid/ProductsGrid';
 
 import useTranslate from '../../../hooks/useTranslate';
+import intersectionBy from '../../../utils/intersectionBy';
 
 const QTY_SAUCES = 3;
 
