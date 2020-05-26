@@ -1,4 +1,6 @@
 .jobs {
+  width: 100%;
+
   .title-container {
     text-align: center;
     padding-top: 50px;
@@ -41,6 +43,30 @@
           background-color: #315f69;
           border: 1px solid #315f69;
         }
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .jobs {
+    .title-container {
+      h2 {
+        font-size: 30px;
+      }
+    }
+
+    .content-container {
+      margin: 0 5px;
+    }
+  }
+}
+
+@media(max-width: 350px) {
+  .jobs {
+    .job-row {
+      h4 {
+        font-size: 16px;
       }
     }
   }

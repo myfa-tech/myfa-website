@@ -47,7 +47,7 @@ const JobsPage = () => {
 
         {jobs.map(job => (
           <Row className='job-row'>
-            <Col xs={1} className='img-container'>
+            <Col sm={1} className='img-container d-none d-sm-block'>
               <img src={logoHandsSrc} />
             </Col>
             <Col xs={10}>
@@ -55,7 +55,7 @@ const JobsPage = () => {
               <div className='sub-info'>{job.date}</div>
               <div className='sub-info'><FaMapPin /> {job.location}</div>
             </Col>
-            <Col xs={1} className='buttons-container'>
+            <Col sm={1} xs={2} className='buttons-container'>
               <Button className='download-btn' as='a' href={`${REACT_APP_BACKEND_URL}/jobs/${job.file}`}><FaFileDownload /></Button>
             </Col>
           </Row>
