@@ -130,6 +130,7 @@ const Header = () => {
     { label: t('header.promise'), link: '/#our-promise' },
     { label: t('header.team'), link: '/team' },
     { label: t('header.blog'), link: '/#blog' },
+    { label: t('header.we_recruit'), link: '/jobs' },
   ];
 
   useEffect(() => {

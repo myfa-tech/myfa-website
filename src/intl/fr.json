@@ -139,6 +139,9 @@
       }
     }
   },
+  "jobs": {
+    "title": "On recrute"
+  },
   "header": {
     "home": "Accueil",
     "baskets": "Nos paniers",
@@ -146,6 +149,7 @@
     "how_it_works": "Comment ça marche ?",
     "team": "L'équipe",
     "blog": "Blog",
+    "we_recruit": "On recrute",
     "profile": {
       "account": "Mon compte",
       "information": "Mes informations",

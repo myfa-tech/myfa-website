@@ -1,0 +1,73 @@
+.jobs {
+  width: 100%;
+
+  .title-container {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h2 {
+      color: #311a19;
+      font-weight: 600;
+      font-size: 45px;
+		}
+  }
+
+  .content-container {
+    margin: 0 10em;
+
+    .job-row {
+      background-color: white;
+      margin-top: 1em;
+      padding: 1em;
+      border-radius: 4px;
+
+      .img-container {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .sub-info {
+        color: grey;
+      }
+
+      .buttons-container {
+        display: flex;
+        align-items: center;
+
+        .download-btn {
+          background-color: #315f69;
+          border: 1px solid #315f69;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .jobs {
+    .title-container {
+      h2 {
+        font-size: 30px;
+      }
+    }
+
+    .content-container {
+      margin: 0 5px;
+    }
+  }
+}
+
+@media(max-width: 350px) {
+  .jobs {
+    .job-row {
+      h4 {
+        font-size: 16px;
+      }
+    }
+  }
+}
