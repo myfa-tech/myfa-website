@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
-import { FaFileDownload, FaMapPin } from 'react-icons/fa';
+import { FaEye, FaMapPin } from 'react-icons/fa';
 import { Divider } from '@material-ui/core';
 
 import SEO from '../../components/seo';
@@ -56,7 +56,7 @@ const JobsPage = () => {
               <div className='sub-info'><FaMapPin /> {job.location}</div>
             </Col>
             <Col sm={1} xs={2} className='buttons-container'>
-              <Button className='download-btn' as='a' href={`${REACT_APP_BACKEND_URL}/jobs/${job.file}`}><FaFileDownload /></Button>
+              <Button className='download-btn' as='a' href={`/${job.file}`} target="_blank"><FaEye /></Button>
             </Col>
           </Row>
         ))}
