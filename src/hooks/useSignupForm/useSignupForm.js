@@ -8,6 +8,7 @@ const useSignupForm = (submit, setResponseStatus) => {
     country: '+33',
     phone: '',
     password: '',
+    newsletter: false,
     cgu: false,
   });
   const [errors, setErrors] = useState({

@@ -293,7 +293,8 @@
     "existing_user": "User already exists",
     "and": "and",
     "cgu": "terms of use",
-    "cgv": "terms of sales"
+    "cgv": "terms of sales",
+    "accept_newsletter": "I wish to receive the newsletter"
   },
   "orders": {
     "seo_title": "Order",
