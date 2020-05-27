@@ -135,7 +135,27 @@ const SignupForm = ({ onSignup }) => {
       />
 
       <FormControlLabel
-        className={`full-width cgu-cgv ${signupFormErrors.cgu ? 'error' : ''}`}
+        className='full-width checkbox'
+        control={
+          <Checkbox
+            checked={signupFormValues.newsletter}
+            name='newsletter'
+            variant='outlined'
+            required
+            onChange={handleChangeSignupFormValues}
+            value={signupFormValues.newsletter}
+            color='primary'
+          />
+        }
+        label={
+          <p className='checkbox-label'>
+            {t('signup_form.accept_newsletter')}
+          </p>
+        }
+      />
+
+      <FormControlLabel
+        className={`full-width checkbox ${signupFormErrors.cgu ? 'error' : ''}`}
         control={
           <Checkbox
             checked={signupFormValues.cgu}
@@ -148,7 +168,7 @@ const SignupForm = ({ onSignup }) => {
           />
         }
         label={
-          <p className='cgu-cgv-label'>
+          <p className='checkbox-label'>
             {t('signup_form.accept_cgu_cgv_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('signup_form.cgv')}</a> {t('signup_form.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('signup_form.cgu')}</a>
           </p>
         }

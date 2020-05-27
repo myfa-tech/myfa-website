@@ -293,7 +293,8 @@
     "existing_user": "Utilisateur déja existant",
     "and": "et",
     "cgu": "CGU",
-    "cgv": "CGV"
+    "cgv": "CGV",
+    "accept_newsletter": "Je souhaite recevoir la newsletter MYFA"
   },
   "orders": {
     "seo_title": "Commande",

@@ -231,20 +231,45 @@ const SignupPath = ({ signupErrors, signupForm, responseStatus, handleChangeSign
           helperText={t('cart.personal_info.password_helper_text')}
         />
 
-        <FormControlLabel
-          className={`full-width cgu-cgv ${signupErrors['cgu'] ? 'error' : ''}`}
-          control={
-            <Checkbox
-              checked={signupForm.cgu}
-              name='cgu'
-              required
-              onChange={handleChangeSignupFormValue}
-              value={signupForm.cgu}
-              color='primary'
-            />
-          }
-          label={<p className='cgu-cgv-label'>{t('cart.personal_info.accept_cgu_cgv_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('cart.personal_info.cgv')}</a> {t('cart.personal_info.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('cart.personal_info.cgu')}</a></p>}
-        />
+      <FormControlLabel
+        className='full-width checkbox'
+        control={
+          <Checkbox
+            checked={signupForm.newsletter}
+            name='newsletter'
+            variant='outlined'
+            required
+            onChange={handleChangeSignupFormValue}
+            value={signupForm.newsletter}
+            color='primary'
+          />
+        }
+        label={
+          <p className='checkbox-label'>
+            {t('signup_form.accept_newsletter')}
+          </p>
+        }
+      />
+
+      <FormControlLabel
+        className={`full-width checkbox ${signupErrors.cgu ? 'error' : ''}`}
+        control={
+          <Checkbox
+            checked={signupForm.cgu}
+            name='cgu'
+            variant='outlined'
+            required
+            onChange={handleChangeSignupFormValue}
+            value={signupForm.cgu}
+            color='primary'
+          />
+        }
+        label={
+          <p className='checkbox-label'>
+            {t('signup_form.accept_cgu_cgv_part_1')} <a href={`/cgv_${locale}`} target='_blank'>{t('signup_form.cgv')}</a> {t('signup_form.and')} <a href={`/cgu_${locale}`} target='_blank'>{t('signup_form.cgu')}</a>
+          </p>
+        }
+      />
       </form>
     </>
   );
