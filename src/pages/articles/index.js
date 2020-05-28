@@ -21,6 +21,7 @@ import florianSrc from '../../images/florian.png';
 import dorisSrc from '../../images/doris.png';
 import manuellaSrc from '../../images/manuella.png';
 import alexandreSrc from '../../images/alex.png';
+import orlaneSrc from '../../images/orlane.png';
 
 const Article = (props) => {
   const [article, setArticle] = useState({});
@@ -59,6 +60,11 @@ const ArticleDisplay = (props) => {
         name: 'Doris Somon',
         title: 'CEO, MYFA',
         img: dorisSrc,
+      },
+      'orlane': {
+        name: 'Orlane Kouame',
+        title: 'Community Manager Jr',
+        img: orlaneSrc,
       },
       'alexandre': {
         name: 'Alexandre Meschberger',
