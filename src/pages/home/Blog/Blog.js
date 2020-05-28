@@ -44,6 +44,11 @@ const Blog = () => {
         title: 'CEO, MYFA',
         img: dorisSrc,
       },
+      'orlane': {
+        name: 'Orlane Kouame',
+        title: 'Community Manager Jr',
+        img: orlaneSrc,
+      },
       'alexandre': {
         name: 'Alexandre Meschberger',
         title: 'CFO, MYFA',
