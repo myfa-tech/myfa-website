@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
-import { css } from '@emotion/core';
 import { Row, Col } from 'react-bootstrap';
 
 import PersonalInfo from './PersonalInfo';
@@ -23,11 +22,6 @@ import mobileMoney from '../../services/mobileMoney';
 import some from '../../utils/some';
 
 import './Cart.scss';
-
-const spinnerStyle = css`
-  display: block;
-  margin: 0 auto;
-`;
 
 const NODE_ENV = process.env.NODE_ENV;
 
