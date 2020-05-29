@@ -9,6 +9,7 @@ import florianSrc from '../../../images/florian.png';
 import dorisSrc from '../../../images/doris.png';
 import manuellaSrc from '../../../images/manuella.png';
 import alexandreSrc from '../../../images/alex.png';
+import orlaneSrc from '../../../images/orlane.png';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
