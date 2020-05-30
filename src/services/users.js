@@ -54,9 +54,9 @@ const updateUser = async (userPart) => {
 
   const user = { ...UserStorage.getUser(), ...userPart };
 
-  await axios.put('/users', user);
+  const response = await axios.put('/users', user);
 
-  UserStorage.saveUser(user);
+  UserStorage.saveUser(response.data.updated);
 };
 
 const deleteAccount = async () => {

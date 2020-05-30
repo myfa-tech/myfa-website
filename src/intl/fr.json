@@ -226,12 +226,15 @@
       "relationship_type":"Type de relation",
       "relationship_helper_text":"Quelle relation avez-vous avec votre proche ?",
       "delivery_zone":"Zone de livraison",
-      "delivery_zone_placeholder":"Quartier de la livraison"
+      "delivery_zone_placeholder":"Quartier de la livraison",
+      "modal_title": "Ajouter un destinataire",
+      "button_add": "Ajouter"
     },
     "items": {
       "title": "Mon panier",
       "subtotal": "Sous-total",
-      "qty": "Qté"
+      "qty": "Qté",
+      "recipient": "Destinataire"
     }
   },
   "basket_to_order": {

@@ -226,12 +226,15 @@
       "relationship_type":"Type of relationship",
       "relationship_helper_text":"What is the link between your relative and you?",
       "delivery_zone":"Delivery zone",
-      "delivery_zone_placeholder":"District of the delivery"
+      "delivery_zone_placeholder":"District of the delivery",
+      "modal_title": "Add a recipient",
+      "button_add": "Add"
     },
     "items": {
       "title": "My cart",
       "subtotal": "Subtotal",
-      "qty": "Qty"
+      "qty": "Qty",
+      "recipient": "Recipient"
     }
   },
   "basket_to_order": {

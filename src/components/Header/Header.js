@@ -47,8 +47,10 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
   const [basketsPrice, setBasketsPrice] = useState(0);
 
   useEffect(() => {
-    setBasketsCount(cart.baskets.length);
-    setBasketsPrice(calculatePrice());
+    if (!!cart && !!cart.baskets) {
+      setBasketsCount(cart.baskets.length);
+      setBasketsPrice(calculatePrice());
+    }
   }, [cart]);
 
   const calculatePrice = () => {
@@ -126,7 +128,7 @@ const Header = () => {
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
   const [user, setUser] = useState(null);
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
@@ -149,6 +151,7 @@ const Header = () => {
     updateCart();
     eventEmitter.listen('editCart', updateCart);
     eventEmitter.listen('login', setupLogin);
+    eventEmitter.listen('showLogin', toggleShowLoginSignupModal);
   }, []);
 
   useEffect(() => {
@@ -218,13 +221,13 @@ const Header = () => {
 
   const onSignup = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/profile');
+      window.location.reload();
     }
   };
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/');
+      window.location.reload();
     }
   };
 
@@ -261,7 +264,7 @@ const Header = () => {
             <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
           }
           <Nav.Link href='/cart' className='basket-link'>
-            {!!cart && !!cart.baskets && <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} /> }
+            <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
           </Nav.Link>
           <Nav.Link className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</Nav.Link>
           <Nav.Link className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</Nav.Link>

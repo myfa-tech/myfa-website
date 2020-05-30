@@ -2,19 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
 import { Row, Col } from 'react-bootstrap';
 
-import PersonalInfo from './PersonalInfo';
-import RelativeInfo from './RelativeInfo';
 import CartItems from './CartItems';
 import MessageToRelative from './MessageToRelative';
 import ButtonWithLoader from '../ButtonWithLoader';
+import AddRecipientModal from './AddRecipientModal';
 
-import { addRecipient, loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
+import { addRecipient } from '../../services/users';
 import stripeService from '../../services/stripe';
-import { saveUser } from '../../services/users';
 import EventEmitter from '../../services/EventEmitter';
-import useSignupForm from '../../hooks/useSignupForm';
-import useLoginForm from '../../hooks/useLoginForm';
-import useRelativeForm from '../../hooks/useRelativeForm';
 import useTranslate from '../../hooks/useTranslate';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
@@ -30,34 +25,12 @@ const Cart = () => {
   const [basketsPrice, setBasketsPrice] = useState(0);
   const [basketsNumber, setBasketsNumber] = useState(0);
   const [step, setStep] = useState(1);
+  const [recipientsErrors, setRecipientsErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
-  const [responseStatus, setResponseStatus] = useState(null);
-  const [identificationPath, setIdentificationPath] = useState('signup');
-  const [relativeFormRecipientIndex, setRelativeFormRecipientIndex] = useState(-1);
-  const [
-    signupFormValues,
-    handleChangeSignupFormValues,
-    handleSubmitSignupForm,
-    signupFormErrors,
-    setSignupFormErrors
-  ] = useSignupForm(signup, setResponseStatus);
-  const [
-    loginFormValues,
-    handleChangeLoginFormValues,
-    handleSubmitLoginForm,
-    loginFormErrors,
-    setLoginFormErrors
-  ] = useLoginForm(login, setResponseStatus);
-  const [
-    relativeFormValues,
-    handleChangeRelativeFormValues,
-    setRelativeFormValues,
-    handleSubmitRelativeForm,
-    relativeFormErrors,
-    handleRelativeFormRecipientChange,
-    showOtherRelationInput,
-  ] = useRelativeForm(nextStep);
+  const [showAddRecipientModal, setShowAddRecipientModal] = useState(false);
+  const [basketAddingRecipientIndex, setBasketAddingRecipientIndex] = useState(null);
+
   const [t] = useTranslate();
 
   const user = UserStorage.getUser();
@@ -68,52 +41,14 @@ const Cart = () => {
     eventEmitter.listen('editCart', initCart);
   }, []);
 
-  useEffect(() => {
-    if (relativeFormRecipientIndex !== -1 && !!user && !!user.recipients.length) {
-      const newFormValues = user.recipients[relativeFormRecipientIndex];
-
-      setRelativeFormValues({ ...newFormValues });
-    }
-  }, [relativeFormRecipientIndex]);
-
-  useEffect(() => {
-    updateBasketsPriceAndNumber();
-  }, [cart]);
-
-  const handleRecipientChange = (e) => {
-    setRelativeFormRecipientIndex(Number(e.target.value));
-    handleRelativeFormRecipientChange(e);
-  };
-
   const initCart = async () => {
     let newCart = await CartStorage.getCartFromStorage();
 
-    if (!!newCart) {
-      let enhancedCart = {};
+    if (!!newCart && !!newCart.baskets) {
+      let newBasketsNumber = newCart.baskets.length;
+      let newBasketsPrice = newCart.baskets.map(b => b.price).reduce((acc, cur) => acc + cur, 0);
 
-      enhancedCart.baskets = newCart.baskets.reduce((acc, cur) => {
-        if (!acc[cur.type]) {
-          acc[cur.type] = {
-            ...cur,
-            price: 0,
-            qty: 0,
-            singlePrice: cur.price,
-            items: cur.items || {},
-          };
-
-          delete acc[cur.type].img;
-        }
-
-        acc[cur.type].qty = acc[cur.type].qty + 1;
-        acc[cur.type].price = acc[cur.type].price + cur.price;
-
-        return acc;
-      }, {});
-
-      let newBasketsNumber = Object.values(enhancedCart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
-      let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
-
-      setCart(enhancedCart);
+      setCart(newCart);
       setBasketsNumber(newBasketsNumber);
       setBasketsPrice(newBasketsPrice);
     } else {
@@ -125,30 +60,26 @@ const Cart = () => {
     setIsFetching(false);
   };
 
-  const updateBasketsPriceAndNumber = () => {
-    if (cart && cart.baskets) {
-      let newBasketsNumber = Object.values(cart.baskets).map(v => v.qty).reduce((acc, cur) => acc + cur, 0);
-      let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
-
-      setBasketsNumber(newBasketsNumber);
-      setBasketsPrice(newBasketsPrice);
-    }
+  const triggerLoginSignupModal = () => {
+    eventEmitter.emit('showLogin');
   };
+
+  const toggleAddRecipientModal = () => setShowAddRecipientModal(!showAddRecipientModal);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
 
-  const editItems = (type, adding) => {
-    let oldQty = cart.baskets[type].qty;
-    let newQty = cart.baskets[type].qty + adding;
+  const getRecipientsErrors = () => {
+    const errors = [];
 
-    if (newQty > 0 && newQty <= 5) {
-      cart.baskets[type].price = oldQty === 0 ? cart.baskets[type].singlePrice : newQty * (cart.baskets[type].price / oldQty);
-      cart.baskets[type].qty = newQty;
+    cart.baskets.forEach((b, index) => {
+      if (!b.recipient) {
+        errors.push(`recipient-${index}`)
+      }
+    });
 
-      setCart({ ...cart });
-    }
+    return errors;
   };
 
   const goToStep = (stepId) => {
@@ -157,75 +88,22 @@ const Cart = () => {
       return;
     }
 
-
     setStep(stepId);
   };
 
-  const responseFacebook = async (response) => {
-    const { name, email } = response;
-
-    try {
-      if (!!name) {
-        let user = {
-          firstname: name.split(' ')[0],
-          lastname: name.split(' ')[1],
-          email,
-          cgu: true,
-          fbToken: response.accessToken,
-        };
-
-        await loginFBUser(user);
-        setRelativeFormRecipientIndex(0);
-        nextStep();
-      } else {
-        // @TODO: deal with error
-        console.log(response);
-      }
-    } catch(e) {
-      console.log(e);
-    }
-  };
-
-  const responseGoogle = async (response) => {
-    try {
-      const { givenName, familyName, email } = response.profileObj;
-
-      if (!!email) {
-        let user = {
-          firstname: givenName,
-          lastname: familyName,
-          email,
-          cgu: true,
-          googleToken: response.accessToken,
-        };
-
-        await loginGoogleUser(user);
-        setRelativeFormRecipientIndex(0);
-        nextStep();
-      } else {
-        // @TODO: deal with error
-        console.log(response);
-      }
-    } catch(e) {
-      console.log(e);
-    }
-  };
-
   const handleNext = (e) => {
-    const user = UserStorage.getUser();
-    let increment = 1;
+    if (step === 1) {
+      if (!!user) {
+        const errors = getRecipientsErrors();
 
-    if (user && step === 1) {
-      increment = 2;
-      nextStep(increment);
-    } else if (step === 2) {
-      if (identificationPath === 'signup') {
-        handleSubmitSignupForm(e);
+        if (!!errors.length) {
+          setRecipientsErrors([...errors]);
+        } else {
+          nextStep(3);
+        }
       } else {
-        handleSubmitLoginForm(e);
+        triggerLoginSignupModal();
       }
-    } else if (step === 3) {
-      handleSubmitRelativeForm(e);
     } else if (step === 4) {
       pay();
     } else {
@@ -238,24 +116,37 @@ const Cart = () => {
     scrollToTop();
   };
 
+  const handleChangeRecipient = (e, basketIndex) => {
+    if (!user) {
+      triggerLoginSignupModal();
+    } else {
+      const errors = recipientsErrors.filter(err => err !== `recipient-${basketIndex}`);
+
+      setRecipientsErrors([...errors]);
+
+      if (e.target.value === 'add-one') {
+        setBasketAddingRecipientIndex(basketIndex);
+        toggleAddRecipientModal();
+      } else {
+        cart.baskets[basketIndex].recipient = JSON.parse(e.target.value);
+
+        CartStorage.editCart({ ...cart });
+      }
+    }
+  };
+
   const handleChangeMessageToRelative = (message) => {
     setCart({ ...cart, message });
   };
 
-  const removeBaskets = (basketTypeToRemove) => {
-    CartStorage.deleteBasketsByType(basketTypeToRemove);
-
-    delete cart.baskets[basketTypeToRemove];
-    setCart({ ...cart });
+  const removeBasket = (basketIndex) => {
+    CartStorage.deleteBasketByIndex(basketIndex);
   };
 
   async function pay() {
     const user = UserStorage.getUser();
 
     setIsLoading(true);
-
-    cart.recipient = relativeFormValues;
-    cart.price = basketsPrice;
 
     const promises = [];
 
@@ -305,46 +196,6 @@ const Cart = () => {
     await CartStorage.deleteCart();
   };
 
-  const handleChangeRelativeForm = (e) => {
-    setRelativeFormRecipientIndex(-1);
-    handleChangeRelativeFormValues(e);
-  }
-
-  async function signup() {
-    try {
-      setIsLoading(true);
-      await saveUser({ ...signupFormValues, recipients: [] });
-      setRelativeFormRecipientIndex(0);
-      nextStep();
-    } catch(e) {
-      if (e.response.status === 409) {
-        signupFormErrors.email = true;
-        setSignupFormErrors({ ...signupFormErrors });
-        setResponseStatus(e.response.status);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  async function login() {
-    try {
-      setIsLoading(true);
-      await loginUser(loginFormValues);
-      setRelativeFormRecipientIndex(0);
-      nextStep();
-    } catch(e) {
-      console.log(e);
-      if (e.response.status === 404) {
-        loginFormErrors.email = true;
-        setLoginFormErrors({ ...loginFormErrors });
-        setResponseStatus(e.response.status);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <section id='cart'>
       {!isFetching ?
@@ -354,44 +205,14 @@ const Cart = () => {
               {step === 1 ?
                 <CartItems
                   cart={cart}
+                  errors={recipientsErrors}
+                  handleChangeRecipient={handleChangeRecipient}
                   basketsPrice={basketsPrice}
-                  editItems={editItems}
-                  removeBaskets={removeBaskets}
+                  removeBasket={removeBasket}
+                  user={user}
                 /> :
                 <div className='disabled-section' onClick={() => goToStep(1)}>
                   <h2>{t('cart.items.title')}</h2>
-                </div>
-              }
-              {step === 2 ?
-                <PersonalInfo
-                  signupErrors={signupFormErrors}
-                  signupForm={signupFormValues}
-                  responseStatus={responseStatus}
-                  handleChangeSignupFormValue={handleChangeSignupFormValues}
-                  loginErrors={loginFormErrors}
-                  isLoading={isLoading}
-                  loginForm={loginFormValues}
-                  handleChangeLoginFormValue={handleChangeLoginFormValues}
-                  identificationPath={identificationPath}
-                  setIdentificationPath={setIdentificationPath}
-                  responseFacebook={responseFacebook}
-                  responseGoogle={responseGoogle}
-                /> :
-                <div className={`disabled-section signup-to-order ${!!user ? 'cannot-click' : ''}`} onClick={() => goToStep(2)}>
-                  <h2>{t('cart.self_info_title')}</h2>
-                </div>
-              }
-              {step === 3 ?
-                <RelativeInfo
-                  errors={relativeFormErrors}
-                  form={relativeFormValues}
-                  handleChangeFormValue={handleChangeRelativeForm}
-                  recipientIndex={relativeFormRecipientIndex}
-                  handleRecipientChange={handleRecipientChange}
-                  showOtherRelationInput={showOtherRelationInput}
-                /> :
-                <div className={`disabled-section relative-info ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(3)}>
-                  <h2>{t('cart.relative_info_title')}</h2>
                 </div>
               }
               {step === 4 ?
@@ -449,6 +270,12 @@ const Cart = () => {
             <a href='/#baskets' className='discover-baskets-button'>{t('cart.discover_baskets')}</a>
           </div> :
       null}
+      <AddRecipientModal
+        cart={cart}
+        showModal={showAddRecipientModal}
+        toggleModal={toggleAddRecipientModal}
+        basketIndex={basketAddingRecipientIndex}
+      />
     </section>
   );
 };
