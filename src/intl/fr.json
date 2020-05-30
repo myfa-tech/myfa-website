@@ -182,7 +182,7 @@
   "cart": {
     "relative_info_title": "Informations sur mon proche",
     "self_info_title": "Je m'inscris pour commander",
-    "message_to_relative_title": "Message pour mon proche",
+    "message_to_relative_title": "Message dans le panier",
     "price_container": {
       "total": "Total",
       "grand_total": "Total TTC",

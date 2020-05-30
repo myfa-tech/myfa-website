@@ -3,18 +3,16 @@ import Divider from '@material-ui/core/Divider';
 import { Row, Col } from 'react-bootstrap';
 
 import CartItems from './CartItems';
-import MessageToRelative from './MessageToRelative';
+import MessagesToRelative from './MessagesToRelative';
 import ButtonWithLoader from '../ButtonWithLoader';
 import AddRecipientModal from './AddRecipientModal';
 
-import { addRecipient } from '../../services/users';
 import stripeService from '../../services/stripe';
 import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
 import mobileMoney from '../../services/mobileMoney';
-import some from '../../utils/some';
 
 import './Cart.scss';
 
@@ -135,8 +133,9 @@ const Cart = () => {
     }
   };
 
-  const handleChangeMessageToRelative = (message) => {
-    setCart({ ...cart, message });
+  const handleChangeMessagesToRelative = (message, index) => {
+    cart.baskets[index].message = message;
+    setCart({ ...cart });
   };
 
   const removeBasket = (basketIndex) => {
@@ -148,19 +147,11 @@ const Cart = () => {
 
     setIsLoading(true);
 
-    const promises = [];
-
     if (NODE_ENV === 'development') {
       cart.isTest = true;
     }
 
-    promises.push(stripeService.createPayment(cart, user));
-
-    if (!some(user.recipients, relativeFormValues)) {
-      promises.push(addRecipient(relativeFormValues));
-    }
-
-    await Promise.all(promises);
+    await stripeService.createPayment(cart, user);
 
     emptyStoredCart();
     setIsLoading(false);
@@ -171,22 +162,11 @@ const Cart = () => {
 
     setIsLoading(true);
 
-    cart.recipient = relativeFormValues;
-    cart.price = basketsPrice;
-
-    const promises = [];
-
     if (NODE_ENV === 'development') {
       cart.isTest = true;
     }
 
-    promises.push(mobileMoney.createPayment(cart, user));
-
-    if (!some(user.recipients, relativeFormValues)) {
-      promises.push(addRecipient(relativeFormValues));
-    }
-
-    await Promise.all(promises);
+    await mobileMoney.createPayment(cart, user);
 
     emptyStoredCart();
     setIsLoading(false);
@@ -200,8 +180,8 @@ const Cart = () => {
     <section id='cart'>
       {!isFetching ?
         cart && cart.baskets && Object.keys(cart.baskets).length ?
-          <Row>
-            <Col md='8'>
+          <Row className='cart-inner-container'>
+            <Col md='8' className='first-section'>
               {step === 1 ?
                 <CartItems
                   cart={cart}
@@ -216,11 +196,11 @@ const Cart = () => {
                 </div>
               }
               {step === 4 ?
-                <MessageToRelative
-                  message={cart.message}
-                  handleChangeMessage={handleChangeMessageToRelative}
+                <MessagesToRelative
+                  cart={cart}
+                  handleChangeMessage={handleChangeMessagesToRelative}
                 /> :
-                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(4)}>
+                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={handleNext}>
                   <h2>{t('cart.message_to_relative_title')}</h2>
                 </div>
               }

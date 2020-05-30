@@ -129,6 +129,13 @@
 @media (max-width: 480px) {
   #cart {
     margin-top: 3em;
+    width: 100%;
+
+    .cart-inner-container {
+      .first-section {
+        padding: 0;
+      }
+    }
 
     .disabled-section {
       h2 {
