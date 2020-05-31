@@ -3,6 +3,7 @@
     background-image: url(../../../images/home-background.jpg);
     max-width: 100%;
     background-size:cover;
+    position: relative;
     background-position: center 0;
     height: 100vh;
     text-align: center;
@@ -26,6 +27,10 @@
       color: #311a19;
     }
 
+    .beauty-basket-container-small {
+      display: none;
+    }
+
     .content-container {
       height: 90vh;
       display: flex;
@@ -34,19 +39,19 @@
 
       .beauty-basket-container {
         display: block;
-
-        .get-basket-button {
-          color: black;
-          border-radius: 6px;
-          font-size: 18px;
-          display: block;
-          margin: auto;
-          border: 1px solid #311A19;
-          margin-top: 1em;
-          padding: 15px 40px;
-          background-color: #F1D866;
-        }
       }
+    }
+
+    .get-basket-button {
+      color: black;
+      border-radius: 6px;
+      font-size: 18px;
+      display: block;
+      margin: auto;
+      border: 1px solid #311A19;
+      margin-top: 1em;
+      padding: 15px 40px;
+      background-color: #F1D866;
     }
   }
 }
@@ -90,10 +95,47 @@
 @media (max-width: 768px) {
   #welcome {
     .section-1 {
-      height: 625px;
+      height: 425px;
+      background-image: url(../../../images/medium-home-background.jpg);
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
 
-      .title {
-        font-size: 40px;
+      .content-container {
+        .beauty-basket-container {
+          display: none;
+        }
+      }
+
+      .beauty-basket-container-small {
+        position: absolute;
+        display: block;
+        bottom: 10px;
+        width: 100%;
+
+        .beauty-basket-inner-container-small {
+          padding: 1em 0 0 0;
+          position: relative;
+          background-color: white;
+          width: 80%;
+          margin: auto;
+          border-radius: 8px;
+
+          .title {
+            font-size: 20px;
+            width: 80%;
+            padding: 0;
+          }
+
+          h2 {
+            font-size: 45px;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+
+        .get-basket-button {
+          margin-top: 0;
+        }
       }
     }
   }
@@ -104,7 +146,9 @@
 @media (max-width: 480px) {
   #welcome {
     .section-1 {
-      height: 100vh;
+      height: 60vh;
+      background-image: url(../../../images/home-background.jpg);
+      background-size: 100% auto;
 
       .title {
         text-align: center;

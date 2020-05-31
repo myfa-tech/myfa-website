@@ -76,6 +76,14 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
             </div>
           </Col>
         </Row>
+        <div className='beauty-basket-container-small'>
+          <div className='beauty-basket-inner-container-small'>
+            <h1 className='title'>{t('home_page.home.title')}</h1>
+            <h2>{t('home_page.home.subtitle')}</h2>
+            <h3>6.500 Fcfa / 9.90€</h3>
+            <button className='get-basket-button'>{t('home_page.home.get_basket_button')}</button>
+          </div>
+        </div>
       </div>
     </section>
   );
