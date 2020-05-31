@@ -12,7 +12,6 @@ import Trustees from './Trustees';
 import Covid19 from './Covid19';
 import Asterisks from './Asterisks';
 import ThanksSection from './ThanksSection';
-import RamadanBaskets from './RamadanBaskets';
 
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
 
@@ -27,7 +26,6 @@ const HomePage = () => {
 
       <Welcome />
       <Covid19 />
-      <RamadanBaskets />
       <Baskets />
       <HowItWorks />
       <OurPromise />

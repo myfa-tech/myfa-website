@@ -47,13 +47,11 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='ramadan_fruits'>Ramadan Fruité</MenuItem>
-            <MenuItem value='ramadan_sugar'>Ramadan Sucré</MenuItem>
-            <MenuItem value='ramadan_full'>Ramadan Complet</MenuItem>
             <MenuItem value='fruits'>Panier Fruits</MenuItem>
             <MenuItem value='legumes'>Panier Légumes</MenuItem>
             <MenuItem value='sauces'>Panier Sauces</MenuItem>
             <MenuItem value='myfa'>Panier MYFA</MenuItem>
+            <MenuItem value='beauty'>Panier Beauté</MenuItem>
           </TextField>
 
           <TextField
@@ -66,13 +64,11 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='ramadan_fruits'>Ramadan Fruité</MenuItem>
-            <MenuItem value='ramadan_sugar'>Ramadan Sucré</MenuItem>
-            <MenuItem value='ramadan_full'>Ramadan Complet</MenuItem>
             <MenuItem value='fruits'>Panier Fruits</MenuItem>
             <MenuItem value='legumes'>Panier Légumes</MenuItem>
             <MenuItem value='sauces'>Panier Sauces</MenuItem>
             <MenuItem value='myfa'>Panier MYFA</MenuItem>
+            <MenuItem value='beauty'>Panier Beauté</MenuItem>
           </TextField>
 
           <TextField
@@ -85,13 +81,11 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='ramadan_fruits'>Ramadan Fruité</MenuItem>
-            <MenuItem value='ramadan_sugar'>Ramadan Sucré</MenuItem>
-            <MenuItem value='ramadan_full'>Ramadan Complet</MenuItem>
             <MenuItem value='fruits'>Panier Fruits</MenuItem>
             <MenuItem value='legumes'>Panier Légumes</MenuItem>
             <MenuItem value='sauces'>Panier Sauces</MenuItem>
             <MenuItem value='myfa'>Panier MYFA</MenuItem>
+            <MenuItem value='beauty'>Panier Beauté</MenuItem>
           </TextField>
 
           <TextField

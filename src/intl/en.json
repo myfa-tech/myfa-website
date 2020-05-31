@@ -63,7 +63,7 @@
       "title": "Choose your basket!",
       "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
       "until_date": "until 03/31/2020",
-      "regular_baskets_title": "Our food baskets",
+      "regular_baskets_title": "Our baskets",
       "fruits_basket_title": "Fruits Basket 🍌",
       "fruits_basket_home_description": "Bananas, oranges, coconut...",
       "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
@@ -76,16 +76,9 @@
       "myfa_basket_title": "MYFA Basket 🙌🏾",
       "myfa_basket_home_description": "It's up to you to compose it!",
       "myfa_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
-      "ramadan_baskets_title": "Ramadan Baskets",
-      "ramadan_sugar_basket_title": "Sugar Basket",
-      "ramadan_sugar_basket_home_description": "4 boxes of sugar cubes, concentrated milk, millet grains",
-      "ramadan_sugar_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. This 100% sweet basket is ideal for staying in shape.",
-      "ramadan_full_basket_title": "Full Basket",
-      "ramadan_full_basket_home_description": "Multifruit juice, sugar cubes, dates...",
-      "ramadan_full_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. Ideal for cutting the fast.",
-      "ramadan_fruits_basket_title": "Ramadan Fruits Baskets",
-      "ramadan_fruits_basket_home_description": "Mangoes, bananas, dates, grapes...",
-      "ramadan_fruits_basket_description": "During the month of Ramadan, enjoy (or share with your loved ones) this gourmet basket. This basket consists of the seasonal fruits you need!",
+      "beauty_basket_title": "Beauty Basket ✨",
+      "beauty_basket_home_description": "Karity butter, bissap leafs...",
+      "beauty_basket_description": "xxx",
       "cart_modal": {
         "header": "Successfully added to purchases",
         "price": "Price",
@@ -433,6 +426,12 @@
     "2kg_potatoes": "2kg potatoes",
     "1kg_yams": "1kg yams",
     "1_red_cabbage": "1 red cabbage",
-    "400g_french_beans": "400g French beans"
+    "400g_french_beans": "400g French beans",
+    "1_karite": "1 jar of karity butter",
+    "1_cocoa_butter": "1 jar of cocoa butter",
+    "500g_bissap": "500g bissap leafs",
+    "200g_kinkeliba": "200g kinkeliba leafs",
+    "1_black_soap": "1 black soap",
+    "1_honey_btl": "1 bottle of honey"
   }
 }

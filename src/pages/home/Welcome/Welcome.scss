@@ -8,6 +8,10 @@
     height: 100vh;
     text-align: center;
 
+    .beauty-basket-container-small {
+      display: none;
+    }
+
     .title {
       font-size: 30px;
       width: 50%;
@@ -18,19 +22,6 @@
       color: #311a19;
     }
 
-    h2 {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 1.6em;
-      font-weight: 600;
-      margin-bottom: 19px;
-      color: #311a19;
-    }
-
-    .beauty-basket-container-small {
-      display: none;
-    }
-
     .content-container {
       height: 90vh;
       display: flex;
@@ -39,6 +30,15 @@
 
       .beauty-basket-container {
         display: block;
+
+        h2 {
+          text-align: center;
+          margin-top: 25px;
+          font-size: 40px;
+          font-weight: 600;
+          margin-bottom: 19px;
+          color: #311a19;
+        }
       }
     }
 
@@ -47,6 +47,7 @@
       border-radius: 6px;
       font-size: 18px;
       display: block;
+      width: 200px;
       margin: auto;
       border: 1px solid #311A19;
       margin-top: 1em;

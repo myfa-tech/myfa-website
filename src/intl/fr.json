@@ -63,7 +63,7 @@
       "title": "Choisissez votre panier !",
       "subtitle": "Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.",
       "until_date": "jusqu'au 31/03/2020",
-      "regular_baskets_title": "Nos paniers alimentaires",
+      "regular_baskets_title": "Nos paniers",
       "fruits_basket_title": "Panier Fruits 🍌",
       "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
       "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
@@ -76,16 +76,9 @@
       "myfa_basket_title": "Panier MYFA 🙌🏾",
       "myfa_basket_home_description": "À vous de le composer !",
       "myfa_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
-      "ramadan_baskets_title": "Nos paniers Ramadan",
-      "ramadan_sugar_basket_title": "Panier Sucré",
-      "ramadan_sugar_basket_home_description": "4 boîtes de sucre en morceaux, lait concentré, mil",
-      "ramadan_sugar_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Ce panier 100% sucré est idéal pour rester en forme.",
-      "ramadan_full_basket_title": "Panier Complet",
-      "ramadan_full_basket_home_description": "Jus multifruits, sucre en morceaux, dattes...",
-      "ramadan_full_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Idéal pour couper le jeûne.",
-      "ramadan_fruits_basket_title": "Panier Fruité",
-      "ramadan_fruits_basket_home_description": "Mangues, bananes, dattes, raisins...",
-      "ramadan_fruits_basket_description": "Durant le mois du ramadan, profitez (ou faites profiter) de ce panier gourmand. Ce panier se compose des fruits de saisons qu’il vous faut !",
+      "beauty_basket_title": "Panier Beauté ✨",
+      "beauty_basket_home_description": "Beurre de karité, bissap, kinkeliba...",
+      "beauty_basket_description": "xxx",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -432,6 +425,12 @@
     "2kg_potatoes": "Pommes de terre (2kg)",
     "1kg_yams": "Ignames (1kg)",
     "1_red_cabbage": "1 choux rouge",
-    "400g_french_beans": "Haricots verts (400g)"
+    "400g_french_beans": "Haricots verts (400g)",
+    "1_karite": "1 pot de beurre de karité",
+    "1_cocoa_butter": "1 pot de beurre de cacao",
+    "500g_bissap": "500g de feuille de bissap",
+    "200g_kinkeliba": "200g de feuilles de kinkeliba",
+    "1_black_soap": "1 savon noir",
+    "1_honey_btl": "1 bouteille de miel"
   }
 }
