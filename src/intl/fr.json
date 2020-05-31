@@ -22,9 +22,10 @@
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
-      "title": "Pour votre plaisir et celui de vos proches en Côte d’Ivoire, nous livrons en 48h",
-      "subtitle": "*COVID-19 : la livraison des paniers est en suspend pour le moment, mais les commandes sont toujours possibles",
+      "title": "Pour la fête des mères, faites-lui savoir que vous l'aimez de loin",
+      "subtitle": "Panier Beauté",
       "discover_baskets_button": "Découvrir les paniers",
+      "get_basket_button": "Je craque",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",

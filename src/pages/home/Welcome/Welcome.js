@@ -65,25 +65,16 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
           />
         }
         <Header />
-        <Row>
-          <Col md={1}></Col>
-          <Col md={10}>
-            <Row>
-              <Col lg={4} className='d-none d-lg-block'></Col>
-              <Col lg={4} className='image-container'>
-                <img src={logoSrc} alt='logo' className='logo-big' />
-              </Col>
-              <Col lg={4} className='d-none d-lg-block'>
-                <PhoneInfos />
-              </Col>
-            </Row>
-            <h1 className='title'>{t('home_page.home.title')}*</h1>
-
-            <div className='d-block d-lg-none'>
-              <PhoneInfos />
+        <Row className='content-container'>
+          <Col md={6}></Col>
+          <Col md={6}>
+            <div className='beauty-basket-container'>
+              <h1 className='title'>{t('home_page.home.title')}</h1>
+              <h2>{t('home_page.home.subtitle')}</h2>
+              <h3>6.500 Fcfa / 9.90€</h3>
+              <button className='get-basket-button'>{t('home_page.home.get_basket_button')}</button>
             </div>
           </Col>
-          <Col md={1}></Col>
         </Row>
       </div>
     </section>
