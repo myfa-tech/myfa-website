@@ -150,13 +150,12 @@
       background-image: url(../../../images/home-background.jpg);
       background-size: 100% auto;
 
-      .title {
-        text-align: center;
-        font-size: 30px;
-      }
-
-      h2 {
-        font-size: 25px;
+      .beauty-basket-container-small {
+        .beauty-basket-inner-container-small {
+          h2 {
+            font-size: 40px;
+          }
+        }
       }
     }
   }
@@ -165,8 +164,18 @@
 @media (max-width: 330px) {
   #welcome {
     .section-1 {
-      h2 {
-        font-size: 18px;
+      .beauty-basket-container-small {
+        .beauty-basket-inner-container-small {
+          h2 {
+            font-size: 30px;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+
+          .title {
+            font-size: 15px;
+          }
+        }
       }
     }
   }
