@@ -10,8 +10,17 @@ import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
 import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 import CartStorage from '../../services/CartStorage';
+import basketsImgs from '../../assets/basketsImgs';
+
+import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
+import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
+import beautyIngr3 from '../../images/beauty_ingr_3.jpg';
 
 import './BasketToOrder.scss';
+
+const basketsOtherImgs = {
+  'beauty': [beautyIngr1, beautyIngr2, beautyIngr3],
+};
 
 const QTY_MAX = 5;
 
@@ -60,9 +69,20 @@ const BasketToOrder = () => {
     <section id='basket-to-order'>
       <Container>
         <Row>
-          <Col md='4'>
+          <Col md='4' className='imgs-col'>
             <div className='basket-img-container'>
-              <img src={basket.img} alt={basket.imgAlt} />
+              <div className='images-container'>
+                <img src={basketsImgs[basket.type]} alt={basket.imgAlt} />
+                {[0, 1, 2].map(item => (
+                  basketsOtherImgs[basket.type] && basketsOtherImgs[basket.type][item] ?
+                    <img
+                      src={basketsOtherImgs[basket.type][item]}
+                      alt={`${basket.type} basket image ${item}`}
+                      key={`img-${basket.type}-${item}`}
+                    /> :
+                    null
+                ))}
+              </div>
               <p>{t('basket_to_order.photo_disclaimer')}</p>
             </div>
           </Col>

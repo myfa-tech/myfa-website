@@ -37,10 +37,6 @@ const getCart = async () => {
 
   const response = await axios.get('/cart');
 
-  if (!!response.data.cart && !!response.data.cart.baskets) {
-    response.data.cart.baskets = response.data.cart.baskets.map(b => ({ ...b, img: basketsImgs[b.type] }));
-  }
-
   return response.data.cart;
 };
 

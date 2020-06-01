@@ -20,7 +20,7 @@
   .baskets-container {
     max-height: 400px;
     overflow-y: scroll;
-    padding: 1em 4em;
+    padding: 1em;
 
     h3 {
       font-size: 20px;
@@ -111,7 +111,7 @@
     li {
       background-color: #eee;
       list-style-type: none;
-      padding: 1em 3em;
+      padding: 1em;
       margin-bottom: 1em;
       border-radius: 8px;
     }

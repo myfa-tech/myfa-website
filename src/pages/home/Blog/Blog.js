@@ -4,6 +4,7 @@ import { FaQuoteLeft } from 'react-icons/fa';
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 
 import useTranslate from '../../../hooks/useTranslate';
+import { fetchArticles } from '../../../services/contentful';
 
 import florianSrc from '../../../images/florian.png';
 import dorisSrc from '../../../images/doris.png';
@@ -14,7 +15,6 @@ import orlaneSrc from '../../../images/orlane.png';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Blog.scss';
-import { fetchArticles } from '../../../services/contentful';
 
 const Blog = () => {
   const [t] = useTranslate();

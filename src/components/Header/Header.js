@@ -20,6 +20,8 @@ import CartStorage from '../../services/CartStorage';
 import UserStorage from '../../services/UserStorage';
 import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
+import uniqBy from '../../utils/uniqBy';
+import countBy from '../../utils/countBy';
 
 import logoHandsSrc from '../../images/logo-1.png';
 import basketsImgs from '../../assets/basketsImgs';
@@ -40,7 +42,21 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) => {
+const DisplayTooltip = ({ cart, removeBaskets, t }) => {
+  const [basketsCount, setBasketsCount] = useState(0);
+  const [basketsPrice, setBasketsPrice] = useState(0);
+
+  useEffect(() => {
+    if (!!cart && !!cart.baskets) {
+      setBasketsCount(cart.baskets.length);
+      setBasketsPrice(calculatePrice());
+    }
+  }, [cart]);
+
+  const calculatePrice = () => {
+    return cart.baskets.reduce((acc, curr) => acc + curr.price, 0);
+  };
+
   const goToCart = () => {
     if (typeof window !== 'undefined') {
       window.location.assign('/cart');
@@ -58,22 +74,22 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) =
 
           <Divider variant='middle' />
 
-          {cart.baskets && Object.keys(cart.baskets).length ?
+          {!!cart && !!cart.baskets && !!cart.baskets.length ?
             <>
               <ul className='baskets-container'>
-                {Object.keys(cart.baskets).map((basketKey, index) => (
+                {uniqBy(cart.baskets, 'type').map((basket, index) => (
                   <li key={index}>
                     <Row>
                       <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                        <img src={basketsImgs[cart.baskets[basketKey].type]} />
+                        <img src={basketsImgs[basket.type]} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        <h4>{t(`home_page.baskets.${basketKey}_basket_title`)}</h4>
-                        <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
+                        <h4>{t(`home_page.baskets.${basket.type}_basket_title`)}</h4>
+                        <p>{basket.price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>
-                        <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
-                        <p>{t('header.custom_tooltip.qty')}: {cart.baskets[basketKey].qty}</p>
+                        <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basket.type)} />
+                        <p>{t('header.custom_tooltip.qty')}: {countBy(cart.baskets, 'type', basket.type)}</p>
                       </Col>
                       <Col></Col>
                     </Row>
@@ -101,7 +117,7 @@ const getTooltip = (cart, basketsPrice, basketCount, removeBaskets, t, locale) =
       }>
         <span>
           <FaShoppingCart style={{ pointerEvents: "none" }} />
-          {basketCount ? <div className='baskets-count'>{basketCount}</div> : null}
+          {basketsCount ? <div className='baskets-count'>{basketsCount}</div> : null}
         </span>
     </CustomTooltip>
   )
@@ -111,14 +127,12 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
-  const [basketCount, setBasketCount] = useState(0);
   const [user, setUser] = useState(null);
-  const [basketsPrice, setBasketsPrice] = useState(0);
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [underlinedSection, setUnderlinedSection] = useState('');
-  const [t, locale] = useTranslate();
+  const [t] = useTranslate();
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
 
   const eventEmitter = new EventEmitter();
@@ -137,15 +151,12 @@ const Header = () => {
     updateCart();
     eventEmitter.listen('editCart', updateCart);
     eventEmitter.listen('login', setupLogin);
+    eventEmitter.listen('showLogin', toggleShowLoginSignupModal);
   }, []);
 
   useEffect(() => {
     window.onscroll = updateNavbarStickines;
   }, [sticky]);
-
-  useEffect(() => {
-    updateBasketsPriceAndNumber();
-  }, [cart]);
 
   useEffect(() => {
     setupLogin();
@@ -198,44 +209,9 @@ const Header = () => {
     let newCart = await CartStorage.getCartFromStorage();
 
     if (!!newCart) {
-      let enhancedCart = {};
-
-      enhancedCart.baskets = newCart.baskets.reduce((acc, cur) => {
-        if (!acc[cur.type]) {
-          acc[cur.type] = {
-            ...cur,
-            price: 0,
-            qty: 0,
-            label: cur.label,
-            singlePrice: cur.price,
-            type: cur.type,
-            img: basketsImgs[cur.type],
-            items: cur.items || {},
-          };
-        }
-
-        acc[cur.type].qty = acc[cur.type].qty + 1;
-        acc[cur.type].price = acc[cur.type].price + cur.price;
-
-        return acc;
-      }, {});
-
-      let newBasketsPrice = Object.values(enhancedCart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
-
-      setCart(enhancedCart);
-      setBasketsPrice(newBasketsPrice);
-      setBasketCount(newCart.baskets.length);
+      setCart(newCart);
     } else {
       setCart({});
-      setBasketsPrice(0);
-      setBasketCount(0);
-    }
-  };
-
-  const updateBasketsPriceAndNumber = () => {
-    if (cart && cart.baskets) {
-      let newBasketsPrice = Object.values(cart.baskets).map(v => v.price).reduce((acc, cur) => acc + cur, 0);
-      setBasketsPrice(newBasketsPrice);
     }
   };
 
@@ -245,13 +221,13 @@ const Header = () => {
 
   const onSignup = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/profile');
+      window.location.reload();
     }
   };
 
   const onLogin = () => {
     if (typeof window !== 'undefined') {
-      window.location.assign('/');
+      window.location.reload();
     }
   };
 
@@ -264,14 +240,6 @@ const Header = () => {
 
   const removeBaskets = (basketKey) => {
     CartStorage.deleteBasketsByType(basketKey);
-
-    delete cart.baskets[basketKey];
-
-    if (cart.baskets.length) {
-      setBasketCount(cart.baskets.length);
-    }
-
-    setCart({ ...cart });
   };
 
   return (
@@ -296,7 +264,7 @@ const Header = () => {
             <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
           }
           <Nav.Link href='/cart' className='basket-link'>
-            {cart && getTooltip(cart, basketsPrice, basketCount, removeBaskets, t, locale)}
+            <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
           </Nav.Link>
           <Nav.Link className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</Nav.Link>
           <Nav.Link className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</Nav.Link>

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { fetchRamadanBaskets, fetchHomeBaskets } from '../../services/baskets';
+import { fetchHomeBaskets } from '../../services/baskets';
 import basketsImgs from '../../assets/basketsImgs';
 
 const useFetchAllBasketsInfos = (initBaskets = []) => {
@@ -9,12 +9,7 @@ const useFetchAllBasketsInfos = (initBaskets = []) => {
 
   useEffect(() => {
 		const asyncFunc = async () => {
-      const result = await Promise.all([
-        fetchRamadanBaskets(),
-        fetchHomeBaskets(),
-      ]);
-
-      let fetchedBaskets = [...result[0], ...result[1]];
+      const fetchedBaskets = await fetchHomeBaskets();
 
       // Set baskets images
       fetchedBaskets = fetchedBaskets.map(b => ({ ...b, img: basketsImgs[b.type] }));

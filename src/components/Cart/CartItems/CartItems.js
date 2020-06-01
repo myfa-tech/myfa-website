@@ -1,5 +1,7 @@
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { Row, Col } from 'react-bootstrap';
 
@@ -8,8 +10,10 @@ import basketsImgs from '../../../assets/basketsImgs';
 
 import './CartItems.scss';
 
-const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
+const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBasket, user }) => {
   const [t] = useTranslate();
+
+  const recipients = !!user ? user.recipients : [];
 
   return (
     <div className='my-cart-container'>
@@ -18,30 +22,40 @@ const CartItems = ({ basketsPrice, cart, editItems, removeBaskets }) => {
       <Divider variant='middle' />
 
       <ul className='baskets-container'>
-        {Object.keys(cart.baskets).map((basketKey, index) => (
+        {cart.baskets.map((basket, index) => (
             <li key={index}>
               <Row>
                 <Col xs={0} sm={2} className='image-container d-none d-sm-block'>
-                  <img src={basketsImgs[cart.baskets[basketKey].type]} />
+                  <img src={basketsImgs[basket.type]} />
                 </Col>
-                <Col xs={7} sm={6} className='label-container'>
-                  <h3>{t(`home_page.baskets.${basketKey}_basket_title`)}</h3>
-                  <p>{cart.baskets[basketKey].price.toFixed(2)} €</p>
+                <Col xs={3} sm={3} className='label-container'>
+                  <h3>{t(`home_page.baskets.${basket.type}_basket_title`)}</h3>
+                  <p>{basket.price.toFixed(2)} €</p>
                 </Col>
-                <Col xs={5} sm={4} className='qty-container'>
-                  <div className='qty'>
-                    <p>{t('cart.items.qty')}</p>
-                    <p>
-                      <button className='minus-button' onClick={() => editItems(cart.baskets[basketKey].type, -1)}>-</button>
-                      <span>{cart.baskets[basketKey].qty}</span>
-                      <button className='plus-button' onClick={() => editItems(cart.baskets[basketKey].type, 1)}>+</button>
-                    </p>
-                  </div>
+                <Col xs={8} sm={6}>
+                  <TextField
+                    select
+                    label={t('cart.items.recipient')}
+                    required
+                    name={`recipient-${index}`}
+                    error={errors.findIndex(err => err === `recipient-${index}`) >= 0}
+                    variant='outlined'
+                    placeholder={t('cart.items.recipient_placeholder')}
+                    value={basket.recipient ? JSON.stringify(basket.recipient) : null}
+                    className='full-width form-input'
+                    onChange={(e) => handleChangeRecipient(e, index)}
+                  >
+                    {recipients.map((recipient, recipientIndex) => (
+                      <MenuItem key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</MenuItem>
+                    ))}
+                    <MenuItem value='add-one'>Ajouter un destinataire</MenuItem>
+                  </TextField>
+                </Col>
+                <Col xs={1} className='qty-container'>
                   <div className='trash-container'>
-                    <FaRegTrashAlt className='trash-icon' onClick={() => removeBaskets(basketKey)} />
+                    <FaRegTrashAlt className='trash-icon' onClick={() => removeBasket(index)} />
                   </div>
                 </Col>
-                <Col></Col>
               </Row>
             </li>
           ))}

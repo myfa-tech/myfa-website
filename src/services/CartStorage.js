@@ -15,6 +15,7 @@ const addToCart = async (basket, qty = 1) => {
     delete basket.availableVeggies;
     delete basket.availableSauces;
     delete basket.availableSupps;
+    delete basket.img;
 
     if (isUserLoggedIn()) {
       cart = await getCart();
@@ -32,10 +33,6 @@ const addToCart = async (basket, qty = 1) => {
       cart.baskets.push(basket);
     }
 
-    cart.baskets.forEach(b => {
-      delete b.img;
-    });
-
     if (isUserLoggedIn()) {
       if (isNewCart) {
         await createCart(cart);
@@ -52,6 +49,16 @@ const addToCart = async (basket, qty = 1) => {
   }
 
   return {};
+};
+
+const editCart = async (cart) => {
+  if (isUserLoggedIn()) {
+    await updateCart({ ...cart });
+  } else {
+    window.localStorage.setItem('cart', JSON.stringify({ ...cart }));
+  }
+
+  eventEmitter.emit('editCart');
 };
 
 const getCartFromStorage = async () => {
@@ -112,6 +119,39 @@ const deleteBasketsByType = async (basketTypeToRemove) => {
   }
 };
 
+const deleteBasketByIndex = async (basketIndex) => {
+  if (typeof window !== 'undefined') {
+    let cart = {};
+
+    if (isUserLoggedIn()) {
+      cart = await getCart();
+    } else {
+      cart = JSON.parse(window.localStorage.getItem('cart'));
+    }
+
+    cart.baskets.splice(basketIndex, 1);
+
+    let filteredBaskets = [...cart.baskets];
+
+    filteredBaskets.forEach(b => {
+      delete b.img;
+    });
+
+    if (isUserLoggedIn()) {
+      if (filteredBaskets.length === 0) {
+        await deleteSavedCart();
+      } else {
+        await updateCart({ baskets: filteredBaskets });
+      }
+    } else {
+      cart.baskets = filteredBaskets;
+      window.localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    eventEmitter.emit('editCart');
+  }
+};
+
 const deleteCart = async () => {
   if (typeof window !== 'undefined') {
     if (isUserLoggedIn()) {
@@ -124,8 +164,10 @@ const deleteCart = async () => {
 
 export default {
   addToCart,
+  deleteBasketByIndex,
   deleteBasketsByType,
   deleteCart,
+  editCart,
   getCartFromStorage,
   setCart,
 };
