@@ -12,10 +12,14 @@ import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
 import CartStorage from '../../services/CartStorage';
 import basketsImgs from '../../assets/basketsImgs';
 
+import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
+import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
+import beautyIngr3 from '../../images/beauty_ingr_3.jpg';
+
 import './BasketToOrder.scss';
 
 const basketsOtherImgs = {
-  'beauty': [basketsImgs['fruits'], basketsImgs['legumes']],
+  'beauty': [beautyIngr1, beautyIngr2, beautyIngr3],
 };
 
 const QTY_MAX = 5;
