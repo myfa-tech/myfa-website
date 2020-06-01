@@ -71,7 +71,7 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
             <div className='beauty-basket-container'>
               <h1 className='title'>{t('home_page.home.title')}</h1>
               <h2>{t('home_page.home.subtitle')}</h2>
-              <h3>9.90€ / 6.500 Fcfa</h3>
+              <h3>19.99€ / 13.100 Fcfa</h3>
               <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
             </div>
           </Col>
@@ -80,7 +80,7 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
           <div className='beauty-basket-inner-container-small'>
             <h1 className='title'>{t('home_page.home.title')}</h1>
             <h2>{t('home_page.home.subtitle')}</h2>
-            <h3>9.90€ / 6.500 Fcfa</h3>
+            <h3>19.99€ / 13.100 Fcfa</h3>
             <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
           </div>
         </div>
