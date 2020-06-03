@@ -54,6 +54,11 @@
       padding: 15px 40px;
       background-color: #F1D866;
     }
+
+    .asterisk {
+      margin-top: 2em;
+      font-size: 14px;
+    }
   }
 }
 
@@ -120,14 +125,22 @@
           }
 
           h2 {
-            font-size: 45px;
+            font-size: 40px;
             margin-top: 0;
             margin-bottom: 0;
           }
         }
 
         .get-basket-button {
+          font-size: 15px;
+          width: 150px;
           margin-top: 0;
+          padding: 10px 30px;
+        }
+
+        .asterisk {
+          margin-top: 0.5em;
+          font-size: 13px;
         }
       }
     }
@@ -160,9 +173,13 @@
       .beauty-basket-container-small {
         .beauty-basket-inner-container-small {
           h2 {
-            font-size: 30px;
+            font-size: 25px;
             margin-top: 0;
             margin-bottom: 0;
+          }
+
+          h3 {
+            font-size: 15px;
           }
 
           .title {
@@ -170,6 +187,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+  #welcome {
+    .section-1 {
+      height: 50vh;
     }
   }
 }
