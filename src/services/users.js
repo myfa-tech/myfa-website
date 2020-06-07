@@ -149,6 +149,10 @@ const addRecipient = async (recipient) => {
 
   const user = UserStorage.getUser();
 
+  if (!user.recipients) {
+    user.recipients = [];
+  }
+
   user.recipients.push(recipient);
 
   await axios.put('/users', user);

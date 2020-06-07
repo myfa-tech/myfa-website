@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,13 +7,21 @@ import { Row, Col } from 'react-bootstrap';
 
 import useTranslate from '../../../hooks/useTranslate';
 import basketsImgs from '../../../assets/basketsImgs';
+import UserStorage from '../../../services/UserStorage';
 
 import './CartItems.scss';
 
-const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBasket, user }) => {
+const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBasket }) => {
   const [t] = useTranslate();
+  const [recipients, setRecipients] = useState([]);
 
-  const recipients = !!user ? user.recipients : [];
+  useEffect(() => {
+    const user = UserStorage.getUser();
+
+    if (!!user && !!user.recipients) {
+      setRecipients(user.recipients);
+    }
+  }, []);
 
   return (
     <div className='my-cart-container'>

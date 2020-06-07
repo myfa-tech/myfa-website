@@ -29,6 +29,11 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
   async function submit() {
     if (typeof window !== 'undefined') {
       const user = UserStorage.getUser();
+
+      if (!user.recipients) {
+        user.recipients = [];
+      }
+
       user.recipients.push(form);
 
       await updateUser({ recipients: user.recipients });

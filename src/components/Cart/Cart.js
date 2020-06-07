@@ -189,7 +189,6 @@ const Cart = () => {
                   handleChangeRecipient={handleChangeRecipient}
                   basketsPrice={basketsPrice}
                   removeBasket={removeBasket}
-                  user={user}
                 /> :
                 <div className='disabled-section' onClick={() => goToStep(1)}>
                   <h2>{t('cart.items.title')}</h2>
