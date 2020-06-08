@@ -73,6 +73,7 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
               <h2>{t('home_page.home.subtitle')}</h2>
               <h3>19.99€ / 13.100 Fcfa</h3>
               <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
+              <p className='asterisk'>*Livraisons faites entre le vendredi 5 et dimanche 7</p>
             </div>
           </Col>
         </Row>
@@ -82,6 +83,7 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
             <h2>{t('home_page.home.subtitle')}</h2>
             <h3>19.99€ / 13.100 Fcfa</h3>
             <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
+            <p className='asterisk'>*Livraisons faites entre le vendredi 5 et dimanche 7</p>
           </div>
         </div>
       </div>
