@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ContentEditable from 'react-contenteditable';
-import sanitizeHtml from "sanitize-html";
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
@@ -19,25 +18,13 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
       return '';
     }
 
-    const month_nb_paid_fruits_baskets = goals.find(g => g.id === 'month_nb_paid_fruits_baskets').value;
-    const week_nb_paid_fruits_baskets = month_nb_paid_fruits_baskets / 4;
-    const month_nb_paid_legumes_baskets = goals.find(g => g.id === 'month_nb_paid_legumes_baskets').value;
-    const week_nb_paid_legumes_baskets = month_nb_paid_legumes_baskets / 4;
-    const month_nb_paid_sauces_baskets = goals.find(g => g.id === 'month_nb_paid_sauces_baskets').value;
-    const week_nb_paid_sauces_baskets = month_nb_paid_sauces_baskets / 4;
-    const month_nb_paid_myfa_baskets = goals.find(g => g.id === 'month_nb_paid_myfa_baskets').value;
-    const week_nb_paid_myfa_baskets = month_nb_paid_myfa_baskets / 4;
+    const colors = {};
 
-    const colors = {
-      week_nb_paid_fruits_baskets,
-      month_nb_paid_fruits_baskets,
-      month_nb_paid_legumes_baskets,
-      week_nb_paid_legumes_baskets,
-      month_nb_paid_sauces_baskets,
-      week_nb_paid_sauces_baskets,
-      month_nb_paid_myfa_baskets,
-      week_nb_paid_myfa_baskets,
-    };
+    goals.filter(g => g.id.includes('month')).forEach(goal => {
+      colors[goal.id] = Number(goal.value);
+      let weekId = goal.id.substr(5);
+      colors[`week${weekId}`] = goal.value / 4;
+    });
 
     if (value < (colors[id] / 2)) {
       return 'red';
@@ -50,7 +37,8 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
 
   const handleGoalChange = (id, value) => {
     let goalIndex = goals.findIndex(g => g.id === id);
-    goals[goalIndex].value = sanitizeHtml(value);
+
+    goals[goalIndex].value = value;
 
     setGoals([...goals]);
   };
