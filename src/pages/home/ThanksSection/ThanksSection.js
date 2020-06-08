@@ -2,6 +2,12 @@ import React from 'react';
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 import Slider from 'react-slick';
 
+import ThierryAdonisWithBasket from '../../../images/thierry-receiving-basket.jpg';
+import JanyAdonisWithBasket from '../../../images/jany-receiving-basket.jpg';
+import ElianeWithBasket from '../../../images/eliane-receiving-basket.jpg';
+import AlissaWithBasket from '../../../images/alissa-receives-basket.jpg';
+import EmmanuelWithBasket from '../../../images/emmanuel-receives-basket.jpg';
+
 import useTranslate from '../../../hooks/useTranslate';
 
 import './ThanksSection.scss';
@@ -50,23 +56,23 @@ const ThanksSection = () => {
 
   const slides = [
     {
-      img: `${window.location.origin}/thierry-receiving-basket.jpg`,
+      img: ThierryAdonisWithBasket,
       alt: 'thierry adonis reçoit son panier'
     },
     {
-      img: `${window.location.origin}/jany-receiving-basket.jpg`,
+      img: JanyAdonisWithBasket,
       alt: 'jany adonis reçoit son panier'
     },
     {
-      img: `${window.location.origin}/eliane-receiving-basket.jpg`,
+      img: ElianeWithBasket,
       alt: 'eliane ndossi reçoit son panier'
     },
     {
-      img: `${window.location.origin}/alissa-receives-basket.jpg`,
+      img: AlissaWithBasket,
       alt: 'alissa simon reçoit son panier'
     },
     {
-      img: `${window.location.origin}/emmanuel-receives-basket.jpg`,
+      img: EmmanuelWithBasket,
       alt: 'emmanuel koffy reçoit son panier'
     },
   ];
