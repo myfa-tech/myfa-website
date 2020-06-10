@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import useTranslate from '../../../hooks/useTranslate';
 import foundersSrc from '../../../images/founders.jpeg';
+import phoneFoundersSrc from '../../../images/phone-founders.jpg';
 
 import './OurPromise.scss';
 
@@ -15,7 +16,7 @@ const OurPromise = () => {
       </div>
       <Row className='content-container'>
         <Col md={5} className='image-container'>
-          <img src={foundersSrc} />
+          <img className='founders-image' srcSet={`${foundersSrc} w949, ${phoneFoundersSrc} 450w`} />
           <p>{t('home_page.our_promise.image_title')}</p>
         </Col>
         <Col md={7} className='text-container'>
