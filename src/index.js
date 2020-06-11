@@ -34,6 +34,7 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const JobsPage = lazy(() => import('./pages/jobs'));
+const NotFound = lazy(() => import('./pages/404'));
 
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
 const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
@@ -93,6 +94,7 @@ const App = () => (
       <DashboardBaskets path='/dashboard/baskets' />
       <DashboardFinance path='/dashboard/finance' />
       <DashboardStocks path='/dashboard/stocks' />
+      <NotFound default />
     </Router>
   </Suspense>
 );
