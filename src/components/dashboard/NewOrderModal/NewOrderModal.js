@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Modal from 'react-bootstrap/Modal';
-import { Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import { saveOrderManually } from '../../../services/orders';
 

@@ -1,5 +1,10 @@
 import React, { lazy, useEffect, useState, Suspense } from 'react';
-import { Col, Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Divider from '@material-ui/core/Divider';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';

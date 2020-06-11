@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Banner from '../../../components/Banner';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import Header from '../../../components/Header';

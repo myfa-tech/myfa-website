@@ -3,7 +3,8 @@ import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import useTranslate from '../../../hooks/useTranslate';
 import basketsImgs from '../../../assets/basketsImgs';

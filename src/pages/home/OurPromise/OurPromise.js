@@ -1,5 +1,6 @@
-import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import useTranslate from '../../../hooks/useTranslate';
 import foundersSrc from '../../../images/founders.jpeg';
 import phoneFoundersSrc from '../../../images/phone-founders.jpg';

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Divider from '@material-ui/core/Divider';
-import { Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import CartItems from './CartItems';
 import MessagesToRelative from './MessagesToRelative';

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';

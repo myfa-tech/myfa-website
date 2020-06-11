@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Router } from '@reach/router';
-import { Container, Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 

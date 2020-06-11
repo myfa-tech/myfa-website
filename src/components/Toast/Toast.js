@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast as BootstrapToast } from 'react-bootstrap';
+import BootstrapToast from 'react-bootstrap/Toast';
 import useTranslate from '../../hooks/useTranslate';
 
 const Toast = (props) => {
