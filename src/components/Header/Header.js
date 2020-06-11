@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState, Suspense } from 'react';
 import { Col, Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
 import Modal from 'react-bootstrap/Modal';
@@ -13,7 +13,7 @@ import { navigate } from "@reach/router";
 
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
-import CustomDrawer from '../CustomDrawer';
+const CustomDrawer = lazy(() => import('../CustomDrawer'));
 
 import EventEmitter from '../../services/EventEmitter';
 import CartStorage from '../../services/CartStorage';
@@ -271,13 +271,15 @@ const Header = () => {
         </Nav>
       </Navbar>
 
-      <CustomDrawer
-        anchor='left'
-        state={drawerState}
-        onItemClick={goTo}
-        toggleDrawer={() => toggleDrawer('left', false)}
-        list={DRAWER_LIST}
-      />
+      <Suspense fallback={'LOADING'}>
+        <CustomDrawer
+          anchor='left'
+          state={drawerState}
+          onItemClick={goTo}
+          toggleDrawer={() => toggleDrawer('left', false)}
+          list={DRAWER_LIST}
+        />
+      </Suspense>
 
       {showLoginSignupModal && <Modal show={showLoginSignupModal} onHide={toggleShowLoginSignupModal} id='account-modal'>
         <Modal.Header closeButton />
