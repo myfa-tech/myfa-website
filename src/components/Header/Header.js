@@ -11,8 +11,8 @@ import { IoMdMenu } from 'react-icons/io';
 import i18next from 'i18next';
 import { navigate } from "@reach/router";
 
-import LoginForm from '../LoginForm';
-import SignupForm from '../SignupForm';
+const LoginForm = lazy(() => import('../LoginForm'));
+const SignupForm = lazy(() => import('../SignupForm'));
 const CustomDrawer = lazy(() => import('../CustomDrawer'));
 
 import EventEmitter from '../../services/EventEmitter';
@@ -291,8 +291,12 @@ const Header = () => {
               <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>{t('header.login_signup_modal.signup_button')}</Button>
             </ButtonGroup>
             {switchValue === 'login' ?
-              <LoginForm onLogin={onLogin} /> :
-              <SignupForm onSignup={onSignup} />
+              <Suspense fallback={'LOADING'}>
+                <LoginForm onLogin={onLogin} />
+              </Suspense> :
+              <Suspense fallback={'LOADING'}>
+                <SignupForm onSignup={onSignup} />
+              </Suspense>
             }
           </div>
         </Modal.Body>

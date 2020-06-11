@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';
-import CartModal from '../../../components/CartModal';
+const CartModal = lazy(() => import('../../../components/CartModal'));
 
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
@@ -91,11 +91,13 @@ const Baskets = () => {
 				))}
 			</Row>
 			{showCartModal &&
-				<CartModal
-					showCartModal={showCartModal}
-					toggleCartModal={toggleCartModal}
-					basket={basketForCart}
-				/>
+				<Suspense fallback={'LOADING'}>
+					<CartModal
+						showCartModal={showCartModal}
+						toggleCartModal={toggleCartModal}
+						basket={basketForCart}
+					/>
+				</Suspense>
 			}
 		</section>
 	);
