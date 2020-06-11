@@ -1,11 +1,11 @@
 
-import React from "react"
-import PropTypes from "prop-types"
+import React, { lazy, Suspense } from 'react';
+import PropTypes from 'prop-types';
 
-import Header from "./Header"
-import Footer from "./Footer"
+import Header from './Header';
+const Footer = lazy(() => import('./Footer'));
 
-import './layout.scss'
+import './layout.scss';
 
 const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
   return (
@@ -20,7 +20,9 @@ const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginS
       <div>
         <main>{children}</main>
       </div>
-      <Footer noBackgroundColor={noBackgroundColor} />
+      <Suspense fallback={'LOADING'}>
+        <Footer noBackgroundColor={noBackgroundColor} />
+      </Suspense>
     </div>
   )
 }
