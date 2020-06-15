@@ -57,7 +57,7 @@ i18next.init({
 });
 
 const App = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<div></div>}>
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
