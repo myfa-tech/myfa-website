@@ -23,7 +23,7 @@
     }
 
     .content-container {
-      height: 90vh;
+      height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -152,7 +152,7 @@
 @media (max-width: 480px) {
   #welcome {
     .section-1 {
-      height: 60vh;
+      height: 50vh;
       background-image: url(../../../images/phone-home-background.jpg);
       background-size: 100% auto;
 
@@ -194,7 +194,7 @@
 @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
   #welcome {
     .section-1 {
-      height: 50vh;
+      height: 40vh;
     }
   }
 }

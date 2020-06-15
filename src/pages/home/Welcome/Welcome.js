@@ -2,22 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Banner from '../../../components/Banner';
-import { IoLogoWhatsapp } from 'react-icons/io';
 import Header from '../../../components/Header';
 import Toast from '../../../components/Toast';
 
 import useTranslate from '../../../hooks/useTranslate';
 
 import './Welcome.scss';
-import logoSrc from '../../../images/logo-1.png';
-
-const PhoneInfos = () => (
-  <div className='phone-infos'>
-    <IoLogoWhatsapp className='whatsapp-icon' />
-    <p className='number'>(+225) 84 21 51 54</p>
-    <p className='hours'>9h-18h lun au ven | 9h-13h we et fériés</p>
-  </div>
-);
 
 const Welcome = ({ setShowToast, showToast, toastType }) => {
   const [showBanner, setShowBanner] = useState(false);
@@ -70,21 +60,17 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
           <Col md={6}></Col>
           <Col md={6}>
             <div className='beauty-basket-container'>
-              <h1 className='title'>{t('home_page.home.title')}</h1>
               <h2>{t('home_page.home.subtitle')}</h2>
               <h3>19.99€ / 13.100 Fcfa</h3>
               <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
-              <p className='asterisk'>*Livraisons faites entre le vendredi 5 et dimanche 7</p>
             </div>
           </Col>
         </Row>
         <div className='beauty-basket-container-small'>
           <div className='beauty-basket-inner-container-small'>
-            <h1 className='title'>{t('home_page.home.title')}</h1>
             <h2>{t('home_page.home.subtitle')}</h2>
             <h3>19.99€ / 13.100 Fcfa</h3>
             <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
-            <p className='asterisk'>*Livraisons faites entre le vendredi 5 et dimanche 7</p>
           </div>
         </div>
       </div>
