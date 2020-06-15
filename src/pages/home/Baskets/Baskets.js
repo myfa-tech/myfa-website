@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { lazy, Suspense, useState } from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';
-import CartModal from '../../../components/CartModal';
+const CartModal = lazy(() => import('../../../components/CartModal'));
+import SectionLoader from '../../../components/SectionLoader';
 
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
@@ -91,11 +93,13 @@ const Baskets = () => {
 				))}
 			</Row>
 			{showCartModal &&
-				<CartModal
-					showCartModal={showCartModal}
-					toggleCartModal={toggleCartModal}
-					basket={basketForCart}
-				/>
+				<Suspense fallback={<SectionLoader />}>
+					<CartModal
+						showCartModal={showCartModal}
+						toggleCartModal={toggleCartModal}
+						basket={basketForCart}
+					/>
+				</Suspense>
 			}
 		</section>
 	);

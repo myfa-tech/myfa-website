@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
 
 import './Orders.scss'
 import getQueryParam from '../../utils/getQueryParam'

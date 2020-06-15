@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';

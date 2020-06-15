@@ -7,7 +7,6 @@ import i18next from 'i18next';
 import common_fr from './intl/fr.json';
 import common_en from './intl/en.json';
 
-import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
@@ -35,6 +34,7 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const JobsPage = lazy(() => import('./pages/jobs'));
+const NotFound = lazy(() => import('./pages/404'));
 
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
 const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
@@ -57,7 +57,7 @@ i18next.init({
 });
 
 const App = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<div></div>}>
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
@@ -94,6 +94,7 @@ const App = () => (
       <DashboardBaskets path='/dashboard/baskets' />
       <DashboardFinance path='/dashboard/finance' />
       <DashboardStocks path='/dashboard/stocks' />
+      <NotFound default />
     </Router>
   </Suspense>
 );

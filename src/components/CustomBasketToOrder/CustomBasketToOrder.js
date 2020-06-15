@@ -4,7 +4,8 @@ import Step from '@material-ui/core/Step';
 import { ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import CartModal from '../CartModal';
 

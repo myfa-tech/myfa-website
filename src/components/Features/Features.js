@@ -1,5 +1,7 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import { FaBell, FaGlobeAfrica, FaHistory, FaHome, FaShoppingCart, FaUser } from 'react-icons/fa'
 
 import visuAppSrc from '../../images/visu_app_2.png'

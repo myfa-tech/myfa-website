@@ -2,7 +2,7 @@ import React from 'react';
 
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 const CGUPage = () => (
   <Layout>

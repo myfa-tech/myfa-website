@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { Col, Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './DeleteRequestModal.scss';
 

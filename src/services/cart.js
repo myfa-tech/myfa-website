@@ -1,7 +1,6 @@
 import Axios from 'axios';
 
 import UserStorage from './UserStorage';
-import basketsImgs from '../assets/basketsImgs';
 
 const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 

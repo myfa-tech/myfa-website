@@ -1,5 +1,7 @@
 import React from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import { FaEye, FaMapPin } from 'react-icons/fa';
 import { Divider } from '@material-ui/core';
 

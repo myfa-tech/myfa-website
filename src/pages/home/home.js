@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
+import SectionLoader from '../../components/SectionLoader';
 import Welcome from './Welcome';
-import OurPromise from './OurPromise';
-import Newsletter from './Newsletter';
-import Blog from './Blog';
-import Baskets from './Baskets';
-import HowItWorks from './HowItWorks';
-import Trustees from './Trustees';
-import Covid19 from './Covid19';
-import Asterisks from './Asterisks';
-import ThanksSection from './ThanksSection';
+const OurPromise = lazy(() => import('./OurPromise'));
+const Newsletter = lazy(() => import('./Newsletter'));
+const Blog = lazy(() => import('./Blog'));
+const Baskets = lazy(() => import('./Baskets'));
+const HowItWorks = lazy(() => import('./HowItWorks'));
+const Trustees = lazy(() => import('./Trustees'));
+const Covid19 = lazy(() => import('./Covid19'));
+const Asterisks = lazy(() => import('./Asterisks'));
+const ThanksSection = lazy(() => import('./ThanksSection'));
 
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
 
@@ -25,15 +26,18 @@ const HomePage = () => {
       <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
 
       <Welcome />
-      <Covid19 />
-      <Baskets />
-      <HowItWorks />
-      <OurPromise />
-      <ThanksSection />
-      <Trustees />
-      <Blog />
-      <Newsletter />
-      <Asterisks />
+
+      <Suspense fallback={<SectionLoader />}>
+        <Covid19 />
+        <Baskets />
+        <HowItWorks />
+        <OurPromise />
+        <ThanksSection />
+        <Trustees />
+        <Blog />
+        <Newsletter />
+        <Asterisks />
+      </Suspense>
     </Layout>
   );
 }
