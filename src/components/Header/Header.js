@@ -12,6 +12,7 @@ import { IoMdMenu } from 'react-icons/io';
 import i18next from 'i18next';
 import { navigate } from "@reach/router";
 
+import SectionLoader from '../SectionLoader';
 const LoginForm = lazy(() => import('../LoginForm'));
 const SignupForm = lazy(() => import('../SignupForm'));
 const CustomDrawer = lazy(() => import('../CustomDrawer'));
@@ -170,7 +171,7 @@ const Header = () => {
             <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
           }
           <Nav.Link href='/cart' className='basket-link'>
-            <Suspense fallback={'LOADING'}>
+            <Suspense fallback=''>
               <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
             </Suspense>
           </Nav.Link>
@@ -179,7 +180,7 @@ const Header = () => {
         </Nav>
       </Navbar>
 
-      <Suspense fallback={'LOADING'}>
+      <Suspense fallback=''>
         <CustomDrawer
           anchor='left'
           state={drawerState}
@@ -199,10 +200,10 @@ const Header = () => {
               <Button className={`switch-button ${switchValue === 'signup' ? 'active' : ''}`} onClick={() => setSwitchValue('signup')}>{t('header.login_signup_modal.signup_button')}</Button>
             </ButtonGroup>
             {switchValue === 'login' ?
-              <Suspense fallback={'LOADING'}>
+              <Suspense fallback={<SectionLoader />}>
                 <LoginForm onLogin={onLogin} />
               </Suspense> :
-              <Suspense fallback={'LOADING'}>
+              <Suspense fallback={<SectionLoader />}>
                 <SignupForm onSignup={onSignup} />
               </Suspense>
             }

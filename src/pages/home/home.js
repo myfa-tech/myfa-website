@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
+import SectionLoader from '../../components/SectionLoader';
 import Welcome from './Welcome';
 const OurPromise = lazy(() => import('./OurPromise'));
 const Newsletter = lazy(() => import('./Newsletter'));
@@ -26,7 +27,7 @@ const HomePage = () => {
 
       <Welcome />
 
-      <Suspense fallback='LOADING'>
+      <Suspense fallback={<SectionLoader />}>
         <Covid19 />
         <Baskets />
         <HowItWorks />

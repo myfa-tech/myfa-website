@@ -5,6 +5,7 @@ import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';
 const CartModal = lazy(() => import('../../../components/CartModal'));
+import SectionLoader from '../../../components/SectionLoader';
 
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
@@ -92,7 +93,7 @@ const Baskets = () => {
 				))}
 			</Row>
 			{showCartModal &&
-				<Suspense fallback={'LOADING'}>
+				<Suspense fallback={<SectionLoader />}>
 					<CartModal
 						showCartModal={showCartModal}
 						toggleCartModal={toggleCartModal}
