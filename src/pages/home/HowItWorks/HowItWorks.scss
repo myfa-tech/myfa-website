@@ -19,21 +19,26 @@
     width: 90%;
     margin: auto;
 
-    .slick-dots {
-      bottom: 25px;
+    .carousel-status {
+      display: none;
     }
 
-    .slick-prev, .slick-next {
-      color: #311a19;
-      z-index: 800;
+    .slide {
+      background: transparent;
     }
 
-    .slick-next {
-      right: 0;
+    .control-dots {
+      .dot {
+        background-color: grey;
+      }
     }
 
-    .slick-prev {
-      left: 0;
+    .control-prev.control-arrow:before {
+      border-right: 8px solid #000;
+    }
+
+    .control-next.control-arrow:before {
+      border-left: 8px solid #000;
     }
   }
 

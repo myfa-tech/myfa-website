@@ -1,52 +1,24 @@
-import React from 'react';
-import Slider from 'react-slick';
+import React, { useEffect, useState } from 'react';
 import { FaCreditCard, FaEnvelopeOpen, FaMapMarkerAlt, FaRegListAlt, FaShoppingBasket, FaTruck } from 'react-icons/fa';
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import { Carousel } from 'react-responsive-carousel';
+
 import useTranslate from '../../../hooks/useTranslate';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import './HowItWorks.scss';
 
 const HowItWorks = () => {
+  const [slidePercentage, setSlidePercentage] = useState(30);
   const [t] = useTranslate();
 
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: false,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.screen.width <= 500) {
+        setSlidePercentage(100);
+      } else if (window.screen.width <= 1000) {
+        setSlidePercentage(50);
       }
-    ],
-    nextArrow: <IoMdArrowDropright />,
-    prevArrow: <IoMdArrowDropleft />,
-  };
+    }
+  }, []);
 
   const slides = [
     {
@@ -86,7 +58,7 @@ const HowItWorks = () => {
       <div className='heading'>
         <h2>{t('home_page.how_it_works.title')} 🤔</h2>
       </div>
-      <Slider {...settings} className='custom-slider'>
+      <Carousel centerMode centerSlidePercentage={slidePercentage} className='custom-slider'>
         {slides.map((slide, index) => (
           <div key={index}>
             <div className='card-block'>
@@ -102,7 +74,7 @@ const HowItWorks = () => {
             </div>
           </div>
         ))}
-      </Slider>
+      </Carousel>
     </section>
   );
 };

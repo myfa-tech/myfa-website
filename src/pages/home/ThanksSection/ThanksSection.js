@@ -1,6 +1,5 @@
-import React from 'react';
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
-import Slider from 'react-slick';
+import React, { useEffect, useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
 
 import ThierryAdonisWithBasket from '../../../images/thierry-receiving-basket.jpg';
 import JanyAdonisWithBasket from '../../../images/jany-receiving-basket.jpg';
@@ -13,46 +12,8 @@ import useTranslate from '../../../hooks/useTranslate';
 import './ThanksSection.scss';
 
 const ThanksSection = () => {
+  const [slidePercentage, setSlidePercentage] = useState(30);
   const [t, locale] = useTranslate();
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: false,
-          dots: true
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        },
-      },
-    ],
-    nextArrow: <IoMdArrowDropright />,
-    prevArrow: <IoMdArrowDropleft />,
-  };
 
   const slides = [
     {
@@ -77,6 +38,16 @@ const ThanksSection = () => {
     },
   ];
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.screen.width <= 500) {
+        setSlidePercentage(100);
+      } else if (window.screen.width <= 1000) {
+        setSlidePercentage(50);
+      }
+    }
+  }, []);
+
   return (
     <section id='thanks-section'>
       <div className='heading'>
@@ -85,13 +56,13 @@ const ThanksSection = () => {
       </div>
 
       <div className='custom-slider'>
-        <Slider {...settings}>
+        <Carousel centerMode centerSlidePercentage={slidePercentage}>
           {slides.map((slide, index) => (
             <div key={index}>
               <img className='slider-img' src={slide.img} alt={slide.alt} />
             </div>
           ))}
-        </Slider>
+        </Carousel>
       </div>
     </section>
   );

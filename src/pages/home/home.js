@@ -14,6 +14,8 @@ const Covid19 = lazy(() => import('./Covid19'));
 const Asterisks = lazy(() => import('./Asterisks'));
 const ThanksSection = lazy(() => import('./ThanksSection'));
 
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
 
 import useTranslate from '../../hooks/useTranslate';

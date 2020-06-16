@@ -1,7 +1,6 @@
 import React, { useEffect, useState  } from 'react';
-import Slider from 'react-slick';
 import { FaQuoteLeft } from 'react-icons/fa';
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import { Carousel } from 'react-responsive-carousel';
 
 import useTranslate from '../../../hooks/useTranslate';
 import { fetchArticles } from '../../../services/contentful';
@@ -12,26 +11,11 @@ import manuellaSrc from '../../../images/manuella.png';
 import alexandreSrc from '../../../images/alex.png';
 import orlaneSrc from '../../../images/orlane.png';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import './Blog.scss';
 
 const Blog = () => {
   const [t] = useTranslate();
   const [articles, setArticles] = useState([]);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 10000,
-    initialSlide: 0,
-    nextArrow: <IoMdArrowDropright />,
-    prevArrow: <IoMdArrowDropleft />,
-  };
 
   const getAuthor = (authorId) => {
     const authors = {
@@ -80,7 +64,7 @@ const Blog = () => {
         <h2>{t('home_page.blog.title')} 📰</h2>
       </div>
 
-      <Slider {...settings} className='custom-slider'>
+      <Carousel centerMode centerSlidePercentage={100} className='custom-slider'>
         {articles.map((article) => {
           const author = getAuthor(article.author);
 
@@ -101,7 +85,7 @@ const Blog = () => {
             </div>
           );
         })}
-      </Slider>
+      </Carousel>
     </section>
   );
 };
