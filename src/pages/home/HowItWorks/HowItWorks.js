@@ -11,10 +11,12 @@ const HowItWorks = () => {
   const [t] = useTranslate();
 
   useEffect(() => {
-    if (screen.width <= 500) {
-      setSlidePercentage(100);
-    } else if (screen.width <= 1000) {
-      setSlidePercentage(50);
+    if (typeof window !== 'undefined') {
+      if (window.screen.width <= 500) {
+        setSlidePercentage(100);
+      } else if (window.screen.width <= 1000) {
+        setSlidePercentage(50);
+      }
     }
   }, []);
 
