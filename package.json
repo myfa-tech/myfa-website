@@ -37,11 +37,10 @@
     "react-helmet": "^5.2.1",
     "react-i18next": "^11.4.0",
     "react-icons": "^3.8.0",
+    "react-responsive-carousel": "^3.2.8",
     "react-share": "^3.0.1",
-    "react-slick": "^0.25.2",
     "react-social-icons": "^4.1.0",
     "react-spinners": "^0.6.1",
-    "slick-carousel": "^1.8.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
