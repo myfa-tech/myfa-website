@@ -180,21 +180,6 @@ const Cart = () => {
     setIsLoading(false);
   };
 
-  async function checkoutWithMTNOrangeMoney() {
-    const user = UserStorage.getUser();
-
-    setIsLoading(true);
-
-    if (NODE_ENV === 'development') {
-      cart.isTest = true;
-    }
-
-    await mobileMoney.createPayment(cart, user);
-
-    emptyStoredCart();
-    setIsLoading(false);
-  };
-
   const emptyStoredCart = async () => {
     await CartStorage.deleteCart();
   };
@@ -258,20 +243,12 @@ const Cart = () => {
                     onClick={handleNext}
                     className='next-button'
                   /> :
-                  <>
-                    <ButtonWithLoader
-                      isLoading={isLoading}
-                      label={t('cart.price_container.pay_by_card')}
-                      onClick={handleNext}
-                      className='next-button pay-by-card-btn'
-                    />
-                    <ButtonWithLoader
-                      isLoading={isLoading}
-                      label={t('cart.price_container.orange_mtn_button')}
-                      onClick={checkoutWithMTNOrangeMoney}
-                      className='next-button'
-                    />
-                  </>
+                  <ButtonWithLoader
+                    isLoading={isLoading}
+                    label={t('cart.price_container.pay_by_card')}
+                    onClick={handleNext}
+                    className='next-button pay-by-card-btn'
+                  />
                 }
 
                 <p className='covid19-warning'>{t('cart.price_container.covid19_warning')}</p>
