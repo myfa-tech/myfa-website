@@ -176,6 +176,8 @@
   "cart": {
     "relative_info_title": "Informations sur mon proche",
     "self_info_title": "Je m'inscris pour commander",
+    "promo_code_title": "Code promo",
+    "promo_validate": "Valider",
     "message_to_relative_title": "Message dans le panier",
     "price_container": {
       "total": "Total",

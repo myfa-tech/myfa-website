@@ -16,8 +16,10 @@ import CartStorage from '../../services/CartStorage';
 import mobileMoney from '../../services/mobileMoney';
 
 import './Cart.scss';
+import PromoCode from './PromoCode/PromoCode';
 
 const NODE_ENV = process.env.NODE_ENV;
+const PROMO_PERCENTAGE = 10;
 
 const Cart = () => {
   const [cart, setCart] = useState({});
@@ -29,6 +31,7 @@ const Cart = () => {
   const [isFetching, setIsFetching] = useState(true);
   const [showAddRecipientModal, setShowAddRecipientModal] = useState(false);
   const [basketAddingRecipientIndex, setBasketAddingRecipientIndex] = useState(null);
+  const [promoActivated, setPromoActivated] = useState(false);
 
   const [t] = useTranslate();
 
@@ -39,6 +42,10 @@ const Cart = () => {
     initCart();
     eventEmitter.listen('editCart', initCart);
   }, []);
+
+  useEffect(() => {
+    setBasketsPrice(basketsPrice - (basketsPrice * (PROMO_PERCENTAGE/100)))
+  }, [promoActivated]);
 
   const initCart = async () => {
     let newCart = await CartStorage.getCartFromStorage();
@@ -82,12 +89,21 @@ const Cart = () => {
   };
 
   const goToStep = (stepId) => {
-    if ((stepId === 2 && !!user) ||
-      ((stepId === 3 || stepId === 4) && !user)) {
+    if (!!user) {
+      if (step === 1) {
+        const errors = getRecipientsErrors();
+
+        if (!!errors.length) {
+          setRecipientsErrors([...errors]);
+          return;
+        }
+      }
+
+      setStep(stepId);
       return;
     }
 
-    setStep(stepId);
+    triggerLoginSignupModal();
   };
 
   const handleNext = (e) => {
@@ -98,12 +114,12 @@ const Cart = () => {
         if (!!errors.length) {
           setRecipientsErrors([...errors]);
         } else {
-          nextStep(3);
+          nextStep();
         }
       } else {
         triggerLoginSignupModal();
       }
-    } else if (step === 4) {
+    } else if (step === 3) {
       pay();
     } else {
       nextStep();
@@ -141,6 +157,12 @@ const Cart = () => {
 
   const removeBasket = (basketIndex) => {
     CartStorage.deleteBasketByIndex(basketIndex);
+  };
+
+  const applyPromo = (code) => {
+    cart.promo = code;
+    setCart({ ...cart });
+    setPromoActivated(true);
   };
 
   async function pay() {
@@ -195,12 +217,22 @@ const Cart = () => {
                   <h2>{t('cart.items.title')}</h2>
                 </div>
               }
-              {step === 4 ?
+              {step === 2 ?
+                <PromoCode
+                  applyPromo={applyPromo}
+                  promoActivated={promoActivated}
+                  promoPercentage={PROMO_PERCENTAGE}
+                /> :
+                <div className={`disabled-section promo-code ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(2)}>
+                  <h2>{t('cart.promo_code_title')}</h2>
+                </div>
+              }
+              {step === 3 ?
                 <MessagesToRelative
                   cart={cart}
                   handleChangeMessage={handleChangeMessagesToRelative}
                 /> :
-                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={handleNext}>
+                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(3)}>
                   <h2>{t('cart.message_to_relative_title')}</h2>
                 </div>
               }
@@ -214,11 +246,12 @@ const Cart = () => {
                 <div className='content-container'>
                   <p>{basketsNumber} {t('cart.price_container.baskets')} : {basketsPrice.toFixed(2)} €</p>
                   <p>{t('cart.price_container.grand_total')} : {basketsPrice.toFixed(2)} €</p>
+                  {promoActivated ? <p className='promo-activated-text'>Promo activée (-{PROMO_PERCENTAGE}%)</p> : null}
                 </div>
 
                 <Divider variant='middle' className='second-divider' />
 
-                {(step <= 3) ?
+                {(step <= 2) ?
                   <ButtonWithLoader
                     isLoading={isLoading}
                     label={t('cart.price_container.next')}
