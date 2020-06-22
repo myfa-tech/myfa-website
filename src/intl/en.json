@@ -176,6 +176,8 @@
   "cart": {
     "relative_info_title": "Information about my relative",
     "self_info_title": "Sign up to order",
+    "promo_code_title": "Promo code",
+    "promo_validate": "Validate",
     "message_to_relative_title": "Message in the basket",
     "price_container": {
       "total": "Total",

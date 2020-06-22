@@ -5,7 +5,6 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import { FaCheck } from 'react-icons/fa';
 import { ClipLoader } from 'react-spinners';
 import { css } from '@emotion/core';
