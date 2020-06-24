@@ -33,6 +33,8 @@
 
     .fadein-title {
       margin: 0;
+      font-size: 20px;
+      font-weight: bold;
 
       &:hover {
         cursor: pointer;
@@ -43,13 +45,13 @@
 
   .fadein-content {
     display: none;
-    color: grey;
+    color: black;
     padding-left: 1em;
-    animation: fadeIn ease 2s;
-    -webkit-animation: fadeIn ease 2s;
-    -moz-animation: fadeIn ease 2s;
-    -o-animation: fadeIn ease 2s;
-    -ms-animation: fadeIn ease 2s;
+    animation: fadeIn ease 1s;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
 
     &.show {
       display: block;
