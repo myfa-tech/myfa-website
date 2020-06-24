@@ -136,6 +136,10 @@
   "jobs": {
     "title": "Jobs"
   },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Find here answers to frequently asked questions about how MYFA works. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at customer service at +22584215154."
+  },
   "header": {
     "home": "Home",
     "baskets": "Baskets",
