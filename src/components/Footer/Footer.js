@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Divider from '@material-ui/core/Divider';
 import { SocialIcon } from 'react-social-icons';
 
 import useTranslate from '../../hooks/useTranslate';
@@ -17,19 +18,51 @@ const Footer = ({ noBackgroundColor }) => {
     <footer className='footer'>
       <div>
         <Row className={`content-container ${noBackgroundColor ? 'no-background' : ''}`}>
-          <Col sm={5}>
-            <a href='/'>
-              <img src={logoSrc} />
-            </a>
-          </Col>
-          <Col sm={7} className='text-container'>
-            <a href={`/legal_${locale}`}>{t('footer.legal_notice')}</a>
+          <Col xs={12} lg={3}>
             <div>
-              <SocialIcon className='social-icon' target='_blank' network='facebook' url='https://www.facebook.com/myfa.fr' />
-              <SocialIcon className='social-icon' target='_blank' network='twitter' url='https://www.twitter.com/myfa_fr' />
-              <SocialIcon className='social-icon' target='_blank' network='instagram' url='https://www.instagram.com/myfa.fr' />
-              <SocialIcon className='social-icon' target='_blank' network='linkedin' url='https://www.linkedin.com/company/myfa-sas' />
+              <a href='/'>
+                <img src={logoSrc} />
+              </a>
             </div>
+            <div className='brand-text'>
+              <p>
+                Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.
+              </p>
+            </div>
+            <div className='social-icons-container'>
+              <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='facebook' url='https://www.facebook.com/myfa.fr' />
+              <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='twitter' url='https://www.twitter.com/myfa_fr' />
+              <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='instagram' url='https://www.instagram.com/myfa.fr' />
+              <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='linkedin' url='https://www.linkedin.com/company/myfa-sas' />
+            </div>
+          </Col>
+          <Col sm={6} lg={3} className='footer-col'>
+            <h4>En savoir plus ?</h4>
+
+            <ul>
+              <li><a href='/team'>L'équipe</a></li>
+              <li><a href='/faq'>Questions fréquentes</a></li>
+              <li><a href='/jobs'>Recrutement</a></li>
+            </ul>
+          </Col>
+          <Col sm={6} lg={3} className='footer-col'>
+            <h4>Mais encore ?</h4>
+
+            <ul>
+              <li><a href='/blog'>Blog</a></li>
+              <li><a href={`/legal_${locale}`}>Mentions légales</a></li>
+            </ul>
+          </Col>
+          <Col xs={12} lg={3} className='footer-col'>
+            <h4>Contact</h4>
+
+            <ul>
+              <li>Tél.: <a href='tel:+22584215154'>(+225) 84 21 51 54</a></li>
+
+              <Divider />
+
+              <li>Email: <a href='mailto:infos@myfa.fr'>infos@myfa.fr</a></li>
+            </ul>
           </Col>
         </Row>
         <Row className='footer-footer'>
