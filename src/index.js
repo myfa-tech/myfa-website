@@ -10,6 +10,7 @@ import common_en from './intl/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
+
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
 const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
@@ -34,6 +35,7 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const JobsPage = lazy(() => import('./pages/jobs'));
+const FaqPage = lazy(() => import('./pages/faq'));
 const NotFound = lazy(() => import('./pages/404'));
 
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
@@ -86,6 +88,7 @@ const App = () => (
       <LogoutPage path='/logout' />
       <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
+      <FaqPage path='/faq' />
       <ArticlePage path='articles/:articleId' />
 
       <DashboardHomeKPIs path='/dashboard' />
