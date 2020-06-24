@@ -329,6 +329,7 @@
     "orders": {
       "processing_title": "Commandes en cours",
       "processed_title": "Commandes traitées",
+      "reorder": "Commander à nouveau",
       "order": "Commande",
       "no_processing_orders": "Vous n’avez aucune commande en cours.",
       "no_processed_orders": "Vous n’avez aucune commande traitée."

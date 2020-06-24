@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stepper from '@material-ui/core/Stepper';
@@ -11,7 +11,10 @@ import SEO from '../../../components/seo';
 import Layout from '../../../components/layout';
 import ProfileGreeting from '../../../components/Profile/ProfileGreeting';
 import ProfileMenu from '../../../components/Profile/ProfileMenu';
+import ButtonWithLoader from '../../../components/ButtonWithLoader';
+const CartModal = lazy(() => import('../../../components/CartModal'));
 
+import CartStorage from '../../../services/CartStorage';
 import { getBasketsByEmail } from '../../../services/orders';
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchAllBasketsInfos from '../../../hooks/useFetchAllBasketsInfos';
@@ -50,6 +53,9 @@ const ProfileOrdersPage = () => {
   const { loading } = useAuthentication({ redirect: '/' });
   const [pendingBaskets, setPendingBaskets] = useState([]);
   const [deliveredBaskets, setDeliveredBaskets] = useState([]);
+  const [basketForCart, setBasketForCart] = useState(null);
+	const [showCartModal, setShowCartModal] = useState(false);
+
   const [basketsDetails, setBasketsDetails] = useFetchAllBasketsInfos([]);
   const user = UserStorage.getUser();
   const [t] = useTranslate();
@@ -65,6 +71,21 @@ const ProfileOrdersPage = () => {
     };
     run();
   }, []);
+
+  const toggleCartModal = () => {
+		if (!!showCartModal) {
+			setBasketForCart(null);
+		}
+
+		setShowCartModal(!showCartModal);
+  };
+
+  const reOrder = async (basket) => {
+		await CartStorage.addToCart({ ...basket });
+
+		setBasketForCart(basket);
+		toggleCartModal();
+  };
 
   const classes = useStyles();
   const theme = createMuiTheme({
@@ -119,7 +140,7 @@ const ProfileOrdersPage = () => {
                     </li>
                   ))}
                 </ul> :
-                <p>{t('profile.orders.no_processing_orders')}</p>
+                <p className='no-order'>{t('profile.orders.no_processing_orders')}</p>
               }
             </div>
             <div className='treated-orders-container'>
@@ -130,29 +151,36 @@ const ProfileOrdersPage = () => {
                   {deliveredBaskets.map((basket, index) => (
                     <li key={index}>
                       <Row>
-                        <Col md={3} xs={2} className='image-container'>
+                        <Col sm={3} xs={0} className='image-container d-none d-sm-block'>
                           <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
                         </Col>
-                        <Col md={9} xs={10} className='info-container'>
-                          <Row>
-                            <Col sm={5} className='basket-name-container'>
-                              <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
-                            </Col>
-                            <Col sm={7} className='delivery-info-container'>
-                              <h3>{t('profile.orders.order')} {basket.orderRef}</h3>
-                            </Col>
-                          </Row>
+                        <Col sm={6} xs={8} className='info-container'>
+                          <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
+                          <p>Destinataire : {basket.recipient.firstname} {basket.recipient.lastname}</p>
+                          <p>{basket.price} €</p>
+                        </Col>
+                        <Col xs={4} sm={3} className='reorder-button-container'>
+                          <ButtonWithLoader className='reorder-button' label={t('profile.orders.reorder')} isLoading={false} onClick={() => reOrder(basket)} />
                         </Col>
                       </Row>
                     </li>
                   ))}
                 </ul> :
-                <p>{t('profile.orders.no_processed_orders')}</p>
+                <p className='no-order'>{t('profile.orders.no_processed_orders')}</p>
               }
             </div>
           </div>
         </Col>
       </Row>
+      {showCartModal &&
+				<Suspense fallback={''}>
+					<CartModal
+						showCartModal={showCartModal}
+						toggleCartModal={toggleCartModal}
+						basket={basketForCart}
+					/>
+				</Suspense>
+			}
     </Layout>
   );
 };
