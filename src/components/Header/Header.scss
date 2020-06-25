@@ -1,4 +1,11 @@
 #header {
+  .header-items {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
   .sticky-navbar {
     position: fixed;
     width: 100%;
@@ -30,6 +37,16 @@
       font-size: 14px;
       font-weight: bold;
       padding: .5rem 1rem 0 1rem;
+    }
+
+    .profile-btn {
+      display: inline-block;
+
+      .account {
+        background-color: transparent;
+        border: none;
+        color: #311a19;
+      }
     }
 
     .en-link {
@@ -282,4 +299,23 @@
   }
 }
 
-@media (max-width: 330px) {}
+@media (max-width: 330px) {
+  #header {
+    .menu {
+      .basket-link {
+        padding-left: 0;
+        padding-right: 0;
+
+        .baskets-count {
+          width: 15px;
+          height: 15px;
+          top: 0;
+          left: 10px;
+          font-size: 8px;
+          font-weight: 300;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}

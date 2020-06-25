@@ -1,8 +1,6 @@
 import React, { lazy, useEffect, useState, Suspense } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -122,7 +120,7 @@ const Header = () => {
     }
   };
 
-  const toggleIsProfileNavOpen = () => setIsProfileNavOpen(!isProfileNavOpen);
+  const toggleIsProfileNavOpen = () => console.log('CLICKED') || setIsProfileNavOpen(!isProfileNavOpen);
 
   const toggleShowLoginSignupModal = () => setShowLoginSignupModal(!showLoginSignupModal);
 
@@ -151,34 +149,38 @@ const Header = () => {
 
   return (
     <Container id='header'>
-      <Navbar expand="lg" className={`${sticky ? 'sticky-navbar justify-content-between': 'justify-content-between'}`}>
+      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`}>
         <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
-        <Nav className='menu'>
+        <span className='menu'>
           {isLoggedIn ?
-            <NavDropdown
-              onMouseEnter={toggleIsProfileNavOpen}
-              onMouseLeave={toggleIsProfileNavOpen}
-              show={isProfileNavOpen}
-              title={<span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>}
-              className='account'
-            >
-              <NavDropdown.Item href='/profile/information'>{t('header.profile.information')}</NavDropdown.Item>
-              <NavDropdown.Item href='/profile/orders'>{t('header.profile.orders')}</NavDropdown.Item>
-              <NavDropdown.Item href='/profile/password'>{t('header.profile.password')}</NavDropdown.Item>
-              <NavDropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</NavDropdown.Item>
-              <NavDropdown.Item href='/logout'>{t('header.profile.logout')}</NavDropdown.Item>
-            </NavDropdown> :
-            <Nav.Link className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</Nav.Link>
+            <Dropdown className='profile-btn'>
+              <Dropdown.Toggle
+                onMouseEnter={toggleIsProfileNavOpen}
+                onMouseLeave={toggleIsProfileNavOpen}
+                show={isProfileNavOpen}
+                className='account'
+              >
+                <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
+                <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
+                <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
+                <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
+                <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown> :
+            <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
           }
-          <Nav.Link href='/cart' className='basket-link'>
+          <a href='/cart' className='basket-link'>
             <Suspense fallback=''>
               <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
             </Suspense>
-          </Nav.Link>
-          <Nav.Link className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</Nav.Link>
-          <Nav.Link className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</Nav.Link>
-        </Nav>
-      </Navbar>
+          </a>
+          <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
+          <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
+        </span>
+      </div>
 
       <Suspense fallback=''>
         <CustomDrawer
