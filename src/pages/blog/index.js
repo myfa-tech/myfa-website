@@ -86,7 +86,7 @@ const BlogPage = () => {
                 onClick={() => goTo(`/articles/${article.path}`)}
                 title={article.title}
                 description={article.description}
-                imgSrc={article.cover ? article.cover.fields.file.url : article.displayCover}
+                imgSrc={article.cover ? article.cover.fields.file.url : article.displayCover ? article.displayCover.fields.file.url : null}
                 footerLeft={getAuthor(article.author).name}
                 footerRight={getDate(article.createdAt)}
               />
