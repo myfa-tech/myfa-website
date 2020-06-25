@@ -160,6 +160,9 @@ const ProfileInformationPage = () => {
               <div className='phone-container'>
                 <TextField
                   select
+                  SelectProps={{
+                    native: true,
+                  }}
                   label={t('profile.info.country_code')}
                   name='country'
                   className='country-code form-input'
@@ -168,9 +171,9 @@ const ProfileInformationPage = () => {
                   variant='outlined'
                   onChange={handleChangeFormValue}
                 >
-                  <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-                  <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-                  <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+                  <option value='+33'>🇫🇷 +33</option>
+                  <option value='+225'>🇨🇮 +225</option>
+                  <option value='+1'>🇺🇸 +1</option>
                 </TextField>
                 <TextField
                   type='tel'

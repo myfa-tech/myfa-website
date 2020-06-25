@@ -97,6 +97,9 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
           />
           <TextField
             select
+            SelectProps={{
+              native: true,
+            }}
             label={t('cart.relative_info.relationship')}
             name='relation'
             variant='outlined'
@@ -104,20 +107,20 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             value={form.relation}
             onChange={handleChangeFormValue}
           >
-            <MenuItem value='AM'>{t('relationship_types.AM')}</MenuItem>
-            <MenuItem value='CO'>{t('relationship_types.CO')}</MenuItem>
-            <MenuItem value='EN'>{t('relationship_types.EN')}</MenuItem>
-            <MenuItem value='FR'>{t('relationship_types.FR')}</MenuItem>
-            <MenuItem value='GM'>{t('relationship_types.GM')}</MenuItem>
-            <MenuItem value='GP'>{t('relationship_types.GP')}</MenuItem>
-            <MenuItem value='ME'>{t('relationship_types.ME')}</MenuItem>
-            <MenuItem value='NE'>{t('relationship_types.NE')}</MenuItem>
-            <MenuItem value='NI'>{t('relationship_types.NI')}</MenuItem>
-            <MenuItem value='ON'>{t('relationship_types.ON')}</MenuItem>
-            <MenuItem value='PE'>{t('relationship_types.PE')}</MenuItem>
-            <MenuItem value='SO'>{t('relationship_types.SO')}</MenuItem>
-            <MenuItem value='TA'>{t('relationship_types.TA')}</MenuItem>
-            <MenuItem value='AU'>{t('relationship_types.AU')}</MenuItem>
+            <option value='AM'>{t('relationship_types.AM')}</option>
+            <option value='CO'>{t('relationship_types.CO')}</option>
+            <option value='EN'>{t('relationship_types.EN')}</option>
+            <option value='FR'>{t('relationship_types.FR')}</option>
+            <option value='GM'>{t('relationship_types.GM')}</option>
+            <option value='GP'>{t('relationship_types.GP')}</option>
+            <option value='ME'>{t('relationship_types.ME')}</option>
+            <option value='NE'>{t('relationship_types.NE')}</option>
+            <option value='NI'>{t('relationship_types.NI')}</option>
+            <option value='ON'>{t('relationship_types.ON')}</option>
+            <option value='PE'>{t('relationship_types.PE')}</option>
+            <option value='SO'>{t('relationship_types.SO')}</option>
+            <option value='TA'>{t('relationship_types.TA')}</option>
+            <option value='AU'>{t('relationship_types.AU')}</option>
           </TextField>
 
           {showOtherRelationInput ?

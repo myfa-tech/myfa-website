@@ -45,16 +45,16 @@ const saveUser = async (user) => {
 };
 
 const updateUser = async (userPart) => {
-  let JWT_TOKEN = UserStorage.getToken();
+  const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
   let axios = Axios.create({
     baseURL: REACT_APP_BACKEND_URL,
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  const user = { ...UserStorage.getUser(), ...userPart };
+  const modifiedUser = { email: user.email, ...userPart };
 
-  const response = await axios.put('/users', user);
+  const response = await axios.put('/users', modifiedUser);
 
   UserStorage.saveUser(response.data.updated);
 };
