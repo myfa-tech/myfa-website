@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { fetchHomeBaskets } from '../../services/baskets';
+import { fetchAllBaskets } from '../../services/baskets';
 import basketsImgs from '../../assets/basketsImgs';
 
 const useFetchAllBasketsInfos = (initBaskets = []) => {
@@ -9,7 +9,7 @@ const useFetchAllBasketsInfos = (initBaskets = []) => {
 
   useEffect(() => {
 		const asyncFunc = async () => {
-      const fetchedBaskets = await fetchHomeBaskets();
+      let fetchedBaskets = await fetchAllBaskets();
 
       // Set baskets images
       fetchedBaskets = fetchedBaskets.map(b => ({ ...b, img: basketsImgs[b.type] }));

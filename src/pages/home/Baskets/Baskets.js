@@ -8,7 +8,7 @@ const CartModal = lazy(() => import('../../../components/CartModal'));
 import SectionLoader from '../../../components/SectionLoader';
 
 import useTranslate from '../../../hooks/useTranslate';
-import useFetchBasketsInfo from '../../../hooks/useFetchBasketsInfo';
+import useFetchActiveBasketsInfo from '../../../hooks/useFetchActiveBasketsInfo';
 import CartStorage from '../../../services/CartStorage';
 
 import './Baskets.scss';
@@ -16,7 +16,7 @@ import './Baskets.scss';
 const Baskets = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
-	const [baskets, setBaskets] = useFetchBasketsInfo([]);
+	const [baskets, setBaskets] = useFetchActiveBasketsInfo([]);
 
 	const [t, locale] = useTranslate();
 

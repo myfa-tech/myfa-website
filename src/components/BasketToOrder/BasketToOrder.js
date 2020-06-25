@@ -10,7 +10,7 @@ import CartModal from '../CartModal';
 
 import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
-import useFetchBasketsInfo from '../../hooks/useFetchBasketsInfo';
+import useFetchActiveBasketsInfo from '../../hooks/useFetchActiveBasketsInfo';
 import CartStorage from '../../services/CartStorage';
 import basketsImgs from '../../assets/basketsImgs';
 
@@ -30,7 +30,7 @@ const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
-  const [baskets, setBaskets] = useFetchBasketsInfo([]);
+  const [baskets, setBaskets] = useFetchActiveBasketsInfo([]);
   const [t, locale] = useTranslate();
 
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';

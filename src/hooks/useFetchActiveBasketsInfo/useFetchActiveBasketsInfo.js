@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import { fetchHomeBaskets } from '../../services/baskets';
+import { fetchActiveBaskets } from '../../services/baskets';
 import basketsImgs from '../../assets/basketsImgs';
 
-const useFetchBasketsInfo = (initBaskets = []) => {
+const useFetchActiveBasketsInfo = (initBaskets = []) => {
   const [baskets, setBaskets] = useState(initBaskets);
 
   useEffect(() => {
 		const asyncFunc = async () => {
-      let fetchedBaskets = await fetchHomeBaskets();
+      let fetchedBaskets = await fetchActiveBaskets();
       // Set baskets images
       fetchedBaskets = fetchedBaskets.map(b => ({ ...b, img: basketsImgs[b.type] }));
 
@@ -21,4 +21,4 @@ const useFetchBasketsInfo = (initBaskets = []) => {
   return [baskets, setBaskets];
 };
 
-export default useFetchBasketsInfo;
+export default useFetchActiveBasketsInfo;

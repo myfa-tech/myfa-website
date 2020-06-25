@@ -30,12 +30,22 @@ const fetchCustomBasket = async () => {
   return result.data.basket;
 };
 
-const fetchHomeBaskets = async () => {
+const fetchAllBaskets = async () => {
   let axios = Axios.create({
     baseURL: process.env.REACT_APP_BACKEND_URL,
   });
 
   const result = await axios.get(`/baskets/details`);
+
+  return result.data.baskets;
+};
+
+const fetchActiveBaskets = async () => {
+  let axios = Axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_URL,
+  });
+
+  const result = await axios.get(`/baskets/details?status=active`);
 
   return result.data.baskets;
 };
@@ -53,4 +63,4 @@ const updateBasketById = async (id, editFields) => {
   return response.data;
 }
 
-export { fetchBaskets, fetchCustomBasket, fetchHomeBaskets, updateBasketById };
+export { fetchBaskets, fetchCustomBasket, fetchActiveBaskets, fetchAllBaskets, updateBasketById };

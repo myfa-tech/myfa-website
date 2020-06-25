@@ -12,7 +12,7 @@
       padding: 1em 4em;
 
       h3 {
-        font-size: 20px;
+        font-size: 25px;
       }
 
       .image-container {
@@ -28,12 +28,15 @@
       .info-container {
         padding-left: 0;
         padding-right: 0;
-        display: flex;
-        align-items: center;
 
         .row {
           width: 100%;
         }
+      }
+
+      .reorder-button-container {
+        display: flex;
+        align-items: center;
       }
 
       li {
@@ -51,7 +54,7 @@
       }
 
       img {
-        width: 80%;
+        width: 70%;
         border-radius: 8px;
       }
     }
@@ -62,7 +65,7 @@
     text-align: center;
   }
 
-  p {
+  .no-order {
     text-align: center;
     padding-bottom: 1em;
   }
@@ -74,8 +77,19 @@
   #profile-orders {
     .pending-orders-container, .treated-orders-container {
       .baskets-container {
-        h3 {
+        h3, p {
           font-size: 12px;
+          margin-bottom: 3px;
+        }
+
+        .reorder-button-container {
+          padding: 0;
+
+          .reorder-button {
+            width: 100%;
+            padding: 2px;
+            font-size: 12px;
+          }
         }
       }
     }
