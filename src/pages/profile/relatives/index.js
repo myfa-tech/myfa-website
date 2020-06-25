@@ -13,6 +13,7 @@ import useTranslate from '../../../hooks/useTranslate';
 import UserStorage from '../../../services/UserStorage';
 import { useAuthentication } from '../../../hooks/useAuthentication';
 
+import '../index.scss';
 import './relatives.scss';
 
 const ProfileRelativesPage = () => {

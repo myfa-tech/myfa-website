@@ -351,6 +351,7 @@
       "country_code": "Country code",
       "phone": "Phone",
       "save": "Save",
+      "address": "Address",
       "relationship": "Relationship",
       "relationship_type": "Type of relationship",
       "add_relative": "Add a relative",

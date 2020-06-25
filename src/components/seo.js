@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import uuid from 'uuid/v4';
@@ -10,6 +10,7 @@ import socialSharingImgSrc from '../images/social-sharing-img.png';
 
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
   const [t] = useTranslate();
+  const [uniqueId, setUniqueId] = useState('');
   const site = {
     title: `MYFA`,
     siteUrl: `https://www.myfa.fr`,
@@ -19,7 +20,11 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
 
   const metaDescription = description || t('site_seo.description');
   const metaAuthor = site.author;
-  const uniqueId = uuid().substr(0, 8);
+
+  useEffect(() => {
+    const id = uuid().substr(0, 8);
+    setUniqueId(id);
+  }, []);
 
   return (
     <Helmet

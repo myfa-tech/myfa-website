@@ -24,6 +24,7 @@ import UserStorage from '../../../services/UserStorage';
 import defaultBasketSrc from '../../../images/default-basket.png';
 import basketsImgs from '../../../assets/basketsImgs';
 
+import '../index.scss';
 import './orders.scss';
 
 const basketStatus = {
