@@ -36,6 +36,7 @@ const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
+const BlogPage = lazy(() => import('./pages/blog'));
 const NotFound = lazy(() => import('./pages/404'));
 
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
@@ -89,6 +90,7 @@ const App = () => (
       <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
+      <BlogPage path='/blog' />
       <ArticlePage path='articles/:articleId' />
 
       <DashboardHomeKPIs path='/dashboard' />
