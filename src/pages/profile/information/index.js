@@ -6,7 +6,6 @@ import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import useTranslate from '../../../hooks/useTranslate';
 import SEO from '../../../components/seo';
 import Layout from '../../../components/layout';

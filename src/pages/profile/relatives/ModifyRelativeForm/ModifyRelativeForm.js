@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import useTranslate from '../../../../hooks/useTranslate';
 import { updateUser } from '../../../../services/users';
 import useRelativeForm from '../../../../hooks/useRelativeForm';
@@ -102,6 +101,9 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         select
         label={t('profile.relatives.relationship')}
         name='relation'
+        SelectProps={{
+          native: true,
+        }}
         className='full-width input'
         variant='outlined'
         disabled={isLoading}
@@ -109,20 +111,20 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         onChange={handleChangeRelativeFormValues}
         helperText={t('profile.relatives.relationship_helper_text')}
       >
-        <MenuItem value='AM'>Ami(e)</MenuItem>
-        <MenuItem value='CO'>Conjoint(e)</MenuItem>
-        <MenuItem value='EN'>Enfant</MenuItem>
-        <MenuItem value='FR'>Frère</MenuItem>
-        <MenuItem value='GM'>Grand-mère</MenuItem>
-        <MenuItem value='GP'>Grand-père</MenuItem>
-        <MenuItem value='ME'>Mère</MenuItem>
-        <MenuItem value='NE'>Neveu</MenuItem>
-        <MenuItem value='NI'>Nièce</MenuItem>
-        <MenuItem value='ON'>Oncle</MenuItem>
-        <MenuItem value='PE'>Père</MenuItem>
-        <MenuItem value='SO'>Soeur</MenuItem>
-        <MenuItem value='TA'>Tante</MenuItem>
-        <MenuItem value='AU'>Autre</MenuItem>
+        <option value='AM'>Ami(e)</option>
+        <option value='CO'>Conjoint(e)</option>
+        <option value='EN'>Enfant</option>
+        <option value='FR'>Frère</option>
+        <option value='GM'>Grand-mère</option>
+        <option value='GP'>Grand-père</option>
+        <option value='ME'>Mère</option>
+        <option value='NE'>Neveu</option>
+        <option value='NI'>Nièce</option>
+        <option value='ON'>Oncle</option>
+        <option value='PE'>Père</option>
+        <option value='SO'>Soeur</option>
+        <option value='TA'>Tante</option>
+        <option value='AU'>Autre</option>
       </TextField>
 
       {showOtherRelationInput ?
@@ -155,6 +157,9 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         required
         error={relativeFormErrors['zone']}
         name='zone'
+        SelectProps={{
+          native: true,
+        }}
         variant='outlined'
         disabled={isLoading}
         placeholder={t('profile.relatives.delivery_zone_placeholder')}
@@ -162,33 +167,36 @@ const ModifyRelativeForm = ({ relatives, relative, relativeIndex }) => {
         className='full-width input'
         onChange={handleChangeRelativeFormValues}
       >
-        <MenuItem value='2PL'>2 Plateaux</MenuItem>
-        <MenuItem value='AB'>Abobo</MenuItem>
-        <MenuItem value='AD'>Adjamé</MenuItem>
-        <MenuItem value='AT'>Attécoubé</MenuItem>
-        <MenuItem value='CO'>Cocody</MenuItem>
-        <MenuItem value='KO'>Koumassi</MenuItem>
-        <MenuItem value='MA'>Marcory</MenuItem>
-        <MenuItem value='PL'>Plateau</MenuItem>
-        <MenuItem value='PB'>Port-Bouët</MenuItem>
-        <MenuItem value='RI'>Riviera</MenuItem>
-        <MenuItem value='TR'>Treichville</MenuItem>
-        <MenuItem value='YO'>Yopougon</MenuItem>
+        <option value='2PL'>2 Plateaux</option>
+        <option value='AB'>Abobo</option>
+        <option value='AD'>Adjamé</option>
+        <option value='AT'>Attécoubé</option>
+        <option value='CO'>Cocody</option>
+        <option value='KO'>Koumassi</option>
+        <option value='MA'>Marcory</option>
+        <option value='PL'>Plateau</option>
+        <option value='PB'>Port-Bouët</option>
+        <option value='RI'>Riviera</option>
+        <option value='TR'>Treichville</option>
+        <option value='YO'>Yopougon</option>
       </TextField>
       <div className='phone-container'>
         <TextField
           select
           label={t('profile.relatives.country_code')}
           name='country'
+          SelectProps={{
+            native: true,
+          }}
           variant='outlined'
           className='country-code input'
           disabled={isLoading}
           value={relativeFormValues.country}
           onChange={handleChangeRelativeFormValues}
         >
-          <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-          <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-          <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+          <option value='+225'>🇨🇮 +225</option>
+          <option value='+33'>🇫🇷 +33</option>
+          <option value='+1'>🇺🇸 +1</option>
         </TextField>
         <TextField
           type='tel'

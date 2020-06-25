@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -46,6 +45,9 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
                     select
                     label={t('cart.items.recipient')}
                     required
+                    SelectProps={{
+                      native: true,
+                    }}
                     name={`recipient-${index}`}
                     error={errors.findIndex(err => err === `recipient-${index}`) >= 0}
                     variant='outlined'
@@ -55,9 +57,9 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
                     onChange={(e) => handleChangeRecipient(e, index)}
                   >
                     {recipients.map((recipient, recipientIndex) => (
-                      <MenuItem key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</MenuItem>
+                      <option key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</option>
                     ))}
-                    <MenuItem value='add-one'>Ajouter un destinataire</MenuItem>
+                    <option value='add-one'>Ajouter un destinataire</option>
                   </TextField>
                 </Col>
                 <Col xs={1} className='qty-container'>

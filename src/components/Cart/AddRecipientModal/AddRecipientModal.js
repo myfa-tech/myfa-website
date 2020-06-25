@@ -2,7 +2,6 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 import ButtonWithLoader from '../../ButtonWithLoader';
@@ -140,6 +139,9 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             select
             label={t('cart.relative_info.delivery_zone')}
             required
+            SelectProps={{
+              native: true,
+            }}
             name='zone'
             error={errors['zone']}
             variant='outlined'
@@ -148,18 +150,18 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             className='full-width form-input'
             onChange={handleChangeFormValue}
           >
-            <MenuItem value='2PL'>2 Plateaux</MenuItem>
-            <MenuItem value='AB'>Abobo</MenuItem>
-            <MenuItem value='AD'>Adjamé</MenuItem>
-            <MenuItem value='AT'>Attécoubé</MenuItem>
-            <MenuItem value='CO'>Cocody</MenuItem>
-            <MenuItem value='KO'>Koumassi</MenuItem>
-            <MenuItem value='MA'>Marcory</MenuItem>
-            <MenuItem value='PL'>Plateau</MenuItem>
-            <MenuItem value='PB'>Port-Bouët</MenuItem>
-            <MenuItem value='RI'>Riviera</MenuItem>
-            <MenuItem value='TR'>Treichville</MenuItem>
-            <MenuItem value='YO'>Yopougon</MenuItem>
+            <option value='2PL'>2 Plateaux</option>
+            <option value='AB'>Abobo</option>
+            <option value='AD'>Adjamé</option>
+            <option value='AT'>Attécoubé</option>
+            <option value='CO'>Cocody</option>
+            <option value='KO'>Koumassi</option>
+            <option value='MA'>Marcory</option>
+            <option value='PL'>Plateau</option>
+            <option value='PB'>Port-Bouët</option>
+            <option value='RI'>Riviera</option>
+            <option value='TR'>Treichville</option>
+            <option value='YO'>Yopougon</option>
           </TextField>
           <Row>
             <Col xs={4} className='left-input'>
@@ -167,14 +169,17 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
                 select
                 label={t('cart.relative_info.country_code')}
                 name='country'
+                SelectProps={{
+                  native: true,
+                }}
                 variant='outlined'
                 className='country-code full-width form-input'
                 value={form.country}
                 onChange={handleChangeFormValue}
               >
-                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+                <option value='+225'>🇨🇮 +225</option>
+                <option value='+33'>🇫🇷 +33</option>
+                <option value='+1'>🇺🇸 +1</option>
               </TextField>
             </Col>
             <Col xs={8} className='right-input'>
