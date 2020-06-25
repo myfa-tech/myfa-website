@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { saveUser } from '../../services/users';
@@ -98,15 +97,18 @@ const SignupForm = ({ onSignup }) => {
             select
             label={t('signup_form.country_code')}
             name='country'
+            SelectProps={{
+              native: true,
+            }}
             variant='outlined'
             className='country-code form-input'
             disabled={isLoading}
             value={signupFormValues.country}
             onChange={handleChangeSignupFormValues}
           >
-            <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-            <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-            <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+            <option value='+33'>🇫🇷 +33</option>
+            <option value='+225'>🇨🇮 +225</option>
+            <option value='+1'>🇺🇸 +1</option>
           </TextField>
           <TextField
             type='tel'

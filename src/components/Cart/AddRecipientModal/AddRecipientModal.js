@@ -2,7 +2,6 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 import ButtonWithLoader from '../../ButtonWithLoader';
@@ -97,6 +96,9 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
           />
           <TextField
             select
+            SelectProps={{
+              native: true,
+            }}
             label={t('cart.relative_info.relationship')}
             name='relation'
             variant='outlined'
@@ -104,20 +106,20 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             value={form.relation}
             onChange={handleChangeFormValue}
           >
-            <MenuItem value='AM'>{t('relationship_types.AM')}</MenuItem>
-            <MenuItem value='CO'>{t('relationship_types.CO')}</MenuItem>
-            <MenuItem value='EN'>{t('relationship_types.EN')}</MenuItem>
-            <MenuItem value='FR'>{t('relationship_types.FR')}</MenuItem>
-            <MenuItem value='GM'>{t('relationship_types.GM')}</MenuItem>
-            <MenuItem value='GP'>{t('relationship_types.GP')}</MenuItem>
-            <MenuItem value='ME'>{t('relationship_types.ME')}</MenuItem>
-            <MenuItem value='NE'>{t('relationship_types.NE')}</MenuItem>
-            <MenuItem value='NI'>{t('relationship_types.NI')}</MenuItem>
-            <MenuItem value='ON'>{t('relationship_types.ON')}</MenuItem>
-            <MenuItem value='PE'>{t('relationship_types.PE')}</MenuItem>
-            <MenuItem value='SO'>{t('relationship_types.SO')}</MenuItem>
-            <MenuItem value='TA'>{t('relationship_types.TA')}</MenuItem>
-            <MenuItem value='AU'>{t('relationship_types.AU')}</MenuItem>
+            <option value='AM'>{t('relationship_types.AM')}</option>
+            <option value='CO'>{t('relationship_types.CO')}</option>
+            <option value='EN'>{t('relationship_types.EN')}</option>
+            <option value='FR'>{t('relationship_types.FR')}</option>
+            <option value='GM'>{t('relationship_types.GM')}</option>
+            <option value='GP'>{t('relationship_types.GP')}</option>
+            <option value='ME'>{t('relationship_types.ME')}</option>
+            <option value='NE'>{t('relationship_types.NE')}</option>
+            <option value='NI'>{t('relationship_types.NI')}</option>
+            <option value='ON'>{t('relationship_types.ON')}</option>
+            <option value='PE'>{t('relationship_types.PE')}</option>
+            <option value='SO'>{t('relationship_types.SO')}</option>
+            <option value='TA'>{t('relationship_types.TA')}</option>
+            <option value='AU'>{t('relationship_types.AU')}</option>
           </TextField>
 
           {showOtherRelationInput ?
@@ -137,6 +139,9 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             select
             label={t('cart.relative_info.delivery_zone')}
             required
+            SelectProps={{
+              native: true,
+            }}
             name='zone'
             error={errors['zone']}
             variant='outlined'
@@ -145,18 +150,18 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
             className='full-width form-input'
             onChange={handleChangeFormValue}
           >
-            <MenuItem value='2PL'>2 Plateaux</MenuItem>
-            <MenuItem value='AB'>Abobo</MenuItem>
-            <MenuItem value='AD'>Adjamé</MenuItem>
-            <MenuItem value='AT'>Attécoubé</MenuItem>
-            <MenuItem value='CO'>Cocody</MenuItem>
-            <MenuItem value='KO'>Koumassi</MenuItem>
-            <MenuItem value='MA'>Marcory</MenuItem>
-            <MenuItem value='PL'>Plateau</MenuItem>
-            <MenuItem value='PB'>Port-Bouët</MenuItem>
-            <MenuItem value='RI'>Riviera</MenuItem>
-            <MenuItem value='TR'>Treichville</MenuItem>
-            <MenuItem value='YO'>Yopougon</MenuItem>
+            <option value='2PL'>2 Plateaux</option>
+            <option value='AB'>Abobo</option>
+            <option value='AD'>Adjamé</option>
+            <option value='AT'>Attécoubé</option>
+            <option value='CO'>Cocody</option>
+            <option value='KO'>Koumassi</option>
+            <option value='MA'>Marcory</option>
+            <option value='PL'>Plateau</option>
+            <option value='PB'>Port-Bouët</option>
+            <option value='RI'>Riviera</option>
+            <option value='TR'>Treichville</option>
+            <option value='YO'>Yopougon</option>
           </TextField>
           <Row>
             <Col xs={4} className='left-input'>
@@ -164,14 +169,17 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
                 select
                 label={t('cart.relative_info.country_code')}
                 name='country'
+                SelectProps={{
+                  native: true,
+                }}
                 variant='outlined'
                 className='country-code full-width form-input'
                 value={form.country}
                 onChange={handleChangeFormValue}
               >
-                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+                <option value='+225'>🇨🇮 +225</option>
+                <option value='+33'>🇫🇷 +33</option>
+                <option value='+1'>🇺🇸 +1</option>
               </TextField>
             </Col>
             <Col xs={8} className='right-input'>

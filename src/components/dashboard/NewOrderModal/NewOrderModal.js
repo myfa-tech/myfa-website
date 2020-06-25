@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -41,6 +40,9 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             select
             label='Panier 1'
             required
+            SelectProps={{
+              native: true,
+            }}
             name='basket_type_1'
             error={errors.basket_type}
             variant='outlined'
@@ -48,11 +50,11 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='fruits'>Panier Fruits</MenuItem>
-            <MenuItem value='legumes'>Panier Légumes</MenuItem>
-            <MenuItem value='sauces'>Panier Sauces</MenuItem>
-            <MenuItem value='myfa'>Panier MYFA</MenuItem>
-            <MenuItem value='beauty'>Panier Beauté</MenuItem>
+            <option value='fruits'>Panier Fruits</option>
+            <option value='legumes'>Panier Légumes</option>
+            <option value='sauces'>Panier Sauces</option>
+            <option value='myfa'>Panier MYFA</option>
+            <option value='beauty'>Panier Beauté</option>
           </TextField>
 
           <TextField
@@ -60,33 +62,39 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             label='Panier 2'
             name='basket_type_2'
             error={errors.basket_type}
+            SelectProps={{
+              native: true,
+            }}
             variant='outlined'
             value={form.basket_type}
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='fruits'>Panier Fruits</MenuItem>
-            <MenuItem value='legumes'>Panier Légumes</MenuItem>
-            <MenuItem value='sauces'>Panier Sauces</MenuItem>
-            <MenuItem value='myfa'>Panier MYFA</MenuItem>
-            <MenuItem value='beauty'>Panier Beauté</MenuItem>
+            <option value='fruits'>Panier Fruits</option>
+            <option value='legumes'>Panier Légumes</option>
+            <option value='sauces'>Panier Sauces</option>
+            <option value='myfa'>Panier MYFA</option>
+            <option value='beauty'>Panier Beauté</option>
           </TextField>
 
           <TextField
             select
             label='Panier 3'
             name='basket_type_3'
+            SelectProps={{
+              native: true,
+            }}
             error={errors.basket_type}
             variant='outlined'
             value={form.basket_type}
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='fruits'>Panier Fruits</MenuItem>
-            <MenuItem value='legumes'>Panier Légumes</MenuItem>
-            <MenuItem value='sauces'>Panier Sauces</MenuItem>
-            <MenuItem value='myfa'>Panier MYFA</MenuItem>
-            <MenuItem value='beauty'>Panier Beauté</MenuItem>
+            <option value='fruits'>Panier Fruits</option>
+            <option value='legumes'>Panier Légumes</option>
+            <option value='sauces'>Panier Sauces</option>
+            <option value='myfa'>Panier MYFA</option>
+            <option value='beauty'>Panier Beauté</option>
           </TextField>
 
           <TextField
@@ -137,14 +145,17 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
                 select
                 label='Indicatif'
                 name='client_country'
+                SelectProps={{
+                  native: true,
+                }}
                 variant='outlined'
                 className='country-code'
                 value={form.client_country}
                 onChange={handleChange}
               >
-                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+                <option value='+225'>🇨🇮 +225</option>
+                <option value='+33'>🇫🇷 +33</option>
+                <option value='+1'>🇺🇸 +1</option>
               </TextField>
             </Col>
             <Col md={9}>
@@ -198,15 +209,18 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
               <TextField
                 select
                 label='Indicatif'
+                SelectProps={{
+                  native: true,
+                }}
                 name='recipient_country'
                 variant='outlined'
                 className='country-code'
                 value={form.client_country}
                 onChange={handleChange}
               >
-                <MenuItem value='+225'>🇨🇮 +225</MenuItem>
-                <MenuItem value='+33'>🇫🇷 +33</MenuItem>
-                <MenuItem value='+1'>🇺🇸 +1</MenuItem>
+                <option value='+225'>🇨🇮 +225</option>
+                <option value='+33'>🇫🇷 +33</option>
+                <option value='+1'>🇺🇸 +1</option>
               </TextField>
             </Col>
             <Col md={9}>
@@ -228,6 +242,9 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             select
             label='Zone de livraison'
             required
+            SelectProps={{
+              native: true,
+            }}
             name='zone'
             error={errors.zone}
             variant='outlined'
@@ -235,18 +252,18 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             className='full-width form-input'
             onChange={handleChange}
           >
-            <MenuItem value='2PL'>2 Plateaux</MenuItem>
-            <MenuItem value='AB'>Abobo</MenuItem>
-            <MenuItem value='AD'>Adjamé</MenuItem>
-            <MenuItem value='AT'>Attécoubé</MenuItem>
-            <MenuItem value='CO'>Cocody</MenuItem>
-            <MenuItem value='KO'>Koumassi</MenuItem>
-            <MenuItem value='MA'>Marcory</MenuItem>
-            <MenuItem value='PL'>Plateau</MenuItem>
-            <MenuItem value='PB'>Port-Bouët</MenuItem>
-            <MenuItem value='RI'>Riviera</MenuItem>
-            <MenuItem value='TR'>Treichville</MenuItem>
-            <MenuItem value='YO'>Yopougon</MenuItem>
+            <option value='2PL'>2 Plateaux</option>
+            <option value='AB'>Abobo</option>
+            <option value='AD'>Adjamé</option>
+            <option value='AT'>Attécoubé</option>
+            <option value='CO'>Cocody</option>
+            <option value='KO'>Koumassi</option>
+            <option value='MA'>Marcory</option>
+            <option value='PL'>Plateau</option>
+            <option value='PB'>Port-Bouët</option>
+            <option value='RI'>Riviera</option>
+            <option value='TR'>Treichville</option>
+            <option value='YO'>Yopougon</option>
           </TextField>
 
           <button className='save-button'>Enregistrer</button>

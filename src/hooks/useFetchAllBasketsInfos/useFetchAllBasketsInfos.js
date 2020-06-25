@@ -18,7 +18,7 @@ const useFetchAllBasketsInfos = (initBaskets = []) => {
 		};
 
     asyncFunc();
-  });
+  }, []);
 
   return [baskets, setBaskets];
 };
