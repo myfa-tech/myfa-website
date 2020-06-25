@@ -3,15 +3,26 @@
   width: 100%;
   border-radius: 8px;
   border: 1px solid rgb(206, 206, 206);
+  margin-bottom: 2em;
 
   .img-container {
     position: relative;
     border-bottom: 1px solid rgb(206, 206, 206);
     width: 100%;
-    // overflow: hidden;
+    max-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 
     img {
-      width: 110%;
+      width: 150%;
+      display: block;
+      transition: transform .2s;
+
+      &:hover {
+        transform: scale(1.5);
+      }
     }
   }
 
@@ -33,5 +44,13 @@
 
   .custom-card-footer {
     color: grey;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    .img-container {
+      max-height: 150px;
+    }
   }
 }

@@ -80,7 +80,7 @@ const ArticleDisplay = (props) => {
       },
     };
 
-    return authors[authorId];
+    return authors[authorId.toLowerCase()];
   };
 
   const contentfulRenderingOptions = {

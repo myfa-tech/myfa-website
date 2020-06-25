@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Card.scss';
 
-const Card = ({ imgSrc, title, description, footerLeft, footerRight }) => {
+const Card = ({ imgSrc, title, description, footerLeft, footerRight, className, onClick }) => {
   return (
-    <div className='custom-card'>
+    <div className={`custom-card ${className ? className : ''}`} onClick={onClick ? onClick : () => {}}>
       {imgSrc ? <div className='img-container'>
         <img src={imgSrc} />
       </div> : null}
