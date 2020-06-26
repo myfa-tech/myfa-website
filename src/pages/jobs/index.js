@@ -34,7 +34,7 @@ const JobsPage = () => {
   ];
 
   return (
-    <Layout noBackgroundColor={true} className='jobs'>
+    <Layout className='jobs'>
       <SEO title='Jobs' />
 
       <div className='title-container'>

@@ -70,7 +70,7 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <Layout noBackgroundColor={true} className='blog'>
+    <Layout className='blog'>
       <SEO title='Blog' />
 
       <div id='blog'>

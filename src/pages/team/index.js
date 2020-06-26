@@ -18,7 +18,7 @@ const TeamPage = () => {
   const [t] = useTranslate();
 
   return (
-    <Layout noBackgroundColor={true} className='team'>
+    <Layout className='team'>
       <SEO title='Team' />
 
       <div className='title-container'>

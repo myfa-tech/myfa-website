@@ -51,7 +51,7 @@ const FaqPage = () => {
   ];
 
   return (
-    <Layout noBackgroundColor={true} className='faq'>
+    <Layout className='faq'>
       <SEO title='FAQ' />
 
       <div id='faq'>

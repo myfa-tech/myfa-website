@@ -78,7 +78,7 @@ const ProfilePasswordPage = () => {
   };
 
   return loading ? null : (
-    <Layout noBackgroundColor={true} className='profile-background profile'>
+    <Layout className='profile-background profile'>
       <SEO title='Profil' />
 
       <ProfileGreeting />

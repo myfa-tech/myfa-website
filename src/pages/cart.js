@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Cart from '../components/Cart';
 
 const CartPage = () => (
-  <Layout noBackgroundColor={true} className='cart-background'>
+  <Layout className='cart-background'>
     <SEO title='Panier' />
     <Cart />
   </Layout>
