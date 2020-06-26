@@ -46,7 +46,7 @@ const Blog = () => {
       },
     };
 
-    return authors[authorId];
+    return authors[authorId.toLowerCase()];
   };
 
   useEffect(() => {
