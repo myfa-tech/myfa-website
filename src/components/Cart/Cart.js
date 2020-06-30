@@ -13,7 +13,6 @@ import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
-import mobileMoney from '../../services/mobileMoney';
 
 import './Cart.scss';
 import PromoCode from './PromoCode/PromoCode';

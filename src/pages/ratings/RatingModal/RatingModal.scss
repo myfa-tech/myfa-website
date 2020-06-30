@@ -1,0 +1,48 @@
+#rating-modal {
+  text-align: center;
+  height: 600px;
+
+  .modal-header {
+    border-bottom: none;
+
+    button {
+      font-size: 40px;
+    }
+  }
+
+  .modal-body {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .send-form-button {
+    font-size: 25px;
+    padding: 0.5em 1em;
+
+  }
+
+  h2, .stars, .form-input {
+    margin-bottom: 1rem;
+  }
+
+  .star {
+    font-size: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.yellow {
+      color: #f1d866;
+    }
+
+    &.grey {
+      color: grey;
+    }
+  }
+
+  .big-form-input {
+    .MuiInputBase-input {
+      min-height: 200px;
+    }
+  }
+}

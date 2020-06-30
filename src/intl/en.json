@@ -140,6 +140,18 @@
     "title": "Frequently asked questions",
     "description": "Find answers to frequently asked questions about how MYFA works here. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at infos@myfa.fr."
   },
+  "ratings": {
+    "title": "Clients ratings",
+    "description": "Your opinion matters.",
+    "introduction": "Much more than a rating accompanied by a comment, all your opinions count. They allow us to question ourselves in order to offer you a service that comes closest to your wishes.",
+    "button_label": "Give a rating"
+  },
+  "rating_modal": {
+    "your_review": "Your review",
+    "subject": "Subject",
+    "your_message": "Your message",
+    "button_label": "Send"
+  },
   "header": {
     "home": "Home",
     "baskets": "Baskets",
