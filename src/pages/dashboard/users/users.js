@@ -59,6 +59,13 @@ const DashbboardUsers = () => {
       text: 'Date de création',
       dataField: 'createdAt',
       sort: true,
+      sortFunc: (a, b, order) => {
+        if (order === 'asc') {
+          return (new Date(b) > new Date(a)) ? 1 : -1;
+        }
+
+        return (new Date(b) < new Date(a)) ? -1 : 1;
+      },
       headerStyle: () => {
         return { width: '180px' };
       },
