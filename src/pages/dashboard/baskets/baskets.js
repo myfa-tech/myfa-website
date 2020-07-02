@@ -310,6 +310,13 @@ const DashbboardBaskets = () => {
       },
       dataField: 'createdAt',
       sort: true,
+      sortFunc: (a, b, order) => {
+        if (order === 'asc') {
+          return (new Date(b) > new Date(a)) ? 1 : -1;
+        }
+
+        return (new Date(b) < new Date(a)) ? 1 : -1;
+      },
     },
     {
       text: 'Livraison ✏️',
@@ -317,8 +324,30 @@ const DashbboardBaskets = () => {
       headerStyle: () => {
         return { width: '110px' };
       },
+      formatter: (cell, row, rowIndex) => {
+        return (row.deliveredAt === ' ') ? ' ' : new Date(row.deliveredAt).toLocaleDateString('fr-FR');
+      },
       dataField: 'deliveredAt',
       sort: true,
+      sortFunc: (a, b, order) => {
+        if (order === 'asc') {
+          if (a === ' ') {
+            return -1;
+          } else if (b === ' ') {
+            return 1;
+          }
+
+          return (new Date(b) < new Date(a)) ? 1 : -1;
+        }
+
+        if (a === ' ') {
+          return 1;
+        } else if (b === ' ') {
+          return -1;
+        }
+
+        return (new Date(b) > new Date(a)) ? 1 : -1;
+      },
     },
     {
       text: 'Message',
