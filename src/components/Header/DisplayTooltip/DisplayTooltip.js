@@ -30,6 +30,9 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
     if (!!cart && !!cart.baskets) {
       setBasketsCount(cart.baskets.length);
       setBasketsPrice(calculatePrice());
+    } else {
+      setBasketsCount(0);
+      setBasketsPrice(0);
     }
   }, [cart]);
 

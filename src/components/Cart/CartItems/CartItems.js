@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
-import { FaCaretDown, FaCaretUp, FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -61,7 +61,7 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
                       <h3>{t(`home_page.baskets.${basket.type}_basket_title`)}</h3>
                       <p>{basket.price.toFixed(2)} €</p>
                     </Col>
-                    <Col xs={8} lg={5} className='recipient-choice-container'>
+                    <Col xs={7} lg={5} className='recipient-choice-container'>
                       <TextField
                         select
                         label={t('cart.items.recipient')}
@@ -88,11 +88,9 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
                         <FaRegTrashAlt className='trash-icon' onClick={() => deleteBasket(index)} />
                       </div>
                     </Col>
-                    <Col xs={2} lg={1} className='enlarge-container'>
-                      {showContents[index] ?
-                        <FaCaretUp className='caret-icon' onClick={() => toggleShowBasketContent(index)} /> :
-                        <FaCaretDown className='caret-icon' onClick={() => toggleShowBasketContent(index)} />
-                      }
+                    <Col xs={3} lg={2} className='enlarge-container'>
+                      <p onClick={() => toggleShowBasketContent(index)}>{showContents[index] ? 'Cacher' : 'Afficher'}</p>
+                      <p onClick={() => toggleShowBasketContent(index)}>le contenu</p>
                     </Col>
                   </Row>
                 </Col>
@@ -101,8 +99,8 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
                 Ce panier contient :
                 <ul>
                   {basket.items.map ?
-                    basket.items.map(it => (
-                      <li>{it}</li>
+                    basket.items.map((it, itIndex) => (
+                      <li key={itIndex}>{it}</li>
                     )) :
                     <>
                       {basket.items.bases.map(it => (

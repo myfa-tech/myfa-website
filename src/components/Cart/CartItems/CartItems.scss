@@ -37,6 +37,7 @@
 
     .recipient-choice-container {
       display: flex;
+      align-items: center;
     }
 
     .qty-container {
@@ -60,12 +61,12 @@
     }
 
     .enlarge-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .caret-icon {
-        font-size: 20px;
+      p {
+        font-size: 13px;
+        text-decoration: underline;
+        margin-bottom: 2px;
+        text-align: center;
+        width: 100%;
 
         &:hover {
           cursor: pointer;
@@ -199,6 +200,13 @@
 @media (max-width: 350px) {
   .my-cart-container {
     .baskets-container {
+      .enlarge-container {
+        p {
+          font-size: 9px;
+          margin-bottom: 1px;
+        }
+      }
+
       h3 {
         font-size: 13px;
       }
