@@ -176,7 +176,7 @@ const DashbboardBaskets = () => {
 
     if (!!row.deliveredAt && row.deliveredAt !== ' ') {
       let dateParts = row.deliveredAt.split('/');
-      const date = new Date(dateParts[2], Number(dateParts[1]) - 1, dateParts[0]);
+      const date = new Date(dateParts[2], Number(dateParts[0]) - 1, dateParts[1]);
 
       if (isToday(date)) {
         classes += 'is-delivery-today ';
