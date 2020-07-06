@@ -8,14 +8,15 @@ const Footer = lazy(() => import('./Footer'));
 
 import './layout.scss';
 
-const Layout = ({ children, className, hideHeader, noBackgroundColor, showLoginSignupModal, toggleShowLoginSignupModal }) => {
+const Layout = ({ children, className, hideHeader, noBackgroundColor, headerBackground, headerDescription, headerBackgroundPosition }) => {
   return (
     <div className={`layout ${className}`}>
       {hideHeader ?
         null :
         <Header
-          showLoginSignupModal={showLoginSignupModal}
-          toggleShowLoginSignupModal={toggleShowLoginSignupModal}
+          headerBackground={headerBackground}
+          headerBackgroundPosition={headerBackgroundPosition}
+          headerDescription={headerDescription}
         />
       }
       <div>

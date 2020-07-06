@@ -140,6 +140,18 @@
     "title": "Questions fréquentes",
     "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse infos@myfa.fr."
   },
+  "ratings": {
+    "title": "Avis clients",
+    "description": "Tous vos avis comptent.",
+    "introduction": "Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.",
+    "button_label": "Donner mon avis"
+  },
+  "rating_modal": {
+    "your_review": "Votre note",
+    "subject": "Sujet",
+    "your_message": "Votre message",
+    "button_label": "Envoyer"
+  },
   "header": {
     "home": "Accueil",
     "baskets": "Nos paniers",

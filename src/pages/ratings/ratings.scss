@@ -1,0 +1,51 @@
+#ratings {
+  .description {
+    font-size: 24px;
+    margin: 2em auto 1em auto;
+    width: 90%;
+    text-align: justify;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .rating-button {
+      font-size: 24px;
+      padding: 0.5em 1em;
+      display: block;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .ratings-list {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #ratings {
+    .section-title-container {
+      .section-title {
+        font-size: 35px;
+      }
+    }
+
+    .description {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  #ratings {
+    .section-title-container {
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  }
+}

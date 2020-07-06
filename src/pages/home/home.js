@@ -12,7 +12,6 @@ const HowItWorks = lazy(() => import('./HowItWorks'));
 const Trustees = lazy(() => import('./Trustees'));
 const Covid19 = lazy(() => import('./Covid19'));
 const Asterisks = lazy(() => import('./Asterisks'));
-const ThanksSection = lazy(() => import('./ThanksSection'));
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -34,7 +33,6 @@ const HomePage = () => {
         <Baskets />
         <HowItWorks />
         <OurPromise />
-        <ThanksSection />
         <Trustees />
         <Blog />
         <Newsletter />

@@ -9,6 +9,7 @@ import SEO from '../../components/seo';
 import Layout from '../../components/layout';
 import NoJobs from './NoJobs';
 
+import getFormattedDate from '../../utils/getFormattedDate';
 import useTranslate from '../../hooks/useTranslate';
 import logoHandsSrc from '../../images/logo-hands.png';
 
@@ -16,18 +17,6 @@ import './jobs.scss';
 
 const JobsPage = () => {
   const [t] = useTranslate();
-
-  const getDate = (rawDate) => {
-    let date = new Date(rawDate);
-    let months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
-    let dateDay = date.getUTCDate();
-    let dateMonth = months[date.getUTCMonth()];
-    let dateYear = date.getUTCFullYear();
-
-    let dateString = `${dateDay} ${dateMonth} ${dateYear}`;
-
-    return dateString;
-  };
 
   const jobs = [
     // { title: 'Stage business developer', date: new Date('2020-05-26'), location: 'Paris, Station F / Remote', file: 'stage_myfa_bizdev.pdf' },
@@ -53,7 +42,7 @@ const JobsPage = () => {
             </Col>
             <Col xs={10}>
               <h4>{job.title}</h4>
-              <div className='sub-info'>{getDate(job.date)}</div>
+              <div className='sub-info'>{getFormattedDate(job.date)}</div>
               <div className='sub-info'><FaMapPin /> {job.location}</div>
             </Col>
             <Col sm={1} xs={2} className='buttons-container'>

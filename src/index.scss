@@ -5,6 +5,10 @@
   font-display: swap;
 }
 
+$brown: #311A19;
+$green: #315f69;
+$yellow: #f1d866;
+
 html {
   scroll-behavior: smooth;
 
@@ -13,8 +17,6 @@ html {
   }
 
   body {
-    background-color: rgba(241, 216, 102, 0.1);
-
     .full-width {
       width: 100%;
     }

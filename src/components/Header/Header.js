@@ -1,6 +1,5 @@
 import React, { lazy, useEffect, useState, Suspense } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Container from 'react-bootstrap/Container';
 
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -28,7 +27,7 @@ import './Header.scss';
 
 const STICKY_LIMIT = 300;
 
-const Header = () => {
+const Header = ({ headerBackground, headerDescription, headerBackgroundPosition }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
@@ -148,7 +147,7 @@ const Header = () => {
   };
 
   return (
-    <Container id='header'>
+    <div id='header' className={headerBackground ? 'header-image-description' : ''} style={{ backgroundImage: `url(${headerBackground})`, backgroundPosition: headerBackgroundPosition }}>
       <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`}>
         <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
         <span className='menu'>
@@ -182,6 +181,10 @@ const Header = () => {
         </span>
       </div>
 
+      {headerDescription ? <div className='header-description'>
+        <span>{headerDescription}</span>
+      </div> : null}
+
       <Suspense fallback=''>
         <CustomDrawer
           anchor='left'
@@ -212,7 +215,7 @@ const Header = () => {
           </div>
         </Modal.Body>
       </Modal>}
-    </Container>
+    </div>
   );
 }
 

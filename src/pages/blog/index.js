@@ -7,6 +7,7 @@ import Layout from '../../components/layout';
 import Card from '../../components/Card';
 
 import { fetchArticles } from '../../services/contentful';
+import getFormattedDate from '../../utils/getFormattedDate';
 
 import './blog.scss';
 
@@ -38,18 +39,6 @@ const BlogPage = () => {
     };
 
     return authors[authorId.toLowerCase()];
-  };
-
-  const getDate = (createdAt) => {
-    let date = new Date(createdAt);
-    let months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
-    let dateDay = date.getUTCDate();
-    let dateMonth = months[date.getUTCMonth()];
-    let dateYear = date.getUTCFullYear();
-
-    let dateString = `${dateDay} ${dateMonth} ${dateYear}`;
-
-    return dateString;
   };
 
   const goTo = (path) => {
@@ -88,7 +77,7 @@ const BlogPage = () => {
                 description={article.description}
                 imgSrc={article.cover ? article.cover.fields.file.url : article.displayCover ? article.displayCover.fields.file.url : null}
                 footerLeft={getAuthor(article.author).name}
-                footerRight={getDate(article.createdAt)}
+                footerRight={getFormattedDate(article.createdAt)}
               />
             </Col>
           ))}

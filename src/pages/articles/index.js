@@ -24,6 +24,7 @@ import dorisSrc from '../../images/doris.png';
 import manuellaSrc from '../../images/manuella.png';
 import alexandreSrc from '../../images/alex.png';
 import orlaneSrc from '../../images/orlane.png';
+import getFormattedDate from '../../utils/getFormattedDate';
 
 const Article = (props) => {
   const [article, setArticle] = useState({});
@@ -132,18 +133,6 @@ const ArticleDisplay = (props) => {
     return hashtags;
   };
 
-  const getDate = () => {
-    let date = new Date(props.article.createdAt);
-    let months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
-    let dateDay = date.getUTCDate();
-    let dateMonth = months[date.getUTCMonth()];
-    let dateYear = date.getUTCFullYear();
-
-    let dateString = `${dateDay} ${dateMonth} ${dateYear}`;
-
-    return dateString;
-  };
-
   useEffect(() => {
     setAuthor(getAuthor(props.article.author));
   }, [props.article]);
@@ -166,7 +155,7 @@ const ArticleDisplay = (props) => {
               <img src={author.img} alt={props.article.author} />
               <div>
                 <span>{author.name}</span>
-                <span className='date'>{getDate()}</span>
+                <span className='date'>{getFormattedDate(props.article.createdAt)}</span>
               </div>
             </div>
 
