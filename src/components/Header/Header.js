@@ -120,7 +120,7 @@ const Header = () => {
     }
   };
 
-  const toggleIsProfileNavOpen = () => console.log('CLICKED') || setIsProfileNavOpen(!isProfileNavOpen);
+  const toggleIsProfileNavOpen = () => setIsProfileNavOpen(!isProfileNavOpen);
 
   const toggleShowLoginSignupModal = () => setShowLoginSignupModal(!showLoginSignupModal);
 
