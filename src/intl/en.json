@@ -59,17 +59,22 @@
         "description": "By email or SMS, stay informed."
       }
     },
+    "packs": {
+      "packs_title": "Our supply packs",
+      "packs_secondary": "See all packs",
+      "veggies_pack_title": "Veggies Pack 🧅",
+      "veggies_pack_home_description": "Onions, carrots, yams...",
+      "veggies_pack_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this pack, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉"
+    },
     "baskets": {
       "title": "Choose your basket!",
       "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
       "until_date": "until 03/31/2020",
-      "regular_baskets_title": "Our baskets",
+      "pleasure_baskets_title": "Our gifts baskets",
+      "pleasure_baskets_secondary": "See all baskets",
       "fruits_basket_title": "Fruits Basket 🍌",
       "fruits_basket_home_description": "Bananas, oranges, coconut...",
       "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
-      "legumes_basket_title": "Veggies Basket 🧅",
-      "legumes_basket_home_description": "Onions, carrots, yams...",
-      "legumes_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
       "sauces_basket_title": "Sauces Basket 🍗🍖",
       "sauces_basket_home_description": "Pepper, salt, ginger...",
       "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",

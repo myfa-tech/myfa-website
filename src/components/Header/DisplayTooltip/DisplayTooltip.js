@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import uniqBy from '../../../utils/uniqBy';
 import countBy from '../../../utils/countBy';
-import basketsImgs from '../../../assets/basketsImgs';
+import getBasketImage from '../../../utils/getBasketImage';
 
 const CustomTooltip = withStyles(theme => ({
   tooltip: {
@@ -64,7 +64,7 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
                   <li key={index}>
                     <Row>
                       <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                        <img src={basketsImgs[basket.type]} />
+                        <img src={getBasketImage(basket.type)} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
                         <h4>{t(`home_page.baskets.${basket.type}_basket_title`)}</h4>

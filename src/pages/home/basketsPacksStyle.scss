@@ -1,48 +1,17 @@
-#baskets, #baskets-modal {
-	.heading {
-		text-align: center;
-		color: #777777;
-		background-image: url(../../../images/fruits-background.jpg);
-		max-width: 100%;
-		padding-top: 4em;
-		padding-bottom: 4em;
-    background-size: cover;
-    background-position: bottom;
-		width: 100%;
-
-		h2 {
-			color: #311a19;
-			font-weight: 600;
-			font-size: 45px;
-		}
-
-		h3 {
-			color: #311a19;
-			margin: 0;
-			font-weight: 600;
-			font-size: 26px;
-		}
-	}
-
-	.sub-heading {
-		background-color: rgba(241, 216, 102, 0.5);
-    padding-top: 1em;
-    padding-bottom: 0.5em;
-    text-align: center;
-	}
-
-	.baskets-container {
+.articles {
+	.articles-container {
 		padding-top: 1em;
 		padding-bottom: 1em;
-		margin: 0 10em;
+		width: 90%;
+		margin: auto;
 
-		.basket-container {
+		.article-container {
 			text-align: center;
 			padding-bottom: 20px;
 			margin: 1em auto 1em auto;
-			width: 70%;
+			width: 85%;
 
-			.basket-inner-container {
+			.article-inner-container {
         background-color: white;
         border-radius: 8px;
         padding-top: 1em;
@@ -56,7 +25,7 @@
 					padding-top: 1em;
 					padding-left: 1.5em;
 
-					&.custom-basket {
+					&.custom-article {
 						margin: auto;
 					}
 
@@ -171,18 +140,13 @@
 }
 
 @media (min-width: 1024px) {
-	#baskets {
-		.heading {
-			padding-left: 10em;
-			padding-right: 10em;
-		}
-
+	#articles {
 		.container {
 			max-width: 700px;
 		}
 
-		.baskets-container {
-			.basket-container {
+		.articles-container {
+			.article-container {
 				.cart-button:hover {
 					cursor: pointer;
 					box-shadow: 0 0 11px rgba(33,33,33,.2);
@@ -197,28 +161,15 @@
 }
 
 @media (max-width: 1024px) {
-	#baskets {
-		.heading {
-			padding-left: 1em;
-			padding-right: 1em;
-			padding-top: 2em;
-			padding-bottom: 4em;
-		}
-	}
+	#articles {}
 }
 
 @media (max-width: 768px) {
-	#baskets {
-		.heading {
-			h3 {
-				font-size: 25px;
-			}
-		}
-
-		.baskets-container {
+	#articles {
+		.articles-container {
 			margin: 0 2em;
 
-			.basket-container {
+			.article-container {
 				width: 95%;
 
 				.price-and-buy-container {
@@ -242,7 +193,7 @@
 }
 
 @media (max-width: 480px) {
-	#baskets, #baskets-modal {
+	#articles {
 		width: 100%;
 		margin: 0;
 
@@ -252,10 +203,10 @@
 			border-radius: 0;
 		}
 
-		.baskets-container {
+		.articles-container {
 			margin: 0;
 
-			.basket-container {
+			.article-container {
 				width: 90%;
 
 				.price-and-buy-container {
@@ -269,34 +220,12 @@
 		&.section {
 			padding: 40px 0 0 0;
 		}
-
-		.heading {
-			background-image: url(../../../images/phone-fruits-background.jpg);
-
-			h2 {
-        font-size: 27px;
-			}
-
-			h3 {
-        font-size: 20px;
-			}
-		}
 	}
 }
 
 @media (max-width: 350px) {
-  #baskets {
-    .heading {
-      h2 {
-        font-size: 23px;
-			}
-
-			h3 {
-        font-size: 18px;
-      }
-		}
-
-		.price-container {
+  #articles {
+    .price-container {
 			* {
 				font-size: 16px;
 			}

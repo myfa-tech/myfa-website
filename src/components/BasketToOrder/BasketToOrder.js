@@ -10,9 +10,9 @@ import CartModal from '../CartModal';
 
 import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
-import useFetchActiveBasketsInfo from '../../hooks/useFetchActiveBasketsInfo';
+import useFetchPleasureBaskets from '../../hooks/useFetchPleasureBaskets';
 import CartStorage from '../../services/CartStorage';
-import basketsImgs from '../../assets/basketsImgs';
+import getBasketImage from '../../utils/getBasketImage';
 
 import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
 import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
@@ -30,7 +30,7 @@ const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
-  const [baskets, setBaskets] = useFetchActiveBasketsInfo([]);
+  const [baskets, setBaskets] = useFetchPleasureBaskets([]);
   const [t, locale] = useTranslate();
 
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
@@ -74,7 +74,7 @@ const BasketToOrder = () => {
           <Col md='4' className='imgs-col'>
             <div className='basket-img-container'>
               <div className='images-container'>
-                <img src={basketsImgs[basket.type]} alt={basket.imgAlt} />
+                <img src={getBasketImage(basket.type)} alt={basket.imgAlt} />
                 {[0, 1, 2].map(item => (
                   basketsOtherImgs[basket.type] && basketsOtherImgs[basket.type][item] ?
                     <img

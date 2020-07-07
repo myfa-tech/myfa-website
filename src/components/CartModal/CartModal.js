@@ -6,7 +6,7 @@ import { FaCheck } from 'react-icons/fa';
 
 import useTranslate from '../../hooks/useTranslate';
 import CartStorage from '../../services/CartStorage';
-import basketsImgs from '../../assets/basketsImgs';
+import getBasketImage from '../../utils/getBasketImage';
 
 import './CartModal.scss';
 
@@ -48,7 +48,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
           <Col md='6'>
             <Row>
               <Col md='6'>
-                <img src={basketsImgs[basket.type]} alt={basket.imgAlt} />
+                <img src={getBasketImage(basket.type)} alt={basket.imgAlt} />
               </Col>
               <Col md='6'>
                 <h1>{t(basket.labelTranslate)}</h1>

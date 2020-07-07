@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import useTranslate from '../../../hooks/useTranslate';
-import basketsImgs from '../../../assets/basketsImgs';
+import getBasketImage from '../../../utils/getBasketImage';
 import UserStorage from '../../../services/UserStorage';
 
 import './CartItems.scss';
@@ -53,7 +53,7 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
             <li key={index} className={showContents[index] ? 'show-content' : ''}>
               <Row>
                 <Col xs={2} className='image-container'>
-                  <img src={basketsImgs[basket.type]} />
+                  <img src={getBasketImage(basket.type)} />
                 </Col>
                 <Col xs={10} className='info-container'>
                   <Row>

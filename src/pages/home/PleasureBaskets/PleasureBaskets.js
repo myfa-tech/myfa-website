@@ -6,17 +6,19 @@ import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 import LoadingBasket from '../../../components/LoadingBasket';
 const CartModal = lazy(() => import('../../../components/CartModal'));
 import SectionLoader from '../../../components/SectionLoader';
+import SectionTitle from '../../../components/SectionTitle';
 
 import useTranslate from '../../../hooks/useTranslate';
-import useFetchActiveBasketsInfo from '../../../hooks/useFetchActiveBasketsInfo';
+import useFetchPleasureBaskets from '../../../hooks/useFetchPleasureBaskets';
 import CartStorage from '../../../services/CartStorage';
 
-import './Baskets.scss';
+import '../basketsPacksStyle.scss';
+import './PleasureBaskets.scss';
 
-const Baskets = () => {
+const PleasureBaskets = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
-	const [baskets, setBaskets] = useFetchActiveBasketsInfo([]);
+	const [baskets, setBaskets] = useFetchPleasureBaskets([]);
 
 	const [t, locale] = useTranslate();
 
@@ -30,11 +32,7 @@ const Baskets = () => {
 
 	const handleBasketButtonClick = (basketType) => {
 		if (typeof window !== 'undefined') {
-			if (basketType === 'myfa') {
-				window.location.assign('custom-basket');
-			} else {
-				window.location.assign(`baskets?type=${basketType}`);
-			}
+			window.location.assign(`baskets?type=${basketType}`);
 		}
 	};
 
@@ -48,20 +46,14 @@ const Baskets = () => {
 	};
 
 	return (
-		<section id='baskets' className='section-2'>
-			<div className='heading'>
-				<h3>{t('home_page.baskets.subtitle')}</h3>
-			</div>
+		<section id='pleasure-baskets' className='articles section-2'>
+			<SectionTitle title={t('home_page.baskets.pleasure_baskets_title')} secondary={{ text: t('home_page.baskets.pleasure_baskets_secondary'), link: '/pleasure-baskets' }} />
 
-			<div className='sub-heading'>
-				<h2>{t('home_page.baskets.regular_baskets_title')}</h2>
-			</div>
-
-			<Row className='baskets-container justify-content-center'>
+			<Row className='articles-container justify-content-center'>
 				{baskets.length ? baskets.map((basket) => (
 					<Col md={4} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
-						<div className='basket-container'>
-							<div className='basket-inner-container'>
+						<div className='article-container'>
+							<div className='article-inner-container'>
 								<h4>{t(basket.labelTranslate)}</h4>
 								<h5>{t(basket.homeDescTranslate)}</h5>
 								<img src={basket.img} alt={basket.imgAlt} />
@@ -105,4 +97,4 @@ const Baskets = () => {
 	);
 };
 
-export default Baskets;
+export default PleasureBaskets;

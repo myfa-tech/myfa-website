@@ -4,14 +4,11 @@ import SEO from '../../components/seo';
 import Layout from '../../components/layout';
 import SectionLoader from '../../components/SectionLoader';
 import Welcome from './Welcome';
-const OurPromise = lazy(() => import('./OurPromise'));
 const Newsletter = lazy(() => import('./Newsletter'));
-const Blog = lazy(() => import('./Blog'));
-const Baskets = lazy(() => import('./Baskets'));
+const PleasureBaskets = lazy(() => import('./PleasureBaskets'));
+const Packs = lazy(() => import('./Packs'));
 const HowItWorks = lazy(() => import('./HowItWorks'));
-const Trustees = lazy(() => import('./Trustees'));
 const Covid19 = lazy(() => import('./Covid19'));
-const Asterisks = lazy(() => import('./Asterisks'));
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -30,13 +27,10 @@ const HomePage = () => {
 
       <Suspense fallback={<SectionLoader />}>
         <Covid19 />
-        <Baskets />
+        <Packs />
+        <PleasureBaskets />
         <HowItWorks />
-        <OurPromise />
-        <Trustees />
-        <Blog />
         <Newsletter />
-        <Asterisks />
       </Suspense>
     </Layout>
   );

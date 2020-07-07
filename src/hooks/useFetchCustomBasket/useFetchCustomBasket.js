@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import { fetchCustomBasket } from '../../services/baskets';
-import basketsImgs, { foodImages } from '../../assets/basketsImgs';
+import getProductImage from '../../utils/getProductImage';
+import getBasketImage from '../../utils/getBasketImage';
 
 const useFetchCustomBasket = (initBasket = {}) => {
   const [basket, setBasket] = useState(initBasket);
@@ -11,12 +12,12 @@ const useFetchCustomBasket = (initBasket = {}) => {
       let customBasket = await fetchCustomBasket();
 
       // Set basket images
-      customBasket.img = basketsImgs[customBasket.type];
-      customBasket.availableBases = customBasket.availableBases.map(base => ({ ...base, img: foodImages[base.id] }));
-      customBasket.availableFruits = customBasket.availableFruits.map(fruit => ({ ...fruit, img: foodImages[fruit.id] }));
-      customBasket.availableVeggies = customBasket.availableVeggies.map(veggie => ({ ...veggie, img: foodImages[veggie.id] }));
-      customBasket.availableSauces = customBasket.availableSauces.map(sauce => ({ ...sauce, img: foodImages[sauce.id] }));
-      customBasket.availableSupps = customBasket.availableSupps.map(supp => ({ ...supp, img: foodImages[supp.id] }));
+      customBasket.img = getBasketImage(customBasket.type);
+      customBasket.availableBases = customBasket.availableBases.map(base => ({ ...base, img: getProductImage(base.id) }));
+      customBasket.availableFruits = customBasket.availableFruits.map(fruit => ({ ...fruit, img: getProductImage(fruit.id) }));
+      customBasket.availableVeggies = customBasket.availableVeggies.map(veggie => ({ ...veggie, img: getProductImage(veggie.id) }));
+      customBasket.availableSauces = customBasket.availableSauces.map(sauce => ({ ...sauce, img: getProductImage(sauce.id) }));
+      customBasket.availableSupps = customBasket.availableSupps.map(supp => ({ ...supp, img: getProductImage(supp.id) }));
 
 			setBasket({ ...customBasket });
 		};

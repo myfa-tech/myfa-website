@@ -20,9 +20,7 @@ import useTranslate from '../../../hooks/useTranslate';
 import useFetchAllBasketsInfos from '../../../hooks/useFetchAllBasketsInfos';
 import { useAuthentication } from '../../../hooks/useAuthentication';
 import UserStorage from '../../../services/UserStorage';
-
-import defaultBasketSrc from '../../../images/default-basket.png';
-import basketsImgs from '../../../assets/basketsImgs';
+import getBasketImage from '../../../utils/getBasketImage';
 
 import '../index.scss';
 import './orders.scss';
@@ -118,7 +116,7 @@ const ProfileOrdersPage = () => {
                     <li key={index}>
                       <Row>
                         <Col md={3} xs={0} className='image-container d-none d-sm-block'>
-                          <img src={basketsImgs[basket.type] || defaultBasketSrc} />
+                          <img src={getBasketImage(basket.type)} />
                         </Col>
                         <Col md={9} xs={12} className='stepper-container'>
                           <div className='title-container'>
@@ -153,7 +151,7 @@ const ProfileOrdersPage = () => {
                     <li key={index}>
                       <Row>
                         <Col sm={3} xs={0} className='image-container d-none d-sm-block'>
-                          <img src={(basketsDetails.find(b => b.type === basket.type) || {}).img || defaultBasketSrc} />
+                          <img src={getBasketImage(basket.type)} />
                         </Col>
                         <Col sm={6} xs={8} className='info-container'>
                           <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
