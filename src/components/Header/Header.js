@@ -43,12 +43,11 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
 
   const DRAWER_LIST = [
     { label: t('header.home'), link: '/' },
-    { label: t('header.baskets'), link: '/#baskets' },
-    { label: t('header.how_it_works'), link: '/#how-it-works' },
-    { label: t('header.promise'), link: '/#our-promise' },
-    { label: t('header.team'), link: '/team' },
-    { label: t('header.blog'), link: '/#blog' },
-    { label: t('header.we_recruit'), link: '/jobs' },
+    { label: t('header.all_products'), link: '/#details' },
+    { label: t('header.supply_packs'), link: '/#packs' },
+    { label: t('header.gifts_baskets'), link: '/#pleasure-baskets' },
+    { label: t('header.ratings'), link: '/ratings' },
+    { label: t('header.faq'), link: '/faq' },
   ];
 
   useEffect(() => {

@@ -166,11 +166,11 @@
   },
   "header": {
     "home": "Accueil",
-    "baskets": "Nos paniers",
-    "promise": "Notre promesse",
-    "how_it_works": "Comment ça marche ?",
-    "team": "L'équipe",
-    "blog": "Blog",
+    "all_products": "Tous les produits",
+    "gifts_baskets": "Paniers plaisir",
+    "supply_packs": "Packs ravitaillement",
+    "ratings": "Avis des clients",
+    "faq": "FAQ",
     "we_recruit": "On recrute",
     "profile": {
       "account": "Mon compte",

@@ -51,6 +51,7 @@ const Footer = ({ noBackgroundColor }) => {
             <ul>
               <li><a href='/blog'>Blog</a></li>
               <li><a href={`/legal_${locale}`}>Mentions légales</a></li>
+              <li><a href='/ratings'>Avis des clients</a></li>
             </ul>
           </Col>
           <Col xs={12} lg={3} className='footer-col'>

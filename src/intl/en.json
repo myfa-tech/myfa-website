@@ -154,11 +154,11 @@
   },
   "header": {
     "home": "Home",
-    "baskets": "Baskets",
-    "promise": "Our promise",
-    "how_it_works": "How does it work?",
-    "team": "Team",
-    "blog": "Blog",
+    "all_products": "All products",
+    "gifts_baskets": "Gifts baskets",
+    "supply_packs": "Supply packs",
+    "ratings": "Customers reviews",
+    "faq": "FAQ",
     "we_recruit": "Jobs",
     "profile": {
       "account": "My account",
