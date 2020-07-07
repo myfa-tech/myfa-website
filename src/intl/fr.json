@@ -32,35 +32,29 @@
         "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
-    "how_it_works": {
-      "title": "Comment ça marche ?",
-      "slide1": {
-        "title": "Sélectionnez votre panier",
-        "description": "Fruits, Légumes, Sauces ou MYFA."
+    "our_services": {
+      "step_1": {
+        "title": "LIVRAISON EN 48H",
+        "line_2": "Selon la disponibilité de vos proches"
       },
-      "slide2": {
-        "title": "Renseignez les informations sur le destinataire du panier",
-        "description": "Nous l'appelons pour déterminer les conditions de livraison."
+      "step_2": {
+        "title": "SERVICE CLIENT",
+        "line_2": "(+225) 84 21 51 54",
+        "line_3": "9h - 18h du lundi au vendredi",
+        "line_4": "9h - 13h week-end et jours",
+        "line_5": "fériés"
       },
-      "slide3": {
-        "title": "Sélectionnez le quartier de livraison",
-        "description": "Parmi les 12 quartiers d'Abidjan."
-      },
-      "slide4": {
-        "title": "Réglez en toute sécurité",
-        "description": "Faites vos achats l'esprit serein."
-      },
-      "slide5": {
-        "title": "Livraison en moins de 48h",
-        "description": "Sous réserve de la disponibilité du destinataire."
-      },
-      "slide6": {
-        "title": "Suivez l'acheminement",
-        "description": "Par email ou SMS, restez au courant."
+      "step_3": {
+        "title": "PAIEMENT SÉCURISÉ",
+        "line_2": "Faites vos achats l’esprit serein"
       }
+    },
+    "ratings": {
+      "all_ratings": "Voir tous les avis"
     },
     "packs": {
       "packs_title": "Nos packs ravitaillement",
+      "packs_mobile_title": "Ravitaillement",
       "packs_secondary": "Voir tous les packs",
       "veggies_pack_title": "Pack Légumes 🧅",
       "veggies_pack_home_description": "Oignons, carottes, Ignames...",
@@ -80,10 +74,14 @@
       "subtitle": "Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.",
       "until_date": "jusqu'au 31/03/2020",
       "pleasure_baskets_title": "Nos paniers plaisir",
+      "pleasure_baskets_mobile_title": "Plaisir",
       "pleasure_baskets_secondary": "Voir tous les paniers",
       "fruits_basket_title": "Panier Fruits 🍌",
       "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
       "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
+      "chocolate_basket_title": "Panier Chocolat 🍫",
+      "chocolate_basket_home_description": "xxxx xxxxxx xxxxxxx, xxxxxx...",
+      "chocolate_basket_description": "xxxxx xx xxxxxx xxxx xxxxx xx xxxxxx xxxx xxxxx xx xxxxxx xxxx xxxxx xx xxxxxx xxxx xxxxx xx xxxxxx xxxx ",
       "sauces_basket_title": "Panier Sauces 🍗🍖",
       "sauces_basket_home_description": "Poivre, sel, gingembre...",
       "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",

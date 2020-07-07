@@ -1,0 +1,48 @@
+#our-services {
+  margin-bottom: 2em;
+
+  .steps-container {
+    width: 90%;
+    margin: auto;
+    padding: 3em 1em;
+    background-color: #f1d866;
+
+    .step {
+      text-align: center;
+
+      .step-icon {
+        height: 100px;
+        width: 120px;
+        background-color: grey;
+        margin: 0 auto 1em auto;
+      }
+
+      .step-title {
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      .step-desc {
+        p {
+          margin: 0;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #our-services {
+    .steps-container {
+      width: 100%;
+
+      .step {
+        .step-icon {
+          height: 150px;
+          width: 90%;
+        }
+      }
+    }
+  }
+}

@@ -48,6 +48,7 @@ const Packs = () => {
 		<section id='packs' className='articles section-2'>
 			<SectionTitle
 				title={t('home_page.packs.packs_title')}
+				mobileTitle={t('home_page.packs.packs_mobile_title')}
 				secondary={{ text: t('home_page.packs.packs_secondary'), link: '/packs' }}
 			/>
 

@@ -47,11 +47,15 @@ const PleasureBaskets = () => {
 
 	return (
 		<section id='pleasure-baskets' className='articles section-2'>
-			<SectionTitle title={t('home_page.baskets.pleasure_baskets_title')} secondary={{ text: t('home_page.baskets.pleasure_baskets_secondary'), link: '/pleasure-baskets' }} />
+			<SectionTitle
+				title={t('home_page.baskets.pleasure_baskets_title')}
+				mobileTitle={t('home_page.baskets.pleasure_baskets_mobile_title')}
+				secondary={{ text: t('home_page.baskets.pleasure_baskets_secondary'), link: '/pleasure-baskets' }}
+			/>
 
 			<Row className='articles-container justify-content-center'>
 				{baskets.length ? baskets.map((basket) => (
-					<Col md={4} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
+					<Col md={3} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
 						<div className='article-container'>
 							<div className='article-inner-container'>
 								<h4>{t(basket.labelTranslate)}</h4>

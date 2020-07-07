@@ -32,35 +32,29 @@
         "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },
-    "how_it_works": {
-      "title": "How it works?",
-      "slide1": {
-        "title": "Select your basket",
-        "description": "Fruits, Vegetables, Sauces or MYFA."
+    "our_services": {
+      "step_1": {
+        "title": "DELIVERY IN 48H",
+        "line_2": "Depending on the availability of your loved ones"
       },
-      "slide2": {
-        "title": "Fill in the information on the recipient of the basket",
-        "description": "We call them to determine the delivery conditions."
+      "step_2": {
+        "title": "CUSTOMER SERVICE",
+        "line_2": "(+225) 84 21 51 54",
+        "line_3": "9am - 6pm from monday to friday",
+        "line_4": "9am - 1pm week-end and days",
+        "line_5": "off"
       },
-      "slide3": {
-        "title": "Select the district of delivery",
-        "description": "Among the 12 districts of Abidjan."
-      },
-      "slide4": {
-        "title": "Pay securely",
-        "description": "Shop with peace of mind."
-      },
-      "slide5": {
-        "title": "Delivery in less than 48 hours",
-        "description": "Depending on the availability of the recipient."
-      },
-      "slide6": {
-        "title": "Follow the route",
-        "description": "By email or SMS, stay informed."
+      "step_3": {
+        "title": "SECURE PAYMENT",
+        "line_2": "Shop with peace of mind"
       }
+    },
+    "ratings": {
+      "all_ratings": "See all reviews"
     },
     "packs": {
       "packs_title": "Our supply packs",
+      "packs_mobile_title": "Supply",
       "packs_secondary": "See all packs",
       "veggies_pack_title": "Veggies Pack 🧅",
       "veggies_pack_home_description": "Onions, carrots, yams...",
@@ -71,6 +65,7 @@
       "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
       "until_date": "until 03/31/2020",
       "pleasure_baskets_title": "Our gifts baskets",
+      "pleasure_baskets_mobile_title": "Gifts",
       "pleasure_baskets_secondary": "See all baskets",
       "fruits_basket_title": "Fruits Basket 🍌",
       "fruits_basket_home_description": "Bananas, oranges, coconut...",

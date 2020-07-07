@@ -140,7 +140,7 @@
 }
 
 @media (min-width: 1024px) {
-	#articles {
+	.articles {
 		.container {
 			max-width: 700px;
 		}
@@ -161,11 +161,11 @@
 }
 
 @media (max-width: 1024px) {
-	#articles {}
+	.articles {}
 }
 
 @media (max-width: 768px) {
-	#articles {
+	.articles {
 		.articles-container {
 			margin: 0 2em;
 
@@ -193,7 +193,7 @@
 }
 
 @media (max-width: 480px) {
-	#articles {
+	.articles {
 		width: 100%;
 		margin: 0;
 
@@ -204,7 +204,7 @@
 		}
 
 		.articles-container {
-			margin: 0;
+			margin: auto;
 
 			.article-container {
 				width: 90%;
@@ -224,7 +224,7 @@
 }
 
 @media (max-width: 350px) {
-  #articles {
+  .articles {
     .price-container {
 			* {
 				font-size: 16px;
