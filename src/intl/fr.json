@@ -49,6 +49,10 @@
         "line_2": "Faites vos achats l’esprit serein"
       }
     },
+    "products": {
+      "products_title": "Meilleures ventes",
+      "products_secondary": "Voir tous les produits"
+    },
     "ratings": {
       "all_ratings": "Voir tous les avis"
     },

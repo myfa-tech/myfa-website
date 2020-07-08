@@ -49,6 +49,10 @@
         "line_2": "Shop with peace of mind"
       }
     },
+    "products": {
+      "products_title": "Bestsellers",
+      "products_secondary": "See all products"
+    },
     "ratings": {
       "all_ratings": "See all reviews"
     },

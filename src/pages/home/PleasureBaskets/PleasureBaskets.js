@@ -12,7 +12,7 @@ import useTranslate from '../../../hooks/useTranslate';
 import useFetchPleasureBaskets from '../../../hooks/useFetchPleasureBaskets';
 import CartStorage from '../../../services/CartStorage';
 
-import '../basketsPacksStyle.scss';
+import '../articlesStyle.scss';
 import './PleasureBaskets.scss';
 
 const PleasureBaskets = () => {

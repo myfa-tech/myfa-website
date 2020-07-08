@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingBasket } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';
 const CartModal = lazy(() => import('../../../components/CartModal'));
@@ -10,8 +10,8 @@ import SectionTitle from '../../../components/SectionTitle';
 
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchPacks from '../../../hooks/useFetchPacks';
-import CartStorage from '../../../services/CartStorage';
 
+import '../articlesStyle.scss';
 import './Packs.scss';
 
 const Packs = () => {
@@ -33,15 +33,6 @@ const Packs = () => {
 		if (typeof window !== 'undefined') {
 			window.location.assign(`baskets?type=${basketType}`);
 		}
-	};
-
-	const addBasketToCart = async (e, basket) => {
-		e.stopPropagation();
-
-		await CartStorage.addToCart({ ...basket });
-
-		setBasketForCart(basket);
-		toggleCartModal();
 	};
 
 	return (
@@ -68,14 +59,9 @@ const Packs = () => {
 								</Col>
 
 								<Col xs={6} className='cart-container'>
-									{basket.type !== 'myfa' ?
-										<div className='cart-button' onClick={(e) => addBasketToCart(e, basket)}>
-											<FaShoppingCart className='cart-icon' />
-										</div> :
-										<div className='cart-button'>
-											<FaShoppingBasket className='cart-icon' />
-										</div>
-									}
+									<div className='cart-button'>
+										<FaShoppingBasket className='cart-icon' />
+									</div>
 								</Col>
 							</Row>
 						</div>
