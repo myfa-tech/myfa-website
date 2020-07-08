@@ -27,7 +27,7 @@ import './Header.scss';
 
 const STICKY_LIMIT = 300;
 
-const Header = ({ headerBackground, headerDescription, headerBackgroundPosition }) => {
+const Header = ({ hideHeader, headerBackground, headerDescription, headerBackgroundPosition }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
@@ -58,7 +58,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
   }, []);
 
   useEffect(() => {
-    window.onscroll = updateNavbarStickines;
+    window.onscroll = updateNavbarStickiness;
   }, [sticky]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
     }
   }, [user]);
 
-  const updateNavbarStickines = () => {
+  const updateNavbarStickiness = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
       setSticky(true);
     } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
@@ -147,37 +147,45 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
 
   return (
     <div id='header' className={headerBackground ? 'header-image-description' : ''} style={{ backgroundImage: `url(${headerBackground})`, backgroundPosition: headerBackgroundPosition }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`}>
-        <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
-        <span className='menu'>
-          {isLoggedIn ?
-            <Dropdown className='profile-btn'>
-              <Dropdown.Toggle
-                onMouseEnter={toggleIsProfileNavOpen}
-                onMouseLeave={toggleIsProfileNavOpen}
-                show={isProfileNavOpen}
-                className='account'
-              >
-                <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
-                <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> :
-            <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
+      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: (sticky && headerBackground) ? `url(${headerBackground})` : '' }}>
+        <div className='navbar-header'>
+          <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
+          <span className='menu'>
+            {isLoggedIn ?
+              <Dropdown className='profile-btn'>
+                <Dropdown.Toggle
+                  onMouseEnter={toggleIsProfileNavOpen}
+                  onMouseLeave={toggleIsProfileNavOpen}
+                  show={isProfileNavOpen}
+                  className='account'
+                >
+                  <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
+                  <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> :
+              <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
+            }
+            <a href='/cart' className='basket-link'>
+              <Suspense fallback=''>
+                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
+              </Suspense>
+            </a>
+            <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
+            <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
+          </span>
+        </div>
+
+        {sticky ? <div className='sticky-title'>
+          {headerDescription ? <h2>{headerDescription}</h2> :
+            <h2>Commandez d'ici, nous livrons là-bas.</h2>
           }
-          <a href='/cart' className='basket-link'>
-            <Suspense fallback=''>
-              <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
-            </Suspense>
-          </a>
-          <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
-          <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
-        </span>
+        </div> : null}
       </div>
 
       {headerDescription ? <div className='header-description'>

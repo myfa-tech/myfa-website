@@ -1,82 +1,39 @@
 #welcome {
   .section-1 {
-    background-image: url(../../../images/home-background.jpg);
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../../images/home-bg.jpg);
     max-width: 100%;
-    background-size:cover;
+    background-size: cover;
     position: relative;
-    background-position: center 0;
-    height: 100vh;
+    background-position: center center;
+    height: 50vh;
     text-align: center;
 
-    .beauty-basket-container-small {
-      display: none;
-    }
-
-    .title {
-      font-size: 30px;
-      width: 50%;
-      margin: auto;
-      font-weight: bold;
-      text-align: center;
-      padding-bottom: 19px;
-      color: #311a19;
-    }
-
-    .content-container {
-      height: 80vh;
+    .title-container {
+      flex-grow: 8;
       display: flex;
       align-items: center;
-      justify-content: center;
 
-      .beauty-basket-container {
-        display: block;
-
-        h2 {
-          text-align: center;
-          margin-top: 25px;
-          font-size: 40px;
-          font-weight: 600;
-          margin-bottom: 19px;
-          color: #311a19;
-        }
+      h1 {
+        font-size: 50px;
+        width: 60%;
+        margin: auto;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 0px 0px 2px black;
+        color: white;
       }
-    }
-
-    .get-basket-button {
-      color: black;
-      border-radius: 6px;
-      font-size: 18px;
-      display: block;
-      width: 200px;
-      margin: auto;
-      border: 1px solid #311A19;
-      margin-top: 1em;
-      padding: 15px 40px;
-      background-color: #F1D866;
     }
 
     .asterisk {
       margin-top: 2em;
       font-size: 14px;
     }
-  }
-}
 
-#launch-modal {
-  text-align: center;
-  font-family: "Josefin Sans", sans-serif;
-
-  .modal-content {
-    background-color: #F1D866;
-  }
-
-  .modal-header {
-    border: none;
-    padding: 0 1rem;
-  }
-
-  .title {
-    font-size: 30px;
+    .sticky-navbar {
+      background-image: url(../../../images/home-bg.jpg);
+    }
   }
 }
 
@@ -94,55 +51,9 @@
   #welcome {
     .section-1 {
       height: 425px;
-      background-image: url(../../../images/medium-home-background.jpg);
-      background-size: 100% 70%;
+      // background-image: url(../../../images/medium-home-background.jpg);
+      // background-size: 100% 70%;
       background-repeat: no-repeat;
-
-      .content-container {
-        .beauty-basket-container {
-          display: none;
-        }
-      }
-
-      .beauty-basket-container-small {
-        position: absolute;
-        display: block;
-        bottom: 10px;
-        width: 100%;
-
-        .beauty-basket-inner-container-small {
-          padding: 1em 0 0 0;
-          position: relative;
-          background-color: white;
-          width: 80%;
-          margin: auto;
-          border-radius: 8px;
-
-          .title {
-            font-size: 20px;
-            width: 80%;
-            padding: 0;
-          }
-
-          h2 {
-            font-size: 40px;
-            margin-top: 0;
-            margin-bottom: 0;
-          }
-        }
-
-        .get-basket-button {
-          font-size: 15px;
-          width: 150px;
-          margin-top: 0;
-          padding: 10px 30px;
-        }
-
-        .asterisk {
-          margin-top: 0.5em;
-          font-size: 13px;
-        }
-      }
     }
   }
 }
@@ -153,14 +64,11 @@
   #welcome {
     .section-1 {
       height: 50vh;
-      background-image: url(../../../images/phone-home-background.jpg);
-      background-size: 100% auto;
 
-      .beauty-basket-container-small {
-        .beauty-basket-inner-container-small {
-          h2 {
-            font-size: 40px;
-          }
+      .title-container {
+        h1 {
+          width: 90%;
+          font-size: 30px;
         }
       }
     }
@@ -169,32 +77,6 @@
 
 @media (max-width: 330px) {
   #welcome {
-    .section-1 {
-      .beauty-basket-container-small {
-        .beauty-basket-inner-container-small {
-          h2 {
-            font-size: 25px;
-            margin-top: 0;
-            margin-bottom: 0;
-          }
-
-          h3 {
-            font-size: 15px;
-          }
-
-          .title {
-            font-size: 15px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
-  #welcome {
-    .section-1 {
-      height: 40vh;
-    }
+    .section-1 {}
   }
 }

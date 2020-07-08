@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Banner from '../../../components/Banner';
 import Header from '../../../components/Header';
 import Toast from '../../../components/Toast';
@@ -56,22 +54,8 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
           />
         }
         <Header />
-        <Row className='content-container'>
-          <Col md={6}></Col>
-          <Col md={6}>
-            <div className='beauty-basket-container'>
-              <h2>{t('home_page.home.subtitle')}</h2>
-              <h3>19.99€ / 13.100 Fcfa</h3>
-              <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
-            </div>
-          </Col>
-        </Row>
-        <div className='beauty-basket-container-small'>
-          <div className='beauty-basket-inner-container-small'>
-            <h2>{t('home_page.home.subtitle')}</h2>
-            <h3>19.99€ / 13.100 Fcfa</h3>
-            <a href='/baskets?type=beauty' className='get-basket-button'>{t('home_page.home.get_basket_button')}</a>
-          </div>
+        <div className='title-container'>
+          <h1>Pour le bien-être de vos proches en Côte d’Ivoire, nous livrons en 48h*.</h1>
         </div>
       </div>
     </section>

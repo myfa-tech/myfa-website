@@ -23,21 +23,44 @@
   }
 
   .header-items {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    .navbar-header {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
   }
 
   .sticky-navbar {
     position: fixed;
     width: 100%;
+    height: 150px;
     background-color: white;
     padding-left: 100px;
     padding-right: 100px;
     top: 0;
     left: 0;
     z-index: 900;
+    display: flex;
+    flex-direction: column;
+
+    background-size: cover;
+    background-position: center center;
+
+    .sticky-title {
+      text-align: center;
+      flex-grow: 8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        text-shadow: 0px 0px 2px black;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
   }
 
   .navbar {
@@ -50,13 +73,16 @@
 
   .drawer-button {
     background-color: transparent;
-    border: 1px solid #311A19;
-    color: #311A19;
+    border: 1px solid white;
+    height: 42px;
+    text-shadow: 0px 0px 1px black;
+    color: white;
   }
 
   .menu {
     a {
-      color: #311a19 !important;
+      color: white !important;
+      text-shadow: 0px 0px 1px black;
       font-size: 14px;
       font-weight: bold;
       padding: .5rem 1rem 0 1rem;
@@ -68,7 +94,8 @@
       .account {
         background-color: transparent;
         border: none;
-        color: #311a19;
+        color: white;
+        text-shadow: 0px 0px 1px black;
       }
     }
 
@@ -318,6 +345,14 @@
     .sticky-navbar {
       padding-left: 20px;
       padding-right: 20px;
+
+      .sticky-title {
+        h2 {
+          text-shadow: 0px 0px 2px black;
+          color: white;
+          font-size: 30px;
+        }
+      }
     }
   }
 }

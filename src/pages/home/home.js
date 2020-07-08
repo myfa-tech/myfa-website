@@ -14,6 +14,7 @@ const Ratings = lazy(() => import('./Ratings/Ratings'));
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
+import homeBg from '../../images/home-bg.jpg';
 
 import useTranslate from '../../hooks/useTranslate';
 
@@ -21,7 +22,11 @@ const HomePage = () => {
   const [t] = useTranslate();
 
   return (
-    <Layout  hideHeader={true}>
+    <Layout
+      hideHeader={true}
+      headerBackground={homeBg}
+      headerBackgroundPosition='center center'
+    >
       <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
 
       <Welcome />

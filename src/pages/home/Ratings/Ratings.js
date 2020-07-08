@@ -43,8 +43,8 @@ const Ratings = () => {
               <Col className='rating-container' sm={4} key={index}>
                 <div className='rating'>
                   <div className='stars'>
-                    {stars.map(() => (
-                      <FaStar />
+                    {stars.map((star, index) => (
+                      <FaStar key={`star-${index}`} />
                     ))}
                   </div>
                   <div className='author'>

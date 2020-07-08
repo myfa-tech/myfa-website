@@ -9,7 +9,7 @@ const Banner = ({ show, text, title, type, onClose }) => {
   return show && (
     <div className={`banner ${type}`}>
       <Row>
-        {title ? <Col sm={3} className='banner-containers title-container'>
+        {title ? <Col sm={3} className='banner-containers title'>
           <h1>{title}</h1>
         </Col> : null}
         <Col sm={title ? 8 : 11} xs={12} className='banner-containers'>
