@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Newsletter from './Newsletter'
-import { saveNewsletterMember } from '../../../services/mailjet'
+import Newsletter from './Newsletter';
+import { saveNewsletterMember } from '../../../services/mailjet';
 
 class NewsletterContainer extends Component {
   state = {

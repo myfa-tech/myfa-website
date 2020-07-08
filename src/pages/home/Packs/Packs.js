@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaShoppingBasket } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 
 import LoadingBasket from '../../../components/LoadingBasket';
 const CartModal = lazy(() => import('../../../components/CartModal'));
@@ -60,7 +60,7 @@ const Packs = () => {
 
 								<Col xs={6} className='cart-container'>
 									<div className='cart-button'>
-										<FaShoppingBasket className='cart-icon' />
+										<FaShoppingCart className='cart-icon' />
 									</div>
 								</Col>
 							</Row>

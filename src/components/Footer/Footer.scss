@@ -3,7 +3,7 @@
 
   .content-container {
     padding: 2em;
-    background-color: rgba(49, 95, 105, 0.1);
+    background-color: #f1d866;
     color: #311a19;
     border-radius: 0;
     width: 90%;
@@ -66,6 +66,13 @@
       display: block;
       width: 30%;
       margin: 0 auto 1em auto;
+    }
+
+    .subscribe-btn {
+      border-color: #315f69;
+      background-color: #315f69;
+      color: white;
+      padding: .5rem 2rem !important;
     }
   }
 
