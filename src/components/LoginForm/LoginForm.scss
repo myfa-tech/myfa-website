@@ -27,7 +27,7 @@
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
 		color: #fff;
-		border-radius: 6px;
+		border-radius: 0;
 		margin-top: 1em;
 		width: 100%;
     cursor: pointer;
@@ -54,7 +54,7 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
 		padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
 		width: 100%;
-    border-radius: 6px;
+    border-radius: 0;
 		margin-top: 1em;
     border: 1px solid transparent;
     font-size: calc(.27548vw + 12.71074px);
@@ -96,7 +96,7 @@
 
   .login-button {
 		color: #fff;
-		border-radius: 6px;
+		border-radius: 0;
 		font-size: 18px;
 		width: 100%;
 		margin-top: 1em;

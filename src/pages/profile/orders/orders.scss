@@ -4,7 +4,7 @@
 
   .pending-orders-container, .treated-orders-container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
 
     .baskets-container {
       max-height: 400px;
@@ -44,7 +44,7 @@
         list-style-type: none;
         padding: 1em 3em;
         margin-bottom: 1em;
-        border-radius: 8px;
+        border-radius: 0;
       }
 
       .title-container {
@@ -55,7 +55,7 @@
 
       img {
         width: 70%;
-        border-radius: 8px;
+        border-radius: 0;
       }
     }
   }

@@ -13,7 +13,7 @@
 		#sliding-infos {
 			position: fixed;
 			border: 1px solid rgb(211, 211, 211);
-			border-radius: 8px;
+			border-radius: 0;
 			padding: 1em;
 
 			h2 {
@@ -26,7 +26,7 @@
 
 			.pay-button {
 				color: black;
-				border-radius: 6px;
+				border-radius: 0;
 				font-size: 15px;
 				display: block;
 				float: right;
@@ -157,7 +157,7 @@
 		padding: 5px;
 		vertical-align: middle;
 		font-size: 15px;
-		border-radius: 6px;
+		border-radius: 0;
 		margin-left: 10px;
 	}
 
@@ -195,7 +195,7 @@
 
 		.order-button {
 			color: black;
-			border-radius: 6px;
+			border-radius: 0;
 			font-size: 18px;
 			display: block;
 			margin: auto;
@@ -224,7 +224,7 @@
 	}
 
   img {
-		border-radius: 8px;
+		border-radius: 0;
 		width: 100%;
   }
 
@@ -238,7 +238,7 @@
 
 		.next-button {
 			color: #311A19;
-			border-radius: 6px;
+			border-radius: 0;
 			font-weight: bold;
 			margin: auto;
 			display: block;
@@ -251,7 +251,7 @@
 
 		.previous-button {
 			color: white;
-			border-radius: 6px;
+			border-radius: 0;
 			font-weight: bold;
 			margin: auto;
 			display: block;
@@ -282,7 +282,7 @@
 		.basket-img-container {
 			padding: 1em;
 			background-color: rgba(241, 216, 102, 0.1);
-			border-radius: 8px;
+			border-radius: 0;
 
 			p {
 				font-size: 13px;

@@ -24,7 +24,6 @@
 		padding: 5px;
 		vertical-align: middle;
 		font-size: 15px;
-		border-radius: 6px;
 		margin-left: 10px;
 	}
 
@@ -52,7 +51,6 @@
 
 		.order-button {
 			color: black;
-			border-radius: 6px;
 			font-size: 18px;
 			display: block;
 			margin: auto;
@@ -73,7 +71,6 @@
 		flex-wrap: wrap;
 
 		.basket-card {
-			border-radius: 8px;
 			padding: 1em;
 			text-align: center;
 
@@ -120,10 +117,6 @@
 		outline: 1px solid red;
 	}
 
-  img {
-		border-radius: 8px;
-  }
-
 	li {
 		font-size: 18px;
 	}
@@ -138,7 +131,6 @@
 		.basket-img-container {
 			padding: 1em;
 			background-color: rgba(241, 216, 102, 0.1);
-			border-radius: 8px;
 
 			p {
 				font-size: 13px;

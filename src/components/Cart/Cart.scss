@@ -4,7 +4,7 @@
 
   .empty-cart-container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -24,13 +24,13 @@
       padding: 0.5em 2em;
       font-weight: 500;
       border: 1px solid #311A19;
-      border-radius: 8px;
+      border-radius: 0;
     }
   }
 
   .disabled-section {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
     margin-top: 1em;
     margin-bottom: 1em;
 
@@ -60,7 +60,7 @@
 
   .price-container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
     padding: 2em;
     height: 564px;
 

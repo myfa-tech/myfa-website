@@ -117,7 +117,7 @@
     }
 
     .account {
-      border-radius: 8px;
+      border-radius: 0;
     }
 
     .profile-link {
@@ -213,7 +213,7 @@
     font-size: 15px;
     font-weight: 600;
     border: 1px solid #311A19;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .empty-cart {
@@ -233,7 +233,7 @@
 
       img {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 0;
       }
     }
 
@@ -296,7 +296,7 @@
       background-color: #eee;
       list-style-type: none;
       padding: 5px;
-      border-radius: 8px;
+      border-radius: 0;
 
       &:not(:last-child) {
         margin-bottom: 1em;

@@ -13,7 +13,7 @@
 
 			.article-inner-container {
         background-color: white;
-        border-radius: 8px;
+        border-radius: 0;
         padding-top: 1em;
         padding-bottom: 2em;
 			}
@@ -53,7 +53,7 @@
 				.cart-button {
 					width: 40px;
 					height: 40px;
-					border-radius: 8px;
+					border-radius: 0;
 					border: 1px solid lightgrey;
 					background-color: #F1D866;
 					display: flex;
@@ -71,13 +71,13 @@
 				background-color: rgb(211, 64, 64);
 				color: white;
 				padding: 5px;
-				border-radius: 6px;
+				border-radius: 0;
 				margin-left: 10px;
 			}
 
 			img {
 				width: 70%;
-				border-radius: 8px;
+				border-radius: 0;
 			}
 
 			h4 {
@@ -92,10 +92,10 @@
 	}
 
 	.form-input {
-		border-radius: 6px;
-		-moz-border-radius: 6px;
-		-webkit-border-radius: 6px;
-		-o-border-radius: 6px;
+		border-radius: 0;
+		-moz-border-radius: 0;
+		-webkit-border-radius: 0;
+		-o-border-radius: 0;
 		border: 1px solid #eee;
 		font-size: 14px;
 		padding: 10px;
