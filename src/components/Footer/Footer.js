@@ -94,7 +94,7 @@ const Footer = ({ noBackgroundColor }) => {
               <li><a href='/ratings'>Avis des clients</a></li>
             </ul>
           </Col>
-          <Col xs={12} lg={2} className='footer-col'>
+          <Col sm={6} lg={2} className='footer-col'>
             <h4>Contact</h4>
 
             <ul>
@@ -105,7 +105,7 @@ const Footer = ({ noBackgroundColor }) => {
               <li>Email: <a href='mailto:infos@myfa.fr'>infos@myfa.fr</a></li>
             </ul>
           </Col>
-          <Col xs={12} lg={3} className='footer-col'>
+          <Col sm={6} lg={3} className='footer-col'>
             <h4>Inscrivez-vous</h4>
 
             <p>Une fois par semaine, nous vous mettons au courant des nouveautés de MYFA.</p>

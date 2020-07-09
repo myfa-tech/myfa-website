@@ -28,6 +28,14 @@
 }
 
 
+@media (max-width: 768px) {
+  .section-title-container {
+    .section-title {
+      font-size: 30px;
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .section-title-container {
     .section-title {

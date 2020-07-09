@@ -53,12 +53,12 @@ const Packs = () => {
 								<img src={basket.img} alt={basket.imgAlt} />
 							</div>
 							<Row className='price-and-buy-container'>
-								<Col xs={6} className='price-container'>
+								<Col xs={7} className='price-container'>
 									<p className='new-price-euro'>{basket.price}€</p>
 									<p className='new-price-cfa'>{basket.priceCFA} FCFA</p>
 								</Col>
 
-								<Col xs={6} className='cart-container'>
+								<Col xs={5} className='cart-container'>
 									<div className='cart-button'>
 										<FaShoppingCart className='cart-icon' />
 									</div>

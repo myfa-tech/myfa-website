@@ -15,7 +15,7 @@
         background-color: white;
         border-radius: 0;
         padding-top: 1em;
-        padding-bottom: 2em;
+        padding-bottom: 0;
 			}
 
 			.price-and-buy-container {
@@ -167,12 +167,26 @@
 @media (max-width: 768px) {
 	.articles {
 		.articles-container {
-			margin: 0 2em;
+			margin: 0 auto;
+
+			.article-inner-container {
+				img {
+					width: 100%;
+				}
+
+				h4 {
+					height: 48px;
+				}
+			}
 
 			.article-container {
 				width: 95%;
 
 				.price-and-buy-container {
+					.cart-container {
+						padding: 0;
+					}
+
 					.price-container {
 						padding-left: 0.5em;
 						padding-right: 0.5em;
@@ -183,7 +197,7 @@
 						}
 
 						.new-price-cfa {
-							font-size: 15px;
+							font-size: 11px;
 						}
 					}
 				}
