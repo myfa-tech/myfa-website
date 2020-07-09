@@ -16,7 +16,7 @@ const sendBasketCommentMail = async (data) => {
     headers: { 'Authorization': `Bearer ${JWT_TOKEN}` },
   });
 
-  await axios.post('/baskets/comment', data);
+  await axios.post('/baskets/comments', data);
 };
 
 export { saveNewsletterMember, sendBasketCommentMail };
