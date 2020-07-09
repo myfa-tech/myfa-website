@@ -194,7 +194,9 @@
       "total_ttc": "Total TTC",
       "checkout": "Payer",
       "empty_basket": "Votre panier est vide"
-    }
+    },
+    "packs_description": "Nos packs sont composés de manière à subvenir aux besoins de vos proches.",
+    "baskets_description": "Faites plaisir à vos proches."
   },
   "footer": {
     "legal_notice": "Mentions légales"

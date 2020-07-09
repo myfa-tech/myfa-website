@@ -5,6 +5,12 @@
 		font-size: 18px;
 	}
 
+	.big-form-input {
+    .MuiInputBase-input {
+      min-height: 200px;
+    }
+	}
+
 	table {
 		width: 100%;
 
@@ -91,10 +97,17 @@
 				max-width: 150px;
 			}
 
-			h3 {
+			h4 {
 				font-size: 20px;
 				text-align: center;
 			}
+		}
+	}
+
+	.comment-form {
+		.send-comment-button {
+			float: right;
+			margin-top: 1em;
 		}
 	}
 
@@ -102,13 +115,6 @@
 		.images-container {
 			max-height: 350px;
 			overflow-y: scroll;
-			/* Hide scrollbar for IE and Edge */
-			// -ms-overflow-style: none;
-
-			/* Hide scrollbar for Chrome, Safari and Opera */
-			// &::-webkit-scrollbar {
-			// 	display: none;
-			// }
 
 			img {
 				margin: 0 auto 20px auto;
@@ -175,7 +181,7 @@
 @media (max-width: 768px) {
   #basket-to-order {
 		.basket-card {
-			h3 {
+			h4 {
 				font-size: 13px;
 				text-align: center;
 			}
@@ -229,7 +235,7 @@
 		img {
 			width: 50%;
 			display: block;
-			margin: 0 auto 2em auto;
+			margin: 0 auto 0.5em auto
 		}
 
 		.other-baskets-row {

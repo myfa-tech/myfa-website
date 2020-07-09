@@ -7,6 +7,7 @@ import CartItems from './CartItems';
 import MessagesToRelative from './MessagesToRelative';
 import ButtonWithLoader from '../ButtonWithLoader';
 import AddRecipientModal from './AddRecipientModal';
+import PromoCode from './PromoCode';
 
 import stripeService from '../../services/stripe';
 import EventEmitter from '../../services/EventEmitter';
@@ -15,7 +16,6 @@ import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
 
 import './Cart.scss';
-import PromoCode from './PromoCode/PromoCode';
 
 const NODE_ENV = process.env.NODE_ENV;
 const PROMO_PERCENTAGE = 10;

@@ -9,6 +9,14 @@
     flex-direction: column;
 
     .header-description {
+      font-size: 50px;
+      width: 60%;
+      margin: auto;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0px 0px 2px black;
+      color: white;
+      line-height: 40px;
       flex-grow: 8;
       display: flex;
       align-items: center;
@@ -55,6 +63,7 @@
       align-items: center;
 
       h2 {
+        width: 70%;
         text-shadow: 0px 0px 2px black;
         color: white;
         font-size: 40px;
@@ -342,6 +351,16 @@
 
 @media (max-width: 480px) {
   #header {
+    &.header-image-description {
+      .header-description {
+        width: 100%;
+
+        span {
+          font-size: 22px;
+        }
+      }
+    }
+
     .sticky-navbar {
       padding-left: 20px;
       padding-right: 20px;
@@ -350,7 +369,8 @@
         h2 {
           text-shadow: 0px 0px 2px black;
           color: white;
-          font-size: 30px;
+          font-size: 22px;
+          width: 100%;
         }
       }
     }
@@ -362,7 +382,7 @@
     &.header-image-description {
       .header-description {
         span {
-          font-size: 28px;
+          font-size: 22px;
         }
       }
     }
