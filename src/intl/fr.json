@@ -57,7 +57,7 @@
       "all_ratings": "Voir tous les avis"
     },
     "packs": {
-      "packs_title": "Nos packs ravitaillement",
+      "packs_title": "Packs ravitaillement",
       "packs_mobile_title": "Ravitaillement",
       "packs_secondary": "Voir tous les packs",
       "veggies_pack_title": "Pack Légumes 🧅",
@@ -77,7 +77,7 @@
       "title": "Choisissez votre panier !",
       "subtitle": "Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.",
       "until_date": "jusqu'au 31/03/2020",
-      "pleasure_baskets_title": "Nos paniers plaisir",
+      "pleasure_baskets_title": "Paniers plaisir",
       "pleasure_baskets_mobile_title": "Plaisir",
       "pleasure_baskets_secondary": "Voir tous les paniers",
       "fruits_basket_title": "Panier Fruits 🍌",
@@ -157,7 +157,7 @@
     "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse infos@myfa.fr."
   },
   "ratings": {
-    "title": "Avis clients",
+    "title": "Avis des clients",
     "description": "Tous vos avis comptent.",
     "introduction": "Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.",
     "button_label": "Donner mon avis"

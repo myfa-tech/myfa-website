@@ -54,7 +54,11 @@ const RatingsPage = () => {
       <SEO title='Avis' />
 
       <div id='ratings'>
-        <SectionTitle title={t('ratings.title')} secondary={{ text: 'Accueil', link: '/' }} />
+        <SectionTitle
+          title={t('ratings.title')}
+          mobileTitle={t('ratings.title')}
+          secondary={{ text: 'Accueil', link: '/' }}
+        />
 
         <p className='description'>
           {t('ratings.introduction')}
