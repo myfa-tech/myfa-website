@@ -5,6 +5,19 @@
 		font-size: 18px;
 	}
 
+	table {
+		width: 100%;
+
+		td, th {
+			border: 1px solid rgb(219, 219, 219);
+			padding: 0.5em 1em;
+		}
+
+		.qty-column {
+			width: 70px;
+		}
+	}
+
 	.error {
 		border-color: red;
 	}
@@ -211,11 +224,6 @@
 
 		h3 {
 			text-align: center;
-		}
-
-		ul {
-			width: 200px;
-			margin: auto;
 		}
 
 		img {

@@ -31,7 +31,7 @@ const Packs = () => {
 
 	const handleBasketButtonClick = (basketType) => {
 		if (typeof window !== 'undefined') {
-			window.location.assign(`baskets?type=${basketType}`);
+			window.location.assign(`packs?type=${basketType}`);
 		}
 	};
 

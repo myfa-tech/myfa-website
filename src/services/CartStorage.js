@@ -6,6 +6,8 @@ import { createCart, deleteSavedCart, getCart, updateCart } from './cart';
 const eventEmitter = new EventEmitter();
 
 const addToCart = async (basket, qty = 1) => {
+  console.log(basket);
+
   if (typeof window !== 'undefined') {
     let cart = {};
     let isNewCart = false;

@@ -10,9 +10,9 @@ import CartModal from '../CartModal';
 
 import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
-import useFetchPleasureBaskets from '../../hooks/useFetchPleasureBaskets';
 import CartStorage from '../../services/CartStorage';
 import getBasketImage from '../../utils/getBasketImage';
+import useFetchOrderBaskets from '../../hooks/useFetchOrderBaskets';
 
 import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
 import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
@@ -30,10 +30,11 @@ const BasketToOrder = () => {
   const [qty, setQty] = useState(1);
   const [isDone, setIsDone] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
-  const [baskets, setBaskets] = useFetchPleasureBaskets([]);
+  const [baskets, setBaskets] = useFetchOrderBaskets([]);
   const [t, locale] = useTranslate();
 
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
+  const catType = (typeof window !== 'undefined' && window.location.pathname.includes('packs')) ? 'packs' : 'baskets';
   const basket = baskets.find(b => b.type === type);
   const otherBaskets = basket ? baskets.filter(b => b.type !== basket.type) : [];
 
@@ -59,11 +60,7 @@ const BasketToOrder = () => {
 
   const goToBasketPage = (type) => {
     if (typeof window !== 'undefined') {
-      if (type === 'myfa') {
-				window.location.assign('/custom-basket');
-			} else {
-        window.location.assign(`/baskets?type=${type}`);
-      }
+      window.location.assign(`/${catType}?type=${type}`);
 		}
   }
 
@@ -99,11 +96,14 @@ const BasketToOrder = () => {
 
             <h3>{t('basket_to_order.basket_contains')}</h3>
 
-            <ul>
+            <table>
               {basket.itemsTranslate.map((item, index) => (
-                <li key={index}>{t(`ingredients.${item}`)}</li>
+                <tr key={index}>
+                  <td className='label-column'>{t(`ingredients.${item.label}`)}</td>
+                  <td className='qty-column'>x {item.qty}</td>
+                </tr>
               ))}
-            </ul>
+            </table>
 
             <div className='qty-container'>
               <h4>{t('basket_to_order.qty')}</h4>

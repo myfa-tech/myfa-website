@@ -78,6 +78,7 @@ const App = () => (
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
       <BasketsPage path='/baskets' />
+      <BasketsPage path='/packs' />
       <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
       <CguEnPage path='/cgu_en'/>
