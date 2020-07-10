@@ -218,7 +218,7 @@ const Baskets = () => {
               </div>
 
               <div className='comment-form'>
-                <h3>Une suggestion ? Un produit vous manque dans ce pack ?</h3>
+                <h3>{t('basket_to_order.suggestion_title')}</h3>
 
                 <TextField
                   type='text'
@@ -227,7 +227,7 @@ const Baskets = () => {
                   error={commentError}
                   multiline
                   label='Message'
-                  placeholder='Dites-nous tout'
+                  placeholder={t('basket_to_order.suggestion_placeholder')}
                   name='comment'
                   value={comment}
                   onChange={handleCommentChange}
@@ -235,11 +235,11 @@ const Baskets = () => {
 
                 <ButtonWithLoader
                   isLoading={isCommentSendingLoading}
-                  label='Envoyer'
+                  label={t('basket_to_order.suggestion_button')}
                   onClick={sendComment}
                   className='send-comment-button'
                   success={isCommentSent}
-                  successLabel='Envoyé ✅'
+                  successLabel={`${t('basket_to_order.suggestion_button_success')} ✅`}
                 />
               </div>
             </Col>

@@ -194,7 +194,9 @@
       "total_ttc": "Total Price",
       "checkout": "Checkout",
       "empty_basket": "Your cart is empty"
-    }
+    },
+    "packs_description": "Our packs are made up to meet the needs of your loved ones.",
+    "baskets_description": "Faites plaisir à vos proches."
   },
   "footer": {
     "legal_notice": "Legal Notice"
@@ -271,7 +273,11 @@
     "qty": "Quantity",
     "max_qty_reached": "Maximum quantity reached",
     "add_to_cart": "Add to cart",
-    "other_baskets": "Our other baskets"
+    "other_baskets": "Our other baskets",
+    "suggestion_title": "A suggestion ? Are you missing a product in this pack?",
+    "suggestion_placeholder": "Tell us everything",
+    "suggestion_button": "Send",
+    "suggestion_button_success": "Sent"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",

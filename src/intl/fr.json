@@ -273,7 +273,11 @@
     "qty": "Quantité",
     "max_qty_reached": "Quantité maximum atteinte",
     "add_to_cart": "Ajouter au panier",
-    "other_baskets": "Nos autres paniers"
+    "other_baskets": "Nos autres paniers",
+    "suggestion_title": "Une suggestion ? Un produit vous manque dans ce pack ?",
+    "suggestion_placeholder": "Dites-nous tout",
+    "suggestion_button": "Envoyer",
+    "suggestion_button_success": "Envoyé"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",
