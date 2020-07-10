@@ -22,10 +22,7 @@
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
-      "title": "For Mother's Day, let her know that you love her from far",
-      "subtitle": "Beauty basket",
-      "discover_baskets_button": "Discover the baskets",
-      "get_basket_button": "Discover it",
+      "welcome_title": "For the well-being of your loved ones in Côte d'Ivoire, we deliver in 48 hours *.",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "Due to the current situation, delivery times for MYFA baskets may be longer.",
@@ -196,7 +193,10 @@
       "empty_basket": "Your cart is empty"
     },
     "packs_description": "Our packs are made up to meet the needs of your loved ones.",
-    "baskets_description": "Faites plaisir à vos proches."
+    "baskets_description": "Faites plaisir à vos proches.",
+    "sticky": {
+      "home": "Order from here, we deliver there."
+    }
   },
   "footer": {
     "introduction": "Safely buy food supplies for your loved ones in Côte d'Ivoire.",

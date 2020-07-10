@@ -183,7 +183,7 @@ const Header = ({ hideHeader, headerBackground, headerDescription, headerBackgro
 
         {sticky ? <div className='sticky-title'>
           {headerDescription ? <h2>{headerDescription}</h2> :
-            <h2>Commandez d'ici, nous livrons là-bas.</h2>
+            <h2>{t('header.sticky.home')}</h2>
           }
         </div> : null}
       </div>

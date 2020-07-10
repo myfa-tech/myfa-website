@@ -55,7 +55,7 @@ const Welcome = ({ setShowToast, showToast, toastType }) => {
         }
         <Header />
         <div className='title-container'>
-          <h1>Pour le bien-être de vos proches en Côte d’Ivoire, nous livrons en 48h*.</h1>
+          <h1>{t('home_page.home.welcome_title')}</h1>
         </div>
       </div>
     </section>

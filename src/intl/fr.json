@@ -22,10 +22,7 @@
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
-      "title": "Pour la fête des mères*, faites-lui savoir que vous l'aimez de loin",
-      "subtitle": "Panier Beauté",
-      "discover_baskets_button": "Découvrir les paniers",
-      "get_basket_button": "Je craque",
+      "welcome_title": "Pour le bien-être de vos proches en Côte d’Ivoire, nous livrons en 48h*.",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",
@@ -196,7 +193,10 @@
       "empty_basket": "Votre panier est vide"
     },
     "packs_description": "Nos packs sont composés de manière à subvenir aux besoins de vos proches.",
-    "baskets_description": "Faites plaisir à vos proches."
+    "baskets_description": "Faites plaisir à vos proches.",
+    "sticky": {
+      "home": "Commandez d'ici, nous livrons là-bas."
+    }
   },
   "footer": {
     "introduction": "Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.",
