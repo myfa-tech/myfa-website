@@ -67,10 +67,7 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
                         <img src={getBasketImage(basket.type)} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        {basket.category === 'packs' ?
-                          <h4>{t(`home_page.packs.${basket.type}_pack_title`)}</h4> :
-                          <h4>{t(`home_page.baskets.${basket.type}_basket_title`)}</h4>
-                        }
+                        <h4>{t(`home_page.packs.${basket.type}_title`)}</h4> :
                         <p>{basket.price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>

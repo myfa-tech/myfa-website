@@ -57,18 +57,18 @@
       "packs_title": "Packs ravitaillement",
       "packs_mobile_title": "Ravitaillement",
       "packs_secondary": "Voir tous les packs",
-      "veggies_pack_title": "Pack Légumes 🧅",
-      "veggies_pack_home_description": "Oignons, carottes, Ignames...",
-      "veggies_pack_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
-      "local_rice_pack_title": "Pack Familial - Riz local",
-      "local_rice_pack_home_description": "Tomates, riz local, piment...",
-      "local_rice_pack_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100 % ivoirien.",
-      "rice_attieke_pack_title": "Pack Familial - Riz attieke",
-      "rice_attieke_pack_home_description": "Riz, attieke, lait en poudre...",
-      "rice_attieke_pack_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
-      "morning_pack_title": "Pack Matinal",
-      "morning_pack_home_description": "Margarine, café, pâte à tartiner...",
-      "morning_pack_description": "Grâce au pack matinal, permettez à vos proches de bien démarrer la journée. Certaines marques peuvent différer selon leur disponibilité."
+      "veggies_title": "Pack Légumes 🧅",
+      "veggies_home_description": "Oignons, carottes, Ignames...",
+      "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
+      "local_rice_title": "Pack Familial - Riz local",
+      "local_rice_home_description": "Tomates, riz local, piment...",
+      "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100 % ivoirien.",
+      "rice_attieke_title": "Pack Familial - Riz attieke",
+      "rice_attieke_home_description": "Riz, attieke, lait en poudre...",
+      "rice_attieke_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
+      "morning_title": "Pack Matinal",
+      "morning_home_description": "Margarine, café, pâte à tartiner...",
+      "morning_description": "Grâce au pack matinal, permettez à vos proches de bien démarrer la journée. Certaines marques peuvent différer selon leur disponibilité."
     },
     "baskets": {
       "title": "Choisissez votre panier !",
@@ -209,6 +209,7 @@
     "cta": "Retour à l'accueil"
   },
   "cart": {
+    "description": "Mon panier",
     "relative_info_title": "Informations sur mon proche",
     "self_info_title": "Je m'inscris pour commander",
     "promo_code_title": "Code promo",

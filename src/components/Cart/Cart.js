@@ -191,38 +191,41 @@ const Cart = () => {
             <Col md='8' className='first-section'>
               {step === 1 ?
                 <CartItems
+                  className='cart-section'
                   cart={cart}
                   errors={recipientsErrors}
                   handleChangeRecipient={handleChangeRecipient}
                   basketsPrice={basketsPrice}
                   removeBasket={removeBasket}
                 /> :
-                <div className='disabled-section' onClick={() => goToStep(1)}>
+                <div className='disabled-section cart-section' onClick={() => goToStep(1)}>
                   <h2>{t('cart.items.title')}</h2>
                 </div>
               }
               {step === 2 ?
                 <PromoCode
+                  className='cart-section'
                   applyPromo={applyPromo}
                   promoActivated={promoActivated}
                   promoPercentage={PROMO_PERCENTAGE}
                 /> :
-                <div className={`disabled-section promo-code ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(2)}>
+                <div className={`disabled-section cart-section promo-code ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(2)}>
                   <h2>{t('cart.promo_code_title')}</h2>
                 </div>
               }
               {step === 3 ?
                 <MessagesToRelative
+                  className='cart-section'
                   cart={cart}
                   handleChangeMessage={handleChangeMessagesToRelative}
                 /> :
-                <div className={`disabled-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(3)}>
+                <div className={`disabled-section cart-section message-to-relative ${!user ? 'cannot-click' : ''}`} onClick={() => goToStep(3)}>
                   <h2>{t('cart.message_to_relative_title')}</h2>
                 </div>
               }
             </Col>
             <Col md='4'>
-              <div className='price-container'>
+              <div className='price-container cart-section'>
                 <h2>{t('cart.price_container.total')}</h2>
 
                 <Divider variant='middle' />
