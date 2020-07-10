@@ -10,14 +10,10 @@ import common_en from './intl/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
-
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
 const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
-const ProfileInformationPage = lazy(() => import('./pages/profile/information'));
-const ProfileOrdersPage = lazy(() => import('./pages/profile/orders'));
-const ProfilePasswordPage = lazy(() => import('./pages/profile/password'));
-const ProfileRelativesPage = lazy(() => import('./pages/profile/relatives'));
+const ProfilePage = lazy(() => import('./pages/profile'));
 const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
 const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
@@ -71,10 +67,7 @@ const App = () => (
         from="/profile"
         to="/profile/information"
       />
-      <ProfileInformationPage path='/profile/information' />
-      <ProfileOrdersPage path='/profile/orders' />
-      <ProfilePasswordPage path='/profile/password' />
-      <ProfileRelativesPage path='/profile/relatives' />
+      <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
       <BasketsPage path='/baskets' />

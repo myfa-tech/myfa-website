@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 
-import SEO from '../../../components/seo';
-import Layout from '../../../components/layout';
-import ProfileGreeting from '../../../components/Profile/ProfileGreeting';
-import ProfileMenu from '../../../components/Profile/ProfileMenu';
+import ProfileMenu from '../ProfileMenu';
 
 import useTranslate from '../../../hooks/useTranslate';
 import { updatePassword } from '../../../services/users';
@@ -78,68 +75,62 @@ const ProfilePasswordPage = () => {
   };
 
   return loading ? null : (
-    <Layout className='profile-background profile'>
-      <SEO title='Profil' />
+    <Row className='password-container'>
+      <Col sm={4} className='left-column'>
+        <ProfileMenu pageName='password' />
+      </Col>
+      <Col sm={8} className='right-column'>
+        <div id='profile-password'>
+          <h2>{t('profile.password.headline')}</h2>
 
-      <ProfileGreeting />
+          <form onSubmit={updateInfo}>
+            <div>
+              <TextField
+                type='password'
+                className='full-width form-input'
+                required
+                error={errors['actualPassword']}
+                label={t('profile.password.current_password')}
+                name='actualPassword'
+                value={form.actualPassword}
+                variant='outlined'
+                onChange={handleChangeFormValue}
+                disabled={isLoading}
+              />
+            </div>
+            <div>
+              <TextField
+                type='password'
+                className='full-width form-input'
+                required
+                error={errors['newPassword']}
+                label={t('profile.password.new_password')}
+                name='newPassword'
+                value={form.newPassword}
+                variant='outlined'
+                onChange={handleChangeFormValue}
+                disabled={isLoading}
+              />
+            </div>
 
-      <Row className='password-container'>
-        <Col sm={4} className='left-column'>
-          <ProfileMenu pageName='password' />
-        </Col>
-        <Col sm={8} className='right-column'>
-          <div id='profile-password'>
-            <h2>{t('profile.password.headline')}</h2>
-
-            <form onSubmit={updateInfo}>
-              <div>
-                <TextField
-                  type='password'
-                  className='full-width form-input'
-                  required
-                  error={errors['actualPassword']}
-                  label={t('profile.password.current_password')}
-                  name='actualPassword'
-                  value={form.actualPassword}
-                  variant='outlined'
-                  onChange={handleChangeFormValue}
-                  disabled={isLoading}
+            {isLoading ?
+              <span className='update-user-button'>
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
                 />
-              </div>
-              <div>
-                <TextField
-                  type='password'
-                  className='full-width form-input'
-                  required
-                  error={errors['newPassword']}
-                  label={t('profile.password.new_password')}
-                  name='newPassword'
-                  value={form.newPassword}
-                  variant='outlined'
-                  onChange={handleChangeFormValue}
-                  disabled={isLoading}
-                />
-              </div>
-
-              {isLoading ?
-                <span className='update-user-button'>
-                  <ClipLoader
-                    css={spinnerStyle}
-                    sizeUnit={'px'}
-                    size={25}
-                    color={'#000'}
-                    loading={true}
-                  />
-                </span> :
-                <button type='submit' className='update-user-button'>
-                  {t('profile.password.save')}
-                </button>
-              }
-            </form>
-          </div>
-        </Col>
-      </Row>
-    </Layout>
+              </span> :
+              <button type='submit' className='update-user-button'>
+                {t('profile.password.save')}
+              </button>
+            }
+          </form>
+        </div>
+      </Col>
+    </Row>
   );
 }
 

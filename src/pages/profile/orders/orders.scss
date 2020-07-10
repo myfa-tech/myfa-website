@@ -4,7 +4,9 @@
 
   .pending-orders-container, .treated-orders-container {
     background-color: white;
+    border: 1px solid rgb(219, 219, 219);
     border-radius: 0;
+    margin-bottom: 1em;
 
     .baskets-container {
       max-height: 400px;

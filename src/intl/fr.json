@@ -341,6 +341,7 @@
     "here": "ici"
   },
   "profile": {
+    "description": "Mon profil",
     "greeting": {
       "hello": "Bonjour"
     },

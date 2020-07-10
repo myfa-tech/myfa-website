@@ -9,8 +9,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import SEO from '../../../components/seo';
 import Layout from '../../../components/layout';
-import ProfileGreeting from '../../../components/Profile/ProfileGreeting';
-import ProfileMenu from '../../../components/Profile/ProfileMenu';
+import ProfileGreeting from '../ProfileGreeting';
+import ProfileMenu from '../ProfileMenu';
 import ButtonWithLoader from '../../../components/ButtonWithLoader';
 const CartModal = lazy(() => import('../../../components/CartModal'));
 
@@ -96,91 +96,85 @@ const ProfileOrdersPage = () => {
   });
 
   return loading ? null : (
-    <Layout className='profile-background profile'>
-      <SEO title='Profil' />
+    <Row className='orders-container'>
+      <Col sm={4} className='left-column'>
+        <ProfileMenu pageName='orders' />
+      </Col>
+      <Col sm={8} className='right-column'>
+        <div id='profile-orders'>
+          <div className='pending-orders-container'>
+            <h2>{t('profile.orders.processing_title')}</h2>
 
-      <ProfileGreeting />
-
-      <Row className='orders-container'>
-        <Col sm={4} className='left-column'>
-          <ProfileMenu pageName='orders' />
-        </Col>
-        <Col sm={8} className='right-column'>
-          <div id='profile-orders'>
-            <div className='pending-orders-container'>
-              <h2>{t('profile.orders.processing_title')}</h2>
-
-              {pendingBaskets.length ?
-                <ul className='baskets-container'>
-                  {pendingBaskets.map((basket, index) => (
-                    <li key={index}>
-                      <Row>
-                        <Col md={3} xs={0} className='image-container d-none d-sm-block'>
-                          <img src={getBasketImage(basket.type)} />
-                        </Col>
-                        <Col md={9} xs={12} className='stepper-container'>
-                          <div className='title-container'>
-                            <h3>{basket.label}</h3>
-                            <h3>{t('profile.orders.order')} {basket.orderRef}</h3>
-                          </div>
-                          <div className='content-container'>
-                          <ThemeProvider theme={theme}>
-                            <Stepper activeStep={Object.keys(basketStatus).indexOf(basket.status)} alternativeLabel classes={{ root: classes.stepperRoot }}>
-                              {Object.values(basketStatus).map(status => (
-                                <Step key={status} classes={{ root: classes.stepRoot }}>
-                                  <StepLabel>{status}</StepLabel>
-                                </Step>
-                              ))}
-                            </Stepper>
-                          </ThemeProvider>
-                          </div>
-                        </Col>
-                      </Row>
-                    </li>
-                  ))}
-                </ul> :
-                <p className='no-order'>{t('profile.orders.no_processing_orders')}</p>
-              }
-            </div>
-            <div className='treated-orders-container'>
-              <h2>{t('profile.orders.processed_title')}</h2>
-
-              {deliveredBaskets.length ?
-                <ul className='baskets-container'>
-                  {deliveredBaskets.map((basket, index) => (
-                    <li key={index}>
-                      <Row>
-                        <Col sm={3} xs={0} className='image-container d-none d-sm-block'>
-                          <img src={getBasketImage(basket.type)} />
-                        </Col>
-                        <Col sm={6} xs={8} className='info-container'>
-                          <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
-                          <p>Destinataire : {basket.recipient.firstname} {basket.recipient.lastname}</p>
-                          <p>{basket.price} €</p>
-                        </Col>
-                        <Col xs={4} sm={3} className='reorder-button-container'>
-                          <ButtonWithLoader className='reorder-button' label={t('profile.orders.reorder')} isLoading={false} onClick={() => reOrder(basket)} />
-                        </Col>
-                      </Row>
-                    </li>
-                  ))}
-                </ul> :
-                <p className='no-order'>{t('profile.orders.no_processed_orders')}</p>
-              }
-            </div>
+            {pendingBaskets.length ?
+              <ul className='baskets-container'>
+                {pendingBaskets.map((basket, index) => (
+                  <li key={index}>
+                    <Row>
+                      <Col md={3} xs={0} className='image-container d-none d-sm-block'>
+                        <img src={getBasketImage(basket.type)} />
+                      </Col>
+                      <Col md={9} xs={12} className='stepper-container'>
+                        <div className='title-container'>
+                          <h3>{basket.label}</h3>
+                          <h3>{t('profile.orders.order')} {basket.orderRef}</h3>
+                        </div>
+                        <div className='content-container'>
+                        <ThemeProvider theme={theme}>
+                          <Stepper activeStep={Object.keys(basketStatus).indexOf(basket.status)} alternativeLabel classes={{ root: classes.stepperRoot }}>
+                            {Object.values(basketStatus).map(status => (
+                              <Step key={status} classes={{ root: classes.stepRoot }}>
+                                <StepLabel>{status}</StepLabel>
+                              </Step>
+                            ))}
+                          </Stepper>
+                        </ThemeProvider>
+                        </div>
+                      </Col>
+                    </Row>
+                  </li>
+                ))}
+              </ul> :
+              <p className='no-order'>{t('profile.orders.no_processing_orders')}</p>
+            }
           </div>
-        </Col>
-      </Row>
-      {showCartModal &&
-				<Suspense fallback={''}>
-					<CartModal
-						showCartModal={showCartModal}
-						toggleCartModal={toggleCartModal}
-						basket={basketForCart}
-					/>
-				</Suspense>
-			}
-    </Layout>
+          <div className='treated-orders-container'>
+            <h2>{t('profile.orders.processed_title')}</h2>
+
+            {deliveredBaskets.length ?
+              <ul className='baskets-container'>
+                {deliveredBaskets.map((basket, index) => (
+                  <li key={index}>
+                    <Row>
+                      <Col sm={3} xs={0} className='image-container d-none d-sm-block'>
+                        <img src={getBasketImage(basket.type)} />
+                      </Col>
+                      <Col sm={6} xs={8} className='info-container'>
+                        <h3>{t((basketsDetails.find(b => b.type === basket.type) || {}).labelTranslate)}</h3>
+                        <p>Destinataire : {basket.recipient.firstname} {basket.recipient.lastname}</p>
+                        <p>{basket.price} €</p>
+                      </Col>
+                      <Col xs={4} sm={3} className='reorder-button-container'>
+                        <ButtonWithLoader className='reorder-button' label={t('profile.orders.reorder')} isLoading={false} onClick={() => reOrder(basket)} />
+                      </Col>
+                    </Row>
+                  </li>
+                ))}
+              </ul> :
+              <p className='no-order'>{t('profile.orders.no_processed_orders')}</p>
+            }
+          </div>
+          {showCartModal &&
+            <Suspense fallback={''}>
+              <CartModal
+                showCartModal={showCartModal}
+                toggleCartModal={toggleCartModal}
+                basket={basketForCart}
+              />
+            </Suspense>
+          }
+        </div>
+      </Col>
+    </Row>
   );
 };
 

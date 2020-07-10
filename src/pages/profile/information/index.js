@@ -7,10 +7,7 @@ import { ClipLoader } from 'react-spinners';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import TextField from '@material-ui/core/TextField';
 import useTranslate from '../../../hooks/useTranslate';
-import SEO from '../../../components/seo';
-import Layout from '../../../components/layout';
-import ProfileGreeting from '../../../components/Profile/ProfileGreeting';
-import ProfileMenu from '../../../components/Profile/ProfileMenu';
+import ProfileMenu from '../ProfileMenu';
 
 import { updateUser } from '../../../services/users';
 import UserStorage from '../../../services/UserStorage';
@@ -111,99 +108,93 @@ const ProfileInformationPage = () => {
   };
 
   return loading ? null : (
-    <Layout className='profile-background profile'>
-      <SEO title='Profil' />
+    <Row className='information-container'>
+      <Col sm={4} className='left-column'>
+        <ProfileMenu pageName='information' />
+      </Col>
+      <Col sm={8} className='right-column'>
+        <div id='profile-information'>
+          <h2>{t('profile.info.keep_up_to_date')}</h2>
 
-      <ProfileGreeting />
-
-      <Row className='information-container'>
-        <Col sm={4} className='left-column'>
-          <ProfileMenu pageName='information' />
-        </Col>
-        <Col sm={8} className='right-column'>
-          <div id='profile-information'>
-            <h2>{t('profile.info.keep_up_to_date')}</h2>
-
-            <form onSubmit={updateInfo}>
-              <Row>
-                <Col xs='6' className='left-input'>
-                  <TextField
-                    type='text'
-                    className='full-width form-input'
-                    required
-                    error={errors['firstname']}
-                    label={t('profile.info.firstname')}
-                    name='firstname'
-                    value={form.firstname}
-                    variant='outlined'
-                    onChange={handleChangeFormValue}
-                    disabled={isLoading}
-                  />
-                </Col>
-                <Col xs='6' className='right-input'>
-                  <TextField
-                    type='text'
-                    className='full-width form-input'
-                    required
-                    error={errors['lastname']}
-                    label={t('profile.info.lastname')}
-                    name='lastname'
-                    value={form.lastname}
-                    variant='outlined'
-                    onChange={handleChangeFormValue}
-                    disabled={isLoading}
-                  />
-                </Col>
-              </Row>
-
-              <div className='phone-container'>
+          <form onSubmit={updateInfo}>
+            <Row>
+              <Col xs='6' className='left-input'>
                 <TextField
-                  select
-                  SelectProps={{
-                    native: true,
-                  }}
-                  label={t('profile.info.country_code')}
-                  name='country'
-                  className='country-code form-input'
-                  disabled={isLoading}
-                  value={form.country}
-                  variant='outlined'
-                  onChange={handleChangeFormValue}
-                >
-                  <option value='+33'>🇫🇷 +33</option>
-                  <option value='+225'>🇨🇮 +225</option>
-                  <option value='+1'>🇺🇸 +1</option>
-                </TextField>
-                <TextField
-                  type='tel'
-                  error={errors['phone']}
-                  label={t('profile.info.phone')}
-                  name='phone'
-                  className='phone-input form-input'
-                  value={form.phone}
+                  type='text'
+                  className='full-width form-input'
+                  required
+                  error={errors['firstname']}
+                  label={t('profile.info.firstname')}
+                  name='firstname'
+                  value={form.firstname}
                   variant='outlined'
                   onChange={handleChangeFormValue}
                   disabled={isLoading}
                 />
-              </div>
+              </Col>
+              <Col xs='6' className='right-input'>
+                <TextField
+                  type='text'
+                  className='full-width form-input'
+                  required
+                  error={errors['lastname']}
+                  label={t('profile.info.lastname')}
+                  name='lastname'
+                  value={form.lastname}
+                  variant='outlined'
+                  onChange={handleChangeFormValue}
+                  disabled={isLoading}
+                />
+              </Col>
+            </Row>
 
-              {isLoading ?
-                <span className='update-user-button'>
-                  <ClipLoader
-                    css={spinnerStyle}
-                    sizeUnit={'px'}
-                    size={25}
-                    color={'#000'}
-                    loading={true}
-                  />
-                </span> :
-                <button type='submit' className='update-user-button'>{t('profile.info.save')}</button>
-              }
-            </form>
-          </div>
-        </Col>
-      </Row>
-    </Layout>
+            <div className='phone-container'>
+              <TextField
+                select
+                SelectProps={{
+                  native: true,
+                }}
+                label={t('profile.info.country_code')}
+                name='country'
+                className='country-code form-input'
+                disabled={isLoading}
+                value={form.country}
+                variant='outlined'
+                onChange={handleChangeFormValue}
+              >
+                <option value='+33'>🇫🇷 +33</option>
+                <option value='+225'>🇨🇮 +225</option>
+                <option value='+1'>🇺🇸 +1</option>
+              </TextField>
+              <TextField
+                type='tel'
+                error={errors['phone']}
+                label={t('profile.info.phone')}
+                name='phone'
+                className='phone-input form-input'
+                value={form.phone}
+                variant='outlined'
+                onChange={handleChangeFormValue}
+                disabled={isLoading}
+              />
+            </div>
+
+            {isLoading ?
+              <span className='update-user-button'>
+                <ClipLoader
+                  css={spinnerStyle}
+                  sizeUnit={'px'}
+                  size={25}
+                  color={'#000'}
+                  loading={true}
+                />
+              </span> :
+              <button type='submit' className='update-user-button'>{t('profile.info.save')}</button>
+            }
+          </form>
+        </div>
+      </Col>
+    </Row>
   );
 };
 
