@@ -122,18 +122,6 @@
       "alex_description": "We offer you a new experience to delight your loved ones and maintain confidence despite the distance!",
       "manuella_description": "At MYFA, bringing joy to your loved ones is our goal."
     },
-    "blog": {
-      "title": "Blog",
-      "read_more_button": "Read",
-      "slide1_description": "You, the first member of MYFA",
-      "slide2_description": "A business trip to Abidjan",
-      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA will be there",
-      "slide4_description": "MYFA, an application designed for the family",
-      "slide5_description": "During times of confinement, I find a job",
-      "slide6_description": "Recession: how do I manage to maintain the growth of my Start-up?",
-      "slide7_description": "How to take advantage of confinement to improve my startup site?",
-      "slide8_description": "My role as CFO at MYFA in times of health crisis"
-    },
     "newsletter": {
       "title": "Subscribe to our newsletter !",
       "description": "Once a week, follow the news (new baskets, evolution of the company, etc.)",
@@ -152,6 +140,10 @@
   "faq": {
     "title": "Frequently asked questions",
     "description": "Find answers to frequently asked questions about how MYFA works here. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at infos@myfa.fr."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "A few words from MYFA"
   },
   "ratings": {
     "title": "Clients ratings",

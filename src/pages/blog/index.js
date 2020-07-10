@@ -8,11 +8,15 @@ import Card from '../../components/Card';
 
 import { fetchArticles } from '../../services/contentful';
 import getFormattedDate from '../../utils/getFormattedDate';
+import useTranslate from '../../hooks/useTranslate';
+
+import blogBg from '../../images/blog-bg.jpg';
 
 import './blog.scss';
 
 const BlogPage = () => {
   const [articles, setArticles] = useState([]);
+  const [t] = useTranslate();
 
   const getAuthor = (authorId) => {
     const authors = {
@@ -59,7 +63,13 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <Layout className='blog'>
+    <Layout
+      className='blog'
+      headerBackground={blogBg}
+      headerBackgroundPosition='center top'
+      stickyHeaderBackgroundPosition='right top'
+      headerDescription={t('blog.description')}
+    >
       <SEO title='Blog' />
 
       <div id='blog'>

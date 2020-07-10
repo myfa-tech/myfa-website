@@ -2,6 +2,7 @@
   max-width: 100%;
   padding-left: 5%;
   padding-right: 5%;
+  background-size: cover;
 
   &.header-image-description {
     height: 215px;
@@ -53,7 +54,6 @@
     flex-direction: column;
 
     background-size: cover;
-    background-position: center center;
 
     .sticky-title {
       text-align: center;

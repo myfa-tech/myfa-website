@@ -27,7 +27,7 @@ import './Header.scss';
 
 const STICKY_LIMIT = 300;
 
-const Header = ({ hideHeader, headerBackground, headerDescription, headerBackgroundPosition }) => {
+const Header = ({ headerBackground, headerDescription, headerBackgroundPosition, stickyHeaderBackgroundPosition }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
@@ -147,7 +147,7 @@ const Header = ({ hideHeader, headerBackground, headerDescription, headerBackgro
 
   return (
     <div id='header' className={headerBackground ? 'header-image-description' : ''} style={{ backgroundImage: `url(${headerBackground})`, backgroundPosition: headerBackgroundPosition }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: (sticky && headerBackground) ? `url(${headerBackground})` : '' }}>
+      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: (sticky && headerBackground) ? `url(${headerBackground})` : '', backgroundPosition: (stickyHeaderBackgroundPosition) ? stickyHeaderBackgroundPosition : 'center center' }}>
         <div className='navbar-header'>
           <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
           <span className='menu'>

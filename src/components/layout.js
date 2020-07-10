@@ -8,7 +8,7 @@ const Footer = lazy(() => import('./Footer'));
 
 import './layout.scss';
 
-const Layout = ({ children, className, hideHeader, noBackgroundColor, headerBackground, headerDescription, headerBackgroundPosition }) => {
+const Layout = ({ children, className, hideHeader, noBackgroundColor, headerBackground, headerDescription, headerBackgroundPosition, stickyHeaderBackgroundPosition }) => {
   return (
     <div className={`layout ${className}`}>
       {hideHeader ?
@@ -16,6 +16,7 @@ const Layout = ({ children, className, hideHeader, noBackgroundColor, headerBack
         <Header
           headerBackground={headerBackground}
           headerBackgroundPosition={headerBackgroundPosition}
+          stickyHeaderBackgroundPosition={stickyHeaderBackgroundPosition}
           headerDescription={headerDescription}
         />
       }
