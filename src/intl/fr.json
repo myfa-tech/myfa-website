@@ -57,7 +57,7 @@
       "packs_title": "Packs ravitaillement",
       "packs_mobile_title": "Ravitaillement",
       "packs_secondary": "Voir tous les packs",
-      "veggies_title": "Pack Légumes 🧅",
+      "veggies_title": "Pack Légumes",
       "veggies_home_description": "Oignons, carottes, Ignames...",
       "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
       "local_rice_title": "Pack Familial - Riz local",
@@ -279,7 +279,8 @@
     "suggestion_title": "Une suggestion ? Un produit vous manque dans ce pack ?",
     "suggestion_placeholder": "Dites-nous tout",
     "suggestion_button": "Envoyer",
-    "suggestion_button_success": "Envoyé"
+    "suggestion_button_success": "Envoyé",
+    "suggestion_login": "Connectez-vous"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",

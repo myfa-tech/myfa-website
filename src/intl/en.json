@@ -57,7 +57,7 @@
       "packs_title": "Supply packs",
       "packs_mobile_title": "Supply",
       "packs_secondary": "See all packs",
-      "veggies_title": "Veggies Pack 🧅",
+      "veggies_title": "Veggies Pack",
       "veggies_home_description": "Onions, carrots, yams...",
       "veggies_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this pack, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
       "local_rice_title": "Family pack - Local rice",
@@ -279,7 +279,8 @@
     "suggestion_title": "A suggestion ? Are you missing a product in this pack?",
     "suggestion_placeholder": "Tell us everything",
     "suggestion_button": "Send",
-    "suggestion_button_success": "Sent"
+    "suggestion_button_success": "Sent",
+    "suggestion_login": "Log in"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",

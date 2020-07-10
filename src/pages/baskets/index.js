@@ -11,6 +11,7 @@ import CartModal from '../../components/CartModal';
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
 import ButtonWithLoader from '../../components/ButtonWithLoader';
+import MYFAButton from '../../components/Button';
 
 import getQueryParam from '../../utils/getQueryParam';
 import useTranslate from '../../hooks/useTranslate';
@@ -88,12 +89,8 @@ const Baskets = () => {
   const handleCommentChange = (e) => {
     const { value } = e.target;
 
-    if (!!user) {
-      setComment(value);
-      setCommentError(false);
-    } else {
-      eventEmitter.emit('showLogin');
-    }
+    setComment(value);
+    setCommentError(false);
   };
 
   const addToCart = async () => {
@@ -148,111 +145,120 @@ const Baskets = () => {
       <SEO title='Panier' />
 
       <section id='basket-to-order'>
-        <Container>
-          <Row>
-            <Col md='4' className='imgs-col'>
-              <div className='basket-img-container'>
-                <div className='images-container'>
-                  <img src={getBasketImage(basket.type)} alt={basket.imgAlt} />
-                  {[0, 1, 2].map(item => (
-                    basketsOtherImgs[basket.type] && basketsOtherImgs[basket.type][item] ?
-                      <img
-                        src={basketsOtherImgs[basket.type][item]}
-                        alt={`${basket.type} basket image ${item}`}
-                        key={`img-${basket.type}-${item}`}
-                      /> :
-                      null
-                  ))}
+        <Row>
+          <Col md='4' className='imgs-col'>
+            <div className='basket-img-container'>
+              <div className='images-container'>
+                <img src={getBasketImage(basket.type)} alt={basket.imgAlt} />
+                {[0, 1, 2].map(item => (
+                  basketsOtherImgs[basket.type] && basketsOtherImgs[basket.type][item] ?
+                    <img
+                      src={basketsOtherImgs[basket.type][item]}
+                      alt={`${basket.type} basket image ${item}`}
+                      key={`img-${basket.type}-${item}`}
+                    /> :
+                    null
+                ))}
+              </div>
+              <p>{t('basket_to_order.photo_disclaimer')}</p>
+            </div>
+          </Col>
+          <Col md='8'>
+            <h1>{t(basket.labelTranslate)}</h1>
+
+            <h2>
+              <span className='new-price'>{basket.price} € - {basket.priceCFA} FCFA</span>
+            </h2>
+
+            <p className='description'>{t(basket.descriptionTranslate)}</p>
+
+            <h3>{t('basket_to_order.basket_contains')}</h3>
+
+            <table>
+              {basket.itemsTranslate.map((item, index) => (
+                <tr key={index}>
+                  <td className='label-column'>{t(`ingredients.${item.label}`)}</td>
+                  <td className='qty-column'>x {item.qty}</td>
+                </tr>
+              ))}
+            </table>
+
+            <div className='qty-container'>
+              <h4>{t('basket_to_order.qty')}</h4>
+
+              <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
+                <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
+                <Button className='qty-display'>{qty}</Button>
+                <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
+              </ButtonGroup>
+
+              {qty === QTY_MAX ? <p className='max-qty-msg'>{t('basket_to_order.max_qty_reached')}</p> : null}
+
+              {isDone ?
+                <span className='order-button isDone'>
+                  <FaCheck color='#6c6' />
+                </span> :
+                <button type='button' className='order-button' onClick={addToCart}>{t('basket_to_order.add_to_cart')}</button>
+              }
+            </div>
+
+            <h3>{t('basket_to_order.other_baskets')}</h3>
+
+            <div className='other-baskets-row'>
+              {otherBaskets.map(otherBasket => (
+                <div key={otherBasket.type} className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
+                  <img src={otherBasket.img} />
+                  <h4>{t(otherBasket.labelTranslate)}</h4>
                 </div>
-                <p>{t('basket_to_order.photo_disclaimer')}</p>
-              </div>
-            </Col>
-            <Col md='8'>
-              <h1>{t(basket.labelTranslate)}</h1>
+              ))}
+            </div>
 
-              <h2>
-                <span className='new-price'>{basket.price} € - {basket.priceCFA} FCFA</span>
-              </h2>
+            <div className='comment-form'>
+              <h3>{t('basket_to_order.suggestion_title')}</h3>
 
-              <p className='description'>{t(basket.descriptionTranslate)}</p>
+              {!!user ?
+                <>
+                  <TextField
+                    type='text'
+                    className='full-width form-input big-form-input'
+                    variant='outlined'
+                    error={commentError}
+                    multiline
+                    label='Message'
+                    placeholder={t('basket_to_order.suggestion_placeholder')}
+                    name='comment'
+                    value={comment}
+                    onChange={handleCommentChange}
+                  />
 
-              <h3>{t('basket_to_order.basket_contains')}</h3>
+                  <ButtonWithLoader
+                    isLoading={isCommentSendingLoading}
+                    label={t('basket_to_order.suggestion_button')}
+                    onClick={sendComment}
+                    className='send-comment-button'
+                    success={isCommentSent}
+                    successLabel={`${t('basket_to_order.suggestion_button_success')} ✅`}
+                  />
+                </> :
+                <div className='suggestion-login-container'>
+                  <MYFAButton
+                    onClick={() => eventEmitter.emit('showLogin')}
+                    type='button'
+                    label={t('basket_to_order.suggestion_login')}
+                  />
+                </div>
+              }
+            </div>
+          </Col>
+        </Row>
 
-              <table>
-                {basket.itemsTranslate.map((item, index) => (
-                  <tr key={index}>
-                    <td className='label-column'>{t(`ingredients.${item.label}`)}</td>
-                    <td className='qty-column'>x {item.qty}</td>
-                  </tr>
-                ))}
-              </table>
-
-              <div className='qty-container'>
-                <h4>{t('basket_to_order.qty')}</h4>
-
-                <ButtonGroup className='qty-buttons' variant='contained' color='primary' aria-label='contained primary button group'>
-                  <Button className='qty-button' onClick={() => updateQty(-1)}>-</Button>
-                  <Button className='qty-display'>{qty}</Button>
-                  <Button className='qty-button' onClick={() => updateQty(1)}>+</Button>
-                </ButtonGroup>
-
-                {qty === QTY_MAX ? <p className='max-qty-msg'>{t('basket_to_order.max_qty_reached')}</p> : null}
-
-                {isDone ?
-                  <span className='order-button isDone'>
-                    <FaCheck color='#6c6' />
-                  </span> :
-                  <button type='button' className='order-button' onClick={addToCart}>{t('basket_to_order.add_to_cart')}</button>
-                }
-              </div>
-
-              <h3>{t('basket_to_order.other_baskets')}</h3>
-
-              <div className='other-baskets-row'>
-                {otherBaskets.map(otherBasket => (
-                  <div key={otherBasket.type} className='basket-card' onClick={() => goToBasketPage(otherBasket.type)}>
-                    <img src={otherBasket.img} />
-                    <h4>{t(otherBasket.labelTranslate)}</h4>
-                  </div>
-                ))}
-              </div>
-
-              <div className='comment-form'>
-                <h3>{t('basket_to_order.suggestion_title')}</h3>
-
-                <TextField
-                  type='text'
-                  className='full-width form-input big-form-input'
-                  variant='outlined'
-                  error={commentError}
-                  multiline
-                  label='Message'
-                  placeholder={t('basket_to_order.suggestion_placeholder')}
-                  name='comment'
-                  value={comment}
-                  onChange={handleCommentChange}
-                />
-
-                <ButtonWithLoader
-                  isLoading={isCommentSendingLoading}
-                  label={t('basket_to_order.suggestion_button')}
-                  onClick={sendComment}
-                  className='send-comment-button'
-                  success={isCommentSent}
-                  successLabel={`${t('basket_to_order.suggestion_button_success')} ✅`}
-                />
-              </div>
-            </Col>
-          </Row>
-
-          {showCartModal &&
-            <CartModal
-              showCartModal={showCartModal}
-              toggleCartModal={toggleCartModal}
-              basket={basket}
-            />
-          }
-        </Container>
+        {showCartModal &&
+          <CartModal
+            showCartModal={showCartModal}
+            toggleCartModal={toggleCartModal}
+            basket={basket}
+          />
+        }
       </section>
     </Layout>
   ) : null;
