@@ -6,6 +6,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { FaFacebook } from 'react-icons/fa';
 import GoogleLogin from 'react-google-login';
 
+import ButtonWithLoader from '../ButtonWithLoader';
+
 import useTranslate from '../../hooks/useTranslate';
 import { loginUser, loginFBUser, loginGoogleUser } from '../../services/users';
 import useLoginForm from '../../hooks/useLoginForm';
@@ -145,18 +147,8 @@ const LoginForm = ({ onLogin }) => {
 
         <a className='forgot-password' href={`/reset_password/email`}>{t('login_form.forgot_password')}</a>
 
-        {isLoading ?
-          <span className='login-button'>
-            <ClipLoader
-              css={spinnerStyle}
-              sizeUnit={'px'}
-              size={25}
-              color={'#fff'}
-              loading={true}
-            />
-          </span> :
-          <button type='submit' className='login-button'>{t('login_form.login')}</button>
-        }
+        <ButtonWithLoader isLoading={isLoading} className='login-button' label={t('login_form.login')} />
+
         <FacebookLogin
           appId={REACT_APP_FB_APP_ID}
           autoLoad={false}

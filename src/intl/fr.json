@@ -77,21 +77,21 @@
       "pleasure_baskets_title": "Paniers plaisir",
       "pleasure_baskets_mobile_title": "Plaisir",
       "pleasure_baskets_secondary": "Voir tous les paniers",
-      "fruits_basket_title": "Panier Fruits 🍌",
-      "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
-      "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
-      "chocolate_basket_title": "Panier Chocolat 🍫",
-      "chocolate_basket_home_description": "Tablettes, amandes caramélisées...",
-      "chocolate_basket_description": "Dans ce panier, retrouvez toutes les saveurs chocolatées de la Côte d'Ivoire.",
-      "sauces_basket_title": "Panier Sauces 🍗🍖",
-      "sauces_basket_home_description": "Poivre, sel, gingembre...",
-      "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
-      "myfa_basket_title": "Panier MYFA 🙌🏾",
-      "myfa_basket_home_description": "À vous de le composer !",
-      "myfa_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
-      "beauty_basket_title": "Panier Beauté ✨",
-      "beauty_basket_home_description": "Beurre de karité, bissap, kinkeliba...",
-      "beauty_basket_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
+      "fruits_title": "Panier Fruits 🍌",
+      "fruits_home_description": "Bananes, oranges, noix de coco...",
+      "fruits_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
+      "chocolate_title": "Panier Chocolat 🍫",
+      "chocolate_home_description": "Tablettes, amandes caramélisées...",
+      "chocolate_description": "Dans ce panier, retrouvez toutes les saveurs chocolatées de la Côte d'Ivoire.",
+      "sauces_title": "Panier Sauces 🍗🍖",
+      "sauces_home_description": "Poivre, sel, gingembre...",
+      "sauces_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
+      "myfa_title": "Panier MYFA 🙌🏾",
+      "myfa_home_description": "À vous de le composer !",
+      "myfa_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
+      "beauty_title": "Panier Beauté ✨",
+      "beauty_home_description": "Beurre de karité, bissap, kinkeliba...",
+      "beauty_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -185,9 +185,9 @@
       "empty_basket": "Votre panier est vide"
     },
     "packs_description": "Nos packs sont composés de manière à subvenir aux besoins de vos proches.",
-    "baskets_description": "Faites plaisir à vos proches.",
+    "baskets_description": "Faites plaisir à vos proches",
     "sticky": {
-      "home": "Commandez d'ici, nous livrons là-bas."
+      "home": "Commandez d'ici, nous livrons là-bas"
     }
   },
   "footer": {

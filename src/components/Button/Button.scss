@@ -3,4 +3,10 @@
   background-color: #f1d866;
   border-radius: 0;
   border-color: #311A19;
+
+  &.secondary {
+    color: white;
+    background-color: grey;
+    border-color: black;
+  }
 }

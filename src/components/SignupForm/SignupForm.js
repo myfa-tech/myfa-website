@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { css } from '@emotion/core';
-import { ClipLoader } from 'react-spinners';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { saveUser } from '../../services/users';
 import useSignupForm from '../../hooks/useSignupForm';
 import useTranslate from '../../hooks/useTranslate';
+
+import ButtonWithLoader from '../ButtonWithLoader';
 
 import './SignupForm.scss';
 
@@ -177,20 +178,7 @@ const SignupForm = ({ onSignup }) => {
         }
       />
 
-      {isLoading ?
-        <span className='signup-button'>
-          <ClipLoader
-            css={spinnerStyle}
-            sizeUnit={'px'}
-            size={25}
-            color={'#fff'}
-            loading={true}
-          />
-        </span> :
-        <button type='button' onClick={handleSubmitSignupForm} className='signup-button'>
-          {t('signup_form.signup_button')}
-        </button>
-      }
+      <ButtonWithLoader type='button' label={t('signup_form.signup_button')} onClick={handleSubmitSignupForm} className='signup-button' isLoading={isLoading} />
     </form>
   )
 }
