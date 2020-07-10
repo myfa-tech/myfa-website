@@ -62,7 +62,7 @@
       "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
       "local_rice_title": "Pack Familial - Riz local",
       "local_rice_home_description": "Tomates, riz local, piment...",
-      "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100 % ivoirien.",
+      "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100% ivoirien.",
       "rice_attieke_title": "Pack Familial - Riz attieke",
       "rice_attieke_home_description": "Riz, attieke, lait en poudre...",
       "rice_attieke_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
@@ -149,7 +149,8 @@
     "title": "Avis des clients",
     "description": "Tous vos avis comptent.",
     "introduction": "Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.",
-    "button_label": "Donner mon avis"
+    "button_label": "Donner mon avis",
+    "login_button": "Connectez-vous"
   },
   "rating_modal": {
     "your_review": "Votre note",

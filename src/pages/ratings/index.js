@@ -65,7 +65,10 @@ const RatingsPage = () => {
         </p>
 
         <div className='button-container'>
-          <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} />
+          {!!user ?
+            <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} /> :
+            <Button label={t('ratings.login_button')} className='rating-button' onClick={() => eventEmitter.emit('showLogin')} />
+          }
         </div>
 
         <RatingsList className='ratings-list' />

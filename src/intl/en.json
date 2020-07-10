@@ -149,7 +149,8 @@
     "title": "Clients ratings",
     "description": "Your opinion matters.",
     "introduction": "Much more than a rating accompanied by a comment, all your opinions count. They allow us to question ourselves in order to offer you a service that comes closest to your wishes.",
-    "button_label": "Give a rating"
+    "button_label": "Give a rating",
+    "login_button": "Log in"
   },
   "rating_modal": {
     "your_review": "Your review",
