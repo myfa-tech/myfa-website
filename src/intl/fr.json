@@ -199,7 +199,16 @@
     "baskets_description": "Faites plaisir à vos proches."
   },
   "footer": {
-    "legal_notice": "Mentions légales"
+    "introduction": "Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.",
+    "know_more": "En savoir plus ?",
+    "team": "L'équipe",
+    "faq": "Questions fréquentes",
+    "jobs": "Recrutement",
+    "but_still": "Mais encore ?",
+    "clients_ratings": "Avis des clients",
+    "legal_notice": "Mentions légales",
+    "subscribe": "Inscrivez-vous",
+    "subscribe_text": "Une fois par semaine, nous vous mettons au courant des nouveautés de MYFA."
   },
   "404": {
     "seo_title": "404: Introuvable",

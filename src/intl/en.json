@@ -199,7 +199,16 @@
     "baskets_description": "Faites plaisir à vos proches."
   },
   "footer": {
-    "legal_notice": "Legal Notice"
+    "introduction": "Safely buy food supplies for your loved ones in Côte d'Ivoire.",
+    "know_more": "Want to know more?",
+    "team": "The team",
+    "faq": "Frequent questions",
+    "jobs": "Jobs",
+    "but_still": "But still?",
+    "clients_ratings": "Clients reviews",
+    "legal_notice": "Legal Notice",
+    "subscribe": "Subscribe",
+    "subscribe_text": "Once a week, we will update you on the latest news from MYFA."
   },
   "404": {
     "seo_title": "404: Not Found",

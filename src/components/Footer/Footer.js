@@ -65,9 +65,7 @@ const Footer = ({ noBackgroundColor }) => {
               </a>
             </div>
             <div className='brand-text'>
-              <p>
-                Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.
-              </p>
+              <p>{t('footer.introduction')}</p>
             </div>
             <div className='social-icons-container'>
               <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='facebook' url='https://www.facebook.com/myfa.fr' />
@@ -77,21 +75,21 @@ const Footer = ({ noBackgroundColor }) => {
             </div>
           </Col>
           <Col sm={6} lg={2} className='footer-col'>
-            <h4>En savoir plus ?</h4>
+            <h4>{t('footer.know_more')}</h4>
 
             <ul>
-              <li><a href='/team'>L'équipe</a></li>
-              <li><a href='/faq'>Questions fréquentes</a></li>
-              <li><a href='/jobs'>Recrutement</a></li>
+              <li><a href='/team'>{t('footer.team')}</a></li>
+              <li><a href='/faq'>{t('footer.faq')}</a></li>
+              <li><a href='/jobs'>{t('footer.jobs')}</a></li>
             </ul>
           </Col>
           <Col sm={6} lg={2} className='footer-col'>
-            <h4>Mais encore ?</h4>
+            <h4>{t('footer.but_still')}</h4>
 
             <ul>
               <li><a href='/blog'>Blog</a></li>
-              <li><a href={`/legal_${locale}`}>Mentions légales</a></li>
-              <li><a href='/ratings'>Avis des clients</a></li>
+              <li><a href={`/legal_${locale}`}>{t('footer.legal_notice')}</a></li>
+              <li><a href='/ratings'>{t('footer.clients_ratings')}</a></li>
             </ul>
           </Col>
           <Col sm={6} lg={2} className='footer-col'>
@@ -106,9 +104,9 @@ const Footer = ({ noBackgroundColor }) => {
             </ul>
           </Col>
           <Col sm={6} lg={3} className='footer-col'>
-            <h4>Inscrivez-vous</h4>
+            <h4>{t('footer.subscribe')}</h4>
 
-            <p>Une fois par semaine, nous vous mettons au courant des nouveautés de MYFA.</p>
+        <p>{t('footer.subscribe_text')}</p>
 
             <Form onSubmit={onNewsletterSubmit}>
               <InputGroup className="mb-3" size="lg">
