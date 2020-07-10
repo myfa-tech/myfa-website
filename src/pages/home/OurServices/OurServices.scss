@@ -10,11 +10,13 @@
     .step {
       text-align: center;
 
-      .step-icon {
-        height: 100px;
-        width: 120px;
-        background-color: grey;
-        margin: 0 auto 1em auto;
+      .step-icon-container {
+        padding-bottom: 1em;
+
+        .step-icon {
+          width: 20%;
+          height: auto;
+        }
       }
 
       .step-title {
@@ -32,16 +34,27 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #our-services {
     .steps-container {
       width: 100%;
 
       .step {
-        .step-icon {
-          height: 150px;
-          width: 90%;
+        .step-icon-container {
+          .step-icon {
+            width: 30%;
+          }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #our-services {
+    .steps-container {
+      .step {
+        margin-bottom: 2em;
       }
     }
   }

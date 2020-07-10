@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FaCreditCard, FaPhoneAlt, FaTruck } from 'react-icons/fa';
 
 import useTranslate from '../../../hooks/useTranslate';
 
@@ -14,7 +15,9 @@ const OurServices = () => {
       <Row className='steps-container'>
         <Col sm={4}>
           <div className='step'>
-            <div className='step-icon'></div>
+            <div className='step-icon-container'>
+              <FaTruck className='step-icon' />
+            </div>
             <div className='step-title'>{t('home_page.our_services.step_1.title')}</div>
             <div className='step-desc'>
               <p>{t('home_page.our_services.step_1.line_2')}</p>
@@ -24,7 +27,9 @@ const OurServices = () => {
 
         <Col sm={4}>
           <div className='step'>
-            <div className='step-icon'></div>
+            <div className='step-icon-container'>
+              <FaPhoneAlt className='step-icon' />
+            </div>
             <div className='step-title'>{t('home_page.our_services.step_2.title')}</div>
             <div className='step-desc'>
               <p>{t('home_page.our_services.step_2.line_2')}</p>
@@ -37,7 +42,9 @@ const OurServices = () => {
 
         <Col sm={4}>
           <div className='step'>
-            <div className='step-icon'></div>
+            <div className='step-icon-container'>
+              <FaCreditCard className='step-icon' />
+            </div>
             <div className='step-title'>{t('home_page.our_services.step_3.title')}</div>
             <div className='step-desc'>
               <p>{t('home_page.our_services.step_3.line_2')}</p>

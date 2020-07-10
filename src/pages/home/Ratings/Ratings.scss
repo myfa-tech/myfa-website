@@ -44,11 +44,17 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #ratings {
     .ratings-container {
       width: 100%;
+    }
+  }
+}
 
+@media (max-width: 480px) {
+  #ratings {
+    .ratings-container {
       .rating-container:nth-child(1) {
         border: none;
       }
