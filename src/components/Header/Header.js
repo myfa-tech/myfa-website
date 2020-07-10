@@ -35,7 +35,6 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [underlinedSection, setUnderlinedSection] = useState('');
   const [t] = useTranslate();
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
 
@@ -43,7 +42,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
 
   const DRAWER_LIST = [
     { label: t('header.home'), link: '/' },
-    { label: t('header.all_products'), link: '/#details' },
+    // { label: t('header.all_products'), link: '/#details' },
     { label: t('header.supply_packs'), link: '/#packs' },
     { label: t('header.gifts_baskets'), link: '/#pleasure-baskets' },
     { label: t('header.ratings'), link: '/ratings' },
@@ -76,27 +75,6 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
       setSticky(true);
     } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
       setSticky(false);
-    }
-
-    let basketsAnchor = document.getElementById('baskets');
-    let promiseAnchor = document.getElementById('our-promise');
-    let blogAnchor = document.getElementById('blog');
-
-    let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
-    let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
-    let blogHeight = blogAnchor ? blogAnchor.offsetTop - 200 : null;
-    let cursor = window.pageYOffset;
-
-    if (basketsHeight && promiseHeight && blogHeight) {
-      if (cursor < basketsHeight && underlinedSection !== 'home') {
-        setUnderlinedSection('home');
-      } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
-        setUnderlinedSection('baskets');
-      } else if (cursor >= promiseHeight && cursor < blogHeight && underlinedSection !== 'promise') {
-        setUnderlinedSection('promise');
-      } else if (cursor >= blogHeight && underlinedSection !== 'blog') {
-        setUnderlinedSection('blog');
-      }
     }
   };
 

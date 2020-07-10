@@ -8,6 +8,7 @@ const CartModal = lazy(() => import('../../../components/CartModal'));
 import SectionLoader from '../../../components/SectionLoader';
 import SectionTitle from '../../../components/SectionTitle';
 
+import CartStorage from '../../../services/CartStorage';
 import useTranslate from '../../../hooks/useTranslate';
 import useFetchPacks from '../../../hooks/useFetchPacks';
 
@@ -27,6 +28,15 @@ const Packs = () => {
 		}
 
 		setShowCartModal(!showCartModal);
+	};
+
+	const addBasketToCart = async (e, basket) => {
+		e.stopPropagation();
+
+		await CartStorage.addToCart({ ...basket });
+
+		setBasketForCart(basket);
+		toggleCartModal();
 	};
 
 	const handleBasketButtonClick = (basketType) => {
@@ -59,7 +69,7 @@ const Packs = () => {
 								</Col>
 
 								<Col xs={5} className='cart-container'>
-									<div className='cart-button'>
+									<div className='cart-button' onClick={(e) => addBasketToCart(e, basket)}>
 										<FaShoppingCart className='cart-icon' />
 									</div>
 								</Col>

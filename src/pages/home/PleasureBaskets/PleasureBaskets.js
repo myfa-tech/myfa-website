@@ -69,7 +69,7 @@ const PleasureBaskets = () => {
 								</Col>
 
 								<Col xs={5} className='cart-container'>
-									<div className='cart-button'>
+									<div className='cart-button' onClick={(e) => addBasketToCart(e, basket)}>
 										<FaShoppingCart className='cart-icon' />
 									</div>
 								</Col>
