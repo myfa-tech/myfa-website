@@ -193,7 +193,7 @@
       "empty_basket": "Your cart is empty"
     },
     "packs_description": "Our packs are made up to meet the needs of your loved ones.",
-    "baskets_description": "Faites plaisir à vos proches.",
+    "baskets_description": "Treat your loved ones.",
     "sticky": {
       "home": "Order from here, we deliver there."
     }
@@ -492,6 +492,18 @@
     "black_pepper": "Black pepper (90g)",
     "hot_chili": "Hot chili (90g)",
     "local_rice_25": "Local rice (25kg)",
-    "attieke": "Attieke (1kg)"
+    "attieke": "Attieke (1kg)",
+    "mona_lysa": "Container, white and dark chocolate",
+    "white_zephyr": "Pistoles, white chocolate (100g)",
+    "ruby": "Pistoles, pink chocolate (100g)",
+    "crispearls": "Chocolate balls (100g)",
+    "superior_lactee": "Pistoles 38% (100g)",
+    "caramel_almond": "Caramelized almonds (100g)",
+    "gold": "Pistoles 31%, white chocolate and caramel (100g)",
+    "ruben": "Chocolate sticks (100g)",
+    "ocoa": "Pistoles 70% (100g)",
+    "eale_choco_tablette": "Eale chocolate tablet",
+    "tabletine": "Eale small chocolate tablet",
+    "tofi_mylane": "Tofi Mylane"
   }
 }
