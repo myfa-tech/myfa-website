@@ -13,7 +13,7 @@ const Ratings = lazy(() => import('./Ratings'));
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
-import homeBg from '../../images/home-bg.jpg';
+import homeBg from '../../images/default-bg.jpg';
 
 import useTranslate from '../../hooks/useTranslate';
 

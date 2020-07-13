@@ -30,6 +30,7 @@ const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
+const Packs = lazy(() => import('./pages/packs'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
 const BlogPage = lazy(() => import('./pages/blog'));
@@ -70,8 +71,8 @@ const App = () => (
       <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
-      <BasketsPage path='/baskets' />
-      <BasketsPage path='/packs' />
+      <BasketsPage path='/baskets/details' />
+      <BasketsPage path='/packs/details' />
       <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
       <CguEnPage path='/cgu_en'/>
@@ -85,6 +86,7 @@ const App = () => (
       <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
+      <Packs path='/packs' />
       <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
       <ArticlePage path='articles/:articleId' />

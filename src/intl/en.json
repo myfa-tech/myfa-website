@@ -343,6 +343,12 @@
     "description_part_1": "To follow the progress of your order, click",
     "here": "here"
   },
+  "packs": {
+    "page": {
+      "title": "All packs",
+      "secondary": "Home"
+    }
+  },
   "profile": {
     "description": "My profile",
     "greeting": {

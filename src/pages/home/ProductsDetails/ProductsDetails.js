@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaShoppingBasket } from 'react-icons/fa';
 
-import LoadingBasket from '../../../components/LoadingBasket';
+import LoadingItem from '../../../components/LoadingItem';
 import SectionTitle from '../../../components/SectionTitle';
 
 import useTranslate from '../../../hooks/useTranslate';
@@ -52,7 +52,7 @@ const ProductsDetails = () => {
 				)) :
 				[1, 2, 3].map((it, index) => (
 					<Col md={4} key={index}>
-						<LoadingBasket />
+						<LoadingItem />
 					</Col>
 				))}
       </Row>

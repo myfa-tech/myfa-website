@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaShoppingCart } from 'react-icons/fa';
 
-import LoadingBasket from '../../../components/LoadingBasket';
+import LoadingItem from '../../../components/LoadingItem';
 const CartModal = lazy(() => import('../../../components/CartModal'));
 import SectionLoader from '../../../components/SectionLoader';
 import SectionTitle from '../../../components/SectionTitle';
@@ -41,7 +41,7 @@ const Packs = () => {
 
 	const handleBasketButtonClick = (basketType) => {
 		if (typeof window !== 'undefined') {
-			window.location.assign(`packs?type=${basketType}`);
+			window.location.assign(`/packs/details?type=${basketType}`);
 		}
 	};
 
@@ -79,7 +79,7 @@ const Packs = () => {
 				)) :
 				[1, 2, 3].map((it, index) => (
 					<Col md={4} key={index}>
-						<LoadingBasket />
+						<LoadingItem />
 					</Col>
 				))}
 			</Row>

@@ -22,6 +22,7 @@ import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
 
 import logoHandsSrc from '../../images/logo-1.png';
+import defaultBackground from '../../images/default-bg.jpg';
 
 import './Header.scss';
 
@@ -37,6 +38,8 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
   const [sticky, setSticky] = useState(false);
   const [t] = useTranslate();
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
+
+  const DEFAULT_HEADER_DESCRIPTION = t('home_page.home.welcome_title');
 
   const eventEmitter = new EventEmitter();
 
@@ -124,8 +127,8 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
   };
 
   return (
-    <div id='header' className={headerBackground ? 'header-image-description' : ''} style={{ backgroundImage: `url(${headerBackground})`, backgroundPosition: headerBackgroundPosition }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: (sticky && headerBackground) ? `url(${headerBackground})` : '', backgroundPosition: (stickyHeaderBackgroundPosition) ? stickyHeaderBackgroundPosition : 'center center' }}>
+    <div id='header' className='header-image-description' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: headerBackgroundPosition || 'center center' }}>
+      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
         <div className='navbar-header'>
           <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
           <span className='menu'>
@@ -166,9 +169,9 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
         </div> : null}
       </div>
 
-      {headerDescription ? <div className='header-description'>
-        <span>{headerDescription}</span>
-      </div> : null}
+      <div className='header-description'>
+        <span>{headerDescription || DEFAULT_HEADER_DESCRIPTION}</span>
+      </div>
 
       <Suspense fallback=''>
         <CustomDrawer

@@ -343,6 +343,12 @@
     "description_part_1": "Pour suivre l’avancement de votre commande, cliquez",
     "here": "ici"
   },
+  "packs": {
+    "page": {
+      "title": "Tous nos packs",
+      "secondary": "Accueil"
+    }
+  },
   "profile": {
     "description": "Mon profil",
     "greeting": {

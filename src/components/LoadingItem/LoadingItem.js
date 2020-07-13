@@ -1,9 +1,9 @@
 import React from 'react';
 import Placeholder from '../Placeholder';
 
-import './LoadingBasket.scss';
+import './LoadingItem.scss';
 
-const LoadingBasket = () => {
+const LoadingItem = () => {
   return (
     <div id='placeholder-container'>
       <div className='placeholder-inner-container'>
@@ -14,4 +14,4 @@ const LoadingBasket = () => {
   );
 };
 
-export default LoadingBasket;
+export default LoadingItem;

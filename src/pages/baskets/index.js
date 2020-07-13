@@ -20,6 +20,7 @@ import getBasketImage from '../../utils/getBasketImage';
 import EventEmitter from '../../services/EventEmitter';
 import useFetchOrderBaskets from '../../hooks/useFetchOrderBaskets';
 import UserStorage from '../../services/UserStorage';
+import { sendBasketCommentMail } from '../../services/mailjet';
 
 import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
 import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
@@ -29,10 +30,9 @@ import veggiesPackBgHeader from '../../images/veggies-pack-bg.jpg';
 import fruitsBasketBgHeader from '../../images/fruits-basket-bg.jpg';
 import chocolatePackBgHeader from '../../images/morning-pack-bg.jpg';
 import beautyBasketBgHeader from '../../images/beauty-basket-bg.jpg';
-import defaultBgHeader from '../../images/home-bg.jpg';
+import defaultBgHeader from '../../images/default-bg.jpg';
 
 import './baskets.scss';
-import { sendBasketCommentMail } from '../../services/mailjet';
 
 const basketsOtherImgs = {
   'beauty': [beautyIngr1, beautyIngr2, beautyIngr3],
