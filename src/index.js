@@ -17,7 +17,7 @@ const ProfilePage = lazy(() => import('./pages/profile'));
 const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
 const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
-const BasketsPage = lazy(() => import('./pages/baskets'));
+const BasketsDetailsPage = lazy(() => import('./pages/baskets_details'));
 const CartPage = lazy(() => import('./pages/cart'));
 const CguEnPage = lazy(() => import('./pages/cgu_en'));
 const CguFrPage = lazy(() => import('./pages/cgu_fr'));
@@ -31,6 +31,7 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const Packs = lazy(() => import('./pages/packs'));
+const Baskets = lazy(() => import('./pages/baskets'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
 const BlogPage = lazy(() => import('./pages/blog'));
@@ -71,8 +72,8 @@ const App = () => (
       <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
-      <BasketsPage path='/baskets/details' />
-      <BasketsPage path='/packs/details' />
+      <BasketsDetailsPage path='/baskets/details' />
+      <BasketsDetailsPage path='/packs/details' />
       <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
       <CguEnPage path='/cgu_en'/>
@@ -87,6 +88,7 @@ const App = () => (
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
       <Packs path='/packs' />
+      <Baskets path='/pleasure-baskets' />
       <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
       <ArticlePage path='articles/:articleId' />

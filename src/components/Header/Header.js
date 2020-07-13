@@ -128,7 +128,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
 
   return (
     <div id='header' className='header-image-description' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: headerBackgroundPosition || 'center center' }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
+      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: sticky ? `url(${headerBackground || defaultBackground})` : '', backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
         <div className='navbar-header'>
           <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
           <span className='menu'>
