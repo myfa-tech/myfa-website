@@ -54,14 +54,21 @@ const RatingsPage = () => {
       <SEO title='Avis' />
 
       <div id='ratings'>
-        <SectionTitle title={t('ratings.title')} secondary={{ text: 'Accueil', link: '/' }} />
+        <SectionTitle
+          title={t('ratings.title')}
+          mobileTitle={t('ratings.title')}
+          secondary={{ text: 'Accueil', link: '/' }}
+        />
 
         <p className='description'>
           {t('ratings.introduction')}
         </p>
 
         <div className='button-container'>
-          <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} />
+          {!!user ?
+            <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} /> :
+            <Button label={t('ratings.login_button')} className='rating-button' onClick={() => eventEmitter.emit('showLogin')} />
+          }
         </div>
 
         <RatingsList className='ratings-list' />

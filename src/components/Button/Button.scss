@@ -1,6 +1,14 @@
 .myfa-button {
   color: #311A19;
   background-color: #f1d866;
-  border-radius: 8px;
+  border-radius: 0;
   border-color: #311A19;
+  font-size: 15px;
+  padding: 0.5em 1em;
+
+  &.secondary {
+    color: white;
+    background-color: grey;
+    border-color: black;
+  }
 }

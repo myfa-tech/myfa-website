@@ -51,7 +51,7 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             onChange={handleChange}
           >
             <option value='fruits'>Panier Fruits</option>
-            <option value='legumes'>Panier Légumes</option>
+            <option value='veggies'>Pack Légumes</option>
             <option value='sauces'>Panier Sauces</option>
             <option value='myfa'>Panier MYFA</option>
             <option value='beauty'>Panier Beauté</option>
@@ -71,7 +71,7 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             onChange={handleChange}
           >
             <option value='fruits'>Panier Fruits</option>
-            <option value='legumes'>Panier Légumes</option>
+            <option value='veggies'>Pack Légumes</option>
             <option value='sauces'>Panier Sauces</option>
             <option value='myfa'>Panier MYFA</option>
             <option value='beauty'>Panier Beauté</option>
@@ -91,7 +91,7 @@ const NewOrderModal = ({ showModal, toggleModal }) => {
             onChange={handleChange}
           >
             <option value='fruits'>Panier Fruits</option>
-            <option value='legumes'>Panier Légumes</option>
+            <option value='veggies'>Pack Légumes</option>
             <option value='sauces'>Panier Sauces</option>
             <option value='myfa'>Panier MYFA</option>
             <option value='beauty'>Panier Beauté</option>

@@ -6,12 +6,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import useTranslate from '../../../hooks/useTranslate';
-import basketsImgs from '../../../assets/basketsImgs';
+import getBasketImage from '../../../utils/getBasketImage';
 import UserStorage from '../../../services/UserStorage';
 
 import './CartItems.scss';
 
-const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBasket }) => {
+const CartItems = ({ basketsPrice, cart, className, handleChangeRecipient, errors, removeBasket }) => {
   const [t] = useTranslate();
   const [recipients, setRecipients] = useState([]);
   const [showContents, setShowContents] = useState([]);
@@ -43,7 +43,7 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
   };
 
   return (
-    <div className='my-cart-container'>
+    <div className={`my-cart-container ${className ? className : ''}`}>
       <h2>{t('cart.items.title')}</h2>
 
       <Divider variant='middle' />
@@ -53,12 +53,12 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
             <li key={index} className={showContents[index] ? 'show-content' : ''}>
               <Row>
                 <Col xs={2} className='image-container'>
-                  <img src={basketsImgs[basket.type]} />
+                  <img src={getBasketImage(basket.type)} />
                 </Col>
                 <Col xs={10} className='info-container'>
                   <Row>
                     <Col lg={4} className='label-container'>
-                      <h3>{t(`home_page.baskets.${basket.type}_basket_title`)}</h3>
+                      <h3>{t(`home_page.${basket.category}.${basket.type}_title`)}</h3>
                       <p>{basket.price.toFixed(2)} €</p>
                     </Col>
                     <Col xs={7} lg={5} className='recipient-choice-container'>
@@ -98,28 +98,9 @@ const CartItems = ({ basketsPrice, cart, handleChangeRecipient, errors, removeBa
               <div className='basket-content-container'>
                 Ce panier contient :
                 <ul>
-                  {basket.items.map ?
-                    basket.items.map((it, itIndex) => (
-                      <li key={itIndex}>{it}</li>
-                    )) :
-                    <>
-                      {basket.items.bases.map(it => (
-                        <li>{it.label}</li>
-                      ))}
-                      {basket.items.fruits.map(it => (
-                        <li>{it.label}</li>
-                      ))}
-                      {basket.items.veggies.map(it => (
-                        <li>{it.label}</li>
-                      ))}
-                      {basket.items.sauces.map(it => (
-                        <li>{it.label}</li>
-                      ))}
-                      {basket.items.supps.map(it => (
-                        <li>{it.label}</li>
-                      ))}
-                    </>
-                  }
+                  {basket.itemsTranslate.map((it, itIndex) => (
+                    <li key={itIndex}>{it.qty} x {t(`ingredients.${it.label}`)}</li>
+                  ))}
                 </ul>
               </div>
             </li>

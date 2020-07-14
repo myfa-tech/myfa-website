@@ -22,63 +22,76 @@
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
     "home": {
-      "title": "For Mother's Day, let her know that you love her from far",
-      "subtitle": "Beauty basket",
-      "discover_baskets_button": "Discover the baskets",
-      "get_basket_button": "Discover it",
+      "welcome_title": "For the well-being of your loved ones in Côte d'Ivoire, we deliver in 48 hours *.",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "Due to the current situation, delivery times for MYFA baskets may be longer.",
         "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },
-    "how_it_works": {
-      "title": "How it works?",
-      "slide1": {
-        "title": "Select your basket",
-        "description": "Fruits, Vegetables, Sauces or MYFA."
+    "our_services": {
+      "step_1": {
+        "title": "DELIVERY IN 48H",
+        "line_2": "Depending on the availability of your loved ones"
       },
-      "slide2": {
-        "title": "Fill in the information on the recipient of the basket",
-        "description": "We call them to determine the delivery conditions."
+      "step_2": {
+        "title": "CUSTOMER SERVICE",
+        "line_2": "(+225) 84 21 51 54",
+        "line_3": "9am - 6pm from monday to friday",
+        "line_4": "9am - 1pm week-end and days",
+        "line_5": "off"
       },
-      "slide3": {
-        "title": "Select the district of delivery",
-        "description": "Among the 12 districts of Abidjan."
-      },
-      "slide4": {
-        "title": "Pay securely",
-        "description": "Shop with peace of mind."
-      },
-      "slide5": {
-        "title": "Delivery in less than 48 hours",
-        "description": "Depending on the availability of the recipient."
-      },
-      "slide6": {
-        "title": "Follow the route",
-        "description": "By email or SMS, stay informed."
+      "step_3": {
+        "title": "SECURE PAYMENT",
+        "line_2": "Shop with peace of mind"
       }
+    },
+    "products": {
+      "products_title": "Bestsellers",
+      "products_secondary": "See all products"
+    },
+    "ratings": {
+      "all_ratings": "See all reviews"
+    },
+    "packs": {
+      "packs_title": "Supply packs",
+      "packs_mobile_title": "Supply",
+      "packs_secondary": "See all packs",
+      "veggies_title": "Veggies Pack",
+      "veggies_home_description": "Onions, carrots, yams...",
+      "veggies_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this pack, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
+      "local_rice_title": "Family pack - Local rice",
+      "local_rice_home_description": "Tomatoes, local rice, chili...",
+      "local_rice_description": "Designed for a family of 8, this pack is generously made up of good products to delight the family, with 100% local Ivorian rice.",
+      "rice_attieke_title": "Family pack - Rice attieke",
+      "rice_attieke_home_description": "Rice, attieke, milk powder...",
+      "rice_attieke_description": "Designed for a family of 8, this pack is generously made up of good products to delight the family, with fragrant rice and its attieke balls.",
+      "morning_title": "Morning pack",
+      "morning_home_description": "Margarine, coffee, spread...",
+      "morning_description": "Thanks to the morning pack, allow your loved ones to start the day off right. Some brands may differ depending on their availability."
     },
     "baskets": {
       "title": "Choose your basket!",
       "subtitle": "Our products are in season, coming from producers. The composition of the baskets can therefore vary.",
       "until_date": "until 03/31/2020",
-      "regular_baskets_title": "Our baskets",
-      "fruits_basket_title": "Fruits Basket 🍌",
-      "fruits_basket_home_description": "Bananas, oranges, coconut...",
-      "fruits_basket_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
-      "legumes_basket_title": "Veggies Basket 🧅",
-      "legumes_basket_home_description": "Onions, carrots, yams...",
-      "legumes_basket_description": "At MYFA, we want to highlight the food crops that are used in local consumption. With this basket, you make your loved ones and the sellers / producers with whom we are in direct contact happy! 😉",
-      "sauces_basket_title": "Sauces Basket 🍗🍖",
-      "sauces_basket_home_description": "Pepper, salt, ginger...",
-      "sauces_basket_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
-      "myfa_basket_title": "MYFA Basket 🙌🏾",
-      "myfa_basket_home_description": "It's up to you to compose it!",
-      "myfa_basket_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
-      "beauty_basket_title": "Beauty Basket ✨",
-      "beauty_basket_home_description": "Karity butter, bissap leafs...",
-      "beauty_basket_description": "With this basket full of products with health benefits as well as beauty, taking care of yourself has never been so pleasant.",
+      "pleasure_baskets_title": "Gifts baskets",
+      "pleasure_baskets_mobile_title": "Gifts",
+      "pleasure_baskets_secondary": "See all baskets",
+      "fruits_title": "Fruits Basket 🍌",
+      "fruits_home_description": "Bananas, oranges, coconut...",
+      "fruits_description": "The Fruits basket brings together up to 6 kilos of flavors that you can share with your loved ones.",
+      "sauces_title": "Sauces Basket 🍗🍖",
+      "sauces_home_description": "Pepper, salt, ginger...",
+      "sauces_description": "Any good dish must be accompanied by an adequate sauce. Peanut sauce or Djoumgblé sauce ... Allow your loved ones to make them all! 😉",
+      "myfa_title": "MYFA Basket 🙌🏾",
+      "myfa_home_description": "It's up to you to compose it!",
+      "myfa_description": "With this basket, we let you make the composition that best suits your loved ones. You can put a little of each basket and much more!",
+      "beauty_title": "Beauty Basket ✨",
+      "beauty_home_description": "Karity butter, bissap leafs...",
+      "beauty_description": "With this basket full of products with health benefits as well as beauty, taking care of yourself has never been so pleasant.",
+      "chocolate_title": "Chocolate Basket 🍫",
+      "chocolate_home_description": "Tablets, caramelized almonds...",
+      "chocolate_description": "In this basket, find all the chocolate flavors of Côte d'Ivoire.",
       "cart_modal": {
         "header": "Successfully added to purchases",
         "price": "Price",
@@ -109,18 +122,6 @@
       "alex_description": "We offer you a new experience to delight your loved ones and maintain confidence despite the distance!",
       "manuella_description": "At MYFA, bringing joy to your loved ones is our goal."
     },
-    "blog": {
-      "title": "Blog",
-      "read_more_button": "Read",
-      "slide1_description": "You, the first member of MYFA",
-      "slide2_description": "A business trip to Abidjan",
-      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA will be there",
-      "slide4_description": "MYFA, an application designed for the family",
-      "slide5_description": "During times of confinement, I find a job",
-      "slide6_description": "Recession: how do I manage to maintain the growth of my Start-up?",
-      "slide7_description": "How to take advantage of confinement to improve my startup site?",
-      "slide8_description": "My role as CFO at MYFA in times of health crisis"
-    },
     "newsletter": {
       "title": "Subscribe to our newsletter !",
       "description": "Once a week, follow the news (new baskets, evolution of the company, etc.)",
@@ -140,11 +141,16 @@
     "title": "Frequently asked questions",
     "description": "Find answers to frequently asked questions about how MYFA works here. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at infos@myfa.fr."
   },
+  "blog": {
+    "title": "Blog",
+    "description": "A few words from MYFA"
+  },
   "ratings": {
     "title": "Clients ratings",
     "description": "Your opinion matters.",
     "introduction": "Much more than a rating accompanied by a comment, all your opinions count. They allow us to question ourselves in order to offer you a service that comes closest to your wishes.",
-    "button_label": "Give a rating"
+    "button_label": "Give a rating",
+    "login_button": "Log in"
   },
   "rating_modal": {
     "your_review": "Your review",
@@ -154,11 +160,11 @@
   },
   "header": {
     "home": "Home",
-    "baskets": "Baskets",
-    "promise": "Our promise",
-    "how_it_works": "How does it work?",
-    "team": "Team",
-    "blog": "Blog",
+    "all_products": "All products",
+    "gifts_baskets": "Gifts baskets",
+    "supply_packs": "Supply packs",
+    "ratings": "Customers reviews",
+    "faq": "FAQ",
     "we_recruit": "Jobs",
     "profile": {
       "account": "My account",
@@ -178,10 +184,24 @@
       "total_ttc": "Total Price",
       "checkout": "Checkout",
       "empty_basket": "Your cart is empty"
+    },
+    "packs_description": "Our packs are made up to meet the needs of your loved ones.",
+    "baskets_description": "Treat your loved ones.",
+    "sticky": {
+      "home": "Order from here, we deliver there."
     }
   },
   "footer": {
-    "legal_notice": "Legal Notice"
+    "introduction": "Safely buy food supplies for your loved ones in Côte d'Ivoire.",
+    "know_more": "Want to know more?",
+    "team": "The team",
+    "faq": "Frequent questions",
+    "jobs": "Jobs",
+    "but_still": "But still?",
+    "clients_ratings": "Clients reviews",
+    "legal_notice": "Legal Notice",
+    "subscribe": "Subscribe",
+    "subscribe_text": "Once a week, we will update you on the latest news from MYFA."
   },
   "404": {
     "seo_title": "404: Not Found",
@@ -190,6 +210,7 @@
     "cta": "Go to Home"
   },
   "cart": {
+    "description": "My cart",
     "relative_info_title": "Information about my relative",
     "self_info_title": "Sign up to order",
     "promo_code_title": "Promo code",
@@ -255,7 +276,12 @@
     "qty": "Quantity",
     "max_qty_reached": "Maximum quantity reached",
     "add_to_cart": "Add to cart",
-    "other_baskets": "Our other baskets"
+    "other_baskets": "Our other baskets",
+    "suggestion_title": "A suggestion ? Are you missing a product in this pack?",
+    "suggestion_placeholder": "Tell us everything",
+    "suggestion_button": "Send",
+    "suggestion_button_success": "Sent",
+    "suggestion_login": "Log in"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",
@@ -317,7 +343,20 @@
     "description_part_1": "To follow the progress of your order, click",
     "here": "here"
   },
+  "packs": {
+    "page": {
+      "title": "All packs",
+      "secondary": "Home"
+    }
+  },
+  "baskets": {
+    "page": {
+      "title": "All baskets",
+      "secondary": "Home"
+    }
+  },
   "profile": {
+    "description": "My profile",
     "greeting": {
       "hello": "Hello"
     },
@@ -408,10 +447,10 @@
     "1kg_plantain": "1kg plantain",
     "250g_gombos": "250g gombos",
     "40g_fish_pouder": "40g fish pouder",
-    "1kg_red_onions": "1kg red onions",
+    "onions": "Onions (1kg)",
     "4_1kg_sugar": "4 sugar packs",
     "500g_dattes": "500g box of dates",
-    "1kg_sugar": "1kg box of sugar",
+    "sugar": "Sugar pack (1kg)",
     "250g_margarine": "250g of margarine",
     "1kg_mangoes": "Mangoes (1kg)",
     "500g_dried_dates": "Dried dates (500g)",
@@ -436,22 +475,44 @@
     "50g_pepper_pouder": "50g ground pepper",
     "30g_ginger_pouder": "30g ground ginger",
     "4_garlics": "4 garlic cloves",
-    "1kg_bananas": "1kg bananas",
-    "1kg_oranges": "1kg oranges",
-    "1_coconut": "1 coconut",
-    "1_pineapple": "1 pineapple",
-    "1kg_mangos": "1kg mangoes",
-    "1kg_avocados": "1kg avocados",
-    "1kg_carots": "1kg carrots",
-    "2kg_potatoes": "2kg potatoes",
-    "1kg_yams": "1kg yams",
-    "1_red_cabbage": "1 red cabbage",
-    "400g_french_beans": "400g French beans",
-    "1_karite": "1 jar of karity butter",
-    "1_cocoa_butter": "1 jar of cocoa butter",
-    "500g_bissap": "500g bissap leafs",
-    "75g_kinkeliba": "75g kinkeliba leafs",
-    "1_black_soap": "1 black soap",
-    "1_honey_btl": "1 bottle of honey"
+    "bananas": "Bananas (1kg)",
+    "oranges": "Oranges (1kg)",
+    "coconut": "Coconut",
+    "pineapple": "Pineapple",
+    "avocados": "Avocados (1kg)",
+    "carots": "Carots (bag - 1kg)",
+    "potatoes": "Potatoes (2kg)",
+    "yam": "Yam (1kg)",
+    "red_cabbage": "Red cabbage",
+    "french_beans": "French beans (400g)",
+    "karite": "Karité butter (pot - 200g)",
+    "cocoa_butter": "Cocoa butter (pot - 500ml)",
+    "bissap": "Bissap leafs (sachet - 250g)",
+    "kinkeliba": "Kinkeliba leafs (sachet - 75g)",
+    "black_soap": "Black soap",
+    "honey": "Honey (bottle - 600g)",
+    "margarine": "Margarine JADIDA (500g)",
+    "coffee": "Coffee Nescafé Classic (100g)",
+    "spread_chocolate": "Spread chocolate TAFISSA (pot - 500g)",
+    "tomato_puree": "Tomato puree (2kg)",
+    "milk_powder": "Milk powder (bag - 400g)",
+    "oil": "Cooking oil (1L)",
+    "black_pepper": "Black pepper (90g)",
+    "hot_chili": "Hot chili (90g)",
+    "local_rice_25": "Local rice (25kg)",
+    "local_rice_10": "Local rice (10kg)",
+    "attieke": "Attieke (1kg)",
+    "mona_lysa": "Container, white and dark chocolate",
+    "white_zephyr": "Pistoles, white chocolate (100g)",
+    "ruby": "Pistoles, pink chocolate (100g)",
+    "crispearls": "Chocolate balls (100g)",
+    "superior_lactee": "Pistoles 38% (100g)",
+    "caramel_almond": "Caramelized almonds (100g)",
+    "gold": "Pistoles 31%, white chocolate and caramel (100g)",
+    "ruben": "Chocolate sticks (100g)",
+    "ocoa": "Pistoles 70% (100g)",
+    "eale_choco_tablette": "Eale chocolate tablet",
+    "tabletine": "Eale small chocolate tablet",
+    "tofi_mylane": "Tofi Mylane"
   }
 }

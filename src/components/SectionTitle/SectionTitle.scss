@@ -1,6 +1,6 @@
 .section-title-container {
-  background-color: rgba(241, 215, 101, 0.5);
-  height: 40px;
+  background-color: #f1d866;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,12 +13,40 @@
     line-height: 50px;
     height: 100%;
     padding: 0 10px;
-    background-color: white;
+
+    &.mobile {
+      display: none;
+    }
   }
 
   .secondary-link {
     font-weight: bold;
     color: #311A19;
     text-decoration: underline;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .section-title-container {
+    .section-title {
+      font-size: 30px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title-container {
+    .section-title {
+      font-size: 20px;
+
+      &.mobile {
+        display: inline-block;
+      }
+
+      &.large {
+        display: none;
+      }
+    }
   }
 }

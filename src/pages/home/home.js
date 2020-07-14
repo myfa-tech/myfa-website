@@ -3,39 +3,40 @@ import React, { lazy, Suspense } from 'react';
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
 import SectionLoader from '../../components/SectionLoader';
-import Welcome from './Welcome';
-const OurPromise = lazy(() => import('./OurPromise'));
-const Newsletter = lazy(() => import('./Newsletter'));
-const Blog = lazy(() => import('./Blog'));
-const Baskets = lazy(() => import('./Baskets'));
-const HowItWorks = lazy(() => import('./HowItWorks'));
-const Trustees = lazy(() => import('./Trustees'));
+const PleasureBaskets = lazy(() => import('./PleasureBaskets'));
+const Packs = lazy(() => import('./Packs'));
 const Covid19 = lazy(() => import('./Covid19'));
 const Asterisks = lazy(() => import('./Asterisks'));
+const OurServices = lazy(() => import('./OurServices'));
+const Ratings = lazy(() => import('./Ratings'));
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import socialSharingImgSrc from '../../images/social-sharing-img.png';
+import homeBg from '../../images/default-bg.jpg';
 
 import useTranslate from '../../hooks/useTranslate';
+
+import './home.scss';
 
 const HomePage = () => {
   const [t] = useTranslate();
 
   return (
-    <Layout  hideHeader={true}>
+    <Layout
+      className='home-page'
+      headerBackground={homeBg}
+      headerDescription={t('home_page.home.welcome_title')}
+      headerBackgroundPosition='center center'
+    >
       <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
-
-      <Welcome />
 
       <Suspense fallback={<SectionLoader />}>
         <Covid19 />
-        <Baskets />
-        <HowItWorks />
-        <OurPromise />
-        <Trustees />
-        <Blog />
-        <Newsletter />
+        <Packs />
+        <PleasureBaskets />
+        <OurServices />
+        <Ratings />
         <Asterisks />
       </Suspense>
     </Layout>

@@ -12,7 +12,7 @@ import { isPromoValid } from '../../../services/promos';
 
 import './PromoCode.scss';
 
-const PromoCode = ({ applyPromo, promoActivated, promoPercentage }) => {
+const PromoCode = ({ applyPromo, className, promoActivated, promoPercentage }) => {
   const [t] = useTranslate();
   const [promoIsLoading, setPromoIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -37,7 +37,7 @@ const PromoCode = ({ applyPromo, promoActivated, promoPercentage }) => {
   };
 
   return (
-    <div id='promo-code'>
+    <div id='promo-code' className={`${className ? className : ''}`}>
       <h2>{t('cart.promo_code_title')}</h2>
 
       <Divider variant='middle' />

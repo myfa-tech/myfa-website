@@ -22,63 +22,76 @@
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
-      "title": "Pour la fête des mères*, faites-lui savoir que vous l'aimez de loin",
-      "subtitle": "Panier Beauté",
-      "discover_baskets_button": "Découvrir les paniers",
-      "get_basket_button": "Je craque",
+      "welcome_title": "Pour le bien-être de vos proches en Côte d’Ivoire, nous livrons en 48h*.",
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",
         "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
-    "how_it_works": {
-      "title": "Comment ça marche ?",
-      "slide1": {
-        "title": "Sélectionnez votre panier",
-        "description": "Fruits, Légumes, Sauces ou MYFA."
+    "our_services": {
+      "step_1": {
+        "title": "LIVRAISON EN 48H",
+        "line_2": "Selon la disponibilité de vos proches"
       },
-      "slide2": {
-        "title": "Renseignez les informations sur le destinataire du panier",
-        "description": "Nous l'appelons pour déterminer les conditions de livraison."
+      "step_2": {
+        "title": "SERVICE CLIENT",
+        "line_2": "(+225) 84 21 51 54",
+        "line_3": "9h - 18h du lundi au vendredi",
+        "line_4": "9h - 13h week-end et jours",
+        "line_5": "fériés"
       },
-      "slide3": {
-        "title": "Sélectionnez le quartier de livraison",
-        "description": "Parmi les 12 quartiers d'Abidjan."
-      },
-      "slide4": {
-        "title": "Réglez en toute sécurité",
-        "description": "Faites vos achats l'esprit serein."
-      },
-      "slide5": {
-        "title": "Livraison en moins de 48h",
-        "description": "Sous réserve de la disponibilité du destinataire."
-      },
-      "slide6": {
-        "title": "Suivez l'acheminement",
-        "description": "Par email ou SMS, restez au courant."
+      "step_3": {
+        "title": "PAIEMENT SÉCURISÉ",
+        "line_2": "Faites vos achats l’esprit serein"
       }
+    },
+    "products": {
+      "products_title": "Meilleures ventes",
+      "products_secondary": "Voir tous les produits"
+    },
+    "ratings": {
+      "all_ratings": "Voir tous les avis"
+    },
+    "packs": {
+      "packs_title": "Packs ravitaillement",
+      "packs_mobile_title": "Ravitaillement",
+      "packs_secondary": "Voir tous les packs",
+      "veggies_title": "Pack Légumes",
+      "veggies_home_description": "Oignons, carottes, Ignames...",
+      "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
+      "local_rice_title": "Pack Familial - Riz local",
+      "local_rice_home_description": "Tomates, riz local, piment...",
+      "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100% ivoirien.",
+      "rice_attieke_title": "Pack Familial - Riz attieke",
+      "rice_attieke_home_description": "Riz, attieke, lait en poudre...",
+      "rice_attieke_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
+      "morning_title": "Pack Matinal",
+      "morning_home_description": "Margarine, café, pâte à tartiner...",
+      "morning_description": "Grâce au pack matinal, permettez à vos proches de bien démarrer la journée. Certaines marques peuvent différer selon leur disponibilité."
     },
     "baskets": {
       "title": "Choisissez votre panier !",
       "subtitle": "Nos produits sont de saison, venant des producteurs. La composition des paniers peut donc varier.",
       "until_date": "jusqu'au 31/03/2020",
-      "regular_baskets_title": "Nos paniers",
-      "fruits_basket_title": "Panier Fruits 🍌",
-      "fruits_basket_home_description": "Bananes, oranges, noix de coco...",
-      "fruits_basket_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
-      "legumes_basket_title": "Panier Légumes 🧅",
-      "legumes_basket_home_description": "Oignons, carottes, Ignames...",
-      "legumes_basket_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce panier, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
-      "sauces_basket_title": "Panier Sauces 🍗🍖",
-      "sauces_basket_home_description": "Poivre, sel, gingembre...",
-      "sauces_basket_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
-      "myfa_basket_title": "Panier MYFA 🙌🏾",
-      "myfa_basket_home_description": "À vous de le composer !",
-      "myfa_basket_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
-      "beauty_basket_title": "Panier Beauté ✨",
-      "beauty_basket_home_description": "Beurre de karité, bissap, kinkeliba...",
-      "beauty_basket_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
+      "pleasure_baskets_title": "Paniers plaisir",
+      "pleasure_baskets_mobile_title": "Plaisir",
+      "pleasure_baskets_secondary": "Voir tous les paniers",
+      "fruits_title": "Panier Fruits 🍌",
+      "fruits_home_description": "Bananes, oranges, noix de coco...",
+      "fruits_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
+      "chocolate_title": "Panier Chocolat 🍫",
+      "chocolate_home_description": "Tablettes, amandes caramélisées...",
+      "chocolate_description": "Dans ce panier, retrouvez toutes les saveurs chocolatées de la Côte d'Ivoire.",
+      "sauces_title": "Panier Sauces 🍗🍖",
+      "sauces_home_description": "Poivre, sel, gingembre...",
+      "sauces_description": "Tout bon plat se doit d'être accompagné d'une sauce adéquate. La sauce Arachide ou encore la sauce Djoumgblé... Permettez à vos proches de toutes les réaliser ! 😉",
+      "myfa_title": "Panier MYFA 🙌🏾",
+      "myfa_home_description": "À vous de le composer !",
+      "myfa_description": "Avec ce panier, on vous laisse faire la composition qui convient le mieux à vos proches. Vous pouvez y mettre un peu de chaque panier et bien plus encore !",
+      "beauty_title": "Panier Beauté ✨",
+      "beauty_home_description": "Beurre de karité, bissap, kinkeliba...",
+      "beauty_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
       "cart_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -109,18 +122,6 @@
       "alex_description": "Nous vous proposons une expérience nouvelle pour ravir vos proches et entretenir la confiance malgré la distance !",
       "manuella_description": "Chez MYFA, procurer de la joie à vos proches est notre Objectif."
     },
-    "blog": {
-      "title": "Blog",
-      "read_more_button": "Lire",
-      "slide1_description": "Vous, le premier membre de la MYFA",
-      "slide2_description": "Un voyage d’affaires à Abidjan",
-      "slide3_description": "Global Startup Weekend Women Paris 2019: MYFA y sera",
-      "slide4_description": "MYFA, une application pensée pour la mif",
-      "slide5_description": "En plein confinement, je trouve un emploi",
-      "slide6_description": "Récession : comment je parviens à maintenir la croissance de ma Start up ?",
-      "slide7_description": "Comment profiter du confinement pour améliorer le site de ma startup ?",
-      "slide8_description": "Mon rôle de DAF chez MYFA en temps de crise sanitaire"
-    },
     "newsletter": {
       "title": "Abonnez-vous à notre newsletter !",
       "description": "Une fois par semaine, suivez les nouveautés (nouveaux paniers, évolution de la start up, etc.)",
@@ -140,11 +141,16 @@
     "title": "Questions fréquentes",
     "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse infos@myfa.fr."
   },
+  "blog": {
+    "title": "Blog",
+    "description": "Quelques mots de la MYFA"
+  },
   "ratings": {
-    "title": "Avis clients",
+    "title": "Avis des clients",
     "description": "Tous vos avis comptent.",
     "introduction": "Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.",
-    "button_label": "Donner mon avis"
+    "button_label": "Donner mon avis",
+    "login_button": "Connectez-vous"
   },
   "rating_modal": {
     "your_review": "Votre note",
@@ -154,11 +160,11 @@
   },
   "header": {
     "home": "Accueil",
-    "baskets": "Nos paniers",
-    "promise": "Notre promesse",
-    "how_it_works": "Comment ça marche ?",
-    "team": "L'équipe",
-    "blog": "Blog",
+    "all_products": "Tous les produits",
+    "gifts_baskets": "Paniers plaisir",
+    "supply_packs": "Packs ravitaillement",
+    "ratings": "Avis des clients",
+    "faq": "FAQ",
     "we_recruit": "On recrute",
     "profile": {
       "account": "Mon compte",
@@ -178,10 +184,24 @@
       "total_ttc": "Total TTC",
       "checkout": "Payer",
       "empty_basket": "Votre panier est vide"
+    },
+    "packs_description": "Nos packs sont composés de manière à subvenir aux besoins de vos proches.",
+    "baskets_description": "Faites plaisir à vos proches",
+    "sticky": {
+      "home": "Commandez d'ici, nous livrons là-bas"
     }
   },
   "footer": {
-    "legal_notice": "Mentions légales"
+    "introduction": "Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.",
+    "know_more": "En savoir plus ?",
+    "team": "L'équipe",
+    "faq": "Questions fréquentes",
+    "jobs": "Recrutement",
+    "but_still": "Mais encore ?",
+    "clients_ratings": "Avis des clients",
+    "legal_notice": "Mentions légales",
+    "subscribe": "Inscrivez-vous",
+    "subscribe_text": "Une fois par semaine, nous vous mettons au courant des nouveautés de MYFA."
   },
   "404": {
     "seo_title": "404: Introuvable",
@@ -190,6 +210,7 @@
     "cta": "Retour à l'accueil"
   },
   "cart": {
+    "description": "Mon panier",
     "relative_info_title": "Informations sur mon proche",
     "self_info_title": "Je m'inscris pour commander",
     "promo_code_title": "Code promo",
@@ -255,7 +276,12 @@
     "qty": "Quantité",
     "max_qty_reached": "Quantité maximum atteinte",
     "add_to_cart": "Ajouter au panier",
-    "other_baskets": "Nos autres paniers"
+    "other_baskets": "Nos autres paniers",
+    "suggestion_title": "Une suggestion ? Un produit vous manque dans ce pack ?",
+    "suggestion_placeholder": "Dites-nous tout",
+    "suggestion_button": "Envoyer",
+    "suggestion_button_success": "Envoyé",
+    "suggestion_login": "Connectez-vous"
   },
   "myfa_basket_to_order": {
     "bases": "Bases",
@@ -317,7 +343,20 @@
     "description_part_1": "Pour suivre l’avancement de votre commande, cliquez",
     "here": "ici"
   },
+  "packs": {
+    "page": {
+      "title": "Tous nos packs",
+      "secondary": "Accueil"
+    }
+  },
+  "baskets": {
+    "page": {
+      "title": "Tous nos paniers",
+      "secondary": "Accueil"
+    }
+  },
   "profile": {
+    "description": "Mon profil",
     "greeting": {
       "hello": "Bonjour"
     },
@@ -407,9 +446,8 @@
     "2_attiekes": "2 boules d'attiéké",
     "1kg_plantain": "Bananes plantain (1kg)",
     "250g_gombos": "Gombos (250g)",
-    "4_1kg_sugar": "4 packs de sucre",
     "500g_dattes": "Dattes (500g)",
-    "1kg_sugar": "Sucre morceaux (1kg)",
+    "sugar": "Sucre morceaux (1kg)",
     "250g_margarine": "Margarine (250g)",
     "1_potage": "Potage tomate vermicelles",
     "1_10_tea_bags": "10 sachets de thé Lipton",
@@ -421,8 +459,8 @@
     "1_350_mil": "Mil pour la bouillie (350g)",
     "1_410_bonnet_rouge": "Bonnet Rouge (410g)",
     "40g_fish_pouder": "Poudre de poisson (40g)",
-    "1kg_red_onions": "Oignons (1kg)",
-    "1kg_mangoes": "Mangues (1kg)",
+    "onions": "Oignons (1kg)",
+    "mangoes": "Mangues (1kg)",
     "500g_dried_dates": "Dattes séchées (500g)",
     "1kg_fresh_dates": "Dattes non séchées (1kg)",
     "300g_grapes": "Raisins (300g)",
@@ -436,21 +474,44 @@
     "50g_pepper_pouder": "Poivre moulu (50g)",
     "30g_ginger_pouder": "Gingembre moulu (30g)",
     "4_garlics": "4 gousses d'ail",
-    "1kg_bananas": "Bananes (1kg)",
-    "1kg_oranges": "Oranges (1kg)",
-    "1_coconut": "1 noix de coco",
-    "1_pineapple": "1 ananas",
-    "1kg_avocados": "Avocats (1kg)",
-    "1kg_carots": "Carottes (1kg)",
-    "2kg_potatoes": "Pommes de terre (2kg)",
-    "1kg_yams": "Ignames (1kg)",
-    "1_red_cabbage": "1 choux rouge",
-    "400g_french_beans": "Haricots verts (400g)",
-    "1_karite": "1 pot de beurre de karité",
-    "1_cocoa_butter": "1 pot de beurre de cacao",
-    "500g_bissap": "500g de feuille de bissap",
-    "75g_kinkeliba": "75g de feuilles de kinkeliba",
-    "1_black_soap": "1 savon noir",
-    "1_honey_btl": "1 bouteille de miel"
+    "bananas": "Bananes (1kg)",
+    "oranges": "Oranges (1kg)",
+    "coconut": "Noix de coco",
+    "pineapple": "Ananas",
+    "avocados": "Avocats (1kg)",
+    "carots": "Carottes (sachet - 1kg)",
+    "potatoes": "Pommes de terre (2kg)",
+    "yam": "Ignames (1kg)",
+    "red_cabbage": "Choux rouge",
+    "french_beans": "Haricots verts (400g)",
+    "karite": "Beurre de karité (pot - 200g)",
+    "cocoa_butter": "Beurre de cacao (pot - 500ml)",
+    "bissap": "Feuilles de Bissap (sachet - 250g)",
+    "kinkeliba": "Feuilles de kinkeliba (sachet - 75g)",
+    "black_soap": "Savon noir",
+    "honey": "Miel (bouteille - 600g)",
+    "margarine": "Margarine JADIDA (500g)",
+    "coffee": "Café Nescafé Classic (100g)",
+    "spread_chocolate": "Chocolat à tartiner TAFISSA (pot - 500g)",
+    "tomato_puree": "Concentré de tomates (2kg)",
+    "milk_powder": "Lait en poudre (sachet - 400g)",
+    "oil": "Huile (1L)",
+    "black_pepper": "Poivre noir (90g)",
+    "hot_chili": "Piment fort (90g)",
+    "local_rice_25": "Riz local (25kg)",
+    "local_rice_10": "Riz local (10kg)",
+    "attieke": "Attieke (1kg)",
+    "mona_lysa": "Contenant, chocolat blanc et noir",
+    "white_zephyr": "Pistoles, chocolat blanc (100g)",
+    "ruby": "Pistoles, chocolat rose (100g)",
+    "crispearls": "Billes de chocolat (100g)",
+    "superior_lactee": "Pistoles 38% (100g)",
+    "caramel_almond": "Amandes caramélisées (100g)",
+    "gold": "Pistoles 31%, chocolat blanc et caramel (100g)",
+    "ruben": "Batonets chocolatés (100g)",
+    "ocoa": "Pistoles 70% (100g)",
+    "eale_choco_tablette": "Tablette chocolatée Eale",
+    "tabletine": "Petite tablette Eale",
+    "tofi_mylane": "Tofi Mylane"
   }
 }

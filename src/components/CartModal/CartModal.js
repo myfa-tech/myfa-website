@@ -4,9 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import { FaCheck } from 'react-icons/fa';
 
+import Button from '../Button';
+
 import useTranslate from '../../hooks/useTranslate';
 import CartStorage from '../../services/CartStorage';
-import basketsImgs from '../../assets/basketsImgs';
+import getBasketImage from '../../utils/getBasketImage';
 
 import './CartModal.scss';
 
@@ -48,7 +50,7 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
           <Col md='6'>
             <Row>
               <Col md='6'>
-                <img src={basketsImgs[basket.type]} alt={basket.imgAlt} />
+                <img src={getBasketImage(basket.type)} alt={basket.imgAlt} />
               </Col>
               <Col md='6'>
                 <h1>{t(basket.labelTranslate)}</h1>
@@ -63,12 +65,8 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
             <p><b>{t('home_page.baskets.cart_modal.delivery')} :</b> {t('home_page.baskets.cart_modal.free')}</p>
             <p><b>{t('home_page.baskets.cart_modal.total')} :</b> {cartTotal.toFixed(2)} €</p>
 
-            <button className='continue-button' onClick={toggleCartModal}>
-              {t('home_page.baskets.cart_modal.continue_button')}
-            </button>
-            <button className='checkout-button' onClick={() => goTo('/cart')}>
-              {t('home_page.baskets.cart_modal.pay_button')}
-            </button>
+            <Button label={t('home_page.baskets.cart_modal.continue_button')} secondary onClick={toggleCartModal} />
+            <Button label={t('home_page.baskets.cart_modal.pay_button')} className='pay-button' onClick={() => goTo('/cart')} />
           </Col>
         </Row>}
       </Modal.Body>

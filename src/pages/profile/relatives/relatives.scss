@@ -4,7 +4,7 @@
 
   .relatives-list-title-container, .relatives-list-container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
     margin-bottom: 1em;
     padding: 2em;
 
@@ -18,7 +18,7 @@
         list-style-type: none;
         padding: 1em 3em;
         margin-bottom: 1em;
-        border-radius: 8px;
+        border-radius: 0;
       }
 
       .relatives-info {
@@ -48,7 +48,7 @@
 
   #relative-form {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0;
     margin-bottom: 1em;
     padding: 2em;
     width: 100%;
@@ -83,7 +83,7 @@
 
     .modify-button {
       color: black;
-      border-radius: 6px;
+      border-radius: 0;
       font-size: 22px;
       width: 100%;
       border-color: #F1D866;
@@ -104,7 +104,7 @@
 
   .add-relative-button {
     color: black;
-    border-radius: 6px;
+    border-radius: 0;
     font-size: 22px;
     width: 50%;
     border-color: #F1D866;
@@ -137,7 +137,7 @@
 
   .confirm-button {
     color: black;
-    border-radius: 6px;
+    border-radius: 0;
     width: 100%;
     font-size: 15px;
     border-color: #F1D866;
@@ -147,7 +147,7 @@
 
   .cancel-button {
     color: white;
-    border-radius: 6px;
+    border-radius: 0;
     width: 100%;
     font-size: 15px;
     border-color: grey;

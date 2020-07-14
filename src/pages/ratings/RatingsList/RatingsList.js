@@ -98,7 +98,7 @@ const RatingsList = ({ className }) => {
           color={'#000'}
           loading={true}
         />
-      </div> : ratings.map((rating) => {
+      </div> : ratings.map((rating, ratingIndex) => {
         let stars = [];
 
         for (let i=0; i<rating.rating; i++) {
@@ -110,12 +110,12 @@ const RatingsList = ({ className }) => {
         }
 
         return (
-          <div className='rating'>
+          <div className='rating' key={ratingIndex}>
             <div className='rating-header'>
               <div className='left-header'>
                 <div className='stars'>
-                  {stars.map((isStarYellow) => (
-                    <FaStar className={isStarYellow ? 'yellow' : 'grey'} />
+                  {stars.map((isStarYellow, starIndex) => (
+                    <FaStar key={starIndex} className={isStarYellow ? 'yellow' : 'grey'} />
                   ))}
                 </div>
                 <div className='user-name'>{rating.user.firstname} {rating.user.lastname}</div>
@@ -138,8 +138,9 @@ const RatingsList = ({ className }) => {
       <div className='footer-nav'>
         <FaCaretLeft className='arrow left-arrow' onClick={() => goToPage(page-1)} />
         <div>
-          {pages.map(p => (
+          {pages.map((p, pagesIndex) => (
             <Button
+              key={pagesIndex}
               className={`page-button ${page !== p ? 'not-actual' : ''}`}
               label={p}
               onClick={() => goToPage(p)}

@@ -1,0 +1,72 @@
+#profile-menu {
+  .list-container {
+    padding: 0;
+    margin-top: 1em;
+
+    li {
+      background-color: white;
+      border: 1px solid rgb(219, 219, 219);
+      border-radius: 0;
+      margin-bottom: 1em;
+      width: 100%;
+      text-align: center;
+      list-style-type: none;
+
+      a {
+        display: block;
+        padding: 1em;
+        text-decoration: none;
+        width: 100%;
+        color: black;
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+#delete-account-modal {
+  .logo-big {
+    width: 50%;
+    margin: auto;
+    display: block;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .confirm-button {
+    color: black;
+    border-radius: 0;
+    width: 100%;
+    font-size: 15px;
+    border-color: #e57373;
+    padding: 15px;
+    background-color: #e57373;
+  }
+
+  .cancel-button {
+    color: white;
+    border-radius: 0;
+    width: 100%;
+    font-size: 15px;
+    border-color: grey;
+    padding: 15px;
+    margin: auto;
+    display: block;
+    background-color: grey;
+  }
+}
+
+@media (min-width: 768px) {
+  #profile-menu {
+    .list-container {
+      li {
+        &.active {
+          border: 1px solid grey;
+        }
+      }
+    }
+  }
+}

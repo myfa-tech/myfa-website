@@ -22,12 +22,13 @@ import useDrawerState from '../../hooks/useDrawerState';
 import useTranslate from '../../hooks/useTranslate';
 
 import logoHandsSrc from '../../images/logo-1.png';
+import defaultBackground from '../../images/default-bg.jpg';
 
 import './Header.scss';
 
 const STICKY_LIMIT = 300;
 
-const Header = ({ headerBackground, headerDescription, headerBackgroundPosition }) => {
+const Header = ({ headerBackground, headerDescription, headerBackgroundPosition, stickyHeaderBackgroundPosition }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginSignupModal, setShowLoginSignupModal] = useState(false);
   const [switchValue, setSwitchValue] = useState('login');
@@ -35,20 +36,20 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
   const [cart, setCart] = useState({});
   const [isProfileNavOpen, setIsProfileNavOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [underlinedSection, setUnderlinedSection] = useState('');
   const [t] = useTranslate();
   const [drawerState, setDrawerState, toggleDrawer] = useDrawerState();
+
+  const DEFAULT_HEADER_DESCRIPTION = t('home_page.home.welcome_title');
 
   const eventEmitter = new EventEmitter();
 
   const DRAWER_LIST = [
     { label: t('header.home'), link: '/' },
-    { label: t('header.baskets'), link: '/#baskets' },
-    { label: t('header.how_it_works'), link: '/#how-it-works' },
-    { label: t('header.promise'), link: '/#our-promise' },
-    { label: t('header.team'), link: '/team' },
-    { label: t('header.blog'), link: '/#blog' },
-    { label: t('header.we_recruit'), link: '/jobs' },
+    // { label: t('header.all_products'), link: '/#details' },
+    { label: t('header.supply_packs'), link: '/#packs' },
+    { label: t('header.gifts_baskets'), link: '/#pleasure-baskets' },
+    { label: t('header.ratings'), link: '/ratings' },
+    { label: t('header.faq'), link: '/faq' },
   ];
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
   }, []);
 
   useEffect(() => {
-    window.onscroll = updateNavbarStickines;
+    window.onscroll = updateNavbarStickiness;
   }, [sticky]);
 
   useEffect(() => {
@@ -72,32 +73,11 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
     }
   }, [user]);
 
-  const updateNavbarStickines = () => {
+  const updateNavbarStickiness = () => {
     if (window.pageYOffset >= STICKY_LIMIT && !sticky) {
       setSticky(true);
     } else if (window.pageYOffset < STICKY_LIMIT && sticky) {
       setSticky(false);
-    }
-
-    let basketsAnchor = document.getElementById('baskets');
-    let promiseAnchor = document.getElementById('our-promise');
-    let blogAnchor = document.getElementById('blog');
-
-    let basketsHeight = basketsAnchor ? basketsAnchor.offsetTop - 200 : null;
-    let promiseHeight = promiseAnchor ? promiseAnchor.offsetTop - 200 : null;
-    let blogHeight = blogAnchor ? blogAnchor.offsetTop - 200 : null;
-    let cursor = window.pageYOffset;
-
-    if (basketsHeight && promiseHeight && blogHeight) {
-      if (cursor < basketsHeight && underlinedSection !== 'home') {
-        setUnderlinedSection('home');
-      } else if (cursor >= basketsHeight && cursor < promiseHeight && underlinedSection !== 'baskets') {
-        setUnderlinedSection('baskets');
-      } else if (cursor >= promiseHeight && cursor < blogHeight && underlinedSection !== 'promise') {
-        setUnderlinedSection('promise');
-      } else if (cursor >= blogHeight && underlinedSection !== 'blog') {
-        setUnderlinedSection('blog');
-      }
     }
   };
 
@@ -147,43 +127,86 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition 
   };
 
   return (
-    <div id='header' className={headerBackground ? 'header-image-description' : ''} style={{ backgroundImage: `url(${headerBackground})`, backgroundPosition: headerBackgroundPosition }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`}>
-        <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
-        <span className='menu'>
-          {isLoggedIn ?
-            <Dropdown className='profile-btn'>
-              <Dropdown.Toggle
-                onMouseEnter={toggleIsProfileNavOpen}
-                onMouseLeave={toggleIsProfileNavOpen}
-                show={isProfileNavOpen}
-                className='account'
-              >
-                <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
-                <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
-                <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> :
-            <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
-          }
-          <a href='/cart' className='basket-link'>
-            <Suspense fallback=''>
-              <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
-            </Suspense>
-          </a>
-          <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
-          <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
-        </span>
+    <div id='header' className='header-image-description' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: headerBackgroundPosition || 'center center' }}>
+      <div expand="lg" className='header-items'>
+        <div className='navbar-header'>
+          <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
+          <span className='menu'>
+            {isLoggedIn ?
+              <Dropdown className='profile-btn'>
+                <Dropdown.Toggle
+                  onMouseEnter={toggleIsProfileNavOpen}
+                  onMouseLeave={toggleIsProfileNavOpen}
+                  show={isProfileNavOpen}
+                  className='account'
+                >
+                  <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
+                  <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> :
+              <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
+            }
+            <a href='/cart' className='basket-link'>
+              <Suspense fallback=''>
+                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
+              </Suspense>
+            </a>
+            <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
+            <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
+          </span>
+        </div>
       </div>
 
-      {headerDescription ? <div className='header-description'>
-        <span>{headerDescription}</span>
+      {sticky ? <div expand="lg" className='header-items sticky-navbar' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
+        <div className='navbar-header'>
+          <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
+          <span className='menu'>
+            {isLoggedIn ?
+              <Dropdown className='profile-btn'>
+                <Dropdown.Toggle
+                  onMouseEnter={toggleIsProfileNavOpen}
+                  onMouseLeave={toggleIsProfileNavOpen}
+                  show={isProfileNavOpen}
+                  className='account'
+                >
+                  <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
+                  <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> :
+              <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
+            }
+            <a href='/cart' className='basket-link'>
+              <Suspense fallback=''>
+                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
+              </Suspense>
+            </a>
+            <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
+            <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
+          </span>
+        </div>
+
+        <div className='sticky-title'>
+          {headerDescription ? <h2>{headerDescription}</h2> :
+            <h2>{t('header.sticky.home')}</h2>
+          }
+        </div>
       </div> : null}
+
+      <div className='header-description'>
+        <span>{headerDescription || DEFAULT_HEADER_DESCRIPTION}</span>
+      </div>
 
       <Suspense fallback=''>
         <CustomDrawer

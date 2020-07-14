@@ -64,8 +64,9 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
           <h2>{t('rating_modal.your_review')}</h2>
 
           <div className='stars'>
-            {emptyStars.map(star => (
+            {emptyStars.map((star, index) => (
               <FaStar
+                key={`empty-star-${index}`}
                 className={`star ${(rating >= star) ? 'yellow' : 'grey'}`}
                 onPointerOver={() => setRating(star)}
                 onPointerLeave={() => setRating(form.rating)}

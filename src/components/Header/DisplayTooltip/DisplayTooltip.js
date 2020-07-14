@@ -6,9 +6,12 @@ import { FaRegTrashAlt, FaShoppingCart } from 'react-icons/fa';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 
+import Button from '../../Button';
 import uniqBy from '../../../utils/uniqBy';
 import countBy from '../../../utils/countBy';
-import basketsImgs from '../../../assets/basketsImgs';
+import getBasketImage from '../../../utils/getBasketImage';
+
+import './DisplayTooltip.scss';
 
 const CustomTooltip = withStyles(theme => ({
   tooltip: {
@@ -64,10 +67,10 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
                   <li key={index}>
                     <Row>
                       <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
-                        <img src={basketsImgs[basket.type]} />
+                        <img src={getBasketImage(basket.type)} />
                       </Col>
                       <Col xs={7} sm={6} className='label-container'>
-                        <h4>{t(`home_page.baskets.${basket.type}_basket_title`)}</h4>
+                        <h4>{t(`home_page.${basket.category}.${basket.type}_title`)}</h4>
                         <p>{basket.price.toFixed(2)} €</p>
                       </Col>
                       <Col xs={5} sm={4} className='qty-container'>
@@ -89,7 +92,7 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
 
               <Divider variant='middle' />
 
-              <button className='pay-button' onClick={goToCart}>{t('header.custom_tooltip.checkout')}</button>
+              <Button onClick={goToCart} className='pay-button' label={t('header.custom_tooltip.checkout')} />
             </> :
             <div className='empty-cart'>
               <p>{t('header.custom_tooltip.empty_basket')}</p>

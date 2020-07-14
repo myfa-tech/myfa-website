@@ -1,5 +1,5 @@
 .my-cart-container {
-  border-radius: 8px;
+  border-radius: 0;
   background-color: white;
   padding: 2em;
 
@@ -94,7 +94,7 @@
       list-style-type: none;
       padding: 1em;
       margin-bottom: 1em;
-      border-radius: 8px;
+      border-radius: 0;
       max-height: 101px;
       transition: max-height 0.4s ease-out;
       height: auto;
@@ -124,7 +124,7 @@
 
     img {
       width: 80%;
-      border-radius: 8px;
+      border-radius: 0;
     }
   }
 }

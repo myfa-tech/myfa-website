@@ -2,6 +2,8 @@
   max-width: 100%;
   padding-left: 5%;
   padding-right: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &.header-image-description {
     height: 215px;
@@ -9,6 +11,14 @@
     flex-direction: column;
 
     .header-description {
+      font-size: 50px;
+      width: 60%;
+      margin: auto;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0px 0px 2px black;
+      color: white;
+      line-height: 40px;
       flex-grow: 8;
       display: flex;
       align-items: center;
@@ -23,21 +33,44 @@
   }
 
   .header-items {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    .navbar-header {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
   }
 
   .sticky-navbar {
     position: fixed;
     width: 100%;
+    height: 150px;
     background-color: white;
     padding-left: 100px;
     padding-right: 100px;
     top: 0;
     left: 0;
     z-index: 900;
+    display: flex;
+    flex-direction: column;
+
+    background-size: cover;
+
+    .sticky-title {
+      text-align: center;
+      flex-grow: 8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        width: 70%;
+        text-shadow: 0px 0px 2px black;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
   }
 
   .navbar {
@@ -50,13 +83,16 @@
 
   .drawer-button {
     background-color: transparent;
-    border: 1px solid #311A19;
-    color: #311A19;
+    border: 1px solid white;
+    height: 42px;
+    text-shadow: 0px 0px 1px black;
+    color: white;
   }
 
   .menu {
     a {
-      color: #311a19 !important;
+      color: white;
+      text-shadow: 0px 0px 1px black;
       font-size: 14px;
       font-weight: bold;
       padding: .5rem 1rem 0 1rem;
@@ -65,10 +101,16 @@
     .profile-btn {
       display: inline-block;
 
+      a {
+        color: #311A19;
+        text-shadow: none;
+      }
+
       .account {
         background-color: transparent;
         border: none;
-        color: #311a19;
+        color: white;
+        text-shadow: 0px 0px 1px black;
       }
     }
 
@@ -90,7 +132,7 @@
     }
 
     .account {
-      border-radius: 8px;
+      border-radius: 0;
     }
 
     .profile-link {
@@ -176,19 +218,6 @@
     padding: 1em;
   }
 
-  .pay-button {
-    color: #311A19;
-    background-color: #F1D866;
-    padding: 1em 2em;
-    width: 100%;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    font-size: 15px;
-    font-weight: 600;
-    border: 1px solid #311A19;
-    border-radius: 8px;
-  }
-
   .empty-cart {
     padding: 4em;
   }
@@ -206,7 +235,7 @@
 
       img {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 0;
       }
     }
 
@@ -269,7 +298,7 @@
       background-color: #eee;
       list-style-type: none;
       padding: 5px;
-      border-radius: 8px;
+      border-radius: 0;
 
       &:not(:last-child) {
         margin-bottom: 1em;
@@ -306,8 +335,20 @@
 @media (min-width: 769px) {}
 
 @media (max-width: 768px) {
-  #account-modal {
+  #header {
+    .sticky-navbar {
+      padding-left: 20px;
+      padding-right: 20px;
 
+      .sticky-title {
+        h2 {
+          text-shadow: 0px 0px 2px black;
+          color: white;
+          font-size: 22px;
+          width: 100%;
+        }
+      }
+    }
   }
 }
 
@@ -315,9 +356,14 @@
 
 @media (max-width: 480px) {
   #header {
-    .sticky-navbar {
-      padding-left: 20px;
-      padding-right: 20px;
+    &.header-image-description {
+      .header-description {
+        width: 100%;
+
+        span {
+          font-size: 22px;
+        }
+      }
     }
   }
 }
@@ -327,7 +373,7 @@
     &.header-image-description {
       .header-description {
         span {
-          font-size: 28px;
+          font-size: 22px;
         }
       }
     }

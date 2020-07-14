@@ -10,18 +10,14 @@ import common_en from './intl/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
-
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
 const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
-const ProfileInformationPage = lazy(() => import('./pages/profile/information'));
-const ProfileOrdersPage = lazy(() => import('./pages/profile/orders'));
-const ProfilePasswordPage = lazy(() => import('./pages/profile/password'));
-const ProfileRelativesPage = lazy(() => import('./pages/profile/relatives'));
+const ProfilePage = lazy(() => import('./pages/profile'));
 const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
 const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
-const BasketsPage = lazy(() => import('./pages/baskets'));
+const BasketsDetailsPage = lazy(() => import('./pages/baskets_details'));
 const CartPage = lazy(() => import('./pages/cart'));
 const CguEnPage = lazy(() => import('./pages/cgu_en'));
 const CguFrPage = lazy(() => import('./pages/cgu_fr'));
@@ -34,6 +30,8 @@ const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
+const Packs = lazy(() => import('./pages/packs'));
+const Baskets = lazy(() => import('./pages/baskets'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
 const BlogPage = lazy(() => import('./pages/blog'));
@@ -71,13 +69,11 @@ const App = () => (
         from="/profile"
         to="/profile/information"
       />
-      <ProfileInformationPage path='/profile/information' />
-      <ProfileOrdersPage path='/profile/orders' />
-      <ProfilePasswordPage path='/profile/password' />
-      <ProfileRelativesPage path='/profile/relatives' />
+      <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
-      <BasketsPage path='/baskets' />
+      <BasketsDetailsPage path='/baskets/details' />
+      <BasketsDetailsPage path='/packs/details' />
       <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
       <CguEnPage path='/cgu_en'/>
@@ -91,6 +87,8 @@ const App = () => (
       <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
+      <Packs path='/packs' />
+      <Baskets path='/pleasure-baskets' />
       <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
       <ArticlePage path='articles/:articleId' />

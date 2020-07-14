@@ -17,7 +17,7 @@
         position: relative;
         text-align: center;
         border: 1px solid rgb(226, 226, 226);
-        border-radius: 8px;
+        border-radius: 0;
 
         &.red {
           background-color: #ef5350;
@@ -37,7 +37,7 @@
           top: 5px;
           right: 5px;
           padding: 2px 15px 0 15px;
-          border-radius: 8px;
+          border-radius: 0;
           background-color: grey;
           color: white;
 

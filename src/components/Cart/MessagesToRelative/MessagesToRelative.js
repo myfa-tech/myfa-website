@@ -5,11 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import './MessagesToRelative.scss';
 import useTranslate from '../../../hooks/useTranslate';
 
-const MessagesToRelative = ({ cart, handleChangeMessage }) => {
+const MessagesToRelative = ({ cart, className, handleChangeMessage }) => {
   const [t] = useTranslate();
 
   return (
-    <div id='message-to-relative'>
+    <div className={`${className ? className : ''}`} id='message-to-relative'>
       <h2>{t('cart.message_to_relative_title')}</h2>
 
       <Divider variant='middle' />
