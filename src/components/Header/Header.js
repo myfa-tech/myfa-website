@@ -128,7 +128,42 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
 
   return (
     <div id='header' className='header-image-description' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: headerBackgroundPosition || 'center center' }}>
-      <div expand="lg" className={`header-items ${sticky ? 'sticky-navbar': ''}`} style={{ backgroundImage: sticky ? `url(${headerBackground || defaultBackground})` : '', backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
+      <div expand="lg" className='header-items'>
+        <div className='navbar-header'>
+          <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
+          <span className='menu'>
+            {isLoggedIn ?
+              <Dropdown className='profile-btn'>
+                <Dropdown.Toggle
+                  onMouseEnter={toggleIsProfileNavOpen}
+                  onMouseLeave={toggleIsProfileNavOpen}
+                  show={isProfileNavOpen}
+                  className='account'
+                >
+                  <span className='profile-link'><FaUserAlt /> <span>{user.firstname}</span></span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href='/profile/information'>{t('header.profile.information')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/orders'>{t('header.profile.orders')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/password'>{t('header.profile.password')}</Dropdown.Item>
+                  <Dropdown.Item href='/profile/relatives'>{t('header.profile.relatives')}</Dropdown.Item>
+                  <Dropdown.Item href='/logout'>{t('header.profile.logout')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> :
+              <a className='account' href='#' onClick={toggleShowLoginSignupModal}>{t('header.profile.account')}</a>
+            }
+            <a href='/cart' className='basket-link'>
+              <Suspense fallback=''>
+                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
+              </Suspense>
+            </a>
+            <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
+            <a className='fr-link' href='#' onClick={() => i18next.changeLanguage('fr')}>FR</a>
+          </span>
+        </div>
+      </div>
+
+      {sticky ? <div expand="lg" className='header-items sticky-navbar' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: (stickyHeaderBackgroundPosition || 'center center') }}>
         <div className='navbar-header'>
           <Button className='drawer-button' onClick={() => toggleDrawer('left', true)}><IoMdMenu /></Button>
           <span className='menu'>
@@ -162,12 +197,12 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
           </span>
         </div>
 
-        {sticky ? <div className='sticky-title'>
+        <div className='sticky-title'>
           {headerDescription ? <h2>{headerDescription}</h2> :
             <h2>{t('header.sticky.home')}</h2>
           }
-        </div> : null}
-      </div>
+        </div>
+      </div> : null}
 
       <div className='header-description'>
         <span>{headerDescription || DEFAULT_HEADER_DESCRIPTION}</span>

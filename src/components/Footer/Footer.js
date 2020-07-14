@@ -9,7 +9,6 @@ import Divider from '@material-ui/core/Divider';
 import { SocialIcon } from 'react-social-icons';
 
 import ButtonWithLoader from '../ButtonWithLoader';
-import Toast from '../Toast';
 
 import useTranslate from '../../hooks/useTranslate';
 import { saveNewsletterMember } from '../../services/mailjet';
@@ -21,10 +20,10 @@ import './Footer.scss'
 
 const Footer = ({ noBackgroundColor }) => {
   const [t, locale] = useTranslate();
-  const [showToast, setShowToast] = useState(false);
-  const [toastType, setToastType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const [successNewsletter, setSuccessNewsletter] = useState(false);
+  const [failureNewsletter, setFailureNewsletter] = useState(false);
 
   const onNewsletterSubmit = async (event) => {
     event.preventDefault();
@@ -32,30 +31,22 @@ const Footer = ({ noBackgroundColor }) => {
 
     try {
       await saveNewsletterMember({ email });
-      setToastType('success');
-      setShowToast(true);
-      resetEmail();
+      setSuccessNewsletter(true);
     } catch(err) {
-      setToastType('error');
-      setShowToast(true);
+      setFailureNewsletter(true);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const editNewsletterField = (e) => {
+    setSuccessNewsletter(false);
+    setFailureNewsletter(false);
+    setEmail(e.target.value);
+  };
+
   return (
     <footer className='footer'>
-      {showToast ?
-        <div
-          style={{
-            position: 'fixed',
-            top: 10,
-            right: 10,
-          }}
-        >
-          <Toast show={showToast} setShow={setShowToast} type={toastType} />
-        </div>
-      : null}
       <div>
         <Row className={`content-container ${noBackgroundColor ? 'no-background' : ''}`}>
           <Col xs={12} lg={3}>
@@ -117,13 +108,17 @@ const Footer = ({ noBackgroundColor }) => {
                   className='input'
                   type='email'
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={editNewsletterField}
                 />
                 <InputGroup.Append>
                   <ButtonWithLoader
                     className='subscribe-btn'
                     disabled={isLoading}
                     isLoading={isLoading}
+                    success={successNewsletter}
+                    failure={failureNewsletter}
+                    failureLabel='❌'
+                    successLabel='✅'
                     label={<FaCheck className='subscribe-icon' />}
                   />
                 </InputGroup.Append>

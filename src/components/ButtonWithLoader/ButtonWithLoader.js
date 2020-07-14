@@ -9,7 +9,7 @@ const spinnerStyle = css`
   margin: 0 auto;
 `;
 
-const ButtonWithLoader = ({ isLoading, label, onClick, className, type, disabled, success, successLabel }) => {
+const ButtonWithLoader = ({ isLoading, label, onClick, className, type, disabled, success, successLabel, failure, failureLabel }) => {
   return isLoading ?
     <button className={`${className} button-with-loader`} type={type ? type : 'submit'}>
       <ClipLoader
@@ -26,7 +26,9 @@ const ButtonWithLoader = ({ isLoading, label, onClick, className, type, disabled
       type={type ? type : 'submit'}
       onClick={onClick ? onClick : () => {}}
     >
-      {success ? successLabel : label}
+      {success ? successLabel : null}
+      {failure ? failureLabel : null}
+      {(success || failure) ? null : label}
     </button>
 };
 

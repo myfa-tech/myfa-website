@@ -60,7 +60,7 @@ const BasketsDetails = () => {
     chocolate: { bg: chocolatePackBgHeader, description: t('header.baskets_description') },
   };
   const type = (typeof window !== 'undefined') ? getQueryParam('type') : '';
-  const catType = (typeof window !== 'undefined' && window.location.pathname.includes('packs')) ? 'packs' : 'baskets';
+  const catType = (typeof window !== 'undefined' && window.location.pathname.includes('packs')) ? 'packs/details' : 'baskets/details';
   const basket = baskets.find(b => b.type === type);
   const otherBaskets = basket ? baskets.filter(b => b.type !== basket.type) : [];
 
