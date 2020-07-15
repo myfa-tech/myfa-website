@@ -7,9 +7,6 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import StepLabel from '@material-ui/core/StepLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import SEO from '../../../components/seo';
-import Layout from '../../../components/layout';
-import ProfileGreeting from '../ProfileGreeting';
 import ProfileMenu from '../ProfileMenu';
 import ButtonWithLoader from '../../../components/ButtonWithLoader';
 const CartModal = lazy(() => import('../../../components/CartModal'));

@@ -9,6 +9,7 @@ import morningPackSrc from '../images/morning.jpg';
 import veggiesPackSrc from '../images/veggies.jpg';
 import localRicePackSrc from '../images/local_rice.jpg';
 import riceAttiekePackSrc from '../images/rice_attieke.jpg';
+import myfaSrc from '../images/myfa.jpg';
 
 const basketsImgs = {
 	fruits: fruitsSrc,
@@ -21,6 +22,7 @@ const basketsImgs = {
 	ramadan_fruits: ramadanFruitsSrc,
 	ramadan_sugar: ramadanSugarSrc,
 	ramadan_full: ramadanFullSrc,
+	myfa: myfaSrc,
 };
 
 export default basketsImgs;
