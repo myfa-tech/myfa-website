@@ -9,7 +9,7 @@ import useTranslate from '../../../hooks/useTranslate';
 
 const QTY_MAX = 5;
 
-const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, availableSupps }) => {
+const Step4 = ({ basketParts, previousStep, addBasketToCart, supps, setSupps, canPay, availableSupps }) => {
   const [qty, setQty] = useState(1);
   const [basket, setBasket] = useState({ ...basketParts });
   const [isDone, setIsDone] = useState(false);
@@ -46,7 +46,7 @@ const Step4 = ({ basketParts, previousStep, addToCart, supps, setSupps, canPay, 
   };
 
   const finishPurchase = () => {
-    addToCart(basket, qty);
+    addBasketToCart(basket, qty);
     setIsDone(true);
   };
 

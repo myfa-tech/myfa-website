@@ -22,8 +22,8 @@ const PROMO_PERCENTAGE = 10;
 
 const Cart = () => {
   const [cart, setCart] = useState({});
-  const [basketsPrice, setBasketsPrice] = useState(0);
-  const [basketsNumber, setBasketsNumber] = useState(0);
+  const [itemsPrice, setItemsPrice] = useState(0);
+  const [itemsNumber, setItemsNumber] = useState(0);
   const [step, setStep] = useState(1);
   const [recipientsErrors, setRecipientsErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,7 @@ const Cart = () => {
   }, []);
 
   useEffect(() => {
-    setBasketsPrice(basketsPrice - (basketsPrice * (PROMO_PERCENTAGE/100)))
+    setItemsPrice(itemsPrice - (itemsPrice * (PROMO_PERCENTAGE/100)))
   }, [promoActivated]);
 
   const initCart = async () => {
@@ -51,15 +51,17 @@ const Cart = () => {
 
     if (!!newCart && !!newCart.baskets) {
       let newBasketsNumber = newCart.baskets.length;
+      let newProductsNumber = newCart.products.items.length;
       let newBasketsPrice = newCart.baskets.map(b => b.price).reduce((acc, cur) => acc + cur, 0);
+      let newProductsPrice = newCart.products.items.map(p => p.price).reduce((acc, cur) => acc + cur, 0);
 
       setCart(newCart);
-      setBasketsNumber(newBasketsNumber);
-      setBasketsPrice(newBasketsPrice);
+      setItemsNumber(newBasketsNumber + newProductsNumber);
+      setItemsPrice(newBasketsPrice + newProductsPrice);
     } else {
       setCart({});
-      setBasketsNumber(0);
-      setBasketsPrice(0);
+      setItemsNumber(0);
+      setItemsPrice(0);
     }
 
     setIsFetching(false);
@@ -80,9 +82,13 @@ const Cart = () => {
 
     cart.baskets.forEach((b, index) => {
       if (!b.recipient) {
-        errors.push(`recipient-${index}`)
+        errors.push(`recipient-${index}`);
       }
     });
+
+    if (!!cart.products.items.length && !cart.products.recipient) {
+      errors.push(`recipient-details`);
+    }
 
     return errors;
   };
@@ -141,7 +147,13 @@ const Cart = () => {
       if (e.target.value === 'add-one') {
         setBasketAddingRecipientIndex(basketIndex);
         toggleAddRecipientModal();
-      } else if (e.target.value === '') {} else {
+      } else if (e.target.value === '') {
+
+      } else if (basketIndex === 'details') {
+        cart.products.recipient = JSON.parse(e.target.value);
+
+        CartStorage.editCart({ ...cart });
+      } else {
         cart.baskets[basketIndex].recipient = JSON.parse(e.target.value);
 
         CartStorage.editCart({ ...cart });
@@ -156,6 +168,10 @@ const Cart = () => {
 
   const removeBasket = (basketIndex) => {
     CartStorage.deleteBasketByIndex(basketIndex);
+  };
+
+  const removeProduct = (productIndex) => {
+    CartStorage.deleteProductByIndex(productIndex);
   };
 
   const applyPromo = (code) => {
@@ -186,7 +202,7 @@ const Cart = () => {
   return (
     <section id='cart'>
       {!isFetching ?
-        cart && cart.baskets && Object.keys(cart.baskets).length ?
+        cart && ((cart.baskets && cart.baskets.length) || (cart.products && cart.products.items.length)) ?
           <Row className='cart-inner-container'>
             <Col md='8' className='first-section'>
               {step === 1 ?
@@ -195,8 +211,9 @@ const Cart = () => {
                   cart={cart}
                   errors={recipientsErrors}
                   handleChangeRecipient={handleChangeRecipient}
-                  basketsPrice={basketsPrice}
+                  itemsPrice={itemsPrice}
                   removeBasket={removeBasket}
+                  removeProduct={removeProduct}
                 /> :
                 <div className='disabled-section cart-section' onClick={() => goToStep(1)}>
                   <h2>{t('cart.items.title')}</h2>
@@ -231,8 +248,8 @@ const Cart = () => {
                 <Divider variant='middle' />
 
                 <div className='content-container'>
-                  <p>{basketsNumber} {t('cart.price_container.baskets')} : {basketsPrice.toFixed(2)} €</p>
-                  <p>{t('cart.price_container.grand_total')} : {basketsPrice.toFixed(2)} €</p>
+                  <p>{itemsNumber} {t('cart.price_container.items')} : {itemsPrice.toFixed(2)} €</p>
+                  <p>{t('cart.price_container.grand_total')} : {itemsPrice.toFixed(2)} €</p>
                   {promoActivated ? <p className='promo-activated-text'>Promo activée (-{PROMO_PERCENTAGE}%)</p> : null}
                 </div>
 

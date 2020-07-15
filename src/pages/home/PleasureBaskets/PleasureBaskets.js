@@ -39,7 +39,7 @@ const PleasureBaskets = () => {
 	const addBasketToCart = async (e, basket) => {
 		e.stopPropagation();
 
-		await CartStorage.addToCart({ ...basket });
+		await CartStorage.addBasketToCart({ ...basket });
 
 		setBasketForCart(basket);
 		toggleCartModal();

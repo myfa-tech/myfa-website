@@ -126,6 +126,20 @@
       width: 80%;
       border-radius: 0;
     }
+
+    .details-products-container {
+      border: 1px solid #dbdbdb;
+      padding: 1em;
+
+      .details-label, .details-price {
+        display: flex;
+        align-items: center;
+      }
+
+      ul {
+        padding: 1em 0 0 0;
+      }
+    }
   }
 }
 

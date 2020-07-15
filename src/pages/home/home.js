@@ -9,6 +9,7 @@ const Covid19 = lazy(() => import('./Covid19'));
 const Asterisks = lazy(() => import('./Asterisks'));
 const OurServices = lazy(() => import('./OurServices'));
 const Ratings = lazy(() => import('./Ratings'));
+const ProductsDetails = lazy(() => import('./ProductsDetails/ProductsDetails'));
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -33,6 +34,7 @@ const HomePage = () => {
 
       <Suspense fallback={<SectionLoader />}>
         <Covid19 />
+        <ProductsDetails />
         <Packs />
         <PleasureBaskets />
         <OurServices />

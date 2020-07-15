@@ -77,7 +77,7 @@ const ProfileOrdersPage = () => {
   };
 
   const reOrder = async (basket) => {
-		await CartStorage.addToCart({ ...basket });
+		await CartStorage.addBasketToCart({ ...basket });
 
 		setBasketForCart(basket);
 		toggleCartModal();

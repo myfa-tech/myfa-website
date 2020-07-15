@@ -8,13 +8,15 @@ import Col from 'react-bootstrap/Col';
 import useTranslate from '../../../hooks/useTranslate';
 import getBasketImage from '../../../utils/getBasketImage';
 import UserStorage from '../../../services/UserStorage';
+import getProductDetailsImage from '../../../utils/getProductDetailsImage';
 
 import './CartItems.scss';
 
-const CartItems = ({ basketsPrice, cart, className, handleChangeRecipient, errors, removeBasket }) => {
+const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors, removeBasket, removeProduct }) => {
   const [t] = useTranslate();
   const [recipients, setRecipients] = useState([]);
   const [showContents, setShowContents] = useState([]);
+  const [detailsProductsPrice, setDetailsProductsPrice] = useState(0);
 
   useEffect(() => {
     const user = UserStorage.getUser();
@@ -30,6 +32,11 @@ const CartItems = ({ basketsPrice, cart, className, handleChangeRecipient, error
       setShowContents(showContents);
     }
   }, []);
+
+  useEffect(() => {
+    let price = cart.products.items.map(p => p.price).reduce((acc, cur) => acc + cur, 0);
+    setDetailsProductsPrice(price);
+  }, [cart])
 
   const deleteBasket = (index) => {
     showContents.splice(index, 1);
@@ -106,10 +113,60 @@ const CartItems = ({ basketsPrice, cart, className, handleChangeRecipient, error
               </div>
             </li>
           ))}
+
+          {!!cart.products.items.length ? <div className='details-products-container'>
+            <Row>
+              <Col xs={3} className='details-label'>Produits au détails</Col>
+              <Col xs={7} className='recipient-choice-container'>
+                <TextField
+                  select
+                  label={t('cart.items.recipient')}
+                  required
+                  SelectProps={{
+                    native: true,
+                  }}
+                  name={`recipient-details`}
+                  error={errors.findIndex(err => err === `recipient-details`) >= 0}
+                  variant='outlined'
+                  placeholder={t('cart.items.recipient_placeholder')}
+                  value={cart.products.recipient ? JSON.stringify(cart.products.recipient) : null}
+                  className='full-width form-input'
+                  onChange={(e) => handleChangeRecipient(e, 'details')}
+                >
+                  <option value=''>Destinataire</option>
+                  {recipients.map((recipient, recipientIndex) => (
+                    <option key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</option>
+                  ))}
+                  <option value='add-one'>Nouveau destinataire</option>
+                </TextField>
+              </Col>
+              <Col xs={2} className='details-price'>Total : {detailsProductsPrice}€</Col>
+            </Row>
+            <ul>
+              {cart.products.items.map((product, index) => (
+                <li key={`product-${index}`}>
+                  <Row>
+                    <Col xs={2} className='image-container'>
+                      <img src={getProductDetailsImage(product.image)} />
+                    </Col>
+                    <Col xs={8} className='label-container'>
+                      <h3>{t(product.labelTranslate)} x {product.qty}</h3>
+                      <p>{product.price.toFixed(2)} €</p>
+                    </Col>
+                    <Col xs={2} className='qty-container'>
+                      <div className='trash-container'>
+                        <FaRegTrashAlt className='trash-icon' onClick={() => removeProduct(index)} />
+                      </div>
+                    </Col>
+                  </Row>
+                </li>
+              ))}
+            </ul>
+          </div> : null}
       </ul>
 
       <div className='subtotal-container'>
-        <p className='subtotal'>{t('cart.items.subtotal')} : {basketsPrice.toFixed(2)} €</p>
+        <p className='subtotal'>{t('cart.items.subtotal')} : {itemsPrice.toFixed(2)} €</p>
       </div>
     </div>
   );

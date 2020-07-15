@@ -1,0 +1,15 @@
+.details-categories-page {
+  .categories-container {
+    width: 80%;
+    margin: 2em auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-categories-page {
+    .categories-container {
+      width: 95%;
+      margin: 2em auto;
+    }
+  }
+}

@@ -94,13 +94,13 @@ const CustomBasketToOrder = () => {
     setStep(step - 1);
   };
 
-  const addToCart = async (currentBasket, qty, quickPay = false) => {
+  const addBasketToCart = async (currentBasket, qty, quickPay = false) => {
     const updatedBasket = { ...basket, ...currentBasket };
     let newBasket = { ...customBasketDetails, price: basketPrice, items: { ...updatedBasket, supps: currentBasket.supps }};
 
     setBasket({ ...newBasket });
 
-    await CartStorage.addToCart(newBasket, qty);
+    await CartStorage.addBasketToCart(newBasket, qty);
 
     if (!quickPay) {
       toggleCartModal();
@@ -108,7 +108,7 @@ const CustomBasketToOrder = () => {
   };
 
   const pay = async () => {
-    await addToCart(basket, 1, true);
+    await addBasketToCart(basket, 1, true);
     window.location.assign('/cart');
   }
 
@@ -182,7 +182,7 @@ const CustomBasketToOrder = () => {
             availableSupps={customBasketDetails.availableSupps}
             basketParts={basket}
             previousStep={previousStep}
-            addToCart={addToCart}
+            addBasketToCart={addBasketToCart}
             supps={supps}
             setSupps={setSupps}
             canPay={canPay}

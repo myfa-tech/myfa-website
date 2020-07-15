@@ -7,9 +7,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 
 import Button from '../../Button';
+import CartStorage from '../../../services/CartStorage';
 import uniqBy from '../../../utils/uniqBy';
 import countBy from '../../../utils/countBy';
 import getBasketImage from '../../../utils/getBasketImage';
+import getProductDetailsImage from '../../../utils/getProductDetailsImage';
+import get from '../../../utils/get';
 
 import './DisplayTooltip.scss';
 
@@ -25,22 +28,30 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-const DisplayTooltip = ({ cart, removeBaskets, t }) => {
-  const [basketsCount, setBasketsCount] = useState(0);
-  const [basketsPrice, setBasketsPrice] = useState(0);
+const DisplayTooltip = ({ cart, removeBaskets, removeProduct, t }) => {
+  const [basketsCount, setItemsCount] = useState(0);
+  const [itemsPrice, setItemsPrice] = useState(0);
 
   useEffect(() => {
-    if (!!cart && !!cart.baskets) {
-      setBasketsCount(cart.baskets.length);
-      setBasketsPrice(calculatePrice());
-    } else {
-      setBasketsCount(0);
-      setBasketsPrice(0);
+    const asyncFunc = async () => {
+      if (!!cart && (!!cart.baskets || !!get(cart, 'products.items'))) {
+        setItemsCount(cart.baskets.length + get(cart, 'products.items.length', 0));
+        setItemsPrice(await calculatePrice());
+      } else {
+        setItemsCount(0);
+        setItemsPrice(0);
+      }
     }
+
+    asyncFunc();
   }, [cart]);
 
-  const calculatePrice = () => {
-    return cart.baskets.reduce((acc, curr) => acc + curr.price, 0);
+  const calculatePrice = async () => {
+    let newCart = await CartStorage.getCartFromStorage();
+    let newBasketsPrice = newCart.baskets.map(b => b.price).reduce((acc, cur) => acc + cur, 0);
+    let newProductsPrice = get(newCart, 'products.items', []).map(p => p.price).reduce((acc, cur) => acc + cur, 0);
+
+    return newBasketsPrice + newProductsPrice;
   };
 
   const goToCart = () => {
@@ -60,7 +71,7 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
 
           <Divider variant='middle' />
 
-          {!!cart && !!cart.baskets && !!cart.baskets.length ?
+          {get(cart, 'baskets.length') || get(cart, 'products.items.length') ?
             <>
               <ul className='baskets-container'>
                 {uniqBy(cart.baskets, 'type').map((basket, index) => (
@@ -81,13 +92,31 @@ const DisplayTooltip = ({ cart, removeBaskets, t }) => {
                     </Row>
                   </li>
                 ))}
+                {!!cart.products && cart.products.items.map((product, index) => (
+                  <li key={index}>
+                    <Row>
+                      <Col xs={0} sm={2} className='image-container d-none d-sm-flex'>
+                        <img src={getProductDetailsImage(product.name)} />
+                      </Col>
+                      <Col xs={7} sm={6} className='label-container'>
+                        <h4>{t(product.labelTranslate)}</h4>
+                        <p>{product.price.toFixed(2)} €</p>
+                      </Col>
+                      <Col xs={5} sm={4} className='qty-container'>
+                        <FaRegTrashAlt className='trash-icon' onClick={() => removeProduct(index)} />
+                        <p>{t('header.custom_tooltip.qty')}: {product.qty}</p>
+                      </Col>
+                      <Col></Col>
+                    </Row>
+                  </li>
+                ))}
               </ul>
 
               <Divider variant='middle' />
 
               <div className='price-container'>
                 <h3>{t('header.custom_tooltip.total_ttc')}</h3>
-                <h3>{basketsPrice.toFixed(2)} €</h3>
+                <h3>{itemsPrice.toFixed(2)} €</h3>
               </div>
 
               <Divider variant='middle' />
