@@ -32,7 +32,7 @@ const OurServices = () => {
             </div>
             <div className='step-title'>{t('home_page.our_services.step_2.title')}</div>
             <div className='step-desc'>
-              <p>{t('home_page.our_services.step_2.line_2')}</p>
+              <a href='tel:+22584215154'>{t('home_page.our_services.step_2.line_2')}</a>
               <p>{t('home_page.our_services.step_2.line_3')}</p>
               <p>{t('home_page.our_services.step_2.line_4')}</p>
               <p>{t('home_page.our_services.step_2.line_5')}</p>
