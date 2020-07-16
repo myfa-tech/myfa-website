@@ -25,9 +25,14 @@
       }
 
       .step-desc {
-        p {
+        p, a {
+          color: #311A19;
           margin: 0;
           font-size: 15px;
+        }
+
+        a {
+          text-decoration: underline;
         }
       }
     }
