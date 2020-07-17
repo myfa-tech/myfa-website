@@ -45,7 +45,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
 
   const DRAWER_LIST = [
     { label: t('header.home'), link: '/' },
-    { label: t('header.all_products'), link: '/#details' },
+    { label: t('header.all_products'), link: '/#bestsellers' },
     { label: t('header.supply_packs'), link: '/#packs' },
     { label: t('header.gifts_baskets'), link: '/#pleasure-baskets' },
     { label: t('header.ratings'), link: '/ratings' },
