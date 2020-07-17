@@ -141,7 +141,7 @@ const Cart = () => {
       if (e.target.value === 'add-one') {
         setBasketAddingRecipientIndex(basketIndex);
         toggleAddRecipientModal();
-      } else {
+      } else if (e.target.value === '') {} else {
         cart.baskets[basketIndex].recipient = JSON.parse(e.target.value);
 
         CartStorage.editCart({ ...cart });
