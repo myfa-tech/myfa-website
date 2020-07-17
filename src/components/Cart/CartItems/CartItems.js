@@ -77,10 +77,11 @@ const CartItems = ({ basketsPrice, cart, className, handleChangeRecipient, error
                         className='full-width form-input'
                         onChange={(e) => handleChangeRecipient(e, index)}
                       >
+                        <option value=''>Destinataire</option>
                         {recipients.map((recipient, recipientIndex) => (
                           <option key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</option>
                         ))}
-                        <option value='add-one'>Destinataire</option>
+                        <option value='add-one'>Nouveau destinataire</option>
                       </TextField>
                     </Col>
                     <Col xs={2} lg={1} className='qty-container'>
