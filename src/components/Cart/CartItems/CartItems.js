@@ -140,7 +140,7 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
                   <option value='add-one'>Nouveau destinataire</option>
                 </TextField>
               </Col>
-              <Col xs={2} className='details-price'>Total: {detailsProductsPrice}€</Col>
+              <Col xs={2} className='details-price'>Total: {detailsProductsPrice.toFixed(2)}€</Col>
             </Row>
             <ul>
               {cart.products.items.map((product, index) => (
