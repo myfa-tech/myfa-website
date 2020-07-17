@@ -61,7 +61,7 @@ const ProductsDetails = () => {
 							<div className='article-inner-container'>
 								<h4>{t(product.labelTranslate)}</h4>
 								<h5>{t(product.homeDescTranslate)}</h5>
-								<img src={getProductDetailsImage(product.img)} alt={product.imgAlt} />
+								<img src={getProductDetailsImage(product.name)} alt={product.imgAlt} />
 							</div>
 							<Row className='price-and-buy-container'>
 								<Col xs={6} className='price-container'>

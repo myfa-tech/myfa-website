@@ -55,7 +55,7 @@ const CartProductModal = ({ showCartProductModal, toggleCartProductModal, produc
           <Col md='6'>
             <Row>
               <Col md='6'>
-                <img src={getProductDetailsImage(product.image)} alt={product.imgAlt} />
+                <img src={getProductDetailsImage(product.name)} alt={product.imgAlt} />
               </Col>
               <Col md='6'>
                 <h1>{t(product.labelTranslate)}</h1>

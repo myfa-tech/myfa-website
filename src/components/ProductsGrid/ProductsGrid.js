@@ -22,7 +22,7 @@ const ProductsGrid = ({
           <div className='product-inner-container'>
             <h4>{t(product.labelTranslate)}</h4>
             <h5>{t(product.homeDescTranslate)}</h5>
-            <img src={getProductDetailsImage(product.image)} alt={product.imgAlt} />
+            <img src={getProductDetailsImage(product.name)} alt={product.imgAlt} />
           </div>
           <Row className='price-and-buy-container'>
             <Col xs={7} className='price-container'>

@@ -147,7 +147,7 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
                 <li key={`product-${index}`}>
                   <Row>
                     <Col xs={2} className='image-container'>
-                      <img src={getProductDetailsImage(product.image)} />
+                      <img src={getProductDetailsImage(product.name)} />
                     </Col>
                     <Col xs={8} className='label-container'>
                       <h3>{t(product.labelTranslate)} x {product.qty}</h3>

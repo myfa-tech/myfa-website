@@ -91,7 +91,7 @@ const UniqueProductPage = () => {
           <Col md='4' className='imgs-col'>
             <div className='product-img-container'>
               <div className='images-container'>
-                <img src={getProductDetailsImage(product.image)} alt={product.imgAlt} />
+                <img src={getProductDetailsImage(product.name)} alt={product.imgAlt} />
               </div>
               <p>{t('unique_product.photo_disclaimer')}</p>
             </div>
@@ -129,7 +129,7 @@ const UniqueProductPage = () => {
             <div className='other-products-row'>
               {otherProducts.map(otherProduct => (
                 <div key={otherProduct.name} className='product-card' onClick={() => goToProduct(otherProduct.name)}>
-                  <img src={getProductDetailsImage(otherProduct.image)} />
+                  <img src={getProductDetailsImage(otherProduct.name)} />
                   <h4>{t(otherProduct.labelTranslate)}</h4>
                 </div>
               ))}
