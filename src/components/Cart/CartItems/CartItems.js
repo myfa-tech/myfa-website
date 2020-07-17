@@ -116,8 +116,8 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
 
           {!!cart.products.items.length ? <div className='details-products-container'>
             <Row>
-              <Col xs={3} className='details-label'>Produits au détails</Col>
-              <Col xs={7} className='recipient-choice-container'>
+              <Col xs={4} className='details-label'>Produits au détails</Col>
+              <Col xs={6} className='recipient-choice-container'>
                 <TextField
                   select
                   label={t('cart.items.recipient')}
@@ -140,7 +140,7 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
                   <option value='add-one'>Nouveau destinataire</option>
                 </TextField>
               </Col>
-              <Col xs={2} className='details-price'>Total : {detailsProductsPrice}€</Col>
+              <Col xs={2} className='details-price'>Total: {detailsProductsPrice}€</Col>
             </Row>
             <ul>
               {cart.products.items.map((product, index) => (

@@ -29,7 +29,7 @@ const Cart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
   const [showAddRecipientModal, setShowAddRecipientModal] = useState(false);
-  const [basketAddingRecipientIndex, setBasketAddingRecipientIndex] = useState(null);
+  const [itemAddingRecipientIndex, setItemAddingRecipientIndex] = useState(null);
   const [promoActivated, setPromoActivated] = useState(false);
 
   const [t] = useTranslate();
@@ -145,7 +145,7 @@ const Cart = () => {
       setRecipientsErrors([...errors]);
 
       if (e.target.value === 'add-one') {
-        setBasketAddingRecipientIndex(basketIndex);
+        setItemAddingRecipientIndex(basketIndex);
         toggleAddRecipientModal();
       } else if (e.target.value === '') {
 
@@ -162,7 +162,12 @@ const Cart = () => {
   };
 
   const handleChangeMessagesToRelative = (message, index) => {
-    cart.baskets[index].message = message;
+    if (index === 'details') {
+      cart.products.message = message;
+    } else {
+      cart.baskets[index].message = message;
+    }
+
     setCart({ ...cart });
   };
 
@@ -283,7 +288,7 @@ const Cart = () => {
         cart={cart}
         showModal={showAddRecipientModal}
         toggleModal={toggleAddRecipientModal}
-        basketIndex={basketAddingRecipientIndex}
+        itemIndex={itemAddingRecipientIndex}
       />
     </section>
   );
