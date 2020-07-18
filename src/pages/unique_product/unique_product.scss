@@ -97,6 +97,7 @@
 			width: 180px;
 
 			img {
+				height: 150px;
 				max-width: 150px;
 			}
 
@@ -130,7 +131,7 @@
 			img {
 				margin: 0 auto 20px auto;
 				display: block;
-				width: 90%;
+				height: 200px;
 			}
 		}
 
@@ -245,17 +246,7 @@
 			text-align: center;
 		}
 
-		img {
-			width: 50%;
-			display: block;
-			margin: 0 auto 0.5em auto
-		}
-
 		.other-products-row {
-			img {
-				width: 100%;
-			}
-
 			.product-card {
 				width: 50%;
 			}

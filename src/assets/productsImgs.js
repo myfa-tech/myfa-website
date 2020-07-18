@@ -35,6 +35,8 @@ import sugarSrc from '../images/sugar.jpg';
 import coffeeSrc from '../images/coffee.jpg';
 import bonnetRougeSrc from '../images/bonnet-rouge.jpg';
 import juiceSrc from '../images/juice.jpg';
+import milSrc from '../images/mil.jpg';
+import teaBagsSrc from '../images/tea_bags.jpg';
 
 const productsImages = {
 	'bananas': bananaSrc,
@@ -47,11 +49,13 @@ const productsImages = {
 	'juice': juiceSrc,
 	'potatoes': potatoSrc,
 	'onions': whiteOnionSrc,
+	'mil': milSrc,
 	'margarine': margarineSrc,
 	'sugar': sugarSrc,
 	'tomato_puree': tomatoPureeSrc,
 	'local_rice_10': localRice10Src,
 	'local_rice_25': localRice25Src,
+	'tea_bags': teaBagsSrc,
 	'oil': cookingOilSrc,
 	'coffee': coffeeSrc,
 	'black_pepper': blackPepperSrc,
