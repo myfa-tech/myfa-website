@@ -37,6 +37,21 @@ import bonnetRougeSrc from '../images/bonnet-rouge.jpg';
 import juiceSrc from '../images/juice.jpg';
 import milSrc from '../images/mil.jpg';
 import teaBagsSrc from '../images/tea_bags.jpg';
+import soupSrc from '../images/soup.jpg';
+import vqrSrc from '../images/vqr.jpg';
+import honeySrc from '../images/honey.jpg';
+import spreadChocolateSrc from '../images/spread-chocolate.jpg';
+import milkPowderSrc from '../images/milk-powder.jpg';
+import bissapSrc from '../images/bissap.jpg';
+import whiteZephyrSrc from '../images/white-zephyr.jpg';
+import rubySrc from '../images/ruby.jpg';
+import almondsSrc from '../images/almonds.jpg';
+import ocoaSrc from '../images/ocoa.jpg';
+import goldSrc from '../images/gold.jpg';
+import cocoaButterSrc from '../images/cocoa-butter.jpg';
+import kariteSrc from '../images/karite.jpg';
+import kinkelibaSrc from '../images/kinkeliba.jpg';
+import blackSoapSrc from '../images/black-soap.jpg';
 
 const productsImages = {
 	'bananas': bananaSrc,
@@ -45,18 +60,34 @@ const productsImages = {
 	'bonnet_rouge': bonnetRougeSrc,
 	'oranges': orangeSrc,
 	'plantain': plantainSrc,
+	'spread_chocolate': spreadChocolateSrc,
 	'attieke': attiekeSrc,
+	'milk_powder': milkPowderSrc,
+	'gold': goldSrc,
+	'karite': kariteSrc,
+	'black_soap': blackSoapSrc,
+	'kinkeliba': kinkelibaSrc,
 	'juice': juiceSrc,
+	'cocoa_butter': cocoaButterSrc,
+	'white_zephyr': whiteZephyrSrc,
+	'superior_lactee': rubySrc,
+	'vqr': vqrSrc,
+	'ruby': rubySrc,
+	'honey': honeySrc,
 	'potatoes': potatoSrc,
+	'ocoa': ocoaSrc,
+	'bissap': bissapSrc,
 	'onions': whiteOnionSrc,
 	'mil': milSrc,
 	'margarine': margarineSrc,
 	'sugar': sugarSrc,
 	'tomato_puree': tomatoPureeSrc,
 	'local_rice_10': localRice10Src,
+	'almonds': almondsSrc,
 	'local_rice_25': localRice25Src,
 	'tea_bags': teaBagsSrc,
 	'oil': cookingOilSrc,
+	'soup': soupSrc,
 	'coffee': coffeeSrc,
 	'black_pepper': blackPepperSrc,
 	'carots': carrotSrc,
