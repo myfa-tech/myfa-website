@@ -14,11 +14,14 @@ import EventEmitter from '../../services/EventEmitter';
 import useTranslate from '../../hooks/useTranslate';
 import UserStorage from '../../services/UserStorage';
 import CartStorage from '../../services/CartStorage';
+import get from '../../utils/get';
 
 import './Cart.scss';
 
 const NODE_ENV = process.env.NODE_ENV;
 const PROMO_PERCENTAGE = 10;
+const DELIVERY_LIMIT = 15;
+const DELIVERY_PRICE = 4;
 
 const Cart = () => {
   const [cart, setCart] = useState({});
@@ -28,8 +31,10 @@ const Cart = () => {
   const [recipientsErrors, setRecipientsErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
+  const [showDelivery, setShowDelivery] = useState(true);
   const [showAddRecipientModal, setShowAddRecipientModal] = useState(false);
   const [itemAddingRecipientIndex, setItemAddingRecipientIndex] = useState(null);
+  const [grandTotal, setGrandTotal] = useState(0);
   const [promoActivated, setPromoActivated] = useState(false);
 
   const [t] = useTranslate();
@@ -43,8 +48,19 @@ const Cart = () => {
   }, []);
 
   useEffect(() => {
-    setItemsPrice(itemsPrice - (itemsPrice * (PROMO_PERCENTAGE/100)))
+    let price = itemsPrice - (itemsPrice * (PROMO_PERCENTAGE/100));
+    setItemsPrice(price);
   }, [promoActivated]);
+
+  useEffect(() => {
+    let price = get(cart, 'products.items', []).map(p => p.price).reduce((acc, cur) => acc + cur, 0);
+
+    if ((price > DELIVERY_LIMIT && showDelivery) || (price < DELIVERY_LIMIT && !showDelivery)) {
+      toggleShowDelivery();
+    }
+  }, [cart]);
+
+  const toggleShowDelivery = () => setShowDelivery(!showDelivery);
 
   const initCart = async () => {
     let newCart = await CartStorage.getCartFromStorage();
@@ -55,9 +71,12 @@ const Cart = () => {
       let newBasketsPrice = newCart.baskets.map(b => b.price).reduce((acc, cur) => acc + cur, 0);
       let newProductsPrice = newCart.products.items.map(p => p.price).reduce((acc, cur) => acc + cur, 0);
 
+      let delivery = (newProductsPrice < DELIVERY_LIMIT) ? DELIVERY_PRICE : 0;
+
       setCart(newCart);
       setItemsNumber(newBasketsNumber + newProductsNumber);
       setItemsPrice(newBasketsPrice + newProductsPrice);
+      setGrandTotal(newBasketsPrice + newProductsPrice + delivery)
     } else {
       setCart({});
       setItemsNumber(0);
@@ -214,6 +233,8 @@ const Cart = () => {
                 <CartItems
                   className='cart-section'
                   cart={cart}
+                  deliveryPrice={DELIVERY_PRICE}
+                  showDelivery={showDelivery}
                   errors={recipientsErrors}
                   handleChangeRecipient={handleChangeRecipient}
                   itemsPrice={itemsPrice}
@@ -254,7 +275,8 @@ const Cart = () => {
 
                 <div className='content-container'>
                   <p>{itemsNumber} {t('cart.price_container.items')} : {itemsPrice.toFixed(2)} €</p>
-                  <p>{t('cart.price_container.grand_total')} : {itemsPrice.toFixed(2)} €</p>
+                  {showDelivery ? <p>{t('cart.price_container.details_delivery')} : {DELIVERY_PRICE} €</p> : <p>{t('cart.price_container.free_delivery')}</p>}
+                  <p>{t('cart.price_container.grand_total')} : {grandTotal.toFixed(2)} €</p>
                   {promoActivated ? <p className='promo-activated-text'>Promo activée (-{PROMO_PERCENTAGE}%)</p> : null}
                 </div>
 

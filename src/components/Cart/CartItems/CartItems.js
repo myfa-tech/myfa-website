@@ -12,7 +12,7 @@ import getProductDetailsImage from '../../../utils/getProductDetailsImage';
 
 import './CartItems.scss';
 
-const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors, removeBasket, removeProduct }) => {
+const CartItems = ({ itemsPrice, cart, className, deliveryPrice, showDelivery, handleChangeRecipient, errors, removeBasket, removeProduct }) => {
   const [t] = useTranslate();
   const [recipients, setRecipients] = useState([]);
   const [showContents, setShowContents] = useState([]);
@@ -116,7 +116,7 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
 
           {!!cart.products.items.length ? <div className='details-products-container'>
             <Row>
-              <Col xs={4} className='details-label'>Produits au détails</Col>
+              <Col xs={4} className='details-label'>{t('cart.items.details_title')}</Col>
               <Col xs={6} className='recipient-choice-container'>
                 <TextField
                   select
@@ -162,6 +162,9 @@ const CartItems = ({ itemsPrice, cart, className, handleChangeRecipient, errors,
                 </li>
               ))}
             </ul>
+            <div className='delivery-container'>
+              {showDelivery ? <span>+ {deliveryPrice}€ {t('cart.items.details_delivery_part_2')}</span> : null}
+            </div>
           </div> : null}
       </ul>
 

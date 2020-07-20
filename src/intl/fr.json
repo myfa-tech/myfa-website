@@ -57,7 +57,7 @@
         "products_nb_part_2": "produits en attente.",
         "delivery": "Livraison",
         "free": "gratuite",
-        "total": "Total",
+        "total": "Total produits",
         "continue_button": "Continuer",
         "pay_button": "Payer"
       }
@@ -234,6 +234,8 @@
     "price_container": {
       "total": "Total",
       "grand_total": "Total TTC",
+      "details_delivery": "Livraison produits détails",
+      "free_delivery": "Livraison offerte",
       "items": "produits",
       "next": "Suivant",
       "covid19_warning": "Les délais de livraison peuvent augmenter à cause de la crise de Covid-19. Merci pour votre compréhension.",
@@ -282,7 +284,9 @@
       "title": "Mon panier",
       "subtotal": "Sous-total",
       "qty": "Qté",
-      "recipient": "Destinataire"
+      "recipient": "Destinataire",
+      "details_title": "Produits au détails",
+      "details_delivery_part_2": "de livraison"
     }
   },
   "basket_to_order": {

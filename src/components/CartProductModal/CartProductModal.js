@@ -12,12 +12,16 @@ import getProductDetailsImage from '../../utils/getProductDetailsImage';
 
 import './CartProductModal.scss';
 
+const DELIVERY_PRICE = 4;
+const DELIVERY_LIMIT = 15;
+
 const CartProductModal = ({ showCartProductModal, toggleCartProductModal, product, onContinue }) => {
   const [cart, setCart] = useState(null);
   const [cartTotal, setCartTotal] = useState(0);
   const [qty, setQty] = useState(0);
   const [allProductsQty, setAllProductsQty] = useState(0);
   const [t, locale] = useTranslate();
+  const [freeDelivery, setFreeDelivery] = useState(false);
 
   useEffect(() => {
     const asyncFunc = async () => {
@@ -33,6 +37,10 @@ const CartProductModal = ({ showCartProductModal, toggleCartProductModal, produc
       setCartTotal(fetchedCartTotal);
       setQty(fetchedQty);
       setAllProductsQty(fetchedAllProductsQty);
+
+      if (fetchedCartProductsTotal > DELIVERY_LIMIT) {
+        setFreeDelivery(true);
+      }
     };
 
     asyncFunc();
@@ -66,7 +74,7 @@ const CartProductModal = ({ showCartProductModal, toggleCartProductModal, produc
           </Col>
           <Col md='6'>
             <p>{t('home_page.products.cart_product_modal.products_nb_part_1')} {allProductsQty} {t('home_page.products.cart_product_modal.products_nb_part_2')}</p>
-            <p><b>{t('home_page.products.cart_product_modal.delivery')} :</b> {t('home_page.products.cart_product_modal.free')}</p>
+            <p><b>{t('home_page.products.cart_product_modal.delivery')} :</b> {freeDelivery ? t('home_page.products.cart_product_modal.free') : `${DELIVERY_PRICE} €`}</p>
             <p><b>{t('home_page.products.cart_product_modal.total')} :</b> {cartTotal.toFixed(2)} €</p>
 
             <Button label={t('home_page.products.cart_product_modal.continue_button')} secondary onClick={toggleCartProductModal} />

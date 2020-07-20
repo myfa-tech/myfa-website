@@ -48,7 +48,19 @@
     },
     "products": {
       "products_title": "Bestsellers",
-      "products_secondary": "See all products"
+      "products_secondary": "See all products",
+      "cart_product_modal": {
+        "header": "Successfully added to purchases",
+        "price": "Price",
+        "qty": "Quantity",
+        "products_nb_part_1": "You have",
+        "products_nb_part_2": "pending products.",
+        "delivery": "Delivery",
+        "free": "free",
+        "total": "Total products",
+        "continue_button": "Continue",
+        "pay_button": "Checkout"
+      }
     },
     "ratings": {
       "all_ratings": "See all reviews"
@@ -222,6 +234,8 @@
     "price_container": {
       "total": "Total",
       "checkout": "Checkout",
+      "details_delivery": "Delivery details products",
+      "free_delivery": "Free delivery",
       "grand_total": "Grand total",
       "items": "items",
       "next": "Next",
@@ -270,7 +284,9 @@
       "title": "My cart",
       "subtotal": "Subtotal",
       "qty": "Qty",
-      "recipient": "Recipient"
+      "recipient": "Recipient",
+      "details_title": "Details products",
+      "details_delivery_part_2": "delivery"
     }
   },
   "basket_to_order": {
@@ -447,7 +463,7 @@
     "grocery_sweet_title": "Sweet grocery",
     "grocery_sweet_description": "(breakfast, chocolate...)",
     "healthy_title": "Healthy",
-    "healthy_description": "(karite butter, black soap...)"
+    "healthy_description": "(shea butter, black soap...)"
   },
   "products_category": {
     "fruits_title": "Fruits",
@@ -523,7 +539,7 @@
     "yam": "Yam (1kg)",
     "red_cabbage": "Red cabbage (unit)",
     "french_beans": "French beans (400g)",
-    "karite": "Karité butter (200g)",
+    "karite": "Shea butter (200g)",
     "cocoa_butter": "Cocoa butter (500ml)",
     "bissap": "Bissap leafs (250g)",
     "kinkeliba": "Kinkeliba leafs (75g)",
