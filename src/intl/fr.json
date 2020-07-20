@@ -26,7 +26,7 @@
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",
-        "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
+        "paragraph2": "En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
     "our_services": {
@@ -54,7 +54,7 @@
         "price": "Prix",
         "qty": "Quantité",
         "products_nb_part_1": "Vous avez",
-        "products_nb_part_2": "produits en attente.",
+        "products_nb_part_2": "produit(s) en attente.",
         "delivery": "Livraison",
         "free": "gratuite",
         "total": "Total produits",
@@ -75,7 +75,7 @@
       "local_rice_title": "Pack Familial - Riz local",
       "local_rice_home_description": "Tomates, riz local, piment...",
       "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100% ivoirien.",
-      "rice_attieke_title": "Pack Familial - Riz attieke",
+      "rice_attieke_title": "Pack Familial - Riz & attieke",
       "rice_attieke_home_description": "Riz, attieke, lait en poudre...",
       "rice_attieke_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
       "morning_title": "Pack Matinal",
@@ -112,7 +112,7 @@
         "price": "Prix",
         "qty": "Quantité",
         "baskets_nb_part_1": "Vous avez",
-        "baskets_nb_part_2": "paniers en attente.",
+        "baskets_nb_part_2": "panier(s) en attente.",
         "baskets_total": "Total paniers",
         "delivery": "Livraison",
         "free": "gratuite",
@@ -154,7 +154,7 @@
   },
   "faq": {
     "title": "Questions fréquentes",
-    "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse infos@myfa.fr."
+    "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse "
   },
   "blog": {
     "title": "Blog",

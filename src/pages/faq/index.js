@@ -34,7 +34,7 @@ const FaqPage = () => {
     },
     {
       title: "Quels sont les moyens de paiement acceptés ?",
-      content: "Les cartes de crédit (Visa, Visa Débit, MasterCard, American Express) et le paiement mobile (Orange, MTN) sont acceptés en ligne.",
+      content: "Les cartes de crédit (Visa, Visa Débit, MasterCard, American Express) sont acceptées en ligne.",
     },
     {
       title: "Puis-je utiliser MYFA si je me trouve en Côte d'Ivoire ?",
@@ -57,7 +57,7 @@ const FaqPage = () => {
       <div id='faq'>
         <div className='title-container'>
           <h2>{t('faq.title')} </h2>
-          <p>{t('faq.description')} </p>
+          <p>{t('faq.description')} <a href='mailto:infos@myfa.fr'>infos@myfa.fr</a>.</p>
         </div>
 
         <div className='questions-container'>

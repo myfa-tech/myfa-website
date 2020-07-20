@@ -1,5 +1,5 @@
 
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaShoppingBasket } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { FaShoppingBasket } from 'react-icons/fa';
 import LoadingItem from '../../../components/LoadingItem';
 import SectionTitle from '../../../components/SectionTitle';
 const CartProductModal = lazy(() => import('../../../components/CartProductModal'));
+const FreeDeliveryModal = lazy(() => import('./FreeDeliveryModal'));
 import SectionLoader from '../../../components/SectionLoader';
 
 import CartStorage from '../../../services/CartStorage';
@@ -20,14 +21,38 @@ import './ProductsDetails.scss';
 const ProductsDetails = () => {
 	const [productForCart, setProductForCart] = useState(null);
 	const [showCartProductModal, setShowCartProductModal] = useState(false);
+	const [showFreeDeliveryModal, setShowFreeDeliveryModal] = useState(false);
+	const [isFreeDeliveryModalViewed, setIsFreeDeliveryModalViewed] = useState(-1);
+
   const [products, setProducts] = useFetchBestsellersProducts([]);
   const [t] = useTranslate();
+
+	useEffect(() => {
+		if (isFreeDeliveryModalViewed === -1) {
+			let isViewed = window.sessionStorage.getItem('free-delivery-viewed');
+			setIsFreeDeliveryModalViewed(isViewed);
+		}
+
+		window.onscroll = triggerFreeDeliveryModalIfScrolled;
+	}, []);
 
 	const goToProduct = (productName) => {
 		if (typeof window !== 'undefined') {
       window.location.assign(`/products/${productName}`);
     }
 	};
+
+	const triggerFreeDeliveryModalIfScrolled = () => {
+		let limit = document.getElementById('products').offsetHeight - 200; // offset is undefined
+
+		console.log('limit: ', limit, 'offset: ', window.offsetHeight, 'isViewed: ', isFreeDeliveryModalViewed);
+
+		if (window.pageYOffset >= limit && !isFreeDeliveryModalViewed) {
+      toggleFreeDeliveryModal();
+    }
+	};
+
+	const toggleFreeDeliveryModal = () => setShowFreeDeliveryModal(!showFreeDeliveryModal);
 
 	const toggleCartProductModal = () => {
 		if (!!showCartProductModal) {
@@ -90,6 +115,15 @@ const ProductsDetails = () => {
 						showCartProductModal={showCartProductModal}
 						toggleCartProductModal={toggleCartProductModal}
 						product={productForCart}
+					/>
+				</Suspense>
+			}
+
+			{showFreeDeliveryModal &&
+				<Suspense fallback={<SectionLoader />}>
+					<FreeDeliveryModal
+						showModal={showFreeDeliveryModal}
+						toggleModal={toggleFreeDeliveryModal}
 					/>
 				</Suspense>
 			}

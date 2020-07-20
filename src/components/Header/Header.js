@@ -244,6 +244,6 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
       </Modal>}
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

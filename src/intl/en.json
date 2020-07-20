@@ -26,7 +26,7 @@
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "Due to the current situation, delivery times for MYFA baskets may be longer.",
-        "paragraph2": "We will be sure to keep you informed as soon as we resume normal activity. In the meantime, stay at home, take care of yourself and your loved ones."
+        "paragraph2": "In the meantime, stay at home, take care of yourself and your loved ones."
       }
     },
     "our_services": {
@@ -54,7 +54,7 @@
         "price": "Price",
         "qty": "Quantity",
         "products_nb_part_1": "You have",
-        "products_nb_part_2": "pending products.",
+        "products_nb_part_2": "pending product(s).",
         "delivery": "Delivery",
         "free": "free",
         "total": "Total products",
@@ -75,7 +75,7 @@
       "local_rice_title": "Family pack - Local rice",
       "local_rice_home_description": "Tomatoes, local rice, chili...",
       "local_rice_description": "Designed for a family of 8, this pack is generously made up of good products to delight the family, with 100% local Ivorian rice.",
-      "rice_attieke_title": "Family pack - Rice attieke",
+      "rice_attieke_title": "Family pack - Rice & attieke",
       "rice_attieke_home_description": "Rice, attieke, milk powder...",
       "rice_attieke_description": "Designed for a family of 8, this pack is generously made up of good products to delight the family, with fragrant rice and its attieke balls.",
       "morning_title": "Morning pack",
@@ -112,7 +112,7 @@
         "price": "Price",
         "qty": "Quantity",
         "baskets_nb_part_1": "You have",
-        "baskets_nb_part_2": "pending baskets.",
+        "baskets_nb_part_2": "pending basket(s).",
         "baskets_total": "Total baskets",
         "delivery": "Delivery",
         "free": "free",
@@ -154,7 +154,7 @@
   },
   "faq": {
     "title": "Frequently asked questions",
-    "description": "Find answers to frequently asked questions about how MYFA works here. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at infos@myfa.fr."
+    "description": "Find answers to frequently asked questions about how MYFA works here. If you do not find what you need, do not hesitate to contact us on whatsapp at +22584215154 or directly at "
   },
   "blog": {
     "title": "Blog",
