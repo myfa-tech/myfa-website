@@ -22,17 +22,10 @@ const ProductsDetails = () => {
 	const [productForCart, setProductForCart] = useState(null);
 	const [showCartProductModal, setShowCartProductModal] = useState(false);
 	const [showFreeDeliveryModal, setShowFreeDeliveryModal] = useState(false);
-	const [isFreeDeliveryModalViewed, setIsFreeDeliveryModalViewed] = useState(-1);
-
   const [products, setProducts] = useFetchBestsellersProducts([]);
-  const [t] = useTranslate();
+	const [t] = useTranslate();
 
 	useEffect(() => {
-		if (isFreeDeliveryModalViewed === -1) {
-			let isViewed = window.sessionStorage.getItem('free-delivery-viewed');
-			setIsFreeDeliveryModalViewed(isViewed);
-		}
-
 		window.onscroll = triggerFreeDeliveryModalIfScrolled;
 	}, []);
 
@@ -42,17 +35,19 @@ const ProductsDetails = () => {
     }
 	};
 
-	const triggerFreeDeliveryModalIfScrolled = () => {
-		let limit = document.getElementById('products').offsetHeight - 200; // offset is undefined
-
-		console.log('limit: ', limit, 'offset: ', window.offsetHeight, 'isViewed: ', isFreeDeliveryModalViewed);
+	function triggerFreeDeliveryModalIfScrolled() {
+		let limit = document.getElementById('products').offsetHeight - 250;
+		let isFreeDeliveryModalViewed = !!window.sessionStorage.getItem('free-delivery-viewed');
 
 		if (window.pageYOffset >= limit && !isFreeDeliveryModalViewed) {
       toggleFreeDeliveryModal();
     }
 	};
 
-	const toggleFreeDeliveryModal = () => setShowFreeDeliveryModal(!showFreeDeliveryModal);
+	const toggleFreeDeliveryModal = () => {
+		setShowFreeDeliveryModal(!showFreeDeliveryModal);
+		window.sessionStorage.setItem('free-delivery-viewed', true);
+	};
 
 	const toggleCartProductModal = () => {
 		if (!!showCartProductModal) {
@@ -75,7 +70,6 @@ const ProductsDetails = () => {
     <section id='products' className='articles'>
 			<SectionTitle
 				title={t('home_page.products.products_title')}
-				mobileTitle={t('home_page.products.products_mobile_title')}
 				secondary={{ text: t('home_page.products.products_secondary'), link: '/details-categories' }}
 			/>
 

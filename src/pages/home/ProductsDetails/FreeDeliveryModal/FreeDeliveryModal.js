@@ -13,6 +13,7 @@ const FreeDeliveryModal = ({ showModal, toggleModal }) => {
     <Modal dialogClassName='modal-90w modal-75w' show={showModal} onHide={toggleModal} id='free-delivery-modal'>
       <Modal.Header closeButton className='header' />
       <Modal.Body>
+        <h2>{t('free_delivery_modal.title')}</h2>
         <img src={deliveryTruckSrc} />
         <p>{t('free_delivery_modal.text')}</p>
       </Modal.Body>

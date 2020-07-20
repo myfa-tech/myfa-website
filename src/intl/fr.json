@@ -19,6 +19,10 @@
     "something_wrong": "Quelque chose s'est mal passé",
     "send": "Envoyer"
   },
+  "free_delivery_modal": {
+    "title": "Livraison gratuite",
+    "text": "La livraison est offerte pour les paniers, packs et les produits au détails au-delà de 15€ d'achat."
+  },
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
@@ -48,7 +52,7 @@
     },
     "products": {
       "products_title": "Meilleures ventes",
-      "products_secondary": "Voir tous les produits",
+      "products_secondary": "Tous les produits",
       "cart_product_modal": {
         "header": "Ajouté aux achats avec succès",
         "price": "Prix",
@@ -63,12 +67,12 @@
       }
     },
     "ratings": {
-      "all_ratings": "Voir tous les avis"
+      "all_ratings": "Tous les avis"
     },
     "packs": {
       "packs_title": "Packs ravitaillement",
       "packs_mobile_title": "Ravitaillement",
-      "packs_secondary": "Voir tous les packs",
+      "packs_secondary": "Tous les packs",
       "veggies_title": "Pack Légumes",
       "veggies_home_description": "Oignons, carottes, Ignames...",
       "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
@@ -88,7 +92,7 @@
       "until_date": "jusqu'au 31/03/2020",
       "pleasure_baskets_title": "Paniers plaisir",
       "pleasure_baskets_mobile_title": "Plaisir",
-      "pleasure_baskets_secondary": "Voir tous les paniers",
+      "pleasure_baskets_secondary": "Tous les paniers",
       "fruits_title": "Panier Fruits 🍌",
       "fruits_home_description": "Bananes, oranges, noix de coco...",
       "fruits_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
