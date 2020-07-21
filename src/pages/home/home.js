@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
@@ -22,6 +22,10 @@ import './home.scss';
 
 const HomePage = () => {
   const [t] = useTranslate();
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <Layout

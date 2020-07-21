@@ -1,26 +1,26 @@
 
-import bananaSrc from '../images/banana.png';
+import bananaSrc from '../images/bananas.jpg';
 import attiekeSrc from '../images/attieke.png';
-import carrotSrc from '../images/carrot.png';
+import carrotSrc from '../images/carrot.jpg';
 import citronSrc from '../images/citron.png';
-import coconutSrc from '../images/coconut.png';
+import coconutSrc from '../images/coconut.jpg';
 import maggieSrc from '../images/maggie.png';
 import garlicSrc from '../images/garlic.png';
 import gingerSrc from '../images/ginger.png';
 import gomboSrc from '../images/gombo.png';
-import beansSrc from '../images/beans.png';
+import beansSrc from '../images/beans.jpg';
 import palmOilSrc from '../images/palm-oil.png';
-import mangoSrc from '../images/mango.png';
-import orangeSrc from '../images/orange.png';
+import mangoSrc from '../images/mango.jpg';
+import orangeSrc from '../images/orange.jpg';
 import peanutPasteSrc from '../images/peanut-paste.png';
 import pepperSrc from '../images/pepper.png';
 import plantainSrc from '../images/plantain.png';
-import potatoSrc from '../images/potato.png';
+import potatoSrc from '../images/potato.jpg';
 import saltSrc from '../images/salt.png';
 import tomatoSrc from '../images/tomato.png';
-import whiteOnionSrc from '../images/white-onion.png';
-import yamSrc from '../images/yam.png';
-import avocadosSrc from '../images/avocado.png';
+import onionsSrc from '../images/onions.jpg';
+import yamSrc from '../images/yam.jpg';
+import avocadosSrc from '../images/avocado.jpg';
 import pineappleSrc from '../images/pineapple.jpg';
 import appleSrc from '../images/apple.jpg';
 import redCabbageSrc from '../images/red-cabbage.jpg';
@@ -77,7 +77,7 @@ const productsImages = {
 	'potatoes': potatoSrc,
 	'ocoa': ocoaSrc,
 	'bissap': bissapSrc,
-	'onions': whiteOnionSrc,
+	'onions': onionsSrc,
 	'mil': milSrc,
 	'margarine': margarineSrc,
 	'sugar': sugarSrc,
