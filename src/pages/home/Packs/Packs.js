@@ -19,7 +19,6 @@ const Packs = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
 	const [baskets, setBaskets] = useFetchPacks([]);
-
 	const [t, locale] = useTranslate();
 
 	const toggleCartModal = () => {

@@ -36,7 +36,7 @@ const ProductsDetails = () => {
 	};
 
 	function triggerFreeDeliveryModalIfScrolled() {
-		let limit = document.getElementById('products').offsetHeight - 250;
+		let limit = document.getElementById('bestsellers').offsetHeight - 250;
 		let isFreeDeliveryModalViewed = !!window.sessionStorage.getItem('free-delivery-viewed');
 
 		if (window.pageYOffset >= limit && !isFreeDeliveryModalViewed) {
@@ -67,7 +67,7 @@ const ProductsDetails = () => {
 	};
 
   return (
-    <section id='products' className='articles'>
+    <section id='bestsellers' className='articles'>
 			<SectionTitle
 				title={t('home_page.products.products_title')}
 				secondary={{ text: t('home_page.products.products_secondary'), link: '/details-categories' }}

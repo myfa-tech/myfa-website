@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
@@ -20,12 +20,35 @@ import useTranslate from '../../hooks/useTranslate';
 
 import './home.scss';
 
-const HomePage = () => {
+const HomePage = ({ location }) => {
   const [t] = useTranslate();
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-
+    window.onload = goToSection;
   }, []);
+
+  useEffect(() => {
+    if (isReady) {
+      goToSection();
+    }
+  }, [location]);
+
+  const goToSection = () => {
+    let hash = location.hash;
+
+    if (!!hash) {
+      let elementRect = document.getElementById(hash.substr(1)).getBoundingClientRect();
+      let bodyRect = document.body.getBoundingClientRect();
+      let offset = elementRect.top - bodyRect.top;
+
+      window.scrollTo(0, offset);
+    }
+
+    if (!isReady) {
+      setIsReady(true);
+    }
+  }
 
   return (
     <Layout
@@ -38,9 +61,9 @@ const HomePage = () => {
 
       <Suspense fallback={<SectionLoader />}>
         <Covid19 />
-        <ProductsDetails />
-        <PleasureBaskets />
-        <Packs />
+        <ProductsDetails location={location} />
+        <PleasureBaskets location={location} />
+        <Packs location={location} />
         <OurServices />
         <Ratings />
         <Asterisks />

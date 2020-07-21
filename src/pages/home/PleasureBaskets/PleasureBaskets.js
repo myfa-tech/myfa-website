@@ -19,7 +19,6 @@ const PleasureBaskets = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
 	const [baskets, setBaskets] = useFetchPleasureBaskets([]);
-
 	const [t, locale] = useTranslate();
 
 	const toggleCartModal = () => {
