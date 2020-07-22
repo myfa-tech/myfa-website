@@ -54,7 +54,7 @@
       "products_title": "Meilleures ventes",
       "products_secondary": "Tous les produits",
       "cart_product_modal": {
-        "header": "Ajouté aux achats avec succès",
+        "header": "Ajouté aux achats",
         "price": "Prix",
         "qty": "Quantité",
         "products_nb_part_1": "Vous avez",
@@ -112,7 +112,7 @@
       "beauty_home_description": "Beurre de karité, bissap, kinkeliba...",
       "beauty_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
       "cart_modal": {
-        "header": "Ajouté aux achats avec succès",
+        "header": "Ajouté aux achats",
         "price": "Prix",
         "qty": "Quantité",
         "baskets_nb_part_1": "Vous avez",

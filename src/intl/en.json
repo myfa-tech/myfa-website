@@ -54,7 +54,7 @@
       "products_title": "Bestsellers",
       "products_secondary": "All products",
       "cart_product_modal": {
-        "header": "Successfully added to purchases",
+        "header": "Added to cart",
         "price": "Price",
         "qty": "Quantity",
         "products_nb_part_1": "You have",
@@ -112,7 +112,7 @@
       "chocolate_home_description": "Tablets, caramelized almonds...",
       "chocolate_description": "In this basket, find all the chocolate flavors of Côte d'Ivoire.",
       "cart_modal": {
-        "header": "Successfully added to purchases",
+        "header": "Added to cart",
         "price": "Price",
         "qty": "Quantity",
         "baskets_nb_part_1": "You have",
