@@ -2,35 +2,95 @@
   display: flex;
   flex-wrap: wrap;
 
-  .ingredient-container {
+  .product-container {
     width: 25%;
     padding: 2em 0;
     border-radius: 0;
     text-align: center;
 
-    img {
-      max-width: 120px;
-      height: 100px;
+    .product-inner-container {
+      background-color: white;
+      border-radius: 0;
+      padding-top: 1em;
+      padding-bottom: 0;
+    }
 
-      &.selected {
-        border: 2px solid #EA1B1B;
+    .price-and-buy-container {
+      padding-top: 1em;
+
+      .price-container {
+        padding-top: 1em;
+        padding-left: 1.5em;
+
+        &.custom-product {
+          margin: auto;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+
+        .new-price-euro {
+          font-size: 15px;
+          font-weight: 400;
+        }
+
+        .new-price-cfa {
+          font-size: 15px;
+          font-weight: 400;
+        }
       }
     }
 
-    div {
-      text-align: center;
-      margin-bottom: 0;
+    .cart-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      .supp-prices {
-        color: #EA1B1B;
+      .cart-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 0;
+        border: 1px solid lightgrey;
+        background-color: #F1D866;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .cart-icon {
+          height: auto;
+          width: 50%;
+        }
       }
+    }
+
+    .reduction {
+      background-color: rgb(211, 64, 64);
+      color: white;
+      padding: 5px;
+      border-radius: 0;
+      margin-left: 10px;
+    }
+
+    img {
+      height: 130px;
+      border-radius: 0;
+    }
+
+    h4 {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    h5 {
+      font-size: 15px;
     }
   }
 }
 
 @media (min-width: 1025px) {
   #products-grid {
-    .ingredient-container {
+    .product-container {
       &:hover {
         cursor: pointer;
       }
@@ -43,19 +103,28 @@
     justify-content: center;
     align-items: flex-start;
 
-    .ingredient-container {
-      width: 50%;
+    .product-container {
+      width: 33%;
       padding: 2em 0;
 
-      img {
-        display: block;
-        margin: auto;
-        height: 80px;
-        max-width: 80px;
+      .product-inner-container {
+				h4 {
+					height: 48px;
+				}
       }
+    }
+  }
+}
 
-      p {
-        font-size: 15px;
+@media (max-width: 468px) {
+  #products-grid {
+    .product-container {
+      width: 90%;
+
+      .price-and-buy-container {
+        .price-container {
+          padding-right: 0.5em;
+        }
       }
     }
   }

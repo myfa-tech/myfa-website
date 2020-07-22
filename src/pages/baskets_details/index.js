@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import TextField from '@material-ui/core/TextField';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import { FaCheck } from 'react-icons/fa'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
@@ -20,7 +19,7 @@ import getBasketImage from '../../utils/getBasketImage';
 import EventEmitter from '../../services/EventEmitter';
 import useFetchOrderBaskets from '../../hooks/useFetchOrderBaskets';
 import UserStorage from '../../services/UserStorage';
-import { sendBasketCommentMail } from '../../services/mailjet';
+import useProductComment from '../../hooks/useProductComment';
 
 import beautyIngr1 from '../../images/beauty_ingr_1.jpg';
 import beautyIngr2 from '../../images/beauty_ingr_2.jpg';
@@ -46,10 +45,7 @@ const BasketsDetails = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [baskets, setBaskets] = useFetchOrderBaskets([]);
   const [t, locale] = useTranslate();
-  const [commentError, setCommentError] = useState(false);
-  const [comment, setComment] = useState('');
-  const [isCommentSendingLoading, setIsCommentSendingLoading] = useState(false);
-  const [isCommentSent, setIsCommentSent] = useState(false);
+  const { comment, commentError, isCommentSendingLoading, isCommentSent, handleCommentChange, sendComment } = useProductComment('');
 
   const user = UserStorage.getUser();
   const headers = {
@@ -86,37 +82,10 @@ const BasketsDetails = () => {
     }
   };
 
-  const handleCommentChange = (e) => {
-    const { value } = e.target;
-
-    setComment(value);
-    setCommentError(false);
-  };
-
-  const addToCart = async () => {
-    await CartStorage.addToCart({ ...basket }, qty);
+  const addBasketToCart = async () => {
+    await CartStorage.addBasketToCart({ ...basket }, qty);
     setIsDone(true);
     toggleCartModal();
-  };
-
-  const sendComment = async () => {
-    if (comment !== '') {
-      setIsCommentSendingLoading(true);
-
-      await sendBasketCommentMail({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        comment,
-        basketType: type,
-      });
-
-      setComment('');
-      setIsCommentSent(true);
-      setIsCommentSendingLoading(false);
-    } else {
-      setCommentError(true);
-    }
   };
 
   const updateQty = (adding) => {
@@ -198,7 +167,7 @@ const BasketsDetails = () => {
                 <span className='order-button isDone'>
                   <FaCheck color='#6c6' />
                 </span> :
-                <button type='button' className='order-button' onClick={addToCart}>{t('basket_to_order.add_to_cart')}</button>
+                <button type='button' className='order-button' onClick={addBasketToCart}>{t('basket_to_order.add_to_cart')}</button>
               }
             </div>
 

@@ -22,7 +22,9 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
     const asyncFunc = async () => {
       let fetchedCart = await CartStorage.getCartFromStorage();
 
-      let fetchedCartTotal = fetchedCart.baskets.reduce((acc, curr) => curr.price ? acc + curr.price : acc, 0);
+      let fetchedCartBasketsTotal = fetchedCart.baskets.reduce((acc, curr) => curr.price ? acc + curr.price : acc, 0);
+      let fetchedCartProductsTotal = fetchedCart.products.items.reduce((acc, curr) => curr.price ? acc + curr.price : acc, 0);
+      let fetchedCartTotal = fetchedCartBasketsTotal + fetchedCartProductsTotal;
       let fetchedQty = fetchedCart.baskets.filter(b => b.type === basket.type).length;
 
       setCart(fetchedCart);
@@ -61,7 +63,6 @@ const CartModal = ({ showCartModal, toggleCartModal, basket, onContinue }) => {
           </Col>
           <Col md='6'>
             <p>{t('home_page.baskets.cart_modal.baskets_nb_part_1')} {cart.baskets.length} {t('home_page.baskets.cart_modal.baskets_nb_part_2')}</p>
-            <p><b>{t('home_page.baskets.cart_modal.baskets_total')} :</b> {cartTotal.toFixed(2)} €</p>
             <p><b>{t('home_page.baskets.cart_modal.delivery')} :</b> {t('home_page.baskets.cart_modal.free')}</p>
             <p><b>{t('home_page.baskets.cart_modal.total')} :</b> {cartTotal.toFixed(2)} €</p>
 

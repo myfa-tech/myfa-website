@@ -4,7 +4,9 @@ const useTranslate = () => {
   const { t, i18n } = useTranslation('common');
   const locale = i18n.language || window.localStorage.i18nextLng;
 
-  const translate = (key) => {
+  const translate = (rawKey = '') => {
+    let key = rawKey.replace('-', '_');
+
     try {
       return t(key);
     } catch(e) {

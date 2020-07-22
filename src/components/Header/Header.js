@@ -45,7 +45,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
 
   const DRAWER_LIST = [
     { label: t('header.home'), link: '/' },
-    // { label: t('header.all_products'), link: '/#details' },
+    { label: t('header.all_products'), link: '/#bestsellers' },
     { label: t('header.supply_packs'), link: '/#packs' },
     { label: t('header.gifts_baskets'), link: '/#pleasure-baskets' },
     { label: t('header.ratings'), link: '/ratings' },
@@ -126,6 +126,10 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
     CartStorage.deleteBasketsByType(basketKey);
   };
 
+  const removeProduct = (productIndex) => {
+    CartStorage.deleteProductByIndex(productIndex);
+  };
+
   return (
     <div id='header' className='header-image-description' style={{ backgroundImage: `url(${headerBackground || defaultBackground})`, backgroundPosition: headerBackgroundPosition || 'center center' }}>
       <div expand="lg" className='header-items'>
@@ -154,7 +158,7 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
             }
             <a href='/cart' className='basket-link'>
               <Suspense fallback=''>
-                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} t={t} />
+                <DisplayTooltip cart={cart} removeBaskets={removeBaskets} removeProduct={removeProduct} t={t} />
               </Suspense>
             </a>
             <a className='en-link' href='#' onClick={() => i18next.changeLanguage('en')}>EN</a>
@@ -240,6 +244,6 @@ const Header = ({ headerBackground, headerDescription, headerBackgroundPosition,
       </Modal>}
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

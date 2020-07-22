@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import LoadingItem from '../LoadingItem';
-const CartModal = lazy(() => import('../CartModal'));
+const CartProductModal = lazy(() => import('../CartProductModal'));
 import SectionLoader from '../SectionLoader';
 
 import CartStorage from '../../services/CartStorage';
@@ -14,24 +14,24 @@ import './DisplayProducts.scss';
 
 const DisplayProducts = ({ products, handleProductClick }) => {
   const [productForCart, setProductForCart] = useState(null);
-	const [showCartModal, setShowCartModal] = useState(false);
-  const [t, locale] = useTranslate();
+	const [showCartProductModal, setShowCartProductModal] = useState(false);
+  const [t] = useTranslate();
 
-	const toggleCartModal = () => {
-		if (!!showCartModal) {
+	const toggleCartProductModal = () => {
+		if (!!showCartProductModal) {
 			setProductForCart(null);
 		}
 
-		setShowCartModal(!showCartModal);
+		setShowCartProductModal(!showCartProductModal);
   };
 
   const addProductToCart = async (e, product) => {
 		e.stopPropagation();
 
-		await CartStorage.addToCart({ ...product });
+		await CartStorage.addProductToCart({ ...product });
 
 		setProductForCart(product);
-		toggleCartModal();
+		toggleCartProductModal();
   };
 
   return (
@@ -66,12 +66,12 @@ const DisplayProducts = ({ products, handleProductClick }) => {
 					</Col>
 				))}
 			</Row>
-			{showCartModal &&
+			{showCartProductModal &&
 				<Suspense fallback={<SectionLoader />}>
-					<CartModal
-						showCartModal={showCartModal}
-						toggleCartModal={toggleCartModal}
-						basket={productForCart}
+					<CartProductModal
+						showCartProductModal={showCartProductModal}
+						toggleCartProductModal={toggleCartProductModal}
+						product={productForCart}
 					/>
 				</Suspense>
 			}

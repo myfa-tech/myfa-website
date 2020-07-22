@@ -17,6 +17,7 @@ import NewOrderModal from '../../../components/dashboard/NewOrderModal';
 
 import { fetchBaskets, updateBasketById } from '../../../services/baskets';
 import usePopover from '../../../hooks/usePopover';
+import useTranslate from '../../../hooks/useTranslate';
 
 import './baskets.scss';
 
@@ -116,6 +117,7 @@ const DashbboardBaskets = () => {
   const [editStatusField, setEditStatusField] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showNewOrderModal, setShowNewOrderModal] = useState(false);
+  const [t] = useTranslate();
 
   const [
     popoverInfo,
@@ -206,11 +208,15 @@ const DashbboardBaskets = () => {
       },
       formatter: (cell, row, rowIndex) => {
         const basket = baskets.find(b => b._id === row._id);
-        let items = basket.items;
+        let items = basket.items || basket.itemsTranslate;
 
         // Type MYFA and has items and is not an array
         if (basket.name === 'MYFA' && basket.items && !basket.items[0]) {
           items = Object.values(basket.items).reduce((acc, cur) => [...acc, ...(cur.map(item => item.label))], []);
+        } else if (basket.name === 'details') {
+          items = basket.itemsTranslate.map(it => `${t(it.label)} x ${it.qty}`);
+        } else {
+          items = basket.itemsTranslate.map(it => `${t(`ingredients.${it.label}`)} x ${it.qty}`);
         }
 
         return <Typography

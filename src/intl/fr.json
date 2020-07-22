@@ -19,6 +19,10 @@
     "something_wrong": "Quelque chose s'est mal passé",
     "send": "Envoyer"
   },
+  "free_delivery_modal": {
+    "title": "Livraison gratuite",
+    "text": "La livraison est offerte pour les paniers, packs et les produits au détails au-delà de 15€ d'achat."
+  },
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",
     "home": {
@@ -26,7 +30,7 @@
       "launch_popup": {
         "title": "COVID-19 ⚠️",
         "paragraph1": "En raison de la situation actuelle, les délais de livraison des paniers MYFA peuvent être plus longs.",
-        "paragraph2": "Nous ne manquerons pas de vous tenir au courant dès la reprise d'une activité normale. En attendant, restez chez vous, prenez soin de vous et vos proches."
+        "paragraph2": "En attendant, restez chez vous, prenez soin de vous et vos proches."
       }
     },
     "our_services": {
@@ -48,22 +52,34 @@
     },
     "products": {
       "products_title": "Meilleures ventes",
-      "products_secondary": "Voir tous les produits"
+      "products_secondary": "Tous les produits",
+      "cart_product_modal": {
+        "header": "Ajouté aux achats",
+        "price": "Prix",
+        "qty": "Quantité",
+        "products_nb_part_1": "Vous avez",
+        "products_nb_part_2": "produit(s) en attente.",
+        "delivery": "Livraison",
+        "free": "gratuite",
+        "total": "Total produits",
+        "continue_button": "Continuer",
+        "pay_button": "Payer"
+      }
     },
     "ratings": {
-      "all_ratings": "Voir tous les avis"
+      "all_ratings": "Tous les avis"
     },
     "packs": {
       "packs_title": "Packs ravitaillement",
       "packs_mobile_title": "Ravitaillement",
-      "packs_secondary": "Voir tous les packs",
+      "packs_secondary": "Tous les packs",
       "veggies_title": "Pack Légumes",
       "veggies_home_description": "Oignons, carottes, Ignames...",
       "veggies_description": "Chez MYFA, nous tenons à mettre en valeur les cultures vivrières qui rentrent dans la consommation locale. Avec ce pack, vous rendez heureux vos proches et les vendeurs / producteurs avec qui nous sommes en contact direct ! 😉",
       "local_rice_title": "Pack Familial - Riz local",
       "local_rice_home_description": "Tomates, riz local, piment...",
       "local_rice_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz local 100% ivoirien.",
-      "rice_attieke_title": "Pack Familial - Riz attieke",
+      "rice_attieke_title": "Pack Familial - Riz & attieke",
       "rice_attieke_home_description": "Riz, attieke, lait en poudre...",
       "rice_attieke_description": "Imaginé pour une famille de 8 personnes, ce pack est généreusement composé de bons produits pour régaler la famille, avec du riz parfumé et ses boules d'attieke.",
       "morning_title": "Pack Matinal",
@@ -76,7 +92,7 @@
       "until_date": "jusqu'au 31/03/2020",
       "pleasure_baskets_title": "Paniers plaisir",
       "pleasure_baskets_mobile_title": "Plaisir",
-      "pleasure_baskets_secondary": "Voir tous les paniers",
+      "pleasure_baskets_secondary": "Tous les paniers",
       "fruits_title": "Panier Fruits 🍌",
       "fruits_home_description": "Bananes, oranges, noix de coco...",
       "fruits_description": "Le panier Fruits rassemble jusqu'à 6 kilos de saveurs dont vous pouvez faire profiter vos proches.",
@@ -96,11 +112,11 @@
       "beauty_home_description": "Beurre de karité, bissap, kinkeliba...",
       "beauty_description": "Avec ce panier rempli de produits aux bienfaits bénéfiques pour votre santé autant que votre beauté, prendre soin de vous n’a jamais été aussi plaisant.",
       "cart_modal": {
-        "header": "Ajouté aux achats avec succès",
+        "header": "Ajouté aux achats",
         "price": "Prix",
         "qty": "Quantité",
         "baskets_nb_part_1": "Vous avez",
-        "baskets_nb_part_2": "paniers en attente.",
+        "baskets_nb_part_2": "panier(s) en attente.",
         "baskets_total": "Total paniers",
         "delivery": "Livraison",
         "free": "gratuite",
@@ -142,7 +158,7 @@
   },
   "faq": {
     "title": "Questions fréquentes",
-    "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse infos@myfa.fr."
+    "description": "Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au +22584215154 ou directement à l'adresse "
   },
   "blog": {
     "title": "Blog",
@@ -222,7 +238,9 @@
     "price_container": {
       "total": "Total",
       "grand_total": "Total TTC",
-      "baskets": "paniers",
+      "details_delivery": "Livraison produits détails",
+      "free_delivery": "Livraison offerte",
+      "items": "produits",
       "next": "Suivant",
       "covid19_warning": "Les délais de livraison peuvent augmenter à cause de la crise de Covid-19. Merci pour votre compréhension.",
       "checkout": "Commander",
@@ -270,7 +288,9 @@
       "title": "Mon panier",
       "subtotal": "Sous-total",
       "qty": "Qté",
-      "recipient": "Destinataire"
+      "recipient": "Destinataire",
+      "details_title": "Produits au détails",
+      "details_delivery_part_2": "de livraison"
     }
   },
   "basket_to_order": {
@@ -280,6 +300,19 @@
     "max_qty_reached": "Quantité maximum atteinte",
     "add_to_cart": "Ajouter au panier",
     "other_baskets": "Nos autres paniers",
+    "suggestion_title": "Une suggestion ? Un produit vous manque dans ce pack ?",
+    "suggestion_placeholder": "Dites-nous tout",
+    "suggestion_button": "Envoyer",
+    "suggestion_button_success": "Envoyé",
+    "suggestion_login": "Connectez-vous"
+  },
+  "unique_product": {
+    "description": "Vos produits préférés sont là, faites votre choix",
+    "photo_disclaimer": "Photo non contractuelle",
+    "qty": "Quantité",
+    "max_qty_reached": "Quantité maximum atteinte",
+    "add_to_cart": "Ajouter au panier",
+    "other_products": "Dans le même rayon",
     "suggestion_title": "Une suggestion ? Un produit vous manque dans ce pack ?",
     "suggestion_placeholder": "Dites-nous tout",
     "suggestion_button": "Envoyer",
@@ -421,6 +454,28 @@
       "confirm": "Confirmer"
     }
   },
+  "details_categories": {
+    "description": "Vos produits préférés sont là, faites votre choix",
+    "title": "Tous les produits",
+    "secondary": "Accueil",
+    "fruits_title": "Fruits",
+    "fruits_description": "(mangues, bananes...)",
+    "veggies_title": "Légumes",
+    "veggies_description": "(oignons, ignames...)",
+    "grocery_salty_title": "Epicerie salée",
+    "grocery_salty_description": "(huile, riz...)",
+    "grocery_sweet_title": "Epicerie sucrée",
+    "grocery_sweet_description": "(petit déjeuner, chocolat...)",
+    "healthy_title": "Bien-être",
+    "healthy_description": "(beurre de karité, savon noir...)"
+  },
+  "products_category": {
+    "fruits_title": "Fruits",
+    "healthy_title": "Bien-être",
+    "grocery_sweet_title": "Epicerie sucrée",
+    "grocery_salty_title": "Epicerie salée",
+    "veggies_title": "Légumes"
+  },
   "countdown": {
     "title": "Fin des réductions Lancement",
     "d": "j",
@@ -447,57 +502,58 @@
   "ingredients": {
     "1L_palm_oil": "Huile de palme (1L)",
     "2_attiekes": "2 boules d'attiéké",
-    "1kg_plantain": "Bananes plantain (1kg)",
-    "250g_gombos": "Gombos (250g)",
+    "plantain": "Bananes plantain (1kg)",
+    "gombos": "Gombos (250g)",
     "500g_dattes": "Dattes (500g)",
     "sugar": "Sucre morceaux (1kg)",
     "250g_margarine": "Margarine (250g)",
-    "1_potage": "Potage tomate vermicelles",
-    "1_10_tea_bags": "10 sachets de thé Lipton",
+    "soup": "Potage tetrapack",
+    "tea_bags": "Sachets de thé Lipton (10pcs)",
+    "tea_bag": "Sachet de thé Lipton",
     "75g_beef_pate": "Paté de boeuf (75g)",
-    "8pcs_vqr": "Vache qui rit, 8 pieces",
-    "1l_juice": "Jus multifruits (1L)",
-    "2_apples": "2 pommes",
-    "2_oranges": "2 oranges",
-    "1_350_mil": "Mil pour la bouillie (350g)",
-    "1_410_bonnet_rouge": "Bonnet Rouge (410g)",
+    "vqr": "Vache qui rit (8 pcs)",
+    "juice": "Jus tetrapack (1L)",
+    "1_apple": "Pomme (unité)",
+    "1_orange": "Orange (unité)",
+    "mil": "Mil pour la bouillie (350g)",
+    "bonnet_rouge": "Bonnet Rouge (410g)",
     "40g_fish_pouder": "Poudre de poisson (40g)",
     "onions": "Oignons (1kg)",
     "mangoes": "Mangues (1kg)",
     "500g_dried_dates": "Dattes séchées (500g)",
     "1kg_fresh_dates": "Dattes non séchées (1kg)",
     "300g_grapes": "Raisins (300g)",
-    "50_maggie_10gr": "50 cubes d'épices",
+    "maggie": "Cubes d'épices (50 pcs)",
     "300g_fresh_chili": "Piments frais (300g)",
-    "1kg_tomatoes": "Tomates (1kg)",
-    "1kg_lime": "Citrons (1kg)",
+    "tomatoes": "Tomates (1kg)",
+    "lemon": "Citrons (1kg)",
     "70g_akpi": "Graines d'akpi (70g)",
-    "425g_peanut_paste": "Pâte d'arachide (425g)",
-    "200g_salt": "Sel Baleine (200g)",
-    "50g_pepper_pouder": "Poivre moulu (50g)",
-    "30g_ginger_pouder": "Gingembre moulu (30g)",
-    "4_garlics": "4 gousses d'ail",
+    "peanut_paste": "Pâte d'arachide (425g)",
+    "salt": "Sel (1kg)",
+    "pepper_powder": "Poivre moulu (250g)",
+    "ginger_powder": "Gingembre moulu (30g)",
+    "garlic": "Gousses d'ail (4 pcs)",
     "bananas": "Bananes (1kg)",
     "oranges": "Oranges (1kg)",
-    "coconut": "Noix de coco",
-    "pineapple": "Ananas",
+    "coconut": "Noix de coco (unité)",
+    "pineapple": "Ananas (unité)",
     "avocados": "Avocats (1kg)",
-    "carots": "Carottes (sachet - 1kg)",
+    "carots": "Carottes (1kg)",
     "potatoes": "Pommes de terre (2kg)",
     "yam": "Ignames (1kg)",
-    "red_cabbage": "Choux rouge",
+    "red_cabbage": "Choux rouge (unité)",
     "french_beans": "Haricots verts (400g)",
-    "karite": "Beurre de karité (pot - 200g)",
-    "cocoa_butter": "Beurre de cacao (pot - 500ml)",
-    "bissap": "Feuilles de Bissap (sachet - 250g)",
-    "kinkeliba": "Feuilles de kinkeliba (sachet - 75g)",
+    "karite": "Beurre de karité (200g)",
+    "cocoa_butter": "Beurre de cacao (500ml)",
+    "bissap": "Feuilles de Bissap (250g)",
+    "kinkeliba": "Feuilles de kinkeliba (75g)",
     "black_soap": "Savon noir",
-    "honey": "Miel (bouteille - 600g)",
+    "honey": "Miel (600g)",
     "margarine": "Margarine JADIDA (500g)",
     "coffee": "Café Nescafé Classic (100g)",
-    "spread_chocolate": "Chocolat à tartiner TAFISSA (pot - 500g)",
+    "spread_chocolate": "Chocolat à tartiner TAFISSA (500g)",
     "tomato_puree": "Concentré de tomates (2kg)",
-    "milk_powder": "Lait en poudre (sachet - 400g)",
+    "milk_powder": "Lait en poudre (400g)",
     "oil": "Huile (1L)",
     "black_pepper": "Poivre noir (90g)",
     "hot_chili": "Piment fort (90g)",

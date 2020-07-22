@@ -19,7 +19,6 @@ const Packs = () => {
 	const [basketForCart, setBasketForCart] = useState(null);
 	const [showCartModal, setShowCartModal] = useState(false);
 	const [baskets, setBaskets] = useFetchPacks([]);
-
 	const [t, locale] = useTranslate();
 
 	const toggleCartModal = () => {
@@ -33,7 +32,7 @@ const Packs = () => {
 	const addBasketToCart = async (e, basket) => {
 		e.stopPropagation();
 
-		await CartStorage.addToCart({ ...basket });
+		await CartStorage.addBasketToCart({ ...basket });
 
 		setBasketForCart(basket);
 		toggleCartModal();

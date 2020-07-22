@@ -126,6 +126,24 @@
       width: 80%;
       border-radius: 0;
     }
+
+    .details-products-container {
+      border: 1px solid #dbdbdb;
+      padding: 1em;
+
+      .details-label, .details-price {
+        display: flex;
+        align-items: center;
+      }
+
+      ul {
+        padding: 1em 0 0 0;
+      }
+
+      .delivery-container {
+        text-align: right;
+      }
+    }
   }
 }
 
@@ -168,9 +186,11 @@
         display: inline-block;
       }
 
-      p {
-        display: inline-block;
-        padding-left: 0.5em;
+      .info-container {
+        p {
+          display: inline-block;
+          padding-left: 0.5em;
+        }
       }
     }
   }
@@ -184,6 +204,12 @@
     .baskets-container {
       .label-container {
         padding-right: 0;
+      }
+
+      .details-products-container {
+        .details-label {
+          padding-left: 0;
+        }
       }
 
       .qty-container {

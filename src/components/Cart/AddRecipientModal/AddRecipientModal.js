@@ -14,7 +14,7 @@ import CartStorage from '../../../services/CartStorage';
 import './AddRecipientModal.scss';
 import UserStorage from '../../../services/UserStorage';
 
-const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
+const AddRecipientModal = ({ cart, showModal, toggleModal, itemIndex }) => {
   const [
     form,
     handleChangeFormValue,
@@ -42,7 +42,12 @@ const AddRecipientModal = ({ cart, showModal, toggleModal, basketIndex }) => {
 
       const newRecipient = userUpdated.recipients.find(rec => rec.firstname === form.firstname && rec.lastname === form.lastname && rec.phone === form.phone);
 
-      cart.baskets[basketIndex].recipient = newRecipient;
+      if (itemIndex === 'details') {
+        cart.products.recipient = newRecipient;
+      } else {
+        cart.baskets[itemIndex].recipient = newRecipient;
+      }
+
       CartStorage.editCart({ ...cart });
 
       window.location.reload();

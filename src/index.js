@@ -10,6 +10,9 @@ import common_en from './intl/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
+const ProductsCategory = lazy(() => import('./pages/products-category'));
+const DetailsCategories = lazy(() => import('./pages/details_categories'));
+const UniqueProductPage = lazy(() => import('./pages/unique_product'));
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
 const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
@@ -83,6 +86,9 @@ const App = () => (
       <LegalFrPage path='/legal_fr' />
       <CustomBasketPage path='/custom-basket' />
       <EmailConfirmationPage path='/email_confirmation' />
+      <DetailsCategories path='/details-categories' />
+      <ProductsCategory path='/details-categories/:category' />
+      <UniqueProductPage path='/products/:productName' />
       <LogoutPage path='/logout' />
       <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />

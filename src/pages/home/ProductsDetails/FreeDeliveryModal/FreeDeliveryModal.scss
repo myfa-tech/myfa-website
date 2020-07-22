@@ -1,0 +1,25 @@
+#free-delivery-modal {
+  .modal-header {
+    border-bottom: none;
+
+    .close {
+      font-size: 30px;
+    }
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    display: block;
+    width: 225px;
+  }
+
+  h2, p {
+    text-align: center;
+  }
+}
