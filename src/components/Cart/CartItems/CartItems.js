@@ -84,7 +84,7 @@ const CartItems = ({ itemsPrice, cart, className, deliveryPrice, showDelivery, h
                         className='full-width form-input'
                         onChange={(e) => handleChangeRecipient(e, index)}
                       >
-                        <option value=''>Destinataire</option>
+                        <option value='no-value'>Destinataire</option>
                         {recipients.map((recipient, recipientIndex) => (
                           <option key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</option>
                         ))}
@@ -129,11 +129,11 @@ const CartItems = ({ itemsPrice, cart, className, deliveryPrice, showDelivery, h
                   error={errors.findIndex(err => err === `recipient-details`) >= 0}
                   variant='outlined'
                   placeholder={t('cart.items.recipient_placeholder')}
-                  value={cart.products.recipient ? JSON.stringify(cart.products.recipient) : null}
+                  value={cart.products.recipient ? JSON.stringify(cart.products.recipient) : ''}
                   className='full-width form-input'
                   onChange={(e) => handleChangeRecipient(e, 'details')}
                 >
-                  <option value=''>Destinataire</option>
+                  <option value='no-value'>Destinataire</option>
                   {recipients.map((recipient, recipientIndex) => (
                     <option key={recipientIndex} value={JSON.stringify(recipient)}>{`${recipient.firstname} ${recipient.lastname}`}</option>
                   ))}

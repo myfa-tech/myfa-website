@@ -48,7 +48,7 @@ const HomePage = ({ location }) => {
     if (!isReady) {
       setIsReady(true);
     }
-  }
+  };
 
   return (
     <Layout
