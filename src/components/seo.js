@@ -6,8 +6,6 @@ import uuid from 'uuid/v4';
 
 import useTranslate from '../hooks/useTranslate';
 
-import socialSharingImgSrc from '../images/social-sharing-img.jpg';
-
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
   const [t] = useTranslate();
   const [uniqueId, setUniqueId] = useState('');
@@ -64,7 +62,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           property: `og:image`,
-          content: img || socialSharingImgSrc,
+          content: img || 'https://www.myfa.fr/social-sharing-img.jpg',
         },
         {
           name: `twitter:card`,
@@ -72,7 +70,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           name: `twitter:image`,
-          content: img || `https://www.myfa.fr/${socialSharingImgSrc}`,
+          content: img || 'https://www.myfa.fr/social-sharing-img.jpg',
         },
         {
           name: `twitter:site`,
