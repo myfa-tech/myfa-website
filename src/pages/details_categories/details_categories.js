@@ -6,7 +6,6 @@ import useTranslate from '../../hooks/useTranslate';
 import SectionTitle from '../../components/SectionTitle';
 import CategoryDisplay from './CategoryDisplay';
 
-import socialSharingImgSrc from '../../images/social-sharing-img.png';
 import storeBg from '../../images/store-bg.jpg';
 import fruitsImage from '../../images/fruits-basket-bg.jpg';
 import grocerySweetImage from '../../images/morning-pack-bg.jpg';
@@ -59,7 +58,7 @@ const DetailsCategories = () => {
       headerDescription={t('details_categories.description')}
       headerBackgroundPosition='center center'
     >
-      <SEO title='Catégories' img={socialSharingImgSrc} />
+      <SEO title='Catégories' />
 
       <SectionTitle title={t('details_categories.title')} secondary={{ text: t('details_categories.secondary'), link: '/' }} />
 

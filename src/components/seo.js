@@ -6,7 +6,7 @@ import uuid from 'uuid/v4';
 
 import useTranslate from '../hooks/useTranslate';
 
-import socialSharingImgSrc from '../images/social-sharing-img.png';
+import socialSharingImgSrc from '../images/social-sharing-img.jpg';
 
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
   const [t] = useTranslate();
@@ -72,7 +72,7 @@ function SEO({ description, lang, meta, title, type, url, keywords, img }) {
         },
         {
           name: `twitter:image`,
-          content: img || `${socialSharingImgSrc}?id=${uniqueId}`,
+          content: img || `https://www.myfa.fr/${socialSharingImgSrc}`,
         },
         {
           name: `twitter:site`,

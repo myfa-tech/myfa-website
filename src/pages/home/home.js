@@ -13,7 +13,6 @@ const ProductsDetails = lazy(() => import('./ProductsDetails'));
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import socialSharingImgSrc from '../../images/social-sharing-img.png';
 import homeBg from '../../images/default-bg.jpg';
 
 import useTranslate from '../../hooks/useTranslate';
@@ -57,7 +56,7 @@ const HomePage = ({ location }) => {
       headerDescription={t('home_page.home.welcome_title')}
       headerBackgroundPosition='center center'
     >
-      <SEO title={t('home_page.seo_title')} img={socialSharingImgSrc} />
+      <SEO title={t('home_page.seo_title')} />
 
       <Suspense fallback={<SectionLoader />}>
         <Covid19 />
