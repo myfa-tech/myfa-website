@@ -11,7 +11,6 @@ import grocerySweetImage from '../../images/morning-pack-bg.jpg';
 import healthyImage from '../../images/beauty-basket-bg.jpg';
 import veggiesImage from '../../images/veggies-bg.jpg';
 import grocerySaltyImage from '../../images/grocery-salty-bg.jpg';
-import socialSharingImgSrc from '../../images/social-sharing-img.png';
 
 import CartStorage from '../../services/CartStorage';
 import useTranslate from '../../hooks/useTranslate';
@@ -69,7 +68,7 @@ const ProductsCategory = () => {
       headerDescription={t(`products_category.${category}_title`)}
       headerBackgroundPosition='center center'
     >
-      <SEO title='Produits' img={socialSharingImgSrc} />
+      <SEO title='Produits' />
 
       <div className='products-category-container'>
         <ProductsGrid
