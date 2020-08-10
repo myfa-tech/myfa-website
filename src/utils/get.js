@@ -13,11 +13,11 @@ const get = (object, stringPath, returnValue = null) => {
   let currentValue = object;
 
   parts.forEach(part => {
-    currentValue = currentValue[part];
-
     if (!currentValue) {
       return returnValue;
     }
+
+    currentValue = currentValue[part];
   });
 
   return currentValue;

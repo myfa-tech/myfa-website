@@ -25,6 +25,7 @@ import manuellaSrc from '../../images/manuella.png';
 import alexandreSrc from '../../images/alex.png';
 import orlaneSrc from '../../images/orlane.png';
 import getFormattedDate from '../../utils/getFormattedDate';
+import get from '../../utils/get';
 
 const Article = (props) => {
   const [article, setArticle] = useState({});
@@ -141,6 +142,7 @@ const ArticleDisplay = (props) => {
     <Layout>
       <SEO
         title={props.article.title}
+        img={get(props, 'article.cover.fields.file.url', null) || get(props, 'article.displayCover.fields.file.url', null)}
         description={props.article.description}
         type='article'
         url={`https://www.myfa.fr/articles/${props.article.path}`}
