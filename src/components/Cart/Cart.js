@@ -55,8 +55,10 @@ const Cart = () => {
   useEffect(() => {
     let price = get(cart, 'products.items', []).map(p => p.price).reduce((acc, cur) => acc + cur, 0);
 
-    if ((price > DELIVERY_LIMIT && showDelivery) || (price < DELIVERY_LIMIT && !showDelivery)) {
-      toggleShowDelivery();
+    if ((price > DELIVERY_LIMIT && showDelivery) || (get(cart, 'baskets', []).length > 0)) {
+      setShowDelivery(false);
+    } else if (price < DELIVERY_LIMIT && !showDelivery) {
+      setShowDelivery(true);
     }
   }, [cart]);
 
@@ -71,7 +73,7 @@ const Cart = () => {
       let newBasketsPrice = newCart.baskets.map(b => b.price).reduce((acc, cur) => acc + cur, 0);
       let newProductsPrice = newCart.products.items.map(p => p.price).reduce((acc, cur) => acc + cur, 0);
 
-      let delivery = (newProductsPrice < DELIVERY_LIMIT) ? DELIVERY_PRICE : 0;
+      let delivery = (newProductsPrice > DELIVERY_LIMIT || newBasketsNumber !== 0) ? 0 : DELIVERY_PRICE;
 
       setCart(newCart);
       setItemsNumber(newBasketsNumber + newProductsNumber);
