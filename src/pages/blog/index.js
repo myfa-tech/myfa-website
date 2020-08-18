@@ -32,6 +32,10 @@ const BlogPage = () => {
         name: 'Orlane Kouame',
         title: 'Community Manager Jr',
       },
+      'chris': {
+        name: 'Chris Nkombo',
+        title: 'Stagiaire logistique',
+      },
       'alexandre': {
         name: 'Alexandre Meschberger',
         title: 'CFO, MYFA',

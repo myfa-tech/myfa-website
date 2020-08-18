@@ -24,6 +24,8 @@ import dorisSrc from '../../images/doris.png';
 import manuellaSrc from '../../images/manuella.png';
 import alexandreSrc from '../../images/alex.png';
 import orlaneSrc from '../../images/orlane.png';
+import noProfileSrc from '../../images/no-profile.png';
+
 import getFormattedDate from '../../utils/getFormattedDate';
 import get from '../../utils/get';
 
@@ -69,6 +71,10 @@ const ArticleDisplay = (props) => {
         name: 'Orlane Kouame',
         title: 'Community Manager Jr',
         img: orlaneSrc,
+      },
+      'chris': {
+        name: 'Chris Nkombo',
+        title: 'Stagiaire logistique',
       },
       'alexandre': {
         name: 'Alexandre Meschberger',
@@ -154,7 +160,7 @@ const ArticleDisplay = (props) => {
             <h1>{props.article.title}</h1>
 
             <div className='author'>
-              <img src={author.img} alt={props.article.author} />
+              <img src={author.img || noProfileSrc} alt={props.article.author} />
               <div>
                 <span>{author.name}</span>
                 <span className='date'>{getFormattedDate(props.article.createdAt)}</span>
