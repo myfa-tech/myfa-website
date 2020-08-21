@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Redirect, Router } from '@reach/router';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
+import * as Sentry from '@sentry/react';
 
 import common_fr from './intl/fr.json';
 import common_en from './intl/en.json';
@@ -60,6 +61,11 @@ i18next.init({
     },
   },
 });
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('Sentry init - PRODUCTION MODE');
+  Sentry.init({ dsn: "https://a8deec86fbde4709940d231446734fcc@o436858.ingest.sentry.io/5398591" });
+}
 
 const App = () => (
   <Suspense fallback={<div></div>}>
