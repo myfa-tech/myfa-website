@@ -17,6 +17,13 @@ html {
   }
 
   body {
+    .loading-img {
+      display: block;
+      position: absolute;
+      top: 40vh;
+      left: 45%;
+    }
+
     .full-width {
       width: 100%;
     }

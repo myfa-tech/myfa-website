@@ -11,6 +11,8 @@ import common_en from './intl/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
+import myfaLoadingSrc from './images/myfa-loading.gif';
+
 const ProductsCategory = lazy(() => import('./pages/products-category'));
 const DetailsCategories = lazy(() => import('./pages/details_categories'));
 const UniqueProductPage = lazy(() => import('./pages/unique_product'));
@@ -68,7 +70,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const App = () => (
-  <Suspense fallback={<div></div>}>
+  <Suspense fallback={<img className='loading-img' src={myfaLoadingSrc} alt='myfa logo for loading' />}>
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
