@@ -42,6 +42,7 @@
     "react-share": "^3.0.1",
     "react-social-icons": "^4.1.0",
     "react-spinners": "^0.6.1",
+    "styled-components": "^5.1.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
