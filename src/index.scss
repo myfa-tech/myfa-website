@@ -18,10 +18,11 @@ html {
 
   body {
     .loading-img {
-      display: block;
       position: absolute;
-      top: 40vh;
-      left: 45%;
+      top: 50%;
+      left: 50%;
+      margin-top: -94px;
+      margin-left: -64px;
     }
 
     .full-width {
