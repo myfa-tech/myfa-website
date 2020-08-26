@@ -1,15 +1,14 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
-import SectionLoader from '../../components/SectionLoader';
-const PleasureBaskets = lazy(() => import('./PleasureBaskets'));
-const Packs = lazy(() => import('./Packs'));
-const Covid19 = lazy(() => import('./Covid19'));
-const Asterisks = lazy(() => import('./Asterisks'));
-const OurServices = lazy(() => import('./OurServices'));
-const Ratings = lazy(() => import('./Ratings'));
-const ProductsDetails = lazy(() => import('./ProductsDetails'));
+import PleasureBaskets from './PleasureBaskets';
+import Packs from './Packs';
+import Covid19 from './Covid19';
+import Asterisks from './Asterisks';
+import OurServices from './OurServices';
+import Ratings from './Ratings';
+import ProductsDetails from './ProductsDetails';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -58,15 +57,13 @@ const HomePage = ({ location }) => {
     >
       <SEO title={t('home_page.seo_title')} />
 
-      <Suspense fallback={<SectionLoader />}>
-        <Covid19 />
-        <ProductsDetails location={location} />
-        <PleasureBaskets location={location} />
-        <Packs location={location} />
-        <OurServices />
-        <Ratings />
-        <Asterisks />
-      </Suspense>
+      <Covid19 />
+      <ProductsDetails location={location} />
+      <PleasureBaskets location={location} />
+      <Packs location={location} />
+      <OurServices />
+      <Ratings />
+      <Asterisks />
     </Layout>
   );
 }

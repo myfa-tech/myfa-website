@@ -4,10 +4,10 @@ import Col from 'react-bootstrap/Col';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Carousel } from 'react-responsive-carousel';
 
-import LoadingItem from '../../../components/LoadingItem';
 const CartModal = lazy(() => import('../../../components/CartModal'));
 import SectionLoader from '../../../components/SectionLoader';
 import SectionTitle from '../../../components/SectionTitle';
+import LazyImage from '../../../components/LazyImage';
 
 import CartStorage from '../../../services/CartStorage';
 import useTranslate from '../../../hooks/useTranslate';
@@ -54,13 +54,13 @@ const Packs = () => {
 			/>
 
 			<Row className='articles-container justify-content-center desktop-display'>
-				{baskets.length ? baskets.map((basket) => (
+				{baskets.map((basket) => (
 					<Col md={3} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
 						<div className='article-container'>
 							<div className='article-inner-container'>
 								<h4>{t(basket.labelTranslate)}</h4>
 								<h5>{t(basket.homeDescTranslate)}</h5>
-								<img src={basket.img} alt={basket.imgAlt} />
+								<LazyImage src={basket.img} alt={basket.imgAlt} />
 							</div>
 							<Row className='price-and-buy-container'>
 								<Col xs={7} className='price-container'>
@@ -76,23 +76,18 @@ const Packs = () => {
 							</Row>
 						</div>
 					</Col>
-				)) :
-				[1, 2, 3].map((it, index) => (
-					<Col md={4} key={index}>
-						<LoadingItem />
-					</Col>
 				))}
 			</Row>
 
 			<div className='mobile-display mobile-slider-container'>
 				<Carousel centerMode centerSlidePercentage={100} className='custom-slider'>
-					{baskets.length ? baskets.map((basket) => (
+					{baskets.map((basket) => (
 						<Col md={3} key={basket.type} onClick={() => handleBasketButtonClick(basket.type)}>
 							<div className='article-container'>
 								<div className='article-inner-container'>
 									<h4>{t(basket.labelTranslate)}</h4>
 									<h5>{t(basket.homeDescTranslate)}</h5>
-									<img src={basket.img} alt={basket.imgAlt} />
+									<LazyImage src={basket.img} alt={basket.imgAlt} />
 								</div>
 								<Row className='price-and-buy-container'>
 									<Col xs={7} className='price-container'>
@@ -107,11 +102,6 @@ const Packs = () => {
 									</Col>
 								</Row>
 							</div>
-						</Col>
-					)) :
-					[1, 2, 3].map((it, index) => (
-						<Col md={4} key={index}>
-							<LoadingItem />
 						</Col>
 					))}
 				</Carousel>
