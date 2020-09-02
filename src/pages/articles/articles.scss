@@ -10,6 +10,14 @@
 			justify-content: center;
     }
 
+    .full-width-img-container {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
     .col-sm-3 {
       width: 25%;
     }

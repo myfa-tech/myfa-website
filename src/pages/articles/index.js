@@ -93,7 +93,11 @@ const ArticleDisplay = (props) => {
 
   const contentfulRenderingOptions = {
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node) => `<div class='row'>
+      [BLOCKS.EMBEDDED_ASSET]: (node) => node.data.target.fields.description === 'full-width' ?
+        `<div class='full-width-img-container'>
+          <img src='${node.data.target.fields.file.url}' />
+        </div>` :
+        `<div class='row'>
         <div class='col-md-3 left-small-img-container'>
           <img class='left-small-img' src='${node.data.target.fields.file.url}' />
         </div>
