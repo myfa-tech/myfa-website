@@ -49,7 +49,10 @@ const Cart = () => {
 
   useEffect(() => {
     let price = itemsPrice - (itemsPrice * (PROMO_PERCENTAGE/100));
+    let newGrandTotal = price + (price > DELIVERY_LIMIT ? 0 : DELIVERY_PRICE);
+
     setItemsPrice(price);
+    setGrandTotal(newGrandTotal);
   }, [promoActivated]);
 
   useEffect(() => {
@@ -61,8 +64,6 @@ const Cart = () => {
       setShowDelivery(true);
     }
   }, [cart]);
-
-  const toggleShowDelivery = () => setShowDelivery(!showDelivery);
 
   const initCart = async () => {
     let newCart = await CartStorage.getCartFromStorage();
