@@ -19,9 +19,9 @@
     "something_wrong": "Quelque chose s'est mal passé",
     "send": "Envoyer"
   },
-  "free_delivery_modal": {
-    "title": "Livraison gratuite",
-    "text": "La livraison est offerte pour les paniers, packs et les produits au détails au-delà de 15€ d'achat."
+  "service_interruption_modal": {
+    "title": "Livraisons interrompues",
+    "text": "Pour des raisons liées à l'instabilité politique actuelle en Côte d'Ivoire 🇨🇮, nous sommes contraints de suspendre les livraisons jusqu'au 15 Novembre environ. Nous remercions notre aimable clientèle pour sa compréhension."
   },
   "home_page": {
     "seo_title": "MYFA, pour vos proches au loin",

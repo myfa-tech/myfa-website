@@ -8,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import LoadingItem from '../../../components/LoadingItem';
 import SectionTitle from '../../../components/SectionTitle';
 const CartProductModal = lazy(() => import('../../../components/CartProductModal'));
-const FreeDeliveryModal = lazy(() => import('./FreeDeliveryModal'));
+const ServiceInterruptionModal = lazy(() => import('./ServiceInterruptionModal'));
 import SectionLoader from '../../../components/SectionLoader';
 
 import CartStorage from '../../../services/CartStorage';
@@ -22,12 +22,12 @@ import './ProductsDetails.scss';
 const ProductsDetails = () => {
 	const [productForCart, setProductForCart] = useState(null);
 	const [showCartProductModal, setShowCartProductModal] = useState(false);
-	const [showFreeDeliveryModal, setShowFreeDeliveryModal] = useState(false);
+	const [showServiceInterruptionModal, setShowServiceInterruptionModal] = useState(false);
   const [products, setProducts] = useFetchBestsellersProducts([]);
 	const [t] = useTranslate();
 
 	useEffect(() => {
-		window.onscroll = triggerFreeDeliveryModalIfScrolled;
+		window.onscroll = triggerServiceInterruptionModalIfScrolled;
 	}, []);
 
 	const goToProduct = (productName) => {
@@ -36,18 +36,18 @@ const ProductsDetails = () => {
     }
 	};
 
-	function triggerFreeDeliveryModalIfScrolled() {
+	function triggerServiceInterruptionModalIfScrolled() {
 		let limit = document.getElementById('bestsellers').offsetHeight - 250;
-		let isFreeDeliveryModalViewed = !!window.sessionStorage.getItem('free-delivery-viewed');
+		let isServiceInterruptionModalViewed = window.sessionStorage.getItem('service-interruption-viewed');
 
-		if (window.pageYOffset >= limit && !isFreeDeliveryModalViewed) {
-      toggleFreeDeliveryModal();
+		if (window.pageYOffset >= limit && !isServiceInterruptionModalViewed) {
+      toggleServiceInterruptionModal();
     }
 	};
 
-	const toggleFreeDeliveryModal = () => {
-		setShowFreeDeliveryModal(!showFreeDeliveryModal);
-		window.sessionStorage.setItem('free-delivery-viewed', true);
+	const toggleServiceInterruptionModal = () => {
+		setShowServiceInterruptionModal(!showServiceInterruptionModal);
+		window.sessionStorage.setItem('service-interruption-viewed', true);
 	};
 
 	const toggleCartProductModal = () => {
@@ -148,11 +148,11 @@ const ProductsDetails = () => {
 				</Suspense>
 			}
 
-			{showFreeDeliveryModal &&
+			{showServiceInterruptionModal &&
 				<Suspense fallback={<SectionLoader />}>
-					<FreeDeliveryModal
-						showModal={showFreeDeliveryModal}
-						toggleModal={toggleFreeDeliveryModal}
+					<ServiceInterruptionModal
+						showModal={showServiceInterruptionModal}
+						toggleModal={toggleServiceInterruptionModal}
 					/>
 				</Suspense>
 			}

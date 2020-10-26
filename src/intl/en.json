@@ -19,9 +19,9 @@
     "something_wrong": "Something went wrong",
     "send": "Send"
   },
-  "free_delivery_modal": {
-    "title": "Free delivery",
-    "text": "Free delivery for baskets, packs and retail products over 15€ purchase."
+  "service_interruption_modal": {
+    "title": "Interrupted deliveries",
+    "text": "For reasons related to the current political instability in Côte d'Ivoire 🇨🇮, we are forced to suspend deliveries until approximately November 15th. We thank our kind customers for their understanding."
   },
   "home_page": {
     "seo_title": "MYFA, away has never been so close",
