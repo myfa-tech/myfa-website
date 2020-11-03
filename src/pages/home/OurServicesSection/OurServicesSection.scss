@@ -1,0 +1,35 @@
+#our-service-section {
+  padding: 100px 0;
+  text-align: center;
+
+  #services-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+
+    .service {
+      background-color: white;
+      border:1px solid #ddd;
+      border-radius: 6px;
+      width: 322px;
+      padding: 2em 10px;
+      text-align: center;
+
+      .icon {
+        font-size: 80px;
+        display: block;
+      }
+
+      .title {
+        font-size: 50px;
+        display: block;
+      }
+
+      p {
+        color: #5A5A5A;
+      }
+    }
+  }
+}

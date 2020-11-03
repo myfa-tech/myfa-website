@@ -13,31 +13,21 @@ import './index.scss';
 
 import myfaLoadingSrc from './images/myfa-loading.gif';
 
-const ProductsCategory = lazy(() => import('./pages/products-category'));
-const DetailsCategories = lazy(() => import('./pages/details_categories'));
-const UniqueProductPage = lazy(() => import('./pages/unique_product'));
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
-const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
 const ProfilePage = lazy(() => import('./pages/profile'));
 const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
 const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
-const BasketsDetailsPage = lazy(() => import('./pages/baskets_details'));
-const CartPage = lazy(() => import('./pages/cart'));
 const CguEnPage = lazy(() => import('./pages/cgu_en'));
 const CguFrPage = lazy(() => import('./pages/cgu_fr'));
 const CgvFrPage = lazy(() => import('./pages/cgv_fr'));
 const CgvEnPage = lazy(() => import('./pages/cgv_en'));
 const LegalEnPage = lazy(() => import('./pages/legal_en'));
 const LegalFrPage = lazy(() => import('./pages/legal_fr'));
-const CustomBasketPage = lazy(() => import('./pages/custom-basket'));
 const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const LogoutPage = lazy(() => import('./pages/logout'));
-const OrdersPage = lazy(() => import('./pages/orders'));
 const ArticlePage = lazy(() => import('./pages/articles'));
-const Packs = lazy(() => import('./pages/packs'));
-const Baskets = lazy(() => import('./pages/baskets'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
 const BlogPage = lazy(() => import('./pages/blog'));
@@ -75,7 +65,6 @@ const App = () => (
       <HomePage path='/' />
       <TeamPage path='/team' />
       <EmailConfirmationSuccessPage path='/email_confirmation_success' />
-      <MobileMoneyOrdersPage path='/mobile_money_orders' />
       <Redirect
         from="/profile"
         to="/profile/information"
@@ -83,26 +72,16 @@ const App = () => (
       <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
-      <BasketsDetailsPage path='/baskets/details' />
-      <BasketsDetailsPage path='/packs/details' />
-      <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
       <CguEnPage path='/cgu_en'/>
       <CgvFrPage path='/cgv_fr'/>
       <CgvEnPage path='/cgv_en'/>
       <LegalEnPage path='/legal_en' />
       <LegalFrPage path='/legal_fr' />
-      <CustomBasketPage path='/custom-basket' />
       <EmailConfirmationPage path='/email_confirmation' />
-      <DetailsCategories path='/details-categories' />
-      <ProductsCategory path='/details-categories/:category' />
-      <UniqueProductPage path='/products/:productName' />
       <LogoutPage path='/logout' />
-      <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
-      <Packs path='/packs' />
-      <Baskets path='/pleasure-baskets' />
       <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
       <ArticlePage path='articles/:articleId' />

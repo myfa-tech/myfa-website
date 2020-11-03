@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
-import PleasureBaskets from './PleasureBaskets';
-import Packs from './Packs';
-import Covid19 from './Covid19';
-import Asterisks from './Asterisks';
-import OurServices from './OurServices';
-import Ratings from './Ratings';
-import ProductsDetails from './ProductsDetails';
+import HomeLayout from './Layout';
+import WelcomeSection from './WelcomeSection';
+import OurServicesSection from './OurServicesSection';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-import homeBg from '../../images/default-bg.jpg';
 
 import useTranslate from '../../hooks/useTranslate';
 
@@ -49,22 +42,14 @@ const HomePage = ({ location }) => {
   };
 
   return (
-    <Layout
+    <HomeLayout
       className='home-page'
-      headerBackground={homeBg}
-      headerDescription={t('home_page.home.welcome_title')}
-      headerBackgroundPosition='center center'
     >
       <SEO title={t('home_page.seo_title')} />
 
-      <Covid19 />
-      <ProductsDetails location={location} />
-      <PleasureBaskets location={location} />
-      <Packs location={location} />
-      <OurServices />
-      <Ratings />
-      <Asterisks />
-    </Layout>
+      <WelcomeSection />
+      <OurServicesSection />
+    </HomeLayout>
   );
 }
 

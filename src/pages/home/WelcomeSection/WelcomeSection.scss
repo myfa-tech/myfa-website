@@ -1,0 +1,44 @@
+#welcome-section {
+  width: 100%;
+  display: flex;
+
+  #left-text-container {
+    min-width: 615px;
+    width: 55%;
+    margin-top: 90px;
+    padding-left: 170px;
+
+    .title-container {
+      h1 {
+        font-size: 60px;
+        width: 615px;
+        color: #f1d866;
+        font-weight: bold;
+      }
+    }
+
+    .start-btn {
+      width: 235px;
+      font-size: 20px;
+    }
+
+    .description {
+      color: #fff;
+      font-size: 25px;
+
+      ul {
+
+      }
+    }
+  }
+
+  #right-img-container {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      height: calc(100vh - 84px);
+    }
+  }
+}
