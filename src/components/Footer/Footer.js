@@ -132,7 +132,7 @@ const Footer = ({ noBackgroundColor }) => {
           </Col>
           <Col sm={7}>
             <p className='copyright-text'>
-              Copyright © MYFA | All right reserved.
+              Copyright © MYFA | All rights reserved.
             </p>
           </Col>
         </Row>

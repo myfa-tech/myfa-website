@@ -5,6 +5,7 @@ import HomeLayout from './Layout';
 import WelcomeSection from './WelcomeSection';
 import OurServicesSection from './OurServicesSection';
 import PricesSection from './PricesSection';
+import NeedSection from './NeedSection';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -49,6 +50,7 @@ const HomePage = ({ location }) => {
       <SEO title={t('home_page.seo_title')} />
 
       <WelcomeSection />
+      <NeedSection />
       <OurServicesSection />
       <PricesSection />
     </HomeLayout>

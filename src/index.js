@@ -15,7 +15,6 @@ import myfaLoadingSrc from './images/myfa-loading.gif';
 
 const HomePage = lazy(() => import('./pages/home'));
 const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
-const ProfilePage = lazy(() => import('./pages/profile'));
 const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
 const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
@@ -30,7 +29,6 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const JobsPage = lazy(() => import('./pages/jobs'));
 const FaqPage = lazy(() => import('./pages/faq'));
-const BlogPage = lazy(() => import('./pages/blog'));
 const RatingsPage = lazy(() => import('./pages/ratings'));
 const NotFound = lazy(() => import('./pages/404'));
 
@@ -69,7 +67,6 @@ const App = () => (
         from="/profile"
         to="/profile/information"
       />
-      <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
       <CguFrPage path='/cgu_fr'/>
@@ -82,7 +79,6 @@ const App = () => (
       <LogoutPage path='/logout' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
-      <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
       <ArticlePage path='articles/:articleId' />
 

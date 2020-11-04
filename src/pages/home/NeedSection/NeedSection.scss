@@ -1,0 +1,120 @@
+#need-section {
+  padding: 100px 0;
+
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  #cards-container {
+    width: 1230px;
+    padding-top: 50px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+
+    .need-card {
+      padding: 50px;
+      width: 566px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+
+      .start-btn {
+        width: 270px;
+        height: 67px;
+        margin: auto;
+
+        &.right-btn {
+          background-color: #315F69;
+          border: 1px solid #315F69;
+          color: #fff;
+        }
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+
+        &.left-element {
+          color: #F1D866;
+        }
+
+        &.right-element {
+          color: #315F69;
+        }
+      }
+
+      img {
+        display: block;
+        margin: auto;
+        width: 170px;
+        height: 250px;
+        margin-bottom: 22px;
+      }
+
+      ul {
+        display: block;
+        margin: 30px auto;
+        padding-left: 15px;
+
+        li {
+          font-size: 30px;
+        }
+
+        &.left-element {
+          width: 360px;
+        }
+
+        &.right-element {
+          width: 500px;
+        }
+      }
+    }
+
+    #need-left-card-back {
+      padding: 50px;
+      width: 566px;
+      background-color: #F1D866;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+
+      .close-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: grey;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .form-title {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid grey;
+      }
+
+      form {
+        h5 {
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+      }
+
+      #left-form {
+        .half-inputs-container {
+          display: flex;
+          justify-content: space-between;
+
+          input {
+            width: 48%;
+          }
+        }
+      }
+    }
+  }
+}
