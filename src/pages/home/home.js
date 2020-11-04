@@ -4,6 +4,7 @@ import SEO from '../../components/seo';
 import HomeLayout from './Layout';
 import WelcomeSection from './WelcomeSection';
 import OurServicesSection from './OurServicesSection';
+import PricesSection from './PricesSection';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -49,6 +50,7 @@ const HomePage = ({ location }) => {
 
       <WelcomeSection />
       <OurServicesSection />
+      <PricesSection />
     </HomeLayout>
   );
 }
