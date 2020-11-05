@@ -98,12 +98,23 @@
       margin: auto;
     }
 
-    #need-left-card-back {
+    .need-card-back {
       padding: 50px;
       width: 566px;
-      background-color: #F1D866;
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
       border-radius: 6px;
+
+      &.left-card {
+        background-color: #F1D866;
+      }
+
+      &.right-card {
+        background-color: #315F69;
+
+        h5, h4 {
+          color: #fff;
+        }
+      }
 
       .close-icon {
         position: absolute;

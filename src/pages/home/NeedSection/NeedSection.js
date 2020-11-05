@@ -14,26 +14,41 @@ import singleGuyImgSrc from '../../../images/single-guy.jpg';
 const CFA_CONVERTION_RATE = 655;
 
 const NeedSection = () => {
-  const [isLeftCardFlipped, setIsLeftCardFlipped] = useState(true);
+  const [isLeftCardFlipped, setIsLeftCardFlipped] = useState(false);
   const [isRightCardFlipped, setIsRightCardFlipped] = useState(false);
-  const [budget, setBudget] = useState('');
   const [budgetCFA, setBudgetCFA] = useState(null);
-  const { values: formValues, setValues: setFormValues, changeValue: changeFormValue } = useDemandForm();
+  const {
+    values: formValues,
+    changeValue: changeFormValue,
+    errors: formErrors,
+    handleSubmitForm,
+  } = useDemandForm(submit);
 
   useEffect(() => {
-    setBudgetCFA(budget * CFA_CONVERTION_RATE);
-  }, [budget]);
+    setBudgetCFA(formValues.budget * CFA_CONVERTION_RATE);
+  }, [formValues.budget]);
 
   const toggleCard = (side) => {
     if (side === 'left') {
       setIsLeftCardFlipped(!isLeftCardFlipped);
+      setIsRightCardFlipped(false);
     } else {
       setIsRightCardFlipped(!isRightCardFlipped);
+      setIsLeftCardFlipped(false);
     }
   };
 
   const changeBudget = (e) => {
-    if (Number.isInteger(Number(e.target.value))) setBudget(Number(e.target.value));
+    if (Number.isInteger(Number(e.target.value))) changeFormValue(e);
+  };
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    handleSubmitForm();
+  };
+
+  function submit() {
+    console.log('SUBMITTING FORM');
   };
 
   return (
@@ -56,11 +71,11 @@ const NeedSection = () => {
             <Button className='start-btn' onClick={() => toggleCard('left')} label='Démarrer' />
           </div>
 
-          <div id='need-left-card-back'>
+          <div className='need-card-back left-card'>
             <FaTimes className='close-icon' onClick={() => toggleCard('left')} />
             <h4 className='form-title'>Formulaire</h4>
 
-            <form id='left-form'>
+            <form id='left-form' onSubmit={submitForm}>
               <h5>Vos informations</h5>
 
               <div className='half-inputs-container'>
@@ -73,47 +88,93 @@ const NeedSection = () => {
               <h5>Informations de votre proche</h5>
 
               <div className='half-inputs-container'>
-                <TextInput placeholder='Prénom' />
-                <TextInput placeholder='Nom' />
+                <TextInput onChange={changeFormValue} name='relative-firstname' placeholder='Prénom' />
+                <TextInput onChange={changeFormValue} name='relative-lastname' placeholder='Nom' />
               </div>
 
-              <TextInput placeholder='Relation' />
+              <TextInput onChange={changeFormValue} name='relative-relationship' placeholder='Relation' />
 
               <div className='half-inputs-container'>
-                <TextInput placeholder='Indicatif' />
-                <TextInput placeholder='Numéro' />
+                <TextInput onChange={changeFormValue} name='relative-country-code' placeholder='Indicatif' />
+                <TextInput onChange={changeFormValue} name='relative-phone' placeholder='Numéro' />
               </div>
 
-              <TextInput placeholder='Zone de livraison' />
+              <TextInput onChange={changeFormValue} name='relative-location' placeholder='Zone de livraison' />
 
-              <TextInput placeholder='Prestation' />
+              <TextInput onChange={changeFormValue} name='relative-service' placeholder='Prestation' />
 
-              <TextInput placeholder='Donnez-nous des détails' />
+              <TextInput textarea onChange={changeFormValue} name='relative-details' placeholder='Donnez-nous des détails' />
 
               <h5>Mon budget</h5>
 
-              <TextInput onChange={changeBudget} value={budget} placeholder='200' className='amount-input' fixedTextRight='€' />
+              <TextInput onChange={changeBudget} value={formValues.budget} name='budget' placeholder='200' className='amount-input' fixedTextRight='€' />
 
               {budgetCFA ? <p className='amount-cfa'>Soit : {budgetCFA} FCFA</p> : null}
 
-              <Button className='send-form-btn' label='Envoyer mon formulaire' />
+              <Button className='send-form-btn' label='Envoyer mon formulaire' type='submit' />
             </form>
           </div>
         </ReactCardFlip>
 
-        <div className='need-card'>
-          <h3 className='right-element'>Pour vous,<br />MYFA propose :</h3>
+        <ReactCardFlip isFlipped={isRightCardFlipped} flipDirection='horizontal'>
+          <div className='need-card'>
+            <h3 className='right-element'>Pour vous,<br />MYFA propose :</h3>
 
-          <ul className='right-element'>
-            <li>achat de matériel de construction</li>
-            <li>suivi de vos constructions</li>
-            <li>visite de biens immobiliers</li>
-          </ul>
+            <ul className='right-element'>
+              <li>achat de matériel de construction</li>
+              <li>suivi de vos constructions</li>
+              <li>visite de biens immobiliers</li>
+            </ul>
 
-          <img src={singleGuyImgSrc} />
+            <img src={singleGuyImgSrc} />
 
-          <Button className='start-btn right-btn' onClick={() => toggleCard('left')} label='Démarrer' />
-        </div>
+            <Button className='start-btn right-btn' onClick={() => toggleCard('right')} label='Démarrer' />
+          </div>
+
+          <div className='need-card-back right-card'>
+            <FaTimes className='close-icon' onClick={() => toggleCard('right')} />
+            <h4 className='form-title'>Formulaire</h4>
+
+            <form id='right-form' onSubmit={submitForm}>
+              <h5>Vos informations</h5>
+
+              <div className='half-inputs-container'>
+                <TextInput onChange={changeFormValue} name='self-firstname' placeholder='Prénom' />
+                <TextInput onChange={changeFormValue} name='self-lastname' placeholder='Nom' />
+              </div>
+
+              <TextInput onChange={changeFormValue} name='self-email' placeholder='Email' />
+
+              <h5>Informations de votre proche</h5>
+
+              <div className='half-inputs-container'>
+                <TextInput onChange={changeFormValue} name='relative-firstname' placeholder='Prénom' />
+                <TextInput onChange={changeFormValue} name='relative-lastname' placeholder='Nom' />
+              </div>
+
+              <TextInput onChange={changeFormValue} name='relative-relationship' placeholder='Relation' />
+
+              <div className='half-inputs-container'>
+                <TextInput onChange={changeFormValue} name='relative-indicatif' placeholder='Indicatif' />
+                <TextInput onChange={changeFormValue} name='relative-phone' placeholder='Numéro' />
+              </div>
+
+              <TextInput onChange={changeFormValue} name='relative-location' placeholder='Zone de livraison' />
+
+              <TextInput onChange={changeFormValue} name='relative-service' placeholder='Prestation' />
+
+              <TextInput textarea onChange={changeFormValue} name='relative-details' placeholder='Donnez-nous des détails' />
+
+              <h5>Mon budget</h5>
+
+              <TextInput onChange={changeBudget} value={formValues.budget} name='budget' placeholder='200' className='amount-input' fixedTextRight='€' />
+
+              {budgetCFA ? <p className='amount-cfa'>Soit : {budgetCFA} FCFA</p> : null}
+
+              <Button className='send-form-btn' label='Envoyer mon formulaire' type='submit' />
+            </form>
+          </div>
+        </ReactCardFlip>
       </div>
     </div>
   );
