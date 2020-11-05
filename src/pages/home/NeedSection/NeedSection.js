@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { FaTimes } from 'react-icons/fa';
 
 import Button from '../../../components/Button';
 import TextInput from '../../../components/TextInput';
+import useDemandForm from '../../../hooks/useDemandForm';
 
 import './NeedSection.scss';
 
 import people2ImgSrc from '../../../images/2-people.jpg';
 import singleGuyImgSrc from '../../../images/single-guy.jpg';
 
+const CFA_CONVERTION_RATE = 655;
+
 const NeedSection = () => {
   const [isLeftCardFlipped, setIsLeftCardFlipped] = useState(true);
   const [isRightCardFlipped, setIsRightCardFlipped] = useState(false);
+  const [budget, setBudget] = useState('');
+  const [budgetCFA, setBudgetCFA] = useState(null);
+  const { values: formValues, setValues: setFormValues, changeValue: changeFormValue } = useDemandForm();
+
+  useEffect(() => {
+    setBudgetCFA(budget * CFA_CONVERTION_RATE);
+  }, [budget]);
 
   const toggleCard = (side) => {
     if (side === 'left') {
@@ -20,6 +30,10 @@ const NeedSection = () => {
     } else {
       setIsRightCardFlipped(!isRightCardFlipped);
     }
+  };
+
+  const changeBudget = (e) => {
+    if (Number.isInteger(Number(e.target.value))) setBudget(Number(e.target.value));
   };
 
   return (
@@ -50,11 +64,11 @@ const NeedSection = () => {
               <h5>Vos informations</h5>
 
               <div className='half-inputs-container'>
-                <TextInput placeholder='Prénom' />
-                <TextInput placeholder='Nom' />
+                <TextInput onChange={changeFormValue} name='self-firstname' placeholder='Prénom' />
+                <TextInput onChange={changeFormValue} name='self-lastname' placeholder='Nom' />
               </div>
 
-              <TextInput placeholder='Email' />
+              <TextInput onChange={changeFormValue} name='self-email' placeholder='Email' />
 
               <h5>Informations de votre proche</h5>
 
@@ -78,11 +92,11 @@ const NeedSection = () => {
 
               <h5>Mon budget</h5>
 
-              <TextInput placeholder='Ex. 20' fixedTextRight='€' />
+              <TextInput onChange={changeBudget} value={budget} placeholder='200' className='amount-input' fixedTextRight='€' />
 
-              <p>Soit : [put amount here] FCFA</p>
+              {budgetCFA ? <p className='amount-cfa'>Soit : {budgetCFA} FCFA</p> : null}
 
-              <Button label='Envoyer' />
+              <Button className='send-form-btn' label='Envoyer mon formulaire' />
             </form>
           </div>
         </ReactCardFlip>
