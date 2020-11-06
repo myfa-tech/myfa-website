@@ -15,6 +15,7 @@ import myfaLoadingSrc from './images/myfa-loading.gif';
 
 const HomePage = lazy(() => import('./pages/home'));
 const TeamPage = lazy(() => import('./pages/team'));
+const RatingsPage = lazy(() => import('./pages/ratings'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
 
@@ -54,9 +55,9 @@ const App = () => (
       <EmailConfirmationPage path='/email_confirmation' /> */}
       <LogoutPage path='/logout' />
       {/* <JobsPage path='/jobs' />
-      <FaqPage path='/faq' />
+      <FaqPage path='/faq' /> */}
       <RatingsPage path='/ratings' />
-      <ArticlePage path='articles/:articleId' /> */}
+      {/* <ArticlePage path='articles/:articleId' /> */}
 
       {/* <DashboardHomeKPIs path='/dashboard' />
       <DashboardLogin path='/dashboard/login' />

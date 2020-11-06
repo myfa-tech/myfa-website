@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
-import SectionTitle from '../../components/SectionTitle';
+import Layout from '../../components/Layout';
 import Button from '../../components/Button';
-import ThanksSection from './ThanksSection';
 import RatingsList from './RatingsList';
 import RatingModal from './RatingModal';
 
-import headerBackground from '../../images/ratings-bg.jpg';
 import useTranslate from '../../hooks/useTranslate';
 import EventEmitter from '../../services/EventEmitter';
 import UserStorage from '../../services/UserStorage';
@@ -45,24 +42,19 @@ const RatingsPage = () => {
   };
 
   return (
-    <Layout
-      className='ratings'
-      headerBackground={headerBackground}
-      headerBackgroundPosition='center center'
-      headerDescription={t('ratings.description')}
-    >
+    <Layout className='ratings' color='green'>
       <SEO title='Avis' />
 
       <div id='ratings'>
-        <SectionTitle
-          title={t('ratings.title')}
-          mobileTitle={t('ratings.title')}
-          secondary={{ text: 'Accueil', link: '/' }}
-        />
+        <div className='title-container'>
+          <h2>{t('ratings.title')}</h2>
 
-        <p className='description'>
-          {t('ratings.introduction')}
-        </p>
+          <h3 className='description'>
+            {t('ratings.introduction')}
+          </h3>
+        </div>
+
+
 
         <div className='button-container'>
           {!!user ?
@@ -72,8 +64,6 @@ const RatingsPage = () => {
         </div>
 
         <RatingsList className='ratings-list' />
-
-        <ThanksSection />
       </div>
 
       <RatingModal

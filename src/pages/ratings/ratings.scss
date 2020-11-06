@@ -1,4 +1,25 @@
 #ratings {
+  .title-container {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h2 {
+      color: #311a19;
+      font-weight: 600;
+      font-size: 45px;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 400;
+      width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+  }
+
   .description {
     font-size: 24px;
     margin: 2em auto 1em auto;

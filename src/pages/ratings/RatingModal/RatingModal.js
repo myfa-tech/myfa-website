@@ -61,7 +61,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
       <Modal.Header closeButton className='header-text' />
       <Modal.Body>
         <form onSubmit={send}>
-          <h2>{t('rating_modal.your_review')}</h2>
+          <h2>Votre avis</h2>
 
           <div className='stars'>
             {emptyStars.map((star, index) => (
@@ -75,7 +75,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
             ))}
           </div>
 
-          <h2>{t('rating_modal.subject')}</h2>
+          <h2>Sujet</h2>
 
           <TextField
             type='text'
@@ -88,7 +88,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
             onChange={handleChange}
           />
 
-            <h2>{t('rating_modal.your_message')}</h2>
+            <h2>Votre message</h2>
 
           <TextField
             type='text'
