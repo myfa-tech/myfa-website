@@ -149,7 +149,7 @@ const ArticleDisplay = (props) => {
   }, [props.article]);
 
   return (
-    <Layout>
+    <Layout color='light'>
       <SEO
         title={props.article.title}
         img={get(props, 'article.cover.fields.file.url', null) || get(props, 'article.displayCover.fields.file.url', null)}

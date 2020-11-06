@@ -2,9 +2,17 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url(../../images/home-background.png);
+  background-image: url(../../images/layout-brown.png);
 
   &.green {
     background-image: url(../../images/layout-green.png);
+  }
+
+  &.mix {
+    background-image: url(../../images/layout-mix.png);
+  }
+
+  &.light {
+    background-image: url(../../images/layout-light.png);
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import SEO from '../../components/seo';
-import HomeLayout from './Layout';
+import Layout from '../../components/Layout';
 import WelcomeSection from './WelcomeSection';
 import OurServicesSection from './OurServicesSection';
 import PricesSection from './PricesSection';
@@ -44,7 +44,7 @@ const HomePage = ({ location }) => {
   };
 
   return (
-    <HomeLayout
+    <Layout
       className='home-page'
     >
       <SEO title={t('home_page.seo_title')} />
@@ -53,7 +53,7 @@ const HomePage = ({ location }) => {
       <NeedSection />
       <OurServicesSection />
       <PricesSection />
-    </HomeLayout>
+    </Layout>
   );
 }
 

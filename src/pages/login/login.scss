@@ -1,0 +1,134 @@
+#login-page {
+  #left-people-img {
+    width: 270px;
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+  }
+
+  #right-people-img {
+    width: 140px;
+    position: fixed;
+    bottom: 0;
+    right: 100px;
+  }
+
+  .middle-column {
+    #myfa-logo {
+      width: 210px;
+      display: block;
+      margin: 0 auto 30px auto;
+    }
+
+    #form-container {
+      width: 630px;
+      margin: auto;
+      background-color: rgba(49, 26, 25, 0.7);
+      border-radius: 6px;
+      padding: 20px 20px 10px 20px;
+      text-align: center;
+
+      h2 {
+        margin-bottom: 40px;
+        font-size: 40px;
+        color: #fff;
+      }
+
+      .btns-container {
+        width: 490px;
+        margin: 30px auto 0 auto;
+
+        .facebook-button {
+          font-family: Helvetica,sans-serif;
+          font-weight: 700;
+          -webkit-font-smoothing: antialiased;
+          color: #fff;
+          border-radius: 0;
+          margin-top: 1em;
+          width: 100%;
+          cursor: pointer;
+          display: inline-block;
+          font-size: calc(.27548vw + 12.71074px);
+          text-decoration: none;
+          transition: background-color .3s,border-color .3s;
+          background-color: #4c69ba;
+          border: calc(.06887vw + .67769px) solid #4c69ba;
+          padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+
+          svg {
+            margin-bottom: 3px;
+            margin-right: 10px;
+            font-size: 23px;
+          }
+        }
+
+        .google-button {
+          background-color: rgb(255, 255, 255);
+          display: inline-block;
+          align-items: center;
+          color: rgba(0, 0, 0, 0.54);
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+          padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+          width: 100%;
+          border-radius: 0;
+          margin-top: 1em;
+          border: 1px solid transparent;
+          font-size: calc(.27548vw + 12.71074px);
+          font-weight: 500;
+          font-family: Roboto, sans-serif;
+
+          img {
+            margin-bottom: 3px;
+            margin-right: 10px;
+            width: 23px;
+          }
+        }
+      }
+
+      .email-input {
+        margin-bottom: 25px;
+      }
+
+      .email-input, .password-input, .password-bottom-container {
+        width: 490px;
+      }
+
+      .password-bottom-container {
+        display: flex;
+        margin: auto;
+        justify-content: space-between;
+
+        .password-info {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .password-forgotten {
+          color: #fff;
+          font-size: 17px;
+        }
+      }
+
+      .cgu-cgv-disclaimer {
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 10px;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .bottom-signup {
+      color: #000;
+
+      a {
+        color: #315f69;
+      }
+    }
+
+    .bottom-signup {
+      text-align: center;
+    }
+  }
+}

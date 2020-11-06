@@ -18,7 +18,7 @@ const Header = () => {
         </ul>
       </div>
       <div id='right-items'>
-        <Button label='Se connecter' className='header-login-btn' />
+        <Button href='/login' label='Se connecter' className='header-login-btn' />
       </div>
     </div>
   );
