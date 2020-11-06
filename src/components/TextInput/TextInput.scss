@@ -14,6 +14,10 @@
     font-size: 17px;
     margin-bottom: 15px;
 
+    &.error {
+      border: 2px solid rgb(255, 83, 83);
+    }
+
     &.textarea {
       height: initial;
     }

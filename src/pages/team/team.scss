@@ -1,30 +1,25 @@
 
 .team {
   .content-container {
-    background-color: rgba(241, 216, 102, 0.1);
-    border-radius: 0;
     width: 90%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
 
     .article-block {
       text-align: center;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 400px;
       margin-top: 20px;
+      padding-bottom: 30px;
 
-      .desktop-quote {
-        display: block;
-
-        .member-description {
-          height: 75px;
-        }
-      }
-
-      .mobile-quote {
-        display: none;
-      }
-
-      .quote-icon {
-        margin-bottom: 20px;
-        color: #f1d866;
+      .member-description {
+        width: 300px;
+        text-align: justify;
+        font-size: 17px;
+        margin: 20px auto;
       }
 
       .author-id {
@@ -33,6 +28,9 @@
 
         h4 {
           margin-bottom: 0;
+          font-size: 20px;
+          color: #315F69;
+          font-weight: bold;
         }
 
         .social-links {
@@ -41,6 +39,7 @@
             color: #311a19;
             margin-left: 5px;
             margin-right: 5px;
+            font-size: 20px;
 
             &:hover {
               color: #315f69;
@@ -65,7 +64,15 @@
       color: #311a19;
       font-weight: 600;
       font-size: 45px;
-		}
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 400;
+      width: 850px;
+      margin: auto;
+    }
   }
 }
 

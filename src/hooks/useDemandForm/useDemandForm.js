@@ -3,11 +3,6 @@ import { useEffect, useState } from 'react';
 const useDemandForm = (submit, initialValues = {}) => {
   const [values, setValues] = useState({ ...initialValues });
   const [errors, setErrors] = useState({});
-  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
-
-  useEffect(() => {
-    checkValidity();
-  }, [isSubmittingForm]);
 
   const changeValue = (e) => {
     setErrors({
@@ -43,28 +38,28 @@ const useDemandForm = (submit, initialValues = {}) => {
       newErrors['self-email'] = true;
     }
 
-    if (!values['relative-firstname']) {
-      newErrors['relative-firstname'] = true;
+    if (!values['other-firstname']) {
+      newErrors['other-firstname'] = true;
     }
 
-    if (!values['relative-lastname']) {
-      newErrors['relative-lastname'] = true;
+    if (!values['other-lastname']) {
+      newErrors['other-lastname'] = true;
     }
 
-    if (!values['relative-country-code']) {
-      newErrors['relative-country-code'] = true;
+    if (!values['other-country-code']) {
+      newErrors['other-country-code'] = true;
     }
 
-    if (!values['relative-phone']) {
-      newErrors['relative-phone'] = true;
+    if (!values['other-phone']) {
+      newErrors['other-phone'] = true;
     }
 
-    if (!values['relative-location']) {
-      newErrors['relative-location'] = true;
+    if (!values['other-location']) {
+      newErrors['other-location'] = true;
     }
 
-    if (!values['relative-service']) {
-      newErrors['relative-service'] = true;
+    if (!values['other-service']) {
+      newErrors['other-service'] = true;
     }
 
     if (!values['budget']) {

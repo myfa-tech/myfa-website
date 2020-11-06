@@ -14,30 +14,9 @@ import './index.scss';
 import myfaLoadingSrc from './images/myfa-loading.gif';
 
 const HomePage = lazy(() => import('./pages/home'));
-const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
-const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
-const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
-const CguEnPage = lazy(() => import('./pages/cgu_en'));
-const CguFrPage = lazy(() => import('./pages/cgu_fr'));
-const CgvFrPage = lazy(() => import('./pages/cgv_fr'));
-const CgvEnPage = lazy(() => import('./pages/cgv_en'));
-const LegalEnPage = lazy(() => import('./pages/legal_en'));
-const LegalFrPage = lazy(() => import('./pages/legal_fr'));
-const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const LogoutPage = lazy(() => import('./pages/logout'));
-const ArticlePage = lazy(() => import('./pages/articles'));
-const JobsPage = lazy(() => import('./pages/jobs'));
-const FaqPage = lazy(() => import('./pages/faq'));
-const RatingsPage = lazy(() => import('./pages/ratings'));
 const NotFound = lazy(() => import('./pages/404'));
-
-const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
-const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
-const DashboardUsers = lazy(() => import('./pages/dashboard/users'));
-const DashboardBaskets = lazy(() => import('./pages/dashboard/baskets'));
-const DashboardFinance = lazy(() => import('./pages/dashboard/finance'));
-const DashboardStocks = lazy(() => import('./pages/dashboard/stocks'));
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -62,7 +41,7 @@ const App = () => (
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
-      <EmailConfirmationSuccessPage path='/email_confirmation_success' />
+      {/* <EmailConfirmationSuccessPage path='/email_confirmation_success' />
       <Redirect
         from="/profile"
         to="/profile/information"
@@ -70,24 +49,21 @@ const App = () => (
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
       <CguFrPage path='/cgu_fr'/>
-      <CguEnPage path='/cgu_en'/>
       <CgvFrPage path='/cgv_fr'/>
-      <CgvEnPage path='/cgv_en'/>
-      <LegalEnPage path='/legal_en' />
       <LegalFrPage path='/legal_fr' />
-      <EmailConfirmationPage path='/email_confirmation' />
+      <EmailConfirmationPage path='/email_confirmation' /> */}
       <LogoutPage path='/logout' />
-      <JobsPage path='/jobs' />
+      {/* <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
       <RatingsPage path='/ratings' />
-      <ArticlePage path='articles/:articleId' />
+      <ArticlePage path='articles/:articleId' /> */}
 
-      <DashboardHomeKPIs path='/dashboard' />
+      {/* <DashboardHomeKPIs path='/dashboard' />
       <DashboardLogin path='/dashboard/login' />
       <DashboardUsers path='/dashboard/users' />
       <DashboardBaskets path='/dashboard/baskets' />
       <DashboardFinance path='/dashboard/finance' />
-      <DashboardStocks path='/dashboard/stocks' />
+      <DashboardStocks path='/dashboard/stocks' /> */}
       <NotFound default />
     </Router>
   </Suspense>

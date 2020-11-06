@@ -1,0 +1,10 @@
+.layout {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url(../../images/home-background.png);
+
+  &.green {
+    background-image: url(../../images/layout-green.png);
+  }
+}
