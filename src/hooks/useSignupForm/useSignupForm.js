@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useSignupForm = (submit, setResponseStatus) => {
+const useSignupForm = (submit) => {
   const [values, setValues] = useState({
     firstname: '',
     lastname: '',
@@ -26,8 +26,6 @@ const useSignupForm = (submit, setResponseStatus) => {
 
     if (type === 'checkbox') {
       newValue = checked;
-    } else if (name === 'email') {
-      setResponseStatus(null);
     }
 
     errors[name] = false;
@@ -52,7 +50,9 @@ const useSignupForm = (submit, setResponseStatus) => {
     window.scrollTo(0, 0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const { firstname, lastname, email, cgu, password } = values;
 
     if (!firstname) {
@@ -81,7 +81,7 @@ const useSignupForm = (submit, setResponseStatus) => {
 
   const areErrors = () => !!Object.values(errors).filter(v => !!v).length;
 
-  return [values, handleChangeValues, handleSubmit, errors, setErrors];
+  return { values, handleChangeValues, handleSubmit, errors, setErrors };
 };
 
 export default useSignupForm;

@@ -2,10 +2,10 @@ import React from 'react'
 
 import './CheckboxInput.scss';
 
-const CheckboxInput = ({ label, name, className }) => {
+const CheckboxInput = ({ label, name, className, onChange }) => {
   return (
     <div className={`checkbox-container ${className || ''}`}>
-      <input type='checkbox' name={name} />
+      <input onChange={onChange} type='checkbox' name={name} />
       <label className='checkbox-label' for={name}>{label}</label>
     </div>
   );

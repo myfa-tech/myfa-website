@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Divider from '../../components/Divider';
 import TextInput from '../../components/TextInput';
 import CheckboxInput from '../../components/CheckboxInput';
+import Button from '../../components/Button';
+
+import myfaLogoSrc from '../../images/logo-1.png';
+import useSignupForm from '../../hooks/useSignupForm';
+import saveUser from '../../services/users/saveUser';
 
 import './signup.scss';
 
-import myfaLogoSrc from '../../images/logo-1.png';
-import Button from '../../components/Button';
-
 const SignupPage = () => {
+  const { values: formValues, handleChangeValues: handleChangeFormValues, handleSubmit, errors } = useSignupForm(submit);
+  const [userAlreadyExistsError, setUserAlreadyExistsError] = useState(false);
+
+  async function submit() {
+    try {
+      await saveUser({ ...formValues });
+      // @TODO: redirect to right page
+      console.log('SAVED USER');
+    } catch (e) {
+      console.log(e);
+      setUserAlreadyExistsError(true);
+    }
+  };
+
   return (
     <div id='signup-page'>
       <div id='left-column'>
@@ -29,29 +45,37 @@ const SignupPage = () => {
 
         <Divider />
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='half-inputs-container'>
-            <TextInput name='firstname' placeholder='Prénom' />
-            <TextInput name='lastname' placeholder='Nom' />
+            <TextInput className={`${errors['firstname'] ? 'error' : ''}`} value={formValues['firstname']} onChange={handleChangeFormValues} name='firstname' placeholder='Prénom' />
+            <TextInput className={`${errors['lastname'] ? 'error' : ''}`} value={formValues['lastname']} onChange={handleChangeFormValues} name='lastname' placeholder='Nom' />
           </div>
 
-          <TextInput name='email' placeholder='Email' />
+          <TextInput className={`${errors['email'] ? 'error' : ''}`} value={formValues['email']} onChange={handleChangeFormValues} name='email' placeholder='Email' />
 
           <div className='half-inputs-container'>
-            <TextInput name='country-code' placeholder='Indicatif' />
-            <TextInput name='phone' placeholder='Numéro de téléphone' />
+            <TextInput className={`${errors['country-code'] ? 'error' : ''}`} value={formValues['country-code']} onChange={handleChangeFormValues} name='country-code' placeholder='Indicatif' />
+            <TextInput className={`${errors['phone'] ? 'error' : ''}`} value={formValues['phone']} onChange={handleChangeFormValues} name='phone' placeholder='Numéro de téléphone' />
           </div>
 
-          <TextInput name='password' placeholder='Mot de passe' />
-          <span className='password-info'>8 caractères, 1 minuscule, 1 majuscule, 1 chiffre</span>
+          <TextInput
+            className={`${errors['password'] ? 'error' : ''}`}
+            value={formValues['password']}
+            onChange={handleChangeFormValues}
+            name='password'
+            helpText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
+            placeholder='Mot de passe'
+          />
 
-          <TextInput name='password-confirmation' placeholder='Confirmer le mot de passe' />
+          <TextInput className={`${errors['password-confirmation'] ? 'error' : ''}`} value={formValues['password-confirmation']} onChange={handleChangeFormValues} name='password-confirmation' placeholder='Confirmer le mot de passe' />
 
-          <CheckboxInput name='newsletter' label='Je souhaite recevoir la newsletter' />
+          <CheckboxInput className={`${errors['newsletter'] ? 'error' : ''}`} value={formValues['newsletter']} onChange={handleChangeFormValues} name='newsletter' label='Je souhaite recevoir la newsletter' />
 
-          <CheckboxInput name='cgv-cgu' label={<span>J'accepte les <a href='/cgv'>CGV</a> et <a href='/cgu'>CGU</a></span>} />
+          <CheckboxInput className={`${errors['cgu'] ? 'error' : ''}`} value={formValues['cgu']} onChange={handleChangeFormValues} name='cgu' label={<span>J'accepte les <a href='/cgv'>CGV</a> et <a href='/cgu'>CGU</a></span>} />
 
-          <Button className='singup-btn' label='Créer mon compte' />
+          {userAlreadyExistsError ? <p className='user-already-exists-error'>L'utilisateur existe déja.</p> : null}
+
+          <Button type='submit' className='singup-btn' label='Créer mon compte' />
 
           <p className='login-text'>Vous avez un compte ? <a href='/login'>Connexion</a>.</p>
         </form>

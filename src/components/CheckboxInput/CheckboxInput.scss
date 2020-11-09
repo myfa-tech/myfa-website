@@ -4,4 +4,13 @@
   label {
     padding-left: 10px;
   }
+
+  &.error {
+    label {
+      * {
+        color: rgb(255, 72, 72);
+        font-weight: bold;
+      }
+    }
+  }
 }

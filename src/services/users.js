@@ -36,14 +36,6 @@ const fetchUsers = async (timeFilter) => {
   return result.data.users;
 };
 
-const saveUser = async (user) => {
-  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users`, user);
-  const createdUser = response.data.user;
-  const { token } = response.data;
-
-  UserStorage.saveUser(createdUser, token, true);
-};
-
 const updateUser = async (userPart) => {
   const { user, token: JWT_TOKEN } = UserStorage.getUserAndToken();
 
@@ -173,8 +165,6 @@ export {
   fetchUsers,
   loginFBUser,
   loginGoogleUser,
-  loginUser,
-  saveUser,
   updatePassword,
   updateUser,
   resetPassword,

@@ -58,6 +58,11 @@
         }
       }
 
+      .user-already-exists-error {
+        color: rgb(255, 72, 72);
+        text-align: center;
+      }
+
       .singup-btn {
         margin: 5px auto;
         width: 235px;
@@ -67,6 +72,10 @@
       .login-text {
         font-size: 14px;
         text-align: center;
+
+        a {
+          color: #315F69;
+        }
       }
     }
   }

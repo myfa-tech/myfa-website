@@ -1,8 +1,10 @@
 .input-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  margin-bottom: 15px;
+
+  .help-text {
+    color: rgba(0, 0, 0, 0.58);
+  }
 
   .myfa-text-input {
     border-radius: 6px;
@@ -12,7 +14,6 @@
     padding-left: 10px;
     padding-right: 10px;
     font-size: 17px;
-    margin-bottom: 15px;
 
     &.error {
       border: 2px solid rgb(255, 83, 83);
