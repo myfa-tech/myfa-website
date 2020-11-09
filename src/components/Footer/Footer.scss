@@ -1,9 +1,45 @@
 .footer {
   padding: 50px 0px;
+  background-color: rgba(255, 255, 255, 0.829);
+
+  .our-services {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 50px;
+    width: 90%;
+
+    .service {
+      width: 25%;
+
+      .icon {
+        font-size: 50px;
+        display: block;
+        color: #311a19;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #F1D866;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      p {
+        margin-bottom: 0;
+        color: #311a19;
+        width: 260px;
+        margin: auto;
+        text-align: center;
+      }
+    }
+  }
 
   .content-container {
     padding: 2em;
-    background-color: #f1d866;
+    background-color: transparent;
     color: #311a19;
     border-radius: 0;
     width: 90%;
@@ -22,6 +58,10 @@
 
         li {
           padding-top: 0.5em;
+
+          p {
+            margin-bottom: 0;
+          }
         }
 
         a {
@@ -77,12 +117,14 @@
   }
 
   .footer-footer {
+    display: flex;
+    justify-content: space-between;
     width: 90%;
     margin: auto;
     margin-top: 1em;
 
     img {
-      width: 70%;
+      width: 425px;
     }
   }
 
