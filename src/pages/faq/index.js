@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import FadeInAccordion from '../../components/FadeInAccordion/FadeInAccordion';
 
 import useTranslate from '../../hooks/useTranslate';
@@ -9,8 +9,6 @@ import useTranslate from '../../hooks/useTranslate';
 import './faq.scss';
 
 const FaqPage = () => {
-  const [t] = useTranslate();
-
   const questions = [
     {
       title: "Myfa, c'est quoi ?",
@@ -51,13 +49,13 @@ const FaqPage = () => {
   ];
 
   return (
-    <Layout className='faq'>
+    <Layout className='faq' color='green'>
       <SEO title='FAQ' />
 
       <div id='faq'>
         <div className='title-container'>
-          <h2>{t('faq.title')} </h2>
-          <p>{t('faq.description')} <a href='mailto:infos@myfa.fr'>infos@myfa.fr</a>.</p>
+          <h2>Questions fréquentes</h2>
+          <h3>Trouvez ici les réponses aux questions fréquemment posées sur le fonctionnement de MYFA. Si vous ne trouvez pas ce qu’il vous faut, n’hésitez pas à nous contacter sur whatsapp au <a href='https://wa.me/22584215154'>+22584215154</a> ou directement à l'adresse <a href='mailto:infos@myfa.fr'>infos@myfa.fr</a>.</h3>
         </div>
 
         <div className='questions-container'>
