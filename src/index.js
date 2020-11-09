@@ -22,6 +22,7 @@ const SignupPage = lazy(() => import('./pages/signup'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
+const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -55,8 +56,8 @@ const App = () => (
       <ResetPasswordPasswordPage path='/reset_password/password' />
       <CguFrPage path='/cgu_fr'/>
       <CgvFrPage path='/cgv_fr'/>
-      <LegalFrPage path='/legal_fr' />
-      <EmailConfirmationPage path='/email_confirmation' /> */}
+      <LegalFrPage path='/legal_fr' /> */}
+      <EmailConfirmationPage path='/email_confirmation' />
       <LoginPage path='/login' />
       <SignupPage path='/signup' />
       <LogoutPage path='/logout' />
