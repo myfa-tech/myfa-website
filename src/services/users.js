@@ -118,13 +118,6 @@ const resetPassword = async (newPassword) => {
   }
 };
 
-const loginUser = async (user) => {
-  const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users/login`, user);
-  const { user: loggedInUser, token } = response.data;
-
-  UserStorage.saveUser(loggedInUser, token, true);
-};
-
 const loginFBUser = async (user) => {
   const response = await Axios.post(`${REACT_APP_BACKEND_URL}/users/facebook-login`, user);
   const { user: loggedInUser, token } = response.data;

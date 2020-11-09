@@ -6,6 +6,8 @@ import GoogleLogin from 'react-google-login';
 import ButtonWithLoader from '../../components/ButtonWithLoader';
 import TextInput from '../../components/TextInput';
 
+import loginUser from '../../services/users/loginUser';
+
 import googleLogoSrc from '../../images/google_logo.svg';
 import myfaLogoSrc from '../../images/logo-1.png';
 import leftPeopleSrc from '../../images/login-left-people.png';
@@ -22,6 +24,7 @@ const loginPage = () => {
   const [isFBLoading, setIsFBLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [responseStatus, setResponseStatus] = useState(null);
+  const [wrongCreds, setWrongCreds] = useState(false);
 
   const editFormValues = (e) => {
     setFormValues({
@@ -30,18 +33,19 @@ const loginPage = () => {
     })
   };
 
+  const onLogin = () => {
+    console.log('is logged in');
+    // @TODO: redirect to right page and set cookie
+  };
+
   async function login() {
     try {
       setIsLoading(true);
-      await loginUser(loginFormValues);
+      await loginUser(formValues);
       onLogin();
     } catch(e) {
       console.log(e);
-      if (e.response.status === 404) {
-        loginFormErrors.email = true;
-        setLoginFormErrors({ ...loginFormErrors });
-        setResponseStatus(e.response.status);
-      }
+      setWrongCreds(true);
     } finally {
       setIsLoading(false);
     }
@@ -115,17 +119,19 @@ const loginPage = () => {
         <div id='form-container'>
           <h2>Connectez-vous à votre compte</h2>
 
-          <TextInput className='email-input' value={formValues.email} name='email' onChange={editFormValues} placeholder='Email' />
+          <TextInput className={`email-input ${wrongCreds ? 'error' : ''}`} value={formValues.email} name='email' onChange={editFormValues} placeholder='Email' />
 
-          <TextInput className='password-input' value={formValues.password} name='password' onChange={editFormValues} placeholder='Mot de passe' />
+          <TextInput type='password' className={`password-input ${wrongCreds ? 'error' : ''}`} value={formValues.password} name='password' onChange={editFormValues} placeholder='Mot de passe' />
 
           <div className='password-bottom-container'>
             <span className='password-info'>8 caractères, 1 minuscule, 1 majuscule, 1 chiffre</span>
             <a className='password-forgotten' href='/forget-pwd'>Mot de passe oublié ?</a>
           </div>
 
+          {wrongCreds ? <p className='wrong-creds-message'>L'email ou le mot de passe est inccorect.</p> : null}
+
           <div className='btns-container'>
-            <ButtonWithLoader isLoading={isLoading} className='login-button' label='Se connecter' />
+            <ButtonWithLoader onClick={login} isLoading={isLoading} className='login-button' label='Se connecter' />
 
             <FacebookLogin
               appId={REACT_APP_FB_APP_ID}

@@ -28,6 +28,11 @@
       padding: 20px 20px 10px 20px;
       text-align: center;
 
+      .wrong-creds-message {
+        color: rgb(255, 72, 72);
+        text-align: center;
+      }
+
       h2 {
         margin-bottom: 40px;
         font-size: 40px;
@@ -87,6 +92,12 @@
 
       .email-input {
         margin-bottom: 25px;
+      }
+
+      .email-input, .password-input {
+        &.error {
+          border: 2px solid rgb(255, 72, 72);
+        }
       }
 
       .email-input, .password-input, .password-bottom-container {

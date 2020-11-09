@@ -18,6 +18,7 @@ const TeamPage = lazy(() => import('./pages/team'));
 const RatingsPage = lazy(() => import('./pages/ratings'));
 const BlogPage = lazy(() => import('./pages/blog'));
 const LoginPage = lazy(() => import('./pages/login'));
+const SignupPage = lazy(() => import('./pages/signup'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
@@ -57,6 +58,7 @@ const App = () => (
       <LegalFrPage path='/legal_fr' />
       <EmailConfirmationPage path='/email_confirmation' /> */}
       <LoginPage path='/login' />
+      <SignupPage path='/signup' />
       <LogoutPage path='/logout' />
       {/* <JobsPage path='/jobs' />
       <FaqPage path='/faq' /> */}
