@@ -158,11 +158,11 @@ const Footer = ({ noBackgroundColor }) => {
         </Col>
       </Row>
       <div className='footer-footer'>
-          <img src={paymentsSrc} />
+        <img src={paymentsSrc} />
 
-          <p className='copyright-text'>
-            Copyright © MYFA | All rights reserved.
-          </p>
+        <p className='copyright-text'>
+          Copyright © MYFA | All rights reserved.
+        </p>
       </div>
     </footer>
   )

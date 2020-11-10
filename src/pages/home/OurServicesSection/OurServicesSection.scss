@@ -37,3 +37,43 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #our-service-section {
+    #services-container {
+      flex-direction: column;
+
+      .service {
+        width: 70%;
+        margin: 0 auto 2em auto;
+
+        p {
+          width: 80%;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #our-service-section {
+    padding: 100px 0 0 0;
+
+    #services-container {
+      width: 90%;
+
+      .service {
+        width: 100%;
+
+        .title {
+          font-size: 40px;
+        }
+
+        p {
+          width: 90%;
+        }
+      }
+    }
+  }
+}

@@ -139,11 +139,20 @@
 
 @media (max-width: 768px) {
   .footer {
+    .our-services {
+      .service {
+        p {
+          width: 100%;
+        }
+      }
+    }
+
     .content-container {
       width: 100%;
 
       .brand-text {
         text-align: left;
+        width: 240px;
       }
 
       .social-icons-container {
@@ -158,11 +167,34 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 414px) {
   .footer {
+    .our-services {
+      flex-wrap: wrap;
+
+      .service {
+        width: 50%;
+        margin-bottom: 20px;
+
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+
     .content-container {
       margin-bottom: 0;
       border-radius: 0;
+    }
+
+    .footer-footer {
+      display: block;
+
+      img {
+        width: 200px;
+        display: block;
+        margin: auto;
+      }
     }
   }
 }

@@ -18,7 +18,7 @@ const PricesSection = () => {
           <p className='price-number'>3 275 FCFA</p>
         </div>
         <div className='card'>
-          <span className='price-icon'>🚀</span>
+          <span className='price-icon'>🚀🚀</span>
           <p className='price-title'>Prestation plus de 15€</p>
           <p className='price-number'>5€</p>
           <p className='or'>ou</p>

@@ -12,7 +12,7 @@ const useDrawerState = () => {
     setState({ ...state, [anchor]: open });
   };
 
-  return [state, setState, toggleDrawer];
+  return { state, setState, toggleDrawer };
 };
 
 export default useDrawerState;
