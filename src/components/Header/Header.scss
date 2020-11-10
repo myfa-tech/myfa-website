@@ -27,6 +27,11 @@
           font-weight: 500;
           text-decoration: none;
           color: #311A19;
+
+
+          &.selected {
+            border-bottom: 2px solid #311A19;
+          }
         }
       }
     }
@@ -36,10 +41,18 @@
     display: flex;
     align-items: center;
 
+    .drawer-button {
+      display: none;
+    }
+
     .header-login-btn {
       font-size: 20px;
     }
   }
+}
+
+.MuiPaper-elevation8 {
+  box-shadow: none !important;
 }
 
 @media (max-width: 768px) {
@@ -80,11 +93,12 @@
       }
 
       .drawer-button {
+        display: block;
         background-color: transparent;
         box-shadow: none;
+        border: 1px solid rgb(167, 167, 167);
+        color: rgb(167, 167, 167);
       }
     }
   }
 }
-
-@media (max-width: 330px) {}

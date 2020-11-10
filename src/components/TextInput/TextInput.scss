@@ -1,5 +1,8 @@
 .input-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 15px;
 
   .help-text {
@@ -26,6 +29,5 @@
 
   .fixed-input-right-label {
     margin-left: -30px;
-    margin-bottom: 15px;
   }
 }

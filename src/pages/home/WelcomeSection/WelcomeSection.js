@@ -22,7 +22,7 @@ const WelcomeSection = () => {
             <li>suivre l’<b>avancée de vos constructions</b></li>
           </ul>
         </div>
-        <Button label='Démarrer' href='/#enquiries-form' className='start-btn' />
+        <Button label='Démarrer' href='/#need-section' className='start-btn' />
       </div>
       <div id='right-img-container'>
         <img className='welcome-img' src={handAndDashboardImgSrc} />
