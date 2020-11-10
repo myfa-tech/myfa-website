@@ -13,7 +13,7 @@ import {
   TwitterShareButton
 } from 'react-share';
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 
 import { fetchSingleArticle } from '../../services/contentful';
 
