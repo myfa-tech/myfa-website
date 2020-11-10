@@ -4,6 +4,7 @@
 
   h2 {
     font-size: 40px;
+    color: #315F69;
   }
 
   .section-description {
@@ -46,11 +47,7 @@
         font-size: 70px;
         margin-bottom: 0;
         line-height: normal;
-        color: #311A19;
-
-        &:nth-of-type(1) {
-          color: #315F69;
-        }
+        color: #315F69;
       }
 
       .or {

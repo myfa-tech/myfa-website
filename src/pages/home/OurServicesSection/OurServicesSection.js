@@ -12,8 +12,8 @@ const OurServicesSection = () => {
           <span className='icon'>🛒</span>
           <span className='title'>Alimentaire</span>
           <p>MYFA s’occupe de réaliser les courses pour vos poches.</p>
-          <p>Laissez nous leurs coordonnées, nous les appelons pour connaîre leurs besoins. </p>
-          <p>Le tout, dans votre budget.</p>
+          <p>Laissez nous leurs coordonnées, nous les appelons pour connaîre leurs besoins.</p>
+          <p>Le tout, <span className='green-highlight'>dans votre budget</span>.</p>
         </div>
 
         <div className='service'>
@@ -21,7 +21,7 @@ const OurServicesSection = () => {
           <span className='title'>Santé</span>
           <p>MYFA réalise les courses de médicaments de vos proches.</p>
           <p>Sous ordonnances ou non, nous pourrons récupérer les médicaments qui leur faut.</p>
-          <p>Soyez rassurés, MYFA s’occupe de vos proches.</p>
+          <p>Soyez rassurés, <span className='green-highlight'>MYFA s’occupe de vos proches</span>.</p>
         </div>
 
         <div className='service'>
@@ -29,7 +29,7 @@ const OurServicesSection = () => {
           <span className='title'>Bâtiment</span>
           <p>Des projets immobilliers au pays ?</p>
           <p>MYFA vous représente sur place : achat de matériel de construction, suivi de travaux, prise de photos.</p>
-          <p>Avec MYFA, recevez une facture de chaque prestation réalisée.</p>
+          <p>Avec MYFA, <span className='green-highlight'>recevez une facture de chaque prestation réalisée</span>.</p>
         </div>
       </div>
     </div>

@@ -1,8 +1,37 @@
 
 @font-face {
-  font-family: 'Josefin Sans';
-  src: url(./fonts/JosefinSans-Regular.ttf);
+  font-family: 'Roboto';
+  src: url(./fonts/Roboto-Regular.ttf);
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(./fonts/Roboto-Bold.ttf);
+  font-display: swap;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(./fonts/Roboto-BoldItalic.ttf);
+  font-display: swap;
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(./fonts/Roboto-Light.ttf);
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(./fonts/Roboto-Medium.ttf);
+  font-display: swap;
+  font-weight: 500;
 }
 
 $brown: #311A19;
@@ -13,7 +42,7 @@ html {
   scroll-behavior: smooth;
 
   * {
-    font-family: 'Josefin Sans', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
   }
 
   body {

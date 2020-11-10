@@ -4,6 +4,7 @@
 
   h2 {
     font-size: 40px;
+    color: #315F69;
   }
 
   #services-container {
@@ -28,11 +29,16 @@
 
       .title {
         font-size: 50px;
+        color: #315F69;
         display: block;
       }
 
       p {
         color: #5A5A5A;
+
+        .green-highlight {
+          color: #315F69;
+        }
       }
     }
   }
