@@ -23,7 +23,6 @@ const loginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFBLoading, setIsFBLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-  const [responseStatus, setResponseStatus] = useState(null);
   const [wrongCreds, setWrongCreds] = useState(false);
 
   const editFormValues = (e) => {
@@ -114,7 +113,7 @@ const loginPage = () => {
       <img src={leftPeopleSrc} id='left-people-img' />
 
       <div className='middle-column'>
-        <img id='myfa-logo' src={myfaLogoSrc} />
+        <a href='/'><img id='myfa-logo' src={myfaLogoSrc} /></a>
 
         <div id='form-container'>
           <h2>Connectez-vous à votre compte</h2>

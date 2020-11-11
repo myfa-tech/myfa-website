@@ -5,6 +5,12 @@
   align-items: center;
   margin-bottom: 15px;
 
+  &.with-help-text {
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
   .help-text {
     color: rgba(0, 0, 0, 0.58);
   }
@@ -29,5 +35,13 @@
 
   .fixed-input-right-label {
     margin-left: -30px;
+  }
+}
+
+@media (max-width: 414px) {
+  .input-container {
+    .help-text {
+      font-size: 13px;
+    }
   }
 }

@@ -29,7 +29,7 @@ const SignupPage = () => {
   return (
     <div id='signup-page'>
       <div id='left-column'>
-        <img src={myfaLogoSrc} />
+        <a href='/'><img src={myfaLogoSrc} /></a>
 
         <div className='description-container'>
           <ul>
@@ -41,6 +41,8 @@ const SignupPage = () => {
         </div>
       </div>
       <div id='right-column'>
+        <a href='/' className='mobile-logo'><img src={myfaLogoSrc} /></a>
+
         <h1>Créez votre compte MYFA</h1>
 
         <Divider />
@@ -63,11 +65,12 @@ const SignupPage = () => {
             value={formValues['password']}
             onChange={handleChangeFormValues}
             name='password'
+            type='password'
             helpText='8 caractères, 1 minuscule, 1 majuscule, 1 chiffre'
             placeholder='Mot de passe'
           />
 
-          <TextInput className={`${errors['password-confirmation'] ? 'error' : ''}`} value={formValues['password-confirmation']} onChange={handleChangeFormValues} name='password-confirmation' placeholder='Confirmer le mot de passe' />
+          <TextInput className={`${errors['password-confirmation'] ? 'error' : ''}`} type='password' value={formValues['password-confirmation']} onChange={handleChangeFormValues} name='password-confirmation' placeholder='Confirmer le mot de passe' />
 
           <CheckboxInput className={`${errors['newsletter'] ? 'error' : ''}`} value={formValues['newsletter']} onChange={handleChangeFormValues} name='newsletter' label='Je souhaite recevoir la newsletter' />
 

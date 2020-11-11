@@ -34,6 +34,10 @@
   #right-column {
     min-width: 737px;
 
+    .mobile-logo {
+      display: none;
+    }
+
     h1 {
       font-size: 40px;
       color: #315F69;
@@ -76,6 +80,54 @@
         a {
           color: #315F69;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #signup-page {
+    #right-column {
+      width: 540px;
+      min-width: 0;
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    #left-column {
+      .description-container {
+        ul {
+          li {
+            font-size: 17px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #signup-page {
+    #left-column {
+      display: none;
+    }
+
+    #right-column {
+      .mobile-logo {
+        display: block;
+
+        img {
+          width: 40%;
+          display: block;
+          margin: 2em auto;
+        }
+      }
+
+      form {
+        padding: 1em;
       }
     }
   }

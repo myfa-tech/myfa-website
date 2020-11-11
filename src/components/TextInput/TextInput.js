@@ -4,7 +4,7 @@ import './TextInput.scss';
 
 const TextInput = ({ className, type, error, fixedTextRight, helpText, rows, textarea, value, name, onChange, placeholder }) => {
   return (
-    <div className='input-container'>
+    <div className={`input-container ${helpText ? 'with-help-text' : ''}`}>
       {textarea ?
         <textarea
           name={name}

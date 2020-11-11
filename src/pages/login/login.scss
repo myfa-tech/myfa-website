@@ -143,3 +143,63 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #login-page {
+    #left-people-img {
+      width: 150px;
+    }
+
+    #right-people-img {
+      width: 80px;
+    }
+
+    .middle-column {
+      #myfa-logo {
+        margin-top: 2em;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #login-page {
+    #left-people-img, #right-people-img {
+      display: none;
+    }
+
+    .middle-column {
+      width: 100%;
+
+      #myfa-logo {
+        width: 40%;
+        margin-top: 2em;
+      }
+
+      #form-container {
+        width: 100%;
+        border-radius: 0;
+
+        h2 {
+          font-size: 30px;
+        }
+
+        .email-input, .password-input, .password-bottom-container {
+          width: 100%;
+        }
+
+        .btns-container {
+          width: 100%;
+        }
+
+        .password-bottom-container {
+          flex-direction: column;
+
+          .password-info {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
