@@ -33,6 +33,7 @@
       border-radius: 6px;
       width: 400px;
       margin-top: 20px;
+      margin-bottom: 2em;
       padding-bottom: 30px;
 
       .member-description {
@@ -78,11 +79,27 @@
 
 @media (max-width: 768px) {
   .team {
+    .title-container {
+      h3 {
+        width: 90%;
+      }
+    }
+
     .content-container {
       .article-block {
+        width: 30%;
+
+        .member-description {
+          width: 90%;
+        }
+
         .author-id {
           h4 {
             font-size: 18px;
+          }
+
+          .profile-pic {
+            width: 40%;
           }
         }
 
@@ -98,7 +115,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 414px) {
   .team {
     .title-container {
       h2 {
@@ -107,17 +124,20 @@
     }
 
     .content-container {
-      border: none;
-      border-radius: 0;
       width: 100%;
-    }
-  }
-}
+      flex-wrap: wrap;
 
-@media (max-width: 350px) {
-  .team {
-    h2 {
-      font-size: 23px;
+      .article-block {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .author-id {
+          h4 {
+            font-size: 17px;
+          }
+        }
+      }
     }
   }
 }

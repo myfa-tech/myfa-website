@@ -10,7 +10,7 @@ import {
   FacebookIcon,
   FacebookShareButton,
   TwitterIcon,
-  TwitterShareButton
+  TwitterShareButton,
 } from 'react-share';
 import SEO from '../../components/seo';
 import Layout from '../../components/Layout';
