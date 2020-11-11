@@ -41,14 +41,32 @@
 @media (max-width: 768px) {
   #blog {
     width: 90%;
+
+    .title-container {
+      h3 {
+        width: 100%;
+      }
+    }
+
+    .blog-cards-container {
+      .blog-article-card {
+        width: 45%;
+      }
+    }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 414px) {
   #blog {
     .title-container {
       h2 {
-        font-size: 25px;
+        font-size: 27px;
+      }
+    }
+
+    .blog-cards-container {
+      .blog-article-card {
+        width: 100%;
       }
     }
   }
