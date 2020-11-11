@@ -6,16 +6,14 @@ import Button from '../../components/Button';
 import RatingsList from './RatingsList';
 import RatingModal from './RatingModal';
 
-import useTranslate from '../../hooks/useTranslate';
 import EventEmitter from '../../services/EventEmitter';
 import UserStorage from '../../services/UserStorage';
+import { saveRating } from '../../services/ratings';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './ratings.scss';
-import { saveRating } from '../../services/ratings';
 
 const RatingsPage = () => {
-  const [t] = useTranslate();
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,19 +45,17 @@ const RatingsPage = () => {
 
       <div id='ratings'>
         <div className='title-container'>
-          <h2>{t('ratings.title')}</h2>
+          <h2>Avis des clients</h2>
 
           <h3 className='description'>
-            {t('ratings.introduction')}
+            Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.
           </h3>
         </div>
 
-
-
         <div className='button-container'>
           {!!user ?
-            <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} /> :
-            <Button label={t('ratings.login_button')} className='rating-button' onClick={() => eventEmitter.emit('showLogin')} />
+            <Button label='Donner mon avis' className='rating-button' onClick={giveRating} /> :
+            <Button label='Connectez-vous' className='rating-button' href='/login?pagefrom=ratings' />
           }
         </div>
 

@@ -71,7 +71,7 @@ const Header = () => {
               onClose={(e) => handleMenuItemClick(e)}
             >
               <MenuItem onClick={(e) => handleMenuItemClick(e, '/team')}>L'équipe</MenuItem>
-              <MenuItem onClick={(e) => handleMenuItemClick(e, '/ratings')}>Avis clients</MenuItem>
+              <MenuItem onClick={(e) => handleMenuItemClick(e, '/ratings')}>Avis des clients</MenuItem>
               <MenuItem onClick={(e) => handleMenuItemClick(e, '/faq')}>Questions fréquentes</MenuItem>
             </Menu>
           </li>

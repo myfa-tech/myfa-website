@@ -20,13 +20,6 @@
     }
   }
 
-  .description {
-    font-size: 24px;
-    margin: 2em auto 1em auto;
-    width: 90%;
-    text-align: justify;
-  }
-
   .button-container {
     display: flex;
     align-items: center;
@@ -47,10 +40,22 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #ratings {
-    .description {
-      font-size: 20px;
+    .title-container {
+      h3 {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #ratings {
+    .title-container {
+      h2 {
+        font-size: 27px;
+      }
     }
   }
 }

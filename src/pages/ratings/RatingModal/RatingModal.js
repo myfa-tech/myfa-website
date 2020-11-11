@@ -5,8 +5,6 @@ import { FaStar } from 'react-icons/fa';
 
 import ButtonWithLoader from '../../../components/ButtonWithLoader';
 
-import useTranslate from '../../../hooks/useTranslate';
-
 import './RatingModal.scss';
 
 const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
@@ -17,8 +15,6 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
     subject: '',
     comment: '',
   });
-
-  const [t] = useTranslate();
 
   const emptyStars = [1, 2, 3, 4, 5];
 
@@ -105,7 +101,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
           <ButtonWithLoader
             isLoading={isLoading}
             className='send-form-button'
-            label={t('rating_modal.button_label')}
+            label='Envoyer'
             onClick={send}
           />
         </form>

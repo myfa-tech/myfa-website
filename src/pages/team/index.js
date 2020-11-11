@@ -4,7 +4,6 @@ import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import SEO from '../../components/seo';
 import Layout from '../../components/Layout';
 
-import useTranslate from '../../hooks/useTranslate';
 import dorisSrc from '../../images/doris.png';
 import florianSrc from '../../images/florian.png';
 import alexSrc from '../../images/alex.png';
@@ -12,14 +11,12 @@ import alexSrc from '../../images/alex.png';
 import './team.scss';
 
 const TeamPage = () => {
-  const [t] = useTranslate();
-
   return (
     <Layout className='team' color='green'>
       <SEO title='Team' />
 
       <div className='title-container'>
-        <h2>{t('home_page.team.title')}</h2>
+        <h2>L'équipe</h2>
         <h3>Nous sommes trois têtes pensantes sur le service MYFA. Ensemble, nous coordonnons une équipe opérationnelle à Abidjan pour le bon déroulement des prestations.</h3>
       </div>
       <div className='content-container'>

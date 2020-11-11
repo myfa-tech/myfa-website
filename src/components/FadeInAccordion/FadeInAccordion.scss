@@ -67,11 +67,20 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .fadein-accordion {
+    .fadein-content {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 414px) {
   .fadein-accordion {
     padding: 0;
 
     .fadein-content {
+      width: 90%;
       padding-left: 0;
       text-align: justify;
     }

@@ -32,22 +32,23 @@
   #faq {
     width: 90%;
 
+    .title-container {
+      h3 {
+        width: 90%;
+      }
+    }
+
     .questions-container {
       width: 100%;
     }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 414px) {
   #faq {
     .title-container {
-      p {
-        font-size: 14px;
-        text-align: justify;
-      }
-
       h2 {
-        font-size: 25px;
+        font-size: 27px;
       }
     }
   }
