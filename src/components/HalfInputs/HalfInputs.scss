@@ -1,0 +1,12 @@
+.half-inputs {
+  display: flex;
+  justify-content: space-between;
+
+  .input-container {
+    width: 48%;
+
+    input {
+      width: 100%;
+    }
+  }
+}

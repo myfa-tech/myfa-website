@@ -1,5 +1,6 @@
 #need-section {
   padding: 100px 0;
+  text-align: center;
 
   h2 {
     font-size: 40px;
@@ -7,222 +8,38 @@
     text-align: center;
   }
 
-  #cards-container {
-    width: 1230px;
-    padding-top: 50px;
-    display: flex;
-    margin: auto;
-    justify-content: space-between;
+  .section-description {
+    margin: 0;
+    color: #676767;
+    font-size: 20px;
+  }
 
-    .need-card {
-      padding: 50px;
-      width: 566px;
-      height: 732px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-
-      .start-btn {
-        width: 270px;
-        height: 67px;
-        margin: auto;
-
-        &.right-btn {
-          background-color: #315F69;
-          border: 1px solid #315F69;
-          color: #fff;
-        }
-      }
-
-      h3 {
-        text-align: center;
-        font-size: 40px;
-        font-weight: bold;
-
-        &.left-element {
-          color: #F1D866;
-        }
-
-        &.right-element {
-          color: #315F69;
-        }
-      }
-
-      img {
-        display: block;
-        margin: auto;
-        width: 170px;
-        height: 250px;
-        margin-bottom: 22px;
-      }
-
-      ul {
-        display: block;
-        margin: 30px auto;
-        padding-left: 15px;
-
-        li {
-          font-size: 30px;
-        }
-
-        &.left-element {
-          width: 360px;
-        }
-
-        &.right-element {
-          width: 500px;
-        }
-      }
-    }
-
-    .amount-input {
-      width: 170px;
-      height: 90px;
-      font-size: 50px;
-      font-weight: bold;
-    }
-
-    .fixed-input-right-label {
-      font-size: 50px;
-      margin-left: -50px;
-    }
-
-    .amount-cfa {
-      text-align: center;
-      color: #315F69;
-      font-size: 25px;
-    }
-
-    .send-form-btn {
-      font-size: 25px;
+  #need-section-content {
+    .callback-btn {
+      background-color: #311A19;
+      border: 1px solid #311A19;
+      color: #F1D866;
       margin: auto;
+      width: 290px;
+      height: 55px;
+      margin-top: 3em;
     }
 
-    .need-card-back {
-      padding: 50px;
-      width: 566px;
-      border-radius: 6px;
-
-      &.left-card {
-        background-color: #F1D866;
-      }
-
-      &.right-card {
-        background-color: #315F69;
-
-        h5, h4 {
-          color: #fff;
-        }
-      }
-
-      .close-icon {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        color: grey;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .form-title {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid grey;
-      }
-
-      form {
-        h5 {
-          text-align: center;
-          margin-top: 20px;
-          margin-bottom: 10px;
-        }
-      }
-
-      .half-inputs-container {
-        display: flex;
-        justify-content: space-between;
-
-        .input-container {
-          width: 48%;
-
-          input {
-            width: 100%;
-          }
-        }
-      }
+    .its-free {
+      display: block;
+      margin: auto;
     }
   }
 }
 
 @media (max-width: 768px) {
   #need-section {
-    #cards-container {
-      width: 100%;
-      flex-direction: column;
-      justify-content: center;
 
-      .react-card-flip {
-        width: 80%;
-        margin: 0 auto 2em auto;
-
-        .need-card, .need-card-back {
-          width: 100%;
-        }
-      }
-    }
   }
 }
 
 @media (max-width: 414px) {
   #need-section {
     padding: 100px 0 0 0;
-
-    #cards-container {
-      .react-card-flip {
-        width: 90%;
-      }
-
-      .need-card {
-        padding: 20px;
-        height: 510px;
-
-        h3 {
-          font-size: 25px;
-        }
-
-        ul {
-          li {
-            font-size: 13px;
-          }
-
-          &.left-element {
-            width: 160px;
-          }
-
-          &.right-element {
-            width: 220px;
-          }
-        }
-
-        img {
-          width: 130px;
-          height: 184px;
-        }
-
-        .start-btn {
-          width: 100%;
-        }
-      }
-
-      .need-card-back {
-        padding: 20px;
-      }
-
-      .send-form-btn {
-        font-size: 15px;
-      }
-    }
   }
 }
