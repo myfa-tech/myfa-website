@@ -44,7 +44,6 @@
       }
 
       .author-id {
-        margin-top: 20px;
         padding-bottom: 10px;
 
         h4 {
@@ -69,8 +68,9 @@
         }
 
         .profile-pic {
-          width: 100px;
+          width: 100%;
           margin-bottom: 20px;
+          border-radius: 6px 6px 0 0;
         }
       }
     }
@@ -98,9 +98,9 @@
             font-size: 18px;
           }
 
-          .profile-pic {
-            width: 40%;
-          }
+          // .profile-pic {
+          //   width: 40%;
+          // }
         }
 
         .desktop-quote {

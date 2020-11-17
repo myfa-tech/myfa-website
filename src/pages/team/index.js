@@ -4,16 +4,16 @@ import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import SEO from '../../components/seo';
 import Layout from '../../components/Layout';
 
-import dorisSrc from '../../images/doris.png';
-import florianSrc from '../../images/florian.png';
-import alexSrc from '../../images/alex.png';
+import dorisSrc from '../../images/doris-team.jpeg';
+import florianSrc from '../../images/florian-team.jpeg';
+import alexSrc from '../../images/alex-team.jpeg';
 
 import './team.scss';
 
 const TeamPage = () => {
   return (
     <Layout className='team' color='green'>
-      <SEO title='Team' />
+      <SEO title="L'équipe" />
 
       <div className='title-container'>
         <h2>L'équipe</h2>
