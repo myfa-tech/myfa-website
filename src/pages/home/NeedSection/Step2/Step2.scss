@@ -1,0 +1,10 @@
+#step-2 {
+  width: 410px;
+  margin: auto;
+}
+
+@media (max-width: 414px) {
+  #step-2 {
+    width: 100%;
+  }
+}

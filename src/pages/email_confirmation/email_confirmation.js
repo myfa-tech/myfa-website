@@ -17,7 +17,7 @@ const EmailConfirmationPage = () => {
         <h2>Formulaire envoyé</h2>
 
         <p>Un email de confirmation a été envoyé à votre adresse email.</p>
-        <p>Suivez les instructions fournies pour créer votre compte MYFA.</p>
+        <p>Vous pourrez y découvrir les services de MYFA.</p>
 
         <img className='two-people-img' src={twoPeopleSrc} />
         <img className='single-guy-img' src={singleGuySrc} />

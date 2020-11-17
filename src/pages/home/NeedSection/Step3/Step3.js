@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import HalfInputs from '../../../../../components/HalfInputs';
-import TextInput from '../../../../../components/TextInput';
+import HalfInputs from '../../../../components/HalfInputs';
+import TextInput from '../../../../components/TextInput';
 
-import './Step1.scss';
+import './Step3.scss';
 
-const Step1 = () => {
+const Step3 = () => {
   const [formValues, setFormValues] = useState({});
 
   const changeFormValues = (e) => {
@@ -16,7 +16,7 @@ const Step1 = () => {
   };
 
   return (
-    <div id='step-1'>
+    <div id='step-3'>
       <HalfInputs
         onChange={changeFormValues}
         errors={null}
@@ -49,4 +49,4 @@ const Step1 = () => {
   );
 };
 
-export default Step1;
+export default Step3;

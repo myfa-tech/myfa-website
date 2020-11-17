@@ -25,7 +25,7 @@ const DRAWER_LIST = [
     ],
   },
   { label: 'Blog', link: '/blog' },
-  { label: 'Se connecter', link: '/login', type: 'button' },
+  { label: 'Me faire rappeler', link: '/#need-section', type: 'button' },
 ];
 
 const Header = () => {
@@ -79,7 +79,7 @@ const Header = () => {
         </ul>
       </div>
       <div id='right-items'>
-        <Button href='/login' label='Se connecter' className='header-login-btn' />
+        <Button href='/#need-section' label='Me faire rappeler' className='header-login-btn' />
         <Button className='drawer-button' label={<IoMdMenu />} onClick={() => toggleDrawer('right', true)} />
       </div>
 

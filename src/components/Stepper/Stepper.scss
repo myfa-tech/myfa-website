@@ -1,0 +1,16 @@
+.stepper {
+  display: flex;
+  width: 100%;
+
+  .step {
+    flex-grow: 1;
+    height: 5px;
+    margin: 0 2px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    &.selected {
+      background-color: #000;
+    }
+  }
+}

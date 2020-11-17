@@ -15,6 +15,26 @@
   }
 
   #need-section-content {
+    .form-container {
+      background-color: #f1d866;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin: auto;
+      width: 600px;
+      margin-top: 5em;
+      padding: 0 2em 2em 2em;
+
+      .form-title-container {
+        padding-top: 2em;
+        padding-bottom: 1em;
+
+        h3 {
+          font-size: 20px;
+          color: #311A19;
+        }
+      }
+    }
+
     .callback-btn {
       background-color: #311A19;
       border: 1px solid #311A19;
@@ -29,6 +49,13 @@
       display: block;
       margin: auto;
     }
+
+    .next-btn, .finish-btn {
+      margin: auto;
+      width: 290px;
+      height: 55px;
+      margin-top: 3em;
+    }
   }
 }
 
@@ -41,5 +68,12 @@
 @media (max-width: 414px) {
   #need-section {
     padding: 100px 0 0 0;
+
+    #need-section-content {
+      .form-container {
+        width: 95%;
+        padding: 0 1em 2em 1em;
+      }
+    }
   }
 }
