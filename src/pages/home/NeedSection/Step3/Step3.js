@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import HalfInputs from '../../../../components/HalfInputs';
 import TextInput from '../../../../components/TextInput';
 
 import './Step3.scss';
 
-const Step3 = () => {
-  const [formValues, setFormValues] = useState({});
-
+const Step3 = ({ formValues, setFormValues }) => {
   const changeFormValues = (e) => {
     setFormValues({
       ...formValues,

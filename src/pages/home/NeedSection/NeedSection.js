@@ -7,7 +7,11 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 
+import createRequest from '../../../services/requests/createRequest';
+import updateRequest from '../../../services/requests/updateRequest';
+
 import './NeedSection.scss';
+import useStep1Form from './useStep1Form';
 
 const steps = [
   { title: 'Qui êtes-vous ?' },
@@ -17,27 +21,44 @@ const steps = [
 
 const NeedSection = () => {
   const [step, setStep] = useState(0);
-  const [step1FormValues, setStep1FormValues] = useState({});
+  const { handleSubmitForm: handleSubmitForm1, errors: errorsForm1, changeFormValues: changeStep1FormValues, values: step1FormValues } = useStep1Form(submitStep1);
   const [step2FormValues, setStep2FormValues] = useState({});
   const [step3FormValues, setStep3FormValues] = useState({});
+  const [request, setRequest] = useState(null);
 
   const goTo = (link) => {
     navigate(link);
   };
 
-  const submitStep1 = () => {
-    // @TODO: submit form and save infos
-    setStep(1);
+  async function submitStep1() {
+    try {
+      const createdRequest = await createRequest(step1FormValues);
+      setRequest(createdRequest);
+      setStep(1);
+    } catch(e) {
+      // @TODO : trigger error
+      console.log(e);
+    }
   };
 
-  const submitStep2 = () => {
-    // @TODO: submit form and save infos
-    setStep(2);
+  async function submitStep2() {
+    try {
+      await updateRequest(request._id, { type: step2FormValues['request-type'], details: step2FormValues['details'] });
+      setStep(2);
+    } catch(e) {
+      // @TODO : trigger error
+      console.log(e);
+    }
   };
 
-  const submitStep3 = () => {
-    // @TODO: submit form and finish
-    goTo('/email_confirmation')
+  async function submitStep3() {
+    try {
+      await updateRequest(request._id, { contact: step3FormValues });
+      goTo('/email_confirmation');
+    } catch(e) {
+      // @TODO : trigger error
+      console.log(e);
+    }
   };
 
   return (
@@ -55,13 +76,13 @@ const NeedSection = () => {
             <Stepper steps={3} step={step} />
           </div>
 
-          {step === 0 ? <Step1 formValues={step1FormValues} setFormValues={setStep1FormValues} /> : null}
+          {step === 0 ? <Step1 errors={errorsForm1} formValues={step1FormValues} changeFormValues={changeStep1FormValues} /> : null}
           {step === 1 ? <Step2 formValues={step2FormValues} setFormValues={setStep2FormValues} /> : null}
           {step === 2 ? <Step3 formValues={step3FormValues} setFormValues={setStep3FormValues} /> : null}
         </div>
 
         {step === 0 ? <div>
-          <Button className='callback-btn' onClick={submitStep1} label='Me faire rappeler' />
+          <Button className='callback-btn' onClick={handleSubmitForm1} label='Me faire rappeler' />
           <span className='its-free'>(c'est gratuit)</span>
         </div> : null}
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import './TextInput.scss';
 
-const TextInput = ({ className, type, error, fixedTextRight, helpText, rows, textarea, value, name, onChange, placeholder }) => {
+const TextInput = ({ className, type, fixedTextRight, helpText, rows, textarea, value, name, onChange, placeholder }) => {
   return (
     <div className={`input-container ${helpText ? 'with-help-text' : ''}`}>
       {textarea ?
@@ -11,7 +11,7 @@ const TextInput = ({ className, type, error, fixedTextRight, helpText, rows, tex
           rows={rows || 5}
           placeholder={placeholder}
           onChange={onChange}
-          className={`myfa-text-input textarea ${className || ''} ${error ? 'error' : ''}`}
+          className={`myfa-text-input textarea ${className || ''}`}
           value={value}
         /> :
         <input
@@ -19,7 +19,7 @@ const TextInput = ({ className, type, error, fixedTextRight, helpText, rows, tex
           type={type || 'text'}
           placeholder={placeholder}
           onChange={onChange}
-          className={`myfa-text-input ${className || ''} ${error ? 'error' : ''}`}
+          className={`myfa-text-input ${className || ''}`}
           value={value}
         />
       }

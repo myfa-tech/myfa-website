@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Select from '../../../../components/Select';
 import TextInput from '../../../../components/TextInput';
 
 import './Step2.scss';
 
-const Step2 = () => {
-  const [formValues, setFormValues] = useState({});
-
+const Step2 = ({ formValues, setFormValues }) => {
   const changeFormValues = (e) => {
     setFormValues({
       ...formValues,
