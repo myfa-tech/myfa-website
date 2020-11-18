@@ -79,7 +79,7 @@ const Footer = ({ noBackgroundColor }) => {
             </a>
           </div>
           <div className='brand-text'>
-            <p>Achetez en toute sécurité du ravitaillement alimentaire pour vos proches en Côte d’Ivoire.</p>
+            <p>Le tiers de confiance de la diaspora Ivoirienne. MYFA réalise des prestations dédiées et vous permet de gérer vos dépenses vers le pays, pour vous ou vos proches.</p>
           </div>
           <div className='social-icons-container'>
             <SocialIcon target='_blank' style={{ width: 40, height: 40 }} network='facebook' url='https://www.facebook.com/myfa.fr' />

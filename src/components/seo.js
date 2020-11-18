@@ -1,28 +1,19 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import uuid from 'uuid/v4';
 
-import useTranslate from '../hooks/useTranslate';
-
 function SEO({ description, lang, meta, title, type, url, keywords, img }) {
-  const [t] = useTranslate();
-  const [uniqueId, setUniqueId] = useState('');
   const site = {
     title: `MYFA`,
     siteUrl: `https://www.myfa.fr`,
-    description: `MYFA vous permet de composer un panier de biens alimentaires, à destination de vos proches en Côte d'Ivoire !`,
+    description: `Le tiers de confiance de la diaspora Ivoirienne. MYFA réalise des prestations dédiées et vous permet de gérer vos dépenses vers le pays, pour vous ou vos proches.`,
     author: `MYFA SAS`,
   };
 
-  const metaDescription = description || t('site_seo.description');
+  const metaDescription = description || site.description;
   const metaAuthor = site.author;
-
-  useEffect(() => {
-    const id = uuid().substr(0, 8);
-    setUniqueId(id);
-  }, []);
 
   return (
     <Helmet

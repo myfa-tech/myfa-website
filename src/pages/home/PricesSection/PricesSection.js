@@ -15,14 +15,14 @@ const PricesSection = () => {
           <p className='price-title'>Budget moins de 15€</p>
           <p className='price-number'>5€</p>
           <p className='or'>ou</p>
-          <p className='price-number'>3 275 FCFA</p>
+          <p className='price-number cfa'>3 275 FCFA</p>
         </div>
         <div className='card'>
           <span className='price-icon'>🚀🚀</span>
           <p className='price-title'>Budget plus de 15€</p>
           <p className='price-number'>5€</p>
           <p className='or'>ou</p>
-          <p className='price-number'>3 275 FCFA</p>
+          <p className='price-number cfa'>3 275 FCFA</p>
           <p className='price-complement'>+ 10% de la valeur du devis</p>
         </div>
       </div>

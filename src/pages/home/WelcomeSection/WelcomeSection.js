@@ -17,9 +17,9 @@ const WelcomeSection = () => {
         <div className='description'>
           <p>MYFA vous aide à :</p>
           <ul>
-            <li>réaliser les courses alimentaires de vos proches</li>
-            <li>réaliser les courses de médicaments de vos proches</li>
-            <li>acheter le matériel de construction de vos projets immobiliers</li>
+            <li>Faire les courses pour vos proches</li>
+            <li>Acheter des médicaments pour vos proches</li>
+            <li>Acheter du matériel de construction</li>
           </ul>
         </div>
         <Button label='Démarrer' href='/#need-section' className='start-btn' />

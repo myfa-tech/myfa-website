@@ -1,3 +1,66 @@
+@keyframes shakeX {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  // 10% {
+  //   transform: translate3d(5px, 5px, 0);
+  // }
+
+  // 15% {
+  //   transform: translate3d(2px, 3px, 0);
+  // }
+
+  // 20% {
+  //   transform: translate3d(-5px, 5px, 0);
+  // }
+
+  // 25% {
+  //   transform: translate3d(-1px, -4px, 0);
+  // }
+
+  // 30% {
+  //   transform: translate3d(-5px, -5px, 0);
+  // }
+
+  // 35% {
+  //   transform: translate3d(-2px, 1px, 0);
+  // }
+
+  // 40% {
+  //   transform: translate3d(-5px, 5px, 0);
+  // }
+
+  // 45% {
+  //   transform: translate3d(2px, -2px, 0);
+  // }
+
+  // 50% {
+  //   transform: translate3d(0, -5px, 0);
+  // }
+
+  // 60% {
+  //   transform: translate3d(5px, -5px, 0);
+  // }
+
+  // 70% {
+  //   transform: translate3d(5px, -5px, 0);
+  // }
+
+  // 80% {
+  //   transform: translate3d(5px, 5px, 0);
+  // }
+
+  // 90% {
+  //   transform: translate3d(-5px, 5px, 0);
+  // }
+}
+
+.shakeX {
+  animation-name: shakeX;
+}
+
 #our-service-section {
   padding: 100px 0;
   text-align: center;
@@ -21,6 +84,7 @@
       width: 322px;
       padding: 2em 10px;
       text-align: center;
+      transition-duration: 2000ms;
 
       .icon {
         font-size: 80px;
