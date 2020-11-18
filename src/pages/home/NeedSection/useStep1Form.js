@@ -41,6 +41,10 @@ const useStep1Form = (submit, initialValues = {}) => {
       newErrors['phone'] = true;
     }
 
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values['email']))) {
+      newErrors['email'] = true;
+    }
+
     setErrors({ ...errors, ...newErrors });
 
     return !Object.values(newErrors).includes(true);

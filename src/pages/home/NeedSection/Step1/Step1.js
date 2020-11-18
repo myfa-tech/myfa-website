@@ -33,6 +33,7 @@ const Step1 = ({ errors, formValues, changeFormValues }) => {
       <TextInput
         value={formValues['email']}
         name='email'
+        className={`${errors['email'] ? 'error' : ''}`}
         onChange={changeFormValues}
         placeholder='Email'
       />
