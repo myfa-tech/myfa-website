@@ -9,6 +9,7 @@ import './Layout.scss';
 const Layout = ({ className, children, color }) => {
   return (
     <div className={`layout ${className} ${color}`}>
+      <div className='background' />
       <Header />
       <div>
         <main>{children}</main>
