@@ -17,6 +17,21 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 414px) {
+  .layout {
+    background-size: 100% 100vh;
+    background-image: url(../../images/mobile-layout-light.jpg);
 
+    &.green {
+      background-image: url(../../images/mobile-layout-green.jpg);
+    }
+
+    &.mix {
+      background-image: url(../../images/mobile-layout-mix.jpg);
+    }
+
+    &.light {
+      background-image: url(../../images/mobile-layout-light.jpg);
+    }
+  }
 }
