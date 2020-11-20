@@ -24,6 +24,11 @@ const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
 const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const FaqPage = lazy(() => import('./pages/faq'));
+const DashboardHomeKPIs = lazy(() => import('./pages/dashboard/home'));
+const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
+const DashboardUsers = lazy(() => import('./pages/dashboard/users'));
+const DashboardBaskets = lazy(() => import('./pages/dashboard/baskets'));
+const DashbboardRequests = lazy(() => import('./pages/dashboard/requests'));
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -68,12 +73,11 @@ const App = () => (
       <BlogPage path='/blog' />
       <ArticlePage path='articles/:articleId' />
 
-      {/* <DashboardHomeKPIs path='/dashboard' />
+      <DashboardHomeKPIs path='/dashboard' />
       <DashboardLogin path='/dashboard/login' />
       <DashboardUsers path='/dashboard/users' />
+      <DashbboardRequests path='/dashboard/requests' />
       <DashboardBaskets path='/dashboard/baskets' />
-      <DashboardFinance path='/dashboard/finance' />
-      <DashboardStocks path='/dashboard/stocks' /> */}
       <NotFound default />
     </Router>
   </Suspense>

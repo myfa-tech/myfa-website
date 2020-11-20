@@ -5,15 +5,18 @@
   h1 {
     display: flex;
     vertical-align: middle;
+    justify-content: space-between;
+    padding: 0em 2em;
+    margin-left: 0;
 
     button {
       font-size: 18px;
       color: #311A19;
       background-color: #F1D866;
-      padding: 0.5em 2em;
+      padding: 0.2em 1em;
       font-weight: 500;
       border: 1px solid #311A19;
-      border-radius: 0;
+      border-radius: 6px;
       margin-left: 2em;
     }
   }

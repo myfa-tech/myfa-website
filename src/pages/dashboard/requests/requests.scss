@@ -1,13 +1,13 @@
-.dashboard-users {
+.dashboard-requests {
   height: 100%;
   width: 100%;
 
   h1 {
     display: flex;
     vertical-align: middle;
-    justify-content: space-between;
     padding: 0em 2em;
     margin-left: 0;
+    justify-content: space-between;
 
     button {
       font-size: 18px;
@@ -21,7 +21,7 @@
     }
   }
 
-  .users {
+  .requests {
     width: 95%;
     margin: auto;
     height: calc(100% - 48px);

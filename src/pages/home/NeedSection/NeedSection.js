@@ -65,7 +65,7 @@ const NeedSection = () => {
     <div id='need-section'>
       <h2>J'ai besoin de MYFA</h2>
 
-      <p className='section-description'>Alimentaire ? Santé ? Bâtiment ?</p>
+      <p className='section-description'>Alimentaire ? Santé ? Batiment ?</p>
       <p className='section-description'>Détaillez votre besoin, nous vous contacterons pour mieux le comprendre.</p>
 
       <div id='need-section-content'>

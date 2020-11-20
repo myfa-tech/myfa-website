@@ -100,7 +100,7 @@ const OurServicesSection = () => {
 
         <div className='service' style={{ transform: `translate3d(${positions[2].x}px, ${positions[2].y}px, 0)` }}>
           <span className='icon'>🚧</span>
-          <span className='title'>Bâtiment</span>
+          <span className='title'>Batiment</span>
           <p>Des projets immobilliers au pays ?</p>
           <p>MYFA vous représente sur place : achat de matériel de construction, suivi de travaux, prise de photos.</p>
           <p>Avec MYFA, <span className='green-highlight'>recevez une facture de chaque prestation réalisée</span>.</p>

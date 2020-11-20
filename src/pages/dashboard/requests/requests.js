@@ -1,59 +1,77 @@
 import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { ClipLoader } from 'react-spinners';
+import Typography from '@material-ui/core/Typography';
 
 import DashboardLayout from '../../../components/dashboard/Layout';
 import DashboardShell from '../../../components/dashboard/Shell';
 import Table from '../../../components/dashboard/Table';
+import PeopleInfoPopover from '../../../components/PeopleInfoPopover';
 
-import { fetchUsers } from '../../../services/users';
+import fetchRequests from '../../../services/requests/fetchRequests';
+import usePopover from '../../../hooks/usePopover';
 
-import './users.scss';
+import './requests.scss';
 
 const spinnerStyle = css`
   display: block;
   margin: 0 auto;
 `;
 
-const DashbboardUsers = () => {
-  const [users, setUsers] = useState([]);
+const DashbboardRequests = () => {
+  const [requests, setRequests] = useState([]);
   const [timeFilter, setTimeFilter] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [
+    popoverInfo,
+    setPopoverInfo,
+    anchorEl,
+    setAnchorEl,
+    open,
+    handlePeopleInfoPopoverOpen,
+    handlePeopleInfoPopoverClose,
+  ] = usePopover({}, null);
 
   const columns = [
     {
-      text: 'Prénom',
-      dataField: 'firstname',
+      text: 'Type',
+      dataField: 'type',
       sort: true,
     },
     {
-      text: 'Nom',
-      dataField: 'lastname',
-      sort: true,
-    },
-    {
-      text: 'Email',
-      dataField: 'email',
-      sort: true,
-      headerStyle: () => {
-        return { width: '300px' };
+      text: 'Client',
+      dataField: 'user',
+      formatter: (cell, row, rowIndex) => {
+        return row.user ? <Typography
+          aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
+          aria-haspopup='gridtrue'
+          onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.user)}
+          onMouseLeave={handlePeopleInfoPopoverClose}
+        >
+           {row.user.firstname} {row.user.lastname}
+        </Typography> : row.userEmail
       },
+      sort: true,
     },
     {
-      text: 'Phone',
-      dataField: 'phone',
-      sort: true,
-      headerStyle: () => {
-        return { width: '180px' };
+      text: 'Contact',
+      dataField: 'contact',
+      formatter: (cell, row, rowIndex) => {
+        return row.contact ? <Typography
+          aria-owns={open ? 'mouse-over-realtive-popover' : undefined}
+          aria-haspopup='gridtrue'
+          onMouseEnter={(e) => handlePeopleInfoPopoverOpen(e, row.contact)}
+          onMouseLeave={handlePeopleInfoPopoverClose}
+        >
+           {row.contact.firstname} {row.contact.lastname}
+        </Typography> : ''
       },
+      sort: true,
     },
     {
-      text: 'Paniers payés',
-      dataField: 'qtyPaidBaskets',
+      text: 'Details',
+      dataField: 'details',
       sort: true,
-      headerStyle: () => {
-        return { width: '120px' };
-      },
     },
     {
       text: 'Date de création',
@@ -82,9 +100,9 @@ const DashbboardUsers = () => {
   };
 
   const fetchData = async () => {
-    let fetchedUsers = await fetchUsers(timeFilter);
+    let fetchedRequests = await fetchRequests(timeFilter);
 
-    fetchedUsers = fetchedUsers.map(user => {
+    fetchedRequests = fetchedRequests.map(user => {
       let qtyPaidBaskets = 0;
       let date = new Date(user.createdAt);
 
@@ -103,23 +121,23 @@ const DashbboardUsers = () => {
       };
     });
 
-    if (fetchedUsers.length < 15) {
+    if (fetchedRequests.length < 15) {
       for (let i = 0; i < 15; i++) {
-        if (!fetchedUsers[i]) {
-          fetchedUsers.push({ _id: i, email: '' });
+        if (!fetchedRequests[i]) {
+          fetchedRequests.push({ _id: i, email: '' });
         }
       }
     }
 
-    setUsers(fetchedUsers);
+    setRequests(fetchedRequests);
   };
 
   return (
     <DashboardLayout>
       <DashboardShell>
-        <div className='dashboard-users'>
+        <div className='dashboard-requests'>
           <h1>
-            <span>Utilisateurs</span>
+            <span>Demandes</span>
             <div>
               <button onClick={() => handleFilterClicked('month')}>
                 {
@@ -162,13 +180,19 @@ const DashbboardUsers = () => {
               </button>
             </div>
           </h1>
-          <div className='users'>
-            <Table data={users} columns={columns} />
+          <div className='requests'>
+            <Table data={requests} columns={columns} />
           </div>
         </div>
+        <PeopleInfoPopover
+          anchorEl={anchorEl}
+          info={popoverInfo}
+          open={open}
+          handlePopoverClose={handlePeopleInfoPopoverClose}
+        />
       </DashboardShell>
     </DashboardLayout>
   );
 };
 
-export default DashbboardUsers;
+export default DashbboardRequests;
