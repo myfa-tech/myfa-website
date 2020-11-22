@@ -16,19 +16,36 @@
       h1 {
         font-size: 60px;
         width: 615px;
+        margin: auto;
+        margin-bottom: 30px;
         color: #f1d866;
         font-weight: bold;
+        text-align: center;
       }
     }
 
     .start-btn {
-      width: 235px;
+      width: 500px;
       font-size: 20px;
+      text-align: center;
+      margin: auto;
     }
 
     .description {
       color: #333333;
       font-size: 25px;
+      margin-bottom: 50px;
+
+      ul {
+        li {
+          display: block;
+          width: 540px;
+          margin: auto;
+        }
+      }
+      p {
+        margin-left: 200px;
+      }
     }
   }
 

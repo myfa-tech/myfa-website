@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+import Button from '../../../components/Button';
+
 import './OurServicesSection.scss';
+
+import photo from '../../../images/test-photo.png';
+import Divider from '../../../components/Divider';
 
 const MAX_X = 10;
 const MAX_Y = 10;
@@ -81,29 +86,94 @@ const OurServicesSection = () => {
     <div id='our-service-section'>
       <h2>Les prestations de MYFA</h2>
 
-      <div id='services-container'>
-        <div className='service' style={{ transform: `translate3d(${positions[0].x}px, ${positions[0].y}px, 0)` }}>
-          <span className='icon'>🛒</span>
-          <span className='title'>Alimentaire</span>
-          <p>MYFA s’occupe de réaliser les courses pour vos poches.</p>
-          <p>Laissez nous leurs coordonnées, nous les appelons pour connaîre leurs besoins.</p>
-          <p>Le tout, <span className='green-highlight'>dans votre budget</span>.</p>
+      <div className='service-section'>
+        <div className='image-container'>
+          <img src={photo} />
         </div>
+        <div className='service-description-container'>
+          <div className='description right'>
+            <div className='top-element'>
+              <span className='title'>Livraison de courses <span className='highlight'>alimentaires</span> à domicile</span>
+              <p>
+                MYFA s’occupe de réaliser les courses pour vos poches.
+                Laissez nous leurs coordonnées, nous les appelons pour connaîre leurs besoins.
+              </p>
+              <p>
+                Le tout, dans votre budget.
+              </p>
 
-        <div className='service' style={{ transform: `translate3d(${positions[1].x}px, ${positions[1].y}px, 0)` }}>
-          <span className='icon'>💊</span>
-          <span className='title'>Santé</span>
-          <p>MYFA réalise les courses de médicaments de vos proches.</p>
-          <p>Sous ordonnances ou non, nous pourrons récupérer les médicaments qui leur faut.</p>
-          <p>Soyez rassurés, <span className='green-highlight'>MYFA s’occupe de vos proches</span>.</p>
+              <Divider tiny />
+            </div>
+            <div className='bottom-element'>
+              <p>
+                « Votre site a changé ma vision de l'envoi d'argent. Plus de prise de tête, plus de tracas. »
+              </p>
+
+              <p><b>Seydou</b> - Client MYFA</p>
+
+              <Button label='Démarrer' href='/#need-section' className='start-btn' />
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div className='service' style={{ transform: `translate3d(${positions[2].x}px, ${positions[2].y}px, 0)` }}>
-          <span className='icon'>🚧</span>
-          <span className='title'>Batiment</span>
-          <p>Des projets immobilliers au pays ?</p>
-          <p>MYFA vous représente sur place : achat de matériel de construction, suivi de travaux, prise de photos.</p>
-          <p>Avec MYFA, <span className='green-highlight'>recevez une facture de chaque prestation réalisée</span>.</p>
+      <div className='service-section'>
+        <div className='service-description-container'>
+          <div className='description left'>
+            <div className='top-element'>
+              <span className='title'>Gestion à distance de <span className='highlight'>chantiers immobiliers</span></span>
+              <p>
+                Des projets immobilliers au pays ?
+                MYFA vous représente sur place : achat de matériel de construction, suivi de travaux, prise de photos.
+              </p>
+              <p>
+                Avec MYFA, recevez une facture de chaque prestation réalisée.
+              </p>
+
+              <Divider tiny />
+            </div>
+            <div className='bottom-element'>
+              <p>
+                « Votre site a changé ma vision de l'envoi d'argent. Plus de prise de tête, plus de tracas. »
+              </p>
+
+              <p><b>Seydou</b> - Client MYFA</p>
+
+              <Button label='Démarrer' href='/#need-section' className='start-btn' />
+            </div>
+          </div>
+        </div>
+        <div className='image-container'>
+          <img src={photo} />
+        </div>
+      </div>
+
+      <div className='service-section'>
+        <div className='image-container'>
+          <img src={photo} />
+        </div>
+        <div className='service-description-container'>
+          <div className='description right'>
+            <div className='top-element'>
+              <span className='title'>Livraison de <span className='highlight'>médicaments</span> à domicile</span>
+              <p>
+                MYFA réalise les courses de médicaments de vos proches.
+                Sous ordonnances ou non, nous pourrons récupérer les médicaments qui leur faut.
+              </p>
+              <p>Soyez rassurés, MYFA s’occupe de vos proches.</p>
+
+              <Divider tiny />
+            </div>
+            <div className='bottom-element'>
+              <p>
+                « Votre site a changé ma vision de l'envoi d'argent. Plus de prise de tête, plus de tracas. »
+              </p>
+
+              <p><b>Seydou</b> - Client MYFA</p>
+
+              <Button label='Démarrer' href='/#need-section' className='start-btn' />
+            </div>
+          </div>
         </div>
       </div>
     </div>

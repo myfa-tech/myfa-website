@@ -2,9 +2,9 @@ import React from 'react'
 
 import './Divider.scss';
 
-const Divider = ({ color }) => {
+const Divider = ({ color, tiny }) => {
   return (
-    <div className={`divider ${color}`} />
+    <div className={`divider ${color} ${tiny ? 'tiny' : ''}`} />
   );
 };
 

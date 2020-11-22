@@ -2,12 +2,18 @@ import React from 'react';
 
 import './PricesSection.scss';
 
+import pricesBgImg from '../../../images/background-symbol-img.jpg';
+
 const PricesSection = () => {
   return (
     <div id='prices-section'>
       <h2>Une offre adaptée à chacun de vos besoins</h2>
       <p className='section-description'>Chaque prestation donne lieu à un devis.</p>
       <p className='section-description'>MYFA vous propose deux offres, en fonction de votre budget.</p>
+
+      <div className='image-container'>
+        <img src={pricesBgImg} />
+      </div>
 
       <div id='cards-container'>
         <div className='card'>

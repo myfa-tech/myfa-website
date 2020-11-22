@@ -13,6 +13,9 @@ import updateRequest from '../../../services/requests/updateRequest';
 import './NeedSection.scss';
 import useStep1Form from './useStep1Form';
 
+import confeti1 from '../../../images/confeti-vert-1.png';
+import confeti2 from '../../../images/confeti-marron-2.png';
+
 const steps = [
   { title: 'Qui êtes-vous ?' },
   { title: 'Comment MYFA peut vous aider ?' },
@@ -79,6 +82,11 @@ const NeedSection = () => {
           {step === 0 ? <Step1 errors={errorsForm1} formValues={step1FormValues} changeFormValues={changeStep1FormValues} /> : null}
           {step === 1 ? <Step2 formValues={step2FormValues} setFormValues={setStep2FormValues} /> : null}
           {step === 2 ? <Step3 formValues={step3FormValues} setFormValues={setStep3FormValues} /> : null}
+
+          <img src={confeti1} className='confeti-1' />
+          <img src={confeti2} className='confeti-2' />
+          <img src={confeti2} className='confeti-3' />
+          <img src={confeti1} className='confeti-4' />
         </div>
 
         {step === 0 ? <div>

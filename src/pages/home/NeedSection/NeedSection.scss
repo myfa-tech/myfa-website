@@ -1,6 +1,7 @@
 #need-section {
   padding: 100px 0;
   text-align: center;
+  position: relative;
 
   h2 {
     font-size: 40px;
@@ -18,11 +19,44 @@
     .form-container {
       background-color: #f1d866;
       border: 1px solid #ddd;
-      border-radius: 6px;
+      position: relative;
+      border-radius: 10px;
       margin: auto;
-      width: 600px;
+      width: 800px;
       margin-top: 5em;
       padding: 0 2em 2em 2em;
+
+      .confeti-1 {
+        position: absolute;
+        z-index: -1;
+        top: 50px;
+        left: -100px;
+        height: 100px;
+      }
+
+      .confeti-2 {
+        position: absolute;
+        z-index: -1;
+        top: 200px;
+        left: -300px;
+        height: 100px;
+      }
+
+      .confeti-3 {
+        position: absolute;
+        z-index: -1;
+        top: 50px;
+        right: -75px;
+        height: 75px;
+      }
+
+      .confeti-4 {
+        position: absolute;
+        z-index: -1;
+        bottom: -50px;
+        right: 100px;
+        height: 100px;
+      }
 
       .form-title-container {
         padding-top: 2em;

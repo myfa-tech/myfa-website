@@ -15,11 +15,10 @@ const WelcomeSection = () => {
           <h1>Le tiers de confiance de la diaspora Ivoirienne</h1>
         </div>
         <div className='description'>
-          <p>MYFA vous aide à :</p>
           <ul>
-            <li>Faire les courses pour vos proches</li>
-            <li>Acheter des médicaments pour vos proches</li>
-            <li>Acheter du matériel de construction</li>
+            <li>✔ Faites les courses pour vos proches</li>
+            <li>✔ Achetez des médicaments pour vos proches</li>
+            <li>✔ Achetez du matériel de construction</li>
           </ul>
         </div>
         <Button label='Démarrer' href='/#need-section' className='start-btn' />

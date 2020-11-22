@@ -13,24 +13,51 @@
     font-size: 20px;
   }
 
+  .image-container {
+    width: 80%;
+    height: 200px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 1em;
+    background-color: #F1D866;
+    position: relative;
+
+    .confeti-1 {
+      position: relative;
+      z-index: 1000;
+      display: block;
+      margin-left: 30%;
+      height: 50px;
+    }
+
+    .confeti-2 {
+      position: absolute;
+      z-index: -1;
+      top: 200px;
+      left: -300px;
+      height: 100px;
+    }
+  }
+
   #cards-container {
     display: flex;
     justify-content: space-between;
     width: 960px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: -100px;
 
-    .card:first-child {
-      height: 400px;
-    }
+    // .card:first-child {
+    //   height: 400px;
+    // }
 
     .card {
       background-color: white;
       display: inline-block;
       border:1px solid #ddd;
-      border-radius: 6px;
+      border-radius: 10px;
       width: 450px;
       padding: 2em 10px;
+      height: 450px;
       text-align: center;
       margin-bottom: 2em;
 
