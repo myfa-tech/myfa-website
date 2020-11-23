@@ -16,6 +16,10 @@
     .image-container {
       width: 50%;
 
+      &.mobile {
+        display: none;
+      }
+
       img {
         width: 100%;
         border-radius: 20px;
@@ -33,8 +37,13 @@
         font-size: 17px;
         justify-content: space-between;
 
+        p {
+          color: #707779;
+        }
+
         .start-btn {
           margin-top: 50px;
+          font-size: 17px;
         }
 
         &.left {
@@ -65,5 +74,53 @@
 @media (max-width: 414px) {
   #our-service-section {
     padding: 100px 0 0 0;
+
+    h2 {
+      font-size: 26px;
+    }
+
+    .service-section {
+      min-width: 100%;
+      margin-top: 2em;
+      margin-bottom: 3em;
+      flex-direction: column;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .service-description-container {
+        width: 100%;
+
+        .description {
+          width: 90%;
+
+          &.right, &.left {
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .title {
+            font-size: 1.5em;
+          }
+
+          .start-btn {
+            height: 55px;
+          }
+        }
+      }
+
+      .image-container {
+        &.desktop {
+          display: none;
+        }
+
+        &.mobile {
+          display: block;
+          margin: 2em auto;
+          width: 90%;
+        }
+      }
+    }
   }
 }

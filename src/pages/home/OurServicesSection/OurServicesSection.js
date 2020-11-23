@@ -87,7 +87,7 @@ const OurServicesSection = () => {
       <h2>Les prestations de MYFA</h2>
 
       <div className='service-section'>
-        <div className='image-container'>
+        <div className='image-container desktop'>
           <img src={photo} />
         </div>
         <div className='service-description-container'>
@@ -114,6 +114,9 @@ const OurServicesSection = () => {
               <Button label='Démarrer' href='/#need-section' className='start-btn' />
             </div>
           </div>
+        </div>
+        <div className='image-container mobile'>
+          <img src={photo} />
         </div>
       </div>
 
@@ -143,13 +146,16 @@ const OurServicesSection = () => {
             </div>
           </div>
         </div>
-        <div className='image-container'>
+        <div className='image-container desktop'>
+          <img src={photo} />
+        </div>
+        <div className='image-container mobile'>
           <img src={photo} />
         </div>
       </div>
 
       <div className='service-section'>
-        <div className='image-container'>
+        <div className='image-container desktop'>
           <img src={photo} />
         </div>
         <div className='service-description-container'>
@@ -174,6 +180,9 @@ const OurServicesSection = () => {
               <Button label='Démarrer' href='/#need-section' className='start-btn' />
             </div>
           </div>
+        </div>
+        <div className='image-container mobile'>
+          <img src={photo} />
         </div>
       </div>
     </div>

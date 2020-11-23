@@ -117,12 +117,19 @@
       .title-container {
         h1 {
           text-align: center;
+          width: 95%;
         }
       }
 
       .description {
-        width: 300px;
+        width: 90%;
         font-size: 17px;
+
+        ul {
+          li {
+            width: 100%;
+          }
+        }
 
         p {
           text-align: center;
@@ -131,6 +138,7 @@
 
       .start-btn {
         margin: auto;
+        width: 85%;
       }
     }
 
