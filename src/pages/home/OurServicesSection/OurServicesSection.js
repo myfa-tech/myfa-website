@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import Button from '../../../components/Button';
+import Divider from '../../../components/Divider';
 
 import './OurServicesSection.scss';
 
-import photo from '../../../images/test-photo.png';
-import Divider from '../../../components/Divider';
+import foodsImgSrc from '../../../images/foods-img.jpg';
+import buildingImgSrc from '../../../images/building-img.jpg';
+import healthImgSrc from '../../../images/health-img.jpg';
 
 const MAX_X = 10;
 const MAX_Y = 10;
@@ -88,7 +90,7 @@ const OurServicesSection = () => {
 
       <div className='service-section'>
         <div className='image-container desktop'>
-          <img src={photo} />
+          <img src={foodsImgSrc} />
         </div>
         <div className='service-description-container'>
           <div className='description right'>
@@ -116,7 +118,7 @@ const OurServicesSection = () => {
           </div>
         </div>
         <div className='image-container mobile'>
-          <img src={photo} />
+          <img src={foodsImgSrc} />
         </div>
       </div>
 
@@ -147,16 +149,16 @@ const OurServicesSection = () => {
           </div>
         </div>
         <div className='image-container desktop'>
-          <img src={photo} />
+          <img src={buildingImgSrc} />
         </div>
         <div className='image-container mobile'>
-          <img src={photo} />
+          <img src={buildingImgSrc} />
         </div>
       </div>
 
       <div className='service-section'>
         <div className='image-container desktop'>
-          <img src={photo} />
+          <img src={healthImgSrc} />
         </div>
         <div className='service-description-container'>
           <div className='description right'>
@@ -182,7 +184,7 @@ const OurServicesSection = () => {
           </div>
         </div>
         <div className='image-container mobile'>
-          <img src={photo} />
+          <img src={healthImgSrc} />
         </div>
       </div>
     </div>

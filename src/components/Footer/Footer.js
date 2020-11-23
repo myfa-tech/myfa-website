@@ -16,7 +16,7 @@ import { saveNewsletterMember } from '../../services/mailjet';
 import logoSrc from '../../images/logo-1.png';
 import paymentsSrc from '../../images/payments.png';
 
-import './Footer.scss'
+import './Footer.scss';
 
 const Footer = ({ noBackgroundColor }) => {
   const [isLoading, setIsLoading] = useState(false);
