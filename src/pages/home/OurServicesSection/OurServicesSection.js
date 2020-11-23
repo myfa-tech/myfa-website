@@ -108,10 +108,10 @@ const OurServicesSection = () => {
             </div>
             <div className='bottom-element'>
               <p>
-                « Votre site a changé ma vision de l'envoi d'argent. Plus de prise de tête, plus de tracas. »
+                « J'ai testé les services de Myfa et j'en suis ravie. Le service est top: suivi de livraison, ponctualité,... Mes parents étaient également ravis d'être livrés. »
               </p>
 
-              <p><b>Seydou</b> - Client MYFA</p>
+              <p><b>Prudence</b> - Cliente MYFA</p>
 
               <Button label='Démarrer' href='/#need-section' className='start-btn' />
             </div>
@@ -174,10 +174,10 @@ const OurServicesSection = () => {
             </div>
             <div className='bottom-element'>
               <p>
-                « Votre site a changé ma vision de l'envoi d'argent. Plus de prise de tête, plus de tracas. »
+                « J'ai passé commande le vendredi, pour une livraison effectuée le lundi et ma mère est ravie de son colis »
               </p>
 
-              <p><b>Seydou</b> - Client MYFA</p>
+              <p><b>Nawa</b> - Cliente MYFA</p>
 
               <Button label='Démarrer' href='/#need-section' className='start-btn' />
             </div>
