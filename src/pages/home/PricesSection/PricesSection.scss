@@ -42,20 +42,16 @@
   #cards-container {
     display: flex;
     justify-content: space-between;
-    width: 960px;
+    width: 1060px;
     margin: auto;
     margin-top: -100px;
-
-    // .card:first-child {
-    //   height: 400px;
-    // }
 
     .card {
       background-color: white;
       display: inline-block;
       border:1px solid #ddd;
       border-radius: 10px;
-      width: 450px;
+      width: 340px;
       padding: 2em 10px;
       height: 450px;
       text-align: center;
@@ -66,7 +62,7 @@
       }
 
       .price-title {
-        font-size: 30px;
+        font-size: 28px;
         color: #315F69;
       }
 
@@ -75,8 +71,10 @@
         margin-bottom: 0;
         line-height: normal;
         color: #315F69;
+        font-weight: bold;
 
         &.cfa {
+          font-weight: 400;
           font-size: 40px;
         }
       }
@@ -87,8 +85,9 @@
       }
 
       .price-complement {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
+        margin-top: 1em;
       }
     }
   }
@@ -149,7 +148,7 @@
 
         .price-complement {
           font-weight: 500;
-          font-size: 28px;
+          font-size: 22px;
         }
 
         .price-title {

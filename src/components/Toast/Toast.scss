@@ -1,0 +1,37 @@
+.myfa-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  color: #fff;
+  border-radius: 6px;
+  background-color: rgb(27, 27, 27);
+  padding: 0.5em 1em;
+  text-align: left;
+
+  &.easein {
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+    transform: translateY(50%);
+  }
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .message {
+    margin-bottom: 0;
+  }
+
+  .close-icon {
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

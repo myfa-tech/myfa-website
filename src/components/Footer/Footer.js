@@ -94,7 +94,7 @@ const Footer = ({ noBackgroundColor }) => {
           <ul>
             <li><a href='/team'>L'équipe</a></li>
             <li><a href='/faq'>Questions fréquentes</a></li>
-            <li><a href='/jobs'>Recrutement</a></li>
+            <li><a href='/jobs'>Nous rejoindre</a></li>
           </ul>
         </Col>
         <Col sm={6} lg={2} className='footer-col'>

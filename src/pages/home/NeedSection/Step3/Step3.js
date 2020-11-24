@@ -30,6 +30,7 @@ const Step3 = ({ formValues, setFormValues }) => {
         onChange={changeFormValues}
         errors={null}
         leftName='country'
+        type='phone'
         rightName='phone'
         leftValue={formValues['country']}
         rightValue={formValues['phone']}

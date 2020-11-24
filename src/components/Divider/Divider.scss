@@ -3,6 +3,10 @@
   width: 80%;
   margin: auto;
 
+  &.full {
+    width: 100%;
+  }
+
   &.tiny {
     border-bottom: 5px solid #f1d866;
     width: 50px;

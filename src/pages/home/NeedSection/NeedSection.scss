@@ -84,7 +84,26 @@
       margin: auto;
     }
 
-    .next-btn, .finish-btn {
+    .nav-btns-container {
+      width: 800px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+      .previous-btn, .finish-btn {
+        margin: auto;
+        width: 290px;
+        height: 55px;
+        margin-top: 3em;
+      }
+
+      .previous-btn {
+        background-color: rgb(221, 221, 221);
+        border: 1px solid rgb(221, 221, 221);
+      }
+    }
+
+    .next-btn {
       margin: auto;
       width: 290px;
       height: 55px;
@@ -120,6 +139,16 @@
 
         .confeti-1, .confeti-2, .confeti-3, .confeti-4 {
           display: none;
+        }
+      }
+
+      .nav-btns-container {
+        width: 100%;
+        margin-top: 30px;
+
+        .previous-btn, .finish-btn {
+          margin: auto;
+          width: 45%;
         }
       }
     }

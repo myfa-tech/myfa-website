@@ -15,10 +15,11 @@ import useStep1Form from './useStep1Form';
 
 import confeti1 from '../../../images/confeti-vert-1.png';
 import confeti2 from '../../../images/confeti-marron-2.png';
+import Toast from '../../../components/Toast/Toast';
 
 const steps = [
   { title: 'Qui êtes-vous ?' },
-  { title: 'Comment MYFA peut vous aider ?' },
+  { title: 'Quelle est votre situation ?' },
   { title: 'Qui devons-nous contacter sur place ?' },
 ];
 
@@ -28,6 +29,7 @@ const NeedSection = () => {
   const [step2FormValues, setStep2FormValues] = useState({});
   const [step3FormValues, setStep3FormValues] = useState({});
   const [request, setRequest] = useState(null);
+  const [showToast, setShowToast] = useState(false);
 
   const goTo = (link) => {
     navigate(link);
@@ -37,6 +39,7 @@ const NeedSection = () => {
     try {
       const createdRequest = await createRequest(step1FormValues);
       setRequest(createdRequest);
+      toggleShowToast();
       setStep(1);
     } catch(e) {
       // @TODO : trigger error
@@ -63,6 +66,10 @@ const NeedSection = () => {
       console.log(e);
     }
   };
+
+  const goToStep = (stepNumber) => setStep(stepNumber);
+
+  const toggleShowToast = () => setShowToast(!showToast);
 
   return (
     <div id='need-section'>
@@ -98,10 +105,17 @@ const NeedSection = () => {
           <Button className='next-btn' onClick={submitStep2} label='Suivant' />
         </div> : null}
 
-        {step === 2 ? <div>
+        {step === 2 ? <div className='nav-btns-container'>
+          <Button className='previous-btn' onClick={() => goToStep(1)} label='Précédent' />
           <Button className='finish-btn' onClick={submitStep3} label='Terminer' />
         </div> : null}
       </div>
+
+      {showToast ? <Toast
+        toggleShow={toggleShowToast}
+        delay={5000}
+        message='Merci ! Dites-nous en plus sur votre besoin 😉'
+      /> : null}
     </div>
   );
 };

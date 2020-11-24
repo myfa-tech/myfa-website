@@ -22,6 +22,7 @@ const SignupPage = lazy(() => import('./pages/signup'));
 const ArticlePage = lazy(() => import('./pages/articles'));
 const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
+const JobsPage = lazy(() => import('./pages/jobs'));
 const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
 const FaqPage = lazy(() => import('./pages/faq'));
 const DashboardHomeKPIs = lazy(() => import('./pages/dashboard/home'));
@@ -67,7 +68,7 @@ const App = () => (
       <LoginPage path='/login' />
       <SignupPage path='/signup' />
       <LogoutPage path='/logout' />
-      {/* <JobsPage path='/jobs' /> */}
+      <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
       <RatingsPage path='/ratings' />
       <BlogPage path='/blog' />

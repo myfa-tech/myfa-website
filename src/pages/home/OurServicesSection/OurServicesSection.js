@@ -8,6 +8,7 @@ import './OurServicesSection.scss';
 import foodsImgSrc from '../../../images/foods-img.jpg';
 import buildingImgSrc from '../../../images/building-img.jpg';
 import healthImgSrc from '../../../images/health-img.jpg';
+import giftImgSrc from '../../../images/gift-img.jpg';
 
 const MAX_X = 10;
 const MAX_Y = 10;
@@ -185,6 +186,36 @@ const OurServicesSection = () => {
         </div>
         <div className='image-container mobile'>
           <img src={healthImgSrc} />
+        </div>
+      </div>
+
+      <div className='service-section'>
+        <div className='service-description-container'>
+          <div className='description left'>
+            <div className='top-element'>
+              <span className='title'>Faites <span className='highlight'>plaisir</span> à vos proches</span>
+              <p>
+                Toutes les occasions sont bonnes pour faire plaisir ! Grâce à MYFA, prenez soin des vôtres autrement!
+              </p>
+
+              <Divider tiny />
+            </div>
+            <div className='bottom-element'>
+              <p>
+                « Belle occasion d’offrir pour la fête des mères, service que je recommande. »
+              </p>
+
+              <p><b>Doriane</b> - Cliente MYFA</p>
+
+              <Button label='Démarrer' href='/#need-section' className='start-btn' />
+            </div>
+          </div>
+        </div>
+        <div className='image-container desktop'>
+          <img src={giftImgSrc} />
+        </div>
+        <div className='image-container mobile'>
+          <img src={giftImgSrc} />
         </div>
       </div>
     </div>

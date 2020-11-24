@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Select.scss';
 
-const SelectOption = ({ children, key }) => {
+const SelectOption = ({ children, value, key }) => {
   return (
-    <option key={key}>{children}</option>
+    <option key={key} value={value}>{children}</option>
   );
 };
 

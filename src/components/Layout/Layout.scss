@@ -13,14 +13,24 @@
   }
 
   &.green {
+    background-image: url(../../images/layout-green.png);
+    background-size: 100% 100%;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+
     .background {
-      background-image: url(../../images/layout-green.png);
+      background: none;
     }
   }
 
   &.mix {
+    background-image: url(../../images/layout-mix.png);
+    background-size: 100% 100%;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+
     .background {
-      background-image: url(../../images/layout-mix.png);
+      background: none;
     }
   }
 
@@ -33,12 +43,16 @@
 
 @media (max-width: 414px) {
   .layout {
+    background: none;
+
     .background {
       background-image: none;
       background-color: #fff;
     }
 
     &.green {
+      background: none;
+
       .background {
         background-image: none;
         background-color: #fff;
@@ -46,6 +60,8 @@
     }
 
     &.mix {
+      background: none;
+
       .background {
         background-image: none;
         background-color: #fff;
@@ -53,6 +69,8 @@
     }
 
     &.light {
+      background: none;
+
       .background {
         background-image: none;
         background-color: #fff;

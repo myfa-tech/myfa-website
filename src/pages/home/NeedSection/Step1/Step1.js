@@ -15,8 +15,8 @@ const Step1 = ({ errors, formValues, changeFormValues }) => {
         rightName='lastname'
         leftValue={formValues['firstname']}
         rightValue={formValues['lastname']}
-        leftPlaceholder='Prénom'
-        rightPlaceholder='Nom'
+        leftPlaceholder='Prénom*'
+        rightPlaceholder='Nom*'
       />
 
       <HalfInputs
@@ -27,7 +27,8 @@ const Step1 = ({ errors, formValues, changeFormValues }) => {
         leftValue={formValues['country']}
         rightValue={formValues['phone']}
         leftPlaceholder='Indicatif'
-        rightPlaceholder='Téléphone'
+        type='phone'
+        rightPlaceholder='Téléphone*'
       />
 
       <TextInput
@@ -35,7 +36,7 @@ const Step1 = ({ errors, formValues, changeFormValues }) => {
         name='email'
         className={`${errors['email'] ? 'error' : ''}`}
         onChange={changeFormValues}
-        placeholder='Email'
+        placeholder='Email*'
       />
     </div>
   );

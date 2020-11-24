@@ -1,27 +1,23 @@
-import React from 'react';
-import BootstrapToast from 'react-bootstrap/Toast';
-import useTranslate from '../../hooks/useTranslate';
+import React, { useEffect } from 'react';
+import { FaTimes } from 'react-icons/fa';
 
-const Toast = (props) => {
-  const { show, setShow, type } = props;
-  const [t] = useTranslate();
+import './Toast.scss';
 
-  const title = type === 'success' ? '✅' : '❌';
-  const message = type === 'success' ? t('home_page.newsletter.popup.success') : t('home_page.newsletter.popup.failure');
+const Toast = ({ toggleShow, title, message, delay }) => {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      toggleShow();
+    }, delay || 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <BootstrapToast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-      <BootstrapToast.Header>
-        <img
-          src='holder.js/20x20?text=%20'
-          className='rounded mr-2'
-          alt=''
-        />
-        <strong className='mr-auto' style={{ color: 'black' }}>{title}</strong>
-        <small style={{ color: 'black' }}>{t('home_page.newsletter.popup.event_time')}</small>
-      </BootstrapToast.Header>
-      <BootstrapToast.Body style={{ color: 'black' }}>{message}</BootstrapToast.Body>
-    </BootstrapToast>
+    <div className='myfa-toast easein easeout'>
+      {title ? <p className='title'>{title}</p> : null}
+      <p className='message'>{message}</p>
+      <span className='close-icon' onClick={toggleShow}><FaTimes /></span>
+    </div>
   );
 };
 
