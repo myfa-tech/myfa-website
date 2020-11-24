@@ -24,7 +24,7 @@ const steps = [
 ];
 
 const NeedSection = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
   const { handleSubmitForm: handleSubmitForm1, errors: errorsForm1, changeFormValues: changeStep1FormValues, values: step1FormValues } = useStep1Form(submitStep1);
   const [step2FormValues, setStep2FormValues] = useState({});
   const [step3FormValues, setStep3FormValues] = useState({});
