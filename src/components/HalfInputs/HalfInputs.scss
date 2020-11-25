@@ -1,0 +1,28 @@
+.half-inputs {
+  display: flex;
+  justify-content: space-between;
+
+  &.phone {
+    .myfa-select {
+      width: 30%;
+      height: 58px;
+      margin-bottom: 0;
+    }
+
+    .input-container {
+      width: 68%;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .input-container, .myfa-select {
+    width: 48%;
+
+    input {
+      width: 100%;
+    }
+  }
+}

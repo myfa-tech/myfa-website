@@ -14,20 +14,28 @@
   }
 
   .content-container {
-    margin: 0 10em;
+    margin: 0 10em 2em 10em;
+    min-height: 400px;
 
     .job-row {
+      display: flex;
       background-color: white;
       margin-top: 1em;
       padding: 1em;
-      border-radius: 0;
+      border-radius: 10px;
+      box-shadow: 0px 0px 25px -11px rgb(148, 148, 148);
+
+      .description {
+        flex-grow: 1;
+        padding-left: 2em;
+      }
 
       .img-container {
         display: flex;
         align-items: center;
 
         img {
-          width: 100%;
+          width: 90px;
         }
       }
 
@@ -42,6 +50,8 @@
         .download-btn {
           background-color: #315f69;
           border: 1px solid #315f69;
+          color: #fff;
+          height: 47px;
         }
       }
     }
@@ -58,6 +68,16 @@
 
     .content-container {
       margin: 0 5px;
+
+      h3 {
+        text-align: center;
+      }
+
+      .job-row {
+        .description {
+          padding-left: 0;
+        }
+      }
     }
   }
 }

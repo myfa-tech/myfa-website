@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import useTranslate from '../hooks/useTranslate';
 import UserStorage from '../services/UserStorage';
-import CartStorage from '../services/CartStorage';
 import DashboardUserStorage from '../services/DashboardUserStorage';
 
 const LogoutPage = () => {
@@ -9,7 +8,6 @@ const LogoutPage = () => {
 
   useEffect(() => {
     UserStorage.deleteUser();
-    CartStorage.deleteCart();
     DashboardUserStorage.deleteUser();
     window.localStorage.removeItem('popupViewed');
 

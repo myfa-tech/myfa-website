@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAdminAuthentication } from '../../../hooks/useAuthentication';
 import { isEmployeeLoggedIn } from '../../../services/auth';
 
@@ -6,21 +6,36 @@ import './Shell.scss';
 
 const Shell = ({ children }) => {
   const { loading } = useAdminAuthentication({ redirect: '/dashboard/login' });
-  const isEmployee = isEmployeeLoggedIn();
+  const [category, setCategory] = useState(null);
+
+  useEffect(() => {
+    const url = window.location.pathname;
+
+    if (url.includes('users')) {
+      setCategory('users');
+    } else if (url.includes('requests')) {
+      setCategory('requests');
+    } else if (url.includes('baskets')) {
+      setCategory('baskets');
+    } else {
+      setCategory('home');
+    }
+  }, []);
 
   return loading ? null : (
     <div className='dashboard-shell'>
       <div className='sidebar'>
         <ul>
-          <li><a href='/dashboard'><span aria-label='accueil' role="img">🏠</span> Accueil</a></li>
-          <li><a href='/dashboard/users'><span aria-label='utilisateurs' role="img">👥</span> Utilisateurs</a></li>
-          <li><a href='/dashboard/baskets'><span aria-label='paniers' role="img">🧺</span> Paniers</a></li>
-          {isEmployee ? null : <li><a href='/dashboard/finance'><span aria-label='finance' role="img">💰</span> Finance</a></li>}
-          <li><a href='/dashboard/stocks'><span aria-label='stocks' role="img">🥑</span> Stocks</a></li>
+          <li><a className={category === 'home' ? 'selected' : ''} href='/dashboard'><span aria-label='accueil' role="img">🏠</span> Accueil</a></li>
+          <li><a className={category === 'users' ? 'selected' : ''} href='/dashboard/users'><span aria-label='utilisateurs' role="img">👥</span> Utilisateurs</a></li>
+          <li><a className={category === 'requests' ? 'selected' : ''} href='/dashboard/requests'><span aria-label='request' role="img">📦</span> Demandes</a></li>
+          <li><a className={category === 'baskets' ? 'selected' : ''} href='/dashboard/baskets'><span aria-label='paniers' role="img">🧺</span> Paniers [archive]</a></li>
         </ul>
       </div>
       <div className='content'>
-        {children}
+        <div className='content-card'>
+          {children}
+        </div>
       </div>
     </div>
   );

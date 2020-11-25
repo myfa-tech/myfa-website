@@ -137,16 +137,14 @@ const RatingsList = ({ className }) => {
 
       <div className='footer-nav'>
         <FaCaretLeft className='arrow left-arrow' onClick={() => goToPage(page-1)} />
-        <div>
-          {pages.map((p, pagesIndex) => (
-            <Button
-              key={pagesIndex}
-              className={`page-button ${page !== p ? 'not-actual' : ''}`}
-              label={p}
-              onClick={() => goToPage(p)}
-            />
-          ))}
-        </div>
+        {pages.map((p, pagesIndex) => (
+          <Button
+            key={pagesIndex}
+            className={`page-button ${page !== p ? 'not-actual' : ''}`}
+            label={p}
+            onClick={() => goToPage(p)}
+          />
+        ))}
         <FaCaretRight className='arrow right-arrow' onClick={() => goToPage(page+1)} />
       </div>
     </div>

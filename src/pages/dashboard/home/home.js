@@ -10,7 +10,7 @@ import { fetchGoals, updateGoalById } from '../../../services/kpi-goals';
 import { isEmployeeLoggedIn } from '../../../services/auth';
 
 const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
-  const { generalKpis, weekKpis, monthKpis } = kpis;
+  const { generalKpis, monthKpis } = kpis;
   const isEmployee = isEmployeeLoggedIn();
 
   const getColor = (id, value) => {
@@ -22,8 +22,6 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
 
     goals.filter(g => g.id.includes('month')).forEach(goal => {
       colors[goal.id] = Number(goal.value);
-      let weekId = goal.id.substr(5);
-      colors[`week${weekId}`] = goal.value / 4;
     });
 
     if (value < (colors[id] / 2)) {
@@ -60,16 +58,6 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
 
   return (
     <div className='kpis-container'>
-      <h2>Cette semaine</h2>
-      <div className='kpis'>
-        {weekKpis.map((kpi, index) => (
-          <div className={`kpi-container ${getColor(kpi.id, kpi.result)}`} key={index}>
-            <h2>{kpi.result}</h2>
-            <h3>{kpi.label}</h3>
-          </div>
-        ))}
-      </div>
-
       <h2>Ce mois</h2>
       <div className='kpis'>
         {monthKpis.map((kpi, index) => (
@@ -104,7 +92,6 @@ const KPIs = ({ kpis, goals, setGoals, editGoal }) => {
 
 const DashbboardHome = () => {
   const [generalKpis, setGeneralKpis] = useState([]);
-  const [weekKpis, setWeekKpis] = useState([]);
   const [monthKpis, setMonthKpis] = useState([]);
   const [goals, setGoals] = useState([]);
 
@@ -118,11 +105,9 @@ const DashbboardHome = () => {
       const fetchedGoals = await fetchGoals();
 
       const generalKpis = fetchedKPIs.filter(kpi => kpi.section === 'general');
-      const weekKpis = fetchedKPIs.filter(kpi => kpi.section === 'week');
       const monthKpis = fetchedKPIs.filter(kpi => kpi.section === 'month');
 
       setGeneralKpis(generalKpis);
-      setWeekKpis(weekKpis);
       setMonthKpis(monthKpis);
 
       setGoals(fetchedGoals);
@@ -136,7 +121,7 @@ const DashbboardHome = () => {
       <DashboardShell>
         <div className='dashboard-home'>
           <h1>Accueil</h1>
-          {goals.length && <KPIs goals={goals} setGoals={setGoals} editGoal={editGoal} kpis={{ generalKpis, weekKpis, monthKpis }} />}
+          {goals.length && <KPIs goals={goals} setGoals={setGoals} editGoal={editGoal} kpis={{ generalKpis, monthKpis }} />}
         </div>
       </DashboardShell>
     </DashboardLayout>

@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
-import SectionTitle from '../../components/SectionTitle';
+import Layout from '../../components/Layout';
 import Button from '../../components/Button';
-import ThanksSection from './ThanksSection';
 import RatingsList from './RatingsList';
 import RatingModal from './RatingModal';
 
-import headerBackground from '../../images/ratings-bg.jpg';
-import useTranslate from '../../hooks/useTranslate';
 import EventEmitter from '../../services/EventEmitter';
 import UserStorage from '../../services/UserStorage';
+import { saveRating } from '../../services/ratings';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './ratings.scss';
-import { saveRating } from '../../services/ratings';
 
 const RatingsPage = () => {
-  const [t] = useTranslate();
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,35 +40,26 @@ const RatingsPage = () => {
   };
 
   return (
-    <Layout
-      className='ratings'
-      headerBackground={headerBackground}
-      headerBackgroundPosition='center center'
-      headerDescription={t('ratings.description')}
-    >
+    <Layout className='ratings' color='green'>
       <SEO title='Avis' />
 
       <div id='ratings'>
-        <SectionTitle
-          title={t('ratings.title')}
-          mobileTitle={t('ratings.title')}
-          secondary={{ text: 'Accueil', link: '/' }}
-        />
+        <div className='title-container'>
+          <h2>Avis des clients</h2>
 
-        <p className='description'>
-          {t('ratings.introduction')}
-        </p>
+          <h3 className='description'>
+            Bien plus qu’une notation accompagnée d’un commentaire, tous vos avis comptent. Ils nous permettent de nous remettre en question afin de vous proposer un service se rapprochant le plus de vos désirs.
+          </h3>
+        </div>
 
         <div className='button-container'>
           {!!user ?
-            <Button label={t('ratings.button_label')} className='rating-button' onClick={giveRating} /> :
-            <Button label={t('ratings.login_button')} className='rating-button' onClick={() => eventEmitter.emit('showLogin')} />
+            <Button label='Donner mon avis' className='rating-button' onClick={giveRating} /> :
+            <Button label='Connectez-vous' className='rating-button' href='/login?pagefrom=ratings' />
           }
         </div>
 
         <RatingsList className='ratings-list' />
-
-        <ThanksSection />
       </div>
 
       <RatingModal

@@ -1,5 +1,4 @@
 table {
-
   th {
     padding: 0.25rem 0.75rem !important;
     background-color: rgb(226, 226, 226);
@@ -25,6 +24,10 @@ table {
     &.is-delivery-today {
       border: 3px solid orange;
     }
+  }
+
+  .MuiTypography-body1 {
+    font-size: 14px;
   }
 }
 

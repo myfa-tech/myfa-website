@@ -1,0 +1,80 @@
+.email-confirmation-page {
+  height: 90vh;
+  position: relative;
+  padding-top: 10vh;
+
+  .form-check-img {
+    display: block;
+    width: 145px;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    color: #315F69;
+  }
+
+  p {
+    text-align: center;
+    max-width: 730px;
+    margin: auto;
+    font-size: 25px;
+  }
+
+  .two-people-img {
+    position: absolute;
+    bottom: 10px;
+    width: 265px;
+    left: 35px;
+  }
+
+  .single-guy-img {
+    position: absolute;
+    bottom: 10px;
+    width: 240px;
+    right: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .email-confirmation-page {
+    height: calc(100vh - 50px);
+    padding-top: 20vh;
+
+    .single-guy-img {
+      display: none;
+    }
+
+    p {
+      width: 90%;
+    }
+
+    .two-people-img {
+      left: 100px;
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  .email-confirmation-page {
+    padding-top: 10vh;
+
+    .form-check-img {
+      width: 50px;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .two-people-img {
+      width: 145px;
+      left: 50px;
+    }
+  }
+}

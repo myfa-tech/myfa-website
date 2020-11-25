@@ -1,8 +1,11 @@
 #ratings-list {
   .rating {
-    border-bottom: 1px solid black;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;;
+    padding: 1em;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
 
     .rating-header {
       display: flex;
@@ -14,8 +17,9 @@
         align-items: center;
 
         .user-name {
-          font-size: 18px;
+          font-size: 20px;
           font-weight: bold;
+          color: #311A19;
         }
 
         .stars {
@@ -34,11 +38,11 @@
 
     .rating-subject {
       font-size: 17px;
-      font-weight: bold;
     }
 
     .rating-text {
-      font-size: 15px;
+      font-size: 17px;
+      color: #311A19;
     }
   }
 
@@ -56,8 +60,7 @@
       &.not-actual {
         color: rgba(49, 26, 25, 0.5);
         background-color: rgba(241, 216, 102, 0.5);
-        border-radius: 0;
-        border-color: rgba(49, 26, 25, 0.5);
+        border-color: rgba(241, 216, 102, 0.5);
       }
     }
 

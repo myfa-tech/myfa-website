@@ -13,43 +13,23 @@ import './index.scss';
 
 import myfaLoadingSrc from './images/myfa-loading.gif';
 
-const ProductsCategory = lazy(() => import('./pages/products-category'));
-const DetailsCategories = lazy(() => import('./pages/details_categories'));
-const UniqueProductPage = lazy(() => import('./pages/unique_product'));
 const HomePage = lazy(() => import('./pages/home'));
-const EmailConfirmationSuccessPage = lazy(() => import('./pages/email_confirmation_success'));
-const MobileMoneyOrdersPage = lazy(() => import('./pages/mobile_money_orders'));
-const ProfilePage = lazy(() => import('./pages/profile'));
-const ResetPasswordEmailPage = lazy(() => import('./pages/reset_password/email'));
-const ResetPasswordPasswordPage = lazy(() => import('./pages/reset_password/password'));
 const TeamPage = lazy(() => import('./pages/team'));
-const BasketsDetailsPage = lazy(() => import('./pages/baskets_details'));
-const CartPage = lazy(() => import('./pages/cart'));
-const CguEnPage = lazy(() => import('./pages/cgu_en'));
-const CguFrPage = lazy(() => import('./pages/cgu_fr'));
-const CgvFrPage = lazy(() => import('./pages/cgv_fr'));
-const CgvEnPage = lazy(() => import('./pages/cgv_en'));
-const LegalEnPage = lazy(() => import('./pages/legal_en'));
-const LegalFrPage = lazy(() => import('./pages/legal_fr'));
-const CustomBasketPage = lazy(() => import('./pages/custom-basket'));
-const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
-const LogoutPage = lazy(() => import('./pages/logout'));
-const OrdersPage = lazy(() => import('./pages/orders'));
-const ArticlePage = lazy(() => import('./pages/articles'));
-const Packs = lazy(() => import('./pages/packs'));
-const Baskets = lazy(() => import('./pages/baskets'));
-const JobsPage = lazy(() => import('./pages/jobs'));
-const FaqPage = lazy(() => import('./pages/faq'));
-const BlogPage = lazy(() => import('./pages/blog'));
 const RatingsPage = lazy(() => import('./pages/ratings'));
+const BlogPage = lazy(() => import('./pages/blog'));
+const LoginPage = lazy(() => import('./pages/login'));
+const SignupPage = lazy(() => import('./pages/signup'));
+const ArticlePage = lazy(() => import('./pages/articles'));
+const LogoutPage = lazy(() => import('./pages/logout'));
 const NotFound = lazy(() => import('./pages/404'));
-
-const DashboardHomeKPIs = lazy(() => import('./pages/dashboard'));
+const JobsPage = lazy(() => import('./pages/jobs'));
+const EmailConfirmationPage = lazy(() => import('./pages/email_confirmation'));
+const FaqPage = lazy(() => import('./pages/faq'));
+const DashboardHomeKPIs = lazy(() => import('./pages/dashboard/home'));
 const DashboardLogin = lazy(() => import('./pages/dashboard/login'));
 const DashboardUsers = lazy(() => import('./pages/dashboard/users'));
 const DashboardBaskets = lazy(() => import('./pages/dashboard/baskets'));
-const DashboardFinance = lazy(() => import('./pages/dashboard/finance'));
-const DashboardStocks = lazy(() => import('./pages/dashboard/stocks'));
+const DashbboardRequests = lazy(() => import('./pages/dashboard/requests'));
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -74,45 +54,31 @@ const App = () => (
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
-      <EmailConfirmationSuccessPage path='/email_confirmation_success' />
-      <MobileMoneyOrdersPage path='/mobile_money_orders' />
+      {/* <EmailConfirmationSuccessPage path='/email_confirmation_success' />
       <Redirect
         from="/profile"
         to="/profile/information"
       />
-      <ProfilePage path='/profile/*' />
       <ResetPasswordEmailPage path='/reset_password/email' />
       <ResetPasswordPasswordPage path='/reset_password/password' />
-      <BasketsDetailsPage path='/baskets/details' />
-      <BasketsDetailsPage path='/packs/details' />
-      <CartPage path='/cart' />
       <CguFrPage path='/cgu_fr'/>
-      <CguEnPage path='/cgu_en'/>
       <CgvFrPage path='/cgv_fr'/>
-      <CgvEnPage path='/cgv_en'/>
-      <LegalEnPage path='/legal_en' />
-      <LegalFrPage path='/legal_fr' />
-      <CustomBasketPage path='/custom-basket' />
+      <LegalFrPage path='/legal_fr' /> */}
       <EmailConfirmationPage path='/email_confirmation' />
-      <DetailsCategories path='/details-categories' />
-      <ProductsCategory path='/details-categories/:category' />
-      <UniqueProductPage path='/products/:productName' />
+      <LoginPage path='/login' />
+      <SignupPage path='/signup' />
       <LogoutPage path='/logout' />
-      <OrdersPage path='/orders' />
       <JobsPage path='/jobs' />
       <FaqPage path='/faq' />
-      <Packs path='/packs' />
-      <Baskets path='/pleasure-baskets' />
-      <BlogPage path='/blog' />
       <RatingsPage path='/ratings' />
+      <BlogPage path='/blog' />
       <ArticlePage path='articles/:articleId' />
 
       <DashboardHomeKPIs path='/dashboard' />
       <DashboardLogin path='/dashboard/login' />
       <DashboardUsers path='/dashboard/users' />
+      <DashbboardRequests path='/dashboard/requests' />
       <DashboardBaskets path='/dashboard/baskets' />
-      <DashboardFinance path='/dashboard/finance' />
-      <DashboardStocks path='/dashboard/stocks' />
       <NotFound default />
     </Router>
   </Suspense>

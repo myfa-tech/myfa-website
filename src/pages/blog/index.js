@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Card from '../../components/Card';
 
 import { fetchArticles } from '../../services/contentful';
 import getFormattedDate from '../../utils/getFormattedDate';
 import useTranslate from '../../hooks/useTranslate';
-
-import blogBg from '../../images/blog-bg.jpg';
 
 import './blog.scss';
 
@@ -67,35 +63,28 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <Layout
-      className='blog'
-      headerBackground={blogBg}
-      headerBackgroundPosition='center top'
-      stickyHeaderBackgroundPosition='right top'
-      headerDescription={t('blog.description')}
-    >
+    <Layout className='blog' color='mix'>
       <SEO title='Blog' />
 
       <div id='blog'>
         <div className='title-container'>
           <h2>Blog</h2>
+          <h3>A tour de rôle, nous prenons la plume pour vous faire part des nouveautés concernant la diaspora africaine ou encore le service MYFA.</h3>
         </div>
 
-        <Row>
+        <div className='blog-cards-container'>
           {articles.map(article => (
-            <Col sm={6} lg={4}>
-              <Card
-                className='blog-article-card'
-                onClick={() => goTo(`/articles/${article.path}`)}
-                title={article.title}
-                description={article.description}
-                imgSrc={article.cover ? article.cover.fields.file.url : article.displayCover ? article.displayCover.fields.file.url : null}
-                footerLeft={getAuthor(article.author).name}
-                footerRight={getFormattedDate(article.createdAt)}
-              />
-            </Col>
+            <Card
+              className='blog-article-card'
+              onClick={() => goTo(`/articles/${article.path}`)}
+              title={article.title}
+              description={article.description}
+              imgSrc={article.cover ? article.cover.fields.file.url : article.displayCover ? article.displayCover.fields.file.url : null}
+              footerLeft={getAuthor(article.author).name}
+              footerRight={getFormattedDate(article.createdAt)}
+            />
           ))}
-        </Row>
+        </div>
       </div>
     </Layout>
   );

@@ -1,9 +1,22 @@
 .dashboard-home {
-  height: 100%;
   width: 100%;
+  padding-left: 3em;
+
+  h1 {
+    font-size: 25px;
+    margin-left: 0;
+  }
 
   .kpis-container {
-    padding: 3em;
+    padding: 1em 3em 1em 0;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 17px;
+    }
 
     .kpis {
       display: flex;
@@ -15,9 +28,10 @@
         padding: 1em;
         margin: 1em;
         position: relative;
+        width: 120px;
         text-align: center;
         border: 1px solid rgb(226, 226, 226);
-        border-radius: 0;
+        border-radius: 6px;
 
         &.red {
           background-color: #ef5350;
@@ -45,14 +59,6 @@
             padding: 0;
             margin: 0;
           }
-        }
-
-        h2 {
-          font-size: 30px;
-        }
-
-        h3 {
-          font-size: 17px;
         }
       }
     }

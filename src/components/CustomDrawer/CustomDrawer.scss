@@ -1,6 +1,6 @@
 #custom-drawer {
   * {
-    font-family: "Josefin Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 
   .MuiDrawer-paper {
@@ -8,9 +8,22 @@
 
     .list-item {
       text-align: center;
+
+      &.sub-list-item {
+        color: #555;
+      }
+
       * {
         font-size: 22px;
       }
+    }
+
+    .button {
+      width: 80%;
+      background-color: #ffe77d;
+      margin: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
   }
 }

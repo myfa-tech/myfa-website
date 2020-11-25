@@ -1,61 +1,5 @@
 
 .team {
-  .content-container {
-    background-color: rgba(241, 216, 102, 0.1);
-    border-radius: 0;
-    width: 90%;
-    margin: auto;
-
-    .article-block {
-      text-align: center;
-      margin-top: 20px;
-
-      .desktop-quote {
-        display: block;
-
-        .member-description {
-          height: 75px;
-        }
-      }
-
-      .mobile-quote {
-        display: none;
-      }
-
-      .quote-icon {
-        margin-bottom: 20px;
-        color: #f1d866;
-      }
-
-      .author-id {
-        margin-top: 20px;
-        padding-bottom: 10px;
-
-        h4 {
-          margin-bottom: 0;
-        }
-
-        .social-links {
-          a {
-            text-decoration: none;
-            color: #311a19;
-            margin-left: 5px;
-            margin-right: 5px;
-
-            &:hover {
-              color: #315f69;
-            }
-          }
-        }
-
-        .profile-pic {
-          width: 100px;
-          margin-bottom: 20px;
-        }
-      }
-    }
-  }
-
   .title-container {
     text-align: center;
     padding-top: 50px;
@@ -65,18 +9,98 @@
       color: #311a19;
       font-weight: 600;
       font-size: 45px;
-		}
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 400;
+      width: 850px;
+      margin: auto;
+    }
+  }
+
+  .content-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    .article-block {
+      text-align: center;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 400px;
+      margin-top: 20px;
+      margin-bottom: 2em;
+      padding-bottom: 30px;
+
+      .member-description {
+        width: 300px;
+        text-align: justify;
+        font-size: 17px;
+        margin: 20px auto;
+      }
+
+      .author-id {
+        padding-bottom: 10px;
+
+        h4 {
+          margin-bottom: 0;
+          font-size: 20px;
+          color: #315F69;
+          font-weight: bold;
+        }
+
+        .social-links {
+          a {
+            text-decoration: none;
+            color: #311a19;
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 20px;
+
+            &:hover {
+              color: #315f69;
+            }
+          }
+        }
+
+        .profile-pic {
+          width: 100%;
+          margin-bottom: 20px;
+          border-radius: 6px 6px 0 0;
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
   .team {
+    .title-container {
+      h3 {
+        width: 90%;
+      }
+    }
+
     .content-container {
       .article-block {
+        width: 30%;
+
+        .member-description {
+          width: 90%;
+        }
+
         .author-id {
           h4 {
             font-size: 18px;
           }
+
+          // .profile-pic {
+          //   width: 40%;
+          // }
         }
 
         .desktop-quote {
@@ -91,7 +115,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 414px) {
   .team {
     .title-container {
       h2 {
@@ -100,17 +124,20 @@
     }
 
     .content-container {
-      border: none;
-      border-radius: 0;
       width: 100%;
-    }
-  }
-}
+      flex-wrap: wrap;
 
-@media (max-width: 350px) {
-  .team {
-    h2 {
-      font-size: 23px;
+      .article-block {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .author-id {
+          h4 {
+            font-size: 17px;
+          }
+        }
+      }
     }
   }
 }

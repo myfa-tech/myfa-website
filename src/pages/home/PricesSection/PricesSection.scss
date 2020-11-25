@@ -1,0 +1,160 @@
+#prices-section {
+  padding: 100px 0 0 0;
+  text-align: center;
+
+  h2 {
+    font-size: 40px;
+    color: #315F69;
+  }
+
+  .section-description {
+    margin: 0;
+    color: #676767;
+    font-size: 20px;
+  }
+
+  .image-container {
+    width: 80%;
+    height: 200px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 1em;
+    background-color: #F1D866;
+    position: relative;
+
+    .confeti-1 {
+      position: relative;
+      z-index: 1000;
+      display: block;
+      margin-left: 30%;
+      height: 50px;
+    }
+
+    .confeti-2 {
+      position: absolute;
+      z-index: -1;
+      top: 200px;
+      left: -300px;
+      height: 100px;
+    }
+  }
+
+  #cards-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1060px;
+    margin: auto;
+    margin-top: -100px;
+
+    .card {
+      background-color: white;
+      display: inline-block;
+      border:1px solid #ddd;
+      border-radius: 10px;
+      width: 340px;
+      padding: 2em 10px;
+      height: 450px;
+      text-align: center;
+      margin-bottom: 2em;
+
+      .price-icon {
+        font-size: 40px;
+      }
+
+      .price-title {
+        font-size: 28px;
+        color: #315F69;
+      }
+
+      .price-number {
+        font-size: 70px;
+        margin-bottom: 0;
+        line-height: normal;
+        color: #315F69;
+        font-weight: bold;
+
+        &.cfa {
+          font-weight: 400;
+          font-size: 40px;
+        }
+      }
+
+      .or {
+        font-size: 25px;
+        margin-bottom: 0;
+      }
+
+      .price-complement {
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 1em;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #prices-section {
+    .section-description {
+      width: 80%;
+      margin: auto;
+      font-size: 20px;
+    }
+
+    .image-container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #prices-section {
+    padding: 100px 0 0 0;
+
+    h2 {
+      font-size: 26px;
+    }
+
+    .section-description {
+      font-size: 17px;
+    }
+
+    .image-container {
+      display: none;
+    }
+
+    #cards-container {
+      flex-wrap: wrap;
+      width: 90%;
+      margin-top: 2em;
+
+      .card {
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 25px -11px rgba(221,221,221,1);
+        -moz-box-shadow: 0px 0px 25px -11px rgba(221,221,221,1);
+        box-shadow: 0px 0px 25px -11px rgba(221,221,221,1);
+        height: unset;
+
+        .price-number {
+          font-size: 40px;
+          font-weight: bold;
+
+          &.cfa {
+            font-size: 30px;
+          }
+        }
+
+        .price-complement {
+          font-weight: 500;
+          font-size: 22px;
+        }
+
+        .price-title {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

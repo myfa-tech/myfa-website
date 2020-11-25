@@ -120,45 +120,47 @@ const DashbboardUsers = () => {
         <div className='dashboard-users'>
           <h1>
             <span>Utilisateurs</span>
-            <button onClick={() => handleFilterClicked('month')}>
-              {
-                isLoading === 'month' ?
-                <ClipLoader
-                  css={spinnerStyle}
-                  sizeUnit={'px'}
-                  size={25}
-                  color={'#000'}
-                  loading={true}
-                /> :
-                'Ce mois-ci'
-              }
-            </button>
-            <button onClick={() => handleFilterClicked('week')}>
-              {
-                isLoading === 'week' ?
-                <ClipLoader
-                  css={spinnerStyle}
-                  sizeUnit={'px'}
-                  size={25}
-                  color={'#000'}
-                  loading={true}
-                /> :
-                'Cette semaine'
-              }
-            </button>
-            <button onClick={() => handleFilterClicked('today')}>
-              {
-                isLoading === 'today' ?
-                <ClipLoader
-                  css={spinnerStyle}
-                  sizeUnit={'px'}
-                  size={25}
-                  color={'#000'}
-                  loading={true}
-                /> :
-                'Aujourd\'hui'
-              }
-            </button>
+            <div>
+              <button onClick={() => handleFilterClicked('month')}>
+                {
+                  isLoading === 'month' ?
+                  <ClipLoader
+                    css={spinnerStyle}
+                    sizeUnit={'px'}
+                    size={25}
+                    color={'#000'}
+                    loading={true}
+                  /> :
+                  'Ce mois-ci'
+                }
+              </button>
+              <button onClick={() => handleFilterClicked('week')}>
+                {
+                  isLoading === 'week' ?
+                  <ClipLoader
+                    css={spinnerStyle}
+                    sizeUnit={'px'}
+                    size={25}
+                    color={'#000'}
+                    loading={true}
+                  /> :
+                  'Cette semaine'
+                }
+              </button>
+              <button onClick={() => handleFilterClicked('today')}>
+                {
+                  isLoading === 'today' ?
+                  <ClipLoader
+                    css={spinnerStyle}
+                    sizeUnit={'px'}
+                    size={25}
+                    color={'#000'}
+                    loading={true}
+                  /> :
+                  'Aujourd\'hui'
+                }
+              </button>
+            </div>
           </h1>
           <div className='users'>
             <Table data={users} columns={columns} />

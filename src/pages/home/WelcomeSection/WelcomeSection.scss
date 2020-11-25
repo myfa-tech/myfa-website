@@ -1,0 +1,148 @@
+#welcome-section {
+  width: 100%;
+  display: flex;
+
+  .mobile-img-container {
+    display: none;
+  }
+
+  #left-text-container {
+    min-width: 615px;
+    width: 55%;
+    margin-top: 90px;
+    padding-left: 55px;
+
+    .title-container {
+      h1 {
+        font-size: 55px;
+        margin: auto;
+        margin-bottom: 30px;
+        color: #f1d866;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+
+    .start-btn {
+      width: 500px;
+      font-size: 20px;
+      text-align: center;
+      margin: auto;
+    }
+
+    .description {
+      color: #333333;
+      font-size: 25px;
+      margin-bottom: 50px;
+
+      ul {
+        li {
+          display: block;
+          width: 540px;
+          margin: auto;
+        }
+      }
+      p {
+        margin-left: 200px;
+      }
+    }
+  }
+
+  #right-img-container {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+
+    .welcome-img {
+      height: calc(100vh - 84px);
+    }
+
+    .mobile-welcome-img {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #welcome-section {
+    padding-top: 100px;
+
+    #left-text-container {
+      min-width: 0;
+      padding: 0;
+      padding-left: 50px;
+      margin-top: 20px;
+
+      .description {
+        font-size: 20px;
+        width: 385px;
+        margin: auto;
+
+        ul {
+          padding-left: 20px;
+        }
+      }
+
+      .title-container {
+        h1 {
+          width: 100%;
+          font-size: 42px;
+        }
+      }
+    }
+
+    #right-img-container {
+      .mobile-welcome-img {
+        display: block;
+        width: 90%;
+        height: auto;
+      }
+
+      .welcome-img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #welcome-section {
+    padding-top: 50px;
+
+    #left-text-container {
+      width: 100%;
+      padding: 0;
+
+      .title-container {
+        h1 {
+          text-align: center;
+          width: 95%;
+        }
+      }
+
+      .description {
+        width: 90%;
+        font-size: 17px;
+
+        ul {
+          li {
+            width: 100%;
+          }
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+
+      .start-btn {
+        margin: auto;
+        width: 85%;
+      }
+    }
+
+    #right-img-container {
+      display: none;
+    }
+  }
+}

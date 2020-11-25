@@ -1,0 +1,154 @@
+#need-section {
+  padding: 100px 0 0 0;
+  text-align: center;
+  position: relative;
+
+  h2 {
+    font-size: 40px;
+    color: #315F69;
+    text-align: center;
+  }
+
+  .section-description {
+    margin: 0;
+    color: #676767;
+    font-size: 20px;
+  }
+
+  #need-section-content {
+    .form-container {
+      background-color: #f1d866;
+      border: 1px solid #ddd;
+      position: relative;
+      border-radius: 10px;
+      margin: auto;
+      width: 800px;
+      margin-top: 5em;
+      padding: 0 2em 2em 2em;
+
+      .confeti-1 {
+        position: absolute;
+        z-index: -1;
+        top: 50px;
+        left: -100px;
+        height: 100px;
+      }
+
+      .confeti-2 {
+        position: absolute;
+        z-index: -1;
+        top: 200px;
+        left: -300px;
+        height: 100px;
+      }
+
+      .confeti-3 {
+        position: absolute;
+        z-index: -1;
+        top: 50px;
+        right: -75px;
+        height: 75px;
+      }
+
+      .confeti-4 {
+        position: absolute;
+        z-index: -1;
+        bottom: -50px;
+        right: 100px;
+        height: 100px;
+      }
+
+      .form-title-container {
+        padding-top: 2em;
+        padding-bottom: 1em;
+
+        h3 {
+          font-size: 20px;
+          color: #311A19;
+        }
+      }
+    }
+
+    .callback-btn {
+      background-color: #311A19;
+      border: 1px solid #311A19;
+      color: #F1D866;
+      margin: auto;
+      width: 290px;
+      height: 55px;
+      margin-top: 3em;
+    }
+
+    .its-free {
+      display: block;
+      margin: auto;
+    }
+
+    .nav-btns-container {
+      width: 800px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+      .previous-btn, .finish-btn {
+        margin: auto;
+        width: 290px;
+        height: 55px;
+        margin-top: 3em;
+      }
+
+      .previous-btn {
+        background-color: rgb(221, 221, 221);
+        border: 1px solid rgb(221, 221, 221);
+      }
+    }
+
+    .next-btn {
+      margin: auto;
+      width: 290px;
+      height: 55px;
+      margin-top: 3em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #need-section {
+
+  }
+}
+
+@media (max-width: 414px) {
+  #need-section {
+    h2 {
+      font-size: 26px;
+    }
+
+    .section-description {
+      font-size: 17px;
+    }
+
+    #need-section-content {
+      .form-container {
+        width: 100%;
+        border-radius: 0;
+        margin-top: 2em;
+        padding: 0 1em 2em 1em;
+
+        .confeti-1, .confeti-2, .confeti-3, .confeti-4 {
+          display: none;
+        }
+      }
+
+      .nav-btns-container {
+        width: 100%;
+        margin-top: 30px;
+
+        .previous-btn, .finish-btn {
+          margin: auto;
+          width: 45%;
+        }
+      }
+    }
+  }
+}

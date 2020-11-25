@@ -1,0 +1,16 @@
+.divider {
+  border-bottom: 2px solid rgb(236, 236, 236);
+  width: 80%;
+  margin: auto;
+
+  &.full {
+    width: 100%;
+  }
+
+  &.tiny {
+    border-bottom: 5px solid #f1d866;
+    width: 50px;
+    margin: 0;
+    margin-bottom: 1em;
+  }
+}

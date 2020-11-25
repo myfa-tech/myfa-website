@@ -3,11 +3,13 @@
   width: 100%;
   border-radius: 0;
   border: 1px solid rgb(206, 206, 206);
+  border-radius: 6px;
   margin-bottom: 2em;
 
   .img-container {
     position: relative;
     border-bottom: 1px solid rgb(206, 206, 206);
+    border-radius: 6px 6px 0 0;
     width: 100%;
     max-height: 200px;
     display: flex;
@@ -28,6 +30,7 @@
 
   .text-container {
     background-color: white;
+    border-radius: 0 0 6px 6px;
     padding: 1em;
   }
 

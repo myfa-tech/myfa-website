@@ -10,10 +10,10 @@ import {
   FacebookIcon,
   FacebookShareButton,
   TwitterIcon,
-  TwitterShareButton
+  TwitterShareButton,
 } from 'react-share';
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 
 import { fetchSingleArticle } from '../../services/contentful';
 
@@ -149,7 +149,7 @@ const ArticleDisplay = (props) => {
   }, [props.article]);
 
   return (
-    <Layout>
+    <Layout color='light'>
       <SEO
         title={props.article.title}
         img={get(props, 'article.cover.fields.file.url', null) || get(props, 'article.displayCover.fields.file.url', null)}

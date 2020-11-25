@@ -1,54 +1,49 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import { FaEye, FaMapPin } from 'react-icons/fa';
-import { Divider } from '@material-ui/core';
+import Divider from '../../components/Divider';
 
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
+import Button from '../../components/Button';
+import Layout from '../../components/Layout';
 import NoJobs from './NoJobs';
 
 import getFormattedDate from '../../utils/getFormattedDate';
-import useTranslate from '../../hooks/useTranslate';
 import logoHandsSrc from '../../images/logo-hands.png';
 
 import './jobs.scss';
 
 const JobsPage = () => {
-  const [t] = useTranslate();
-
   const jobs = [
-    // { title: 'Stage business developer', date: new Date('2020-05-26'), location: 'Paris, Station F / Remote', file: 'stage_myfa_bizdev.pdf' },
+    { title: 'Stage developer Node/ReactJS', date: new Date('2020-11-24'), location: 'Paris, Station F / Remote', file: 'offre_web_myfa.pdf' },
   ];
 
   return (
-    <Layout className='jobs'>
+    <Layout className='jobs' color='mix'>
       <SEO title='Jobs' />
 
       <div className='title-container'>
-        <h2>{t('jobs.title')} </h2>
+        <h2>Nous rejoindre </h2>
       </div>
 
       <div className='content-container'>
         <h3>Nos offres</h3>
 
-        <Divider />
+        <Divider full />
 
         {jobs.length ? jobs.map(job => (
-          <Row className='job-row'>
-            <Col sm={1} className='img-container d-none d-sm-block'>
+          <div className='job-row'>
+            <div className='img-container d-none d-sm-block'>
               <img src={logoHandsSrc} />
-            </Col>
-            <Col xs={10}>
+            </div>
+            <div className='description'>
               <h4>{job.title}</h4>
-              <div className='sub-info'>{getFormattedDate(job.date)}</div>
+              <div className='sub-info'>Posté le {getFormattedDate(job.date)}</div>
               <div className='sub-info'><FaMapPin /> {job.location}</div>
-            </Col>
-            <Col sm={1} xs={2} className='buttons-container'>
-              <Button className='download-btn' as='a' href={`/${job.file}`} target="_blank"><FaEye /></Button>
-            </Col>
-          </Row>
+            </div>
+            <div className='buttons-container'>
+              <Button label={<FaEye />} className='download-btn' href={`/${job.file}`} target="_blank" />
+            </div>
+          </div>
         )) : <NoJobs />}
       </div>
     </Layout>

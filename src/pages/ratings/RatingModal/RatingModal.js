@@ -5,8 +5,6 @@ import { FaStar } from 'react-icons/fa';
 
 import ButtonWithLoader from '../../../components/ButtonWithLoader';
 
-import useTranslate from '../../../hooks/useTranslate';
-
 import './RatingModal.scss';
 
 const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
@@ -17,8 +15,6 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
     subject: '',
     comment: '',
   });
-
-  const [t] = useTranslate();
 
   const emptyStars = [1, 2, 3, 4, 5];
 
@@ -61,7 +57,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
       <Modal.Header closeButton className='header-text' />
       <Modal.Body>
         <form onSubmit={send}>
-          <h2>{t('rating_modal.your_review')}</h2>
+          <h2>Votre avis</h2>
 
           <div className='stars'>
             {emptyStars.map((star, index) => (
@@ -75,7 +71,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
             ))}
           </div>
 
-          <h2>{t('rating_modal.subject')}</h2>
+          <h2>Sujet</h2>
 
           <TextField
             type='text'
@@ -88,7 +84,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
             onChange={handleChange}
           />
 
-            <h2>{t('rating_modal.your_message')}</h2>
+            <h2>Votre message</h2>
 
           <TextField
             type='text'
@@ -105,7 +101,7 @@ const RatingModal = ({ showModal, toggleModal, submitRating, isLoading }) => {
           <ButtonWithLoader
             isLoading={isLoading}
             className='send-form-button'
-            label={t('rating_modal.button_label')}
+            label='Envoyer'
             onClick={send}
           />
         </form>

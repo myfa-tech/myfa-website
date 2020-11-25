@@ -1,0 +1,48 @@
+.input-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+
+  &.with-help-text {
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  .help-text {
+    color: rgba(0, 0, 0, 0.58);
+  }
+
+  .myfa-text-input {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 58px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 17px;
+
+    &.error {
+      border: 2px solid rgb(255, 83, 83);
+    }
+
+    &.textarea {
+      height: initial;
+      padding: 1em;
+    }
+  }
+
+  .fixed-input-right-label {
+    margin-left: -30px;
+  }
+}
+
+@media (max-width: 414px) {
+  .input-container {
+    .help-text {
+      font-size: 13px;
+    }
+  }
+}

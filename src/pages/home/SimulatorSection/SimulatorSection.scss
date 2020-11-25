@@ -1,0 +1,140 @@
+#simulator-section {
+  padding: 100px 0 0 0;
+  text-align: center;
+
+  h2 {
+    font-size: 40px;
+    color: #315F69;
+  }
+
+  .section-description {
+    margin: 0;
+    color: #676767;
+    font-size: 20px;
+  }
+
+  .simulator {
+    width: 480px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 2em;
+    margin: 2em auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    h3 {
+      font-size: 30px;
+      color: #315F69;
+      font-weight: 400;
+      margin-bottom: 1em;
+    }
+
+    .amount-input {
+      width: 175px;
+      height: 57px;
+      font-size: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      color: #315F69;
+    }
+
+    .input-container {
+      .fixed-input-right-label {
+        margin-bottom: 35px;
+        margin-left: -40px;
+        font-size: 50px;
+        color: #315F69;
+      }
+    }
+
+    .prestation-container {
+      display: flex;
+      align-items: baseline;
+      width: 80%;
+      margin: auto;
+      color: #888;
+      margin-bottom: 1em;
+
+      &:last-of-type {
+        margin-bottom: 3em;
+      }
+
+      & > * {
+        padding: 0;
+        margin: 0;
+      }
+
+      span {
+        font-size: 22px;
+      }
+
+      .dots {
+        flex: 1;
+        overflow: hidden;
+      }
+    }
+
+    .owed-amount-title {
+      color: #315F69;
+      font-size: 25px;
+    }
+
+    .owed-amount {
+      color: #315F69;
+      font-size: 70px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #simulator-section {
+    h2 {
+      font-size: 26px;
+    }
+
+    .section-description {
+      font-size: 17px;
+      width: 80%;
+      margin: auto;
+    }
+
+    .simulator {
+      width: 90%;
+      padding: 2em 1em;
+
+      h3 {
+        font-size: 25px;
+      }
+
+      .amount-input {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      .input-container {
+        .fixed-input-right-label {
+          font-size: 40px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .prestation-container {
+        &:last-of-type {
+          margin-bottom: 2em;
+        }
+
+        span {
+          font-size: 17px;
+        }
+      }
+
+      .owed-amount-title {
+        font-size: 22px;
+      }
+
+      .owed-amount {
+        font-size: 60px;
+      }
+    }
+  }
+}
