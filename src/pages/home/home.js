@@ -6,8 +6,7 @@ import WelcomeSection from './WelcomeSection';
 import OurServicesSection from './OurServicesSection';
 import PricesSection from './PricesSection';
 import NeedSection from './NeedSection';
-
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import SimulatorSection from './SimulatorSection';
 
 import useTranslate from '../../hooks/useTranslate';
 
@@ -53,6 +52,7 @@ const HomePage = ({ location }) => {
       <NeedSection />
       <OurServicesSection />
       <PricesSection />
+      <SimulatorSection />
     </Layout>
   );
 }

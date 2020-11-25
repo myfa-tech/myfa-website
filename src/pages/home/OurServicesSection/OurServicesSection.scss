@@ -1,5 +1,5 @@
 #our-service-section {
-  padding: 100px 0;
+  padding: 100px 0 0 0;
   text-align: center;
 
   h2 {
@@ -73,8 +73,6 @@
 
 @media (max-width: 414px) {
   #our-service-section {
-    padding: 100px 0 0 0;
-
     h2 {
       font-size: 26px;
     }
