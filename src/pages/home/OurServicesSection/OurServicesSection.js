@@ -98,7 +98,7 @@ const OurServicesSection = () => {
             <div className='top-element'>
               <span className='title'>Livraison de courses <span className='highlight'>alimentaires</span> à domicile</span>
               <p>
-                MYFA s’occupe de réaliser les courses pour vos poches.
+                MYFA s’occupe de réaliser les courses pour vos proches.
                 Laissez nous leurs coordonnées, nous les appelons pour connaîre leurs besoins.
               </p>
               <p>
