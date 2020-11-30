@@ -251,6 +251,7 @@ const DashbboardBaskets = () => {
     {
       text: 'Destinataire',
       dataField: 'recipient.label',
+      editable: false,
       sort: true,
       formatter: (cell, row, rowIndex) => {
         return <Typography
@@ -262,28 +263,26 @@ const DashbboardBaskets = () => {
           {row.recipient.firstname} {row.recipient.lastname}
         </Typography>
       },
-      editable: false,
       headerStyle: () => {
         return { width: '180px' };
       }
     },
     {
-      text: 'Zone ✏️',
+      text: 'Zone',
+      editable: false,
       dataField: 'recipient.zone',
       sort: true,
       formatter: (cell, row, rowIndex) => {
         return getDeliveryZone(row.recipient.zone);
       },
-      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-        <TableSelectEditor { ...editorProps } options={ZONE_EDITOR_OPTIONS} value={value} />
-      ),
       headerStyle: () => {
         return { width: '90px' };
       }
     },
     {
-      text: 'Statut ✏️',
+      text: 'Statut',
       dataField: 'status',
+      editable: false,
       formatter: (cell, row, rowIndex) => {
         if (row.status === 'pending') {
           return 'paiement 🏃🏽‍♀️';
@@ -297,9 +296,6 @@ const DashbboardBaskets = () => {
           return 'annulé ❌';
         }
       },
-      editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-        <TableSelectEditor { ...editorProps } options={STATUS_EDITOR_OPTIONS} value={value} />
-      ),
       headerStyle: () => {
         return { width: '120px' };
       },
@@ -325,8 +321,8 @@ const DashbboardBaskets = () => {
       },
     },
     {
-      text: 'Livraison ✏️',
-      editable: true,
+      text: 'Livraison',
+      editable: false,
       headerStyle: () => {
         return { width: '110px' };
       },
@@ -367,9 +363,9 @@ const DashbboardBaskets = () => {
       ),
     },
     {
-      text: 'Comment ✏️',
+      text: 'Comment',
       dataField: 'comment',
-      editable: true,
+      editable: false,
       headerStyle: () => {
         return { width: '110px' };
       },
