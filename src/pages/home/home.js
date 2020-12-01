@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from '@reach/router';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/Layout';
@@ -12,9 +13,10 @@ import useTranslate from '../../hooks/useTranslate';
 
 import './home.scss';
 
-const HomePage = ({ location }) => {
+const HomePage = () => {
   const [t] = useTranslate();
   const [isReady, setIsReady] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     window.onload = goToSection;
@@ -30,11 +32,8 @@ const HomePage = ({ location }) => {
     let hash = location.hash;
 
     if (!!hash) {
-      let elementRect = document.getElementById(hash.substr(1)).getBoundingClientRect();
-      let bodyRect = document.body.getBoundingClientRect();
-      let offset = elementRect.top - bodyRect.top;
-
-      window.scrollTo(0, offset);
+      let anchor = document.getElementById(hash.substr(1));
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     if (!isReady) {
