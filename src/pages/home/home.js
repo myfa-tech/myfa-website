@@ -17,7 +17,7 @@ const HomePage = () => {
 
   useEffect(() => {
     hashLinkScroll();
-  }, []);
+  }, [location]);
 
   function hashLinkScroll() {
     const { hash } = location;
