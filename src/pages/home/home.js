@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from '@reach/router';
 
 import SEO from '../../components/seo';
 import Layout from '../../components/Layout';
@@ -8,45 +9,31 @@ import PricesSection from './PricesSection';
 import NeedSection from './NeedSection';
 import SimulatorSection from './SimulatorSection';
 
-import useTranslate from '../../hooks/useTranslate';
-
 import './home.scss';
 
-const HomePage = ({ location }) => {
-  const [t] = useTranslate();
-  const [isReady, setIsReady] = useState(false);
+const HomePage = () => {
+  const location = useLocation();
 
   useEffect(() => {
-    window.onload = goToSection;
-  }, []);
-
-  useEffect(() => {
-    if (isReady) {
-      goToSection();
-    }
+    hashLinkScroll();
   }, [location]);
 
-  const goToSection = () => {
-    let hash = location.hash;
-
-    if (!!hash) {
-      let elementRect = document.getElementById(hash.substr(1)).getBoundingClientRect();
-      let bodyRect = document.body.getBoundingClientRect();
-      let offset = elementRect.top - bodyRect.top;
-
-      window.scrollTo(0, offset);
+  function hashLinkScroll() {
+    const { hash } = location;
+    if (hash !== '') {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
     }
-
-    if (!isReady) {
-      setIsReady(true);
-    }
-  };
+  }
 
   return (
     <Layout
       className='home-page'
     >
-      <SEO title={t('home_page.seo_title')} />
+      <SEO title='MYFA, pour vos proches au loin' />
 
       <WelcomeSection />
       <NeedSection />
