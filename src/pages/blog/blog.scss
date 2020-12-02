@@ -24,11 +24,12 @@
 
   .blog-cards-container {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 
     .blog-article-card {
-      width: 354px;
+      max-width: calc(33% - 1em);
+      flex: 1 0 300px;
+      margin: 1rem 0.5em;
       background-color: #fff;
 
       &:hover {
@@ -50,7 +51,7 @@
 
     .blog-cards-container {
       .blog-article-card {
-        width: 45%;
+        max-width: calc(50% -  1em);
       }
     }
   }
@@ -66,7 +67,7 @@
 
     .blog-cards-container {
       .blog-article-card {
-        width: 100%;
+        max-width: calc(100% -  1em);
       }
     }
   }
