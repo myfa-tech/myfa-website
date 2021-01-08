@@ -48,16 +48,6 @@ const App = () => (
     <Router>
       <HomePage path='/' />
       <TeamPage path='/team' />
-      {/* <EmailConfirmationSuccessPage path='/email_confirmation_success' />
-      <Redirect
-        from="/profile"
-        to="/profile/information"
-      />
-      <ResetPasswordEmailPage path='/reset_password/email' />
-      <ResetPasswordPasswordPage path='/reset_password/password' />
-      <CguFrPage path='/cgu_fr'/>
-      <CgvFrPage path='/cgv_fr'/>
-      <LegalFrPage path='/legal_fr' /> */}
       <EmailConfirmationPage path='/email_confirmation' />
       <LoginPage path='/login' />
       <SignupPage path='/signup' />
